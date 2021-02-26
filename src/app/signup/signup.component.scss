@@ -7,6 +7,14 @@
     align-items: center;
 }
 
+main
+{
+    display: grid;
+    grid-template-columns: 50% auto;
+    align-items: center;
+    gap: 3em;
+}
+
 #name
 {
     display: flex;

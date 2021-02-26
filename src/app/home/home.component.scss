@@ -10,6 +10,7 @@
 {
     display: grid;
     grid-template-columns: 50% auto;
+    align-items: center;
     margin-top: 3em;
     gap: 3em;
 
@@ -21,11 +22,6 @@
     p
     {
         font-size: 2em;
-    }
-
-    img
-    {
-        max-width: 100%;
     }
 }
 

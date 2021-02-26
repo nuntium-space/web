@@ -125,6 +125,11 @@ label
     }
 }
 
+img
+{
+    max-width: 100%;
+}
+
 router-outlet
 {
     display: none;
