@@ -89,11 +89,12 @@ label
         font-size: 1.5em;
         color: var(--secondary-color);
         background-color: var(--primary-color);
-        padding: 0.5em 1em;
+        padding: 0.5em;
         width: max-content;
         border: none;
         border-radius: 0.5em;
         transition: 100ms;
+        margin-top: 0.2em;
 
         &.dark
         {
