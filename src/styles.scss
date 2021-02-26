@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+$primary-color: #ffffff;
+$secondary-color: #4639ff;
+
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    color: $primary-color;
+    background-color: $secondary-color;
+    height: 100vh;
+}
