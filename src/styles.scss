@@ -3,6 +3,12 @@
 $primary-color: #ffffff;
 $secondary-color: #4639ff;
 
+:root
+{
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+}
+
 *
 {
     box-sizing: border-box;
@@ -11,8 +17,9 @@ $secondary-color: #4639ff;
 body
 {
     margin: 0;
+    padding: 1em;
     font-family: "Work Sans", sans-serif;
-    color: $primary-color;
-    background-color: $secondary-color;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
     height: 100vh;
 }
