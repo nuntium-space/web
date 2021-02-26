@@ -1,0 +1,58 @@
+:host
+{
+    display: grid;
+    grid-template-rows: max-content auto max-content;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+header
+{
+    display: grid;
+    grid-template-columns: auto max-content;
+    align-items: center;
+    padding: 1em;
+    background-color: var(--primary-color);
+    border-radius: 1em;
+
+    a
+    {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-size: 2em;
+    }
+}
+
+main
+{
+    max-width: 1300px;
+}
+
+#hero
+{
+    display: grid;
+    grid-template-columns: 50% auto;
+    margin-top: 3em;
+    gap: 3em;
+
+    h1
+    {
+        font-size: 4em;
+    }
+
+    p
+    {
+        font-size: 2em;
+    }
+
+    img
+    {
+        max-width: 100%;
+    }
+}
+
+#sign-up
+{
+    width: 100%;
+}
