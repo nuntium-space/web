@@ -8,6 +8,29 @@ header
     {
         text-decoration: none;
         color: var(--secondary-color);
-        font-size: x-large;
+        font-size: 2em;
+    }
+}
+
+#hero
+{
+    display: grid;
+    grid-template-columns: 50% auto;
+    margin-top: 3em;
+    gap: 3em;
+
+    h1
+    {
+        font-size: 4em;
+    }
+
+    p
+    {
+        font-size: 2em;
+    }
+
+    img
+    {
+        max-width: 100%;
     }
 }
