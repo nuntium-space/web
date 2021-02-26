@@ -62,6 +62,68 @@ button
     }
 }
 
+form
+{
+    max-width: 500px;
+
+    label input,
+    button[type=submit]
+    {
+        width: 100%;
+    }
+
+    button[type=submit]
+    {
+        margin-top: 2em;
+    }
+}
+
+label
+{
+    display: block;
+
+    input
+    {
+        display: block; 
+        font-family: inherit;
+        font-size: 1.5em;
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+        padding: 0.5em 1em;
+        width: max-content;
+        border: none;
+        border-radius: 0.5em;
+        transition: 100ms;
+
+        &.dark
+        {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        &:focus
+        {
+            outline: none;
+            box-shadow: 0 0 0 0.2em rgba($primary-color, 0.5);
+
+            &.dark
+            {
+                box-shadow: 0 0 0 0.2em rgba($secondary-color, 0.5);
+            }
+        }
+
+        &:hover
+        {
+            opacity: 0.9;
+        }
+    }
+
+    & ~ label
+    {
+        margin-top: 1em;
+    }
+}
+
 router-outlet
 {
     display: none;
