@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<main>
+  <form>
+    <h1>Create an account</h1>
+    <div id="name">
+        <label>
+            First name
+            <input type="text" name="first-name" autocomplete="given-name" required>
+        </label>
+        <label>
+            Last name
+            <input type="text" name="last-name" autocomplete="family-name" required>
+        </label>
+    </div>
+    <label>
+      Email
+      <input type="email" name="email" autocomplete="email" required>
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" autocomplete="new-password" required>
+    </label>
+    <button type="submit">
+      Sign Up
+    </button>
+  </form>
+</main>
