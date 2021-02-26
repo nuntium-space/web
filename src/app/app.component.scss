@@ -1,5 +1,8 @@
 header
 {
+    display: grid;
+    grid-template-columns: auto max-content;
+    align-items: center;
     padding: 1em;
     background-color: var(--primary-color);
     border-radius: 1em;
