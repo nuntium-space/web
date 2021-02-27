@@ -2,11 +2,13 @@
 
 $primary-color: #ffffff;
 $secondary-color: #4639ff;
+$link-color: #00ffdc;
 
 :root
 {
     --primary-color: #{$primary-color};
     --secondary-color: #{$secondary-color};
+    --link-color: #{$link-color};
 }
 
 *
@@ -24,6 +26,29 @@ body
     height: 100vh;
     max-width: 1300px;
     margin: 0 auto;
+}
+
+a
+{
+    color: var(--link-color);
+    text-decoration: none;
+    border-radius: 0.5em;
+
+    &:focus
+    {
+        outline: none;
+        box-shadow: 0 0 0 0.2em rgba($secondary-color, 0.5);
+
+        &.dark
+        {
+            box-shadow: 0 0 0 0.2em rgba($primary-color, 0.5);
+        }
+    }
+
+    &:hover
+    {
+        opacity: 0.9;
+    }
 }
 
 button
