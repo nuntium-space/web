@@ -91,6 +91,22 @@ form
 {
     max-width: 500px;
 
+    .title
+    {
+        margin-bottom: 2em;
+
+        h1,
+        p
+        {
+            margin: 0;
+        }
+
+        p
+        {
+            margin-top: 0.5em;
+        }
+    }
+
     label input,
     button[type=submit]
     {
