@@ -160,6 +160,25 @@ label
         }
     }
 
+    .errors
+    {
+        color: white;
+        background-color: red;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        margin-top: 0.5em;
+
+        p
+        {
+            margin: 0;
+        }
+
+        &:empty
+        {
+            display: none;
+        }
+    }
+
     & ~ label
     {
         margin-top: 1em;
