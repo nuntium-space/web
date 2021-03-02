@@ -6,6 +6,21 @@ interface IApiServiceResponse<T>
   errors?: string[];
 }
 
+interface IUser
+{
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
+interface ISession
+{
+  id: string;
+  user: IUser;
+  expires_at: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -52,12 +67,12 @@ export class ApiService {
     last_name: string,
     email: string,
     password: string,
-  })
+  }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("POST", "users", data);
   }
 
-  public async createSession(email: string, password: string)
+  public async createSession(email: string, password: string): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("POST", "sessions", { email, password });
   }
