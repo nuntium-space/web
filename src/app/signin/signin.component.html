@@ -1,18 +1,32 @@
 <app-header></app-header>
 
 <main>
-  <form>
+  <form [formGroup]="form" (submit)="onSubmit($event)">
     <div class="title">
       <h1>Sign In</h1>
       <p>Don't have an account yet? <a routerLink="/signup" class="dark">Sign Up</a></p>
     </div>
     <label>
       Email
-      <input type="email" name="email" autocomplete="email" required>
+      <input
+        formControlName="email"
+
+        type="email"
+        name="email"
+        autocomplete="email"
+        required
+      >
     </label>
     <label>
       Password
-      <input type="password" name="password" autocomplete="current-password" required>
+      <input
+        formControlName="password"
+
+        type="password"
+        name="password"
+        autocomplete="current-password"
+        required
+      >
     </label>
     <button type="submit">
       Sign In
