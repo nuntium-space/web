@@ -52,7 +52,7 @@ export class ApiService {
 
     if (response.status !== 200)
     {
-      result.errors = [ json.message ];
+      result.errors = (json.message as string).split(". ");
     }
     else
     {
