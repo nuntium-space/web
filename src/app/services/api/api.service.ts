@@ -6,7 +6,7 @@ interface IApiServiceResponse<T>
   errors?: string[];
 }
 
-interface IUser
+export interface IUser
 {
   id: string;
   first_name: string;
@@ -14,7 +14,7 @@ interface IUser
   email: string;
 }
 
-interface ISession
+export interface ISession
 {
   id: string;
   user: IUser;
@@ -62,6 +62,11 @@ export class ApiService {
     return result;
   }
 
+  public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("GET", `users/${id}`);
+  }
+
   public async createUser(data: {
     first_name: string,
     last_name: string,
@@ -72,8 +77,33 @@ export class ApiService {
     return this.send("POST", "users", data);
   }
 
+  public async updateUser(id: string, data: {
+    first_name?: string,
+    last_name?: string,
+    email?: string,
+    password?: string,
+  }): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("PATCH", `users/${id}`, data);
+  }
+
+  public async deleteUser(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `users/${id}`);
+  }
+
+  public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
+  {
+    return this.send("GET", `sessions/${id}`);
+  }
+
   public async createSession(email: string, password: string): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("POST", "sessions", { email, password });
+  }
+
+  public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `sessions/${id}`);
   }
 }
