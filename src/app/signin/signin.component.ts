@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +16,7 @@ export class SigninComponent
     password: new FormControl(),
   });
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private auth: AuthService, private router: Router)
   {}
 
   public async onSubmit(e: Event)
@@ -33,5 +35,14 @@ export class SigninComponent
     this.form.get("password")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"password"`))
     });
+
+    if (response.data)
+    {
+      localStorage.setItem("session.id", response.data.id);
+
+      this.auth.user = response.data.user;
+
+      this.router.navigateByUrl("/feed");
+    }
   }
 }
