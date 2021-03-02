@@ -17,21 +17,13 @@ main
 
 #name
 {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
     margin-bottom: 1em;
 
     label
     {
         margin: 0;
-
-        &:first-child
-        {
-            margin-right: 0.5em;
-        }
-
-        &:last-child
-        {
-            margin-left: 0.5em;
-        }
     }
 }
