@@ -16,7 +16,7 @@ export class SignedInGuard implements CanActivate
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
   {
-    if (this.auth.user === undefined)
+    if (!this.auth.user)
     {
       return this.router.parseUrl("/signin");
     }
