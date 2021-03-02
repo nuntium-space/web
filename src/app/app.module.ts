@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,29 @@ import { FeedComponent } from './feed/feed.component';
     HomeComponent,
     HeaderComponent,
     SignupComponent,
-    FeedComponent
+    FeedComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (auth: AuthService) =>
+      {
+        return (): Promise<any> =>
+        {
+          return auth.init();
+        };
+      },
+      deps: [ AuthService ],
+      multi: true,
+    },
+  ],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule
+{}
