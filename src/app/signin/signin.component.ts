@@ -22,10 +22,16 @@ export class SigninComponent
     e.preventDefault();
 
     const response = await this.api.createSession(
-      this.form.get("email")?.value,
-      this.form.get("password")?.value,
+      this.form.get("email")?.value ?? "",
+      this.form.get("password")?.value ?? "",
     );
 
-    console.log(response);
+    this.form.get("email")?.setErrors({
+      errors: response.errors?.filter(e => e.startsWith(`"email"`))
+    });
+
+    this.form.get("password")?.setErrors({
+      errors: response.errors?.filter(e => e.startsWith(`"password"`))
+    });
   }
 }

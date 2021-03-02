@@ -16,6 +16,11 @@
         autocomplete="email"
         required
       >
+      <div *ngIf="form.get('email')?.errors">
+        <p *ngFor="let error of form.get('email')?.errors?.errors" class="error">
+          {{error}}
+        </p>
+      </div>
     </label>
     <label>
       Password
@@ -27,6 +32,11 @@
         autocomplete="current-password"
         required
       >
+      <div *ngIf="form.get('password')?.errors">
+        <p *ngFor="let error of form.get('password')?.errors?.errors" class="error">
+          {{error}}
+        </p>
+      </div>
     </label>
     <button type="submit">
       Sign In
