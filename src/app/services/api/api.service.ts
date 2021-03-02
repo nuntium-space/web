@@ -34,7 +34,7 @@ export class ApiService {
     const response = await fetch(`${this.ENDPOINT}/${url}`, {
       method,
       headers: {
-        "Authorization": `Bearer ${localStorage.getItem("user.token")}`,
+        "Authorization": `Bearer ${localStorage.getItem("session.id")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
