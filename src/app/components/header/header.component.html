@@ -1,6 +1,9 @@
 <header>
   <a routerLink="/">nuntium</a>
-  <button class="dark" routerLink="/signin">
+  <button class="dark" routerLink="/signin" *ngIf="!router.url.startsWith('/signin')">
     Sign In
+  </button>
+  <button class="dark" routerLink="/signup" *ngIf="router.url.startsWith('/signin')">
+    Sign Up
   </button>
 </header>
