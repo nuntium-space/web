@@ -5,12 +5,27 @@ main
 
     article
     {
+        margin-top: 1em;
+
+        .title,
+        .info
+        {
+            margin: 0;
+            margin-bottom: 0.5em;
+        }
+
+        .info
+        {
+            font-weight: normal;
+        }
+
         .content
         {
             display: -webkit-box;
             -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            margin: 0;
         }
     }
 }
