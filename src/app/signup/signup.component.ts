@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class SignupComponent
     password: new FormControl(),
   });
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private router: Router)
   {}
 
   public async onSubmit(e: Event)
@@ -45,5 +46,10 @@ export class SignupComponent
     this.form.get("password")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"password"`))
     });
+
+    if (response.data)
+    {
+      this.router.navigateByUrl("/signin");
+    }
   }
 }
