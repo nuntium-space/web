@@ -3,10 +3,17 @@ main
     max-width: 500px;
     margin: 0 auto;
 
+    .article-container
+    {
+        display: block;
+        color: unset;
+        padding: 1em;
+        margin-top: 1em;
+        border: 1px solid var(--primary-color);
+    }
+
     article
     {
-        margin-top: 1em;
-
         .title,
         .info
         {
