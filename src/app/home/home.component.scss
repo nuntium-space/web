@@ -29,3 +29,16 @@
 {
     width: 100%;
 }
+
+@media (max-width: 1000px)
+{
+    #hero
+    {
+        grid-template-columns: 100%;
+
+        img
+        {
+            display: none;
+        }
+    }
+}
