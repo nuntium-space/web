@@ -13,7 +13,15 @@ const routes: Routes = [
   { path: "signin", component: SigninComponent, canActivate: [ SignedOutGuard ] },
   { path: "signup", component: SignupComponent, canActivate: [ SignedOutGuard ] },
   { path: "feed", component: FeedComponent, canActivate: [ SignedInGuard ] },
-  { path: "settings", component: SettingsComponent, canActivate: [ SignedInGuard ] },
+  {
+    path: "settings",
+    component: SettingsComponent,
+    canActivate: [ SignedInGuard ],
+    children: [
+      { path: "account", component: SettingsComponent, canActivate: [ SignedInGuard ] },
+      { path: "organizations", component: SettingsComponent, canActivate: [ SignedInGuard ] },
+    ],
+  },
   { path: "", component: HomeComponent },
   { path: "**", component: PageNotFoundComponent },
 ];
