@@ -1,0 +1,59 @@
+@import "../../variables.scss";
+
+:host
+{
+    display: grid;
+    grid-template-rows: max-content auto;
+    grid-template-columns: 30% auto;
+    grid-template-areas:
+        "header header"
+        "aside main";
+    gap: 1em;
+    height: 100%;
+}
+
+aside
+{
+    grid-area: aside;
+
+    a
+    {
+        display: block;
+        color: unset;
+        padding: 1em;
+        border: 1px solid var(--primary-color);
+
+        &:hover
+        {
+            opacity: 1;
+            background-color: rgba($primary-color, $alpha: 0.3);
+        }
+
+        &:first-child
+        {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child
+        {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        &:not(:first-child):not(:last-child)
+        {
+            border-radius: 0;
+        }
+
+        & ~ a
+        {
+            border-top: 0;
+        }
+    }
+}
+
+main
+{
+    grid-area: main;
+}
