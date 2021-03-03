@@ -1,6 +1,6 @@
 <header>
   <a routerLink="/">nuntium</a>
-  <button class="dark" routerLink="/signup" *ngIf="auth.user" (click)="showNav = !showNav">
+  <button class="dark" *ngIf="auth.user" (click)="showNav = !showNav">
     &#8942;
   </button>
   <button class="dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
