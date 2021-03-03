@@ -18,8 +18,8 @@ const routes: Routes = [
     component: SettingsComponent,
     canActivate: [ SignedInGuard ],
     children: [
-      { path: "account", component: SettingsComponent, canActivate: [ SignedInGuard ] },
-      { path: "organizations", component: SettingsComponent, canActivate: [ SignedInGuard ] },
+      { path: "account", component: SettingsComponent },
+      { path: "organizations", component: SettingsComponent },
     ],
   },
   { path: "", component: HomeComponent },
