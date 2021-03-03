@@ -28,9 +28,11 @@ aside
         padding: 1em;
         border: 1px solid var(--primary-color);
 
+        &:focus,
         &:hover
         {
             opacity: 1;
+            box-shadow: none;
             background-color: rgba($primary-color, $alpha: 0.3);
         }
 
