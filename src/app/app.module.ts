@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { AuthService } from './services/auth/auth.service';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthService } from './services/auth/auth.service';
     HeaderComponent,
     SignupComponent,
     FeedComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
