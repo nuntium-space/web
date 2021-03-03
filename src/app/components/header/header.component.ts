@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent
 {
+  public showNav = false;
+
   constructor(public auth: AuthService, public router: Router)
   {}
 }
