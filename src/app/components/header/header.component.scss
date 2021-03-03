@@ -24,6 +24,7 @@ header
 nav
 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     gap: 1em;
     background-color: var(--primary-color);
