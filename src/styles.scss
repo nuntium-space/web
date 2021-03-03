@@ -26,6 +26,16 @@ body
     margin: 0 auto;
 }
 
+main
+{
+    grid-area: main;
+}
+
+footer
+{
+    grid-area: footer;
+}
+
 a
 {
     color: var(--link-color);

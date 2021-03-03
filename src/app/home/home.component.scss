@@ -2,6 +2,10 @@
 {
     display: grid;
     grid-template-rows: max-content auto max-content;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
     gap: 1em;
     height: 100%;
     align-items: center;

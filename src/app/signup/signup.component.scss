@@ -2,6 +2,9 @@
 {
     display: grid;
     grid-template-rows: max-content auto;
+    grid-template-areas:
+        "header"
+        "main";
     gap: 1em;
     height: 100%;
     align-items: center;
