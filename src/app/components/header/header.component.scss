@@ -1,11 +1,16 @@
+:host
+{
+    display: block;
+    padding: 1em;
+    background-color: var(--primary-color);
+    border-radius: 1em;
+}
+
 header
 {
     display: grid;
     grid-template-columns: auto max-content;
     align-items: center;
-    padding: 1em;
-    background-color: var(--primary-color);
-    border-radius: 1em;
 
     a
     {
@@ -13,5 +18,20 @@ header
         color: var(--secondary-color);
         font-size: 2em;
         width: max-content;
+    }
+}
+
+nav
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    background-color: var(--primary-color);
+    margin-top: 1em;
+    border-radius: 1em;
+
+    &.hide
+    {
+        display: none;
     }
 }
