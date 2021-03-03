@@ -2,6 +2,7 @@
 {
     display: grid;
     grid-template-rows: max-content auto max-content;
+    gap: 1em;
     height: 100%;
     align-items: center;
 }
@@ -11,7 +12,6 @@
     display: grid;
     grid-template-columns: 50% auto;
     align-items: center;
-    margin-top: 3em;
     gap: 3em;
 
     h1
