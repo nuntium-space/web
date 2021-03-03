@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { AuthService } from './services/auth/auth.service';
 import { SettingsComponent } from './settings/settings.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SettingsComponent } from './settings/settings.component';
     SignupComponent,
     FeedComponent,
     SettingsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
