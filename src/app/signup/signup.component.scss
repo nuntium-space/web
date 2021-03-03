@@ -27,3 +27,16 @@ main
         margin: 0;
     }
 }
+
+@media (max-width: 1000px)
+{
+    main
+    {
+        grid-template-columns: 100%;
+
+        img
+        {
+            display: none;
+        }
+    }
+}

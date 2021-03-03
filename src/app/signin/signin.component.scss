@@ -14,3 +14,16 @@ main
     align-items: center;
     gap: 3em;
 }
+
+@media (max-width: 1000px)
+{
+    main
+    {
+        grid-template-columns: 100%;
+
+        img
+        {
+            display: none;
+        }
+    }
+}
