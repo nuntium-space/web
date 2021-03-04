@@ -42,7 +42,7 @@ export class SigninComponent
 
       this.auth.user = response.data.user;
 
-      this.router.navigateByUrl("/feed");
+      this.router.navigateByUrl("/");
     }
   }
 }
