@@ -22,6 +22,77 @@
         <div class="title">
             <h1>Account</h1>
         </div>
+        <form [formGroup]="updateAccountDetailsForm" (submit)="onUpdateAccountDetailsFormSubmit($event)">
+            <div class="row">
+                <label>
+                    First name
+                    <input
+                    formControlName="first_name"
+
+                    type="text"
+                    name="first-name"
+                    autocomplete="given-name"
+                    required
+                    >
+                    <div *ngIf="updateAccountDetailsForm.get('first_name')?.errors" class="errors">
+                        <p *ngFor="let error of updateAccountDetailsForm.get('first_name')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+                <label>
+                    Last name
+                    <input
+                    formControlName="last_name"
+
+                    type="text"
+                    name="last-name"
+                    autocomplete="family-name"
+                    required
+                    >
+                    <div *ngIf="updateAccountDetailsForm.get('last_name')?.errors" class="errors">
+                        <p *ngFor="let error of updateAccountDetailsForm.get('last_name')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+            </div>
+            <label>
+                Email
+                <input
+                    formControlName="email"
+
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                >
+                <div *ngIf="updateAccountDetailsForm.get('email')?.errors" class="errors">
+                    <p *ngFor="let error of updateAccountDetailsForm.get('email')?.errors?.errors">
+                    {{error}}
+                    </p>
+                </div>
+            </label>
+            <label>
+                Password
+                <input
+                    formControlName="password"
+
+                    type="password"
+                    name="password"
+                    autocomplete="new-password"
+                    required
+                >
+                <div *ngIf="updateAccountDetailsForm.get('password')?.errors" class="errors">
+                    <p *ngFor="let error of updateAccountDetailsForm.get('password')?.errors?.errors">
+                    {{error}}
+                    </p>
+                </div>
+            </label>
+            <button type="submit">
+                Update
+            </button>
+        </form>
     </section>
     <section *ngIf="section === 'organizations'">
         <div class="title">

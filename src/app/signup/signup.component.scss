@@ -18,19 +18,6 @@ main
     gap: 3em;
 }
 
-#name
-{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
-    margin-bottom: 1em;
-
-    label
-    {
-        margin: 0;
-    }
-}
-
 @media (max-width: 1000px)
 {
     main

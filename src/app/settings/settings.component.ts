@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +11,13 @@ export class SettingsComponent
 {
   public section: string;
 
+  public updateAccountDetailsForm = new FormGroup({
+    first_name: new FormControl(),
+    last_name: new FormControl(),
+    email: new FormControl(),
+    password: new FormControl(),
+  });
+
   constructor(private router: Router)
   {
     this.section = "account";
@@ -19,10 +27,15 @@ export class SettingsComponent
     if (this.section === "settings") this.section = "account";
   }
 
-  setSection(section: string)
+  public setSection(section: string)
   {
     this.section = section;
 
     this.router.navigateByUrl(`/settings/${section}`);
+  }
+
+  public onUpdateAccountDetailsFormSubmit(e: Event)
+  {
+    e.preventDefault();
   }
 }
