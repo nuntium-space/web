@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,13 +13,12 @@ export class SettingsComponent
   public section: string;
 
   public updateAccountDetailsForm = new FormGroup({
-    first_name: new FormControl(),
-    last_name: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
+    first_name: new FormControl(this.auth.user?.first_name),
+    last_name: new FormControl(this.auth.user?.last_name),
+    email: new FormControl(this.auth.user?.email),
   });
 
-  constructor(private router: Router)
+  constructor(private auth: AuthService, private router: Router)
   {
     this.section = "account";
 

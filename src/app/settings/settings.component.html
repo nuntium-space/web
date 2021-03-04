@@ -73,22 +73,6 @@
                     </p>
                 </div>
             </label>
-            <label>
-                Password
-                <input
-                    formControlName="password"
-
-                    type="password"
-                    name="password"
-                    autocomplete="new-password"
-                    required
-                >
-                <div *ngIf="updateAccountDetailsForm.get('password')?.errors" class="errors">
-                    <p *ngFor="let error of updateAccountDetailsForm.get('password')?.errors?.errors">
-                    {{error}}
-                    </p>
-                </div>
-            </label>
             <button type="submit">
                 Update
             </button>
