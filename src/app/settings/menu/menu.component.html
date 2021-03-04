@@ -1,0 +1,23 @@
+<aside>
+    <a
+        routerLink="account"
+        [class.selected]="section === 'account'"
+        (click)="setSection('account')"
+    >
+        Account
+    </a>
+    <a
+        routerLink="security"
+        [class.selected]="section === 'security'"
+        (click)="setSection('security')"
+    >
+        Security
+    </a>
+    <a
+        routerLink="organizations"
+        [class.selected]="section === 'organizations'"
+        (click)="setSection('organizations')"
+    >
+        Organizations
+    </a>
+</aside>

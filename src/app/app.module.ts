@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AccountComponent } from './settings/account/account.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
+import { MenuComponent } from './settings/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OrganizationsComponent } from './settings/organizations/organizations.c
     AccountComponent,
     SecurityComponent,
     OrganizationsComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
