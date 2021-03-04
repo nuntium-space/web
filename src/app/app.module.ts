@@ -10,7 +10,6 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { AuthService } from './services/auth/auth.service';
-import { SettingsComponent } from './settings/settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccountComponent } from './settings/account/account.component';
 import { SecurityComponent } from './settings/security/security.component';
@@ -25,7 +24,6 @@ import { MenuComponent } from './settings/menu/menu.component';
     HeaderComponent,
     SignupComponent,
     FeedComponent,
-    SettingsComponent,
     PageNotFoundComponent,
     AccountComponent,
     SecurityComponent,

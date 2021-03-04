@@ -15,9 +15,9 @@ const routes: Routes = [
   { path: "signin", component: SigninComponent, canActivate: [ SignedOutGuard ] },
   { path: "signup", component: SignupComponent, canActivate: [ SignedOutGuard ] },
   { path: "feed", component: FeedComponent, canActivate: [ SignedInGuard ] },
+  { path: "settings", component: AccountComponent, canActivate: [ SignedInGuard ] },
   {
     path: "settings",
-    component: AccountComponent,
     canActivate: [ SignedInGuard ],
     children: [
       { path: "account", component: AccountComponent },
