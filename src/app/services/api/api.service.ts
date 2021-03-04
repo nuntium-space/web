@@ -81,7 +81,8 @@ export class ApiService {
     first_name?: string,
     last_name?: string,
     email?: string,
-    password?: string,
+    old_password?: string,
+    new_password?: string,
   }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("PATCH", `users/${id}`, data);
