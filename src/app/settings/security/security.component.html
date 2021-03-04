@@ -8,6 +8,16 @@
             <h1>Change password</h1>
         </div>
         <form [formGroup]="changePasswordForm" (submit)="onChangePasswordFormSubmit($event)">
+            <!-- THIS IS ONLY NEEDED FOR ACCESSIBILITY -->
+            <input
+                formControlName="email"
+
+                type="text"
+                name="email"
+                autocomplete="email"
+                style="display: none;"
+            >
+            <!-- ------------------------------------- -->
             <label>
                 Old password
                 <input

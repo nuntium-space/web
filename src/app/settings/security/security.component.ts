@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-security',
@@ -9,11 +10,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class SecurityComponent
 {
   public changePasswordForm = new FormGroup({
+    email: new FormControl(this.auth.user?.email),
     old_password: new FormControl(),
     new_password: new FormControl(),
   });
 
-  constructor()
+  constructor(private auth: AuthService)
   {}
 
   public onChangePasswordFormSubmit(e: Event)
