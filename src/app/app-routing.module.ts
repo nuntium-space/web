@@ -19,6 +19,7 @@ const routes: Routes = [
     canActivate: [ SignedInGuard ],
     children: [
       { path: "account", component: SettingsComponent },
+      { path: "security", component: SettingsComponent },
       { path: "organizations", component: SettingsComponent },
     ],
   },
