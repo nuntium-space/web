@@ -9,6 +9,13 @@
         Account
     </a>
     <a
+        routerLink="security"
+        [class.selected]="section === 'security'"
+        (click)="setSection('security')"
+    >
+        Security
+    </a>
+    <a
         routerLink="organizations"
         [class.selected]="section === 'organizations'"
         (click)="setSection('organizations')"
