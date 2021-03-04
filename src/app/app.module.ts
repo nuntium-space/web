@@ -15,6 +15,7 @@ import { AccountComponent } from './settings/account/account.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { MenuComponent } from './settings/menu/menu.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MenuComponent } from './settings/menu/menu.component';
     SecurityComponent,
     OrganizationsComponent,
     MenuComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
