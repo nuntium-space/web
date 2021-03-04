@@ -54,6 +54,7 @@ aside
         padding: 1em;
         border: 1px solid var(--primary-color);
 
+        &.selected,
         &:focus,
         &:hover
         {
