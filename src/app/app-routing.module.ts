@@ -8,7 +8,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AccountComponent } from './settings/account/account.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { SecurityComponent } from './settings/security/security.component';
-import { SettingsComponent } from './settings/settings.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -18,7 +17,7 @@ const routes: Routes = [
   { path: "feed", component: FeedComponent, canActivate: [ SignedInGuard ] },
   {
     path: "settings",
-    component: SettingsComponent,
+    component: AccountComponent,
     canActivate: [ SignedInGuard ],
     children: [
       { path: "account", component: AccountComponent },
