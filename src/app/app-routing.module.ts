@@ -5,6 +5,9 @@ import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AccountComponent } from './settings/account/account.component';
+import { OrganizationsComponent } from './settings/organizations/organizations.component';
+import { SecurityComponent } from './settings/security/security.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -18,9 +21,9 @@ const routes: Routes = [
     component: SettingsComponent,
     canActivate: [ SignedInGuard ],
     children: [
-      { path: "account", component: SettingsComponent },
-      { path: "security", component: SettingsComponent },
-      { path: "organizations", component: SettingsComponent },
+      { path: "account", component: AccountComponent },
+      { path: "security", component: SecurityComponent },
+      { path: "organizations", component: OrganizationsComponent },
     ],
   },
   { path: "", component: HomeComponent },

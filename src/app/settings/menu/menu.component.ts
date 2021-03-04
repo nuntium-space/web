@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'settings-menu',
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent
 {
+  @Input("section")
+  public section?: string;
+
   constructor()
   {}
 }
