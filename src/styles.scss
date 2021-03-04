@@ -45,11 +45,11 @@ a
     &:focus
     {
         outline: none;
-        box-shadow: 0 0 0 0.2em rgba($secondary-color, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
 
         &.dark
         {
-            box-shadow: 0 0 0 0.2em rgba($primary-color, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
         }
     }
 
@@ -81,11 +81,11 @@ button
     &:focus
     {
         outline: none;
-        box-shadow: 0 0 0 0.2em rgba($primary-color, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
         &.dark
         {
-            box-shadow: 0 0 0 0.2em rgba($secondary-color, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
         }
     }
 
@@ -154,11 +154,11 @@ label
         &:focus
         {
             outline: none;
-            box-shadow: 0 0 0 0.2em rgba($primary-color, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
             &.dark
             {
-                box-shadow: 0 0 0 0.2em rgba($secondary-color, 0.5);
+                box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
             }
         }
 
