@@ -94,3 +94,15 @@ aside
         }
     }
 }
+
+@media (max-width: 800px)
+{
+    :host
+    {
+        grid-template-rows: max-content max-content auto;
+        grid-template-areas:
+            "header header"
+            "aside aside"
+            "main main";
+    }
+}
