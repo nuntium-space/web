@@ -1,9 +1,12 @@
 @import "../../../variables.scss";
 
-aside
+:host
 {
     grid-area: aside;
+}
 
+aside
+{
     a
     {
         display: block;
