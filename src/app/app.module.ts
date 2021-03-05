@@ -18,6 +18,7 @@ import { MenuComponent } from './settings/menu/menu.component';
 import { IndexComponent } from './index/index.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
+import { OrganizationComponent } from './organization/organization.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CreateOrganizationComponent } from './settings/organizations/create/cre
     IndexComponent,
     SpinnerComponent,
     CreateOrganizationComponent,
+    OrganizationComponent,
   ],
   imports: [
     BrowserModule,
