@@ -16,15 +16,20 @@ import { SignupComponent } from './signup/signup.component';
 const routes: Routes = [
   { path: "signin", component: SigninComponent, canActivate: [ SignedOutGuard ] },
   { path: "signup", component: SignupComponent, canActivate: [ SignedOutGuard ] },
-  { path: "settings", component: AccountComponent, canActivate: [ SignedInGuard ] },
   {
     path: "settings",
     canActivate: [ SignedInGuard ],
     children: [
       { path: "account", component: AccountComponent },
       { path: "security", component: SecurityComponent },
-      { path: "organizations", component: OrganizationsComponent },
-      { path: "organizations/create", component: CreateOrganizationComponent },
+      {
+        path: "organizations",
+        children: [
+          { path: "create", component: CreateOrganizationComponent },
+          { path: "", component: OrganizationsComponent },
+        ],
+      },
+      { path: "", component: AccountComponent },
     ],
   },
   {
