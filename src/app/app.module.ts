@@ -16,6 +16,7 @@ import { SecurityComponent } from './settings/security/security.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { MenuComponent } from './settings/menu/menu.component';
 import { IndexComponent } from './index/index.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { IndexComponent } from './index/index.component';
     OrganizationsComponent,
     MenuComponent,
     IndexComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

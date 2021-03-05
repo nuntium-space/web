@@ -10,8 +10,9 @@
                 &#43; Create
             </button>
         </div>
-        <div id="organizations">
-            <p *ngIf="organizations && organizations.length === 0">You haven't created any organization</p>
+        <spinner *ngIf="!organizations"></spinner>
+        <div id="organizations" *ngIf="organizations">
+            <p *ngIf="organizations.length === 0">You haven't created any organization</p>
             <a
                 *ngFor="let organization of organizations"
 
