@@ -23,19 +23,19 @@ aside
             background-color: rgba($primary-color, $alpha: 0.3);
         }
 
-        &:first-child
+        &:first-of-type
         {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
 
-        &:last-child
+        &:last-of-type
         {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
 
-        &:not(:first-child):not(:last-child)
+        &:not(:first-of-type):not(:last-of-type)
         {
             border-radius: 0;
         }
