@@ -105,6 +105,11 @@ export class ApiService {
     return this.send("GET", `organizations/${id}`);
   }
 
+  public async listOrganizations(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
+  {
+    return this.send("GET", `users/${userId}/organizations`);
+  }
+
   public async createOrganization(data: {
     name: string,
   }): Promise<IApiServiceResponse<IOrganization>>
