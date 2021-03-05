@@ -1,10 +1,10 @@
 div
 {
-    border: 5px solid var(--primary-color);
+    border: 0.3em solid var(--primary-color);
     width: 3em;
     height: 3em;
     border-radius: 50%;
-    border-left: 5px solid transparent;
+    border-left-color: transparent;
     animation: rotate 1s linear infinite;
 
     @keyframes rotate
