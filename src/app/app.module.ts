@@ -21,6 +21,7 @@ import { CreateOrganizationComponent } from './settings/organizations/create/cre
 import { DetailsComponent } from './organization/details/details.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
 import { OrganizationMenuComponent } from './organization/menu/menu.component';
+import { CreatePublisherComponent } from './organization/publishers/create/create.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { OrganizationMenuComponent } from './organization/menu/menu.component';
     OrganizationMenuComponent,
     DetailsComponent,
     PublishersComponent,
+    CreatePublisherComponent,
   ],
   imports: [
     BrowserModule,
