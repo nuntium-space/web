@@ -5,6 +5,7 @@ import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccountComponent } from './settings/account/account.component';
+import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { SigninComponent } from './signin/signin.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: "account", component: AccountComponent },
       { path: "security", component: SecurityComponent },
       { path: "organizations", component: OrganizationsComponent },
+      { path: "organizations/create", component: CreateOrganizationComponent },
     ],
   },
   { path: "", component: HomeComponent },

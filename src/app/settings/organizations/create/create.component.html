@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<settings-menu section="organizations"></settings-menu>
+
+<main>
+    <h1>Create new organization</h1>
+    <form [formGroup]="createNewOrganizationForm" (submit)="onCreateNewOrganizationFormSubmit($event)">
+        <label>
+            Name
+            <input
+                formControlName="name"
+
+                type="text"
+                name="name"
+                required
+            >
+            <div *ngIf="createNewOrganizationForm.get('name')?.errors" class="errors">
+                <p *ngFor="let error of createNewOrganizationForm.get('name')?.errors?.errors">
+                    {{error}}
+                </p>
+            </div>
+        </label>
+        <button type="submit">
+            Create
+        </button>
+    </form>
+</main>
