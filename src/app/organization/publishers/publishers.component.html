@@ -3,5 +3,25 @@
 <organization-menu [organization]="organization" section="publishers"></organization-menu>
 
 <main>
-    <h1>Publishers</h1>
+    <section>
+        <div class="title">
+            <h1>Publishers</h1>
+            <button routerLink="create">
+                &#43; Create
+            </button>
+        </div>
+        <spinner *ngIf="!publishers"></spinner>
+        <div id="publishers" *ngIf="publishers">
+            <p *ngIf="publishers.length === 0">You haven't created any publisher</p>
+            <a
+                *ngFor="let publisher of publishers"
+
+                routerLink="/publisher/{{publisher.id}}"
+                class="dark"
+            >
+                <img src="{{publisher.image}}" alt="{{publisher.name}} logo">
+                <p>{{publisher.name}}</p>
+            </a>
+        </div>
+    </section>
 </main>

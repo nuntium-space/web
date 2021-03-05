@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IOrganization } from 'src/app/services/api/api.service';
+import { ApiService, IOrganization, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-publishers',
@@ -11,11 +11,20 @@ export class PublishersComponent
 {
   public organization?: IOrganization;
 
+  public publishers?: IPublisher[];
+
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    api.retrieveOrganization(route.snapshot.params.id).then(response =>
+    const organizationId = route.snapshot.params.id;
+
+    api.retrieveOrganization(organizationId).then(response =>
     {
       this.organization = response.data;
+    });
+
+    api.listPublishers(organizationId).then(response =>
+    {
+      this.publishers = response.data;
     });
   }
 }
