@@ -21,6 +21,15 @@ export interface IOrganization
   owner: IUser;
 }
 
+export interface IPublisher
+{
+  id: string;
+  name: string;
+  url: string;
+  image: string;
+  organization: IOrganization;
+}
+
 export interface ISession
 {
   id: string;
@@ -127,6 +136,35 @@ export class ApiService {
   public async deleteOrganization(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `organizations/${id}`);
+  }
+
+  public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>
+  {
+    return this.send("GET", `publishers/${id}`);
+  }
+
+  public async listPublishers(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
+  {
+    return this.send("GET", `organizations/${organizationId}/publishers`);
+  }
+
+  public async createPublisher(data: {
+    name: string,
+  }): Promise<IApiServiceResponse<IPublisher>>
+  {
+    return this.send("POST", "publishers", data);
+  }
+
+  public async updatePublisher(id: string, data: {
+    name?: string,
+  }): Promise<IApiServiceResponse<IPublisher>>
+  {
+    return this.send("PATCH", `publishers/${id}`, data);
+  }
+
+  public async deletePublisher(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `publishers/${id}`);
   }
 
   public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
