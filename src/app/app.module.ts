@@ -14,11 +14,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AccountComponent } from './settings/account/account.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
-import { MenuComponent } from './settings/menu/menu.component';
+import { SettingsMenuComponent } from './settings/menu/menu.component';
 import { IndexComponent } from './index/index.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
-import { OrganizationComponent } from './organization/organization.component';
+import { DetailsComponent } from './organization/details/details.component';
+import { PublishersComponent } from './organization/publishers/publishers.component';
+import { OrganizationMenuComponent } from './organization/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { OrganizationComponent } from './organization/organization.component';
     AccountComponent,
     SecurityComponent,
     OrganizationsComponent,
-    MenuComponent,
+    SettingsMenuComponent,
     IndexComponent,
     SpinnerComponent,
     CreateOrganizationComponent,
-    OrganizationComponent,
+    OrganizationMenuComponent,
+    DetailsComponent,
+    PublishersComponent,
   ],
   imports: [
     BrowserModule,

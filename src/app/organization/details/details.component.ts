@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IOrganization } from '../services/api/api.service';
+import { ApiService, IOrganization } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-organization',
-  templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.scss']
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
-export class OrganizationComponent
+export class DetailsComponent
 {
   public organization?: IOrganization;
 

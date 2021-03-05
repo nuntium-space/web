@@ -1,0 +1,15 @@
+<aside *ngIf="organization">
+    <h1>{{organization.name}}</h1>
+    <a
+        routerLink="details"
+        [class.selected]="section === 'details'"
+    >
+        Details
+    </a>
+    <a
+        routerLink="publishers"
+        [class.selected]="section === 'publishers'"
+    >
+        Publishers
+    </a>
+</aside>

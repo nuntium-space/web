@@ -1,12 +1,16 @@
 import { Component, Input } from '@angular/core';
+import { IOrganization } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'settings-menu',
+  selector: 'organization-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class SettingsMenuComponent
+export class OrganizationMenuComponent
 {
+  @Input("organization")
+  public organization?: IOrganization;
+
   @Input("section")
   public section?: string;
 
