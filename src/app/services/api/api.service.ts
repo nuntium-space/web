@@ -14,6 +14,13 @@ export interface IUser
   email: string;
 }
 
+export interface IOrganization
+{
+  id: string;
+  name: string;
+  owner: IUser;
+}
+
 export interface ISession
 {
   id: string;
@@ -91,6 +98,30 @@ export class ApiService {
   public async deleteUser(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `users/${id}`);
+  }
+
+  public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
+  {
+    return this.send("GET", `organizations/${id}`);
+  }
+
+  public async createOrganization(data: {
+    name: string,
+  }): Promise<IApiServiceResponse<IOrganization>>
+  {
+    return this.send("POST", "organizations", data);
+  }
+
+  public async updateOrganization(id: string, data: {
+    name?: string,
+  }): Promise<IApiServiceResponse<IOrganization>>
+  {
+    return this.send("PATCH", `organizations/${id}`, data);
+  }
+
+  public async deleteOrganization(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `organizations/${id}`);
   }
 
   public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
