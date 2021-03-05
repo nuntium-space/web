@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CreateOrganizationComponent
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private router: Router)
   {}
 
   public async onCreateNewOrganizationFormSubmit(e: Event)
@@ -28,6 +29,9 @@ export class CreateOrganizationComponent
       errors: response.errors?.filter(e => e.startsWith(`"name"`))
     });
 
-    console.log(response);
+    if (response.data)
+    {
+      this.router.navigateByUrl("/settings/organizations");
+    }
   }
 }
