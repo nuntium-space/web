@@ -18,7 +18,7 @@ import { SettingsMenuComponent } from './settings/menu/menu.component';
 import { IndexComponent } from './index/index.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
-import { DetailsComponent } from './organization/details/details.component';
+import { OrganizationDetailsComponent } from './organization/details/details.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
 import { OrganizationMenuComponent } from './organization/menu/menu.component';
 import { CreatePublisherComponent } from './organization/publishers/create/create.component';
@@ -42,7 +42,7 @@ import { PublisherMenuComponent } from './publisher/menu/menu.component';
     SpinnerComponent,
     CreateOrganizationComponent,
     OrganizationMenuComponent,
-    DetailsComponent,
+    OrganizationDetailsComponent,
     PublishersComponent,
     CreatePublisherComponent,
     AuthorsComponent,

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './organization/details/details.component';
+import { OrganizationDetailsComponent } from './organization/details/details.component';
 import { CreatePublisherComponent } from './organization/publishers/create/create.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
     path: "organization/:id",
     canActivate: [ SignedInGuard ],
     children: [
-      { path: "details", component: DetailsComponent },
+      { path: "details", component: OrganizationDetailsComponent },
       {
         path: "publishers",
         children: [
@@ -45,7 +45,7 @@ const routes: Routes = [
           { path: "", component: PublishersComponent },
         ],
       },
-      { path: "", component: DetailsComponent },
+      { path: "", component: OrganizationDetailsComponent },
     ],
   },
   { path: "", component: HomeComponent },
