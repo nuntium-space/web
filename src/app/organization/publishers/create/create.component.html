@@ -7,7 +7,7 @@
         <div class="title">
             <h1>Create new publisher</h1>
         </div>
-        <form [formGroup]="createNewPublisherForm" (submit)="onCreateNewPublisherFormSubmit($event)">
+        <form [formGroup]="form" (submit)="onSubmit($event)">
             <label>
                 Name
                 <input
@@ -17,8 +17,8 @@
                     name="name"
                     required
                 >
-                <div *ngIf="createNewPublisherForm.get('name')?.errors" class="errors">
-                    <p *ngFor="let error of createNewPublisherForm.get('name')?.errors?.errors">
+                <div *ngIf="form.get('name')?.errors" class="errors">
+                    <p *ngFor="let error of form.get('name')?.errors?.errors">
                         {{error}}
                     </p>
                 </div>

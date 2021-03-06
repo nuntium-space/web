@@ -10,22 +10,22 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class CreateOrganizationComponent
 {
-  public createNewOrganizationForm = new FormGroup({
+  public form = new FormGroup({
     name: new FormControl(),
   });
 
   constructor(private api: ApiService, private router: Router)
   {}
 
-  public async onCreateNewOrganizationFormSubmit(e: Event)
+  public async onSubmit(e: Event)
   {
     e.preventDefault();
 
     const response = await this.api.createOrganization({
-      name: this.createNewOrganizationForm.get("name")?.value ?? "",
+      name: this.form.get("name")?.value ?? "",
     });
 
-    this.createNewOrganizationForm.get("name")?.setErrors({
+    this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"name"`))
     });
 

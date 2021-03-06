@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class CreatePublisherComponent
 {
-  public createNewPublisherForm = new FormGroup({
+  public form = new FormGroup({
     name: new FormControl(),
     url: new FormControl(),
     image: new FormControl(),
@@ -19,28 +19,28 @@ export class CreatePublisherComponent
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
-  public async onCreateNewPublisherFormSubmit(e: Event)
+  public async onSubmit(e: Event)
   {
     e.preventDefault();
 
     const organization = this.route.snapshot.params.id;
 
     const response = await this.api.createPublisher({
-      name: this.createNewPublisherForm.get("name")?.value ?? "",
-      url: this.createNewPublisherForm.get("url")?.value ?? "",
-      image: this.createNewPublisherForm.get("image")?.value ?? "",
+      name: this.form.get("name")?.value ?? "",
+      url: this.form.get("url")?.value ?? "",
+      image: this.form.get("image")?.value ?? "",
       organization,
     });
 
-    this.createNewPublisherForm.get("name")?.setErrors({
+    this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"name"`))
     });
 
-    this.createNewPublisherForm.get("url")?.setErrors({
+    this.form.get("url")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"url"`))
     });
 
-    this.createNewPublisherForm.get("image")?.setErrors({
+    this.form.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"image"`))
     });
 
