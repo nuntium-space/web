@@ -150,6 +150,9 @@ export class ApiService {
 
   public async createPublisher(data: {
     name: string,
+    url: string,
+    image: string,
+    organization: string,
   }): Promise<IApiServiceResponse<IPublisher>>
   {
     return this.send("POST", "publishers", data);
