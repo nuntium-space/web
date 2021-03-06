@@ -16,8 +16,42 @@ export class CreatePublisherComponent
     image: new FormControl(),
   });
 
+  private image: string = "";
+
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
+
+  public async onImageChange(e: Event)
+  {
+    const target = e.target as HTMLInputElement;
+
+    if (!target.files)
+    {
+      return;
+    }
+
+    const toBase64 = (file: File): Promise<string> =>
+    {
+      return new Promise<string>((resolve) =>
+      {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () =>
+        {
+          resolve(reader.result as string);
+        });
+
+        reader.readAsDataURL(file);
+      });
+    }
+
+    const file = target.files.item(0);
+
+    if (file)
+    {
+      this.image = await toBase64(file);
+    }
+  }
 
   public async onSubmit(e: Event)
   {
@@ -28,7 +62,7 @@ export class CreatePublisherComponent
     const response = await this.api.createPublisher({
       name: this.form.get("name")?.value ?? "",
       url: this.form.get("url")?.value ?? "",
-      image: this.form.get("image")?.value ?? "",
+      image: this.image,
       organization,
     });
 
