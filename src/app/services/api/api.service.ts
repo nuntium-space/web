@@ -26,7 +26,6 @@ export interface IPublisher
   id: string;
   name: string;
   url: string;
-  image: string;
   organization: IOrganization;
 }
 
