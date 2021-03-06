@@ -9,20 +9,11 @@ import { ApiService, IOrganization, IPublisher } from 'src/app/services/api/api.
 })
 export class PublishersComponent
 {
-  public organization?: IOrganization;
-
   public publishers?: IPublisher[];
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    const organizationId = route.snapshot.params.id;
-
-    api.retrieveOrganization(organizationId).then(response =>
-    {
-      this.organization = response.data;
-    });
-
-    api.listPublishers(organizationId).then(response =>
+    api.listPublishers(route.snapshot.params.id).then(response =>
     {
       this.publishers = response.data;
     });
