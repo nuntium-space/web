@@ -23,6 +23,36 @@
                     </p>
                 </div>
             </label>
+            <label>
+                URL
+                <input
+                    formControlName="url"
+
+                    type="url"
+                    name="url"
+                    required
+                >
+                <div *ngIf="form.get('url')?.errors" class="errors">
+                    <p *ngFor="let error of form.get('url')?.errors?.errors">
+                        {{error}}
+                    </p>
+                </div>
+            </label>
+            <label>
+                Image
+                <input
+                    formControlName="image"
+
+                    type="file"
+                    name="image"
+                    required
+                >
+                <div *ngIf="form.get('image')?.errors" class="errors">
+                    <p *ngFor="let error of form.get('image')?.errors?.errors">
+                        {{error}}
+                    </p>
+                </div>
+            </label>
             <button type="submit">
                 Create
             </button>
