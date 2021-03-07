@@ -15,16 +15,19 @@ export class PublisherPublicPageComponent
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    const publisherId = route.snapshot.url[0].path.replace("~", "");
-
-    api.retrievePublisher(publisherId).then(response =>
+    route.url.subscribe(url =>
     {
-      this.publisher = response.data;
-    });
+      const publisherId = url[0].path.replace("~", "");
 
-    api.listArticlesForPublisher(publisherId).then(response =>
-    {
-      this.articles = response.data;
+      api.retrievePublisher(publisherId).then(response =>
+      {
+        this.publisher = response.data;
+      });
+
+      api.listArticlesForPublisher(publisherId).then(response =>
+      {
+        this.articles = response.data;
+      });
     });
   }
 }
