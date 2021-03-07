@@ -29,6 +29,13 @@ export interface IPublisher
   organization: IOrganization;
 }
 
+export interface IAuthor
+{
+  id: string;
+  user: IUser;
+  publisher: IPublisher;
+}
+
 export interface ISession
 {
   id: string;
@@ -75,6 +82,11 @@ export class ApiService {
     }
 
     return result;
+  }
+
+  public async listAuthors(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
+  {
+    return this.send("GET", `publishers/${publisherId}/authors`);
   }
 
   public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>

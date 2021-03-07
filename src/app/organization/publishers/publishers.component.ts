@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IOrganization, IPublisher } from 'src/app/services/api/api.service';
+import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-publishers',
