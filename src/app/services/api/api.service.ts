@@ -177,6 +177,11 @@ export class ApiService {
     return this.send("GET", `users/${userId}/organizations`);
   }
 
+  public async listPublishersForUser(userId: string): Promise<IApiServiceResponse<IPublisher[]>>
+  {
+    return this.send("GET", `users/${userId}/publishers`);
+  }
+
   public async createUser(data: {
     first_name: string,
     last_name: string,
