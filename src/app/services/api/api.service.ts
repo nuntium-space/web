@@ -84,57 +84,14 @@ export class ApiService {
     return result;
   }
 
-  public async listAuthors(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
-  {
-    return this.send("GET", `publishers/${publisherId}/authors`);
-  }
-
-  public async inviteAuthor(publisherId: string, data: {
-    email: string,
-  }): Promise<IApiServiceResponse<IAuthor[]>>
-  {
-    return this.send("POST", `publishers/${publisherId}/authors`, data);
-  }
-
-  public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
-  {
-    return this.send("GET", `users/${id}`);
-  }
-
-  public async createUser(data: {
-    first_name: string,
-    last_name: string,
-    email: string,
-    password: string,
-  }): Promise<IApiServiceResponse<IUser>>
-  {
-    return this.send("POST", "users", data);
-  }
-
-  public async updateUser(id: string, data: {
-    first_name?: string,
-    last_name?: string,
-    email?: string,
-    old_password?: string,
-    new_password?: string,
-  }): Promise<IApiServiceResponse<IUser>>
-  {
-    return this.send("PATCH", `users/${id}`, data);
-  }
-
-  public async deleteUser(id: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("DELETE", `users/${id}`);
-  }
-
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("GET", `organizations/${id}`);
   }
 
-  public async listOrganizations(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
+  public async listPublishers(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
   {
-    return this.send("GET", `users/${userId}/organizations`);
+    return this.send("GET", `organizations/${organizationId}/publishers`);
   }
 
   public async createOrganization(data: {
@@ -161,9 +118,9 @@ export class ApiService {
     return this.send("GET", `publishers/${id}`);
   }
 
-  public async listPublishers(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
+  public async listAuthors(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
   {
-    return this.send("GET", `organizations/${organizationId}/publishers`);
+    return this.send("GET", `publishers/${publisherId}/authors`);
   }
 
   public async createPublisher(data: {
@@ -173,6 +130,13 @@ export class ApiService {
   }): Promise<IApiServiceResponse<IPublisher>>
   {
     return this.send("POST", "publishers", data);
+  }
+
+  public async inviteAuthor(publisherId: string, data: {
+    email: string,
+  }): Promise<IApiServiceResponse<IAuthor[]>>
+  {
+    return this.send("POST", `publishers/${publisherId}/authors`, data);
   }
 
   public async updatePublisher(id: string, data: {
@@ -201,5 +165,41 @@ export class ApiService {
   public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `sessions/${id}`);
+  }
+
+  public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("GET", `users/${id}`);
+  }
+
+  public async listOrganizations(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
+  {
+    return this.send("GET", `users/${userId}/organizations`);
+  }
+
+  public async createUser(data: {
+    first_name: string,
+    last_name: string,
+    email: string,
+    password: string,
+  }): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("POST", "users", data);
+  }
+
+  public async updateUser(id: string, data: {
+    first_name?: string,
+    last_name?: string,
+    email?: string,
+    old_password?: string,
+    new_password?: string,
+  }): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("PATCH", `users/${id}`, data);
+  }
+
+  public async deleteUser(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `users/${id}`);
   }
 }
