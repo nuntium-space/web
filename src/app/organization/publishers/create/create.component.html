@@ -38,23 +38,6 @@
                     </p>
                 </div>
             </label>
-            <label>
-                Image
-                <input
-                    formControlName="image"
-
-                    type="file"
-                    name="image"
-                    required
-
-                    (change)="onImageChange($event)"
-                >
-                <div *ngIf="form.get('image')?.errors" class="errors">
-                    <p *ngFor="let error of form.get('image')?.errors?.errors">
-                        {{error}}
-                    </p>
-                </div>
-            </label>
             <button type="submit">
                 Create
             </button>

@@ -13,45 +13,10 @@ export class CreatePublisherComponent
   public form = new FormGroup({
     name: new FormControl(),
     url: new FormControl(),
-    image: new FormControl(),
   });
-
-  private image: string = "";
 
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
-
-  public async onImageChange(e: Event)
-  {
-    const target = e.target as HTMLInputElement;
-
-    if (!target.files)
-    {
-      return;
-    }
-
-    const toBase64 = (file: File): Promise<string> =>
-    {
-      return new Promise<string>((resolve) =>
-      {
-        const reader = new FileReader();
-
-        reader.addEventListener("load", () =>
-        {
-          resolve(reader.result as string);
-        });
-
-        reader.readAsDataURL(file);
-      });
-    }
-
-    const file = target.files.item(0);
-
-    if (file)
-    {
-      this.image = await toBase64(file);
-    }
-  }
 
   public async onSubmit(e: Event)
   {
@@ -62,7 +27,6 @@ export class CreatePublisherComponent
     const response = await this.api.createPublisher({
       name: this.form.get("name")?.value ?? "",
       url: this.form.get("url")?.value ?? "",
-      image: this.image,
       organization,
     });
 
@@ -72,10 +36,6 @@ export class CreatePublisherComponent
 
     this.form.get("url")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"url"`))
-    });
-
-    this.form.get("image")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"image"`))
     });
 
     if (response.data)
