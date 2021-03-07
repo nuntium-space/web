@@ -7,42 +7,55 @@
 
 aside
 {
-    a
+    section
     {
-        display: block;
-        color: unset;
-        padding: 1em;
-        border: 1px solid var(--primary-color);
-
-        &.selected,
-        &:focus,
-        &:hover
+        h1
         {
-            opacity: 1;
-            box-shadow: none;
-            background-color: rgba($primary-color, $alpha: 0.3);
+            margin: 0;
+            padding: 1em;
+            border: 1px solid var(--primary-color);
+            border-bottom: 0;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            background-color: rgba($primary-color, $alpha: 0.1);
         }
 
-        &:first-of-type
+        a
         {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+            display: block;
+            color: unset;
+            padding: 1em;
+            border: 1px solid var(--primary-color);
+
+            &.selected,
+            &:focus,
+            &:hover
+            {
+                opacity: 1;
+                box-shadow: none;
+                background-color: rgba($primary-color, $alpha: 0.3);
+            }
+
+            &:last-of-type
+            {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:not(:last-of-type)
+            {
+                border-radius: 0;
+            }
+
+            & ~ a
+            {
+                border-top: 0;
+            }
         }
 
-        &:last-of-type
+        & ~ section
         {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-
-        &:not(:first-of-type):not(:last-of-type)
-        {
-            border-radius: 0;
-        }
-
-        & ~ a
-        {
-            border-top: 0;
+            margin-top: 1em;
         }
     }
 }
