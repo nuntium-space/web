@@ -158,6 +158,7 @@ export class ApiService {
 
   public async updatePublisher(id: string, data: {
     name?: string,
+    url?: string,
   }): Promise<IApiServiceResponse<IPublisher>>
   {
     return this.send("PATCH", `publishers/${id}`, data);
