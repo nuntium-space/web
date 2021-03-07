@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IPublisher } from '../services/api/api.service';
+import { ApiService, IArticle, IPublisher } from '../services/api/api.service';
 
 @Component({
   selector: 'app-publisher-public-page',
@@ -11,11 +11,20 @@ export class PublisherPublicPageComponent
 {
   public publisher?: IPublisher;
 
+  public articles?: IArticle[];
+
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    api.retrievePublisher(route.snapshot.url[0].path.replace("~", "")).then(response =>
+    const publisherId = route.snapshot.url[0].path.replace("~", "");
+
+    api.retrievePublisher(publisherId).then(response =>
     {
       this.publisher = response.data;
+    });
+
+    api.listArticlesForPublisher(publisherId).then(response =>
+    {
+      this.articles = response.data;
     });
   }
 }

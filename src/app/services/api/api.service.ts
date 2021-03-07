@@ -36,6 +36,16 @@ export interface IAuthor
   publisher: IPublisher;
 }
 
+export interface IArticle
+{
+  id: string;
+  title: string;
+  content: string;
+  author: IAuthor;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface ISession
 {
   id: string;
@@ -46,10 +56,12 @@ export interface ISession
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService
+{
   private readonly ENDPOINT = "http://localhost:4000";
 
-  constructor() { }
+  constructor()
+  {}
 
   private async send(method: "DELETE" | "GET" | "PATCH" | "POST", url: string, body?: any): Promise<any>
   {
@@ -121,6 +133,11 @@ export class ApiService {
   public async listAuthorsForPublisher(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
   {
     return this.send("GET", `publishers/${publisherId}/authors`);
+  }
+
+  public async listArticlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `publishers/${publisherId}/articles`);
   }
 
   public async createPublisher(data: {
