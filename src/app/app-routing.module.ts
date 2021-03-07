@@ -7,6 +7,7 @@ import { OrganizationDetailsComponent } from './organization/details/details.com
 import { CreatePublisherComponent } from './organization/publishers/create/create.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { AuthorsComponent } from './publisher/authors/authors.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
@@ -67,6 +68,15 @@ const routes: Routes = [
       },
       { path: "", component: PublisherDetailsComponent },
     ],
+  },
+  {
+    matcher: (url) =>
+    {
+      return url.length === 1 && url[0].path.startsWith("~")
+        ? ({consumed: url})
+        : null;
+    },
+    component: PublisherPublicPageComponent,
   },
   { path: "", component: HomeComponent },
   { path: "**", component: PageNotFoundComponent },

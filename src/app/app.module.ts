@@ -27,6 +27,7 @@ import { PublisherMenuComponent } from './publisher/menu/menu.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { UserPublishersComponent } from './settings/publishers/publishers.component';
+import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { UserPublishersComponent } from './settings/publishers/publishers.compon
     PublisherDetailsComponent,
     InviteAuthorComponent,
     UserPublishersComponent,
+    PublisherPublicPageComponent,
   ],
   imports: [
     BrowserModule,
