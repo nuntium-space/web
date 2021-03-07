@@ -89,6 +89,13 @@ export class ApiService {
     return this.send("GET", `publishers/${publisherId}/authors`);
   }
 
+  public async inviteAuthor(publisherId: string, data: {
+    email: string,
+  }): Promise<IApiServiceResponse<IAuthor[]>>
+  {
+    return this.send("POST", `publishers/${publisherId}/authors`, data);
+  }
+
   public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("GET", `users/${id}`);

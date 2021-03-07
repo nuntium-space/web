@@ -1,1 +1,31 @@
-<p>invite works!</p>
+<app-header></app-header>
+
+<publisher-menu section="authors"></publisher-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Invite author</h1>
+        </div>
+        <form [formGroup]="form" (submit)="onSubmit($event)">
+            <label>
+                Email
+                <input
+                    formControlName="email"
+
+                    type="email"
+                    name="email"
+                    required
+                >
+                <div *ngIf="form.get('email')?.errors" class="errors">
+                    <p *ngFor="let error of form.get('email')?.errors?.errors">
+                        {{error}}
+                    </p>
+                </div>
+            </label>
+            <button type="submit">
+                Invite
+            </button>
+        </form>
+    </section>
+</main>
