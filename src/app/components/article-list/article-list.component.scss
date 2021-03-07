@@ -1,6 +1,5 @@
 ul
 {
-    list-style: none;
     max-width: 500px;
     margin: 0 auto;
 
@@ -11,10 +10,7 @@ ul
         padding: 1em;
         margin-top: 1em;
         border: 1px solid var(--primary-color);
-    }
 
-    article
-    {
         .title,
         .info
         {

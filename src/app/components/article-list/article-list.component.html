@@ -1,19 +1,20 @@
 <ul *ngIf="articles">
-    <li *ngFor="let article of articles">
-        <a routerLink="/article/{{article.id}}" class="article-container dark">
-            <article>
-                <h2 class="title">{{article.title}}</h2>
-                <h5 class="info">
-                    <a routerLink="/~{{article.author.publisher.id}}">
-                        @{{article.author.publisher.name}}
-                    </a>
-                    -
-                    <span>
-                        {{article.created_at}}
-                    </span>
-                </h5>
-                <p class="content">{{article.content}}</p>
-            </article>
-        </a>
-    </li>
+    <a
+        *ngFor="let article of articles"
+
+        routerLink="/article/{{article.id}}"
+        class="article-container dark"
+    >
+        <h2 class="title">{{article.title}}</h2>
+        <h5 class="info">
+            <a routerLink="/~{{article.author.publisher.id}}">
+                @{{article.author.publisher.name}}
+            </a>
+            -
+            <span>
+                {{article.created_at | date:"medium"}}
+            </span>
+        </h5>
+        <p class="content">{{article.content}}</p>
+    </a>
 </ul>
