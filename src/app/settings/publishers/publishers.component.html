@@ -1,1 +1,23 @@
-<p>publishers works!</p>
+<app-header></app-header>
+
+<settings-menu section="publishers"></settings-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Publishers</h1>
+        </div>
+        <spinner *ngIf="!publishers"></spinner>
+        <div id="publishers" *ngIf="publishers">
+            <p *ngIf="publishers.length === 0">You are not an author of any publisher</p>
+            <a
+                *ngFor="let publisher of publishers"
+
+                routerLink="/publisher/{{publisher.id}}"
+                class="dark"
+            >
+                <p>{{publisher.name}}</p>
+            </a>
+        </div>
+    </section>
+</main>
