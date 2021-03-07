@@ -77,6 +77,7 @@ const routes: Routes = [
         : null;
     },
     component: PublisherPublicPageComponent,
+    canActivate: [ SignedInGuard ],
   },
   { path: "", component: HomeComponent },
   { path: "**", component: PageNotFoundComponent },
