@@ -11,16 +11,17 @@
         margin-top: 1em;
         border: 1px solid var(--primary-color);
 
+        .info,
         .title,
-        .info
+        .content
         {
             margin: 0;
-            margin-bottom: 0.5em;
         }
 
         .info
         {
-            font-weight: normal;
+            display: block;
+            margin-bottom: 1em;
         }
 
         .content
@@ -29,7 +30,7 @@
             -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;  
             overflow: hidden;
-            margin: 0;
+            margin-top: 0.5em;
         }
     }
 }
