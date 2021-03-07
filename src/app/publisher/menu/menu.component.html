@@ -1,15 +1,17 @@
 <aside *ngIf="publisher">
-    <h1>{{publisher.name}}</h1>
-    <a
-        routerLink="/publisher/{{publisher.id}}/details"
-        [class.selected]="section === 'details'"
-    >
-        Details
-    </a>
-    <a
-        routerLink="/publisher/{{publisher.id}}/authors"
-        [class.selected]="section === 'authors'"
-    >
-        Authors
-    </a>
+    <section>
+        <h1>{{publisher.name}}</h1>
+        <a
+            routerLink="/publisher/{{publisher.id}}/details"
+            [class.selected]="section === 'details'"
+        >
+            Details
+        </a>
+        <a
+            routerLink="/publisher/{{publisher.id}}/authors"
+            [class.selected]="section === 'authors'"
+        >
+            Authors
+        </a>
+    </section>
 </aside>
