@@ -1,27 +1,37 @@
-.articles
+@import "~src/variables";
+
+:host
 {
+    display: block;
     max-width: 500px;
     margin: 0 auto;
+}
 
-    .article-container
+article
+{
+    border: 0.1em solid var(--primary-color);
+    border-radius: 0.5em;
+
+    .info,
+    .main
     {
         display: block;
-        color: unset;
         padding: 1em;
-        margin-top: 1em;
-        border: 1px solid var(--primary-color);
+    }
 
-        .info,
+    .info
+    {
+        background-color: rgba($primary-color, 0.05);
+    }
+
+    .main
+    {
+        color: unset;
+
         .title,
         .content
         {
             margin: 0;
-        }
-
-        .info
-        {
-            display: block;
-            margin-bottom: 1em;
         }
 
         .content

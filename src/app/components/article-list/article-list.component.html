@@ -1,29 +1,23 @@
-<div
-    *ngIf="articles"
-
-    class="articles"
->
+<article *ngFor="let article of articles">
+    <small class="info">
+        <a routerLink="/~{{article.author.user.id}}" class="dark">
+            {{article.author.user.first_name}}
+            {{article.author.user.last_name}}
+        </a>
+        for
+        <a routerLink="/~{{article.author.publisher.id}}" class="dark">
+            {{article.author.publisher.name}}
+        </a>
+        <br>
+        <span>
+            {{article.created_at | date:"medium"}}
+        </span>
+    </small>
     <a
-        *ngFor="let article of articles"
-
         routerLink="/article/{{article.id}}"
-        class="article-container dark"
+        class="main dark"
     >
-        <small class="info">
-            <a routerLink="/~{{article.author.user.id}}" class="dark">
-                {{article.author.user.first_name}}
-                {{article.author.user.last_name}}
-            </a>
-            for
-            <a routerLink="/~{{article.author.publisher.id}}" class="dark">
-                {{article.author.publisher.name}}
-            </a>
-            <br>
-            <span>
-                {{article.created_at | date:"medium"}}
-            </span>
-        </small>
         <h2 class="title">{{article.title}}</h2>
         <p class="content">{{article.content}}</p>
     </a>
-</div>
+</article>
