@@ -8,6 +8,7 @@ import { CreatePublisherComponent } from './organization/publishers/create/creat
 import { PublishersComponent } from './organization/publishers/publishers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthorsComponent } from './publisher/authors/authors.component';
+import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
 import { AccountComponent } from './settings/account/account.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
@@ -55,7 +56,13 @@ const routes: Routes = [
     canActivate: [ SignedInGuard ],
     children: [
       { path: "details", component: PublisherDetailsComponent },
-      { path: "authors", component: AuthorsComponent },
+      {
+        path: "authors",
+        children: [
+          { path: "invite", component: InviteAuthorComponent },
+          { path: "", component: AuthorsComponent },
+        ],
+      },
       { path: "", component: PublisherDetailsComponent },
     ],
   },
