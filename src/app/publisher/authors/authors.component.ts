@@ -13,7 +13,7 @@ export class AuthorsComponent
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    api.listAuthors(route.snapshot.params.id).then(response =>
+    api.listAuthorsForPublisher(route.snapshot.params.id).then(response =>
     {
       this.authors = response.data;
     });

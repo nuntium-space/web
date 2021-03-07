@@ -18,7 +18,7 @@ export class OrganizationsComponent
       return;
     }
 
-    api.listOrganizations(auth.user.id).then(response =>
+    api.listOrganizationsForUser(auth.user.id).then(response =>
     {
       this.organizations = response.data;
     });

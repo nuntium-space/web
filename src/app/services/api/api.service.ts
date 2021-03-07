@@ -89,7 +89,7 @@ export class ApiService {
     return this.send("GET", `organizations/${id}`);
   }
 
-  public async listPublishers(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
+  public async listPublishersForOrganization(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
   {
     return this.send("GET", `organizations/${organizationId}/publishers`);
   }
@@ -118,7 +118,7 @@ export class ApiService {
     return this.send("GET", `publishers/${id}`);
   }
 
-  public async listAuthors(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
+  public async listAuthorsForPublisher(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
   {
     return this.send("GET", `publishers/${publisherId}/authors`);
   }
@@ -172,7 +172,7 @@ export class ApiService {
     return this.send("GET", `users/${id}`);
   }
 
-  public async listOrganizations(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
+  public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
   {
     return this.send("GET", `users/${userId}/organizations`);
   }
