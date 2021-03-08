@@ -3,7 +3,7 @@
 :host
 {
     display: grid;
-    grid-template-rows: max-content auto;
+    grid-template-rows: max-content auto max-content;
     grid-template-columns: 20em 60ch auto;
     grid-template-areas:
         "header header header"
@@ -93,4 +93,26 @@ main
 #comments
 {
     grid-area: comments;
+
+    .comment
+    {
+        p
+        {
+            margin: 0;
+        }
+    }
+
+    .replies
+    {
+        margin-top: 1em;
+
+        .comment
+        {
+            padding: 1em;
+            margin-top: 1em;
+            margin-left: 1em;
+            border: 1px solid rgba($primary-color, $alpha: 0.3);
+            border-radius: 0.5em;
+        }
+    }
 }
