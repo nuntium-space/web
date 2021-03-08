@@ -7,25 +7,29 @@
         <div class="title">
             <h1>Details</h1>
         </div>
-        <form [formGroup]="detailsForm" (submit)="onDetailsFormSubmit($event)">
-            <label>
-                Name
-                <input
-                        formControlName="name"
-
-                        type="text"
-                        name="name"
-                        required
-                >
-                <div *ngIf="detailsForm.get('name')?.errors" class="errors">
-                    <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
-                        {{error}}
-                    </p>
-                </div>
-            </label>
-            <button type="submit">
-                Update
-            </button>
-        </form>
+        <div class="content">
+            <div>
+                <form [formGroup]="detailsForm" (submit)="onDetailsFormSubmit($event)">
+                    <label>
+                        Name
+                        <input
+                                formControlName="name"
+        
+                                type="text"
+                                name="name"
+                                required
+                        >
+                        <div *ngIf="detailsForm.get('name')?.errors" class="errors">
+                            <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
+                                {{error}}
+                            </p>
+                        </div>
+                    </label>
+                    <button type="submit">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
     </section>
 </main>

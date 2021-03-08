@@ -10,17 +10,21 @@
                 &#43; Create
             </button>
         </div>
-        <spinner *ngIf="!organizations"></spinner>
-        <div id="organizations" *ngIf="organizations">
-            <p *ngIf="organizations.length === 0">You haven't created any organization</p>
-            <a
-                *ngFor="let organization of organizations"
+        <div class="content">
+            <div *ngIf="!organizations">
+                <spinner></spinner>
+            </div>
+            <div id="organizations" *ngIf="organizations">
+                <p *ngIf="organizations.length === 0">You haven't created any organization</p>
+                <a
+                    *ngFor="let organization of organizations"
 
-                routerLink="/organization/{{organization.id}}"
-                class="dark"
-            >
-                <p>{{organization.name}}</p>
-            </a>
+                    routerLink="/organization/{{organization.id}}"
+                    class="dark"
+                >
+                    <p>{{organization.name}}</p>
+                </a>
+            </div>
         </div>
     </section>
 </main>

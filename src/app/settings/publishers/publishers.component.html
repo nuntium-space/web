@@ -7,17 +7,21 @@
         <div class="title">
             <h1>Publishers</h1>
         </div>
-        <spinner *ngIf="!publishers"></spinner>
-        <div id="publishers" *ngIf="publishers">
-            <p *ngIf="publishers.length === 0">You are not an author of any publisher</p>
-            <a
-                *ngFor="let publisher of publishers"
+        <div class="content">
+            <div *ngIf="!publishers">
+                <spinner></spinner>
+            </div>
+            <div id="publishers" *ngIf="publishers">
+                <p *ngIf="publishers.length === 0">You are not an author of any publisher</p>
+                <a
+                    *ngFor="let publisher of publishers"
 
-                routerLink="/~{{publisher.id}}"
-                class="dark"
-            >
-                <p>{{publisher.name}}</p>
-            </a>
+                    routerLink="/~{{publisher.id}}"
+                    class="dark"
+                >
+                    <p>{{publisher.name}}</p>
+                </a>
+            </div>
         </div>
     </section>
 </main>

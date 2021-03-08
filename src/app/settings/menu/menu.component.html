@@ -1,32 +1,40 @@
 <aside>
     <section>
-        <h1>Account</h1>
-        <a
-            routerLink="/settings/account"
-            [class.selected]="section === 'account'"
-        >
-            Account
-        </a>
-        <a
-            routerLink="/settings/security"
-            [class.selected]="section === 'security'"
-        >
-            Security
-        </a>
-        <a
-            routerLink="/settings/organizations"
-            [class.selected]="section === 'organizations'"
-        >
-            Organizations
-        </a>
+        <div class="title">
+            <h1>Account</h1>
+        </div>
+        <div class="content">
+            <a
+                routerLink="/settings/account"
+                [class.selected]="section === 'account'"
+            >
+                Account
+            </a>
+            <a
+                routerLink="/settings/security"
+                [class.selected]="section === 'security'"
+            >
+                Security
+            </a>
+            <a
+                routerLink="/settings/organizations"
+                [class.selected]="section === 'organizations'"
+            >
+                Organizations
+            </a>
+        </div>
     </section>
     <section>
-        <h1>Author</h1>
-        <a
-            routerLink="/settings/publishers"
-            [class.selected]="section === 'publishers'"
-        >
-            Publishers
-        </a>
+        <div class="title">
+            <h1>Author</h1>
+        </div>
+        <div class="content">
+            <a
+                routerLink="/settings/publishers"
+                [class.selected]="section === 'publishers'"
+            >
+                Publishers
+            </a>
+        </div>
     </section>
 </aside>
