@@ -10,26 +10,38 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class InviteAuthorComponent
 {
+  private publisherId?: string;
+
   public form = new FormGroup({
     email: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
-  {}
+  constructor(private api: ApiService, private router: Router, route: ActivatedRoute)
+  {
+    route.params.subscribe({
+      next: params =>
+      {
+        this.publisherId = params.id;
+      },
+    });
+  }
 
   public async onSubmit(e: Event)
   {
     e.preventDefault();
 
-    const publisherId = this.route.snapshot.params.id;
+    if (!this.publisherId)
+    {
+      return;
+    }
 
-    const response = await this.api.inviteAuthor(publisherId, {
+    const response = await this.api.inviteAuthor(this.publisherId, {
       email: this.form.get("email")?.value ?? "",
     });
 
     if (response.data)
     {
-      this.router.navigateByUrl(`/publisher/${publisherId}/authors`);
+      this.router.navigateByUrl(`/publisher/${this.publisherId}/authors`);
     }
     else if (response.errors)
     {

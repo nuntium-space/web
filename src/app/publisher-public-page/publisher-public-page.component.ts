@@ -15,19 +15,21 @@ export class PublisherPublicPageComponent
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    route.url.subscribe(url =>
-    {
-      const publisherId = url[0].path.replace("~", "");
-
-      api.retrievePublisher(publisherId).then(response =>
+    route.url.subscribe({
+      next: url =>
       {
-        this.publisher = response.data;
-      });
+        const publisherId = url[0].path.replace("~", "");
 
-      api.listArticlesForPublisher(publisherId).then(response =>
-      {
-        this.articles = response.data;
-      });
+        api.retrievePublisher(publisherId).then(response =>
+        {
+          this.publisher = response.data;
+        });
+
+        api.listArticlesForPublisher(publisherId).then(response =>
+        {
+          this.articles = response.data;
+        });
+      },
     });
   }
 }

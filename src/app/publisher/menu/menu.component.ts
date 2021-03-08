@@ -16,9 +16,14 @@ export class PublisherMenuComponent
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    api.retrievePublisher(route.snapshot.params.id).then(response =>
-    {
-      this.publisher = response.data;
+    route.params.subscribe({
+      next: params =>
+      {
+        api.retrievePublisher(params.id).then(response =>
+        {
+          this.publisher = response.data;
+        });
+      },
     });
   }
 }

@@ -13,9 +13,14 @@ export class PublishersComponent
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    api.listPublishersForOrganization(route.snapshot.params.id).then(response =>
-    {
-      this.publishers = response.data;
+    route.params.subscribe({
+      next: params =>
+      {
+        api.listPublishersForOrganization(params.id).then(response =>
+        {
+          this.publishers = response.data;
+        });
+      },
     });
   }
 }

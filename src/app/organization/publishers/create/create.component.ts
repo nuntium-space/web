@@ -10,24 +10,36 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class CreatePublisherComponent
 {
+  private organizationId?: string;
+
   public form = new FormGroup({
     name: new FormControl(),
     url: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
-  {}
+  constructor(private api: ApiService, private router: Router, route: ActivatedRoute)
+  {
+    route.params.subscribe({
+      next: params =>
+      {
+        this.organizationId = params.id;
+      },
+    });
+  }
 
   public async onSubmit(e: Event)
   {
     e.preventDefault();
 
-    const organization = this.route.snapshot.params.id;
+    if (!this.organizationId)
+    {
+      return;
+    }
 
     const response = await this.api.createPublisher({
       name: this.form.get("name")?.value ?? "",
       url: this.form.get("url")?.value ?? "",
-      organization,
+      organization: this.organizationId,
     });
 
     this.form.get("name")?.setErrors({
@@ -40,7 +52,7 @@ export class CreatePublisherComponent
 
     if (response.data)
     {
-      this.router.navigateByUrl(`/organization/${organization}/publishers`);
+      this.router.navigateByUrl(`/organization/${this.organizationId}/publishers`);
     }
   }
 }

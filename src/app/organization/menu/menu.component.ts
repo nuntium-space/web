@@ -16,11 +16,14 @@ export class OrganizationMenuComponent
 
   constructor(api: ApiService, route: ActivatedRoute)
   {
-    const organizationId = route.snapshot.params.id;
-
-    api.retrieveOrganization(organizationId).then(response =>
-    {
-      this.organization = response.data;
+    route.params.subscribe({
+      next: params =>
+      {
+        api.retrieveOrganization(params.id).then(response =>
+        {
+          this.organization = response.data;
+        });
+      },
     });
   }
 }

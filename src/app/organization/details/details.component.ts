@@ -18,11 +18,16 @@ export class OrganizationDetailsComponent
 
   constructor(private api: ApiService, route: ActivatedRoute)
   {
-    api.retrieveOrganization(route.snapshot.params.id).then(response =>
-    {
-      this.organization = response.data;
+    route.params.subscribe({
+      next: params =>
+      {
+        api.retrieveOrganization(params.id).then(response =>
+        {
+          this.organization = response.data;
 
-      this.detailsForm.get("name")?.setValue(this.organization?.name);
+          this.detailsForm.get("name")?.setValue(this.organization?.name);
+        });
+      },
     });
   }
 
