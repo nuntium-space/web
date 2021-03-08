@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ArticleComponent } from './article/article.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
       { path: "", component: AccountComponent },
     ],
   },
+  { path: "article/:id", component: ArticleComponent, canActivate: [ SignedInGuard ] },
   {
     path: "organization/:id",
     canActivate: [ SignedInGuard ],

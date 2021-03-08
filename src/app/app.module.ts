@@ -29,6 +29,7 @@ import { InviteAuthorComponent } from './publisher/authors/invite/invite.compone
 import { UserPublishersComponent } from './settings/publishers/publishers.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
     UserPublishersComponent,
     PublisherPublicPageComponent,
     ArticleListComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
