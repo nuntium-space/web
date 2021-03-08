@@ -16,6 +16,15 @@
 #details
 {
     grid-area: details;
+
+    .info
+    {
+        p
+        {
+            margin: 0;
+            margin-top: 0.5em;
+        }
+    }
 }
 
 main
