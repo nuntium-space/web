@@ -3,7 +3,7 @@
 :host
 {
     display: grid;
-    grid-template-rows: max-content auto max-content;
+    grid-template-rows: max-content min-content max-content;
     grid-template-columns: 20em 60ch auto;
     grid-template-areas:
         "header header header"
