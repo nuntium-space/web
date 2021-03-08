@@ -96,6 +96,11 @@ export class ApiService
     return result;
   }
 
+  public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
+  {
+    return this.send("GET", `articles/${id}`);
+  }
+
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("GET", `organizations/${id}`);

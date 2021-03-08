@@ -1,0 +1,96 @@
+@import "~src/variables";
+
+:host
+{
+    display: grid;
+    grid-template-rows: max-content auto;
+    grid-template-columns: 20em 60ch auto;
+    grid-template-areas:
+        "header header header"
+        "details main empty"
+        "details comments empty";
+    gap: 1em;
+    height: 100%;
+}
+
+#details
+{
+    grid-area: details;
+}
+
+section
+{
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+
+    .title
+    {
+        padding: 1em;
+        background-color: rgba($primary-color, 0.1);
+
+        h1
+        {
+            margin: 0;
+        }
+    }
+
+    .content
+    {
+        > *
+        {
+            margin: 0;
+            padding: 1em;
+            border-top: 1px solid var(--primary-color);
+
+            p
+            {
+                margin: 0;
+                margin-top: 0.5em;
+            }
+        }
+
+        > a
+        {
+            display: block;
+            color: unset;
+
+            &.selected,
+            &:focus,
+            &:hover
+            {
+                opacity: 1;
+                box-shadow: none;
+                background-color: rgba($primary-color, $alpha: 0.3);
+            }
+
+            &:last-of-type
+            {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:not(:last-of-type)
+            {
+                border-radius: 0;
+            }
+        }
+    }
+
+    & ~ &
+    {
+        margin-top: 1em;
+    }
+}
+
+main
+{
+    h1
+    {
+        margin: 0;
+    }
+}
+
+#comments
+{
+    grid-area: comments;
+}
