@@ -5,8 +5,7 @@
     grid-template-columns: 20em 60ch auto;
     grid-template-areas:
         "header header header"
-        "details main empty"
-        "details comments empty";
+        "details main empty";
     gap: 1em;
     height: 100%;
 }
@@ -38,5 +37,5 @@ main
 
 #comments
 {
-    grid-area: comments;
+    margin-top: 3em;
 }

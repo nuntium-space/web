@@ -49,11 +49,10 @@
 <main *ngIf="article">
     <h1 class="title">{{article.title}}</h1>
     <p class="content">{{article.content}}</p>
+    <section id="comments">
+        <div class="title">
+            <h1>Comments</h1>
+        </div>
+        <comment-list [comments]="comments" class="content"></comment-list>
+    </section>
 </main>
-
-<section id="comments">
-    <div class="title">
-        <h1>Comments</h1>
-    </div>
-    <comment-list [comments]="comments" class="content"></comment-list>
-</section>
