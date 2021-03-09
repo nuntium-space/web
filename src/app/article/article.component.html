@@ -32,7 +32,8 @@
         <div class="content">
             <div>
                 <b>Reading Time</b>
-                <p>TODO</p>
+                <p *ngIf="article.reading_time >= 1">{{article.reading_time}} minutes</p>
+                <p *ngIf="article.reading_time < 1">less than a minute</p>
             </div>
             <div>
                 <b>Published</b>
