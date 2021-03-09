@@ -8,14 +8,19 @@ import { IComment } from 'src/app/services/api/api.service';
 })
 export class CommentListComponent
 {
+  @Input("parent")
+  public parent: IComment | null;
+
   @Input("comments")
   public comments?: IComment[];
 
   constructor()
-  {}
-
-  public childrenOf(id: string): IComment[]
   {
-    return (this.comments ?? []).filter(comment => comment.parent?.id === id);
+    this.parent ??= null;
+  }
+
+  public childrenOf(parent: IComment | null): IComment[]
+  {
+    return (this.comments ?? []).filter(comment => comment.parent?.id === parent?.id);
   }
 }
