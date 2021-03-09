@@ -77,6 +77,11 @@ button
     border-radius: 0.5em;
     transition: 100ms;
 
+    &.small
+    {
+        font-size: 1em;
+    }
+
     &.dark
     {
         color: var(--primary-color);
