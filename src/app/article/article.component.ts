@@ -30,4 +30,9 @@ export class ArticleComponent
       },
     });
   }
+
+  public async onAddCommentFormSubmit(e: Event)
+  {
+    e.preventDefault();
+  }
 }
