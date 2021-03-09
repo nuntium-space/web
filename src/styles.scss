@@ -34,6 +34,14 @@ footer
     grid-area: footer;
 }
 
+a,
+button,
+input,
+textarea
+{
+    outline: none;
+}
+
 a
 {
     color: var(--link-color);
@@ -42,7 +50,6 @@ a
 
     &:focus
     {
-        outline: none;
         box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
 
         &.dark
@@ -78,7 +85,6 @@ button
 
     &:focus
     {
-        outline: none;
         box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
         &.dark
@@ -164,7 +170,6 @@ label
 
         &:focus
         {
-            outline: none;
             box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
             &.dark
@@ -264,5 +269,23 @@ section
     & ~ &
     {
         margin-top: 1em;
+    }
+}
+
+textarea
+{
+    padding: 0.5em;
+    font-family: inherit;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5em;
+
+    &:focus
+    {
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+
+        &.dark
+        {
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+        }
     }
 }

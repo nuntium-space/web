@@ -39,3 +39,18 @@ main
 {
     margin-top: 3em;
 }
+
+#add-comment
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1em;
+
+    textarea
+    {
+        width: 100%;
+        resize: vertical;
+        margin-bottom: 1em;
+    }
+}

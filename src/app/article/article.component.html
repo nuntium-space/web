@@ -54,6 +54,14 @@
         <div class="title">
             <h1>Comments</h1>
         </div>
-        <comment-list [comments]="comments" class="content"></comment-list>
+        <div class="content">
+            <div id="add-comment">
+                <textarea rows="5" placeholder="Add a comment"></textarea>
+                <button>
+                    Add comment
+                </button>
+            </div>
+            <comment-list [comments]="comments"></comment-list>
+        </div>
     </section>
 </main>
