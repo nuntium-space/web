@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IArticle } from '../services/api/api.service';
+import { ApiService, IArticle, IComment } from '../services/api/api.service';
 
 @Component({
   selector: 'app-article',
@@ -11,6 +11,8 @@ export class ArticleComponent
 {
   public article?: IArticle;
 
+  public comments?: IComment[];
+
   constructor(api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
@@ -19,6 +21,11 @@ export class ArticleComponent
         api.retrieveArticle(params.id).then((response) =>
         {
           this.article = response.data;
+        });
+
+        api.listCommentsForArticle(params.id).then((response) =>
+        {
+          this.comments = response.data;
         });
       },
     });

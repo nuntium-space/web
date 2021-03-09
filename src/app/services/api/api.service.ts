@@ -6,6 +6,11 @@ interface IApiServiceResponse<T>
   errors?: string[];
 }
 
+interface INotExpandedResource
+{
+  id: string;
+}
+
 export interface IUser
 {
   id: string;
@@ -42,6 +47,17 @@ export interface IArticle
   title: string;
   content: string;
   author: IAuthor;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IComment
+{
+  id: string;
+  content: string;
+  user: IUser | INotExpandedResource;
+  article: IArticle | INotExpandedResource;
+  parent: IComment | INotExpandedResource | null;
   created_at: string;
   updated_at: string;
 }
@@ -99,6 +115,11 @@ export class ApiService
   public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
   {
     return this.send("GET", `articles/${id}`);
+  }
+
+  public async listCommentsForArticle(id: string): Promise<IApiServiceResponse<IComment[]>>
+  {
+    return this.send("GET", `articles/${id}/comments`);
   }
 
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
