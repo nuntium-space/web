@@ -55,12 +55,12 @@
             <h1>Comments</h1>
         </div>
         <div class="content">
-            <div id="add-comment">
+            <form id="add-comment" (sumbit)="onAddCommentFormSubmit($event)">
                 <textarea rows="5" placeholder="Add a comment"></textarea>
-                <button class="small">
+                <button type="submit" class="small">
                     Add comment
                 </button>
-            </div>
+            </form>
             <comment-list [comments]="comments"></comment-list>
         </div>
     </section>
