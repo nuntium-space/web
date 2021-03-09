@@ -55,9 +55,9 @@ export interface IComment
 {
   id: string;
   content: string;
-  user: IUser | INotExpandedResource;
-  article: IArticle | INotExpandedResource;
-  parent: IComment | INotExpandedResource | null;
+  user: IUser;
+  article: INotExpandedResource;
+  parent: INotExpandedResource | null;
   created_at: string;
   updated_at: string;
 }
@@ -119,7 +119,7 @@ export class ApiService
 
   public async listCommentsForArticle(id: string): Promise<IApiServiceResponse<IComment[]>>
   {
-    return this.send("GET", `articles/${id}/comments`);
+    return this.send("GET", `articles/${id}/comments?expand[]=user`);
   }
 
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>

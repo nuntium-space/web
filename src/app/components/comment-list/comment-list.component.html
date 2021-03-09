@@ -1,6 +1,9 @@
 <div *ngFor="let comment of childrenOf(parent)" class="comment">
     <header>
-        <span class="user">{{comment.user.id}}</span>
+        <span class="user">
+            {{comment.user.first_name}}
+            {{comment.user.last_name}}
+        </span>
         &bull;
         <small title="{{comment.created_at | date:'medium'}}">
             {{comment.created_at | date:"LLL d"}}
