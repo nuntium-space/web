@@ -2,9 +2,18 @@
 
 .comment
 {
+    header
+    {
+        .user
+        {
+            font-weight: $medium;
+        }
+    }
+
     p
     {
         margin: 0;
+        margin-top: 0.5em;
     }
 }
 

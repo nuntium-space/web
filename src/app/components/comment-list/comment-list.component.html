@@ -1,4 +1,17 @@
 <div *ngFor="let comment of childrenOf(parent)" class="comment">
+    <header>
+        <span class="user">{{comment.user.id}}</span>
+        &bull;
+        <small title="{{comment.created_at | date:'medium'}}">
+            {{comment.created_at | date:"LLL d"}}
+        </small>
+        <span *ngIf="comment.created_at !== comment.updated_at">
+            &bull;
+            <small title="{{comment.updated_at | date:'medium'}}">
+                Updated on {{comment.updated_at | date:"LLL d"}}
+            </small>
+        </span>
+    </header>
     <p>{{comment.content}}</p>
     <details *ngIf="childrenOf(comment).length > 0" class="replies">
         <summary>Replies</summary>
