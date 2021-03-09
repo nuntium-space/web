@@ -3,6 +3,11 @@
 :host
 {
     display: block;
+
+    &:empty
+    {
+        display: none;
+    }
 }
 
 .comment
