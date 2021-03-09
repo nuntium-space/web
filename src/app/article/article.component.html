@@ -55,43 +55,5 @@
     <div class="title">
         <h1>Comments</h1>
     </div>
-    <div class="content">
-        <div class="comment">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-            <details class="replies">
-                <summary>Replies</summary>
-                <div class="comment">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-                    <details class="replies">
-                        <summary>Replies</summary>
-                        <div class="comment">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-                            <details class="replies">
-                                <summary>Replies</summary>
-                                <div class="comment">
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-                
-                                </div>
-                                <div class="comment">
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-                                </div>
-                            </details>
-                        </div>
-                        <div class="comment">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-                        </div>
-                    </details>
-                </div>
-                <div class="comment">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-                </div>
-            </details>
-        </div>
-        <div class="comment">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-        </div>
-        <div class="comment">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias asperiores provident maxime dolores, esse animi quod ipsam quasi ratione.</p>
-        </div>
-    </div>
+    <comment-list [comments]="comments" class="content"></comment-list>
 </section>

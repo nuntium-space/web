@@ -30,6 +30,7 @@ import { UserPublishersComponent } from './settings/publishers/publishers.compon
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ArticleComponent } from './article/article.component';
     PublisherPublicPageComponent,
     ArticleListComponent,
     ArticleComponent,
+    CommentListComponent,
   ],
   imports: [
     BrowserModule,

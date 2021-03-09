@@ -1,0 +1,7 @@
+<div *ngFor="let comment of comments" class="comment">
+    <p>{{comment.content}}</p>
+    <details *ngIf="childrenOf(comment.id).length > 0" class="replies">
+        <summary>Replies</summary>
+        <comment-list [comments]="childrenOf(comment.id)"></comment-list>
+    </details>
+</div>
