@@ -16,14 +16,12 @@
 
 body
 {
-    margin: 0;
+    margin: 0 auto;
     padding: 1em;
     font-family: "Work Sans", sans-serif;
     color: var(--primary-color);
     background-color: var(--secondary-color);
-    height: 100vh;
     max-width: 1300px;
-    margin: 0 auto;
 }
 
 main
