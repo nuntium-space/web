@@ -1,8 +1,7 @@
 <comment
-    *ngFor="let comment of comments"
+    *ngFor="let comment of childrenOf(parent)"
 
     [article]="article"
-    [parent]="parent"
     [comment]="comment"
     [replies]="childrenOf(comment)"
 >

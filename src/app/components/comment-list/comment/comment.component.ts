@@ -12,9 +12,6 @@ export class CommentComponent
   public article?: IArticle;
 
   @Input()
-  public parent: IComment | null;
-
-  @Input()
   public comment?: IComment;
 
   @Input()
@@ -23,9 +20,7 @@ export class CommentComponent
   public showReplyForm = false;
 
   constructor()
-  {
-    this.parent ??= null;
-  }
+  {}
 
   public onCommentCreated(comment: IComment)
   {

@@ -18,7 +18,12 @@
     <pre>{{comment.content}}</pre>
     <details *ngIf="replies.length > 0" class="replies">
         <summary>Replies</summary>
-        <comment-list [article]="article" [parent]="comment" [comments]="replies"></comment-list>
+        <comment-list
+            [article]="article"
+            [parent]="comment"
+            [comments]="replies"
+        >
+        </comment-list>
     </details>
     <add-comment-form
         *ngIf="showReplyForm"
