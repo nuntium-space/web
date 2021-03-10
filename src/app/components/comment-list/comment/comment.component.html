@@ -20,11 +20,6 @@
         <summary>Replies</summary>
         <comment-list [article]="article" [parent]="comment" [comments]="replies"></comment-list>
     </details>
-    <footer>
-        <button class="small" (click)="showReplyForm = !showReplyForm">
-            Reply
-        </button>
-    </footer>
     <add-comment-form
         *ngIf="showReplyForm"
 
@@ -32,4 +27,13 @@
         [parent]="comment"
     >
     </add-comment-form>
+    <footer>
+        <button
+            class="small"
+
+            (click)="showReplyForm = !showReplyForm"
+        >
+            {{ showReplyForm ? 'Cancel' : 'Reply' }}
+        </button>
+    </footer>
 </div>
