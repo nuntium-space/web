@@ -1,7 +1,6 @@
 :host
 {
     display: grid;
-    grid-template-rows: max-content min-content max-content;
     grid-template-columns: 20em 60ch auto;
     grid-template-areas:
         "header header header"
@@ -59,5 +58,17 @@ main
     {
         margin-top: 0.5em;
         width: max-content;
+    }
+}
+
+@media (max-width: 1000px)
+{
+    :host
+    {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "header"
+            "main"
+            "details";
     }
 }
