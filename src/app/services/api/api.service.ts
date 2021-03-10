@@ -123,6 +123,14 @@ export class ApiService
     return this.send("GET", `articles/${id}/comments?expand[]=user`);
   }
 
+  public async createComment(articleId: string, data: {
+    content: string,
+    parent: string | null,
+  }): Promise<IApiServiceResponse<IComment>>
+  {
+    return this.send("POST", `articles/${articleId}/comments`, data);
+  }
+
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("GET", `organizations/${id}`);
