@@ -56,6 +56,8 @@ export class ArticleComponent
 
     if (response.data)
     {
+      this.addCommentForm.reset();
+
       this.comments?.push(response.data);
     }
   }
