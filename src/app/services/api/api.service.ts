@@ -128,7 +128,7 @@ export class ApiService
     parent: string | null,
   }): Promise<IApiServiceResponse<IComment>>
   {
-    return this.send("POST", `articles/${articleId}/comments`, data);
+    return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
   }
 
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
