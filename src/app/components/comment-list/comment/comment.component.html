@@ -16,9 +16,15 @@
         </span>
     </header>
     <pre>{{comment.content}}</pre>
-    <details *ngIf="comment.reply_count > 0" class="replies">
+    <details
+        *ngIf="comment.reply_count > 0"
+
+        class="replies"
+
+        (toggle)="loadReplies($event)"
+    >
         <summary>Replies</summary>
-        <!-- TODO -->
+        <comment-list [article]="article" [comments]="replies"></comment-list>
     </details>
     <add-comment-form
         *ngIf="showReplyForm"
