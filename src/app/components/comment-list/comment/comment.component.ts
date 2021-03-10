@@ -14,7 +14,7 @@ export class CommentComponent
   @Input()
   public comment?: IComment;
 
-  public replies?: IComment[];
+  public replies: IComment[] = [];
 
   public showReplyForm = false;
 
@@ -23,20 +23,30 @@ export class CommentComponent
 
   public async loadReplies(e: Event)
   {
-    if (!this.article || !this.comment || this.replies)
+    if (!this.article || !this.comment || this.replies.length > 0)
     {
       return;
     }
 
     const response = await this.api.listCommentsForArticle(this.article.id, this.comment.id);
 
-    this.replies = response.data;
+    if (response.data)
+    {
+      this.replies = response.data;
+    }
   }
 
   public onCommentCreated(comment: IComment)
   {
     this.showReplyForm = false;
 
-    console.log(comment);
+    if (!this.comment)
+    {
+      return;
+    }
+
+    this.replies.push(comment);
+
+    this.comment.reply_count = this.replies.length;
   }
 }
