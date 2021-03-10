@@ -26,4 +26,11 @@ export class CommentComponent
   {
     this.parent ??= null;
   }
+
+  public onCommentCreated(comment: IComment)
+  {
+    this.showReplyForm = false;
+
+    this.replies?.push(comment);
+  }
 }

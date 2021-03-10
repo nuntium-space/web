@@ -25,6 +25,8 @@
 
         [article]="article"
         [parent]="comment"
+
+        (commentCreated)="onCommentCreated($event)"
     >
     </add-comment-form>
     <footer>
