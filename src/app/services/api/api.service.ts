@@ -59,6 +59,7 @@ export interface IComment
   user: IUser;
   article: INotExpandedResource;
   parent: INotExpandedResource | null;
+  reply_count: number;
   created_at: string;
   updated_at: string;
 }

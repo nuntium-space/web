@@ -14,9 +14,6 @@ export class CommentComponent
   @Input()
   public comment?: IComment;
 
-  @Input()
-  public replies?: IComment[];
-
   public showReplyForm = false;
 
   constructor()
@@ -26,6 +23,6 @@ export class CommentComponent
   {
     this.showReplyForm = false;
 
-    this.replies?.push(comment);
+    console.log(comment);
   }
 }

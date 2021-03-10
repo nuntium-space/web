@@ -11,19 +11,9 @@ export class CommentListComponent
   @Input("article")
   public article?: IArticle;
 
-  @Input("parent")
-  public parent: IComment | null;
-
   @Input("comments")
   public comments?: IComment[];
 
   constructor()
-  {
-    this.parent ??= null;
-  }
-
-  public childrenOf(parent: IComment | null): IComment[]
-  {
-    return (this.comments ?? []).filter(comment => comment.parent?.id === parent?.id);
-  }
+  {}
 }

@@ -1,4 +1,4 @@
-<div *ngIf="comment && replies" class="comment">
+<div *ngIf="comment" class="comment">
     <header>
         <span class="user">
             {{comment.user.first_name}}
@@ -16,14 +16,9 @@
         </span>
     </header>
     <pre>{{comment.content}}</pre>
-    <details *ngIf="replies.length > 0" class="replies">
+    <details *ngIf="comment.reply_count > 0" class="replies">
         <summary>Replies</summary>
-        <comment-list
-            [article]="article"
-            [parent]="comment"
-            [comments]="replies"
-        >
-        </comment-list>
+        <!-- TODO -->
     </details>
     <add-comment-form
         *ngIf="showReplyForm"
