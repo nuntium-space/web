@@ -55,7 +55,12 @@
             <h1>Comments</h1>
         </div>
         <div class="content">
-            <add-comment-form [article]="article"></add-comment-form>
+            <add-comment-form
+                [article]="article"
+
+                (commentCreated)="onCommentCreated($event)"
+            >
+            </add-comment-form>
             <comment-list [article]="article" [comments]="comments"></comment-list>
         </div>
     </section>
