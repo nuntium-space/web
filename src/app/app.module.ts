@@ -32,6 +32,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { ArticleComponent } from './article/article.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AddCommentFormComponent } from './components/add-comment-form/add-comment-form.component';
+import { CommentComponent } from './components/comment-list/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AddCommentFormComponent } from './components/add-comment-form/add-comme
     ArticleComponent,
     CommentListComponent,
     AddCommentFormComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

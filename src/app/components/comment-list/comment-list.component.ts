@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService, IArticle, IComment } from 'src/app/services/api/api.service';
+import { IArticle, IComment } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'comment-list',

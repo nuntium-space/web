@@ -1,29 +1,9 @@
-<div *ngFor="let comment of childrenOf(parent)" class="comment">
-    <header>
-        <span class="user">
-            {{comment.user.first_name}}
-            {{comment.user.last_name}}
-        </span>
-        &bull;
-        <small title="{{comment.created_at | date:'medium'}}">
-            {{comment.created_at | date:"LLL d"}}
-        </small>
-        <span *ngIf="comment.created_at !== comment.updated_at">
-            &bull;
-            <small title="{{comment.updated_at | date:'medium'}}">
-                Updated on {{comment.updated_at | date:"LLL d"}}
-            </small>
-        </span>
-    </header>
-    <pre>{{comment.content}}</pre>
-    <details *ngIf="childrenOf(comment).length > 0" class="replies">
-        <summary>Replies</summary>
-        <comment-list [article]="article" [parent]="comment" [comments]="childrenOf(comment)"></comment-list>
-    </details>
-    <footer>
-        <button class="small">
-            Reply
-        </button>
-    </footer>
-    <add-comment-form [article]="article" [parent]="comment"></add-comment-form>
-</div>
+<comment
+    *ngFor="let comment of comments"
+
+    [article]="article"
+    [parent]="parent"
+    [comment]="comment"
+    [replies]="childrenOf(comment)"
+>
+</comment>
