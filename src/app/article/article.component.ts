@@ -14,7 +14,7 @@ export class ArticleComponent
 
   public comments?: IComment[];
 
-  public form = new FormGroup({
+  public addCommentForm = new FormGroup({
     content: new FormControl(),
   });
 
@@ -46,11 +46,11 @@ export class ArticleComponent
     }
 
     const response = await this.api.createComment(this.article.id, {
-      content: this.form.get("content")?.value ?? "",
+      content: this.addCommentForm.get("content")?.value ?? "",
       parent: null,
     });
 
-    this.form.get("content")?.setErrors({
+    this.addCommentForm.get("content")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"content"`))
     });
 

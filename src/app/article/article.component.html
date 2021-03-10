@@ -55,8 +55,16 @@
             <h1>Comments</h1>
         </div>
         <div class="content">
-            <form id="add-comment" (submit)="onAddCommentFormSubmit($event)">
-                <textarea rows="5" placeholder="Add a comment"></textarea>
+            <form [formGroup]="addCommentForm" id="add-comment" (submit)="onAddCommentFormSubmit($event)">
+                <label>
+                    Add a comment
+                    <textarea formControlName="content" rows="5"></textarea>
+                    <div *ngIf="addCommentForm.get('content')?.errors" class="errors">
+                        <p *ngFor="let error of addCommentForm.get('content')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
                 <button type="submit" class="small">
                     Add comment
                 </button>
