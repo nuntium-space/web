@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IComment } from 'src/app/services/api/api.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService, IArticle, IComment } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'comment-list',
@@ -8,6 +9,9 @@ import { IComment } from 'src/app/services/api/api.service';
 })
 export class CommentListComponent
 {
+  @Input("article")
+  public article?: IArticle;
+
   @Input("parent")
   public parent: IComment | null;
 

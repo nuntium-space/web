@@ -31,6 +31,7 @@ import { PublisherPublicPageComponent } from './publisher-public-page/publisher-
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { AddCommentFormComponent } from './components/add-comment-form/add-comment-form.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
     ArticleListComponent,
     ArticleComponent,
     CommentListComponent,
+    AddCommentFormComponent,
   ],
   imports: [
     BrowserModule,
