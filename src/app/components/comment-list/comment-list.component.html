@@ -15,7 +15,7 @@
             </small>
         </span>
     </header>
-    <p>{{comment.content}}</p>
+    <pre>{{comment.content}}</pre>
     <details *ngIf="childrenOf(comment).length > 0" class="replies">
         <summary>Replies</summary>
         <comment-list [parent]="comment" [comments]="childrenOf(comment)"></comment-list>
