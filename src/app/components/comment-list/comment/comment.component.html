@@ -21,9 +21,15 @@
         <comment-list [article]="article" [parent]="comment" [comments]="replies"></comment-list>
     </details>
     <footer>
-        <button class="small">
+        <button class="small" (click)="showReplyForm = !showReplyForm">
             Reply
         </button>
     </footer>
-    <add-comment-form [article]="article" [parent]="comment"></add-comment-form>
+    <add-comment-form
+        *ngIf="showReplyForm"
+
+        [article]="article"
+        [parent]="comment"
+    >
+    </add-comment-form>
 </div>

@@ -20,6 +20,8 @@ export class CommentComponent
   @Input()
   public replies?: IComment[];
 
+  public showReplyForm = false;
+
   constructor()
   {
     this.parent ??= null;
