@@ -28,7 +28,7 @@ export class ArticleComponent
           this.article = response.data;
         });
 
-        api.listCommentsForArticle(params.id).then((response) =>
+        api.listCommentsForArticle(params.id, null).then((response) =>
         {
           this.comments = response.data;
         });

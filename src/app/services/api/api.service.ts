@@ -119,9 +119,9 @@ export class ApiService
     return this.send("GET", `articles/${id}`);
   }
 
-  public async listCommentsForArticle(id: string): Promise<IApiServiceResponse<IComment[]>>
+  public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
   {
-    return this.send("GET", `articles/${id}/comments?expand[]=user`);
+    return this.send("GET", `articles/${id}/comments?${parent !== null ? `parent=${parent}&` : ""}expand[]=user`);
   }
 
   public async createComment(articleId: string, data: {
