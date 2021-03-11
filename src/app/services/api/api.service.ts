@@ -37,8 +37,8 @@ export interface IPublisher
 export interface IAuthor
 {
   id: string;
-  user: INotExpandedResource;
-  publisher: INotExpandedResource;
+  user: IUser | INotExpandedResource;
+  publisher: IPublisher | INotExpandedResource;
 }
 
 export interface IArticle
@@ -47,7 +47,7 @@ export interface IArticle
   title: string;
   content: string;
   reading_time: number;
-  author: INotExpandedResource;
+  author: IAuthor | INotExpandedResource;
   created_at: string;
   updated_at: string;
 }
@@ -57,8 +57,8 @@ export interface IComment
   id: string;
   content: string;
   user: IUser;
-  article: INotExpandedResource;
-  parent: INotExpandedResource | null;
+  article: IArticle | INotExpandedResource;
+  parent: IComment | INotExpandedResource | null;
   reply_count: number;
   created_at: string;
   updated_at: string;

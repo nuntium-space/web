@@ -4,10 +4,12 @@
             {{article.author.user.first_name}}
             {{article.author.user.last_name}}
         </a>
-        for
-        <a routerLink="/~{{article.author.publisher.id}}" class="dark">
-            {{article.author.publisher.name}}
-        </a>
+        <div *ngIf="article.author.publisher.name">
+            for
+            <a routerLink="/~{{article.author.publisher.id}}" class="dark">
+                {{article.author.publisher.name}}
+            </a>
+        </div>
         <br>
         <span>
             {{article.created_at | date:"medium"}}
