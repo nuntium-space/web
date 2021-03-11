@@ -37,8 +37,8 @@ export interface IPublisher
 export interface IAuthor
 {
   id: string;
-  user: IUser;
-  publisher: IPublisher;
+  user: INotExpandedResource;
+  publisher: INotExpandedResource;
 }
 
 export interface IArticle
@@ -47,7 +47,7 @@ export interface IArticle
   title: string;
   content: string;
   reading_time: number;
-  author: IAuthor;
+  author: INotExpandedResource;
   created_at: string;
   updated_at: string;
 }
@@ -116,7 +116,7 @@ export class ApiService
 
   public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
   {
-    return this.send("GET", `articles/${id}`);
+    return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
   public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
@@ -168,12 +168,12 @@ export class ApiService
 
   public async listAuthorsForPublisher(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
   {
-    return this.send("GET", `publishers/${publisherId}/authors`);
+    return this.send("GET", `publishers/${publisherId}/authors?expand[]=user`);
   }
 
   public async listArticlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `publishers/${publisherId}/articles`);
+    return this.send("GET", `publishers/${publisherId}/articles?expand[]=author&expand[]=author.user`);
   }
 
   public async createPublisher(data: {
