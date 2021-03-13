@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { loadStripe } from '@stripe/stripe-js';
+import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
 import { ApiService, IArticle, IPublisher } from '../services/api/api.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class PublisherPublicPageComponent
 
   public articles?: IArticle[];
 
-  constructor(api: ApiService, route: ActivatedRoute)
+  constructor(private api: ApiService, route: ActivatedRoute)
   {
     route.url.subscribe({
       next: url =>
@@ -31,5 +33,26 @@ export class PublisherPublicPageComponent
         });
       },
     });
+  }
+
+  public async onSubscribeClick()
+  {
+    const stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
+
+    if (!stripe)
+    {
+      return;
+    }
+
+    // TODO: Load all bundles for this publisher
+
+    const response = await this.api.createCheckoutSessionForBundle("TODO");
+
+    if (response.data)
+    {
+      stripe.redirectToCheckout({
+        sessionId: response.data.id,
+      });
+    }
   }
 }

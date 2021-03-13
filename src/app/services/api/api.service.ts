@@ -6,11 +6,6 @@ interface IApiServiceResponse<T>
   errors?: string[];
 }
 
-interface INotExpandedResource
-{
-  id: string;
-}
-
 export interface IUser
 {
   id: string;
@@ -37,8 +32,8 @@ export interface IPublisher
 export interface IAuthor
 {
   id: string;
-  user: IUser | INotExpandedResource;
-  publisher: IPublisher | INotExpandedResource;
+  user: IUser;
+  publisher: IPublisher;
 }
 
 export interface IArticle
@@ -47,7 +42,7 @@ export interface IArticle
   title: string;
   content: string;
   reading_time: number;
-  author: IAuthor | INotExpandedResource;
+  author: IAuthor;
   created_at: string;
   updated_at: string;
 }
@@ -57,8 +52,8 @@ export interface IComment
   id: string;
   content: string;
   user: IUser;
-  article: IArticle | INotExpandedResource;
-  parent: IComment | INotExpandedResource | null;
+  article: IArticle;
+  parent: IComment | null;
   reply_count: number;
   created_at: string;
   updated_at: string;
@@ -130,6 +125,11 @@ export class ApiService
   }): Promise<IApiServiceResponse<IComment>>
   {
     return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
+  }
+
+  public async createCheckoutSessionForBundle(id: string): Promise<IApiServiceResponse<{ id: string }>>
+  {
+    return this.send("GET", `bundles/${id}/stripe/checkout`);
   }
 
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>

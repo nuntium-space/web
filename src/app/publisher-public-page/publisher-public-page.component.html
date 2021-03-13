@@ -1,6 +1,12 @@
 <app-header></app-header>
 
-<main *ngIf="publisher">
+<aside *ngIf="publisher">
     <h1>{{publisher.name}}</h1>
+    <button (click)="onSubscribeClick()">
+        Subscribe
+    </button>
+</aside>
+
+<main>
     <article-list [articles]="articles"></article-list>
 </main>
