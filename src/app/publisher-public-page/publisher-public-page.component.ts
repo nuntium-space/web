@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { loadStripe } from '@stripe/stripe-js';
 import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
 import { ApiService, IArticle, IBundle, IPublisher } from '../services/api/api.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-publisher-public-page',
@@ -19,7 +20,7 @@ export class PublisherPublicPageComponent
 
   public showBundleList = false;
 
-  constructor(private api: ApiService, route: ActivatedRoute)
+  constructor(public auth: AuthService, private api: ApiService, route: ActivatedRoute)
   {
     route.url.subscribe({
       next: url =>
