@@ -144,6 +144,11 @@ export class ApiService
     return this.send("GET", `organizations/${id}`);
   }
 
+  public async listBundlesForOrganization(organizationId: string): Promise<IApiServiceResponse<IBundle[]>>
+  {
+    return this.send("GET", `organizations/${organizationId}/bundles`);
+  }
+
   public async listPublishersForOrganization(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
   {
     return this.send("GET", `organizations/${organizationId}/publishers`);

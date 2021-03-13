@@ -4,6 +4,7 @@ import { ArticleComponent } from './article/article.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
+import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
 import { OrganizationDetailsComponent } from './organization/details/details.component';
 import { CreatePublisherComponent } from './organization/publishers/create/create.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
@@ -51,6 +52,13 @@ const routes: Routes = [
         children: [
           { path: "create", component: CreatePublisherComponent },
           { path: "", component: PublishersComponent },
+        ],
+      },
+      {
+        path: "bundles",
+        children: [
+          { path: "create", component: CreatePublisherComponent }, // TODO: Change this
+          { path: "", component: OrganizationBundlesComponent },
         ],
       },
       { path: "", component: OrganizationDetailsComponent },

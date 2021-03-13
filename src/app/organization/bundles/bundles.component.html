@@ -1,1 +1,30 @@
-<p>bundles works!</p>
+<app-header></app-header>
+
+<organization-menu section="bundles"></organization-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Bundles</h1>
+            <button routerLink="create">
+                &#43; Create
+            </button>
+        </div>
+        <div class="content">
+            <div *ngIf="!bundles">
+                <spinner></spinner>
+            </div>
+            <div id="bundles" *ngIf="bundles">
+                <p *ngIf="bundles.length === 0">You haven't created any bundle</p>
+                <a
+                    *ngFor="let bundle of bundles"
+
+                    routerLink="/bundle/{{bundle.id}}"
+                    class="dark"
+                >
+                    <p>{{bundle.name}}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
