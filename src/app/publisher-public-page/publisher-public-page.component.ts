@@ -17,6 +17,8 @@ export class PublisherPublicPageComponent
 
   public bundles?: IBundle[];
 
+  public showBundleList = false;
+
   constructor(private api: ApiService, route: ActivatedRoute)
   {
     route.url.subscribe({
@@ -42,7 +44,7 @@ export class PublisherPublicPageComponent
     });
   }
 
-  public async onSubscribeClick()
+  public async onBundleSelected(bundle: IBundle)
   {
     const stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
 
@@ -51,7 +53,7 @@ export class PublisherPublicPageComponent
       return;
     }
 
-    const response = await this.api.createCheckoutSessionForBundle("TODO");
+    const response = await this.api.createCheckoutSessionForBundle(bundle.id);
 
     if (response.data)
     {

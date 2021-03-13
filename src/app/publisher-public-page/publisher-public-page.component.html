@@ -2,9 +2,20 @@
 
 <aside *ngIf="publisher">
     <h1>{{publisher.name}}</h1>
-    <button (click)="onSubscribeClick()">
-        Subscribe
-    </button>
+    <div *ngIf="bundles">
+        <button (click)="showBundleList = !showBundleList">
+            Subscribe
+        </button>
+        <div *ngIf="showBundleList">
+            <p *ngIf="bundles.length === 0">
+                There are no bundles for this publisher
+            </p>
+            <p *ngFor="let bundle of bundles" (click)="onBundleSelected(bundle)">
+                {{bundle.name}}
+                {{bundle.price}}
+            </p>
+        </div>
+    </div>
 </aside>
 
 <main>
