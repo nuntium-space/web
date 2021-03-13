@@ -28,7 +28,13 @@
 
 main
 {
-    h1
+    .title,
+    .content
+    {
+        word-break: break-word;
+    }
+
+    .title
     {
         margin: 0;
     }
