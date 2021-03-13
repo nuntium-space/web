@@ -134,9 +134,26 @@ export class ApiService
     return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
   }
 
+  public async retrieveBundle(id: string): Promise<IApiServiceResponse<IBundle>>
+  {
+    return this.send("GET", `bundles/${id}`);
+  }
+
   public async createCheckoutSessionForBundle(id: string): Promise<IApiServiceResponse<{ id: string }>>
   {
     return this.send("GET", `bundles/${id}/stripe/checkout`);
+  }
+
+  public async addPublisherToBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("POST", `bundles/${bundleId}/publishers/${publisherId}`);
+  }
+
+  public async updateBundle(id: string, data: {
+    name?: string,
+  }): Promise<IApiServiceResponse<IBundle>>
+  {
+    return this.send("PATCH", `bundles/${id}`, data);
   }
 
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
