@@ -161,6 +161,14 @@ export class ApiService
     return this.send("POST", "organizations", data);
   }
 
+  public async createBundle(organizationId: string, data: {
+    name: string,
+    price: number,
+  }): Promise<IApiServiceResponse<IBundle>>
+  {
+    return this.send("POST", `organizations/${organizationId}/bundles`, data);
+  }
+
   public async updateOrganization(id: string, data: {
     name?: string,
   }): Promise<IApiServiceResponse<IOrganization>>

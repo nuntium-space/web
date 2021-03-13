@@ -34,6 +34,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { AddCommentFormComponent } from './components/add-comment-form/add-comment-form.component';
 import { CommentComponent } from './components/comment-list/comment/comment.component';
 import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
+import { CreateBundleComponent } from './organization/bundles/create/create.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { OrganizationBundlesComponent } from './organization/bundles/bundles.com
     AddCommentFormComponent,
     CommentComponent,
     OrganizationBundlesComponent,
+    CreateBundleComponent,
   ],
   imports: [
     BrowserModule,
