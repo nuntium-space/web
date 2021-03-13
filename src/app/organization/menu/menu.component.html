@@ -16,6 +16,12 @@
             >
                 Publishers
             </a>
+            <a
+                routerLink="/organization/{{organization.id}}/bundles"
+                [class.selected]="section === 'bundles'"
+            >
+                Bundles
+            </a>
         </div>
     </section>
 </aside>

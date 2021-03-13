@@ -33,6 +33,7 @@ import { ArticleComponent } from './article/article.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AddCommentFormComponent } from './components/add-comment-form/add-comment-form.component';
 import { CommentComponent } from './components/comment-list/comment/comment.component';
+import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { CommentComponent } from './components/comment-list/comment/comment.comp
     CommentListComponent,
     AddCommentFormComponent,
     CommentComponent,
+    OrganizationBundlesComponent,
   ],
   imports: [
     BrowserModule,
