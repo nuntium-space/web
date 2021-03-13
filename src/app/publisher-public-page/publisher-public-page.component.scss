@@ -1,0 +1,35 @@
+:host
+{
+    display: grid;
+    grid-template-columns: 20em 60ch auto;
+    grid-template-areas:
+        "header header header"
+        "aside main empty";
+    gap: 1em;
+    height: 100%;
+}
+
+aside
+{
+    grid-area: aside;
+    height: min-content;
+    position: sticky;
+    top: 1em;
+
+    h1
+    {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 1000px)
+{
+    :host
+    {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "header"
+            "aside"
+            "main";
+    }
+}
