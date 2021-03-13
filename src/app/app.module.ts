@@ -35,6 +35,10 @@ import { AddCommentFormComponent } from './components/add-comment-form/add-comme
 import { CommentComponent } from './components/comment-list/comment/comment.component';
 import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
 import { CreateBundleComponent } from './organization/bundles/create/create.component';
+import { BundleMenuComponent } from './bundle/menu/menu.component';
+import { AddPublisherComponent } from './bundle/publishers/add/add.component';
+import { BundleDetailsComponent } from './bundle/details/details.component';
+import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +73,10 @@ import { CreateBundleComponent } from './organization/bundles/create/create.comp
     CommentComponent,
     OrganizationBundlesComponent,
     CreateBundleComponent,
+    BundleMenuComponent,
+    AddPublisherComponent,
+    BundleDetailsComponent,
+    BundlePublishersComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
+import { BundleDetailsComponent } from './bundle/details/details.component';
+import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
@@ -43,6 +45,21 @@ const routes: Routes = [
     ],
   },
   { path: "article/:id", component: ArticleComponent, canActivate: [ SignedInGuard ] },
+  {
+    path: "bundle/:id",
+    canActivate: [ SignedInGuard ],
+    children: [
+      { path: "details", component: BundleDetailsComponent },
+      {
+        path: "publishers",
+        children: [
+          { path: "add", component: AddPublisherComponent },
+          { path: "", component: PublishersComponent },
+        ],
+      },
+      { path: "", component: BundleDetailsComponent },
+    ],
+  },
   {
     path: "organization/:id",
     canActivate: [ SignedInGuard ],
