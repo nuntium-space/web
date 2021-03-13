@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
 import { AddPublisherComponent } from './bundle/publishers/add/add.component';
+import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
@@ -54,7 +55,7 @@ const routes: Routes = [
         path: "publishers",
         children: [
           { path: "add", component: AddPublisherComponent },
-          { path: "", component: PublishersComponent },
+          { path: "", component: BundlePublishersComponent },
         ],
       },
       { path: "", component: BundleDetailsComponent },

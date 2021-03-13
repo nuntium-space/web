@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService, IBundle } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'bundle-menu',
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class BundleMenuComponent
 {
-  constructor()
-  {}
+  @Input("section")
+  public section?: string;
+
+  public bundle?: IBundle;
+
+  constructor(api: ApiService, route: ActivatedRoute)
+  {
+    route.params.subscribe({
+      next: params =>
+      {
+        api.retrieveBundle(params.id).then(response =>
+        {
+          this.bundle = response.data;
+        });
+      },
+    });
+  }
 }

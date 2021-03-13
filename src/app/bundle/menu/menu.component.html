@@ -1,1 +1,21 @@
-<p>menu works!</p>
+<aside *ngIf="bundle">
+    <section>
+        <div class="title">
+            <h1>{{bundle.name}}</h1>
+        </div>
+        <div class="content">
+            <a
+                routerLink="/bundle/{{bundle.id}}/details"
+                [class.selected]="section === 'details'"
+            >
+                Details
+            </a>
+            <a
+                routerLink="/bundle/{{bundle.id}}/publishers"
+                [class.selected]="section === 'publishers'"
+            >
+                Publishers
+            </a>
+        </div>
+    </section>
+</aside>
