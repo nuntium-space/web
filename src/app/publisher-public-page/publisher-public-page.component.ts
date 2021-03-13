@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { loadStripe } from '@stripe/stripe-js';
 import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
-import { ApiService, IArticle, IPublisher } from '../services/api/api.service';
+import { ApiService, IArticle, IBundle, IPublisher } from '../services/api/api.service';
 
 @Component({
   selector: 'app-publisher-public-page',
@@ -14,6 +14,8 @@ export class PublisherPublicPageComponent
   public publisher?: IPublisher;
 
   public articles?: IArticle[];
+
+  public bundles?: IBundle[];
 
   constructor(private api: ApiService, route: ActivatedRoute)
   {
@@ -31,6 +33,11 @@ export class PublisherPublicPageComponent
         {
           this.articles = response.data;
         });
+
+        api.listBundlesForPublisher(publisherId).then(response =>
+        {
+          this.bundles = response.data;
+        });
       },
     });
   }
@@ -43,8 +50,6 @@ export class PublisherPublicPageComponent
     {
       return;
     }
-
-    // TODO: Load all bundles for this publisher
 
     const response = await this.api.createCheckoutSessionForBundle("TODO");
 

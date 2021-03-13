@@ -66,6 +66,13 @@ export interface ISession
   expires_at: string;
 }
 
+export interface IBundle
+{
+  id: string;
+  name: string;
+  price: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -174,6 +181,11 @@ export class ApiService
   public async listArticlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IArticle[]>>
   {
     return this.send("GET", `publishers/${publisherId}/articles?expand[]=author&expand[]=author.user`);
+  }
+
+  public async listBundlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IBundle[]>>
+  {
+    return this.send("GET", `publishers/${publisherId}/bundles`);
   }
 
   public async createPublisher(data: {
