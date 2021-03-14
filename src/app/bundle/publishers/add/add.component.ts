@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IPublisher } from 'src/app/services/api/api.service';
+import { ApiService, IBundle, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'add-publisher',
@@ -9,9 +9,11 @@ import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 })
 export class AddPublisherComponent
 {
+  public bundle?: IBundle;
+
   public publishers?: IPublisher[];
 
-  constructor(api: ApiService, route: ActivatedRoute)
+  constructor(private api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: params =>
@@ -26,6 +28,8 @@ export class AddPublisherComponent
               return;
             }
 
+            this.bundle = bundle;
+
             return api.listPublishersForOrganization(bundle.organization.id, { not_in_bundle: bundle.id });
           })
           .then(response =>
@@ -34,5 +38,17 @@ export class AddPublisherComponent
           });
       },
     });
+  }
+
+  public async addPublisher(publisher: IPublisher)
+  {
+    if (!this.bundle || !this.publishers)
+    {
+      return;
+    }
+
+    await this.api.addPublisherToBundle(this.bundle?.id, publisher.id);
+
+    this.publishers = this.publishers.filter(p => p.id !== publisher.id);
   }
 }

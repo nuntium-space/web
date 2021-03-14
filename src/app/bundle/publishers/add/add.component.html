@@ -13,14 +13,17 @@
             </div>
             <div id="publishers" *ngIf="publishers">
                 <p *ngIf="publishers.length === 0">You don't have any publisher to add</p>
-                <a
-                    *ngFor="let publisher of publishers"
-
-                    routerLink="/publisher/{{publisher.id}}"
-                    class="dark"
-                >
-                    <p>{{publisher.name}}</p>
-                </a>
+                <div *ngFor="let publisher of publishers">
+                    <a
+                        routerLink="/publisher/{{publisher.id}}"
+                        class="dark"
+                    >
+                        <p>{{publisher.name}}</p>
+                    </a>
+                    <button (click)="addPublisher(publisher)">
+                        &#43; Add
+                    </button>
+                </div>
             </div>
         </div>
     </section>
