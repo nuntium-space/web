@@ -17,6 +17,12 @@
                 Security
             </a>
             <a
+                routerLink="/settings/subscriptions"
+                [class.selected]="section === 'subscriptions'"
+            >
+                Subscriptions
+            </a>
+            <a
                 routerLink="/settings/organizations"
                 [class.selected]="section === 'organizations'"
             >

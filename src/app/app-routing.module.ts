@@ -22,6 +22,7 @@ import { CreateOrganizationComponent } from './settings/organizations/create/cre
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { UserPublishersComponent } from './settings/publishers/publishers.component';
 import { SecurityComponent } from './settings/security/security.component';
+import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -34,6 +35,7 @@ const routes: Routes = [
     children: [
       { path: "account", component: AccountComponent },
       { path: "security", component: SecurityComponent },
+      { path: "subscriptions", component: SubscriptionsComponent },
       {
         path: "organizations",
         children: [

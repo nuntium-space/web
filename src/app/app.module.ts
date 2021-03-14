@@ -39,6 +39,7 @@ import { BundleMenuComponent } from './bundle/menu/menu.component';
 import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
 import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
+import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { BundlePublishersComponent } from './bundle/publishers/publishers.compon
     AddPublisherComponent,
     BundleDetailsComponent,
     BundlePublishersComponent,
+    SubscriptionsComponent,
   ],
   imports: [
     BrowserModule,
