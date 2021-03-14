@@ -13,11 +13,11 @@
                     <label>
                         Name
                         <input
-                                formControlName="name"
-        
-                                type="text"
-                                name="name"
-                                required
+                            formControlName="name"
+
+                            type="text"
+                            name="name"
+                            required
                         >
                         <div *ngIf="detailsForm.get('name')?.errors" class="errors">
                             <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
