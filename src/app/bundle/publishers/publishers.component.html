@@ -3,5 +3,28 @@
 <bundle-menu section="publishers"></bundle-menu>
 
 <main>
+    <section>
+        <div class="title">
+            <h1>Publishers</h1>
+            <button routerLink="create">
+                &#43; Add
+            </button>
+        </div>
+        <div class="content">
+            <div *ngIf="!publishers">
+                <spinner></spinner>
+            </div>
+            <div id="publishers" *ngIf="publishers">
+                <p *ngIf="publishers.length === 0">You haven't added any publisher</p>
+                <a
+                    *ngFor="let publisher of publishers"
 
+                    routerLink="/publisher/{{publisher.id}}"
+                    class="dark"
+                >
+                    <p>{{publisher.name}}</p>
+                </a>
+            </div>
+        </div>
+    </section>
 </main>

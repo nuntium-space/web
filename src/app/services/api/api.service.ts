@@ -139,6 +139,11 @@ export class ApiService
     return this.send("GET", `bundles/${id}`);
   }
 
+  public async listPublishersForBundle(id: string): Promise<IApiServiceResponse<IPublisher[]>>
+  {
+    return this.send("GET", `bundles/${id}/publishers`);
+  }
+
   public async createCheckoutSessionForBundle(id: string): Promise<IApiServiceResponse<{ id: string }>>
   {
     return this.send("GET", `bundles/${id}/stripe/checkout`);

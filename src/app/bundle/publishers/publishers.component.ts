@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'bundle-publishers',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class BundlePublishersComponent
 {
-  constructor()
-  {}
+  public publishers?: IPublisher[];
+
+  constructor(api: ApiService, route: ActivatedRoute)
+  {
+    route.params.subscribe({
+      next: params =>
+      {
+        api.listPublishersForBundle(params.id).then(response =>
+        {
+          this.publishers = response.data;
+        });
+      },
+    });
+  }
 }
