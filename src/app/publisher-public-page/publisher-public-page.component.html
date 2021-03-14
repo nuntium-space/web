@@ -2,11 +2,11 @@
 
 <aside *ngIf="publisher">
     <h1>{{publisher.name}}</h1>
-    <div *ngIf="bundles">
-        <button (click)="showBundleList = !showBundleList">
-            Subscribe
-        </button>
-        <div *ngIf="showBundleList">
+    <section *ngIf="bundles">
+        <div class="title">
+            <h1>Subscribe</h1>
+        </div>
+        <div class="content">
             <p *ngIf="bundles.length === 0">
                 There are no bundles for this publisher
             </p>
@@ -26,7 +26,7 @@
                 </span>
             </div>
         </div>
-    </div>
+    </section>
 </aside>
 
 <main>

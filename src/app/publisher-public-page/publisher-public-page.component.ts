@@ -18,8 +18,6 @@ export class PublisherPublicPageComponent
 
   public bundles?: IBundle[];
 
-  public showBundleList = false;
-
   constructor(public auth: AuthService, private api: ApiService, route: ActivatedRoute)
   {
     route.url.subscribe({
