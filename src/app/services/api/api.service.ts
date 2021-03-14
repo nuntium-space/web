@@ -71,6 +71,7 @@ export interface IBundle
   id: string;
   name: string;
   price: number;
+  organization: IOrganization;
 }
 
 @Injectable({
@@ -171,9 +172,13 @@ export class ApiService
     return this.send("GET", `organizations/${organizationId}/bundles`);
   }
 
-  public async listPublishersForOrganization(organizationId: string): Promise<IApiServiceResponse<IPublisher[]>>
+  public async listPublishersForOrganization(organizationId: string, options?: { not_in_bundle?: string }): Promise<IApiServiceResponse<IPublisher[]>>
   {
-    return this.send("GET", `organizations/${organizationId}/publishers`);
+    return this.send("GET", `organizations/${organizationId}/publishers${
+      options?.not_in_bundle
+        ? `?not_in_bundle=${options.not_in_bundle}`
+        : ""
+    }`);
   }
 
   public async createOrganization(data: {
