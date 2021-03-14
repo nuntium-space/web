@@ -36,6 +36,7 @@ footer
 }
 
 a,
+.link,
 button,
 input,
 textarea
@@ -51,7 +52,15 @@ pre
     font-family: inherit;
 }
 
-a
+a,
+.link,
+button
+{
+    cursor: pointer;
+}
+
+a,
+.link
 {
     color: var(--link-color);
     text-decoration: none;
@@ -78,7 +87,6 @@ button
     font-size: 1.5em;
     color: var(--secondary-color);
     background-color: var(--primary-color);
-    cursor: pointer;
     padding: 0.5em 1em;
     width: max-content;
     border: none;
