@@ -8,7 +8,15 @@
             <h1>Subscriptions</h1>
         </div>
         <div class="content">
-            
+            <div *ngIf="!subscriptions">
+                <spinner></spinner>
+            </div>
+            <div id="subscriptions" *ngIf="subscriptions">
+                <p *ngIf="subscriptions.length === 0">You are not subscribed to any subscription</p>
+                <p *ngFor="let subscription of subscriptions">
+                    <span>{{subscription.bundle.id}}</span>
+                </p>
+            </div>
         </div>
     </section>
 </main>

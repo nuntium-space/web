@@ -74,6 +74,14 @@ export interface IBundle
   organization: IOrganization;
 }
 
+export interface ISubscription
+{
+  user: IUser;
+  bundle: IBundle;
+  current_period_end: string;
+  cancel_at_period_end: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -285,6 +293,11 @@ export class ApiService
   public async listPublishersForUser(userId: string): Promise<IApiServiceResponse<IPublisher[]>>
   {
     return this.send("GET", `users/${userId}/publishers`);
+  }
+
+  public async listSubscriptionsForUser(userId: string): Promise<IApiServiceResponse<ISubscription[]>>
+  {
+    return this.send("GET", `users/${userId}/subscriptions`);
   }
 
   public async createUser(data: {
