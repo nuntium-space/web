@@ -285,6 +285,11 @@ export class ApiService
     return this.send("GET", `users/${id}`);
   }
 
+  public async retrieveUserFeed(userId: string): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `users/${userId}/feed`);
+  }
+
   public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
   {
     return this.send("GET", `users/${userId}/organizations`);
