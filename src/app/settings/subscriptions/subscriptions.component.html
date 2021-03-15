@@ -11,11 +11,11 @@
             <div *ngIf="!subscriptions">
                 <spinner></spinner>
             </div>
-            <div id="subscriptions" *ngIf="subscriptions">
+            <div *ngIf="subscriptions" class="list">
                 <p *ngIf="subscriptions.length === 0">You are not subscribed to any bundle</p>
-                <p *ngFor="let subscription of subscriptions">
-                    <span>{{subscription.bundle.id}}</span>
-                </p>
+                <div *ngFor="let subscription of subscriptions">
+                    <p>{{subscription.bundle.id}}</p>
+                </div>
             </div>
         </div>
     </section>

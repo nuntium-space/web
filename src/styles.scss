@@ -315,3 +315,21 @@ pre
     white-space: pre-wrap;
     word-break: break-word;
 }
+
+div.list
+{
+    > *
+    {
+        display: flex;
+        align-items: center;
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+
+        & ~ *
+        {
+            margin-top: 1em;
+        }
+    }
+}
