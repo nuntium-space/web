@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FEED_PAGE_SIZE } from 'src/config';
 
 interface IApiServiceResponse<T>
 {
@@ -285,9 +286,9 @@ export class ApiService
     return this.send("GET", `users/${id}`);
   }
 
-  public async retrieveUserFeed(userId: string): Promise<IApiServiceResponse<IArticle[]>>
+  public async retrieveUserFeed(userId: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `users/${userId}/feed`);
+    return this.send("GET", `users/${userId}/feed?limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
   }
 
   public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>

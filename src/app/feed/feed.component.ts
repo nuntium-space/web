@@ -18,7 +18,7 @@ export class FeedComponent
       return;
     }
 
-    api.retrieveUserFeed(auth.user.id).then(response =>
+    api.retrieveUserFeed(auth.user.id, 0).then(response =>
     {
       this.articles = response.data;
     });
