@@ -12,7 +12,7 @@
                 <spinner></spinner>
             </div>
             <div id="subscriptions" *ngIf="subscriptions">
-                <p *ngIf="subscriptions.length === 0">You are not subscribed to any subscription</p>
+                <p *ngIf="subscriptions.length === 0">You are not subscribed to any bundle</p>
                 <p *ngFor="let subscription of subscriptions">
                     <span>{{subscription.bundle.id}}</span>
                 </p>
