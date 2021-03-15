@@ -288,7 +288,7 @@ export class ApiService
 
   public async retrieveUserFeed(userId: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `users/${userId}/feed?limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
+    return this.send("GET", `users/${userId}/feed?expand[]=author&expand[]=author.user&expand[]=author.publisher&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
   }
 
   public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
