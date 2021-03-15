@@ -1,1 +1,27 @@
+@import "~src/variables";
 @import "../settings";
+
+.bundle
+{
+    display: block;
+    padding: 1em;
+
+    .name,
+    .price
+    {
+        margin: 0;
+    }
+
+    .price
+    {
+        margin-top: 0.5rem;
+        font-size: xx-large;
+        font-weight: $bold;
+
+        .billing-period
+        {
+            font-size: large;
+            font-weight: $light;
+        }
+    }
+}
