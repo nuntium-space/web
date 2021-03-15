@@ -190,6 +190,11 @@ export class ApiService
     }`);
   }
 
+  public async connectAccount(organizationId: string): Promise<IApiServiceResponse<{ url: string }>>
+  {
+    return this.send("GET", `organizations/${organizationId}/stripe/connect`);
+  }
+
   public async createOrganization(data: {
     name: string,
   }): Promise<IApiServiceResponse<IOrganization>>
