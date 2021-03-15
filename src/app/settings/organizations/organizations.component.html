@@ -14,7 +14,7 @@
             <div *ngIf="!organizations">
                 <spinner></spinner>
             </div>
-            <div id="organizations" *ngIf="organizations">
+            <div *ngIf="organizations" class="list">
                 <p *ngIf="organizations.length === 0">You haven't created any organization</p>
                 <a
                     *ngFor="let organization of organizations"

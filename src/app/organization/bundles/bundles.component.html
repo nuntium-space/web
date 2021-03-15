@@ -14,7 +14,7 @@
             <div *ngIf="!bundles">
                 <spinner></spinner>
             </div>
-            <div id="bundles" *ngIf="bundles">
+            <div *ngIf="bundles" class="list">
                 <p *ngIf="bundles.length === 0">You haven't created any bundle</p>
                 <a
                     *ngFor="let bundle of bundles"

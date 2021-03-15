@@ -14,7 +14,7 @@
             <div *ngIf="!authors">
                 <spinner></spinner>
             </div>
-            <div id="authors" *ngIf="authors">
+            <div *ngIf="authors" class="list">
                 <p *ngIf="authors.length === 0">You haven't invited any author</p>
                 <a
                     *ngFor="let author of authors"
