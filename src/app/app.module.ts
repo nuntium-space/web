@@ -40,6 +40,7 @@ import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
 import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
+import { StripeConnectButtonComponent } from './components/stripe/connect-button/connect-button.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.c
     BundleDetailsComponent,
     BundlePublishersComponent,
     SubscriptionsComponent,
+    StripeConnectButtonComponent,
   ],
   imports: [
     BrowserModule,
