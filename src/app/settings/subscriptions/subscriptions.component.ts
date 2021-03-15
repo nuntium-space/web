@@ -11,7 +11,7 @@ export class SubscriptionsComponent
 {
   public subscriptions?: ISubscription[];
 
-  constructor(api: ApiService, auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService)
   {
     if (!auth.user)
     {
@@ -22,5 +22,20 @@ export class SubscriptionsComponent
     {
       this.subscriptions = response.data;
     });
+  }
+
+  public async manageSubscriptions()
+  {
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    const response = await this.api.createBillingPortalSession(this.auth.user.id);
+
+    if (response.data)
+    {
+      open(response.data.url, "_target");
+    }
   }
 }

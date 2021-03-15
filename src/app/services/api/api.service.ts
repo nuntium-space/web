@@ -295,6 +295,11 @@ export class ApiService
     return this.send("GET", `users/${userId}/publishers`);
   }
 
+  public async createBillingPortalSession(userId: string): Promise<IApiServiceResponse<{ url: string }>>
+  {
+    return this.send("GET", `users/${userId}/stripe/portal`);
+  }
+
   public async listSubscriptionsForUser(userId: string): Promise<IApiServiceResponse<ISubscription[]>>
   {
     return this.send("GET", `users/${userId}/subscriptions`);
