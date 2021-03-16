@@ -196,6 +196,11 @@ export class ApiService
     return this.send("GET", `organizations/${organizationId}/stripe/connect`);
   }
 
+  public async createSignInLinkForStripeDashboard(organizationId: string): Promise<IApiServiceResponse<{ url: string }>>
+  {
+    return this.send("GET", `organizations/${organizationId}/stripe/dashboard`);
+  }
+
   public async createOrganization(data: {
     name: string,
   }): Promise<IApiServiceResponse<IOrganization>>

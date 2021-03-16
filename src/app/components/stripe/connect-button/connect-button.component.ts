@@ -21,14 +21,12 @@ export class StripeConnectButtonComponent
       return;
     }
 
-    /*
     const response = await this.api.createSignInLinkForStripeDashboard(this.organization.id);
 
     if (response.data)
     {
       open(response.data.url, "_target");
     }
-    */
   }
 
   public async connect()
