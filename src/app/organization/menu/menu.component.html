@@ -1,4 +1,5 @@
 <aside *ngIf="organization">
+    <stripe-connect-button [organization]="organization"></stripe-connect-button>
     <section>
         <div class="title">
             <h1>{{organization.name}}</h1>
