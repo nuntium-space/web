@@ -36,10 +36,9 @@ export class CreatePublisherComponent
       return;
     }
 
-    const response = await this.api.createPublisher({
+    const response = await this.api.createPublisher(this.organizationId, {
       name: this.form.get("name")?.value ?? "",
       url: this.form.get("url")?.value ?? "",
-      organization: this.organizationId,
     });
 
     this.form.get("name")?.setErrors({

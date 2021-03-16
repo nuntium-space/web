@@ -210,6 +210,14 @@ export class ApiService
     return this.send("POST", `organizations/${organizationId}/bundles`, data);
   }
 
+  public async createPublisher(organizationId: string, data: {
+    name: string,
+    url: string,
+  }): Promise<IApiServiceResponse<IPublisher>>
+  {
+    return this.send("POST", `organizations/${organizationId}/publishers`, data);
+  }
+
   public async updateOrganization(id: string, data: {
     name?: string,
   }): Promise<IApiServiceResponse<IOrganization>>
@@ -240,15 +248,6 @@ export class ApiService
   public async listBundlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IBundle[]>>
   {
     return this.send("GET", `publishers/${publisherId}/bundles`);
-  }
-
-  public async createPublisher(data: {
-    name: string,
-    url: string,
-    organization: string,
-  }): Promise<IApiServiceResponse<IPublisher>>
-  {
-    return this.send("POST", "publishers", data);
   }
 
   public async inviteAuthor(publisherId: string, data: {
