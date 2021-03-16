@@ -14,7 +14,24 @@ export class StripeConnectButtonComponent
   constructor(private api: ApiService)
   {}
 
-  public async onClick()
+  public async goToDashboard()
+  {
+    if (!this.organization)
+    {
+      return;
+    }
+
+    /*
+    const response = await this.api.createSignInLinkForStripeDashboard(this.organization.id);
+
+    if (response.data)
+    {
+      open(response.data.url, "_target");
+    }
+    */
+  }
+
+  public async connect()
   {
     if (!this.organization)
     {
