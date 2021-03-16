@@ -1,5 +1,13 @@
 <app-header></app-header>
 
-<main>
+<main *ngIf="auth.user && articles">
+    <div *ngIf="articles.length === 0" class="empty-feed">
+        <img src="/assets/empty-feed.svg" alt="">
+        <h1>
+            <span>Congratulations,</span>
+            {{auth.user.first_name}}
+        </h1>
+        <p>You are just seconds away from starting to read news you love from sources you can trust</p>
+    </div>
     <article-list [articles]="articles"></article-list>
 </main>

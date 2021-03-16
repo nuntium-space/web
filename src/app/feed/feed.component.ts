@@ -11,7 +11,7 @@ export class FeedComponent
 {
   public articles?: IArticle[];
 
-  constructor(api: ApiService, auth: AuthService)
+  constructor(public auth: AuthService, api: ApiService)
   {
     if (!auth.user)
     {
