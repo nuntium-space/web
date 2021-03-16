@@ -1,4 +1,4 @@
-<button (click)="onClick()">
+<button *ngIf="!organization.stripe_account_enabled" (click)="onClick()">
     Connect with
     <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
 </button>

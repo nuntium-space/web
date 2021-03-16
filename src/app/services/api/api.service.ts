@@ -20,6 +20,7 @@ export interface IOrganization
   id: string;
   name: string;
   owner: IUser;
+  stripe_account_enabled: boolean;
 }
 
 export interface IPublisher
