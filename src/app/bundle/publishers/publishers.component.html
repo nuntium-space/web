@@ -15,7 +15,9 @@
                 <spinner></spinner>
             </div>
             <div *ngIf="publishers" class="list">
-                <p *ngIf="publishers.length === 0">You haven't added any publisher</p>
+                <div *ngIf="publishers.length === 0">
+                    <p>You haven't added any publisher</p>
+                </div>
                 <a
                     *ngFor="let publisher of publishers"
 

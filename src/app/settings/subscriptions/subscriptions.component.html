@@ -13,7 +13,9 @@
                 <spinner></spinner>
             </div>
             <div *ngIf="subscriptions" class="list">
-                <p *ngIf="subscriptions.length === 0">You are not subscribed to any bundle</p>
+                <div *ngIf="subscriptions.length === 0">
+                    <p>You are not subscribed to any bundle</p>
+                </div>
                 <div *ngFor="let subscription of subscriptions" class="bundle">
                     <p class="name">{{subscription.bundle.name}}</p>
                     <p class="price">
