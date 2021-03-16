@@ -1,10 +1,11 @@
-<button *ngIf="organization.stripe_account_enabled" (click)="goToDashboard()">
-    Go to
-    <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
-    Dashboard
-</button>
-
-<button *ngIf="!organization.stripe_account_enabled" (click)="connect()">
-    Connect with
-    <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
-</button>
+<div *ngIf="organization">
+    <button *ngIf="organization.stripe_account_enabled" (click)="goToDashboard()">
+        Go to
+        <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
+        Dashboard
+    </button>
+    <button *ngIf="!organization.stripe_account_enabled" (click)="connect()">
+        Connect with
+        <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
+    </button>
+</div>
