@@ -18,9 +18,9 @@ export class ExploreComponent
     route.queryParams.subscribe({
       next: async queryParams =>
       {
-        const { query } = queryParams;
+        const query = (queryParams.query as string | undefined) ?? "";
 
-        if ((query as string).trim().length === 0)
+        if (query.trim().length === 0)
         {
           return;
         }
