@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -9,8 +9,18 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent
 {
+  @Output()
+  public search = new EventEmitter<string>();
+
   public showNav = false;
 
   constructor(public auth: AuthService, public router: Router)
   {}
+
+  public onSearch(e: Event)
+  {
+    const input = e.target as HTMLInputElement;
+
+    this.search.emit(input.value);
+  }
 }
