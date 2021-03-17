@@ -216,6 +216,16 @@ input
     {
         color: var(--primary-color);
         background-color: var(--secondary-color);
+
+        &::placeholder
+        {
+            color: rgba($primary-color, 0.8);
+        }
+    }
+
+    &::placeholder
+    {
+        color: rgba($secondary-color, 0.8);
     }
 
     &:focus
@@ -278,7 +288,7 @@ section
             {
                 opacity: 1;
                 box-shadow: none;
-                background-color: rgba($primary-color, $alpha: 0.3);
+                background-color: rgba($primary-color, 0.3);
             }
 
             &:last-of-type
