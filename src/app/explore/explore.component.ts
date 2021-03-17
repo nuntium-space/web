@@ -19,6 +19,7 @@ export class ExploreComponent
       next: async queryParams =>
       {
         this.searchQuery = (queryParams.query as string | undefined) ?? "";
+        this.articles = [];
 
         if (this.searchQuery.trim().length === 0)
         {
