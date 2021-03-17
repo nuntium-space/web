@@ -172,37 +172,7 @@ label
 
     input
     {
-        display: block;
-        font-size: 1.5em;
-        color: var(--secondary-color);
-        background-color: var(--primary-color);
-        padding: 0.5em;
-        width: max-content;
-        border: none;
-        border-radius: 0.5em;
-        transition: 100ms;
         margin-top: 0.2em;
-
-        &.dark
-        {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-        }
-
-        &:focus
-        {
-            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
-
-            &.dark
-            {
-                box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
-            }
-        }
-
-        &:hover
-        {
-            opacity: 0.9;
-        }
     }
 
     .errors
@@ -227,6 +197,40 @@ label
     & ~ label
     {
         margin-top: 1em;
+    }
+}
+
+input
+{
+    display: block;
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 0.5em;
+    width: max-content;
+    border: none;
+    border-radius: 0.5em;
+    transition: 100ms;
+
+    &.dark
+    {
+        color: var(--primary-color);
+        background-color: var(--secondary-color);
+    }
+
+    &:focus
+    {
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+
+        &.dark
+        {
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+        }
+    }
+
+    &:hover
+    {
+        opacity: 0.9;
     }
 }
 
