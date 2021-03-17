@@ -25,13 +25,24 @@ export class HeaderComponent
     });
   }
 
-  public onSearch(e: Event)
+  public onSearchInput(e: Event)
   {
     const { value: query } = e.target as HTMLInputElement;
 
     this.router.navigate([ "." ], {
       relativeTo: this.route,
       queryParams: { query },
+    });
+  }
+
+  public onSearchSubmit(e: Event)
+  {
+    e.preventDefault();
+
+    this.router.navigate([ "explore" ], {
+      queryParams: {
+        query: this.searchQuery,
+      },
     });
   }
 }

@@ -1,16 +1,18 @@
 <header>
   <a routerLink="/">nuntium</a>
-  <input
-    *ngIf="auth.user"
+  <form (submit)="onSearchSubmit($event)">
+    <input
+      *ngIf="auth.user"
 
-    type="search"
-    class="dark"
-    placeholder="Search articles"
+      type="search"
+      class="dark"
+      placeholder="Search articles"
 
-    [value]="searchQuery"
+      [value]="searchQuery"
 
-    (input)="onSearch($event)"
-  >
+      (input)="onSearchInput($event)"
+    >
+  </form>
   <button class="dark" *ngIf="auth.user" (click)="showNav = !showNav">
     &#8942;
   </button>
