@@ -10,8 +10,8 @@
 header
 {
     display: grid;
-    grid-template-columns: auto max-content max-content;
-    grid-template-areas: "start center end";
+    grid-template-columns: auto max-content;
+    grid-template-areas: "start end";
     align-items: center;
     gap: 1em;
 
@@ -39,6 +39,12 @@ header
     {
         grid-area: end;
     }
+
+    &.search-visible
+    {
+        grid-template-columns: auto max-content max-content;
+        grid-template-areas: "start center end";
+    }
 }
 
 nav
@@ -54,7 +60,7 @@ nav
 
 @media (max-width: 650px)
 {
-    header
+    header.search-visible
     {
         grid-template-columns: auto min-content;
         grid-template-areas:

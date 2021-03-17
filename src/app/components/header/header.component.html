@@ -1,4 +1,6 @@
-<header>
+<header
+  [class.search-visible]="auth.user"
+>
   <a routerLink="/">nuntium</a>
   <form
     *ngIf="auth.user"
