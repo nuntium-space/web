@@ -278,7 +278,7 @@ export class ApiService
 
   public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
+    return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
   public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
