@@ -1,1 +1,8 @@
-<p>explore works!</p>
+<app-header (search)="onSearch($event)"></app-header>
+
+<main *ngIf="articles">
+    <div *ngIf="articles.length === 0">
+        TODO
+    </div>
+    <article-list [articles]="articles"></article-list>
+</main>

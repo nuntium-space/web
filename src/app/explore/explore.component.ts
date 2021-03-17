@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../services/api/api.service';
+import { ApiService, IArticle } from '../services/api/api.service';
 
 @Component({
   selector: 'app-explore',
@@ -8,6 +8,15 @@ import { ApiService } from '../services/api/api.service';
 })
 export class ExploreComponent
 {
+  public articles?: IArticle[];
+
   constructor(private api: ApiService)
   {}
+
+  public async onSearch(query: string)
+  {
+    const response = await this.api.search(query, 0);
+
+    this.articles = response.data;
+  }
 }

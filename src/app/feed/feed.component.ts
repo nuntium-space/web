@@ -11,7 +11,7 @@ export class FeedComponent
 {
   public articles?: IArticle[];
 
-  constructor(public api: ApiService, public auth: AuthService)
+  constructor(public auth: AuthService, api: ApiService)
   {
     if (!auth.user)
     {
@@ -22,12 +22,5 @@ export class FeedComponent
     {
       this.articles = response.data;
     });
-  }
-
-  public async onSearch(query: string)
-  {
-    const response = await this.api.search(query, 0);
-
-    this.articles = response.data;
   }
 }
