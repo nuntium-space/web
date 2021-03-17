@@ -18,14 +18,14 @@ export class ExploreComponent
     route.queryParams.subscribe({
       next: async queryParams =>
       {
-        const query = (queryParams.query as string | undefined) ?? "";
+        this.searchQuery = (queryParams.query as string | undefined) ?? "";
 
-        if (query.trim().length === 0)
+        if (this.searchQuery.trim().length === 0)
         {
           return;
         }
 
-        const response = await api.search(query, 0);
+        const response = await api.search(this.searchQuery, 0);
 
         this.articles = response.data;
       },

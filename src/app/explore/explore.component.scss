@@ -1,0 +1,21 @@
+@import "~src/variables";
+
+main
+{
+    margin-top: 1em;
+
+    .empty-feed
+    {
+        max-width: 100%;
+        width: 60ch;
+        margin: auto;
+
+        h1
+        {
+            span
+            {
+                font-weight: $normal;
+            }
+        }
+    }
+}
