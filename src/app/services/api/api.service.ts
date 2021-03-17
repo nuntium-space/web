@@ -276,6 +276,11 @@ export class ApiService
     return this.send("DELETE", `publishers/${id}`);
   }
 
+  public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
+  }
+
   public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("GET", `sessions/${id}`);
