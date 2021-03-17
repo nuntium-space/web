@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService, IArticle } from '../services/api/api.service';
 
 @Component({
@@ -12,13 +13,22 @@ export class ExploreComponent
 
   public articles?: IArticle[];
 
-  constructor(private api: ApiService)
-  {}
-
-  public async onSearch(query: string)
+  constructor(api: ApiService, route: ActivatedRoute)
   {
-    const response = await this.api.search(query, 0);
+    route.queryParams.subscribe({
+      next: async queryParams =>
+      {
+        const { query } = queryParams;
 
-    this.articles = response.data;
+        if ((query as string).trim().length === 0)
+        {
+          return;
+        }
+
+        const response = await api.search(query, 0);
+
+        this.articles = response.data;
+      },
+    });
   }
 }
