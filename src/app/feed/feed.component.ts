@@ -23,4 +23,9 @@ export class FeedComponent
       this.articles = response.data;
     });
   }
+
+  public async onSearch(query: string)
+  {
+    console.log(query);
+  }
 }
