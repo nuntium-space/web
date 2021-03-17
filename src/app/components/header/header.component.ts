@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -9,18 +9,27 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent
 {
-  @Output()
-  public search = new EventEmitter<string>();
+  public searchQuery: string = "";
 
   public showNav = false;
 
-  constructor(public auth: AuthService, public router: Router)
-  {}
+  constructor(public auth: AuthService, public router: Router, private route: ActivatedRoute)
+  {
+    route.queryParams.subscribe({
+      next: queryParams =>
+      {
+        this.searchQuery = queryParams.query;
+      },
+    });
+  }
 
   public onSearch(e: Event)
   {
-    const input = e.target as HTMLInputElement;
+    const { value: query } = e.target as HTMLInputElement;
 
-    this.search.emit(input.value);
+    this.router.navigate([ "." ], {
+      relativeTo: this.route,
+      queryParams: { query },
+    });
   }
 }

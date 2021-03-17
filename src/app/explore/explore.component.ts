@@ -8,6 +8,8 @@ import { ApiService, IArticle } from '../services/api/api.service';
 })
 export class ExploreComponent
 {
+  public searchQuery: string = "";
+
   public articles?: IArticle[];
 
   constructor(private api: ApiService)

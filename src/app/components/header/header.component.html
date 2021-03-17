@@ -1,11 +1,13 @@
 <header>
   <a routerLink="/">nuntium</a>
   <input
-    *ngIf="auth.user && router.url === '/'"
+    *ngIf="auth.user"
 
     type="search"
     class="dark"
     placeholder="Search articles"
+
+    [value]="searchQuery"
 
     (input)="onSearch($event)"
   >
