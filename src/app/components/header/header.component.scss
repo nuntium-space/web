@@ -11,15 +11,33 @@ header
 {
     display: grid;
     grid-template-columns: auto max-content max-content;
+    grid-template-areas: "start center end";
     align-items: center;
     gap: 1em;
 
     a
     {
+        grid-area: start;
         text-decoration: none;
         color: var(--secondary-color);
         font-size: 2em;
         width: max-content;
+    }
+
+    form
+    {
+        grid-area: center;
+        max-width: unset;
+
+        input
+        {
+            width: 100%;
+        }
+    }
+
+    button
+    {
+        grid-area: end;
     }
 }
 
@@ -32,4 +50,15 @@ nav
     background-color: var(--primary-color);
     margin-top: 1em;
     border-radius: 1em;
+}
+
+@media (max-width: 650px)
+{
+    header
+    {
+        grid-template-columns: auto min-content;
+        grid-template-areas:
+            "start end"
+            "center center";
+    }
 }
