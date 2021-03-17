@@ -1,9 +1,11 @@
 <header>
   <a routerLink="/">nuntium</a>
-  <form (submit)="onSearchSubmit($event)">
-    <input
-      *ngIf="auth.user"
+  <form
+    *ngIf="auth.user"
 
+    (submit)="onSearchSubmit($event)"
+  >
+    <input
       type="search"
       class="dark"
       placeholder="Search articles"
