@@ -10,8 +10,9 @@
 header
 {
     display: grid;
-    grid-template-columns: auto max-content;
+    grid-template-columns: auto max-content max-content;
     align-items: center;
+    gap: 1em;
 
     a
     {
