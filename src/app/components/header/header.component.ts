@@ -18,7 +18,7 @@ export class HeaderComponent
     route.queryParams.subscribe({
       next: queryParams =>
       {
-        this.searchQuery = queryParams.query;
+        this.searchQuery = queryParams.query ?? "";
       },
     });
   }
