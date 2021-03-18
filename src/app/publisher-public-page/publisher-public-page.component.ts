@@ -16,7 +16,7 @@ export class PublisherPublicPageComponent
 
   public bundles?: IBundle[];
 
-  constructor(public auth: AuthService, private api: ApiService, route: ActivatedRoute)
+  constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
   {
     route.url.subscribe({
       next: url =>
@@ -39,20 +39,5 @@ export class PublisherPublicPageComponent
         });
       },
     });
-  }
-
-  public async onBundleSelected(bundle: IBundle)
-  {
-    if (!this.auth.user)
-    {
-      return;
-    }
-
-    const response = await this.api.subscribeToBundle(this.auth.user.id, bundle.id);
-
-    if (response.data)
-    {
-      // TODO
-    }
   }
 }

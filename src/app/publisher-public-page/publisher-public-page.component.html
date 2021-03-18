@@ -10,13 +10,12 @@
             <p *ngIf="bundles.length === 0">
                 There are no bundles for this publisher
             </p>
-            <div
+            <a
                 *ngFor="let bundle of bundles"
 
-                class="bundle link dark"
-                tabindex="0"
+                routerLink="/bundle/{{bundle.id}}/subscribe"
 
-                (click)="onBundleSelected(bundle)"
+                class="bundle dark"
             >
                 <span class="name">{{bundle.name}}</span>
                 <span class="price">
@@ -24,7 +23,7 @@
                     <span class="currency">USD</span>
                     <span class="billing-period">/ month</span>
                 </span>
-            </div>
+            </a>
         </div>
     </section>
 </aside>
