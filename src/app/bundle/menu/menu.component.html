@@ -11,6 +11,12 @@
                 Details
             </a>
             <a
+                routerLink="/bundle/{{bundle.id}}/subscribe"
+                [class.selected]="section === 'subscribe'"
+            >
+                Subscribe
+            </a>
+            <a
                 routerLink="/bundle/{{bundle.id}}/publishers"
                 [class.selected]="section === 'publishers'"
             >
