@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { loadStripe } from '@stripe/stripe-js';
-import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
 import { ApiService, IArticle, IBundle, IPublisher } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
 
@@ -45,20 +43,16 @@ export class PublisherPublicPageComponent
 
   public async onBundleSelected(bundle: IBundle)
   {
-    const stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
-
-    if (!stripe)
+    if (!this.auth.user)
     {
       return;
     }
 
-    const response = await this.api.createCheckoutSessionForBundle(bundle.id);
+    const response = await this.api.subscribeToBundle(this.auth.user.id, bundle.id);
 
     if (response.data)
     {
-      stripe.redirectToCheckout({
-        sessionId: response.data.id,
-      });
+      // TODO
     }
   }
 }
