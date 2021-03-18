@@ -16,6 +16,8 @@ export class SubscribeComponent implements OnInit
 
   private cardElement?: StripeCardElement;
 
+  public cardElementError: string = "";
+
   public bundle?: IBundle;
 
   constructor(private api: ApiService, private auth: AuthService, private route: ActivatedRoute)
@@ -45,7 +47,7 @@ export class SubscribeComponent implements OnInit
 
       this.cardElement.on("change", e =>
       {
-        console.log(e);
+        this.cardElementError = e.error?.message ?? "";
       });
     }
   }

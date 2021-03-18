@@ -9,9 +9,14 @@
         </div>
         <div class="content">
             <div>
-                <form id="payment-form" (submit)="onSubmit($event)">
-                    <div id="card-element"></div>
-                    <div id="card-element-errors" role="alert"></div>
+                <form (submit)="onSubmit($event)">
+                    <label>
+                        <span class="label">Card</span>
+                        <div id="card-element"></div>
+                        <div class="errors" *ngIf="cardElementError">
+                            <p>{{cardElementError}}</p>
+                        </div>
+                    </label>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
