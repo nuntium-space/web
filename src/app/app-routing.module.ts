@@ -4,6 +4,7 @@ import { ArticleComponent } from './article/article.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
 import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
+import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { ExploreComponent } from './explore/explore.component';
 import { SignedInGuard } from './guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
@@ -54,6 +55,7 @@ const routes: Routes = [
     canActivate: [ SignedInGuard ],
     children: [
       { path: "details", component: BundleDetailsComponent },
+      { path: "subscribe", component: SubscribeComponent },
       {
         path: "publishers",
         children: [

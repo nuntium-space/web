@@ -42,6 +42,7 @@ import { BundlePublishersComponent } from './bundle/publishers/publishers.compon
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 import { StripeConnectButtonComponent } from './components/stripe/connect-button/connect-button.component';
 import { ExploreComponent } from './explore/explore.component';
+import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { ExploreComponent } from './explore/explore.component';
     SubscriptionsComponent,
     StripeConnectButtonComponent,
     ExploreComponent,
+    SubscribeComponent,
   ],
   imports: [
     BrowserModule,
