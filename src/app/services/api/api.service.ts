@@ -155,11 +155,6 @@ export class ApiService
     return this.send("GET", `bundles/${id}/publishers`);
   }
 
-  public async createCheckoutSessionForBundle(id: string): Promise<IApiServiceResponse<{ id: string }>>
-  {
-    return this.send("GET", `bundles/${id}/stripe/checkout`);
-  }
-
   public async addPublisherToBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `bundles/${bundleId}/publishers/${publisherId}`);
@@ -324,6 +319,11 @@ export class ApiService
   public async listSubscriptionsForUser(userId: string): Promise<IApiServiceResponse<ISubscription[]>>
   {
     return this.send("GET", `users/${userId}/subscriptions?expand[]=bundle`);
+  }
+
+  public async subscribeToBundle(userId: string, bundleId: string): Promise<IApiServiceResponse<ISubscription>>
+  {
+    return this.send("POST", `users/${userId}/subscriptions`, { bundle: bundleId });
   }
 
   public async createUser(data: {
