@@ -1,1 +1,15 @@
-@import "../bundle.scss";
+@import "~src/variables";
+
+@import "../bundle";
+
+.StripeElement
+{
+    padding: 1em;
+    background-color: var(--primary-color);
+    border-radius: 0.5em;
+
+    &--focus
+    {
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+    }
+}
