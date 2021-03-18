@@ -8,7 +8,13 @@
             <h1>Subscribe</h1>
         </div>
         <div class="content">
-            
+            <div>
+                <form id="payment-form" (submit)="onSubmit($event)">
+                    <div id="card-element"></div>
+                    <div id="card-element-errors" role="alert"></div>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
     </section>
 </main>
