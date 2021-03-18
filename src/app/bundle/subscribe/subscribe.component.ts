@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
@@ -12,6 +12,10 @@ import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
 })
 export class SubscribeComponent implements OnInit
 {
+  private stripe: Stripe | null = null;
+
+  private cardElement?: StripeCardElement;
+
   public bundle?: IBundle;
 
   constructor(private api: ApiService, private auth: AuthService, private route: ActivatedRoute)
@@ -29,16 +33,17 @@ export class SubscribeComponent implements OnInit
       },
     });
 
-    const stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
+    this.stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
 
-    if (stripe)
+    if (this.stripe)
     {
-      const elements = stripe.elements();
+      const elements = this.stripe.elements();
 
-      const card = elements.create("card");
-      card.mount("#card-element");
+      this.cardElement = elements.create("card");
 
-      card.on("change", e =>
+      this.cardElement.mount("#card-element");
+
+      this.cardElement.on("change", e =>
       {
         console.log(e);
       });
@@ -48,5 +53,30 @@ export class SubscribeComponent implements OnInit
   public async onSubmit(e: Event)
   {
     e.preventDefault();
+
+    if (!this.stripe || !this.cardElement || !this.auth.user || !this.bundle)
+    {
+      return;
+    }
+
+    const result = await this.stripe
+      .createPaymentMethod({
+        type: "card",
+        card: this.cardElement,
+      });
+
+    if (result.error)
+    {
+      console.log(result.error);
+
+      return;
+    }
+
+    const response = await this.api.subscribeToBundle(this.auth.user.id, this.bundle.id);
+
+    if (response.data)
+    {
+      console.log(response.data);
+    }
   }
 }
