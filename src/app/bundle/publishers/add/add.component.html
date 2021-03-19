@@ -11,11 +11,11 @@
             <div *ngIf="!publishers">
                 <spinner></spinner>
             </div>
-            <div id="publishers" *ngIf="publishers">
+            <div *ngIf="publishers" class="list">
                 <div *ngIf="publishers.length === 0">
                     <p>You don't have any publisher to add</p>
                 </div>
-                <div *ngFor="let publisher of publishers">
+                <div *ngFor="let publisher of publishers" class="list-item-with-action">
                     <a
                         routerLink="/publisher/{{publisher.id}}"
                         class="dark"

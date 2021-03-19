@@ -356,10 +356,35 @@ div.list
     {
         display: flex;
         align-items: center;
-        color: var(--secondary-color);
-        background-color: var(--primary-color);
-        padding: 0.5em 1em;
         border-radius: 0.5em;
+
+        &.list-item-with-action
+        {
+            display: grid;
+            grid-template-columns: auto max-content;
+            gap: 1em;
+
+            > :first-child
+            {
+                display: flex;
+                align-items: center;
+                color: var(--secondary-color);
+                background-color: var(--primary-color);
+                padding: 0.5em 1em;
+            }
+
+            button
+            {
+                height: 100%;
+            }
+        }
+
+        &:not(.list-item-with-action)
+        {
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            padding: 0.5em 1em;
+        }
 
         & ~ *
         {

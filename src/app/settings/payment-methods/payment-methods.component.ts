@@ -11,7 +11,7 @@ export class PaymentMethodsComponent
 {
   public paymentMethods?: IPaymentMethod[];
 
-  constructor(api: ApiService, auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService)
   {
     if (!auth.user)
     {
@@ -22,5 +22,19 @@ export class PaymentMethodsComponent
     {
       this.paymentMethods = response.data;
     });
+  }
+
+  public async removePaymentMethod(paymentMethod: IPaymentMethod)
+  {
+    if (!this.paymentMethods || !this.auth.user)
+    {
+      return;
+    }
+
+    /*
+    await this.api.removePaymentMethodFromUser(this.auth.user.id, paymentMethod.id);
+
+    this.paymentMethods = this.paymentMethods.filter(p => p.id !== paymentMethod.id);
+    */
   }
 }

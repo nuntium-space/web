@@ -47,7 +47,7 @@ export class AddPublisherComponent
       return;
     }
 
-    await this.api.addPublisherToBundle(this.bundle?.id, publisher.id);
+    await this.api.addPublisherToBundle(this.bundle.id, publisher.id);
 
     this.publishers = this.publishers.filter(p => p.id !== publisher.id);
   }

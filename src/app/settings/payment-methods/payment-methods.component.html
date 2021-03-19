@@ -18,21 +18,28 @@
                 <div *ngIf="paymentMethods.length === 0">
                     <p>You haven't added any payment method</p>
                 </div>
-                <div *ngFor="let paymentMethod of paymentMethods">
-                    <div [ngSwitch]="paymentMethod.type">
-                        <div *ngSwitchCase="'card'">
-                            <p>{{paymentMethod.data.brand}}</p>
-                            <p>
-                                {{paymentMethod.data.exp_month.toString().padStart(2, "0")}}
-                                /
-                                {{paymentMethod.data.exp_year}}
-                            </p>
-                            <p>
-                                &bull;&bull;&bull;&bull;
-                                {{paymentMethod.data.last4}}
-                            </p>
-                        </div>
+                <div
+                    *ngFor="let paymentMethod of paymentMethods"
+
+                    [ngSwitch]="paymentMethod.type"
+
+                    class="list-item-with-action"
+                >
+                    <div *ngSwitchCase="'card'">
+                        <p>{{paymentMethod.data.brand}}</p>
+                        <p>
+                            {{paymentMethod.data.exp_month.toString().padStart(2, "0")}}
+                            /
+                            {{paymentMethod.data.exp_year}}
+                        </p>
+                        <p>
+                            &bull;&bull;&bull;&bull;
+                            {{paymentMethod.data.last4}}
+                        </p>
                     </div>
+                    <button (click)="removePaymentMethod(paymentMethod)">
+                        &minus; Remove
+                    </button>
                 </div>
             </div>
         </div>
