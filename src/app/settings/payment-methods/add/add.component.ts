@@ -66,7 +66,7 @@ export class AddPaymentMethodComponent implements OnInit
       id: result.paymentMethod.id,
     });
 
-    if (response.data)
+    if (!response.errors)
     {
       this.router.navigate([ ".." ], {
         relativeTo: this.route,

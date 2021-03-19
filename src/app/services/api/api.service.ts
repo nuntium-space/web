@@ -336,7 +336,7 @@ export class ApiService
 
   public async addPaymentMethodToUser(userId: string, data: {
     id: string,
-  }): Promise<IApiServiceResponse<IPaymentMethod>>
+  }): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `users/${userId}/payment-methods`, data);
   }
