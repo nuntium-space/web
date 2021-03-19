@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -17,7 +18,7 @@ export class AddPaymentMethodComponent implements OnInit
 
   public cardElementError: string = "";
 
-  constructor(private api: ApiService, private auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async ngOnInit(): Promise<void>
@@ -61,6 +62,15 @@ export class AddPaymentMethodComponent implements OnInit
       return;
     }
 
-    // TODO
+    const response = await this.api.addPaymentMethodToUser(this.auth.user.id, {
+      id: result.paymentMethod.id,
+    });
+
+    if (response.data)
+    {
+      this.router.navigate([ ".." ], {
+        relativeTo: this.route,
+      });
+    }
   }
 }

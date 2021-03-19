@@ -334,6 +334,13 @@ export class ApiService
     return this.send("GET", `users/${userId}/subscriptions?expand[]=bundle`);
   }
 
+  public async addPaymentMethodToUser(userId: string, data: {
+    id: string,
+  }): Promise<IApiServiceResponse<IPaymentMethod>>
+  {
+    return this.send("POST", `users/${userId}/payment-methods`, data);
+  }
+
   public async subscribeToBundle(userId: string, bundleId: string): Promise<IApiServiceResponse<ISubscription>>
   {
     return this.send("POST", `users/${userId}/subscriptions`, { bundle: bundleId });
