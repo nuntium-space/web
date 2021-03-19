@@ -347,7 +347,7 @@ export class ApiService
     return this.send("POST", `users/${userId}/payment-methods`, data);
   }
 
-  public async subscribeToBundle(userId: string, bundleId: string): Promise<IApiServiceResponse<ISubscription>>
+  public async subscribeToBundle(userId: string, bundleId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `users/${userId}/subscriptions`, { bundle: bundleId });
   }

@@ -37,9 +37,9 @@ export class SubscribeComponent implements OnInit
 
     const response = await this.api.subscribeToBundle(this.auth.user.id, this.bundle.id);
 
-    if (response.data)
+    if (!response.errors)
     {
-      console.log(response.data);
+      console.log("TODO");
     }
   }
 }
