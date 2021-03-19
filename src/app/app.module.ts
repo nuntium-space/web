@@ -44,6 +44,7 @@ import { StripeConnectButtonComponent } from './components/stripe/connect-button
 import { ExploreComponent } from './explore/explore.component';
 import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
+import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { PaymentMethodsComponent } from './settings/payment-methods/payment-meth
     ExploreComponent,
     SubscribeComponent,
     PaymentMethodsComponent,
+    AddPaymentMethodComponent,
   ],
   imports: [
     BrowserModule,
