@@ -239,6 +239,11 @@ export class ApiService
     return this.send("DELETE", `organizations/${id}`);
   }
 
+  public async deletePaymentMethod(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `payment-methods/${id}`);
+  }
+
   public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>
   {
     return this.send("GET", `publishers/${id}`);
