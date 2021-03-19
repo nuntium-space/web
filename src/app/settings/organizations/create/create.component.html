@@ -8,28 +8,26 @@
             <h1>Create new organization</h1>
         </div>
         <div class="content">
-            <div>
-                <form [formGroup]="form" (submit)="onSubmit($event)">
-                    <label>
-                        Name
-                        <input
-                            formControlName="name"
-        
-                            type="text"
-                            name="name"
-                            required
-                        >
-                        <div *ngIf="form.get('name')?.errors" class="errors">
-                            <p *ngFor="let error of form.get('name')?.errors?.errors">
-                                {{error}}
-                            </p>
-                        </div>
-                    </label>
-                    <button type="submit">
-                        Create
-                    </button>
-                </form>
-            </div>
+            <form [formGroup]="form" (submit)="onSubmit($event)">
+                <label>
+                    Name
+                    <input
+                        formControlName="name"
+
+                        type="text"
+                        name="name"
+                        required
+                    >
+                    <div *ngIf="form.get('name')?.errors" class="errors">
+                        <p *ngFor="let error of form.get('name')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    Create
+                </button>
+            </form>
         </div>
     </section>
 </main>

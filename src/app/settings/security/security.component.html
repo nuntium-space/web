@@ -8,55 +8,53 @@
             <h1>Change password</h1>
         </div>
         <div class="content">
-            <div>
-                <form [formGroup]="changePasswordForm" (submit)="onChangePasswordFormSubmit($event)">
-                    <!-- THIS IS ONLY NEEDED FOR ACCESSIBILITY -->
+            <form [formGroup]="changePasswordForm" (submit)="onChangePasswordFormSubmit($event)">
+                <!-- THIS IS ONLY NEEDED FOR ACCESSIBILITY -->
+                <input
+                    formControlName="email"
+
+                    type="text"
+                    name="email"
+                    autocomplete="email"
+                    style="display: none;"
+                >
+                <!-- ------------------------------------- -->
+                <label>
+                    Old password
                     <input
-                        formControlName="email"
-        
-                        type="text"
-                        name="email"
-                        autocomplete="email"
-                        style="display: none;"
+                        formControlName="old_password"
+
+                        type="password"
+                        name="old-password"
+                        autocomplete="current-password"
+                        required
                     >
-                    <!-- ------------------------------------- -->
-                    <label>
-                        Old password
-                        <input
-                            formControlName="old_password"
-        
-                            type="password"
-                            name="old-password"
-                            autocomplete="current-password"
-                            required
-                        >
-                        <div *ngIf="changePasswordForm.get('old_password')?.errors" class="errors">
-                            <p *ngFor="let error of changePasswordForm.get('old_password')?.errors?.errors">
-                                {{error}}
-                            </p>
-                        </div>
-                    </label>
-                    <label>
-                        New password
-                        <input
-                            formControlName="new_password"
-        
-                            type="password"
-                            name="new-password"
-                            autocomplete="new-password"
-                            required
-                        >
-                        <div *ngIf="changePasswordForm.get('new_password')?.errors" class="errors">
-                            <p *ngFor="let error of changePasswordForm.get('new_password')?.errors?.errors">
-                                {{error}}
-                            </p>
-                        </div>
-                    </label>
-                    <button type="submit">
-                        Change password
-                    </button>
-                </form>
-            </div>
+                    <div *ngIf="changePasswordForm.get('old_password')?.errors" class="errors">
+                        <p *ngFor="let error of changePasswordForm.get('old_password')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+                <label>
+                    New password
+                    <input
+                        formControlName="new_password"
+
+                        type="password"
+                        name="new-password"
+                        autocomplete="new-password"
+                        required
+                    >
+                    <div *ngIf="changePasswordForm.get('new_password')?.errors" class="errors">
+                        <p *ngFor="let error of changePasswordForm.get('new_password')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    Change password
+                </button>
+            </form>
         </div>
     </section>
 </main>
