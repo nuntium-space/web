@@ -102,7 +102,7 @@ export class ApiService
   constructor()
   {}
 
-  private async send(method: "DELETE" | "GET" | "PATCH" | "POST", url: string, body?: any): Promise<any>
+  private async send(method: "DELETE" | "GET" | "PATCH" | "POST", url: string, body?: any): Promise<IApiServiceResponse<any>>
   {
     const response = await fetch(`${this.ENDPOINT}/${url}`, {
       method,
@@ -116,7 +116,7 @@ export class ApiService
     // No Content
     if (response.status === 204)
     {
-      return;
+      return {};
     }
 
     const result: IApiServiceResponse<any> = {};
