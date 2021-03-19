@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -12,7 +12,7 @@ export class SubscribeComponent implements OnInit
 {
   public bundle?: IBundle;
 
-  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute)
+  constructor(public auth: AuthService, private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async ngOnInit(): Promise<void>
@@ -39,7 +39,7 @@ export class SubscribeComponent implements OnInit
 
     if (!response.errors)
     {
-      console.log("TODO");
+      this.router.navigateByUrl("/");
     }
   }
 }
