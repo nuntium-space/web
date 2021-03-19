@@ -17,16 +17,27 @@
                 Security
             </a>
             <a
+                routerLink="/settings/organizations"
+                [class.selected]="section === 'organizations'"
+            >
+                Organizations
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
                 routerLink="/settings/subscriptions"
                 [class.selected]="section === 'subscriptions'"
             >
                 Subscriptions
             </a>
             <a
-                routerLink="/settings/organizations"
-                [class.selected]="section === 'organizations'"
+                routerLink="/settings/payment-methods"
+                [class.selected]="section === 'payment-methods'"
             >
-                Organizations
+                Payment Methods
             </a>
         </div>
     </section>

@@ -260,18 +260,25 @@ section
     border: 1px solid var(--primary-color);
     border-radius: 0.5rem;
 
-    .title
+    .title:not(:empty)
     {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 1em;
         background-color: rgba($primary-color, 0.1);
+        border-bottom: 1px solid var(--primary-color);
 
         h1
         {
             margin: 0;
         }
+    }
+
+    .title:empty + .content > :first-child
+    {
+        border-top-left-radius: 0.5em;
+        border-top-right-radius: 0.5em;
     }
 
     .content
@@ -280,7 +287,11 @@ section
         {
             margin: 0;
             padding: 1em;
-            border-top: 1px solid var(--primary-color);
+
+            &:not(:first-child)
+            {
+                border-top: 1px solid var(--primary-color);
+            }
         }
 
         > a
