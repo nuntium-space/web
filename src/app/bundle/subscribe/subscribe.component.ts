@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
 
 @Component({
   selector: 'app-subscribe',
@@ -12,15 +10,9 @@ import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
 })
 export class SubscribeComponent implements OnInit
 {
-  private stripe: Stripe | null = null;
-
-  private cardElement?: StripeCardElement;
-
-  public cardElementError: string = "";
-
   public bundle?: IBundle;
 
-  constructor(private api: ApiService, private auth: AuthService, private route: ActivatedRoute)
+  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute)
   {}
 
   public async ngOnInit(): Promise<void>
@@ -34,43 +26,12 @@ export class SubscribeComponent implements OnInit
         });
       },
     });
-
-    this.stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
-
-    if (this.stripe)
-    {
-      const elements = this.stripe.elements();
-
-      this.cardElement = elements.create("card");
-
-      this.cardElement.mount("#card-element");
-
-      this.cardElement.on("change", e =>
-      {
-        this.cardElementError = e.error?.message ?? "";
-      });
-    }
   }
 
-  public async onSubmit(e: Event)
+  public async subscribe()
   {
-    e.preventDefault();
-
-    if (!this.stripe || !this.cardElement || !this.auth.user || !this.bundle)
+    if (!this.auth.user || !this.bundle)
     {
-      return;
-    }
-
-    const result = await this.stripe
-      .createPaymentMethod({
-        type: "card",
-        card: this.cardElement,
-      });
-
-    if (result.error)
-    {
-      console.log(result.error);
-
       return;
     }
 

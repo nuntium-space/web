@@ -13,6 +13,7 @@ export interface IUser
   first_name: string;
   last_name: string;
   email: string;
+  has_payment_methods: boolean;
 }
 
 export interface IOrganization

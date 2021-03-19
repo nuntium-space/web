@@ -1,15 +1,6 @@
-@import "~src/variables";
-
 @import "../bundle";
 
-.StripeElement
+.add-pm-msg
 {
-    padding: 1em;
-    background-color: var(--primary-color);
-    border-radius: 0.5em;
-
-    &--focus
-    {
-        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
-    }
+    margin-top: 0;
 }
