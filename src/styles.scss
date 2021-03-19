@@ -64,7 +64,7 @@ a,
 {
     color: var(--link-color);
     text-decoration: none;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
 
     &:focus
     {
@@ -90,7 +90,7 @@ button
     padding: 0.5em 1em;
     width: max-content;
     border: none;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     transition: 100ms;
 
     &.small
@@ -186,7 +186,7 @@ label
         color: white;
         background-color: red;
         padding: 0.5em;
-        border-radius: 0.5em;
+        border-radius: 0.5rem;
         margin-top: 0.5em;
 
         p
@@ -215,7 +215,7 @@ input
     padding: 0.5em;
     width: max-content;
     border: none;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     transition: 100ms;
 
     &.dark
@@ -331,7 +331,7 @@ textarea
 {
     padding: 0.5em;
     border: 1px solid var(--primary-color);
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
 
     &:focus
     {
@@ -356,7 +356,7 @@ div.list
     {
         display: flex;
         align-items: center;
-        border-radius: 0.5em;
+        border-radius: 0.5rem;
 
         &.list-item-with-action
         {
