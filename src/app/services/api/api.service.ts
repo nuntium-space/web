@@ -84,6 +84,14 @@ export interface ISubscription
   cancel_at_period_end: boolean;
 }
 
+export interface IPaymentMethod
+{
+  id: string;
+  type: string;
+  data: any;
+  user: IUser;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -304,6 +312,11 @@ export class ApiService
   public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
   {
     return this.send("GET", `users/${userId}/organizations`);
+  }
+
+  public async listPaymentMethodsForUser(userId: string): Promise<IApiServiceResponse<IPaymentMethod[]>>
+  {
+    return this.send("GET", `users/${userId}/payment-methods`);
   }
 
   public async listPublishersForUser(userId: string): Promise<IApiServiceResponse<IPublisher[]>>
