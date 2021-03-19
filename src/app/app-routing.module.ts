@@ -22,6 +22,7 @@ import { PublisherDetailsComponent } from './publisher/details/details.component
 import { AccountComponent } from './settings/account/account.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
+import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
 import { UserPublishersComponent } from './settings/publishers/publishers.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
@@ -37,7 +38,6 @@ const routes: Routes = [
     children: [
       { path: "account", component: AccountComponent },
       { path: "security", component: SecurityComponent },
-      { path: "subscriptions", component: SubscriptionsComponent },
       {
         path: "organizations",
         children: [
@@ -45,6 +45,8 @@ const routes: Routes = [
           { path: "", component: OrganizationsComponent },
         ],
       },
+      { path: "subscriptions", component: SubscriptionsComponent },
+      { path: "payment-methods", component: PaymentMethodsComponent },
       { path: "publishers", component: UserPublishersComponent },
       { path: "", component: AccountComponent },
     ],
