@@ -1,23 +1,9 @@
 @import "../settings";
 
-#payment-methods
+.list-item-with-action
 {
-    > div
+    > :first-child
     {
-        display: grid;
-        grid-template-columns: auto max-content;
-        gap: 1em;
-
-        .payment-method
-        {
-            color: var(--secondary-color);
-            background-color: var(--primary-color);
-            padding: 0.5em 1em;
-
-            & ~ .payment-method
-            {
-                margin-top: 1em;
-            }
-        }
+        border-radius: 0.5rem;
     }
 }
