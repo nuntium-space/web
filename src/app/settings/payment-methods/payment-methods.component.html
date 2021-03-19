@@ -1,1 +1,24 @@
-<p>payment-methods works!</p>
+<app-header></app-header>
+
+<settings-menu section="payment-methods"></settings-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Payment Methods</h1>
+        </div>
+        <div class="content">
+            <div *ngIf="!paymentMethods">
+                <spinner></spinner>
+            </div>
+            <div *ngIf="paymentMethods" class="list">
+                <div *ngIf="paymentMethods.length === 0">
+                    <p>You haven't created any organization</p>
+                </div>
+                <div *ngFor="let paymentMethod of paymentMethods">
+                    <p>{{paymentMethod.type}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
