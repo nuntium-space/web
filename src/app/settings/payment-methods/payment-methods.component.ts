@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService, IPaymentMethod } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class PaymentMethodsComponent
 {
-  public paymentMethods?: any[];
+  public paymentMethods?: IPaymentMethod[];
 
   constructor(api: ApiService, auth: AuthService)
   {
@@ -18,11 +18,9 @@ export class PaymentMethodsComponent
       return;
     }
 
-    /*
-    api.listOrganizationsForUser(auth.user.id).then(response =>
+    api.listPaymentMethodsForUser(auth.user.id).then(response =>
     {
-      this.organizations = response.data;
+      this.paymentMethods = response.data;
     });
-    */
   }
 }

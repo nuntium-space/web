@@ -13,7 +13,7 @@
             </div>
             <div *ngIf="paymentMethods" class="list">
                 <div *ngIf="paymentMethods.length === 0">
-                    <p>You haven't created any organization</p>
+                    <p>You haven't added any payment method</p>
                 </div>
                 <div *ngFor="let paymentMethod of paymentMethods">
                     <p>{{paymentMethod.type}}</p>
