@@ -161,6 +161,13 @@ export class ApiService
     return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
   }
 
+  public async createArticle(authorId: string, data: {
+    content: string,
+  }): Promise<IApiServiceResponse<IArticle>>
+  {
+    return this.send("POST", `authors/${authorId}/articles`, data);
+  }
+
   public async retrieveBundle(id: string): Promise<IApiServiceResponse<IBundle>>
   {
     return this.send("GET", `bundles/${id}`);
@@ -347,6 +354,16 @@ export class ApiService
     return this.send("GET", `users/${userId}/subscriptions?expand[]=bundle`);
   }
 
+  public async createUser(data: {
+    first_name: string,
+    last_name: string,
+    email: string,
+    password: string,
+  }): Promise<IApiServiceResponse<IUser>>
+  {
+    return this.send("POST", "users", data);
+  }
+
   public async addPaymentMethodToUser(userId: string, data: {
     id: string,
   }): Promise<IApiServiceResponse<void>>
@@ -357,16 +374,6 @@ export class ApiService
   public async subscribeToBundle(userId: string, bundleId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `users/${userId}/subscriptions`, { bundle: bundleId });
-  }
-
-  public async createUser(data: {
-    first_name: string,
-    last_name: string,
-    email: string,
-    password: string,
-  }): Promise<IApiServiceResponse<IUser>>
-  {
-    return this.send("POST", "users", data);
   }
 
   public async updateUser(id: string, data: {
