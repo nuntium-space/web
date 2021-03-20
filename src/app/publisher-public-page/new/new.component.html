@@ -1,1 +1,21 @@
-<p>new works!</p>
+<app-header></app-header>
+
+<main>
+    <form [formGroup]="form" (submit)="onSubmit($event)">
+        <div class="title">
+            <h1>Write new article</h1>
+        </div>
+        <label>
+            Content
+            <textarea formControlName="content" rows="30"></textarea>
+            <div *ngIf="form.get('content')?.errors" class="errors">
+                <p *ngFor="let error of form.get('content')?.errors?.errors">
+                    {{error}}
+                </p>
+            </div>
+        </label>
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+</main>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'write-new-article',
@@ -7,6 +10,26 @@ import { Component } from '@angular/core';
 })
 export class WriteNewArticleComponent
 {
-  constructor()
+  public form = new FormGroup({
+    content: new FormControl(),
+  });
+
+  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
+
+  public async onSubmit(e: Event)
+  {
+    e.preventDefault();
+
+    const response = await this.api.createArticle("TODO", {
+      content: this.form.get("content")?.value ?? "",
+    });
+
+    if (response.data)
+    {
+      this.router.navigate([ ".." ], {
+        relativeTo: this.route,
+      });
+    }
+  }
 }
