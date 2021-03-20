@@ -2,6 +2,18 @@
 
 <aside *ngIf="publisher">
     <h1>{{publisher.name}}</h1>
+    <section *ngIf="publisher.__metadata?.is_author">
+        <div class="title">
+            <h1>Actions</h1>
+        </div>
+        <div class="content">
+            <div>
+                <button class="fill">
+                    &#43; Write new article
+                </button>
+            </div>
+        </div>
+    </section>
     <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed)">
         <div class="title">
             <h1>Subscribe</h1>
