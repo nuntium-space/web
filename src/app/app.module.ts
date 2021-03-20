@@ -45,6 +45,7 @@ import { ExploreComponent } from './explore/explore.component';
 import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
 import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
+import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.co
     SubscribeComponent,
     PaymentMethodsComponent,
     AddPaymentMethodComponent,
+    SubscriptionListComponent,
   ],
   imports: [
     BrowserModule,

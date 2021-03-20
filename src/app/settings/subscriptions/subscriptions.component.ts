@@ -9,7 +9,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class SubscriptionsComponent
 {
-  public subscriptions?: ISubscription[];
+  public subscriptions: {
+    active: ISubscription[],
+    inactive: ISubscription[],
+  } = {
+    active: [],
+    inactive: [],
+  };
 
   constructor(private api: ApiService, private auth: AuthService)
   {
@@ -20,7 +26,11 @@ export class SubscriptionsComponent
 
     api.listSubscriptionsForUser(auth.user.id).then(response =>
     {
-      this.subscriptions = response.data;
+      if (response.data)
+      {
+        this.subscriptions.active = response.data.filter(s => s.status === "active");
+        this.subscriptions.inactive = response.data.filter(s => s.status !== "active");
+      }
     });
   }
 

@@ -12,28 +12,11 @@
             <div *ngIf="!subscriptions">
                 <spinner></spinner>
             </div>
-            <div *ngIf="subscriptions" class="list">
-                <div *ngIf="subscriptions.length === 0">
-                    <p>You are not subscribed to any bundle</p>
-                </div>
-                <div *ngFor="let subscription of subscriptions" class="bundle">
-                    <p>{{subscription.bundle.name}}</p>
-                    <small>
-                        <i>
-                            <b>{{subscription.status}}</b>
-                        </i>
-                    </small>
-                    <p class="price">
-                        {{subscription.bundle.price / 100}}
-                        <span class="currency">USD</span>
-                        <span class="billing-period">/ month</span>
-                    </p>
-                    <small>
-                        <span>
-                            {{subscription.cancel_at_period_end ? "Cancels on" : "Renews on"}}
-                        </span>
-                        <b>{{subscription.current_period_end | date:"longDate"}}</b>
-                    </small>
+            <div>
+                <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
+                <div *ngIf="subscriptions.inactive.length > 0">
+                    <h2>Old</h2>
+                    <subscription-list [subscriptions]="subscriptions.inactive"></subscription-list>
                 </div>
             </div>
         </div>
