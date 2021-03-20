@@ -18,7 +18,7 @@ export class PublisherPublicPageComponent
 
   constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
   {
-    route.parent?.params.subscribe({
+    route.params.subscribe({
       next: params =>
       {
         api.retrievePublisher(params.id).then(response =>
