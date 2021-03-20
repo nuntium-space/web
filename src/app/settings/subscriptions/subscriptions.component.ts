@@ -32,15 +32,7 @@ export class SubscriptionsComponent
       {
         this.subscriptions.active = response.data.filter(s => s.status === "active");
 
-        /**
-         * Old subscriptions are subscriptions that are not active (obviously) and
-         * that have been canceled (canceled_at !== `null`), so they cannot be re-activated
-         */
-        this.subscriptions.old = response.data.filter(s =>
-        {
-          return !this.subscriptions.active.find(activeSubscription => activeSubscription.id === s.id)
-            && s.canceled_at !== null;
-        });
+        this.subscriptions.old = response.data.filter(s => s.deleted);
 
         /**
          * Inactive subscriptions are the result of failed payments
@@ -48,7 +40,7 @@ export class SubscriptionsComponent
          */
         this.subscriptions.inactive = response.data.filter(s =>
         {
-          return !this.subscriptions.old.find(oldSubscription => oldSubscription.id === s.id);
+          return s.status !== "active" && !s.deleted;
         });
       }
     });

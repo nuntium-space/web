@@ -13,9 +13,5 @@
             {{subscription.cancel_at_period_end ? "Cancels on" : "Renews on"}}
             <b>{{subscription.current_period_end | date:"longDate"}}</b>
         </small>
-        <small *ngIf="subscription.canceled_at">
-            Canceled at
-            <b>{{subscription.canceled_at | date:"longDate"}}</b>
-        </small>
     </div>
 </div>
