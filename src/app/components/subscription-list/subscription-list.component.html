@@ -9,10 +9,12 @@
             <span class="currency">USD</span>
             <span class="billing-period">/ month</span>
         </p>
-        <small>
-            <span>
-                {{subscription.cancel_at_period_end ? "Cancels on" : "Renews on"}}
-            </span>
+        <small *ngIf="subscription.status === 'active'">
+            {{subscription.cancel_at_period_end ? "Cancels on" : "Renews on"}}
+            <b>{{subscription.current_period_end | date:"longDate"}}</b>
+        </small>
+        <small *ngIf="subscription.canceled_at">
+            Canceled at
             <b>{{subscription.current_period_end | date:"longDate"}}</b>
         </small>
     </div>
