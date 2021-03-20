@@ -2,7 +2,7 @@
 
 <aside *ngIf="publisher">
     <h1>{{publisher.name}}</h1>
-    <section *ngIf="bundles">
+    <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed)">
         <div class="title">
             <h1>Subscribe</h1>
         </div>

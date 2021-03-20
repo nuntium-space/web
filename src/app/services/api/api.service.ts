@@ -3,97 +3,101 @@ import { FEED_PAGE_SIZE } from 'src/config';
 
 interface IApiServiceResponse<T>
 {
-  data?: T;
-  errors?: string[];
+  data?: T,
+  errors?: string[],
 }
 
 export interface IUser
 {
-  id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  has_payment_methods: boolean;
+  id: string,
+  first_name: string,
+  last_name: string,
+  email: string,
+  has_payment_methods: boolean,
 }
 
 export interface IOrganization
 {
-  id: string;
-  name: string;
-  owner: IUser;
-  stripe_account_enabled: boolean;
+  id: string,
+  name: string,
+  owner: IUser,
+  stripe_account_enabled: boolean,
 }
 
 export interface IPublisher
 {
-  id: string;
-  name: string;
-  url: string;
-  organization: IOrganization;
+  id: string,
+  name: string,
+  url: string,
+  organization: IOrganization,
+  __metadata?: {
+    is_author: boolean,
+    is_subscribed: boolean,
+  },
 }
 
 export interface IAuthor
 {
-  id: string;
-  user: IUser;
-  publisher: IPublisher;
+  id: string,
+  user: IUser,
+  publisher: IPublisher,
 }
 
 export interface IArticle
 {
-  id: string;
-  title: string;
-  content: string;
-  reading_time: number;
-  author: IAuthor;
-  created_at: string;
-  updated_at: string;
+  id: string,
+  title: string,
+  content: string,
+  reading_time: number,
+  author: IAuthor,
+  created_at: string,
+  updated_at: string,
 }
 
 export interface IComment
 {
-  id: string;
-  content: string;
-  user: IUser;
-  article: IArticle;
-  parent: IComment | null;
-  reply_count: number;
-  created_at: string;
-  updated_at: string;
+  id: string,
+  content: string,
+  user: IUser,
+  article: IArticle,
+  parent: IComment | null,
+  reply_count: number,
+  created_at: string,
+  updated_at: string,
 }
 
 export interface ISession
 {
-  id: string;
-  user: IUser;
-  expires_at: string;
+  id: string,
+  user: IUser,
+  expires_at: string,
 }
 
 export interface IBundle
 {
-  id: string;
-  name: string;
-  price: number;
-  organization: IOrganization;
+  id: string,
+  name: string,
+  price: number,
+  organization: IOrganization,
 }
 
 export interface ISubscription
 {
-  id: string;
-  status: string;
-  user: IUser;
-  bundle: IBundle;
-  current_period_end: string;
-  cancel_at_period_end: boolean;
-  deleted: boolean;
+  id: string,
+  status: string,
+  user: IUser,
+  bundle: IBundle,
+  current_period_end: string,
+  cancel_at_period_end: boolean,
+  deleted: boolean,
 }
 
 export interface IPaymentMethod
 {
-  id: string;
-  type: string;
-  data: any;
-  user: IUser;
+  id: string,
+  type: string,
+  data: any,
+  user: IUser,
 }
 
 @Injectable({
