@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
 import { AddPublisherComponent } from './bundle/publishers/add/add.component';
@@ -117,10 +117,17 @@ const routes: Routes = [
   {
     matcher: (url) =>
     {
-      console.log(url);
-      return url.length === 1 && url[0].path.startsWith("~")
-        ? ({consumed: url})
-        : null;
+      if (url.length >= 1 && url[0].path.startsWith("~pub_"))
+      {
+        return {
+          consumed: url,
+          posParams: {
+            id: new UrlSegment(url[0].path.substr(1), {}),
+          },
+        };
+      }
+
+      return null;
     },
     canActivate: [ SignedInGuard ],
     children: [

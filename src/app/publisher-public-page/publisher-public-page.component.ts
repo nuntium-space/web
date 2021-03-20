@@ -18,22 +18,20 @@ export class PublisherPublicPageComponent
 
   constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
   {
-    route.parent?.url.subscribe({
-      next: url =>
+    route.parent?.params.subscribe({
+      next: params =>
       {
-        const publisherId = url[0].path.replace("~", "");
-
-        api.retrievePublisher(publisherId).then(response =>
+        api.retrievePublisher(params.id).then(response =>
         {
           this.publisher = response.data;
         });
 
-        api.listArticlesForPublisher(publisherId).then(response =>
+        api.listArticlesForPublisher(params.id).then(response =>
         {
           this.articles = response.data;
         });
 
-        api.listBundlesForPublisher(publisherId).then(response =>
+        api.listBundlesForPublisher(params.id).then(response =>
         {
           this.bundles = response.data;
         });
