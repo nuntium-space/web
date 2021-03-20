@@ -360,6 +360,16 @@ div.list
         align-items: center;
         border-radius: 0.5rem;
 
+        p
+        {
+            margin: 0;
+
+            & ~ p
+            {
+                margin-top: 1em;
+            }
+        }
+
         &.list-item-with-action
         {
             display: grid;
@@ -370,7 +380,7 @@ div.list
             {
                 color: var(--secondary-color);
                 background-color: var(--primary-color);
-                padding: 0.5em 1em;
+                padding: 1em;
             }
 
             button
@@ -383,7 +393,7 @@ div.list
         {
             color: var(--secondary-color);
             background-color: var(--primary-color);
-            padding: 0.5em 1em;
+            padding: 1em;
         }
 
         & ~ *
