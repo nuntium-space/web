@@ -79,6 +79,8 @@ export interface IBundle
 
 export interface ISubscription
 {
+  id: string;
+  status: string;
   user: IUser;
   bundle: IBundle;
   current_period_end: string;
