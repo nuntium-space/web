@@ -18,7 +18,7 @@ export class PublisherPublicPageComponent
 
   constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
   {
-    route.url.subscribe({
+    route.parent?.url.subscribe({
       next: url =>
       {
         const publisherId = url[0].path.replace("~", "");

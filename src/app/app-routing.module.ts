@@ -15,6 +15,7 @@ import { OrganizationDetailsComponent } from './organization/details/details.com
 import { CreatePublisherComponent } from './organization/publishers/create/create.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { AuthorsComponent } from './publisher/authors/authors.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
@@ -116,12 +117,16 @@ const routes: Routes = [
   {
     matcher: (url) =>
     {
+      console.log(url);
       return url.length === 1 && url[0].path.startsWith("~")
         ? ({consumed: url})
         : null;
     },
-    component: PublisherPublicPageComponent,
     canActivate: [ SignedInGuard ],
+    children: [
+      { path: "new", component: WriteNewArticleComponent },
+      { path: "", component: PublisherPublicPageComponent },
+    ],
   },
   { path: "", component: HomeComponent },
   { path: "**", component: PageNotFoundComponent },

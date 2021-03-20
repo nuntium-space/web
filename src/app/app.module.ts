@@ -46,6 +46,7 @@ import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
 import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
+import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SubscriptionListComponent } from './components/subscription-list/subscr
     PaymentMethodsComponent,
     AddPaymentMethodComponent,
     SubscriptionListComponent,
+    WriteNewArticleComponent,
   ],
   imports: [
     BrowserModule,
