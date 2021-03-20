@@ -12,9 +12,11 @@ export class SubscriptionsComponent
   public subscriptions: {
     active: ISubscription[],
     inactive: ISubscription[],
+    old: ISubscription[],
   } = {
     active: [],
     inactive: [],
+    old: [],
   };
 
   constructor(private api: ApiService, private auth: AuthService)
@@ -29,7 +31,19 @@ export class SubscriptionsComponent
       if (response.data)
       {
         this.subscriptions.active = response.data.filter(s => s.status === "active");
-        this.subscriptions.inactive = response.data.filter(s => s.status !== "active");
+
+        this.subscriptions.old = response.data.filter(s => s.canceled_at !== null);
+
+        /**
+         * Inactive subscriptions are subscriptions with status !== `active` (obviously)
+         * but that are still not canceled (canceled_at !== `null`), they are the result
+         * of failed payments or payments that require additional steps, such as 3D Secure
+         */
+        this.subscriptions.inactive = response.data.filter(s =>
+        {
+          return !this.subscriptions.active.find(activeSubscription => activeSubscription.id === s.id)
+            && !this.subscriptions.old.find(oldSubscription => oldSubscription.id === s.id);
+        });
       }
     });
   }

@@ -15,8 +15,12 @@
             <div>
                 <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
                 <div *ngIf="subscriptions.inactive.length > 0">
-                    <h2>Old</h2>
+                    <h2>Inactive</h2>
                     <subscription-list [subscriptions]="subscriptions.inactive"></subscription-list>
+                </div>
+                <div *ngIf="subscriptions.old.length > 0">
+                    <h2>Old</h2>
+                    <subscription-list [subscriptions]="subscriptions.old"></subscription-list>
                 </div>
             </div>
         </div>
