@@ -27,6 +27,14 @@ export class WriteNewArticleComponent
       content: this.form.get("content")?.value ?? "",
     });
 
+    this.form.get("title")?.setErrors({
+      errors: response.errors?.filter(e => e.startsWith(`"title"`))
+    });
+
+    this.form.get("content")?.setErrors({
+      errors: response.errors?.filter(e => e.startsWith(`"content"`))
+    });
+
     if (response.data)
     {
       this.router.navigate([ ".." ], {
