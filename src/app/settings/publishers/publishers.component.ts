@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService, IPublisher } from 'src/app/services/api/api.service';
+import { ApiService, IAuthor } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class UserPublishersComponent
 {
-  public publishers?: IPublisher[];
+  public authors?: IAuthor[];
 
   constructor(api: ApiService, auth: AuthService)
   {
@@ -18,9 +18,9 @@ export class UserPublishersComponent
       return;
     }
 
-    api.listPublishersForUser(auth.user.id).then(response =>
+    api.listAuthorsForUser(auth.user.id).then(response =>
     {
-      this.publishers = response.data;
+      this.authors = response.data;
     });
   }
 }

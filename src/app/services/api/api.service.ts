@@ -328,9 +328,9 @@ export class ApiService
     return this.send("GET", `users/${userId}/payment-methods`);
   }
 
-  public async listPublishersForUser(userId: string): Promise<IApiServiceResponse<IPublisher[]>>
+  public async listAuthorsForUser(userId: string): Promise<IApiServiceResponse<IAuthor[]>>
   {
-    return this.send("GET", `users/${userId}/publishers`);
+    return this.send("GET", `users/${userId}/authors?expand[]=publisher`);
   }
 
   public async createBillingPortalSession(userId: string): Promise<IApiServiceResponse<{ url: string }>>

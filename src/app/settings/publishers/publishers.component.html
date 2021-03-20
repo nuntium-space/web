@@ -8,20 +8,20 @@
             <h1>Publishers</h1>
         </div>
         <div class="content">
-            <div *ngIf="!publishers">
+            <div *ngIf="!authors">
                 <spinner></spinner>
             </div>
-            <div *ngIf="publishers" class="list">
-                <div *ngIf="publishers.length === 0">
+            <div *ngIf="authors" class="list">
+                <div *ngIf="authors.length === 0">
                     <p>You are not an author of any publisher</p>
                 </div>
                 <a
-                    *ngFor="let publisher of publishers"
+                    *ngFor="let author of authors"
 
-                    routerLink="/~{{publisher.id}}"
+                    routerLink="/~{{author.publisher.id}}"
                     class="dark"
                 >
-                    <p>{{publisher.name}}</p>
+                    <p>{{author.publisher.name}}</p>
                 </a>
             </div>
         </div>
