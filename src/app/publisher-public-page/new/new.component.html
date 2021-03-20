@@ -6,6 +6,15 @@
             <h1>Write new article</h1>
         </div>
         <label>
+            Title
+            <input formControlName="title" type="text">
+            <div *ngIf="form.get('title')?.errors" class="errors">
+                <p *ngFor="let error of form.get('title')?.errors?.errors">
+                    {{error}}
+                </p>
+            </div>
+        </label>
+        <label>
             Content
             <textarea formControlName="content" rows="30"></textarea>
             <div *ngIf="form.get('content')?.errors" class="errors">

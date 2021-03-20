@@ -162,6 +162,7 @@ export class ApiService
   }
 
   public async createArticle(authorId: string, data: {
+    title: string,
     content: string,
   }): Promise<IApiServiceResponse<IArticle>>
   {

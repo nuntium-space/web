@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class WriteNewArticleComponent
 {
   public form = new FormGroup({
+    title: new FormControl(),
     content: new FormControl(),
   });
 
@@ -22,6 +23,7 @@ export class WriteNewArticleComponent
     e.preventDefault();
 
     const response = await this.api.createArticle("TODO", {
+      title: this.form.get("title")?.value ?? "",
       content: this.form.get("content")?.value ?? "",
     });
 
