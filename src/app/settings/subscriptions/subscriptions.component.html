@@ -17,7 +17,12 @@
                     <p>You are not subscribed to any bundle</p>
                 </div>
                 <div *ngFor="let subscription of subscriptions" class="bundle">
-                    <p class="name">{{subscription.bundle.name}}</p>
+                    <p>{{subscription.bundle.name}}</p>
+                    <small>
+                        <i>
+                            <b>{{subscription.status}}</b>
+                        </i>
+                    </small>
                     <p class="price">
                         {{subscription.bundle.price / 100}}
                         <span class="currency">USD</span>
