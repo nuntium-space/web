@@ -28,6 +28,12 @@
                         <span class="currency">USD</span>
                         <span class="billing-period">/ month</span>
                     </p>
+                    <small>
+                        <span>
+                            {{subscription.cancel_at_period_end ? "Cancels on" : "Renews on"}}
+                        </span>
+                        <b>{{subscription.current_period_end | date:"longDate"}}</b>
+                    </small>
                 </div>
             </div>
         </div>
