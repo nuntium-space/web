@@ -120,7 +120,9 @@ const routes: Routes = [
       if (url.length >= 1 && url[0].path.startsWith("~pub_"))
       {
         return {
-          consumed: url,
+          consumed: url.length === 1
+            ? url
+            : url.slice(0, 1),
           posParams: {
             id: new UrlSegment(url[0].path.substr(1), {}),
           },
