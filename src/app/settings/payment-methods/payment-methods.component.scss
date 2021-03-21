@@ -8,11 +8,21 @@
     }
 }
 
-.default-pm
+.brand
 {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
-    padding: 0.2em;
-    border-radius: 0.2em;
-    margin-left: 0.5em;
+    display: flex;
+
+    span:first-child
+    {
+        text-transform: uppercase;
+    }
+
+    .default-pm-badge
+    {
+        color: var(--primary-color);
+        background-color: var(--secondary-color);
+        padding: 0.2em;
+        border-radius: 0.2em;
+        margin-left: 1em;
+    }
 }
