@@ -47,6 +47,7 @@ import { PaymentMethodsComponent } from './settings/payment-methods/payment-meth
 import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
+import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { WriteNewArticleComponent } from './publisher-public-page/new/new.compon
     AddPaymentMethodComponent,
     SubscriptionListComponent,
     WriteNewArticleComponent,
+    KeepHtmlPipe,
   ],
   imports: [
     BrowserModule,

@@ -49,7 +49,7 @@
 
 <main *ngIf="article && isSubscribed">
     <h1 class="title">{{article.title}}</h1>
-    <pre class="content">{{article.content}}</pre>
+    <pre class="content" [innerHTML]="article.content | keepHtml"></pre>
     <section id="comments">
         <div class="title">
             <h1>Comments</h1>
