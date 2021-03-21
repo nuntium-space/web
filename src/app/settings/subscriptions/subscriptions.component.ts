@@ -9,14 +9,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class SubscriptionsComponent
 {
-  public subscriptions: {
+  public subscriptions?: {
     active: ISubscription[],
-    inactive: ISubscription[],
+    incomplete: ISubscription[],
     old: ISubscription[],
-  } = {
-    active: [],
-    inactive: [],
-    old: [],
   };
 
   constructor(private api: ApiService, private auth: AuthService)
@@ -30,18 +26,15 @@ export class SubscriptionsComponent
     {
       if (response.data)
       {
-        this.subscriptions.active = response.data.filter(s => s.status === "active");
-
-        this.subscriptions.old = response.data.filter(s => s.deleted);
-
-        /**
-         * Inactive subscriptions are the result of failed payments
-         * or payments that require additional steps, such as 3D Secure
-         */
-        this.subscriptions.inactive = response.data.filter(s =>
-        {
-          return s.status !== "active" && !s.deleted;
-        });
+        this.subscriptions = {
+          active: response.data.filter(s => s.status === "active"),
+          /**
+           * Incomplete subscriptions are the result of failed payments
+           * or payments that require additional steps, such as 3D Secure
+           */
+          incomplete: response.data.filter(s => s.status !== "active" && !s.deleted),
+          old: response.data.filter(s => s.deleted),
+        };
       }
     });
   }

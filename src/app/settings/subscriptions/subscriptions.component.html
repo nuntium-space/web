@@ -12,11 +12,11 @@
             <div *ngIf="!subscriptions">
                 <spinner></spinner>
             </div>
-            <div>
+            <div *ngIf="subscriptions">
                 <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
-                <div *ngIf="subscriptions.inactive.length > 0">
+                <div *ngIf="subscriptions.incomplete.length > 0">
                     <h2>Inactive</h2>
-                    <subscription-list [subscriptions]="subscriptions.inactive"></subscription-list>
+                    <subscription-list [subscriptions]="subscriptions.incomplete"></subscription-list>
                 </div>
                 <div *ngIf="subscriptions.old.length > 0">
                     <h2>Old</h2>
