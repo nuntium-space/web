@@ -50,7 +50,7 @@ export class SubscriptionsComponent
 
     if (response.data)
     {
-      open(response.data.url, "_target");
+      open(response.data.url, "_blank");
     }
   }
 }

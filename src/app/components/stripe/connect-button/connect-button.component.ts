@@ -25,7 +25,7 @@ export class StripeConnectButtonComponent
 
     if (response.data)
     {
-      open(response.data.url, "_target");
+      open(response.data.url, "_blank");
     }
   }
 
@@ -40,7 +40,7 @@ export class StripeConnectButtonComponent
 
     if (response.data)
     {
-      open(response.data.url, "_target");
+      open(response.data.url, "_blank");
     }
   }
 }
