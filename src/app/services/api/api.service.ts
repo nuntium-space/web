@@ -98,6 +98,9 @@ export interface IPaymentMethod
   type: string,
   data: any,
   user: IUser,
+  __metadata?: {
+    is_default: boolean,
+  },
 }
 
 @Injectable({

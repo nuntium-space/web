@@ -26,7 +26,10 @@
                     class="list-item-with-action"
                 >
                     <div *ngSwitchCase="'card'">
-                        <p>{{paymentMethod.data.brand}}</p>
+                        <p>
+                            {{paymentMethod.data.brand}}
+                            <small *ngIf="paymentMethod.__metadata?.is_default" class="default-pm">Default</small>
+                        </p>
                         <p>
                             {{paymentMethod.data.exp_month.toString().padStart(2, "0")}}
                             /
