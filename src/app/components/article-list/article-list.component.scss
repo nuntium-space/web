@@ -35,7 +35,13 @@ article
 
         .content
         {
+            $line-height: 1.2em;
+            $max-lines: 3;
+
             margin-top: 0.5em;
+            line-height: $line-height;
+            max-height: $line-height * $max-lines;
+            overflow: hidden;
         }
     }
 
