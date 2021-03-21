@@ -7,7 +7,7 @@
         "main"
         "footer";
     gap: 1em;
-    height: 100%;
+    height: calc(100vh - 2em);
     align-items: center;
 }
 
