@@ -1,3 +1,5 @@
+@import "~src/variables";
+
 @import "../settings";
 
 .list-item-with-action
@@ -14,6 +16,7 @@
 
     span:first-child
     {
+        font-weight: $semi-bold;
         text-transform: uppercase;
     }
 
