@@ -80,6 +80,7 @@ export interface IBundle
   name: string,
   price: number,
   organization: IOrganization,
+  active: boolean,
 }
 
 export interface ISubscription
