@@ -1,5 +1,7 @@
 <app-header></app-header>
 
+<spinner *ngIf="!articles"></spinner>
+
 <main *ngIf="articles">
     <div *ngIf="articles.length === 0" class="no-results">
         <img src="/assets/empty-search-result.svg" alt="">
