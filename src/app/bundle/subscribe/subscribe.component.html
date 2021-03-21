@@ -9,14 +9,14 @@
         </div>
         <div class="content">
             <div>
-                <div *ngIf="!auth.user.has_payment_methods">
+                <div *ngIf="!auth.user.has_default_payment_method">
                     <p class="add-pm-msg">Before subscribing to <b>{{bundle.name}}</b> you need to add a payment method</p>
                     <a class="button" routerLink="/settings/payment-methods/add">
                         Add a payment method
                     </a>
                 </div>
                 <button
-                    *ngIf="auth.user.has_payment_methods"
+                    *ngIf="auth.user.has_default_payment_method"
 
                     (click)="subscribe()"
                 >
