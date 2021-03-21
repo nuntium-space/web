@@ -150,7 +150,7 @@ export class ApiService
 
   public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
   {
-    return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+    return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher&format=html`);
   }
 
   public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
