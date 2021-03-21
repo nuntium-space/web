@@ -1,5 +1,5 @@
 <article *ngFor="let article of articles">
-    <small class="info">
+    <header>
         <a routerLink="/~{{article.author.user.id}}" class="dark">
             {{article.author.user.first_name}}
             {{article.author.user.last_name}}
@@ -14,7 +14,7 @@
         <span>
             {{article.created_at | date:"medium"}}
         </span>
-    </small>
+    </header>
     <a
         routerLink="/article/{{article.id}}"
         class="main dark"
@@ -22,4 +22,10 @@
         <h2 class="title">{{article.title}}</h2>
         <pre class="content">{{article.content}}</pre>
     </a>
+    <footer>
+        <div>
+            <i *ngIf="article.reading_time >= 1">{{article.reading_time}} minutes</i>
+            <i *ngIf="article.reading_time < 1">less than a minute</i>
+        </div>
+    </footer>
 </article>
