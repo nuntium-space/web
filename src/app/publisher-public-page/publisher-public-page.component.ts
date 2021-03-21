@@ -28,6 +28,14 @@ export class PublisherPublicPageComponent
 
         api.listArticlesForPublisher(params.id).then(response =>
         {
+          // Payment Required
+          if (response.status === 402)
+          {
+            // TODO: Show payment required banner
+
+            return;
+          }
+
           this.articles = response.data;
         });
 

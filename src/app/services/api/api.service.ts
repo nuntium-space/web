@@ -3,6 +3,7 @@ import { FEED_PAGE_SIZE } from 'src/config';
 
 interface IApiServiceResponse<T>
 {
+  status: number,
   data?: T,
   errors?: string[],
 }
@@ -124,13 +125,13 @@ export class ApiService
       body: JSON.stringify(body),
     });
 
-    // No Content
-    if (response.status === 204)
-    {
-      return {};
-    }
+    const result: IApiServiceResponse<any> = { status: response.status };
 
-    const result: IApiServiceResponse<any> = {};
+    // No Content
+    if (result.status === 204)
+    {
+      return result;
+    }
 
     const json = await response.json();
 

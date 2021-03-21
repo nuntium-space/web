@@ -20,6 +20,14 @@ export class ArticleComponent
       {
         api.retrieveArticle(params.id).then((response) =>
         {
+          // Payment Required
+          if (response.status === 402)
+          {
+            // TODO: Show payment required banner
+
+            return;
+          }
+
           this.article = response.data;
         });
 
