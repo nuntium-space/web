@@ -29,15 +29,10 @@
 
 main
 {
-    .title,
-    .content
-    {
-        word-break: break-word;
-    }
-
     .title
     {
         margin: 0;
+        word-break: break-word;
     }
 }
 
