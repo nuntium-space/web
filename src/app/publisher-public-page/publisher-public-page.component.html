@@ -41,5 +41,16 @@
 </aside>
 
 <main>
-    <article-list [articles]="articles"></article-list>
+    <article-list *ngIf="isSubscribed" [articles]="articles"></article-list>
+    <div *ngIf="!isSubscribed && publisher" class="payment-required">
+        <img src="/assets/credit-card-payment.svg" alt="">
+        <h1>
+            <span>You are not subscribed to</span>
+            {{publisher.name}}
+        </h1>
+        <p>
+            In order to see the articles of <b>{{publisher.name}}</b> you need
+            to subscribe to one of the bundles that include this publisher
+        </p>
+    </div>
 </main>

@@ -10,6 +10,8 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class PublisherPublicPageComponent
 {
+  public isSubscribed = true;
+
   public publisher?: IPublisher;
 
   public articles?: IArticle[];
@@ -31,7 +33,7 @@ export class PublisherPublicPageComponent
           // Payment Required
           if (response.status === 402)
           {
-            // TODO: Show payment required banner
+            this.isSubscribed = false;
 
             return;
           }

@@ -42,6 +42,20 @@ aside
     }
 }
 
+.payment-required
+{
+    max-width: 100%;
+    width: 60ch;
+
+    h1
+    {
+        span
+        {
+            font-weight: $normal;
+        }
+    }
+}
+
 @media (max-width: 1000px)
 {
     :host
