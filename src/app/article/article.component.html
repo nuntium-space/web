@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<aside *ngIf="article" id="details">
+<aside *ngIf="article && isSubscribed" id="details">
     <section class="publisher">
         <div class="title">
             <h1>Publisher</h1>
@@ -47,7 +47,7 @@
     </section>
 </aside>
 
-<main *ngIf="article">
+<main *ngIf="article && isSubscribed">
     <h1 class="title">{{article.title}}</h1>
     <pre class="content">{{article.content}}</pre>
     <section id="comments">
@@ -64,4 +64,17 @@
             <comment-list [article]="article" [comments]="comments"></comment-list>
         </div>
     </section>
+</main>
+
+<main *ngIf="!isSubscribed">
+    <div class="payment-required">
+        <img src="/assets/credit-card-payment.svg" alt="">
+        <h1>
+            <span>You can't see this article</span>
+        </h1>
+        <p>
+            In order to see it you need to subscribe to one of the
+            bundles that include the publisher of this article
+        </p>
+    </div>
 </main>

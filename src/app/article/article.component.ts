@@ -9,6 +9,8 @@ import { ApiService, IArticle, IComment } from '../services/api/api.service';
 })
 export class ArticleComponent
 {
+  public isSubscribed = true;
+
   public article?: IArticle;
 
   public comments: IComment[] = [];
@@ -23,7 +25,7 @@ export class ArticleComponent
           // Payment Required
           if (response.status === 402)
           {
-            // TODO: Show payment required banner
+            this.isSubscribed = false;
 
             return;
           }

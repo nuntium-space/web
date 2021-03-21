@@ -1,3 +1,5 @@
+@import "~src/variables";
+
 :host
 {
     display: grid;
@@ -42,6 +44,20 @@ main
 #comments
 {
     margin-top: 3em;
+}
+
+.payment-required
+{
+    max-width: 100%;
+    width: 60ch;
+
+    h1
+    {
+        span
+        {
+            font-weight: $normal;
+        }
+    }
 }
 
 @media (max-width: 1000px)
