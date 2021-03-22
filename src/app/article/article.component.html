@@ -1,19 +1,21 @@
 <app-header></app-header>
 
 <aside *ngIf="article">
-    <section>
-        <div class="title">
-            <h1>Actions</h1>
-        </div>
-        <div class="content">
-            <div>
-                <button class="fill">
-                    Update
-                </button>
+    <div *ngIf="article.author.user.id === auth.user?.id">
+        <section>
+            <div class="title">
+                <h1>Actions</h1>
             </div>
-        </div>
-    </section>
-    <hr>
+            <div class="content">
+                <div>
+                    <button class="fill">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </section>
+        <hr>
+    </div>
     <div *ngIf="isSubscribed">
         <section>
             <div class="title">
