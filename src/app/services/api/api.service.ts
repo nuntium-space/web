@@ -115,7 +115,7 @@ export class ApiService
   constructor()
   {}
 
-  private async send(method: "DELETE" | "GET" | "PATCH" | "POST", url: string, body?: any): Promise<IApiServiceResponse<any>>
+  private async send(method: "DELETE" | "GET" | "PATCH" | "POST" | "PUT", url: string, body?: any): Promise<IApiServiceResponse<any>>
   {
     const response = await fetch(`${this.ENDPOINT}/${url}`, {
       method,
@@ -391,6 +391,13 @@ export class ApiService
   }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("PATCH", `users/${id}`, data);
+  }
+
+  public async setDefaultPaymentMethod(userId: string, data: {
+    id: string,
+  }): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("PUT", `users/${userId}/payment-methods/default`, data);
   }
 
   public async deleteUser(id: string): Promise<IApiServiceResponse<void>>
