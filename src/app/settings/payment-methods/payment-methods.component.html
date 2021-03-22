@@ -42,7 +42,7 @@
                     </div>
                     <div class="actions">
                         <button
-                            *ngIf="paymentMethod.__metadata && !paymentMethod.__metadata.is_default"
+                            [disabled]="paymentMethod.__metadata?.is_default"
 
                             (click)="setDefaultPaymentMethod(paymentMethod)"
                         >
