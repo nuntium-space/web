@@ -83,7 +83,6 @@
             </label>
             <label>
                 Content
-                <!-- TODO: Edit the raw content -->
                 <textarea formControlName="content" rows="30"></textarea>
                 <div *ngIf="updateArticleForm.get('content')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
