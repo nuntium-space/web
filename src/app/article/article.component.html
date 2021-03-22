@@ -71,7 +71,7 @@
     <h1 class="title">{{article.title}}</h1>
     <div *ngIf="!isUpdatingArticle" class="content" [innerHTML]="article.content | keepHtml"></div>
     <div *ngIf="isUpdatingArticle">
-        <form [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
+        <form class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
             <label>
                 Title
                 <input formControlName="title" type="text">
@@ -90,9 +90,7 @@
                     </p>
                 </div>
             </label>
-            <button type="submit">
-                Submit
-            </button>
+            <button type="submit">Update</button>
         </form>
     </div>
     <section id="comments">
