@@ -17,6 +17,14 @@ aside
     position: sticky;
     top: 1em;
 
+    .actions
+    {
+        button:first-child
+        {
+            margin-bottom: 1em;
+        }
+    }
+
     .info
     {
         p
