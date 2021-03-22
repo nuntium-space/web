@@ -171,7 +171,7 @@ export class ApiService
     content: string,
   }): Promise<IApiServiceResponse<IArticle>>
   {
-    return this.send("PATCH", `articles/${articleId}`, data);
+    return this.send("PATCH", `articles/${articleId}?expand[]=author&expand[]=author.user&expand[]=author.publisher&format=html`, data);
   }
 
   public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>

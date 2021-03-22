@@ -82,7 +82,7 @@ export class ArticleComponent
     {
       this.isUpdatingArticle = false;
 
-      this.article = response.data;
+      this.article = response.data;console.log(response.data);
 
       this.updateArticleForm.get("title")?.setValue(this.article.title);
       this.updateArticleForm.get("content")?.setValue(this.article.content); // TODO: Edit raw content
