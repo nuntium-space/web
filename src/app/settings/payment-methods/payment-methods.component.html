@@ -41,7 +41,11 @@
                         </p>
                     </div>
                     <div class="actions">
-                        <button (click)="setDefaultPaymentMethod(paymentMethod)">
+                        <button
+                            *ngIf="paymentMethod.__metadata && !paymentMethod.__metadata.is_default"
+
+                            (click)="setDefaultPaymentMethod(paymentMethod)"
+                        >
                             Make default
                         </button>
                         <button (click)="removePaymentMethod(paymentMethod)">
