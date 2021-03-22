@@ -172,14 +172,9 @@ form
         }
     }
 
-    label input,
     button[type=submit]
     {
         width: 100%;
-    }
-
-    button[type=submit]
-    {
         margin-top: 2em;
     }
 }
@@ -199,6 +194,7 @@ label
     textarea
     {
         display: block;
+        width: 100%;
         margin-top: 0.2rem;
     }
 
