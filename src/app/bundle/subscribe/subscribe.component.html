@@ -10,9 +10,12 @@
         <div class="content">
             <div>
                 <div *ngIf="!auth.user.has_default_payment_method">
-                    <p class="add-pm-msg">Before subscribing to <b>{{bundle.name}}</b> you need to add a payment method</p>
-                    <a class="button" routerLink="/settings/payment-methods/add">
-                        Add a payment method
+                    <p class="add-pm-msg">
+                        Before subscribing to <b>{{bundle.name}}</b>
+                        you need to set a default payment method
+                    </p>
+                    <a class="button" routerLink="/settings/payment-methods">
+                        Go to Settings
                     </a>
                 </div>
                 <button
