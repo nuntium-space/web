@@ -1,0 +1,12 @@
+@import "~src/variables";
+
+@import "../settings";
+
+.delete-account
+{
+    h3
+    {
+        margin: 0;
+        font-weight: $medium;
+    }
+}

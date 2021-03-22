@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<settings-menu section="advanced"></settings-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Advanced</h1>
+        </div>
+        <div class="content">
+            <div class="delete-account">
+                <div>
+                    <h3>Deleting your account means:</h3>
+                    <ul>
+                        <li>Any <abbr title="Personally Identifiable Information">PII</abbr> will be removed immediately</li>
+                        <li>Any active subscription will be canceled without refunds</li>
+                    </ul>
+                    <h3>Note that you cannot delete your account if you match any of these conditions:</h3>
+                    <ul>
+                        <li>You are an author for at least one publisher</li>
+                        <li>You are the owner of a publisher with one or more authors</li>
+                    </ul>
+                </div>
+                <button (click)="deleteAccount()">
+                    Delete Account
+                </button>
+            </div>
+        </div>
+    </section>
+</main>

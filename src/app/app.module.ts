@@ -48,6 +48,7 @@ import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.co
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
+import { AdvancedComponent } from './settings/advanced/advanced.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
     SubscriptionListComponent,
     WriteNewArticleComponent,
     KeepHtmlPipe,
+    AdvancedComponent,
   ],
   imports: [
     BrowserModule,

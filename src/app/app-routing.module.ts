@@ -20,6 +20,7 @@ import { PublisherPublicPageComponent } from './publisher-public-page/publisher-
 import { AuthorsComponent } from './publisher/authors/authors.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
+import { AdvancedComponent } from './settings/advanced/advanced.component';
 import { AccountDetailsComponent } from './settings/details/details.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
     children: [
       { path: "details", component: AccountDetailsComponent },
       { path: "security", component: SecurityComponent },
+      { path: "advanced", component: AdvancedComponent },
       {
         path: "organizations",
         children: [

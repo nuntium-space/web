@@ -17,6 +17,12 @@
                 Security
             </a>
             <a
+                routerLink="/settings/advanced"
+                [class.selected]="section === 'advanced'"
+            >
+                Advanced
+            </a>
+            <a
                 routerLink="/settings/organizations"
                 [class.selected]="section === 'organizations'"
             >
