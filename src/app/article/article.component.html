@@ -8,10 +8,10 @@
             </div>
             <div class="content">
                 <div>
-                    <button class="fill" (click)="isUpdatingArticle = true">
-                        Update
+                    <button class="fill" (click)="isUpdatingArticle = !isUpdatingArticle">
+                        {{isUpdatingArticle ? "Cancel" : "Update"}}
                     </button>
-                    <button class="fill danger" (click)="deleteArticle()">
+                    <button *ngIf="!isUpdatingArticle" class="fill danger" (click)="deleteArticle()">
                         Delete
                     </button>
                 </div>
