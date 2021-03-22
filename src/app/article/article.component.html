@@ -1,50 +1,65 @@
 <app-header></app-header>
 
-<aside *ngIf="article && isSubscribed" id="details">
+<aside *ngIf="article">
     <section>
         <div class="title">
-            <h1>Publisher</h1>
-        </div>
-        <div class="content">
-            <a routerLink="/~{{article.author.publisher.id}}" class="dark">
-                {{article.author.publisher.name}}
-            </a>
-            <a href="{{article.author.publisher.url}}" class="dark">
-                {{article.author.publisher.url}}
-            </a>
-        </div>
-    </section>
-    <section>
-        <div class="title">
-            <h1>Author</h1>
-        </div>
-        <div class="content">
-            <a routerLink="/~{{article.author.user.id}}" class="dark">
-                {{article.author.user.first_name}}
-                {{article.author.user.last_name}}
-            </a>
-        </div>
-    </section>
-    <section class="info">
-        <div class="title">
-            <h1>Info</h1>
+            <h1>Actions</h1>
         </div>
         <div class="content">
             <div>
-                <b>Reading Time</b>
-                <p *ngIf="article.reading_time >= 1">{{article.reading_time}} minutes</p>
-                <p *ngIf="article.reading_time < 1">less than a minute</p>
-            </div>
-            <div>
-                <b>Published</b>
-                <p>{{article.created_at | date:"medium"}}</p>
-            </div>
-            <div>
-                <b>Updated</b>
-                <p>{{article.updated_at | date:"medium"}}</p>
+                <button class="fill">
+                    Update
+                </button>
             </div>
         </div>
     </section>
+    <hr>
+    <div *ngIf="isSubscribed">
+        <section>
+            <div class="title">
+                <h1>Publisher</h1>
+            </div>
+            <div class="content">
+                <a routerLink="/~{{article.author.publisher.id}}" class="dark">
+                    {{article.author.publisher.name}}
+                </a>
+                <a href="{{article.author.publisher.url}}" class="dark">
+                    {{article.author.publisher.url}}
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="title">
+                <h1>Author</h1>
+            </div>
+            <div class="content">
+                <a routerLink="/~{{article.author.user.id}}" class="dark">
+                    {{article.author.user.first_name}}
+                    {{article.author.user.last_name}}
+                </a>
+            </div>
+        </section>
+        <section class="info">
+            <div class="title">
+                <h1>Info</h1>
+            </div>
+            <div class="content">
+                <div>
+                    <b>Reading Time</b>
+                    <p *ngIf="article.reading_time >= 1">{{article.reading_time}} minutes</p>
+                    <p *ngIf="article.reading_time < 1">less than a minute</p>
+                </div>
+                <div>
+                    <b>Published</b>
+                    <p>{{article.created_at | date:"medium"}}</p>
+                </div>
+                <div>
+                    <b>Updated</b>
+                    <p>{{article.updated_at | date:"medium"}}</p>
+                </div>
+            </div>
+        </section>
+    </div>
 </aside>
 
 <main *ngIf="article && isSubscribed">
@@ -65,21 +80,6 @@
         </div>
     </section>
 </main>
-
-<aside *ngIf="article && article.author.user.id === auth.user?.id" id="actions">
-    <section>
-        <div class="title">
-            <h1>Actions</h1>
-        </div>
-        <div class="content">
-            <div>
-                <button class="fill">
-                    Update
-                </button>
-            </div>
-        </div>
-    </section>
-</aside>
 
 <main *ngIf="!isSubscribed">
     <div class="payment-required">
