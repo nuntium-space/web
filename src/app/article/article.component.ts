@@ -80,7 +80,12 @@ export class ArticleComponent
 
     if (response.data)
     {
-      // TODO
+      this.isUpdatingArticle = false;
+
+      this.article = response.data;
+
+      this.updateArticleForm.get("title")?.setValue(this.article.title);
+      this.updateArticleForm.get("content")?.setValue(this.article.content); // TODO: Edit raw content
     }
   }
 
