@@ -394,9 +394,17 @@ div.list
                 padding: 1em;
             }
 
-            button
+            .actions
             {
+                display: grid;
+                grid-auto-rows: auto;
+                gap: 1em;
                 height: 100%;
+
+                button
+                {
+                    width: 100%;
+                }
             }
         }
 
