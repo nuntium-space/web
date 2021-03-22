@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
 
@@ -24,7 +24,7 @@ export class ArticleComponent
 
   public isUpdatingArticle = false;
 
-  constructor(public auth: AuthService, private api: ApiService, route: ActivatedRoute)
+  constructor(public auth: AuthService, private api: ApiService, private router: Router, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: (params) =>
@@ -81,6 +81,21 @@ export class ArticleComponent
     if (response.data)
     {
       // TODO
+    }
+  }
+
+  public async deleteArticle()
+  {
+    if (!this.article)
+    {
+      return;
+    }
+
+    const response = await this.api.deleteArticle(this.article.id);
+
+    if (!response.errors)
+    {
+      this.router.navigateByUrl(`/~${this.article.author.publisher.id}`);
     }
   }
 
