@@ -57,8 +57,6 @@ export class AddPaymentMethodComponent implements OnInit
 
     if (result.error)
     {
-      console.log(result.error);
-
       return;
     }
 
