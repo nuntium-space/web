@@ -4,11 +4,11 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  selector: 'app-account-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
-export class AccountComponent
+export class AccountDetailsComponent
 {
   public updateAccountDetailsForm = new FormGroup({
     first_name: new FormControl(this.auth.user?.first_name),

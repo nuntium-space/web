@@ -20,7 +20,7 @@ import { PublisherPublicPageComponent } from './publisher-public-page/publisher-
 import { AuthorsComponent } from './publisher/authors/authors.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
-import { AccountComponent } from './settings/account/account.component';
+import { AccountDetailsComponent } from './settings/details/details.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
@@ -38,7 +38,7 @@ const routes: Routes = [
     path: "settings",
     canActivate: [ SignedInGuard ],
     children: [
-      { path: "account", component: AccountComponent },
+      { path: "details", component: AccountDetailsComponent },
       { path: "security", component: SecurityComponent },
       {
         path: "organizations",
@@ -56,7 +56,7 @@ const routes: Routes = [
         ],
       },
       { path: "publishers", component: UserPublishersComponent },
-      { path: "", component: AccountComponent },
+      { path: "", component: AccountDetailsComponent },
     ],
   },
   { path: "article/:id", component: ArticleComponent, canActivate: [ SignedInGuard ] },

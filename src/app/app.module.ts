@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { AuthService } from './services/auth/auth.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AccountComponent } from './settings/account/account.component';
+import { AccountDetailsComponent } from './settings/details/details.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { SettingsMenuComponent } from './settings/menu/menu.component';
@@ -58,7 +58,7 @@ import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
     SignupComponent,
     FeedComponent,
     PageNotFoundComponent,
-    AccountComponent,
+    AccountDetailsComponent,
     SecurityComponent,
     OrganizationsComponent,
     SettingsMenuComponent,
