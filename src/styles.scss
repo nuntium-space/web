@@ -104,6 +104,12 @@ button,
         width: 100%;
     }
 
+    &.danger
+    {
+        color: white;
+        background-color: orangered;
+    }
+
     &.dark
     {
         color: var(--primary-color);
