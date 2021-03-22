@@ -73,7 +73,14 @@ main
         grid-template-columns: 100%;
         grid-template-areas:
             "header"
+            "actions"
             "main"
             "details";
+    }
+
+    #details,
+    #actions
+    {
+        position: unset;
     }
 }
