@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <aside *ngIf="article && isSubscribed" id="details">
-    <section class="publisher">
+    <section>
         <div class="title">
             <h1>Publisher</h1>
         </div>
@@ -14,7 +14,7 @@
             </a>
         </div>
     </section>
-    <section class="author">
+    <section>
         <div class="title">
             <h1>Author</h1>
         </div>
@@ -65,6 +65,21 @@
         </div>
     </section>
 </main>
+
+<aside *ngIf="article && article.author.user.id === auth.user?.id" id="actions">
+    <section>
+        <div class="title">
+            <h1>Actions</h1>
+        </div>
+        <div class="content">
+            <div>
+                <button class="fill">
+                    Update
+                </button>
+            </div>
+        </div>
+    </section>
+</aside>
 
 <main *ngIf="!isSubscribed">
     <div class="payment-required">

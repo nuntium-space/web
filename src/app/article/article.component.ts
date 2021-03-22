@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-article',
@@ -15,7 +16,7 @@ export class ArticleComponent
 
   public comments: IComment[] = [];
 
-  constructor(api: ApiService, route: ActivatedRoute)
+  constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: (params) =>

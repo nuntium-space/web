@@ -6,17 +6,28 @@
     grid-template-columns: 20em 60ch auto;
     grid-template-areas:
         "header header header"
-        "details main empty";
+        "details main actions";
     gap: 1em;
+}
+
+@each $section in details, actions
+{
+    ##{$section}
+    {
+        grid-area: $section;
+    }
+}
+
+#details,
+#actions
+{
+    height: min-content;
+    position: sticky;
+    top: 1em;
 }
 
 #details
 {
-    grid-area: details;
-    height: min-content;
-    position: sticky;
-    top: 1em;
-
     .info
     {
         p
