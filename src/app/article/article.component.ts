@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
@@ -10,13 +11,20 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class ArticleComponent
 {
+  public updateArticleForm = new FormGroup({
+    title: new FormControl(),
+    content: new FormControl(),
+  });
+
   public isSubscribed = true;
 
   public article?: IArticle;
 
   public comments: IComment[] = [];
 
-  constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
+  public isUpdatingArticle = false;
+
+  constructor(public auth: AuthService, private api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: (params) =>
@@ -27,11 +35,14 @@ export class ArticleComponent
           if (response.status === 402)
           {
             this.isSubscribed = false;
-
-            return;
           }
+          else if (response.data)
+          {
+            this.article = response.data;
 
-          this.article = response.data;
+            this.updateArticleForm.get("title")?.setValue(this.article.title);
+            this.updateArticleForm.get("content")?.setValue(this.article.content);
+          }
         });
 
         api.listCommentsForArticle(params.id, null).then((response) =>
@@ -43,6 +54,34 @@ export class ArticleComponent
         });
       },
     });
+  }
+
+  public async updateArticle(e: Event)
+  {
+    e.preventDefault();
+
+    if (!this.article)
+    {
+      return;
+    }
+
+    const response = await this.api.updateArticle(this.article.id, {
+      title: this.updateArticleForm.get("title")?.value ?? "",
+      content: this.updateArticleForm.get("content")?.value ?? "",
+    });
+
+    this.updateArticleForm.get("title")?.setErrors({
+      errors: response.errors?.filter(e => e.startsWith(`"title"`))
+    });
+
+    this.updateArticleForm.get("content")?.setErrors({
+      errors: response.errors?.filter(e => e.startsWith(`"content"`))
+    });
+
+    if (response.data)
+    {
+      // TODO
+    }
   }
 
   public onCommentCreated(comment: IComment)

@@ -166,6 +166,19 @@ export class ApiService
     return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
   }
 
+  public async updateArticle(articleId: string, data: {
+    title: string,
+    content: string,
+  }): Promise<IApiServiceResponse<IArticle>>
+  {
+    return this.send("PATCH", `articles/${articleId}`, data);
+  }
+
+  public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>
+  {
+    return this.send("DELETE", `articles/${articleId}`);
+  }
+
   public async createArticle(authorId: string, data: {
     title: string,
     content: string,

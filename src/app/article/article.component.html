@@ -8,7 +8,7 @@
             </div>
             <div class="content">
                 <div>
-                    <button class="fill">
+                    <button class="fill" (click)="isUpdatingArticle = true">
                         Update
                     </button>
                 </div>
@@ -66,7 +66,33 @@
 
 <main *ngIf="article && isSubscribed">
     <h1 class="title">{{article.title}}</h1>
-    <div class="content" [innerHTML]="article.content | keepHtml"></div>
+    <div *ngIf="!isUpdatingArticle" class="content" [innerHTML]="article.content | keepHtml"></div>
+    <div *ngIf="isUpdatingArticle">
+        <form [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
+            <label>
+                Title
+                <input formControlName="title" type="text">
+                <div *ngIf="updateArticleForm.get('title')?.errors" class="errors">
+                    <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
+                        {{error}}
+                    </p>
+                </div>
+            </label>
+            <label>
+                Content
+                <!-- TODO: Edit the raw content -->
+                <textarea formControlName="content" rows="30"></textarea>
+                <div *ngIf="updateArticleForm.get('content')?.errors" class="errors">
+                    <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
+                        {{error}}
+                    </p>
+                </div>
+            </label>
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
     <section id="comments">
         <div class="title">
             <h1>Comments</h1>
