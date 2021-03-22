@@ -24,6 +24,16 @@ export class PaymentMethodsComponent
     });
   }
 
+  public async setDefaultPaymentMethod(paymentMethod: IPaymentMethod)
+  {
+    if (!this.paymentMethods)
+    {
+      return;
+    }
+
+    // TODO
+  }
+
   public async removePaymentMethod(paymentMethod: IPaymentMethod)
   {
     if (!this.paymentMethods)

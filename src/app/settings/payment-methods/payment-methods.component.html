@@ -40,9 +40,14 @@
                             {{paymentMethod.data.last4}}
                         </p>
                     </div>
-                    <button (click)="removePaymentMethod(paymentMethod)">
-                        &minus; Remove
-                    </button>
+                    <div class="actions">
+                        <button (click)="setDefaultPaymentMethod(paymentMethod)">
+                            Make default
+                        </button>
+                        <button (click)="removePaymentMethod(paymentMethod)">
+                            &minus; Remove
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
