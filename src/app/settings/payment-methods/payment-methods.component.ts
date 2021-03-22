@@ -11,7 +11,7 @@ export class PaymentMethodsComponent
 {
   public paymentMethods?: IPaymentMethod[];
 
-  constructor(private api: ApiService, auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService)
   {
     if (!auth.user)
     {
@@ -26,12 +26,29 @@ export class PaymentMethodsComponent
 
   public async setDefaultPaymentMethod(paymentMethod: IPaymentMethod)
   {
-    if (!this.paymentMethods)
+    if (!this.auth.user || !this.paymentMethods)
     {
       return;
     }
 
-    // TODO
+    const response = await this.api.setDefaultPaymentMethod(this.auth.user.id, {
+      id: paymentMethod.id,
+    });
+
+    if (!response.errors)
+    {
+      this.paymentMethods.map(p =>
+      {
+        p.__metadata = { is_default: false };
+
+        if (p.id === paymentMethod.id)
+        {
+          p.__metadata.is_default = true;
+        }
+
+        return p;
+      });
+    }
   }
 
   public async removePaymentMethod(paymentMethod: IPaymentMethod)
