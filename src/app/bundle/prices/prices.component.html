@@ -21,7 +21,7 @@
                 <div *ngFor="let price of prices" class="list-item-with-actions">
                     <div>
                         <small *ngIf="!price.active" class="archived-price-badge">Archived</small>
-                        <p class="price">{{formatAmount(price)}}</p>
+                        <p class="price">{{format.currency(price.amount, price.currency)}}</p>
                         <span class="billing-period">/ month</span>
                     </div>
                     <div class="actions">

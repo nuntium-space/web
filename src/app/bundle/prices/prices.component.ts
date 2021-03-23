@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, IPrice } from 'src/app/services/api/api.service';
+import { FormatService } from 'src/app/services/format/format.service';
 
 @Component({
   selector: 'app-prices',
@@ -11,7 +12,7 @@ export class PricesComponent
 {
   public prices?: IPrice[];
 
-  constructor(private api: ApiService, route: ActivatedRoute)
+  constructor(public format: FormatService, private api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: params =>
@@ -22,21 +23,6 @@ export class PricesComponent
         });
       },
     });
-  }
-
-  public formatAmount(price: IPrice): string
-  {
-    let amount = price.amount;
-
-    if ([ "usd", "eur" ].includes(price.currency))
-    {
-      amount /= 100;
-    }
-
-    return new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: price.currency.toUpperCase(),
-    }).format(amount);
   }
 
   public async archivePrice(price: IPrice)
