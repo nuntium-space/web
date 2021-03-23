@@ -28,7 +28,9 @@
                     <label>
                         Choose an option
                         <select formControlName="price" required>
-                            <option *ngFor="let price of prices" value="{{price.id}}">{{price.amount}} {{price.currency}}</option>
+                            <option *ngFor="let price of prices" value="{{price.id}}">
+                                {{format.currency(price.amount, price.currency)}} / month
+                            </option>
                         </select>
                     </label>
                     <button type="submit">

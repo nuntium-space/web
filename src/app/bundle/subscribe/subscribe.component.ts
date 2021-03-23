@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FormatService } from 'src/app/services/format/format.service';
 
 @Component({
   selector: 'app-subscribe',
@@ -19,7 +20,7 @@ export class SubscribeComponent implements OnInit
     price: new FormControl(),
   });
 
-  constructor(public auth: AuthService, private api: ApiService, private router: Router, private route: ActivatedRoute)
+  constructor(public auth: AuthService, public format: FormatService, private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async ngOnInit(): Promise<void>
