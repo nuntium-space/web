@@ -2,16 +2,34 @@
 
 @import "../bundle.scss";
 
-.price
+.list-item-with-action
 {
-    display: block;
-    font-size: xx-large;
-    font-weight: $bold;
-    border-radius: 0.5rem;
-
-    .billing-period
+    > div:first-child
     {
-        font-size: large;
-        font-weight: $light;
+        display: flex;
+        align-items: center;
+
+        .price
+        {
+            display: block;
+            font-size: xx-large;
+            font-weight: $bold;
+            border-radius: 0.5rem;
+
+            .billing-period
+            {
+                font-size: large;
+                font-weight: $light;
+            }
+
+            & + .archived-price-badge
+            {
+                color: var(--primary-color);
+                background-color: var(--secondary-color);
+                padding: 0.2em;
+                border-radius: 0.2em;
+                margin-left: 1em;
+            }
+        }
     }
 }

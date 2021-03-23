@@ -19,11 +19,14 @@
                     <p>You haven't added any price</p>
                 </div>
                 <div *ngFor="let price of prices" class="list-item-with-action">
-                    <span class="price">
-                        {{getDisplayAmount(price)}}
-                        <span class="currency">{{price.currency.toUpperCase()}}</span>
-                        <span class="billing-period">/ month</span>
-                    </span>
+                    <div>
+                        <span class="price">
+                            {{getDisplayAmount(price)}}
+                            <span class="currency">{{price.currency.toUpperCase()}}</span>
+                            <span class="billing-period">/ month</span>
+                        </span>
+                        <small *ngIf="!price.active" class="archived-price-badge">Archived</small>
+                    </div>
                     <div class="actions">
                         <button (click)="removePrice(price)">
                             Remove
