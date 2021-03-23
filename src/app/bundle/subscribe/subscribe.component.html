@@ -2,14 +2,14 @@
 
 <bundle-menu section="subscribe"></bundle-menu>
 
-<main *ngIf="auth.user && bundle">
+<main *ngIf="auth.user">
     <section>
         <div class="title">
             <h1>Subscribe</h1>
         </div>
         <div class="content">
             <div>
-                <div *ngIf="!auth.user.has_default_payment_method">
+                <div *ngIf="bundle && !auth.user.has_default_payment_method">
                     <p class="add-pm-msg">
                         Before subscribing to <b>{{bundle.name}}</b>
                         you need to set a default payment method
@@ -18,13 +18,23 @@
                         Go to Settings
                     </a>
                 </div>
-                <button
+                <form
                     *ngIf="auth.user.has_default_payment_method"
 
-                    (click)="subscribe()"
+                    [formGroup]="subscribeForm"
+
+                    (submit)="subscribe($event)"
                 >
-                    Subscribe
-                </button>
+                    <label>
+                        Choose an option
+                        <select formControlName="price" required>
+                            <option *ngFor="let price of prices" value="{{price.id}}">{{price.amount}} {{price.currency}}</option>
+                        </select>
+                    </label>
+                    <button type="submit">
+                        Subscribe
+                    </button>
+                </form>
             </div>
         </div>
     </section>

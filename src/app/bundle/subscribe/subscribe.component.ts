@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService, IBundle } from 'src/app/services/api/api.service';
+import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -11,6 +12,12 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class SubscribeComponent implements OnInit
 {
   public bundle?: IBundle;
+
+  public prices?: IPrice[];
+
+  public subscribeForm = new FormGroup({
+    price: new FormControl(),
+  });
 
   constructor(public auth: AuthService, private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
@@ -24,18 +31,28 @@ export class SubscribeComponent implements OnInit
         {
           this.bundle = response.data;
         });
+
+        this.api.listPricesForBundle(params.id, { active: true }).then(response =>
+        {
+          this.prices = response.data;
+        });
       },
     });
   }
 
-  public async subscribe()
+  public async subscribe(e: Event)
   {
-    if (!this.auth.user || !this.bundle)
+    e.preventDefault();
+
+    if (!this.auth.user)
     {
       return;
     }
 
-    const response = await this.api.subscribeToBundle(this.auth.user.id, this.bundle.id);
+    const response = await this.api.subscribeToPrice(
+      this.auth.user.id,
+      this.subscribeForm.get("price")?.value ?? "",
+    );
 
     if (!response.errors)
     {

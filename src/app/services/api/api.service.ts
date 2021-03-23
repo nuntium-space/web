@@ -223,9 +223,11 @@ export class ApiService
     return this.send("GET", `bundles/${id}/publishers`);
   }
 
-  public async listPricesForBundle(id: string): Promise<IApiServiceResponse<IPrice[]>>
+  public async listPricesForBundle(id: string, options?: {
+    active: boolean,
+  }): Promise<IApiServiceResponse<IPrice[]>>
   {
-    return this.send("GET", `bundles/${id}/prices`);
+    return this.send("GET", `bundles/${id}/prices${(options && "active" in options) ? `?active=${options.active}` : ""}`);
   }
 
   public async createPrice(bundleId: string, data: {
@@ -438,9 +440,9 @@ export class ApiService
     return this.send("POST", `users/${userId}/payment-methods`, data);
   }
 
-  public async subscribeToBundle(userId: string, bundleId: string): Promise<IApiServiceResponse<void>>
+  public async subscribeToPrice(userId: string, priceId: string): Promise<IApiServiceResponse<void>>
   {
-    return this.send("POST", `users/${userId}/subscriptions`, { bundle: bundleId });
+    return this.send("POST", `users/${userId}/subscriptions`, { price: priceId });
   }
 
   public async updateUser(id: string, data: {
