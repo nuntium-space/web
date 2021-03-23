@@ -1,1 +1,17 @@
+@import "~src/variables";
+
 @import "../bundle.scss";
+
+.price
+{
+    display: block;
+    font-size: xx-large;
+    font-weight: $bold;
+    border-radius: 0.5rem;
+
+    .billing-period
+    {
+        font-size: large;
+        font-weight: $light;
+    }
+}

@@ -5,7 +5,8 @@
     <div *ngFor="let subscription of subscriptions" class="bundle">
         <p>{{subscription.price.bundle.name}}</p>
         <p class="price">
-            {{subscription.price.value / 100}}
+            <!--TODO: Format amount based on currency-->
+            {{subscription.price.amount / 100}}
             <span class="currency">subscription.price.currency.toUpperCase()</span>
             <span class="billing-period">/ month</span>
         </p>

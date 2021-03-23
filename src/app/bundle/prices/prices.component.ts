@@ -24,6 +24,16 @@ export class PricesComponent
     });
   }
 
+  public getDisplayAmount(price: IPrice)
+  {
+    if ([ "usd", "eur" ].includes(price.currency))
+    {
+      return price.amount / 100;
+    }
+
+    return price.amount;
+  }
+
   public async removePrice(price: IPrice)
   {
     if (!this.prices)

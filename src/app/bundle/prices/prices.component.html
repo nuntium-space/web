@@ -19,9 +19,11 @@
                     <p>You haven't added any price</p>
                 </div>
                 <div *ngFor="let price of prices" class="list-item-with-action">
-                    <div>
-                        {{price.amount}}
-                    </div>
+                    <span class="price">
+                        {{getDisplayAmount(price)}}
+                        <span class="currency">{{price.currency.toUpperCase()}}</span>
+                        <span class="billing-period">/ month</span>
+                    </span>
                     <div class="actions">
                         <button (click)="removePrice(price)">
                             Remove
