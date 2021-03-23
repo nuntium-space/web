@@ -20,12 +20,9 @@
                 </div>
                 <div *ngFor="let price of prices" class="list-item-with-actions">
                     <div>
-                        <span class="price">
-                            {{getDisplayAmount(price)}}
-                            <span class="currency">{{price.currency.toUpperCase()}}</span>
-                            <span class="billing-period">/ month</span>
-                        </span>
                         <small *ngIf="!price.active" class="archived-price-badge">Archived</small>
+                        <p class="price">{{formatAmount(price)}}</p>
+                        <span class="billing-period">/ month</span>
                     </div>
                     <div class="actions">
                         <button (click)="removePrice(price)">

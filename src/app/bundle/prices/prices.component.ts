@@ -24,14 +24,19 @@ export class PricesComponent
     });
   }
 
-  public getDisplayAmount(price: IPrice)
+  public formatAmount(price: IPrice): string
   {
+    let amount = price.amount;
+
     if ([ "usd", "eur" ].includes(price.currency))
     {
-      return price.amount / 100;
+      amount /= 100;
     }
 
-    return price.amount;
+    return new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: price.currency.toUpperCase(),
+    }).format(amount);
   }
 
   public async removePrice(price: IPrice)
