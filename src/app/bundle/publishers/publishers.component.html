@@ -18,7 +18,7 @@
                 <div *ngIf="publishers.length === 0">
                     <p>You haven't added any publisher</p>
                 </div>
-                <div *ngFor="let publisher of publishers" class="list-item-with-action">
+                <div *ngFor="let publisher of publishers" class="list-item-with-actions">
                     <a
                         routerLink="/publisher/{{publisher.id}}"
                         class="dark"

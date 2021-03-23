@@ -363,7 +363,7 @@ div.list
             }
         }
 
-        &.list-item-with-action
+        &.list-item-with-actions
         {
             display: grid;
             grid-template-columns: auto max-content;
@@ -390,7 +390,7 @@ div.list
             }
         }
 
-        &:not(.list-item-with-action)
+        &:not(.list-item-with-actions)
         {
             color: var(--secondary-color);
             background-color: var(--primary-color);
