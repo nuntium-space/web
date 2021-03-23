@@ -20,15 +20,8 @@
 
         .price
         {
-            display: block;
             font-size: xx-large;
             font-weight: $bold;
-
-            .billing-period
-            {
-                font-size: large;
-                font-weight: $light;
-            }
         }
     }
 }
