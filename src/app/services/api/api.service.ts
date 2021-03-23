@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FEED_PAGE_SIZE } from 'src/config';
+import { environment } from 'src/environments/environment';
 
 interface IApiServiceResponse<T>
 {
@@ -110,14 +111,12 @@ export interface IPaymentMethod
 })
 export class ApiService
 {
-  private readonly ENDPOINT = "http://localhost:4000";
-
   constructor()
   {}
 
   private async send(method: "DELETE" | "GET" | "PATCH" | "POST" | "PUT", url: string, body?: any): Promise<IApiServiceResponse<any>>
   {
-    const response = await fetch(`${this.ENDPOINT}/${url}`, {
+    const response = await fetch(`${environment.api.endpoint}/${url}`, {
       method,
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("session.id")}`,
