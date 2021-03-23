@@ -39,7 +39,7 @@ export class PricesComponent
     }).format(amount);
   }
 
-  public async removePrice(price: IPrice)
+  public async archivePrice(price: IPrice)
   {
     if (!this.prices)
     {
