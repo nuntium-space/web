@@ -5,8 +5,8 @@
     <div *ngFor="let subscription of subscriptions" class="bundle">
         <p>{{subscription.bundle.name}}</p>
         <p class="price">
-            {{subscription.bundle.price / 100}}
-            <span class="currency">USD</span>
+            {{subscription.price.value / 100}}
+            <span class="currency">subscription.price.currency.toUpperCase()</span>
             <span class="billing-period">/ month</span>
         </p>
         <small *ngIf="subscription.status === 'active'">

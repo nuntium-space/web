@@ -27,19 +27,6 @@ aside
 {
     border-radius: 0;
     color: unset;
-
-    .price
-    {
-        display: block;
-        font-size: xx-large;
-        font-weight: $bold;
-
-        .billing-period
-        {
-            font-size: large;
-            font-weight: $light;
-        }
-    }
 }
 
 .payment-required

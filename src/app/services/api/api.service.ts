@@ -97,7 +97,7 @@ export interface ISubscription
   id: string,
   status: string,
   user: IUser,
-  bundle: IBundle,
+  price: IPrice,
   current_period_end: string,
   cancel_at_period_end: boolean,
   deleted: boolean,
