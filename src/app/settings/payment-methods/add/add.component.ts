@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { STRIPE_PUBLISHABLE_KEY } from 'src/config';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'add-payment-method',
@@ -23,7 +23,7 @@ export class AddPaymentMethodComponent implements OnInit
 
   public async ngOnInit(): Promise<void>
   {
-    this.stripe = await loadStripe(STRIPE_PUBLISHABLE_KEY);
+    this.stripe = await loadStripe(environment.stripePublishableKey);
 
     if (this.stripe)
     {

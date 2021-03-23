@@ -7,6 +7,7 @@ export const environment = {
   api: {
     endpoint: "http://localhost:4000",
   },
+  stripePublishableKey: "pk_test_51ITpGmCpJ0Nt9VeMc30PABAZSkk7LvQd3txkZbw6zBCCSvrsUiygXpKEOONlXbmNfE0kFTMETsEaCVHo2cPUFacx00Z2kbsCR7",
 };
 
 /*

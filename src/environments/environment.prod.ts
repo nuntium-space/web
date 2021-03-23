@@ -3,4 +3,5 @@ export const environment = {
   api: {
     endpoint: "TODO",
   },
+  stripePublishableKey: "TODO",
 };
