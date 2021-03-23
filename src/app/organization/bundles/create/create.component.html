@@ -24,26 +24,6 @@
                         </p>
                     </div>
                 </label>
-                <label>
-                    Price (USD)
-                    <input
-                        formControlName="price"
-
-                        type="number"
-                        name="price"
-                        min="0"
-                        step="0.01"
-                        required
-                    >
-                    <div *ngIf="form.get('price')?.errors" class="errors">
-                        <p *ngFor="let error of form.get('price')?.errors?.errors">
-                            {{error}}
-                        </p>
-                    </div>
-                </label>
-                <small>
-                    We take a <b>20%</b> cut on every transaction
-                </small>
                 <button type="submit">
                     Create
                 </button>

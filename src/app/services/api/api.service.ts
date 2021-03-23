@@ -251,7 +251,6 @@ export class ApiService
 
   public async createBundle(organizationId: string, data: {
     name: string,
-    price: number,
   }): Promise<IApiServiceResponse<IBundle>>
   {
     return this.send("POST", `organizations/${organizationId}/bundles`, data);

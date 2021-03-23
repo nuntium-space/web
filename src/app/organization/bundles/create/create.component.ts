@@ -14,7 +14,6 @@ export class CreateBundleComponent
 
   public form = new FormGroup({
     name: new FormControl(),
-    price: new FormControl(),
   });
 
   constructor(private api: ApiService, private router: Router, route: ActivatedRoute)
@@ -38,15 +37,10 @@ export class CreateBundleComponent
 
     const response = await this.api.createBundle(this.organizationId, {
       name: this.form.get("name")?.value ?? "",
-      price: Math.trunc((this.form.get("price")?.value ?? -1) * 100),
     });
 
     this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.startsWith(`"name"`))
-    });
-
-    this.form.get("price")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"price"`))
     });
 
     if (response.data)
