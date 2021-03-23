@@ -204,6 +204,11 @@ export class ApiService
     return this.send("GET", `bundles/${id}/publishers`);
   }
 
+  public async listPricesForBundle(id: string): Promise<IApiServiceResponse<IPrice[]>>
+  {
+    return this.send("GET", `bundles/${id}/prices`);
+  }
+
   public async addPublisherToBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `bundles/${bundleId}/publishers/${publisherId}`);
@@ -287,6 +292,11 @@ export class ApiService
   public async deletePaymentMethod(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `payment-methods/${id}`);
+  }
+
+  public async deletePrice(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `prices/${id}`);
   }
 
   public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>

@@ -3,7 +3,7 @@
         <p>You are not subscribed to any bundle</p>
     </div>
     <div *ngFor="let subscription of subscriptions" class="bundle">
-        <p>{{subscription.bundle.name}}</p>
+        <p>{{subscription.price.bundle.name}}</p>
         <p class="price">
             {{subscription.price.value / 100}}
             <span class="currency">subscription.price.currency.toUpperCase()</span>

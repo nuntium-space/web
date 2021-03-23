@@ -1,1 +1,34 @@
-<p>prices works!</p>
+<app-header></app-header>
+
+<bundle-menu section="prices"></bundle-menu>
+
+<main>
+    <section>
+        <div class="title">
+            <h1>Prices</h1>
+            <button routerLink="add">
+                &#43; Add
+            </button>
+        </div>
+        <div class="content">
+            <div *ngIf="!prices">
+                <spinner></spinner>
+            </div>
+            <div *ngIf="prices" class="list">
+                <div *ngIf="prices.length === 0">
+                    <p>You haven't added any price</p>
+                </div>
+                <div *ngFor="let price of prices" class="list-item-with-action">
+                    <div>
+                        {{price.value}}
+                    </div>
+                    <div class="actions">
+                        <button (click)="removePrice(price)">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

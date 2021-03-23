@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
+import { PricesComponent } from './bundle/prices/prices.component';
 import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
 import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
@@ -67,6 +68,13 @@ const routes: Routes = [
     canActivate: [ SignedInGuard ],
     children: [
       { path: "details", component: BundleDetailsComponent },
+      {
+        path: "prices",
+        children: [
+          // { path: "add", component: AddPriceComponent },
+          { path: "", component: PricesComponent },
+        ],
+      },
       { path: "subscribe", component: SubscribeComponent },
       {
         path: "publishers",
