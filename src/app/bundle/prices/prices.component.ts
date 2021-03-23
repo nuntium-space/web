@@ -50,7 +50,15 @@ export class PricesComponent
 
     if (!response.errors)
     {
-      this.prices = this.prices.filter(p => p.id !== price.id);
+      this.prices.map(p =>
+      {
+        if (p.id === price.id)
+        {
+          p.active = false;
+        }
+
+        return p;
+      });
     }
   }
 }
