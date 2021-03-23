@@ -43,9 +43,22 @@ export class AddPriceComponent
       return;
     }
 
+    let amount: number = this.form.get("amount")?.value ?? -1;
+    const currency = this.form.get("currency")?.value ?? "";
+
+    if (amount < 0)
+    {
+      return;
+    }
+
+    if ([ "usd", "eur" ].includes(currency))
+    {
+      amount = Math.trunc(amount * 100);
+    }
+
     const response = await this.api.createPrice(this.bundleId, {
-      amount: this.form.get("amount")?.value ?? "",
-      currency: this.form.get("currency")?.value ?? "",
+      amount,
+      currency,
     });
 
     this.form.get("amount")?.setErrors({
