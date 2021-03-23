@@ -22,7 +22,7 @@
                     <div>
                         <small *ngIf="!price.active" class="archived-price-badge">Archived</small>
                         <p class="price">{{format.currency(price.amount, price.currency)}}</p>
-                        <span class="billing-period">/ month</span>
+                        <span>/ month</span>
                     </div>
                     <div class="actions">
                         <button (click)="archivePrice(price)">
