@@ -420,7 +420,7 @@ export class ApiService
 
   public async listSubscriptionsForUser(userId: string): Promise<IApiServiceResponse<ISubscription[]>>
   {
-    return this.send("GET", `users/${userId}/subscriptions?expand[]=bundle`);
+    return this.send("GET", `users/${userId}/subscriptions?expand[]=price&expand[]=price.bundle`);
   }
 
   public async createUser(data: {

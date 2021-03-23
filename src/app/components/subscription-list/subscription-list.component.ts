@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ISubscription } from 'src/app/services/api/api.service';
+import { FormatService } from 'src/app/services/format/format.service';
 
 @Component({
   selector: 'subscription-list',
@@ -11,6 +12,6 @@ export class SubscriptionListComponent
   @Input()
   public subscriptions?: ISubscription[];
 
-  constructor()
+  constructor(public format: FormatService)
   {}
 }
