@@ -14,7 +14,6 @@ export class BundleDetailsComponent
 
   public detailsForm = new FormGroup({
     name: new FormControl(),
-    price: new FormControl({ disabled: true })
   });
 
   constructor(private api: ApiService, route: ActivatedRoute)
@@ -27,10 +26,6 @@ export class BundleDetailsComponent
           this.bundle = response.data;
 
           this.detailsForm.get("name")?.setValue(this.bundle?.name);
-          this.detailsForm.get("price")?.setValue((this.bundle?.price ?? 0) / 100);
-
-          // The API currently does not support price updates
-          this.detailsForm.get("price")?.disable();
         });
       },
     });

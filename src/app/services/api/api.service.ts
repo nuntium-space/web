@@ -79,8 +79,16 @@ export interface IBundle
 {
   id: string,
   name: string,
-  price: number,
   organization: IOrganization,
+  active: boolean,
+}
+
+export interface IPrice
+{
+  id: string,
+  value: number,
+  currency: string,
+  bundle: IBundle,
   active: boolean,
 }
 

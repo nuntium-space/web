@@ -24,21 +24,6 @@
                         </p>
                     </div>
                 </label>
-                <label>
-                    Price (USD)
-                    <input
-                        formControlName="price"
-
-                        type="number"
-                        name="price"
-                        required
-                    >
-                    <div *ngIf="detailsForm.get('price')?.errors" class="errors">
-                        <p *ngFor="let error of detailsForm.get('price')?.errors?.errors">
-                            {{error}}
-                        </p>
-                    </div>
-                </label>
                 <button type="submit">
                     Update
                 </button>
