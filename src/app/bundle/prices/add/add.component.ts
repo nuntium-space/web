@@ -53,11 +53,11 @@ export class AddPriceComponent
 
     if ([ "usd", "eur" ].includes(currency))
     {
-      amount = Math.trunc(amount * 100);
+      amount *= 100;
     }
 
     const response = await this.api.createPrice(this.bundleId, {
-      amount,
+      amount: Math.trunc(amount),
       currency,
     });
 
