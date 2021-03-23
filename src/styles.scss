@@ -11,6 +11,8 @@
 
 *
 {
+    outline: none;
+    font-family: inherit;
     box-sizing: border-box;
 }
 
@@ -32,23 +34,6 @@ main
 footer
 {
     grid-area: footer;
-}
-
-a,
-.link,
-button,
-input,
-textarea
-{
-    outline: none;
-}
-
-button,
-input,
-textarea,
-pre
-{
-    font-family: inherit;
 }
 
 a,
@@ -215,7 +200,8 @@ label
     }
 }
 
-input
+input,
+select
 {
     display: block;
     font-size: 1.5em;
