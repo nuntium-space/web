@@ -27,13 +27,15 @@
                 </label>
                 <label>
                     Currency
-                    <input
-                        formControlName="currency"
+                    <select formControlName="currency">
+                        <option
+                            *ngFor="let currency of currencies"
 
-                        type="url"
-                        name="currency"
-                        required
-                    >
+                            value="{{currency.name.toUpperCase()}}"
+                        >
+                            {{currency.name.toUpperCase()}}
+                        </option>
+                    </select>
                     <div *ngIf="form.get('currency')?.errors" class="errors">
                         <p *ngFor="let error of form.get('currency')?.errors?.errors">
                             {{error}}

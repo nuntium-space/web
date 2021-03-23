@@ -114,6 +114,12 @@ export interface IPaymentMethod
   },
 }
 
+export interface ICurrency
+{
+  name: string,
+  min: number,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -154,6 +160,19 @@ export class ApiService
 
     return result;
   }
+
+  /**
+   * CONFIGS
+   */
+
+  public async listSupportedCurrencies(): Promise<IApiServiceResponse<ICurrency[]>>
+  {
+    return this.send("GET", `config/currencies`);
+  }
+
+  /**
+   * RESOURCES
+   */
 
   public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
   {

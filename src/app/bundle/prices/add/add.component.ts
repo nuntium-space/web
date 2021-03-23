@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api/api.service';
+import { ApiService, ICurrency } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'add-price',
@@ -11,6 +11,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class AddPriceComponent
 {
   private bundleId?: string;
+
+  public currencies?: ICurrency[];
 
   public form = new FormGroup({
     amount: new FormControl(),
@@ -23,6 +25,11 @@ export class AddPriceComponent
       next: params =>
       {
         this.bundleId = params.id;
+
+        api.listSupportedCurrencies().then(response =>
+        {
+          this.currencies = response.data;
+        });
       },
     });
   }
