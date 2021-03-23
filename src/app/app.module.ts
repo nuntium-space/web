@@ -50,6 +50,7 @@ import { WriteNewArticleComponent } from './publisher-public-page/new/new.compon
 import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { AdvancedComponent } from './settings/advanced/advanced.component';
 import { PricesComponent } from './bundle/prices/prices.component';
+import { AddPriceComponent } from './bundle/prices/add/add.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { PricesComponent } from './bundle/prices/prices.component';
     KeepHtmlPipe,
     AdvancedComponent,
     PricesComponent,
+    AddPriceComponent,
   ],
   imports: [
     BrowserModule,

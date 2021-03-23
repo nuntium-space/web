@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { BundleDetailsComponent } from './bundle/details/details.component';
+import { AddPriceComponent } from './bundle/prices/add/add.component';
 import { PricesComponent } from './bundle/prices/prices.component';
 import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
@@ -71,7 +72,7 @@ const routes: Routes = [
       {
         path: "prices",
         children: [
-          // { path: "add", component: AddPriceComponent },
+          { path: "add", component: AddPriceComponent },
           { path: "", component: PricesComponent },
         ],
       },
