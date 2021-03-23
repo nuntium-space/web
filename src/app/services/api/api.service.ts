@@ -209,6 +209,14 @@ export class ApiService
     return this.send("GET", `bundles/${id}/prices`);
   }
 
+  public async createPrice(bundleId: string, data: {
+    amount: number,
+    currency: string,
+  }): Promise<IApiServiceResponse<IPrice>>
+  {
+    return this.send("POST", `bundles/${bundleId}/prices`, data);
+  }
+
   public async addPublisherToBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `bundles/${bundleId}/publishers/${publisherId}`);

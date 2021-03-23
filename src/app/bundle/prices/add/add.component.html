@@ -8,7 +8,42 @@
             <h1>Add price</h1>
         </div>
         <div class="content">
-            TODO
+            <form [formGroup]="form" (submit)="onSubmit($event)">
+                <label>
+                    Amount
+                    <input
+                        formControlName="amount"
+
+                        type="number"
+                        name="amount"
+                        min="0"
+                        required
+                    >
+                    <div *ngIf="form.get('amount')?.errors" class="errors">
+                        <p *ngFor="let error of form.get('amount')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+                <label>
+                    Currency
+                    <input
+                        formControlName="currency"
+
+                        type="url"
+                        name="currency"
+                        required
+                    >
+                    <div *ngIf="form.get('currency')?.errors" class="errors">
+                        <p *ngFor="let error of form.get('currency')?.errors?.errors">
+                            {{error}}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    Create
+                </button>
+            </form>
         </div>
     </section>
 </main>
