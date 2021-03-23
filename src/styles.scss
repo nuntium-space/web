@@ -184,16 +184,8 @@ label
     display: block;
     width: 100%;
 
-    .label
+    > *
     {
-        display: block;
-        margin-bottom: 0.2em;
-    }
-
-    input,
-    textarea
-    {
-        display: block;
         width: 100%;
         margin-top: 0.2rem;
     }
@@ -230,7 +222,6 @@ input
     color: var(--secondary-color);
     background-color: var(--primary-color);
     padding: 0.5em;
-    width: max-content;
     border: none;
     border-radius: 0.5rem;
     transition: 100ms;
@@ -346,6 +337,7 @@ section
 
 textarea
 {
+    display: block;
     padding: 0.5em;
     border: 1px solid var(--primary-color);
     border-radius: 0.5rem;
