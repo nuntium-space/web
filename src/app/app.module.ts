@@ -49,6 +49,7 @@ import { SubscriptionListComponent } from './components/subscription-list/subscr
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { AdvancedComponent } from './settings/advanced/advanced.component';
+import { PricesComponent } from './bundle/prices/prices.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { AdvancedComponent } from './settings/advanced/advanced.component';
     WriteNewArticleComponent,
     KeepHtmlPipe,
     AdvancedComponent,
+    PricesComponent,
   ],
   imports: [
     BrowserModule,
