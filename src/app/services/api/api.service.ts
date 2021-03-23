@@ -86,7 +86,7 @@ export interface IBundle
 export interface IPrice
 {
   id: string,
-  value: number,
+  amount: number,
   currency: string,
   bundle: IBundle,
   active: boolean,
