@@ -209,6 +209,11 @@ export class ApiService
     return this.send("PATCH", `bundles/${id}`, data);
   }
 
+  public async removePublisherFromBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `bundles/${bundleId}/publishers/${publisherId}`);
+  }
+
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("GET", `organizations/${id}`);

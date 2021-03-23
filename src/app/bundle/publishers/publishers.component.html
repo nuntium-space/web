@@ -18,14 +18,19 @@
                 <div *ngIf="publishers.length === 0">
                     <p>You haven't added any publisher</p>
                 </div>
-                <a
-                    *ngFor="let publisher of publishers"
-
-                    routerLink="/publisher/{{publisher.id}}"
-                    class="dark"
-                >
-                    <p>{{publisher.name}}</p>
-                </a>
+                <div *ngFor="let publisher of publishers" class="list-item-with-action">
+                    <a
+                        routerLink="/publisher/{{publisher.id}}"
+                        class="dark"
+                    >
+                        <p>{{publisher.name}}</p>
+                    </a>
+                    <div class="actions">
+                        <button (click)="removePublisher(publisher)">
+                            Remove
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
