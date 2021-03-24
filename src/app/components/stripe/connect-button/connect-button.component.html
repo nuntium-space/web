@@ -1,11 +1,11 @@
 <div *ngIf="organization">
     <button *ngIf="organization.stripe_account_enabled" class="fill" (click)="goToDashboard()">
-        Go to
+        {{ "components.stripe.connect_button.go_to_dashboard.before_img" | translate }}
         <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
-        Dashboard
+        {{ "components.stripe.connect_button.go_to_dashboard.after_img" | translate }}
     </button>
     <button *ngIf="!organization.stripe_account_enabled" class="fill" (click)="connect()">
-        Connect with
+        {{ "components.stripe.connect_button.connect" | translate }}
         <img src="/assets/stripe-logo-blurple.svg" alt="Stripe">
     </button>
 </div>
