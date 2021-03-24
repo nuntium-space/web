@@ -124,10 +124,7 @@
 <main *ngIf="!isSubscribed">
     <div class="payment-required">
         <img src="/assets/credit-card-payment.svg" alt="">
-        <h1>You can't see this article</h1>
-        <p>
-            In order to see it you need to subscribe to a bundle
-            that includes the publisher of this article
-        </p>
+        <h1>{{ "article.payment_required.title" | translate }}</h1>
+        <p>{{ "article.payment_required.subtitle" | translate }}</p>
     </div>
 </main>
