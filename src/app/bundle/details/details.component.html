@@ -5,12 +5,12 @@
 <main>
     <section>
         <div class="title">
-            <h1>Details</h1>
+            <h1>{{ "bundle.details.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="detailsForm" (submit)="onDetailsFormSubmit($event)">
                 <label>
-                    Name
+                    {{ "bundle.details.name" | translate }}
                     <input
                         formControlName="name"
 

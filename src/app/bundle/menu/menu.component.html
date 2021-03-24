@@ -8,25 +8,25 @@
                 routerLink="/bundle/{{bundle.id}}/details"
                 [class.selected]="section === 'details'"
             >
-                Details
+                {{ "bundle.details.__title" | translate }}
             </a>
             <a
                 routerLink="/bundle/{{bundle.id}}/prices"
                 [class.selected]="section === 'prices'"
             >
-                Prices
+                {{ "bundle.prices.__title" | translate }}
             </a>
             <a
                 routerLink="/bundle/{{bundle.id}}/subscribe"
                 [class.selected]="section === 'subscribe'"
             >
-                Subscribe
+                {{ "bundle.subscribe.__title" | translate }}
             </a>
             <a
                 routerLink="/bundle/{{bundle.id}}/publishers"
                 [class.selected]="section === 'publishers'"
             >
-                Publishers
+                {{ "bundle.publishers.__title" | translate }}
             </a>
         </div>
     </section>

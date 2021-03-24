@@ -5,7 +5,7 @@
 <main>
     <section>
         <div class="title">
-            <h1>Prices</h1>
+            <h1>{{ "bundle.prices.__title" | translate }}</h1>
             <button routerLink="add">
                 &#43; {{ "generic.add" | translate }}
             </button>
@@ -16,17 +16,19 @@
             </div>
             <div *ngIf="prices" class="list">
                 <div *ngIf="prices.length === 0">
-                    <p>You haven't added any price</p>
+                    <p>{{ "bundle.prices.empty" | translate }}</p>
                 </div>
                 <div *ngFor="let price of prices" class="list-item-with-actions">
                     <div>
-                        <small *ngIf="!price.active" class="archived-price-badge">Archived</small>
-                        <p class="price">{{format.currency(price.amount, price.currency)}}</p>
-                        <span>/ month</span>
+                        <small *ngIf="!price.active" class="archived-price-badge">
+                            {{ "bundle.prices.archived" | translate }}
+                        </small>
+                        <p class="price">{{ format.currency(price.amount, price.currency) }}</p>
+                        <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
                     </div>
                     <div class="actions">
                         <button (click)="archivePrice(price)">
-                            Archive
+                            {{ "bundle.prices.archive" | translate }}
                         </button>
                     </div>
                 </div>

@@ -5,12 +5,12 @@
 <main>
     <section>
         <div class="title">
-            <h1>Add price</h1>
+            <h1>{{ "bundle.prices.add.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="form" (submit)="onSubmit($event)">
                 <label>
-                    Amount
+                    {{ "bundle.prices.add.amount" | translate }}
                     <input
                         formControlName="amount"
 
@@ -25,11 +25,12 @@
                         </p>
                     </div>
                 </label>
-                <small>
-                    We take a <b>20%</b> cut on every transaction
+                <small
+                    [innerHTML]="'bundle.prices.add.fee_msg' | translate"
+                >
                 </small>
                 <label>
-                    Currency
+                    {{ "bundle.prices.add.currency" | translate }}
                     <select formControlName="currency">
                         <option
                             *ngFor="let currency of currencies"

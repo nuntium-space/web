@@ -5,13 +5,13 @@
 <main *ngIf="auth.user">
     <section>
         <div class="title">
-            <h1>Subscribe</h1>
+            <h1>{{ "bundle.subscribe.__title" | translate }}</h1>
         </div>
         <div class="content">
             <div>
                 <div *ngIf="bundle && !auth.user.has_default_payment_method">
                     <p class="add-pm-msg">
-                        Before subscribing to <b>{{bundle.name}}</b>
+                        Before subscribing to <b>{{ bundle.name }}</b>
                         you need to set a default payment method
                     </p>
                     <a class="button" routerLink="/settings/payment-methods">
