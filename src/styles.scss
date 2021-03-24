@@ -327,6 +327,7 @@ textarea
     padding: 0.5em;
     border: 1px solid var(--primary-color);
     border-radius: 0.5rem;
+    resize: vertical;
 
     &:focus
     {
