@@ -3,9 +3,9 @@
         <p>{{ "settings.account.subscriptions.empty" | translate }}</p>
     </div>
     <div *ngFor="let subscription of subscriptions" class="bundle">
-        <p>{{subscription.price.bundle.name}}</p>
+        <p>{{ subscription.price.bundle.name }}</p>
         <p class="price">
-            {{format.currency(subscription.price.amount, subscription.price.currency)}}
+            {{ format.currency(subscription.price.amount, subscription.price.currency) }}
             <span class="billing-period">/ {{ "settings.account.subscriptions.details.billing_period.month" | translate }}</span>
         </p>
         <small *ngIf="subscription.status === 'active'">
@@ -17,7 +17,7 @@
                 )
                 | translate
             }}
-            <b>{{subscription.current_period_end | date:"longDate"}}</b>
+            <b>{{ subscription.current_period_end | date:"longDate" }}</b>
         </small>
     </div>
 </div>

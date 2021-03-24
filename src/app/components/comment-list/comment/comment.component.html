@@ -1,21 +1,22 @@
 <div *ngIf="comment" class="comment">
     <header>
         <span class="user">
-            {{comment.user.first_name}}
-            {{comment.user.last_name}}
+            {{ comment.user.first_name }}
+            {{ comment.user.last_name }}
         </span>
         &bull;
-        <small title="{{comment.created_at | date:'medium'}}">
-            {{comment.created_at | date:"LLL d"}}
+        <small title="{{ comment.created_at | date:'medium' }}">
+            {{ comment.created_at | date:"LLL d" }}
         </small>
         <span *ngIf="comment.created_at !== comment.updated_at">
             &bull;
-            <small title="{{comment.updated_at | date:'medium'}}">
-                Updated on {{comment.updated_at | date:"LLL d"}}
+            <small title="{{ comment.updated_at | date:'medium' }}">
+                {{ "components.comment_list.comment.updated_on" | translate }}
+                {{ comment.updated_at | date:"LLL d" }}
             </small>
         </span>
     </header>
-    <pre>{{comment.content}}</pre>
+    <pre>{{ comment.content }}</pre>
     <details
         *ngIf="comment.reply_count > 0"
 
@@ -23,7 +24,7 @@
 
         (toggle)="loadReplies($event)"
     >
-        <summary>Replies</summary>
+        <summary>{{ "components.comment_list.comment.replies" | translate }}</summary>
         <comment-list [article]="article" [comments]="replies"></comment-list>
     </details>
     <add-comment-form
@@ -41,7 +42,14 @@
 
             (click)="showReplyForm = !showReplyForm"
         >
-            {{ showReplyForm ? 'Cancel' : 'Reply' }}
+            {{
+                (
+                    showReplyForm
+                        ? "components.comment_list.comment.actions.cancel"
+                        : "components.comment_list.comment.actions.reply"
+                )
+                | translate
+            }}
         </button>
     </footer>
 </div>
