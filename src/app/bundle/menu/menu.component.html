@@ -5,25 +5,25 @@
         </div>
         <div class="content">
             <a
-                routerLink="/bundle/{{bundle.id}}/details"
+                routerLink="/bundle/{{ bundle.id }}/details"
                 [class.selected]="section === 'details'"
             >
                 {{ "bundle.details.__title" | translate }}
             </a>
             <a
-                routerLink="/bundle/{{bundle.id}}/prices"
+                routerLink="/bundle/{{ bundle.id }}/prices"
                 [class.selected]="section === 'prices'"
             >
                 {{ "bundle.prices.__title" | translate }}
             </a>
             <a
-                routerLink="/bundle/{{bundle.id}}/subscribe"
+                routerLink="/bundle/{{ bundle.id }}/subscribe"
                 [class.selected]="section === 'subscribe'"
             >
                 {{ "bundle.subscribe.__title" | translate }}
             </a>
             <a
-                routerLink="/bundle/{{bundle.id}}/publishers"
+                routerLink="/bundle/{{ bundle.id }}/publishers"
                 [class.selected]="section === 'publishers'"
             >
                 {{ "bundle.publishers.__title" | translate }}

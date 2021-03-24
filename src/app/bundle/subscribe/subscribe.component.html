@@ -30,7 +30,7 @@
                     <label>
                         {{ "bundle.subscribe.choose_option" | translate }}
                         <select formControlName="price" required>
-                            <option *ngFor="let price of prices" value="{{price.id}}">
+                            <option *ngFor="let price of prices" value="{{ price.id }}">
                                 {{ format.currency(price.amount, price.currency) }}
                                 /
                                 {{ "bundle.subscribe.billing_period.month" | translate }}

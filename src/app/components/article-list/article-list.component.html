@@ -1,12 +1,12 @@
 <article *ngFor="let article of articles">
     <header>
-        <a routerLink="/~{{article.author.user.id}}" class="dark">
+        <a routerLink="/~{{ article.author.user.id }}" class="dark">
             {{ article.author.user.first_name }}
             {{ article.author.user.last_name }}
         </a>
         <span *ngIf="article.author.publisher.name">
             {{ "components.article_list.article.for" | translate }}
-            <a routerLink="/~{{article.author.publisher.id}}" class="dark">
+            <a routerLink="/~{{ article.author.publisher.id }}" class="dark">
                 {{ article.author.publisher.name }}
             </a>
         </span>
@@ -16,7 +16,7 @@
         </span>
     </header>
     <a
-        routerLink="/article/{{article.id}}"
+        routerLink="/article/{{ article.id }}"
         class="main dark"
     >
         <h2 class="title">{{ article.title }}</h2>

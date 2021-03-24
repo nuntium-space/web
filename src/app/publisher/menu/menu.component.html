@@ -5,13 +5,13 @@
         </div>
         <div class="content">
             <a
-                routerLink="/publisher/{{publisher.id}}/details"
+                routerLink="/publisher/{{ publisher.id }}/details"
                 [class.selected]="section === 'details'"
             >
                 {{ "publisher.details.__title" | translate }}
             </a>
             <a
-                routerLink="/publisher/{{publisher.id}}/authors"
+                routerLink="/publisher/{{ publisher.id }}/authors"
                 [class.selected]="section === 'authors'"
             >
                 {{ "publisher.authors.__title" | translate }}

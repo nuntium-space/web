@@ -22,7 +22,7 @@
                         >
                         <div *ngIf="updateAccountDetailsForm.get('first_name')?.errors" class="errors">
                             <p *ngFor="let error of updateAccountDetailsForm.get('first_name')?.errors?.errors">
-                                {{error}}
+                                {{ error }}
                             </p>
                         </div>
                     </label>
@@ -38,7 +38,7 @@
                         >
                         <div *ngIf="updateAccountDetailsForm.get('last_name')?.errors" class="errors">
                             <p *ngFor="let error of updateAccountDetailsForm.get('last_name')?.errors?.errors">
-                                {{error}}
+                                {{ error }}
                             </p>
                         </div>
                     </label>
@@ -55,7 +55,7 @@
                     >
                     <div *ngIf="updateAccountDetailsForm.get('email')?.errors" class="errors">
                         <p *ngFor="let error of updateAccountDetailsForm.get('email')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>

@@ -6,19 +6,19 @@
         </div>
         <div class="content">
             <a
-                routerLink="/organization/{{organization.id}}/details"
+                routerLink="/organization/{{ organization.id }}/details"
                 [class.selected]="section === 'details'"
             >
                 {{ "organization.details.__title" | translate }}
             </a>
             <a
-                routerLink="/organization/{{organization.id}}/publishers"
+                routerLink="/organization/{{ organization.id }}/publishers"
                 [class.selected]="section === 'publishers'"
             >
                 {{ "organization.publishers.__title" | translate }}
             </a>
             <a
-                routerLink="/organization/{{organization.id}}/bundles"
+                routerLink="/organization/{{ organization.id }}/bundles"
                 [class.selected]="section === 'bundles'"
             >
                 {{ "organization.bundles.__title" | translate }}

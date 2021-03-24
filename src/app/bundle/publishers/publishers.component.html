@@ -16,18 +16,18 @@
             </div>
             <div *ngIf="publishers" class="list">
                 <div *ngIf="publishers.length === 0">
-                    <p>You haven't added any publisher</p>
+                    <p>{{ "bundle.publishers.empty" | translate }}</p>
                 </div>
                 <div *ngFor="let publisher of publishers" class="list-item-with-actions">
                     <a
-                        routerLink="/publisher/{{publisher.id}}"
+                        routerLink="/publisher/{{ publisher.id }}"
                         class="dark"
                     >
                         <p>{{ publisher.name }}</p>
                     </a>
                     <div class="actions">
                         <button (click)="removePublisher(publisher)">
-                            Remove
+                            {{ "bundle.publishers.remove" | translate }}
                         </button>
                     </div>
                 </div>
