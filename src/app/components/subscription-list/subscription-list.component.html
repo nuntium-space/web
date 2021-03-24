@@ -6,10 +6,17 @@
         <p>{{subscription.price.bundle.name}}</p>
         <p class="price">
             {{format.currency(subscription.price.amount, subscription.price.currency)}}
-            <span class="billing-period">/ month</span>
+            <span class="billing-period">/ {{ "settings.account.subscriptions.details.billing_period.month" | translate }}</span>
         </p>
         <small *ngIf="subscription.status === 'active'">
-            {{subscription.cancel_at_period_end ? "Cancels on" : "Renews on"}}
+            {{
+                (
+                    subscription.cancel_at_period_end
+                    ? "settings.account.subscriptions.details.cancels_on"
+                    : "settings.account.subscriptions.details.renews_on"
+                )
+                | translate
+            }}
             <b>{{subscription.current_period_end | date:"longDate"}}</b>
         </small>
     </div>
