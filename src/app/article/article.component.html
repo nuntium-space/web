@@ -85,7 +85,7 @@
     <div *ngIf="isUpdatingArticle">
         <form class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
             <label>
-                Title
+                {{ "article.title" | translate }}
                 <input formControlName="title" type="text">
                 <div *ngIf="updateArticleForm.get('title')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
@@ -94,7 +94,7 @@
                 </div>
             </label>
             <label>
-                Content
+                {{ "article.content" | translate }}
                 <textarea formControlName="content" rows="30"></textarea>
                 <div *ngIf="updateArticleForm.get('content')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
@@ -107,7 +107,7 @@
     </div>
     <section id="comments">
         <div class="title">
-            <h1>Comments</h1>
+            <h1>{{ "article.comments" | translate }}</h1>
         </div>
         <div class="content">
             <add-comment-form
