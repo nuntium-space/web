@@ -5,7 +5,7 @@
             {{ article.author.user.last_name }}
         </a>
         <span *ngIf="article.author.publisher.name">
-            for
+            {{ "components.article_list.article.for" | translate }}
             <a routerLink="/~{{article.author.publisher.id}}" class="dark">
                 {{ article.author.publisher.name }}
             </a>
@@ -23,8 +23,13 @@
     </a>
     <footer>
         <div>
-            <i *ngIf="article.reading_time >= 1">{{ article.reading_time }} minutes</i>
-            <i *ngIf="article.reading_time < 1">less than a minute</i>
+            <i *ngIf="article.reading_time >= 1">
+                {{ article.reading_time }}
+                {{ "components.article_list.article.reading_time.minutes" | translate }}
+            </i>
+            <i *ngIf="article.reading_time < 1">
+                {{ "components.article_list.article.reading_time.less_than_a_minute" | translate }}
+            </i>
         </div>
     </footer>
 </article>
