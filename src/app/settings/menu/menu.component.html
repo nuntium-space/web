@@ -1,32 +1,32 @@
 <aside>
     <section>
         <div class="title">
-            <h1>Account</h1>
+            <h1>{{ "settings.account.__title" | translate }}</h1>
         </div>
         <div class="content">
             <a
                 routerLink="/settings/details"
                 [class.selected]="section === 'details'"
             >
-                Details
+                {{ "settings.account.details.__title" | translate }}
             </a>
             <a
                 routerLink="/settings/security"
                 [class.selected]="section === 'security'"
             >
-                Security
+                {{ "settings.account.security.__title" | translate }}
             </a>
             <a
                 routerLink="/settings/advanced"
                 [class.selected]="section === 'advanced'"
             >
-                Advanced
+                {{ "settings.account.advanced.__title" | translate }}
             </a>
             <a
                 routerLink="/settings/organizations"
                 [class.selected]="section === 'organizations'"
             >
-                Organizations
+                {{ "settings.account.organizations.__title" | translate }}
             </a>
         </div>
     </section>
@@ -37,26 +37,26 @@
                 routerLink="/settings/subscriptions"
                 [class.selected]="section === 'subscriptions'"
             >
-                Subscriptions
+                {{ "settings.account.subscriptions.__title" | translate }}
             </a>
             <a
                 routerLink="/settings/payment-methods"
                 [class.selected]="section === 'payment-methods'"
             >
-                Payment Methods
+                {{ "settings.account.payment_methods.__title" | translate }}
             </a>
         </div>
     </section>
     <section>
         <div class="title">
-            <h1>Author</h1>
+            <h1>{{ "settings.author.__title" | translate }}</h1>
         </div>
         <div class="content">
             <a
                 routerLink="/settings/publishers"
                 [class.selected]="section === 'publishers'"
             >
-                Publishers
+                {{ "settings.author.publishers.__title" | translate }}
             </a>
         </div>
     </section>
