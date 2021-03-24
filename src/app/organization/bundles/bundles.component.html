@@ -5,9 +5,9 @@
 <main>
     <section>
         <div class="title">
-            <h1>Bundles</h1>
+            <h1>{{ "organization.bundles.__title" | translate }}</h1>
             <button routerLink="create">
-                &#43; Create
+                &#43; {{ "generic.create" | translate }}
             </button>
         </div>
         <div class="content">
@@ -16,7 +16,7 @@
             </div>
             <div *ngIf="bundles" class="list">
                 <div *ngIf="bundles.length === 0">
-                    <p>You haven't created any bundle</p>
+                    <p>{{ "organization.bundles.empty" | translate }}</p>
                 </div>
                 <a
                     *ngFor="let bundle of bundles"
@@ -25,8 +25,10 @@
                     class="dark"
                 >
                     <p class="name">
-                        <span>{{bundle.name}}</span>
-                        <small *ngIf="!bundle.active" class="archived-bundle-badge">Archived</small>
+                        <span>{{ bundle.name }}</span>
+                        <small *ngIf="!bundle.active" class="archived-bundle-badge">
+                            {{ "organization.bundles.archived" | translate }}
+                        </small>
                     </p>
                 </a>
             </div>

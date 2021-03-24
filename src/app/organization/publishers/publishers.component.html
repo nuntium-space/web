@@ -5,9 +5,9 @@
 <main>
     <section>
         <div class="title">
-            <h1>Publishers</h1>
+            <h1>{{ "organization.publishers.__title" | translate }}</h1>
             <button routerLink="create">
-                &#43; Create
+                &#43; {{ "generic.create" | translate }}
             </button>
         </div>
         <div class="content">
@@ -16,7 +16,7 @@
             </div>
             <div *ngIf="publishers" class="list">
                 <div *ngIf="publishers.length === 0">
-                    <p>You haven't created any publisher</p>
+                    <p>{{ "organization.publishers.empty" | translate }}</p>
                 </div>
                 <a
                     *ngFor="let publisher of publishers"
@@ -24,7 +24,7 @@
                     routerLink="/publisher/{{publisher.id}}"
                     class="dark"
                 >
-                    <p>{{publisher.name}}</p>
+                    <p>{{ publisher.name }}</p>
                 </a>
             </div>
         </div>
