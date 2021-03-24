@@ -7,7 +7,7 @@
         <div class="title">
             <h1>Publishers</h1>
             <button routerLink="add">
-                &#43; Add
+                &#43; {{ "generic.add" | translate }}
             </button>
         </div>
         <div class="content">
@@ -23,7 +23,7 @@
                         routerLink="/publisher/{{publisher.id}}"
                         class="dark"
                     >
-                        <p>{{publisher.name}}</p>
+                        <p>{{ publisher.name }}</p>
                     </a>
                     <div class="actions">
                         <button (click)="removePublisher(publisher)">

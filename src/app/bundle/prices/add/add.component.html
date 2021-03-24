@@ -21,7 +21,7 @@
                     >
                     <div *ngIf="form.get('amount')?.errors" class="errors">
                         <p *ngFor="let error of form.get('amount')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
@@ -36,17 +36,17 @@
 
                             value="{{currency.name}}"
                         >
-                            {{currency.name.toUpperCase()}}
+                            {{ currency.name.toUpperCase() }}
                         </option>
                     </select>
                     <div *ngIf="form.get('currency')?.errors" class="errors">
                         <p *ngFor="let error of form.get('currency')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <button type="submit">
-                    Create
+                    {{ "generic.create" | translate }}
                 </button>
             </form>
         </div>
