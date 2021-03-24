@@ -54,6 +54,7 @@ import { AddPriceComponent } from './bundle/prices/add/add.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslationLoader } from './miscellaneous/TranslationLoader';
+import { FooterComponent } from './components/footer/footer.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -109,6 +110,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     AdvancedComponent,
     PricesComponent,
     AddPriceComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
