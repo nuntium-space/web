@@ -5,24 +5,26 @@
 <main>
     <section>
         <div class="title">
-            <h1>Advanced</h1>
+            <h1>{{ "settings.account.advanced.__title" | translate }}</h1>
         </div>
         <div class="content">
             <div class="delete-account">
                 <div>
-                    <h3>Deleting your account means:</h3>
+                    <h3>{{ "settings.account.advanced.delete_account.meaning.__title" | translate }}:</h3>
                     <ul>
-                        <li>Any <abbr title="Personally Identifiable Information">PII</abbr> will be removed immediately</li>
-                        <li>Any active subscription will be canceled without refunds</li>
+                        <li *ngFor="let item of 'settings.account.advanced.delete_account.meaning.items' | translate">
+                            {{ item }}
+                        </li>
                     </ul>
-                    <h3>Note that you cannot delete your account if you match any of these conditions:</h3>
+                    <h3>{{ "settings.account.advanced.delete_account.conditions.__title" | translate }}:</h3>
                     <ul>
-                        <li>You are an author for at least one publisher</li>
-                        <li>You are the owner of a publisher with one or more authors</li>
+                        <li *ngFor="let item of 'settings.account.advanced.delete_account.conditions.items' | translate">
+                            {{ item }}
+                        </li>
                     </ul>
                 </div>
                 <button class="danger" (click)="deleteAccount()">
-                    Delete Account
+                    {{ "settings.account.advanced.delete_account.delete" | translate }}
                 </button>
             </div>
         </div>
