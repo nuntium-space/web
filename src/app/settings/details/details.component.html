@@ -5,13 +5,13 @@
 <main>
     <section>
         <div class="title">
-            <h1>Details</h1>
+            <h1>{{ "settings.account.details.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="updateAccountDetailsForm" (submit)="onUpdateAccountDetailsFormSubmit($event)">
                 <div class="row">
                     <label>
-                        First name
+                        {{ "generic.first_name" | translate }}
                         <input
                             formControlName="first_name"
 
@@ -27,7 +27,7 @@
                         </div>
                     </label>
                     <label>
-                        Last name
+                        {{ "generic.last_name" | translate }}
                         <input
                             formControlName="last_name"
 
@@ -44,7 +44,7 @@
                     </label>
                 </div>
                 <label>
-                    Email
+                    {{ "generic.email" | translate }}
                     <input
                         formControlName="email"
 
@@ -60,7 +60,7 @@
                     </div>
                 </label>
                 <button type="submit">
-                    Update
+                    {{ "generic.update" | translate }}
                 </button>
             </form>
         </div>
