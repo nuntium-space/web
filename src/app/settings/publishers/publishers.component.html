@@ -13,7 +13,7 @@
             </div>
             <div *ngIf="authors" class="list">
                 <div *ngIf="authors.length === 0">
-                    <p>You are not an author of any publisher</p>
+                    <p>{{ "settings.author.publishers.empty" | translate }}</p>
                 </div>
                 <a
                     *ngFor="let author of authors"
