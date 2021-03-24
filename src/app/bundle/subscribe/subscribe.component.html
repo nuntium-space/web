@@ -10,12 +10,14 @@
         <div class="content">
             <div>
                 <div *ngIf="bundle && !auth.user.has_default_payment_method">
-                    <p class="add-pm-msg">
-                        Before subscribing to <b>{{ bundle.name }}</b>
-                        you need to set a default payment method
+                    <p
+                        class="add-pm-msg"
+
+                        [innerHTML]="'bundle.subscribe.no_pm.msg' | translate:{ BUNDLE_NAME: bundle.name }"
+                    >
                     </p>
                     <a class="button" routerLink="/settings/payment-methods">
-                        Go to Settings
+                        {{ "bundle.subscribe.no_pm.go_to_settings" | translate }}
                     </a>
                 </div>
                 <form
@@ -26,15 +28,17 @@
                     (submit)="subscribe($event)"
                 >
                     <label>
-                        Choose an option
+                        {{ "bundle.subscribe.choose_option" | translate }}
                         <select formControlName="price" required>
                             <option *ngFor="let price of prices" value="{{price.id}}">
-                                {{ format.currency(price.amount, price.currency) }} / month
+                                {{ format.currency(price.amount, price.currency) }}
+                                /
+                                {{ "bundle.subscribe.billing_period.month" | translate }}
                             </option>
                         </select>
                     </label>
                     <button type="submit">
-                        Subscribe
+                        {{ "bundle.subscribe.submit" | translate }}
                     </button>
                 </form>
             </div>
