@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormatService
 {
-  constructor()
+  constructor(@Inject(LOCALE_ID) private locale: string)
   {}
 
   public currency(amount: number, currency: string): string
@@ -15,7 +15,7 @@ export class FormatService
       amount /= 100;
     }
 
-    return new Intl.NumberFormat(undefined, {
+    return new Intl.NumberFormat(this.locale, {
       style: "currency",
       currency: currency.toUpperCase(),
     }).format(amount);
