@@ -1,6 +1,6 @@
 <div *ngIf="subscriptions" class="list">
     <div *ngIf="subscriptions.length === 0">
-        <p>You are not subscribed to any bundle</p>
+        <p>{{ "settings.account.subscriptions.empty" | translate }}</p>
     </div>
     <div *ngFor="let subscription of subscriptions" class="bundle">
         <p>{{subscription.price.bundle.name}}</p>
