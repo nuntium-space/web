@@ -5,7 +5,7 @@
 <main>
     <section>
         <div class="title">
-            <h1>Change password</h1>
+            <h1>{{ "settings.account.security.change_password.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="changePasswordForm" (submit)="onChangePasswordFormSubmit($event)">
@@ -20,7 +20,7 @@
                 >
                 <!-- ------------------------------------- -->
                 <label>
-                    Old password
+                    {{ "settings.account.security.change_password.old_password" | translate }}
                     <input
                         formControlName="old_password"
 
@@ -31,12 +31,12 @@
                     >
                     <div *ngIf="changePasswordForm.get('old_password')?.errors" class="errors">
                         <p *ngFor="let error of changePasswordForm.get('old_password')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <label>
-                    New password
+                    {{ "settings.account.security.change_password.new_password" | translate }}
                     <input
                         formControlName="new_password"
 
@@ -47,12 +47,12 @@
                     >
                     <div *ngIf="changePasswordForm.get('new_password')?.errors" class="errors">
                         <p *ngFor="let error of changePasswordForm.get('new_password')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <button type="submit">
-                    Change password
+                    {{ "settings.account.security.change_password.__title" | translate }}
                 </button>
             </form>
         </div>
