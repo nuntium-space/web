@@ -5,12 +5,12 @@
 <main>
     <section>
         <div class="title">
-            <h1>Details</h1>
+            <h1>{{ "organization.details.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="detailsForm" (submit)="onDetailsFormSubmit($event)">
                 <label>
-                    Name
+                    {{ "organization.details.name" | translate }}
                     <input
                         formControlName="name"
 
@@ -20,12 +20,12 @@
                     >
                     <div *ngIf="detailsForm.get('name')?.errors" class="errors">
                         <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <button type="submit">
-                    Update
+                    {{ "generic.update" | translate }}
                 </button>
             </form>
         </div>

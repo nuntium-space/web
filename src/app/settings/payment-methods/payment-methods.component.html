@@ -5,9 +5,9 @@
 <main>
     <section>
         <div class="title">
-            <h1>Payment Methods</h1>
+            <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
             <button routerLink="add">
-                &#43; Add
+                &#43; {{ "generic.add" | translate }}
             </button>
         </div>
         <div class="content">
@@ -16,7 +16,7 @@
             </div>
             <div *ngIf="paymentMethods" class="list">
                 <div *ngIf="paymentMethods.length === 0">
-                    <p>You haven't added any payment method</p>
+                    <p>{{ "settings.account.payment_methods.empty" | translate }}</p>
                 </div>
                 <div
                     *ngFor="let paymentMethod of paymentMethods"
@@ -27,17 +27,19 @@
                 >
                     <div *ngSwitchCase="'card'">
                         <p class="brand">
-                            <span>{{paymentMethod.data.brand}}</span>
-                            <small *ngIf="paymentMethod.__metadata?.is_default" class="default-pm-badge">Default</small>
+                            <span>{{ paymentMethod.data.brand }}</span>
+                            <small *ngIf="paymentMethod.__metadata?.is_default" class="default-pm-badge">
+                                {{ "settings.account.payment_methods.default" | translate }}
+                            </small>
                         </p>
                         <p>
-                            {{paymentMethod.data.exp_month.toString().padStart(2, "0")}}
+                            {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
                             /
-                            {{paymentMethod.data.exp_year}}
+                            {{ paymentMethod.data.exp_year }}
                         </p>
                         <p>
                             &bull;&bull;&bull;&bull;
-                            {{paymentMethod.data.last4}}
+                            {{ paymentMethod.data.last4 }}
                         </p>
                     </div>
                     <div class="actions">
@@ -46,10 +48,10 @@
 
                             (click)="setDefaultPaymentMethod(paymentMethod)"
                         >
-                            Make default
+                            {{ "settings.account.payment_methods.make_default" | translate }}
                         </button>
                         <button (click)="removePaymentMethod(paymentMethod)">
-                            &minus; Remove
+                            &minus; {{ "settings.account.payment_methods.remove" | translate }}
                         </button>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
     <input
       type="search"
       class="dark"
-      placeholder="Search articles"
+      placeholder="{{ 'components.header.search.placeholder' | translate }}"
 
       [value]="searchQuery"
 
@@ -21,18 +21,18 @@
     &#8942;
   </button>
   <button class="dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
-    Sign In
+    {{ "generic.sign_in" | translate }}
   </button>
   <button class="dark" routerLink="/signup" *ngIf="!auth.user && router.url.startsWith('/signin')">
-    Sign Up
+    {{ "generic.sign_up" | translate }}
   </button>
 </header>
 
 <nav *ngIf="showNav">
   <button class="dark" routerLink="/settings">
-    Settings
+    {{ "settings.__title" | translate }}
   </button>
   <button class="dark" (click)="auth.signOut()">
-    Sign Out
+    {{ "generic.sign_out" | translate }}
   </button>
 </nav>

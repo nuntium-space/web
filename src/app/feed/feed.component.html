@@ -3,11 +3,11 @@
 <main *ngIf="auth.user && articles">
     <div *ngIf="articles.length === 0" class="empty-feed">
         <img src="/assets/empty-feed.svg" alt="">
-        <h1>
-            <span>Congratulations,</span>
-            {{auth.user.first_name}}
+        <h1
+            [innerHTML]="'feed.empty.title' | translate:{ USER_FIRST_NAME: auth.user.first_name }"
+        >
         </h1>
-        <p>You are just a few seconds away from starting to read news you love from sources you can trust</p>
+        <p>{{ "feed.empty.subtitle" | translate }}</p>
     </div>
     <article-list [articles]="articles"></article-list>
 </main>

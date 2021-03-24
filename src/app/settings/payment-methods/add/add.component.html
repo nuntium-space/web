@@ -5,18 +5,18 @@
 <main>
     <section>
         <div class="title">
-            <h1>Add Payment Method</h1>
+            <h1>{{ "settings.account.payment_methods.add.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form (submit)="onSubmit($event)">
                 <label>
-                    Card
+                    {{ "settings.account.payment_methods.add.card" | translate }}
                     <div id="card-element"></div>
                     <div class="errors" *ngIf="cardElementError">
-                        <p>{{cardElementError}}</p>
+                        <p>{{ cardElementError }}</p>
                     </div>
                 </label>
-                <button type="submit">Add</button>
+                <button type="submit">{{ "generic.add" | translate }}</button>
             </form>
         </div>
     </section>

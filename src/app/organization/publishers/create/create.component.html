@@ -5,12 +5,12 @@
 <main>
     <section>
         <div class="title">
-            <h1>Create new publisher</h1>
+            <h1>{{ "organization.publishers.create.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="form" (submit)="onSubmit($event)">
                 <label>
-                    Name
+                    {{ "organization.publishers.create.name" | translate }}
                     <input
                         formControlName="name"
 
@@ -20,7 +20,7 @@
                     >
                     <div *ngIf="form.get('name')?.errors" class="errors">
                         <p *ngFor="let error of form.get('name')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
@@ -35,12 +35,12 @@
                     >
                     <div *ngIf="form.get('url')?.errors" class="errors">
                         <p *ngFor="let error of form.get('url')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <button type="submit">
-                    Create
+                    {{ "generic.create" | translate }}
                 </button>
             </form>
         </div>

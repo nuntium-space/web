@@ -5,9 +5,9 @@
 <main>
     <section>
         <div class="title">
-            <h1>Organizations</h1>
+            <h1>{{ "settings.account.organizations.__title" | translate }}</h1>
             <button routerLink="create">
-                &#43; Create
+                &#43; {{ "generic.create" | translate }}
             </button>
         </div>
         <div class="content">
@@ -16,15 +16,15 @@
             </div>
             <div *ngIf="organizations" class="list">
                 <div *ngIf="organizations.length === 0">
-                    <p>You haven't created any organization</p>
+                    <p>{{ "settings.account.organizations.empty" | translate }}</p>
                 </div>
                 <a
                     *ngFor="let organization of organizations"
 
-                    routerLink="/organization/{{organization.id}}"
+                    routerLink="/organization/{{ organization.id }}"
                     class="dark"
                 >
-                    <p>{{organization.name}}</p>
+                    <p>{{ organization.name }}</p>
                 </a>
             </div>
         </div>

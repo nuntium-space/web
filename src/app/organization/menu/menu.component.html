@@ -2,26 +2,26 @@
     <stripe-connect-button [organization]="organization"></stripe-connect-button>
     <section>
         <div class="title">
-            <h1>{{organization.name}}</h1>
+            <h1>{{ organization.name }}</h1>
         </div>
         <div class="content">
             <a
-                routerLink="/organization/{{organization.id}}/details"
+                routerLink="/organization/{{ organization.id }}/details"
                 [class.selected]="section === 'details'"
             >
-                Details
+                {{ "organization.details.__title" | translate }}
             </a>
             <a
-                routerLink="/organization/{{organization.id}}/publishers"
+                routerLink="/organization/{{ organization.id }}/publishers"
                 [class.selected]="section === 'publishers'"
             >
-                Publishers
+                {{ "organization.publishers.__title" | translate }}
             </a>
             <a
-                routerLink="/organization/{{organization.id}}/bundles"
+                routerLink="/organization/{{ organization.id }}/bundles"
                 [class.selected]="section === 'bundles'"
             >
-                Bundles
+                {{ "organization.bundles.__title" | translate }}
             </a>
         </div>
     </section>

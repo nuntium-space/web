@@ -4,15 +4,22 @@
     <div *ngIf="article.author.user.id === auth.user?.id">
         <section class="actions">
             <div class="title">
-                <h1>Actions</h1>
+                <h1>{{ "article.actions.__title" | translate }}</h1>
             </div>
             <div class="content">
                 <div>
                     <button class="fill" (click)="isUpdatingArticle = !isUpdatingArticle">
-                        {{isUpdatingArticle ? "Cancel" : "Update"}}
+                        {{
+                            (
+                                isUpdatingArticle
+                                    ? "generic.cancel"
+                                    : "generic.update"
+                            )
+                            | translate
+                        }}
                     </button>
                     <button *ngIf="!isUpdatingArticle" class="fill danger" (click)="deleteArticle()">
-                        Delete
+                        {{ "generic.delete" | translate }}
                     </button>
                 </div>
             </div>
@@ -22,45 +29,50 @@
     <div *ngIf="isSubscribed">
         <section>
             <div class="title">
-                <h1>Publisher</h1>
+                <h1>{{ "article.publisher.__title" | translate }}</h1>
             </div>
             <div class="content">
-                <a routerLink="/~{{article.author.publisher.id}}" class="dark">
-                    {{article.author.publisher.name}}
+                <a routerLink="/~{{ article.author.publisher.id }}" class="dark">
+                    {{ article.author.publisher.name }}
                 </a>
-                <a href="{{article.author.publisher.url}}" class="dark">
-                    {{article.author.publisher.url}}
+                <a href="{{ article.author.publisher.url }}" class="dark">
+                    {{ article.author.publisher.url }}
                 </a>
             </div>
         </section>
         <section>
             <div class="title">
-                <h1>Author</h1>
+                <h1>{{ "article.author.__title" | translate }}</h1>
             </div>
             <div class="content">
-                <a routerLink="/~{{article.author.user.id}}" class="dark">
-                    {{article.author.user.first_name}}
-                    {{article.author.user.last_name}}
+                <a routerLink="/~{{ article.author.user.id }}" class="dark">
+                    {{ article.author.user.first_name }}
+                    {{ article.author.user.last_name }}
                 </a>
             </div>
         </section>
         <section class="info">
             <div class="title">
-                <h1>Info</h1>
+                <h1>{{ "article.info.__title" | translate }}</h1>
             </div>
             <div class="content">
                 <div>
-                    <b>Reading Time</b>
-                    <p *ngIf="article.reading_time >= 1">{{article.reading_time}} minutes</p>
-                    <p *ngIf="article.reading_time < 1">less than a minute</p>
+                    <b>{{ "article.info.reading_time.__title" | translate }}</b>
+                    <p *ngIf="article.reading_time >= 1">
+                        {{ article.reading_time }}
+                        {{ "article.info.reading_time.minutes" | translate }}
+                    </p>
+                    <p *ngIf="article.reading_time < 1">
+                        {{ "article.info.reading_time.less_than_a_minute" | translate }}
+                    </p>
                 </div>
                 <div>
-                    <b>Published</b>
-                    <p>{{article.created_at | date:"medium"}}</p>
+                    <b>{{ "article.info.published" | translate }}</b>
+                    <p>{{ article.created_at | date:"medium" }}</p>
                 </div>
                 <div>
-                    <b>Updated</b>
-                    <p>{{article.updated_at | date:"medium"}}</p>
+                    <b>{{ "article.info.updated" | translate }}</b>
+                    <p>{{ article.updated_at | date:"medium" }}</p>
                 </div>
             </div>
         </section>
@@ -68,34 +80,34 @@
 </aside>
 
 <main *ngIf="article && isSubscribed">
-    <h1 class="title">{{article.title}}</h1>
+    <h1 class="title">{{ article.title }}</h1>
     <div *ngIf="!isUpdatingArticle" class="content" [innerHTML]="article.content | keepHtml"></div>
     <div *ngIf="isUpdatingArticle">
         <form class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
             <label>
-                Title
+                {{ "article.title" | translate }}
                 <input formControlName="title" type="text">
                 <div *ngIf="updateArticleForm.get('title')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
-                        {{error}}
+                        {{ error }}
                     </p>
                 </div>
             </label>
             <label>
-                Content
+                {{ "article.content" | translate }}
                 <textarea formControlName="content" rows="30"></textarea>
                 <div *ngIf="updateArticleForm.get('content')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
-                        {{error}}
+                        {{ error }}
                     </p>
                 </div>
             </label>
-            <button type="submit">Update</button>
+            <button type="submit">{{ "generic.update" | translate }}</button>
         </form>
     </div>
     <section id="comments">
         <div class="title">
-            <h1>Comments</h1>
+            <h1>{{ "article.comments" | translate }}</h1>
         </div>
         <div class="content">
             <add-comment-form
@@ -112,12 +124,7 @@
 <main *ngIf="!isSubscribed">
     <div class="payment-required">
         <img src="/assets/credit-card-payment.svg" alt="">
-        <h1>
-            <span>You can't see this article</span>
-        </h1>
-        <p>
-            In order to see it you need to subscribe to a bundle
-            that includes the publisher of this article
-        </p>
+        <h1>{{ "article.payment_required.title" | translate }}</h1>
+        <p>{{ "article.payment_required.subtitle" | translate }}</p>
     </div>
 </main>

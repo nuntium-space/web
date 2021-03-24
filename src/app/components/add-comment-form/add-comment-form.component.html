@@ -1,14 +1,14 @@
 <form [formGroup]="form" (submit)="onSubmit($event)">
     <label>
-        Add a comment
+        {{ "components.add_comment.__title" | translate }}
         <textarea formControlName="content" rows="5"></textarea>
         <div *ngIf="form.get('content')?.errors" class="errors">
             <p *ngFor="let error of form.get('content')?.errors?.errors">
-                {{error}}
+                {{ error }}
             </p>
         </div>
     </label>
     <button type="submit" class="small">
-        Add comment
+        {{ "components.add_comment.submit" | translate }}
     </button>
 </form>

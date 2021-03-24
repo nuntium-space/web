@@ -5,9 +5,9 @@
 <main *ngIf="articles">
     <div *ngIf="articles.length === 0" class="no-results">
         <img src="/assets/empty-search-result.svg" alt="">
-        <h1>
-            <span>No results for</span>
-            {{searchQuery}}
+        <h1
+            [innerHTML]="'explore.search.empty' | translate:{ QUERY: searchQuery }"
+        >
         </h1>
     </div>
     <article-list [articles]="articles"></article-list>

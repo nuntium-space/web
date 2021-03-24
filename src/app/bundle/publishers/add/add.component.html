@@ -5,7 +5,7 @@
 <main>
     <section>
         <div class="title">
-            <h1>Add publisher</h1>
+            <h1>{{ "bundle.publishers.add.__title" | translate }}</h1>
         </div>
         <div class="content">
             <div *ngIf="!publishers">
@@ -13,18 +13,18 @@
             </div>
             <div *ngIf="publishers" class="list">
                 <div *ngIf="publishers.length === 0">
-                    <p>You don't have any publisher to add</p>
+                    <p>{{ "bundle.publishers.add.empty" | translate }}</p>
                 </div>
                 <div *ngFor="let publisher of publishers" class="list-item-with-actions">
                     <a
-                        routerLink="/publisher/{{publisher.id}}"
+                        routerLink="/publisher/{{ publisher.id }}"
                         class="dark"
                     >
-                        <p>{{publisher.name}}</p>
+                        <p>{{ publisher.name }}</p>
                     </a>
                     <div class="actions">
                         <button (click)="addPublisher(publisher)">
-                            &#43; Add
+                            &#43; {{ "generic.add" | translate }}
                         </button>
                     </div>
                 </div>

@@ -5,13 +5,13 @@
 <main>
     <section>
         <div class="title">
-            <h1>Details</h1>
+            <h1>{{ "settings.account.details.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="updateAccountDetailsForm" (submit)="onUpdateAccountDetailsFormSubmit($event)">
                 <div class="row">
                     <label>
-                        First name
+                        {{ "generic.first_name" | translate }}
                         <input
                             formControlName="first_name"
 
@@ -22,12 +22,12 @@
                         >
                         <div *ngIf="updateAccountDetailsForm.get('first_name')?.errors" class="errors">
                             <p *ngFor="let error of updateAccountDetailsForm.get('first_name')?.errors?.errors">
-                                {{error}}
+                                {{ error }}
                             </p>
                         </div>
                     </label>
                     <label>
-                        Last name
+                        {{ "generic.last_name" | translate }}
                         <input
                             formControlName="last_name"
 
@@ -38,13 +38,13 @@
                         >
                         <div *ngIf="updateAccountDetailsForm.get('last_name')?.errors" class="errors">
                             <p *ngFor="let error of updateAccountDetailsForm.get('last_name')?.errors?.errors">
-                                {{error}}
+                                {{ error }}
                             </p>
                         </div>
                     </label>
                 </div>
                 <label>
-                    Email
+                    {{ "generic.email" | translate }}
                     <input
                         formControlName="email"
 
@@ -55,12 +55,12 @@
                     >
                     <div *ngIf="updateAccountDetailsForm.get('email')?.errors" class="errors">
                         <p *ngFor="let error of updateAccountDetailsForm.get('email')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <button type="submit">
-                    Update
+                    {{ "generic.update" | translate }}
                 </button>
             </form>
         </div>

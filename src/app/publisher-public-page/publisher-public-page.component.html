@@ -1,35 +1,35 @@
 <app-header></app-header>
 
 <aside *ngIf="publisher">
-    <h1>{{publisher.name}}</h1>
+    <h1>{{ publisher.name }}</h1>
     <section *ngIf="publisher.__metadata?.is_author">
         <div class="title">
-            <h1>Actions</h1>
+            <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
         </div>
         <div class="content">
             <div>
                 <a class="button fill" routerLink="new">
-                    &#43; Write new article
+                    &#43; {{ "publisher_public_page.actions.new_article" | translate }}
                 </a>
             </div>
         </div>
     </section>
     <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed)">
         <div class="title">
-            <h1>Subscribe</h1>
+            <h1>{{ "publisher_public_page.subscribe.__title" | translate }}</h1>
         </div>
         <div class="content">
             <p *ngIf="bundles.length === 0">
-                There are no bundles for this publisher
+                {{ "publisher_public_page.subscribe.empty" | translate }}
             </p>
             <a
                 *ngFor="let bundle of bundles"
 
-                routerLink="/bundle/{{bundle.id}}/subscribe"
+                routerLink="/bundle/{{ bundle.id }}/subscribe"
 
                 class="bundle dark"
             >
-                <span class="name">{{bundle.name}}</span>
+                <span class="name">{{ bundle.name }}</span>
             </a>
         </div>
     </section>
@@ -39,13 +39,13 @@
     <article-list *ngIf="isSubscribed" [articles]="articles"></article-list>
     <div *ngIf="!isSubscribed && publisher" class="payment-required">
         <img src="/assets/credit-card-payment.svg" alt="">
-        <h1>
-            <span>You are not subscribed to</span>
-            {{publisher.name}}
+        <h1
+            [innerHTML]="'publisher_public_page.not_subscribed' | translate:{ PUBLISHER_NAME: publisher.name }"
+        >
         </h1>
-        <p>
-            In order to see the articles of <b>{{publisher.name}}</b>
-            you need to subscribe a bundle that includes this publisher
+        <p
+            [innerHTML]="'publisher_public_page.how_to_subscribe' | translate:{ PUBLISHER_NAME: publisher.name }"
+        >
         </p>
     </div>
 </main>
