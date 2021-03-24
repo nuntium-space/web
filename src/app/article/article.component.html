@@ -9,10 +9,10 @@
             <div class="content">
                 <div>
                     <button class="fill" (click)="isUpdatingArticle = !isUpdatingArticle">
-                        {{isUpdatingArticle ? "Cancel" : "Update"}}
+                        {{ isUpdatingArticle ? "Cancel" : "Update" }}
                     </button>
                     <button *ngIf="!isUpdatingArticle" class="fill danger" (click)="deleteArticle()">
-                        Delete
+                        {{ "generic.delete" | translate }}
                     </button>
                 </div>
             </div>
@@ -25,11 +25,11 @@
                 <h1>Publisher</h1>
             </div>
             <div class="content">
-                <a routerLink="/~{{article.author.publisher.id}}" class="dark">
-                    {{article.author.publisher.name}}
+                <a routerLink="/~{{ article.author.publisher.id }}" class="dark">
+                    {{ article.author.publisher.name }}
                 </a>
-                <a href="{{article.author.publisher.url}}" class="dark">
-                    {{article.author.publisher.url}}
+                <a href="{{ article.author.publisher.url }}" class="dark">
+                    {{ article.author.publisher.url }}
                 </a>
             </div>
         </section>
@@ -38,9 +38,9 @@
                 <h1>Author</h1>
             </div>
             <div class="content">
-                <a routerLink="/~{{article.author.user.id}}" class="dark">
-                    {{article.author.user.first_name}}
-                    {{article.author.user.last_name}}
+                <a routerLink="/~{{ article.author.user.id }}" class="dark">
+                    {{ article.author.user.first_name }}
+                    {{ article.author.user.last_name }}
                 </a>
             </div>
         </section>
@@ -51,16 +51,16 @@
             <div class="content">
                 <div>
                     <b>Reading Time</b>
-                    <p *ngIf="article.reading_time >= 1">{{article.reading_time}} minutes</p>
+                    <p *ngIf="article.reading_time >= 1">{{ article.reading_time }} minutes</p>
                     <p *ngIf="article.reading_time < 1">less than a minute</p>
                 </div>
                 <div>
                     <b>Published</b>
-                    <p>{{article.created_at | date:"medium"}}</p>
+                    <p>{{ article.created_at | date:"medium" }}</p>
                 </div>
                 <div>
                     <b>Updated</b>
-                    <p>{{article.updated_at | date:"medium"}}</p>
+                    <p>{{ article.updated_at | date:"medium" }}</p>
                 </div>
             </div>
         </section>
@@ -68,7 +68,7 @@
 </aside>
 
 <main *ngIf="article && isSubscribed">
-    <h1 class="title">{{article.title}}</h1>
+    <h1 class="title">{{ article.title }}</h1>
     <div *ngIf="!isUpdatingArticle" class="content" [innerHTML]="article.content | keepHtml"></div>
     <div *ngIf="isUpdatingArticle">
         <form class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
@@ -77,7 +77,7 @@
                 <input formControlName="title" type="text">
                 <div *ngIf="updateArticleForm.get('title')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
-                        {{error}}
+                        {{ error }}
                     </p>
                 </div>
             </label>
@@ -86,11 +86,11 @@
                 <textarea formControlName="content" rows="30"></textarea>
                 <div *ngIf="updateArticleForm.get('content')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
-                        {{error}}
+                        {{ error }}
                     </p>
                 </div>
             </label>
-            <button type="submit">Update</button>
+            <button type="submit">{{ "generic.update" | translate }}</button>
         </form>
     </div>
     <section id="comments">
@@ -112,9 +112,7 @@
 <main *ngIf="!isSubscribed">
     <div class="payment-required">
         <img src="/assets/credit-card-payment.svg" alt="">
-        <h1>
-            <span>You can't see this article</span>
-        </h1>
+        <h1>You can't see this article</h1>
         <p>
             In order to see it you need to subscribe to a bundle
             that includes the publisher of this article
