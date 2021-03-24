@@ -4,12 +4,19 @@
     <div *ngIf="article.author.user.id === auth.user?.id">
         <section class="actions">
             <div class="title">
-                <h1>Actions</h1>
+                <h1>{{ "article.actions.__title" | translate }}</h1>
             </div>
             <div class="content">
                 <div>
                     <button class="fill" (click)="isUpdatingArticle = !isUpdatingArticle">
-                        {{ isUpdatingArticle ? "Cancel" : "Update" }}
+                        {{
+                            (
+                                isUpdatingArticle
+                                    ? "generic.cancel"
+                                    : "generic.update"
+                            )
+                            | translate
+                        }}
                     </button>
                     <button *ngIf="!isUpdatingArticle" class="fill danger" (click)="deleteArticle()">
                         {{ "generic.delete" | translate }}
@@ -22,7 +29,7 @@
     <div *ngIf="isSubscribed">
         <section>
             <div class="title">
-                <h1>Publisher</h1>
+                <h1>{{ "article.publisher.__title" | translate }}</h1>
             </div>
             <div class="content">
                 <a routerLink="/~{{ article.author.publisher.id }}" class="dark">
@@ -35,7 +42,7 @@
         </section>
         <section>
             <div class="title">
-                <h1>Author</h1>
+                <h1>{{ "article.author.__title" | translate }}</h1>
             </div>
             <div class="content">
                 <a routerLink="/~{{ article.author.user.id }}" class="dark">
@@ -46,20 +53,20 @@
         </section>
         <section class="info">
             <div class="title">
-                <h1>Info</h1>
+                <h1>{{ "article.info.__title" | translate }}</h1>
             </div>
             <div class="content">
                 <div>
-                    <b>Reading Time</b>
+                    <b>{{ "article.info.reading_time.__title" | translate }}</b>
                     <p *ngIf="article.reading_time >= 1">{{ article.reading_time }} minutes</p>
                     <p *ngIf="article.reading_time < 1">less than a minute</p>
                 </div>
                 <div>
-                    <b>Published</b>
+                    <b>{{ "article.info.published" | translate }}</b>
                     <p>{{ article.created_at | date:"medium" }}</p>
                 </div>
                 <div>
-                    <b>Updated</b>
+                    <b>{{ "article.info.updated" | translate }}</b>
                     <p>{{ article.updated_at | date:"medium" }}</p>
                 </div>
             </div>
