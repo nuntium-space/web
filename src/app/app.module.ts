@@ -51,6 +51,14 @@ import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { AdvancedComponent } from './settings/advanced/advanced.component';
 import { PricesComponent } from './bundle/prices/prices.component';
 import { AddPriceComponent } from './bundle/prices/add/add.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslationLoader } from './miscellaneous/TranslationLoader';
+
+export const createTranslationLoader = (http: HttpClient) =>
+{
+  return new TranslationLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -106,6 +114,15 @@ import { AddPriceComponent } from './bundle/prices/add/add.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslationLoader),
+        deps: [ HttpClient ],
+      },
+      defaultLanguage: "en",
+    }),
   ],
   providers: [
     AuthService,
