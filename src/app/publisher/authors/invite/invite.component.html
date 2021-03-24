@@ -5,12 +5,12 @@
 <main>
     <section>
         <div class="title">
-            <h1>Invite author</h1>
+            <h1>{{ "publisher.authors.invite_author.__title" | translate }}</h1>
         </div>
         <div class="content">
             <form [formGroup]="form" (submit)="onSubmit($event)">
                 <label>
-                    Email
+                    {{ "generic.email" | translate }}
                     <input
                         formControlName="email"
 
@@ -20,12 +20,12 @@
                     >
                     <div *ngIf="form.get('email')?.errors" class="errors">
                         <p *ngFor="let error of form.get('email')?.errors?.errors">
-                            {{error}}
+                            {{ error }}
                         </p>
                     </div>
                 </label>
                 <button type="submit">
-                    Invite
+                    {{ "publisher.authors.invite" | translate }}
                 </button>
             </form>
         </div>
