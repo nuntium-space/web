@@ -3,11 +3,14 @@
 <main>
   <form [formGroup]="form" (submit)="onSubmit($event)">
     <div class="title">
-      <h1>Sign In</h1>
-      <p>Don't have an account yet? <a routerLink="/signup" class="dark">Sign Up</a></p>
+      <h1>{{ "generic.sign_in" | translate }}</h1>
+      <p>
+        {{ "sign_in.no_account" | translate }}
+        <a routerLink="/signup" class="dark">{{ "generic.sign_up" | translate }}</a>
+      </p>
     </div>
     <label>
-      Email
+      {{ "generic.email" | translate }}
       <input
         formControlName="email"
 
@@ -18,12 +21,12 @@
       >
       <div *ngIf="form.get('email')?.errors" class="errors">
         <p *ngFor="let error of form.get('email')?.errors?.errors">
-          {{error}}
+          {{ error }}
         </p>
       </div>
     </label>
     <label>
-      Password
+      {{ "generic.password" | translate }}
       <input
         formControlName="password"
 
@@ -34,12 +37,12 @@
       >
       <div *ngIf="form.get('password')?.errors" class="errors">
         <p *ngFor="let error of form.get('password')?.errors?.errors">
-          {{error}}
+          {{ error }}
         </p>
       </div>
     </label>
     <button type="submit">
-      Sign In
+      {{ "generic.sign_in" | translate }}
     </button>
   </form>
   <img src="assets/signin.svg" alt="">
