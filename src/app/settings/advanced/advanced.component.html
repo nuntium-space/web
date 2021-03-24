@@ -12,8 +12,11 @@
                 <div>
                     <h3>{{ "settings.account.advanced.delete_account.meaning.__title" | translate }}:</h3>
                     <ul>
-                        <li *ngFor="let item of 'settings.account.advanced.delete_account.meaning.items' | translate">
-                            {{ item }}
+                        <li
+                            *ngFor="let item of 'settings.account.advanced.delete_account.meaning.items' | translate"
+
+                            [innerHTML]="item"
+                        >
                         </li>
                     </ul>
                     <h3>{{ "settings.account.advanced.delete_account.conditions.__title" | translate }}:</h3>
