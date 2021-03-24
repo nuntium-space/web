@@ -3,10 +3,10 @@
 <main>
     <form [formGroup]="form" (submit)="onSubmit($event)">
         <div class="title">
-            <h1>Write new article</h1>
+            <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
         </div>
         <label>
-            Title
+            {{ "publisher_public_page.new_article.title" | translate }}
             <input formControlName="title" type="text">
             <div *ngIf="form.get('title')?.errors" class="errors">
                 <p *ngFor="let error of form.get('title')?.errors?.errors">
@@ -15,7 +15,7 @@
             </div>
         </label>
         <label>
-            Content
+            {{ "publisher_public_page.new_article.content" | translate }}
             <textarea formControlName="content" rows="30"></textarea>
             <div *ngIf="form.get('content')?.errors" class="errors">
                 <p *ngFor="let error of form.get('content')?.errors?.errors">
