@@ -56,6 +56,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslationLoader } from './miscellaneous/TranslationLoader';
 import { FooterComponent } from './components/footer/footer.component';
 import { PreferencesComponent } from './settings/preferences/preferences.component';
+import { UserSettingsService } from './services/user-settings/user-settings.service';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -132,14 +133,18 @@ export const createTranslationLoader = (http: HttpClient) =>
     AuthService,
     {
       provide: APP_INITIALIZER,
-      useFactory: (auth: AuthService) =>
+      useFactory: (auth: AuthService, userSettings: UserSettingsService) =>
       {
-        return (): Promise<any> =>
+        return async (): Promise<any> =>
         {
-          return auth.init();
+          await auth.init();
+
+          await userSettings.init();
+
+          return;
         };
       },
-      deps: [ AuthService ],
+      deps: [ AuthService, UserSettingsService ],
       multi: true,
     },
   ],
