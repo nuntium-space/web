@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -18,12 +19,14 @@ export class AddPaymentMethodComponent implements OnInit
 
   public cardElementError: string = "";
 
-  constructor(private api: ApiService, private auth: AuthService, private router: Router, private route: ActivatedRoute)
+  constructor(private api: ApiService, private auth: AuthService, private translate: TranslateService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async ngOnInit(): Promise<void>
   {
-    this.stripe = await loadStripe(environment.stripePublishableKey);
+    this.stripe = await loadStripe(environment.stripePublishableKey, {
+      locale: this.translate.currentLang as any,
+    });
 
     if (this.stripe)
     {
