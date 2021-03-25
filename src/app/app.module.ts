@@ -55,6 +55,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslationLoader } from './miscellaneous/TranslationLoader';
 import { FooterComponent } from './components/footer/footer.component';
+import { PreferencesComponent } from './settings/preferences/preferences.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -111,6 +112,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     PricesComponent,
     AddPriceComponent,
     FooterComponent,
+    PreferencesComponent,
   ],
   imports: [
     BrowserModule,

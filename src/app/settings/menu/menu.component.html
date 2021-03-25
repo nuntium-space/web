@@ -17,6 +17,12 @@
                 {{ "settings.account.security.__title" | translate }}
             </a>
             <a
+                routerLink="/settings/preferences"
+                [class.selected]="section === 'preferences'"
+            >
+                {{ "settings.account.preferences.__title" | translate }}
+            </a>
+            <a
                 routerLink="/settings/advanced"
                 [class.selected]="section === 'advanced'"
             >

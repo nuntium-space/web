@@ -28,6 +28,7 @@ import { CreateOrganizationComponent } from './settings/organizations/create/cre
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
 import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
+import { PreferencesComponent } from './settings/preferences/preferences.component';
 import { UserPublishersComponent } from './settings/publishers/publishers.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     children: [
       { path: "details", component: AccountDetailsComponent },
       { path: "security", component: SecurityComponent },
+      { path: "preferences", component: PreferencesComponent },
       { path: "advanced", component: AdvancedComponent },
       {
         path: "organizations",
