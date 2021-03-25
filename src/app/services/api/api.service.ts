@@ -126,6 +126,11 @@ export interface ILanguage
   display_name: number,
 }
 
+export interface IUserSettings
+{
+  language: string | null,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -424,6 +429,11 @@ export class ApiService
     return this.send("GET", `users/${userId}/authors?expand[]=publisher`);
   }
 
+  public async retrieveUserSettings(userId: string): Promise<IApiServiceResponse<IUserSettings>>
+  {
+    return this.send("GET", `users/${userId}/settings`);
+  }
+
   public async createBillingPortalSession(userId: string): Promise<IApiServiceResponse<{ url: string }>>
   {
     return this.send("GET", `users/${userId}/stripe/portal`);
@@ -465,6 +475,13 @@ export class ApiService
   }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("PATCH", `users/${id}`, data);
+  }
+
+  public async updateUserSettings(userId: string, data: {
+    language?: string,
+  }): Promise<IApiServiceResponse<IUserSettings>>
+  {
+    return this.send("PATCH", `users/${userId}/settings`, data);
   }
 
   public async setDefaultPaymentMethod(userId: string, data: {
