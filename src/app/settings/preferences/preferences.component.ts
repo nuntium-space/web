@@ -13,7 +13,7 @@ import { UserSettingsService } from 'src/app/services/user-settings/user-setting
 export class PreferencesComponent implements OnInit
 {
   public languageForm = new FormGroup({
-    language: new FormControl(),
+    language: new FormControl(this.userSettings.userSettings?.language),
   });
 
   public languages?: ILanguage[];

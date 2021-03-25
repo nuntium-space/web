@@ -16,8 +16,6 @@
                             *ngFor="let language of languages"
 
                             value="{{ language.id }}"
-
-                            [selected]="userSettings.userSettings?.language === language.id"
                         >
                             {{ language.display_name }}
                         </option>
