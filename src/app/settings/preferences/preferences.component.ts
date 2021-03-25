@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService, ILanguage } from 'src/app/services/api/api.service';
+import { ApiService, ILanguage, IUserSettings } from 'src/app/services/api/api.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-preferences',
@@ -13,9 +14,11 @@ export class PreferencesComponent implements OnInit
     language: new FormControl(),
   });
 
+  public userSettings?: IUserSettings;
+
   public languages?: ILanguage[];
 
-  constructor(private api: ApiService)
+  constructor(private api: ApiService, private auth: AuthService)
   {}
 
   ngOnInit(): void
@@ -24,12 +27,27 @@ export class PreferencesComponent implements OnInit
     {
       this.languages = response.data;
     });
+
+    if (this.auth.user)
+    {
+      this.api.retrieveUserSettings(this.auth.user.id).then(response =>
+      {
+        this.userSettings = response.data;
+      });
+    }
   }
 
   public async onLanguageChangeSubmit(e: Event)
   {
     e.preventDefault();
 
-    // TODO
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    await this.api.updateUserSettings(this.auth.user.id, {
+      language: this.languageForm.get("language")?.value,
+    });
   }
 }
