@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ApiService, ILanguage, IUserSettings } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -18,7 +19,7 @@ export class PreferencesComponent implements OnInit
 
   public languages?: ILanguage[];
 
-  constructor(private api: ApiService, private auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService, private translate: TranslateService)
   {}
 
   ngOnInit(): void
@@ -46,8 +47,15 @@ export class PreferencesComponent implements OnInit
       return;
     }
 
-    await this.api.updateUserSettings(this.auth.user.id, {
-      language: this.languageForm.get("language")?.value,
+    const language = this.languageForm.get("language")?.value ?? "";
+
+    const response = await this.api.updateUserSettings(this.auth.user.id, {
+      language,
     });
+
+    if (!response.errors)
+    {
+      this.translate.use(language);
+    }
   }
 }
