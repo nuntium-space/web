@@ -120,6 +120,12 @@ export interface ICurrency
   min: number,
 }
 
+export interface ILanguage
+{
+  id: string,
+  display_name: number,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -168,6 +174,11 @@ export class ApiService
   public async listSupportedCurrencies(): Promise<IApiServiceResponse<ICurrency[]>>
   {
     return this.send("GET", `config/currencies`);
+  }
+
+  public async listSupportedLanguages(): Promise<IApiServiceResponse<ILanguage[]>>
+  {
+    return this.send("GET", `config/languages`);
   }
 
   /**
