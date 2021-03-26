@@ -25,7 +25,7 @@
                         routerLink="/publisher/{{ publisher.id }}"
                         class="dark"
                     >
-                        <badge *ngIf="!publisher.verified" text="Unverified"></badge>
+                        <badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></badge>
                         <p>{{ publisher.name }}</p>
                     </a>
                 </div>

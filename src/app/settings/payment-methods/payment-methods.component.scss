@@ -12,20 +12,6 @@
 
 .brand
 {
-    display: flex;
-
-    span:first-child
-    {
-        font-weight: $semi-bold;
-        text-transform: uppercase;
-    }
-
-    .default-pm-badge
-    {
-        color: var(--primary-color);
-        background-color: var(--secondary-color);
-        padding: 0.2em;
-        border-radius: 0.2em;
-        margin-left: 1em;
-    }
+    font-weight: $semi-bold;
+    text-transform: uppercase;
 }

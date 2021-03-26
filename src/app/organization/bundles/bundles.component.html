@@ -24,12 +24,8 @@
                     routerLink="/bundle/{{ bundle.id }}"
                     class="dark"
                 >
-                    <p class="name">
-                        <span>{{ bundle.name }}</span>
-                        <small *ngIf="!bundle.active" class="archived-bundle-badge">
-                            {{ "organization.bundles.archived" | translate }}
-                        </small>
-                    </p>
+                    <badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></badge>
+                    <p>{{ bundle.name }}</p>
                 </a>
             </div>
         </div>

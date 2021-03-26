@@ -26,12 +26,13 @@
                     class="list-item-with-actions"
                 >
                     <div *ngSwitchCase="'card'">
-                        <p class="brand">
-                            <span>{{ paymentMethod.data.brand }}</span>
-                            <small *ngIf="paymentMethod.__metadata?.is_default" class="default-pm-badge">
-                                {{ "settings.account.payment_methods.default" | translate }}
-                            </small>
-                        </p>
+                        <badge
+                            *ngIf="paymentMethod.__metadata?.is_default"
+
+                            [text]="'settings.account.payment_methods.default' | translate"
+                        >
+                        </badge>
+                        <p class="brand">{{ paymentMethod.data.brand }}</p>
                         <p>
                             {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
                             /
