@@ -18,9 +18,16 @@
                             | translate
                         }}
                     </button>
-                    <button *ngIf="!isUpdatingArticle" class="fill danger" (click)="deleteArticle()">
-                        {{ "generic.delete" | translate }}
-                    </button>
+                    <danger-button
+                        *ngIf="!isUpdatingArticle"
+
+                        class="fill"
+
+                        [text]="'generic.delete' | translate"
+                        [alertText]="'generic.delete' | translate"
+
+                        (confirm)="deleteArticle()"
+                    ></danger-button>
                 </div>
             </div>
         </section>

@@ -8,19 +8,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class DangerButtonComponent
 {
   @Input()
-  public text: string;
+  public text: string = "";
 
   @Input()
-  public alertText: string;
+  public alertText: string = "";
+
+  @Input()
+  public class: string = "";
 
   @Output()
   public confirm = new EventEmitter<void>();
 
   constructor()
-  {
-    this.text ??= "";
-    this.alertText ??= "";
-  }
+  {}
 
   public onClick()
   {
