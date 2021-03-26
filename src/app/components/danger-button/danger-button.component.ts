@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'danger-button',
@@ -7,11 +7,26 @@ import { Component } from '@angular/core';
 })
 export class DangerButtonComponent
 {
+  @Input()
+  public text: string;
+
+  @Input()
+  public alertText: string;
+
+  @Output()
+  public confirm = new EventEmitter<void>();
+
   constructor()
-  {}
+  {
+    this.text ??= "";
+    this.alertText ??= "";
+  }
 
   public onClick()
   {
-    // TODO
+    if (confirm(this.alertText))
+    {
+      this.confirm.emit();
+    }
   }
 }

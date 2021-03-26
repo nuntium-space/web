@@ -26,9 +26,12 @@
                         </li>
                     </ul>
                 </div>
-                <button class="danger" (click)="deleteAccount()">
-                    {{ "generic.delete" | translate }}
-                </button>
+                <danger-button
+                    [text]="'generic.delete' | translate"
+                    [alertText]="'generic.delete' | translate"
+
+                    (confirm)="deleteAccount()"
+                ></danger-button>
             </div>
         </div>
     </section>
