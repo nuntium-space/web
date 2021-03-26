@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ApiService, IArticle, IComment } from 'src/app/services/api/api.service';
+import { FormatService } from 'src/app/services/format/format.service';
 
 @Component({
   selector: 'comment',
@@ -18,7 +19,7 @@ export class CommentComponent
 
   public showReplyForm = false;
 
-  constructor(private api: ApiService)
+  constructor(public format: FormatService, private api: ApiService)
   {}
 
   public async loadReplies(e: Event)

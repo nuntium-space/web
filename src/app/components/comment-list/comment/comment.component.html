@@ -5,14 +5,14 @@
             {{ comment.user.last_name }}
         </span>
         &bull;
-        <small title="{{ comment.created_at | date:'medium' }}">
-            {{ comment.created_at | date:"LLL d" }}
+        <small title="{{ format.dateTime(comment.created_at, 'datetime') }}">
+            {{ format.dateTime(comment.created_at, "shortdate") }}
         </small>
         <span *ngIf="comment.created_at !== comment.updated_at">
             &bull;
-            <small title="{{ comment.updated_at | date:'medium' }}">
+            <small title="{{ format.dateTime(comment.updated_at, 'datetime') }}">
                 {{ "components.comment_list.comment.updated_on" | translate }}
-                {{ comment.updated_at | date:"LLL d" }}
+                {{ format.dateTime(comment.updated_at, "shortdate") }}
             </small>
         </span>
     </header>

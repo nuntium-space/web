@@ -17,7 +17,7 @@
                 )
                 | translate
             }}
-            <b>{{ subscription.current_period_end | date:"longDate" }}</b>
+            <b>{{ format.dateTime(subscription.current_period_end, "date") }}</b>
         </small>
     </div>
 </div>

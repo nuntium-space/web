@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
+import { FormatService } from '../services/format/format.service';
 
 @Component({
   selector: 'app-article',
@@ -24,7 +25,7 @@ export class ArticleComponent
 
   public isUpdatingArticle = false;
 
-  constructor(public auth: AuthService, private api: ApiService, private router: Router, route: ActivatedRoute)
+  constructor(public auth: AuthService, public format: FormatService, private api: ApiService, private router: Router, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: (params) =>

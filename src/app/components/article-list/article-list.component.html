@@ -12,7 +12,7 @@
         </span>
         <br>
         <span>
-            {{ article.created_at | date:"medium" }}
+            {{ format.dateTime(article.created_at, "datetime") }}
         </span>
     </header>
     <a
