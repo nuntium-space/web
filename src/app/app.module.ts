@@ -58,6 +58,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PreferencesComponent } from './settings/preferences/preferences.component';
 import { UserSettingsService } from './services/user-settings/user-settings.service';
 import { DangerButtonComponent } from './components/danger-button/danger-button.component';
+import { BadgeComponent } from './components/badge/badge.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -116,6 +117,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     FooterComponent,
     PreferencesComponent,
     DangerButtonComponent,
+    BadgeComponent,
   ],
   imports: [
     BrowserModule,

@@ -354,6 +354,11 @@ div.list
         align-items: center;
         border-radius: 0.5rem;
 
+        a
+        {
+            color: inherit;
+        }
+
         p
         {
             margin: 0;

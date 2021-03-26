@@ -18,14 +18,17 @@
                 <div *ngIf="publishers.length === 0">
                     <p>{{ "organization.publishers.empty" | translate }}</p>
                 </div>
-                <a
-                    *ngFor="let publisher of publishers"
+                <div>
+                    <a
+                        *ngFor="let publisher of publishers"
 
-                    routerLink="/publisher/{{ publisher.id }}"
-                    class="dark"
-                >
-                    <p>{{ publisher.name }}</p>
-                </a>
+                        routerLink="/publisher/{{ publisher.id }}"
+                        class="dark"
+                    >
+                        <badge *ngIf="!publisher.verified" text="Unverified"></badge>
+                        <p>{{ publisher.name }}</p>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

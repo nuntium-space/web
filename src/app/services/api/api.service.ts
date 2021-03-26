@@ -32,6 +32,7 @@ export interface IPublisher
   name: string,
   url: string,
   organization: IOrganization,
+  verified: boolean,
   __metadata?: {
     is_author: boolean,
     is_subscribed: boolean,
