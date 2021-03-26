@@ -369,9 +369,11 @@ div.list
 
         &.list-item-with-actions
         {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            border: 1px solid rgba($primary-color, 0.3);
             gap: 1em;
+            border-radius: 0.5rem;
+            padding: 1rem;
 
             > :first-child
             {
@@ -383,14 +385,13 @@ div.list
 
             .actions
             {
-                display: grid;
-                grid-auto-rows: auto;
+                display: flex;
+                flex-wrap: wrap;
                 gap: 1em;
-                height: 100%;
 
                 button
                 {
-                    width: 100%;
+                    width: auto;
                 }
             }
         }
