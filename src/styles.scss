@@ -366,12 +366,13 @@ div.list
 
         &.list-item-with-actions
         {
-            display: grid;
-            grid-template-columns: auto max-content;
+            display: flex;
+            flex-wrap: wrap;
             gap: 1em;
 
             > :first-child
             {
+                flex: auto;
                 color: var(--secondary-color);
                 background-color: var(--primary-color);
                 padding: 1rem;
