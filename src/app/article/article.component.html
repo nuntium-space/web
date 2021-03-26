@@ -80,8 +80,10 @@
 </aside>
 
 <main *ngIf="article && isSubscribed">
-    <h1 class="title">{{ article.title }}</h1>
-    <div *ngIf="!isUpdatingArticle" class="content" [innerHTML]="article.content | keepHtml"></div>
+    <div *ngIf="!isUpdatingArticle">
+        <h1 class="title">{{ article.title }}</h1>
+        <div class="content" [innerHTML]="article.content | keepHtml"></div>
+    </div>
     <div *ngIf="isUpdatingArticle">
         <form class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
             <label>
