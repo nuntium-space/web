@@ -19,9 +19,9 @@ aside
 
     .actions
     {
-        button ~ button
+        button:first-child
         {
-            margin-top: 1em;
+            margin-bottom: 1rem;
         }
     }
 
