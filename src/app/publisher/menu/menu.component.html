@@ -1,4 +1,7 @@
 <aside *ngIf="publisher">
+    <button class="fill" (click)="verify()">
+        {{ "publisher.verify.__title" | translate }}
+    </button>
     <section>
         <div class="title">
             <h1>{{ publisher.name }}</h1>

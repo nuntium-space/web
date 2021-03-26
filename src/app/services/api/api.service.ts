@@ -372,6 +372,11 @@ export class ApiService
     return this.send("POST", `publishers/${publisherId}/authors`, data);
   }
 
+  public async verifyPublisher(publisherId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("POST", `publishers/${publisherId}/verify`);
+  }
+
   public async updatePublisher(id: string, data: {
     name?: string,
     url?: string,
