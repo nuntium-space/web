@@ -90,6 +90,12 @@ button,
         width: 100%;
     }
 
+    &.warning
+    {
+        color: black;
+        background-color: #ffeb3b;
+    }
+
     &.danger
     {
         color: white;
