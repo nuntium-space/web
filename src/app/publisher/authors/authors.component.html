@@ -19,7 +19,7 @@
                     <p>{{ "publisher.authors.empty" | translate }}</p>
                 </div>
                 <div *ngFor="let author of authors" class="list-item-with-actions">
-                    <div *ngFor="let author of authors">
+                    <div>
                         <p>
                             {{ author.user.first_name }}
                             {{ author.user.last_name }}
