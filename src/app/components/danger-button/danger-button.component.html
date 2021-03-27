@@ -6,18 +6,16 @@
     {{ text }}
 </button>
 
-<div *ngIf="showConfirmDialog" class="dialog">
-    {{ alertText }}
-    <div class="actions">
-        <button
-            class="danger"
-
-            (click)="onConfirm()"
-        >
-            {{ text }}
-        </button>
-        <button (click)="showConfirmDialog = false">
-            {{ "generic.cancel" | translate }}
-        </button>
+<div *ngIf="showConfirmDialog" class="dialog-container">
+    <div class="dialog">
+        <b>{{ alertText }}</b>
+        <div class="actions">
+            <button class="danger" (click)="onConfirm()">
+                {{ text }}
+            </button>
+            <button class="dark" (click)="showConfirmDialog = false">
+                {{ "generic.cancel" | translate }}
+            </button>
+        </div>
     </div>
 </div>
