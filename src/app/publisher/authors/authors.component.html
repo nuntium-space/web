@@ -19,17 +19,12 @@
                     <p>{{ "publisher.authors.empty" | translate }}</p>
                 </div>
                 <div *ngFor="let author of authors" class="list-item-with-actions">
-                    <a
-                        *ngFor="let author of authors"
-
-                        routerLink="/author/{{ author.id }}"
-                        class="dark"
-                    >
+                    <div *ngFor="let author of authors">
                         <p>
                             {{ author.user.first_name }}
                             {{ author.user.last_name }}
                         </p>
-                    </a>
+                    </div>
                     <div class="actions">
                         <danger-button
                             [text]="'generic.remove' | translate"
