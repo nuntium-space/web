@@ -20,10 +20,11 @@
                 </div>
                 <div *ngFor="let author of authors" class="list-item-with-actions">
                     <div>
-                        <p>
+                        <b>
                             {{ author.user.first_name }}
                             {{ author.user.last_name }}
-                        </p>
+                        </b>
+                        <p>{{ author.user.email }}</p>
                     </div>
                     <div class="actions">
                         <danger-button
