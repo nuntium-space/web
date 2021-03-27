@@ -390,6 +390,11 @@ export class ApiService
     return this.send("DELETE", `publishers/${id}`);
   }
 
+  public async removeAuthorFromPublisher(publisherId: string,authorId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `publishers/${publisherId}/authors/${authorId}`);
+  }
+
   public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
     return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
