@@ -28,7 +28,7 @@ export class AuthorsComponent
     });
   }
 
-  public async removePublisher(author: IAuthor)
+  public async removeAuthor(author: IAuthor)
   {
     if (!this.publisherId || !this.authors)
     {
