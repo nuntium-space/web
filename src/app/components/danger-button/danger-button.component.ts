@@ -24,6 +24,16 @@ export class DangerButtonComponent
   constructor()
   {}
 
+  public onDialogContainerClick(e: Event)
+  {
+    const target = e.target as HTMLElement;
+
+    if (target.className === "dialog-container")
+    {
+      this.showConfirmDialog = false;
+    }
+  }
+
   public onConfirm()
   {
     this.showConfirmDialog = false;

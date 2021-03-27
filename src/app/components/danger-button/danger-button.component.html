@@ -6,7 +6,7 @@
     {{ text }}
 </button>
 
-<div *ngIf="showConfirmDialog" class="dialog-container">
+<div *ngIf="showConfirmDialog" class="dialog-container" (click)="onDialogContainerClick($event)">
     <div class="dialog">
         <b>{{ alertText }}</b>
         <div class="actions">
