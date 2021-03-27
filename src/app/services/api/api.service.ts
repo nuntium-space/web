@@ -230,6 +230,11 @@ export class ApiService
     return this.send("POST", `authors/${authorId}/articles`, data);
   }
 
+  public async deleteAuthor(authorId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `authors/${authorId}`);
+  }
+
   public async retrieveBundle(id: string): Promise<IApiServiceResponse<IBundle>>
   {
     return this.send("GET", `bundles/${id}`);
@@ -388,11 +393,6 @@ export class ApiService
   public async deletePublisher(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `publishers/${id}`);
-  }
-
-  public async removeAuthorFromPublisher(publisherId: string,authorId: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("DELETE", `publishers/${publisherId}/authors/${authorId}`);
   }
 
   public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>

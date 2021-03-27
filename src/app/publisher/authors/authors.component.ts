@@ -9,8 +9,6 @@ import { ApiService, IAuthor } from 'src/app/services/api/api.service';
 })
 export class AuthorsComponent
 {
-  private publisherId?: string;
-
   public authors?: IAuthor[];
 
   constructor(private api: ApiService, route: ActivatedRoute)
@@ -18,8 +16,6 @@ export class AuthorsComponent
     route.params.subscribe({
       next: params =>
       {
-        this.publisherId = params.id;
-
         api.listAuthorsForPublisher(params.id).then(response =>
         {
           this.authors = response.data;
@@ -30,12 +26,12 @@ export class AuthorsComponent
 
   public async removeAuthor(author: IAuthor)
   {
-    if (!this.publisherId || !this.authors)
+    if (!this.authors)
     {
       return;
     }
 
-    await this.api.removeAuthorFromPublisher(this.publisherId, author.id);
+    await this.api.deleteAuthor(author.id);
 
     this.authors = this.authors.filter(a => a.id !== author.id);
   }
