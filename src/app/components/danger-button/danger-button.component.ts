@@ -26,6 +26,8 @@ export class DangerButtonComponent
 
   public onConfirm()
   {
+    this.showConfirmDialog = false;
+
     this.confirm.emit();
   }
 }
