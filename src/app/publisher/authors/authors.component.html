@@ -18,17 +18,24 @@
                 <div *ngIf="authors.length === 0">
                     <p>{{ "publisher.authors.empty" | translate }}</p>
                 </div>
-                <a
-                    *ngFor="let author of authors"
+                <div *ngFor="let author of authors" class="list-item-with-actions">
+                    <a
+                        *ngFor="let author of authors"
 
-                    routerLink="/author/{{ author.id }}"
-                    class="dark"
-                >
-                    <p>
-                        {{ author.user.first_name }}
-                        {{ author.user.last_name }}
-                    </p>
-                </a>
+                        routerLink="/author/{{ author.id }}"
+                        class="dark"
+                    >
+                        <p>
+                            {{ author.user.first_name }}
+                            {{ author.user.last_name }}
+                        </p>
+                    </a>
+                    <div class="actions">
+                        <button (click)="removeAuthor(author)">
+                            {{ "generic.remove" | translate }}
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -9,18 +9,34 @@ import { ApiService, IAuthor } from 'src/app/services/api/api.service';
 })
 export class AuthorsComponent
 {
+  private publisherId?: string;
+
   public authors?: IAuthor[];
 
-  constructor(api: ApiService, route: ActivatedRoute)
+  constructor(private api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: params =>
       {
+        this.publisherId = params.id;
+
         api.listAuthorsForPublisher(params.id).then(response =>
         {
           this.authors = response.data;
         });
       },
     });
+  }
+
+  public async removePublisher(author: IAuthor)
+  {
+    if (!this.publisherId || !this.authors)
+    {
+      return;
+    }
+
+    await this.api.removeAuthorFromPublisher(this.publisherId, author.id);
+
+    this.authors = this.authors.filter(a => a.id !== author.id);
   }
 }
