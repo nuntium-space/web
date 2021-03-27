@@ -20,11 +20,13 @@
                 </div>
                 <div *ngFor="let author of authors" class="list-item-with-actions">
                     <div>
-                        <b>
+                        <h3>
                             {{ author.user.first_name }}
                             {{ author.user.last_name }}
-                        </b>
-                        <p>{{ author.user.email }}</p>
+                        </h3>
+                        <a href="mailto:{{ author.user.email }}">
+                            {{ author.user.email }}
+                        </a>
                     </div>
                     <div class="actions">
                         <danger-button
