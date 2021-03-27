@@ -1,19 +1,14 @@
 @import "~src/variables";
 
-.bundle
+.price
 {
-    border-radius: 0.5em;
+    margin-top: 0.5rem;
+    font-size: xx-large;
+    font-weight: $bold;
 
-    .price
+    .billing-period
     {
-        margin-top: 0.5rem;
-        font-size: xx-large;
-        font-weight: $bold;
-
-        .billing-period
-        {
-            font-size: large;
-            font-weight: $light;
-        }
+        font-size: large;
+        font-weight: $light;
     }
 }

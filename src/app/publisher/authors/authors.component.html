@@ -31,9 +31,13 @@
                         </p>
                     </a>
                     <div class="actions">
-                        <button (click)="removeAuthor(author)">
-                            {{ "generic.remove" | translate }}
-                        </button>
+                        <danger-button
+                            [text]="'generic.remove' | translate"
+                            [alertText]="'generic.remove' | translate"
+
+                            (confirm)="removeAuthor(author)"
+                        >
+                        </danger-button>
                     </div>
                 </div>
             </div>
