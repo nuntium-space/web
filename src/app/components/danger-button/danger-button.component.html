@@ -1,7 +1,23 @@
 <button
     class="danger {{ class }}"
 
-    (click)="onClick()"
+    (click)="showConfirmDialog = true"
 >
     {{ text }}
 </button>
+
+<div *ngIf="showConfirmDialog" class="dialog">
+    {{ alertText }}
+    <div class="actions">
+        <button
+            class="danger"
+
+            (click)="onConfirm()"
+        >
+            {{ text }}
+        </button>
+        <button (click)="showConfirmDialog = false">
+            {{ "generic.cancel" | translate }}
+        </button>
+    </div>
+</div>

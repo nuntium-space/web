@@ -19,14 +19,13 @@ export class DangerButtonComponent
   @Output()
   public confirm = new EventEmitter<void>();
 
+  public showConfirmDialog = false;
+
   constructor()
   {}
 
-  public onClick()
+  public onConfirm()
   {
-    if (confirm(this.alertText))
-    {
-      this.confirm.emit();
-    }
+    this.confirm.emit();
   }
 }
