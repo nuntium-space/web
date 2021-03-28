@@ -166,21 +166,7 @@ export class ApiService
 
     if (response.status !== 200)
     {
-      if ("details" in json)
-      {
-        result.errors = json.details;
-      }
-      else
-      {
-        // Only until the API is not updated with the new standard
-        result.errors = (json.message as string).split(". ").map(error =>
-        {
-          return {
-            field: error.substr(0, error.lastIndexOf("\"")).replace("\"", ""),
-            error,
-          };
-        });
-      }
+      result.errors = json.details;
     }
     else
     {
