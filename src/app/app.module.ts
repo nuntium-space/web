@@ -59,7 +59,6 @@ import { PreferencesComponent } from './settings/preferences/preferences.compone
 import { UserSettingsService } from './services/user-settings/user-settings.service';
 import { DangerButtonComponent } from './components/danger-button/danger-button.component';
 import { BadgeComponent } from './components/badge/badge.component';
-import { ImageInputComponent } from './components/inputs/image/image.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -119,7 +118,6 @@ export const createTranslationLoader = (http: HttpClient) =>
     PreferencesComponent,
     DangerButtonComponent,
     BadgeComponent,
-    ImageInputComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,8 @@ export class PublisherDetailsComponent
 {
   public publisher?: IPublisher;
 
+  public imageSrc?: string;
+
   public detailsForm = new FormGroup({
     name: new FormControl(),
     url: new FormControl(),
@@ -60,9 +62,23 @@ export class PublisherDetailsComponent
     });
   }
 
-  public onImageChange(file: File | null)
+  public onImageChange(e: Event)
   {
-    this.imageForm.get("image")?.setValue(file);
+    this.imageSrc = undefined;
+
+    if (e.target instanceof HTMLInputElement)
+    {
+      const file = e.target.files?.item(0);
+
+      if (file)
+      {
+        const reader = new FileReader();
+
+        reader.onload = e => this.imageSrc = e.target?.result?.toString();
+
+        reader.readAsDataURL(file);
+      }
+    }
   }
 
   public async onImageFormSubmit(e: Event)

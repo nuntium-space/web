@@ -50,10 +50,20 @@
             <h1>{{ "publisher.details.image.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <form [formGroup]="imageForm" (submit)="onImageFormSubmit($event)">
+            <form class="image-form" [formGroup]="imageForm" (submit)="onImageFormSubmit($event)">
+                <img *ngIf="imageSrc" [src]="imageSrc" alt="">
                 <label>
                     {{ "publisher.details.image.image" | translate }}
-                    <image-input (change)="onImageChange($event)"></image-input>
+                    <input
+                        formControlName="image"
+
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        required
+
+                        (change)="onImageChange($event)"
+                    >
                     <div *ngIf="imageForm.get('image')?.errors" class="errors">
                         <p *ngFor="let error of imageForm.get('image')?.errors?.errors">
                             {{ "errors." + error.error | translate:error.params }}

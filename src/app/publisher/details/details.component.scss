@@ -1,1 +1,11 @@
 @import "../publisher";
+
+.image-form
+{
+    img
+    {
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 1em;
+    }
+}
