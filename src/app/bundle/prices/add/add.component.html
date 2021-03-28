@@ -21,7 +21,7 @@
                     >
                     <div *ngIf="form.get('amount')?.errors" class="errors">
                         <p *ngFor="let error of form.get('amount')?.errors?.errors">
-                            {{ "errors." + error.error | translate }}
+                            {{ "errors." + error.error | translate:error.params }}
                         </p>
                     </div>
                 </label>
@@ -42,7 +42,7 @@
                     </select>
                     <div *ngIf="form.get('currency')?.errors" class="errors">
                         <p *ngFor="let error of form.get('currency')?.errors?.errors">
-                            {{ "errors." + error.error | translate }}
+                            {{ "errors." + error.error | translate:error.params }}
                         </p>
                     </div>
                 </label>

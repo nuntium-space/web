@@ -9,6 +9,7 @@ interface IApiServiceResponse<T>
   errors?: {
     field: string,
     error: string,
+    params?: any,
   }[],
 }
 
