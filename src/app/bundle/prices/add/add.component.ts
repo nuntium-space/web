@@ -46,11 +46,6 @@ export class AddPriceComponent
     let amount: number = this.form.get("amount")?.value ?? -1;
     const currency = this.form.get("currency")?.value ?? "";
 
-    if (amount < 0)
-    {
-      return;
-    }
-
     if ([ "usd", "eur" ].includes(currency))
     {
       amount *= 100;
