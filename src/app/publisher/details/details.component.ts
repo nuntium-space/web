@@ -34,7 +34,7 @@ export class PublisherDetailsComponent
           if (response.data)
           {
             this.publisher = response.data;
-            this.imageSrc = this.publisher.imageUrl;
+            this.imageSrc = this.publisher.imageUrl ?? undefined;
 
             this.detailsForm.get("name")?.setValue(this.publisher.name);
             this.detailsForm.get("url")?.setValue(this.publisher.url);
