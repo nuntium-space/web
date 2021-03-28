@@ -60,6 +60,11 @@ export class PublisherDetailsComponent
     });
   }
 
+  public onImageChange(file: File | null)
+  {
+    this.imageForm.get("image")?.setValue(file);
+  }
+
   public async onImageFormSubmit(e: Event)
   {
     e.preventDefault();
