@@ -394,6 +394,13 @@ export class ApiService
     return this.send("PATCH", `publishers/${id}`, data);
   }
 
+  public async updatePublisherImage(id: string, data: {
+    image?: File,
+  }): Promise<IApiServiceResponse<IPublisher>>
+  {
+    return this.send("PUT", `publishers/${id}/image`, data);
+  }
+
   public async deletePublisher(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `publishers/${id}`);

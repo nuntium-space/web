@@ -90,7 +90,6 @@ export class PublisherDetailsComponent
       return;
     }
 
-    /*
     const response = await this.api.updatePublisherImage(this.publisher.id, {
       image: this.imageForm.get("image")?.value,
     });
@@ -98,6 +97,5 @@ export class PublisherDetailsComponent
     this.imageForm.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.field === "image")
     });
-    */
   }
 }
