@@ -7,6 +7,7 @@
     --primary-color: #{$primary-color};
     --secondary-color: #{$secondary-color};
     --link-color: #{$link-color};
+    --danger-color: #{$danger-color};
 }
 
 *
@@ -105,7 +106,7 @@ button,
     &.danger
     {
         color: white;
-        background-color: #fb662e;
+        background-color: var(--danger-color);
     }
 
     &:focus
@@ -118,7 +119,7 @@ button,
 
             &.danger
             {
-                box-shadow: 0 0 0 0.2rem rgba(#fb662e, 0.5);
+                box-shadow: 0 0 0 0.2rem rgba($danger-color, 0.5);
             }
         }
     }
@@ -189,7 +190,7 @@ label
     .errors
     {
         color: white;
-        background-color: red;
+        background-color: var(--danger-color);
         padding: 0.5em;
         border-radius: 0.5rem;
         margin-top: 0.5em;
