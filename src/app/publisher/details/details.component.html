@@ -45,4 +45,32 @@
             </form>
         </div>
     </section>
+    <section>
+        <div class="title">
+            <h1>{{ "publisher.details.image.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <form [formGroup]="imageForm" (submit)="onImageFormSubmit($event)">
+                <label>
+                    {{ "publisher.details.image.image" | translate }}
+                    <input
+                        formControlName="image"
+
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        required
+                    >
+                    <div *ngIf="imageForm.get('image')?.errors" class="errors">
+                        <p *ngFor="let error of imageForm.get('image')?.errors?.errors">
+                            {{ "errors." + error.error | translate:error.params }}
+                        </p>
+                    </div>
+                </label>
+                <button type="submit">
+                    {{ "generic.update" | translate }}
+                </button>
+            </form>
+        </div>
+    </section>
 </main>

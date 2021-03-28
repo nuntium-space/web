@@ -17,6 +17,10 @@ export class PublisherDetailsComponent
     url: new FormControl(),
   });
 
+  public imageForm = new FormGroup({
+    image: new FormControl(),
+  });
+
   constructor(private api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
@@ -54,5 +58,25 @@ export class PublisherDetailsComponent
     this.detailsForm.get("url")?.setErrors({
       errors: response.errors?.filter(e => e.field === "url")
     });
+  }
+
+  public async onImageFormSubmit(e: Event)
+  {
+    e.preventDefault();
+
+    if (!this.publisher)
+    {
+      return;
+    }
+
+    /*
+    const response = await this.api.updatePublisherImage(this.publisher.id, {
+      image: this.imageForm.get("image")?.value,
+    });
+
+    this.imageForm.get("image")?.setErrors({
+      errors: response.errors?.filter(e => e.field === "image")
+    });
+    */
   }
 }
