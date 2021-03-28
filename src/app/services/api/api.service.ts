@@ -144,15 +144,28 @@ export class ApiService
   constructor()
   {}
 
-  private async send(method: "DELETE" | "GET" | "PATCH" | "POST" | "PUT", url: string, body?: any): Promise<IApiServiceResponse<any>>
+  private async send(
+    method: "DELETE" | "GET" | "PATCH" | "POST" | "PUT",
+    url: string,
+    body?: any,
+    contentType: "application/json" | "multipart/form-data" = "application/json",
+  ): Promise<IApiServiceResponse<any>>
   {
+    const headers: HeadersInit = {
+      "Authorization": `Bearer ${localStorage.getItem("session.id")}`
+    };
+
+    if (contentType !== "multipart/form-data")
+    {
+      headers["Content-Type"] = contentType;
+    }
+
     const response = await fetch(`${environment.api.endpoint}/${url}`, {
       method,
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("session.id")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
+      headers,
+      body: contentType === "application/json"
+        ? JSON.stringify(body)
+        : body,
     });
 
     const result: IApiServiceResponse<any> = { status: response.status };
@@ -395,10 +408,13 @@ export class ApiService
   }
 
   public async updatePublisherImage(id: string, data: {
-    image?: File,
+    image: File,
   }): Promise<IApiServiceResponse<IPublisher>>
   {
-    return this.send("PUT", `publishers/${id}/image`, data);
+    const fd = new FormData();
+    fd.append("image", data.image);
+
+    return this.send("PUT", `publishers/${id}/image`, fd, "multipart/form-data");
   }
 
   public async deletePublisher(id: string): Promise<IApiServiceResponse<void>>

@@ -12,6 +12,7 @@ export class PublisherDetailsComponent
 {
   public publisher?: IPublisher;
 
+  private image?: File;
   public imageSrc?: string;
 
   public detailsForm = new FormGroup({
@@ -64,7 +65,7 @@ export class PublisherDetailsComponent
 
   public onImageChange(e: Event)
   {
-    this.imageSrc = undefined;
+    this.image = this.imageSrc = undefined;
 
     if (e.target instanceof HTMLInputElement)
     {
@@ -72,6 +73,8 @@ export class PublisherDetailsComponent
 
       if (file)
       {
+        this.image = file;
+
         const reader = new FileReader();
 
         reader.onload = e => this.imageSrc = e.target?.result?.toString();
@@ -85,13 +88,13 @@ export class PublisherDetailsComponent
   {
     e.preventDefault();
 
-    if (!this.publisher)
+    if (!this.publisher || !this.image)
     {
       return;
     }
 
     const response = await this.api.updatePublisherImage(this.publisher.id, {
-      image: this.imageForm.get("image")?.value,
+      image: this.image,
     });
 
     this.imageForm.get("image")?.setErrors({
