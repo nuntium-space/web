@@ -31,7 +31,7 @@
                     >
                     <div *ngIf="changePasswordForm.get('old_password')?.errors" class="errors">
                         <p *ngFor="let error of changePasswordForm.get('old_password')?.errors?.errors">
-                            {{ error }}
+                            {{ error.error }}
                         </p>
                     </div>
                 </label>
@@ -47,7 +47,7 @@
                     >
                     <div *ngIf="changePasswordForm.get('new_password')?.errors" class="errors">
                         <p *ngFor="let error of changePasswordForm.get('new_password')?.errors?.errors">
-                            {{ error }}
+                            {{ error.error }}
                         </p>
                     </div>
                 </label>

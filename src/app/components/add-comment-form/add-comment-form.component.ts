@@ -42,7 +42,7 @@ export class AddCommentFormComponent
     });
 
     this.form.get("content")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"content"`))
+      errors: response.errors?.filter(e => e.field === "content")
     });
 
     if (response.data)

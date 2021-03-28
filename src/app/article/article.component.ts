@@ -72,11 +72,11 @@ export class ArticleComponent
     });
 
     this.updateArticleForm.get("title")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"title"`))
+      errors: response.errors?.filter(e => e.field === "title")
     });
 
     this.updateArticleForm.get("content")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"content"`))
+      errors: response.errors?.filter(e => e.field === "content")
     });
 
     if (response.data)

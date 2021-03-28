@@ -6,7 +6,10 @@ interface IApiServiceResponse<T>
 {
   status: number,
   data?: T,
-  errors?: string[],
+  errors?: {
+    field: string,
+    error: string,
+  }[],
 }
 
 export interface IUser
@@ -163,7 +166,21 @@ export class ApiService
 
     if (response.status !== 200)
     {
-      result.errors = (json.message as string).split(". ");
+      if ("details" in json)
+      {
+        result.errors = json.details;
+      }
+      else
+      {
+        // Only until the API is not updated with the new standard
+        result.errors = (json.message as string).split(". ").map(error =>
+        {
+          return {
+            field: error.substr(0, error.lastIndexOf("\"")).replace("\"", ""),
+            error,
+          };
+        });
+      }
     }
     else
     {

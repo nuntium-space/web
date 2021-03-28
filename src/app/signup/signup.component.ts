@@ -32,19 +32,19 @@ export class SignupComponent
     });
 
     this.form.get("first_name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"first_name"`))
+      errors: response.errors?.filter(e => e.field === "first_name")
     });
 
     this.form.get("last_name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"last_name"`))
+      errors: response.errors?.filter(e => e.field === "last_name")
     });
 
     this.form.get("email")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"email"`))
+      errors: response.errors?.filter(e => e.field === "email")
     });
 
     this.form.get("password")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"password"`))
+      errors: response.errors?.filter(e => e.field === "password")
     });
 
     if (response.data)

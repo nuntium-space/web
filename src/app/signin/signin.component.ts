@@ -29,11 +29,11 @@ export class SigninComponent
     );
 
     this.form.get("email")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"email"`))
+      errors: response.errors?.filter(e => e.field === "email")
     });
 
     this.form.get("password")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"password"`))
+      errors: response.errors?.filter(e => e.field === "password")
     });
 
     if (response.data)

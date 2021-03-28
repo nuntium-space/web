@@ -62,11 +62,11 @@ export class AddPriceComponent
     });
 
     this.form.get("amount")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"amount"`))
+      errors: response.errors?.filter(e => e.field === "amount")
     });
 
     this.form.get("currency")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"currency"`))
+      errors: response.errors?.filter(e => e.field === "currency")
     });
 
     if (response.data)

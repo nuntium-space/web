@@ -45,7 +45,7 @@ export class OrganizationDetailsComponent
     });
 
     this.detailsForm.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"name"`))
+      errors: response.errors?.filter(e => e.field === "name")
     });
   }
 }

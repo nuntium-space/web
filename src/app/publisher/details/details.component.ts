@@ -48,11 +48,11 @@ export class PublisherDetailsComponent
     });
 
     this.detailsForm.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"name"`))
+      errors: response.errors?.filter(e => e.field === "name")
     });
 
     this.detailsForm.get("url")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"url"`))
+      errors: response.errors?.filter(e => e.field === "url")
     });
   }
 }

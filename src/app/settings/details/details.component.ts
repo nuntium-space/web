@@ -35,15 +35,15 @@ export class AccountDetailsComponent
     });
 
     this.updateAccountDetailsForm.get("first_name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"first_name"`))
+      errors: response.errors?.filter(e => e.field === "first_name")
     });
 
     this.updateAccountDetailsForm.get("last_name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"last_name"`))
+      errors: response.errors?.filter(e => e.field === "last_name")
     });
 
     this.updateAccountDetailsForm.get("email")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"email"`))
+      errors: response.errors?.filter(e => e.field === "email")
     });
   }
 }

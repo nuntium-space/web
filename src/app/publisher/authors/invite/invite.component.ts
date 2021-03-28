@@ -46,7 +46,7 @@ export class InviteAuthorComponent
     else if (response.errors)
     {
       this.form.get("email")?.setErrors({
-        errors: response.errors.filter(e => e.startsWith(`"email"`))
+        errors: response.errors.filter(e => e.field === "email")
       });
     }
   }

@@ -20,7 +20,7 @@
                     >
                     <div *ngIf="detailsForm.get('name')?.errors" class="errors">
                         <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
-                            {{ error }}
+                            {{ error.error }}
                         </p>
                     </div>
                 </label>
@@ -35,7 +35,7 @@
                     >
                     <div *ngIf="detailsForm.get('url')?.errors" class="errors">
                         <p *ngFor="let error of detailsForm.get('url')?.errors?.errors">
-                            {{ error }}
+                            {{ error.error }}
                         </p>
                     </div>
                 </label>

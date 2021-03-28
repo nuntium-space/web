@@ -42,11 +42,11 @@ export class CreatePublisherComponent
     });
 
     this.form.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"name"`))
+      errors: response.errors?.filter(e => e.field === "name")
     });
 
     this.form.get("url")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"url"`))
+      errors: response.errors?.filter(e => e.field === "url")
     });
 
     if (response.data)

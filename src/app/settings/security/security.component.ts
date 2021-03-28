@@ -34,11 +34,11 @@ export class SecurityComponent
     });
 
     this.changePasswordForm.get("old_password")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"old_password"`))
+      errors: response.errors?.filter(e => e.field === "old_password")
     });
 
     this.changePasswordForm.get("new_password")?.setErrors({
-      errors: response.errors?.filter(e => e.startsWith(`"new_password"`))
+      errors: response.errors?.filter(e => e.field === "new_password")
     });
 
     if (response.data)
