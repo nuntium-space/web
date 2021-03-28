@@ -98,7 +98,7 @@
                 <input formControlName="title" type="text">
                 <div *ngIf="updateArticleForm.get('title')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
-                        {{ error.error }}
+                        {{ "errors." + error.error | translate }}
                     </p>
                 </div>
             </label>
@@ -107,7 +107,7 @@
                 <textarea formControlName="content" rows="30"></textarea>
                 <div *ngIf="updateArticleForm.get('content')?.errors" class="errors">
                     <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
-                        {{ error.error }}
+                        {{ "errors." + error.error | translate }}
                     </p>
                 </div>
             </label>

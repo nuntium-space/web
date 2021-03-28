@@ -22,7 +22,7 @@
         >
         <div *ngIf="form.get('first_name')?.errors" class="errors">
           <p *ngFor="let error of form.get('first_name')?.errors?.errors">
-            {{ error.error }}
+            {{ "errors." + error.error | translate }}
           </p>
         </div>
       </label>
@@ -38,7 +38,7 @@
         >
         <div *ngIf="form.get('last_name')?.errors" class="errors">
           <p *ngFor="let error of form.get('last_name')?.errors?.errors">
-            {{ error.error }}
+            {{ "errors." + error.error | translate }}
           </p>
         </div>
       </label>
@@ -55,7 +55,7 @@
       >
       <div *ngIf="form.get('email')?.errors" class="errors">
         <p *ngFor="let error of form.get('email')?.errors?.errors">
-          {{ error.error }}
+          {{ "errors." + error.error | translate }}
         </p>
       </div>
     </label>
@@ -71,7 +71,7 @@
       >
       <div *ngIf="form.get('password')?.errors" class="errors">
         <p *ngFor="let error of form.get('password')?.errors?.errors">
-          {{ error.error }}
+          {{ "errors." + error.error | translate }}
         </p>
       </div>
     </label>

@@ -4,7 +4,7 @@
         <textarea formControlName="content" rows="5"></textarea>
         <div *ngIf="form.get('content')?.errors" class="errors">
             <p *ngFor="let error of form.get('content')?.errors?.errors">
-                {{ error.error }}
+                {{ "errors." + error.error | translate }}
             </p>
         </div>
     </label>

@@ -20,7 +20,7 @@
                     >
                     <div *ngIf="detailsForm.get('name')?.errors" class="errors">
                         <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
-                            {{ error.error }}
+                            {{ "errors." + error.error | translate }}
                         </p>
                     </div>
                 </label>
