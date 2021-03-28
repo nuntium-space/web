@@ -7,4 +7,10 @@
     (change)="onChange($event)"
 >
 
-<img *ngIf="imageSrc" [src]="imageSrc" alt="">
+<!-- TODO: Make this accessible -->
+<div tabindex="0" class="img-container">
+    <img *ngIf="imageSrc" [src]="imageSrc" alt="">
+    <p *ngIf="!imageSrc">
+        {{ "components.inputs.image.choose_image" | translate }}
+    </p>
+</div>
