@@ -31,10 +31,14 @@ export class PublisherDetailsComponent
       {
         api.retrievePublisher(params.id).then(response =>
         {
-          this.publisher = response.data;
+          if (response.data)
+          {
+            this.publisher = response.data;
+            this.imageSrc = this.publisher.imageUrl;
 
-          this.detailsForm.get("name")?.setValue(this.publisher?.name);
-          this.detailsForm.get("url")?.setValue(this.publisher?.url);
+            this.detailsForm.get("name")?.setValue(this.publisher.name);
+            this.detailsForm.get("url")?.setValue(this.publisher.url);
+          }
         });
       },
     });
