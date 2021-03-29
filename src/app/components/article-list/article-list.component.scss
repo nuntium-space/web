@@ -21,6 +21,19 @@ article
         background-color: rgba($primary-color, 0.05);
     }
 
+    header
+    {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        img
+        {
+            height: 3em;
+            border-radius: 0.5em;
+        }
+    }
+
     .main
     {
         display: block;
