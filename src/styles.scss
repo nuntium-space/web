@@ -32,6 +32,24 @@ main
     grid-area: main;
 }
 
+aside
+{
+    header
+    {
+        margin-bottom: 1em;
+
+        > :first-child
+        {
+            margin-top: 0;
+        }
+
+        > :last-child
+        {
+            margin-bottom: 0;
+        }
+    }
+}
+
 footer
 {
     grid-area: footer;

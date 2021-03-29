@@ -1,9 +1,10 @@
 <aside *ngIf="organization">
+    <header>
+        <h1>{{ organization.name }}</h1>
+    </header>
     <stripe-connect-button [organization]="organization"></stripe-connect-button>
     <section>
-        <div class="title">
-            <h1>{{ organization.name }}</h1>
-        </div>
+        <div class="title"></div>
         <div class="content">
             <a
                 routerLink="/organization/{{ organization.id }}/details"
