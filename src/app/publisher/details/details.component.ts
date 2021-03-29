@@ -13,7 +13,6 @@ export class PublisherDetailsComponent
   public publisher?: IPublisher;
 
   private image?: File;
-  public imageSrc?: string;
 
   public detailsForm = new FormGroup({
     name: new FormControl(),
@@ -34,7 +33,6 @@ export class PublisherDetailsComponent
           if (response.data)
           {
             this.publisher = response.data;
-            this.imageSrc = this.publisher.imageUrl ?? undefined;
 
             this.detailsForm.get("name")?.setValue(this.publisher.name);
             this.detailsForm.get("url")?.setValue(this.publisher.url);
@@ -69,22 +67,13 @@ export class PublisherDetailsComponent
 
   public onImageChange(e: Event)
   {
-    this.image = this.imageSrc = undefined;
+    this.image = undefined;
 
     if (e.target instanceof HTMLInputElement)
     {
       const file = e.target.files?.item(0);
 
-      if (file)
-      {
-        this.image = file;
-
-        const reader = new FileReader();
-
-        reader.onload = e => this.imageSrc = e.target?.result?.toString();
-
-        reader.readAsDataURL(file);
-      }
+      this.image = file ?? undefined;
     }
   }
 

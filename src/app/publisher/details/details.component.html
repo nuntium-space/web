@@ -51,7 +51,6 @@
         </div>
         <div class="content">
             <form class="image-form" [formGroup]="imageForm" (submit)="onImageFormSubmit($event)">
-                <img *ngIf="imageSrc" [src]="imageSrc" alt="">
                 <label>
                     {{ "publisher.details.image.image" | translate }}
                     <input

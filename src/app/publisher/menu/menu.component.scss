@@ -1,5 +1,14 @@
 @import "../../organization/menu/menu.component";
 
+header
+{
+    img
+    {
+        display: block;
+        border-radius: 1em;
+    }
+}
+
 button
 {
     margin-bottom: 1rem;
