@@ -21,6 +21,8 @@ export class ArticleComponent
 
   public article?: IArticle;
 
+  public rawArticle?: IArticle;
+
   public comments: IComment[] = [];
 
   public isUpdatingArticle = false;
@@ -40,9 +42,6 @@ export class ArticleComponent
           else if (response.data)
           {
             this.article = response.data;
-
-            this.updateArticleForm.get("title")?.setValue(this.article.title);
-            this.updateArticleForm.get("content")?.setValue(this.article.content); // TODO: Edit raw content
           }
         });
 
@@ -57,16 +56,21 @@ export class ArticleComponent
     });
   }
 
+  public async loadRawArticle()
+  {
+    this.isUpdatingArticle = true;
+  }
+
   public async updateArticle(e: Event)
   {
     e.preventDefault();
 
-    if (!this.article)
+    if (!this.rawArticle)
     {
       return;
     }
 
-    const response = await this.api.updateArticle(this.article.id, {
+    const response = await this.api.updateArticle(this.rawArticle.id, {
       title: this.updateArticleForm.get("title")?.value ?? "",
       content: this.updateArticleForm.get("content")?.value ?? "",
     });
@@ -84,9 +88,6 @@ export class ArticleComponent
       this.isUpdatingArticle = false;
 
       this.article = response.data;
-
-      this.updateArticleForm.get("title")?.setValue(this.article.title);
-      this.updateArticleForm.get("content")?.setValue(this.article.content); // TODO: Edit raw content
     }
   }
 

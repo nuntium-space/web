@@ -8,15 +8,11 @@
             </div>
             <div class="content">
                 <div>
-                    <button class="fill" (click)="isUpdatingArticle = !isUpdatingArticle">
-                        {{
-                            (
-                                isUpdatingArticle
-                                    ? "generic.cancel"
-                                    : "generic.edit"
-                            )
-                            | translate
-                        }}
+                    <button *ngIf="!isUpdatingArticle" class="fill" (click)="loadRawArticle()">
+                        {{  "generic.edit" | translate }}
+                    </button>
+                    <button *ngIf="isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
+                        {{  "generic.cancel" | translate }}
                     </button>
                     <danger-button
                         *ngIf="!isUpdatingArticle"
@@ -92,7 +88,8 @@
         <div class="content" [innerHTML]="article.content | keepHtml"></div>
     </div>
     <div *ngIf="isUpdatingArticle">
-        <form class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
+        <spinner *ngIf="!rawArticle"></spinner>
+        <form *ngIf="rawArticle" class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
             <label>
                 {{ "article.title" | translate }}
                 <input formControlName="title" type="text">
