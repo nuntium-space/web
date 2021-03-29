@@ -1,7 +1,7 @@
 <aside *ngIf="publisher">
     <header>
-        <img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" alt="">
         <h1>{{ publisher.name }}</h1>
+        <img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" alt="">
     </header>
     <button class="warning fill" (click)="verify()">
         {{ "publisher.verify" | translate }}

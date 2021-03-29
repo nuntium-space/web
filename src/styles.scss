@@ -36,7 +36,16 @@ aside
 {
     header
     {
+        padding: 1rem;
         margin-bottom: 1em;
+        background-color: rgba($primary-color, 0.1);
+        border: 1px solid var(--primary-color);
+        border-radius: 0.5rem;
+
+        h1
+        {
+            margin: 1rem 0;
+        }
 
         > :first-child
         {
