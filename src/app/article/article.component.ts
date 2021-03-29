@@ -58,7 +58,23 @@ export class ArticleComponent
 
   public async loadRawArticle()
   {
+    if (!this.article)
+    {
+      return;
+    }
+
+    this.rawArticle = undefined;
     this.isUpdatingArticle = true;
+
+    const response = await this.api.retrieveArticle(this.article.id, "raw");
+
+    if (response.data)
+    {
+      this.rawArticle = response.data;
+
+      this.updateArticleForm.get("title")?.setValue(this.rawArticle.title);
+      this.updateArticleForm.get("content")?.setValue(this.rawArticle.content);
+    }
   }
 
   public async updateArticle(e: Event)
