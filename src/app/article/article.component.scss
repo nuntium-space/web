@@ -19,9 +19,13 @@ aside
 
     .actions
     {
-        button:first-child
+        .content
         {
-            margin-bottom: 1rem;
+            div > :not(:first-child)
+            {
+                display: block;
+                margin-top: 1rem;
+            }
         }
     }
 
