@@ -482,14 +482,6 @@ export class ApiService
     return this.send("GET", `users/${userId}/subscriptions?expand[]=price&expand[]=price.bundle`);
   }
 
-  public async createUser(data: {
-    username?: string,
-    email: string,
-  }): Promise<IApiServiceResponse<IUser>>
-  {
-    return this.send("POST", "users", data);
-  }
-
   public async addPaymentMethodToUser(userId: string, data: {
     id: string,
   }): Promise<IApiServiceResponse<void>>
