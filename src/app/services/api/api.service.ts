@@ -433,9 +433,9 @@ export class ApiService
     return this.send("GET", `sessions/${id}`);
   }
 
-  public async createSession(email: string, password: string): Promise<IApiServiceResponse<ISession>>
+  public async createSession(email: string): Promise<IApiServiceResponse<ISession>>
   {
-    return this.send("POST", "sessions", { email, password });
+    return this.send("POST", "sessions", { email });
   }
 
   public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
@@ -487,7 +487,6 @@ export class ApiService
     first_name: string,
     last_name: string,
     email: string,
-    password: string,
   }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("POST", "users", data);

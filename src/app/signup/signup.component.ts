@@ -14,7 +14,6 @@ export class SignupComponent
     first_name: new FormControl(),
     last_name: new FormControl(),
     email: new FormControl(),
-    password: new FormControl(),
   });
 
   constructor(private api: ApiService, private router: Router)
@@ -28,7 +27,6 @@ export class SignupComponent
       first_name: this.form.get("first_name")?.value ?? "",
       last_name: this.form.get("last_name")?.value ?? "",
       email: this.form.get("email")?.value ?? "",
-      password: this.form.get("password")?.value ?? "",
     });
 
     this.form.get("first_name")?.setErrors({
@@ -41,10 +39,6 @@ export class SignupComponent
 
     this.form.get("email")?.setErrors({
       errors: response.errors?.filter(e => e.field === "email")
-    });
-
-    this.form.get("password")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "password")
     });
 
     if (response.data)

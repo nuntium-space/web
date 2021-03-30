@@ -25,22 +25,6 @@
         </p>
       </div>
     </label>
-    <label>
-      {{ "generic.password" | translate }}
-      <input
-        formControlName="password"
-
-        type="password"
-        name="password"
-        autocomplete="current-password"
-        required
-      >
-      <div *ngIf="form.get('password')?.errors" class="errors">
-        <p *ngFor="let error of form.get('password')?.errors?.errors">
-          {{ "errors." + error.error | translate:error.params }}
-        </p>
-      </div>
-    </label>
     <button type="submit">
       {{ "generic.sign_in" | translate }}
     </button>

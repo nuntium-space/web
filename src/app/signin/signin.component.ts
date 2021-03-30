@@ -13,7 +13,6 @@ export class SigninComponent
 {
   public readonly form = new FormGroup({
     email: new FormControl(),
-    password: new FormControl(),
   });
 
   constructor(private api: ApiService, private auth: AuthService, private router: Router)
@@ -25,15 +24,10 @@ export class SigninComponent
 
     const response = await this.api.createSession(
       this.form.get("email")?.value ?? "",
-      this.form.get("password")?.value ?? "",
     );
 
     this.form.get("email")?.setErrors({
       errors: response.errors?.filter(e => e.field === "email")
-    });
-
-    this.form.get("password")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "password")
     });
 
     if (response.data)
