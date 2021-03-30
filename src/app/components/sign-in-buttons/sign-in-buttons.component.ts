@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'sign-in-buttons',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class SignInButtonsComponent
 {
+  public endpoint = environment.api.endpoint;
+
   constructor()
   {}
 }
