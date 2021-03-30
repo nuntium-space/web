@@ -59,6 +59,7 @@ import { PreferencesComponent } from './settings/preferences/preferences.compone
 import { UserSettingsService } from './services/user-settings/user-settings.service';
 import { DangerButtonComponent } from './components/danger-button/danger-button.component';
 import { BadgeComponent } from './components/badge/badge.component';
+import { SignInButtonsComponent } from './components/sign-in-buttons/sign-in-buttons.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -118,6 +119,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     PreferencesComponent,
     DangerButtonComponent,
     BadgeComponent,
+    SignInButtonsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,67 +1,70 @@
 <app-header></app-header>
 
 <main>
-  <form [formGroup]="form" (submit)="onSubmit($event)">
-    <div class="title">
-      <h1>{{ "sign_up.__title" | translate }}</h1>
-      <p>
-        {{ "sign_up.have_account" | translate }}
-        <a routerLink="/signin" class="dark">{{ "generic.sign_in" | translate }}</a>
-      </p>
-    </div>
-    <div class="row">
-      <label>
-        {{ "generic.first_name" | translate }}
-        <input
-          formControlName="first_name"
-
-          type="text"
-          name="first-name"
-          autocomplete="given-name"
-          required
-        >
-        <div *ngIf="form.get('first_name')?.errors" class="errors">
-          <p *ngFor="let error of form.get('first_name')?.errors?.errors">
-            {{ "errors." + error.error | translate:error.params }}
-          </p>
-        </div>
-      </label>
-      <label>
-        {{ "generic.last_name" | translate }}
-        <input
-          formControlName="last_name"
-
-          type="text"
-          name="last-name"
-          autocomplete="family-name"
-          required
-        >
-        <div *ngIf="form.get('last_name')?.errors" class="errors">
-          <p *ngFor="let error of form.get('last_name')?.errors?.errors">
-            {{ "errors." + error.error | translate:error.params }}
-          </p>
-        </div>
-      </label>
-    </div>
-    <label>
-      {{ "generic.email" | translate }}
-      <input
-        formControlName="email"
-
-        type="email"
-        name="email"
-        autocomplete="email"
-        required
-      >
-      <div *ngIf="form.get('email')?.errors" class="errors">
-        <p *ngFor="let error of form.get('email')?.errors?.errors">
-          {{ "errors." + error.error | translate:error.params }}
+  <div>
+    <form [formGroup]="form" (submit)="onSubmit($event)">
+      <div class="title">
+        <h1>{{ "sign_up.__title" | translate }}</h1>
+        <p>
+          {{ "sign_up.have_account" | translate }}
+          <a routerLink="/signin" class="dark">{{ "generic.sign_in" | translate }}</a>
         </p>
       </div>
-    </label>
-    <button type="submit">
-      {{ "generic.sign_up" | translate }}
-    </button>
-  </form>
+      <div class="row">
+        <label>
+          {{ "generic.first_name" | translate }}
+          <input
+            formControlName="first_name"
+  
+            type="text"
+            name="first-name"
+            autocomplete="given-name"
+            required
+          >
+          <div *ngIf="form.get('first_name')?.errors" class="errors">
+            <p *ngFor="let error of form.get('first_name')?.errors?.errors">
+              {{ "errors." + error.error | translate:error.params }}
+            </p>
+          </div>
+        </label>
+        <label>
+          {{ "generic.last_name" | translate }}
+          <input
+            formControlName="last_name"
+  
+            type="text"
+            name="last-name"
+            autocomplete="family-name"
+            required
+          >
+          <div *ngIf="form.get('last_name')?.errors" class="errors">
+            <p *ngFor="let error of form.get('last_name')?.errors?.errors">
+              {{ "errors." + error.error | translate:error.params }}
+            </p>
+          </div>
+        </label>
+      </div>
+      <label>
+        {{ "generic.email" | translate }}
+        <input
+          formControlName="email"
+  
+          type="email"
+          name="email"
+          autocomplete="email"
+          required
+        >
+        <div *ngIf="form.get('email')?.errors" class="errors">
+          <p *ngFor="let error of form.get('email')?.errors?.errors">
+            {{ "errors." + error.error | translate:error.params }}
+          </p>
+        </div>
+      </label>
+      <button type="submit">
+        {{ "generic.sign_up" | translate }}
+      </button>
+    </form>
+    <sign-in-buttons></sign-in-buttons>
+  </div>
   <img src="assets/signup.svg" alt="">
 </main>
