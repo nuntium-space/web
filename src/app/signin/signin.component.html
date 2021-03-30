@@ -5,10 +5,6 @@
     <form [formGroup]="form" (submit)="onSubmit($event)">
       <div class="title">
         <h1>{{ "generic.sign_in" | translate }}</h1>
-        <p>
-          {{ "sign_in.no_account" | translate }}
-          <a routerLink="/signup" class="dark">{{ "generic.sign_up" | translate }}</a>
-        </p>
       </div>
       <label>
         {{ "generic.email" | translate }}
