@@ -22,7 +22,7 @@ export class SigninComponent
   {
     e.preventDefault();
 
-    const response = await this.api.createSession(
+    const response = await this.api.signInWithEmail(
       this.form.get("email")?.value ?? "",
     );
 
@@ -30,13 +30,9 @@ export class SigninComponent
       errors: response.errors?.filter(e => e.field === "email")
     });
 
-    if (response.data)
+    if (!response.errors)
     {
-      localStorage.setItem("session.id", response.data.id);
-
-      this.auth.user = response.data.user;
-
-      this.router.navigateByUrl("/");
+      // Show success message to user
     }
   }
 }

@@ -432,9 +432,9 @@ export class ApiService
     return this.send("GET", `sessions/${id}`);
   }
 
-  public async createSession(email: string): Promise<IApiServiceResponse<ISession>>
+  public async signInWithEmail(email: string): Promise<IApiServiceResponse<void>>
   {
-    return this.send("POST", "sessions", { email });
+    return this.send("POST", "auth/email", { email });
   }
 
   public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
