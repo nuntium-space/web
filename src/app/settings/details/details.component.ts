@@ -11,8 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class AccountDetailsComponent
 {
   public updateAccountDetailsForm = new FormGroup({
-    first_name: new FormControl(this.auth.user?.first_name),
-    last_name: new FormControl(this.auth.user?.last_name),
+    username: new FormControl(this.auth.user?.username),
     email: new FormControl(this.auth.user?.email),
   });
 
@@ -29,17 +28,12 @@ export class AccountDetailsComponent
     }
 
     const response = await this.api.updateUser(this.auth.user.id, {
-      first_name: this.updateAccountDetailsForm.get("first_name")?.value ?? "",
-      last_name: this.updateAccountDetailsForm.get("last_name")?.value ?? "",
+      username: this.updateAccountDetailsForm.get("username")?.value ?? "",
       email: this.updateAccountDetailsForm.get("email")?.value ?? "",
     });
 
-    this.updateAccountDetailsForm.get("first_name")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "first_name")
-    });
-
-    this.updateAccountDetailsForm.get("last_name")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "last_name")
+    this.updateAccountDetailsForm.get("username")?.setErrors({
+      errors: response.errors?.filter(e => e.field === "username")
     });
 
     this.updateAccountDetailsForm.get("email")?.setErrors({

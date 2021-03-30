@@ -183,19 +183,6 @@ form
         }
     }
 
-    .row
-    {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1em;
-        margin-bottom: 1em;
-
-        label
-        {
-            margin: 0;
-        }
-    }
-
     button[type=submit]
     {
         width: 100%;

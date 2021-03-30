@@ -16,8 +16,7 @@ interface IApiServiceResponse<T>
 export interface IUser
 {
   id: string,
-  first_name: string,
-  last_name: string,
+  username: string | null,
   email: string,
   has_default_payment_method: boolean,
 }
@@ -484,8 +483,7 @@ export class ApiService
   }
 
   public async createUser(data: {
-    first_name: string,
-    last_name: string,
+    username?: string,
     email: string,
   }): Promise<IApiServiceResponse<IUser>>
   {
@@ -505,11 +503,8 @@ export class ApiService
   }
 
   public async updateUser(id: string, data: {
-    first_name?: string,
-    last_name?: string,
+    username?: string,
     email?: string,
-    old_password?: string,
-    new_password?: string,
   }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("PATCH", `users/${id}`, data);

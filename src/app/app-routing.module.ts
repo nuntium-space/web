@@ -33,11 +33,9 @@ import { UserPublishersComponent } from './settings/publishers/publishers.compon
 import { SecurityComponent } from './settings/security/security.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: "signin", component: SigninComponent, canActivate: [ SignedOutGuard ] },
-  { path: "signup", component: SignupComponent, canActivate: [ SignedOutGuard ] },
   {
     path: "settings",
     canActivate: [ SignedInGuard ],
