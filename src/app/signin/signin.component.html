@@ -2,6 +2,9 @@
 
 <main>
   <div>
+    <div *ngIf="!showEmailSignInSuccessMessage" class="email-sign-in-success-msg">
+      <span>TODO</span>
+    </div>
     <form [formGroup]="form" (submit)="onSubmit($event)">
       <div class="title">
         <h1>{{ "generic.sign_in" | translate }}</h1>

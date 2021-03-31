@@ -17,6 +17,8 @@ export class SigninComponent
     email: new FormControl(),
   });
 
+  public showEmailSignInSuccessMessage = false;
+
   constructor(private api: ApiService, private auth: AuthService, private router: Router)
   {}
 
@@ -34,7 +36,7 @@ export class SigninComponent
 
     if (response.data)
     {
-      // TODO: Show success message to user
+      this.showEmailSignInSuccessMessage = true;
 
       const client = new Nes.Client(environment.websocket.endpoint);
 
