@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IUser } from '../api/api.service';
 
 @Injectable({
@@ -9,17 +9,28 @@ export class AuthService
 {
   public user?: IUser;
 
-  constructor(private api: ApiService, private router: Router)
+  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
   public async init(): Promise<IUser | null>
   {
-    const sessionId = localStorage.getItem("session.id");
+    const queryParams = new URLSearchParams(location.search);
+
+    if (queryParams.get("session_id"))
+    {
+      this.router.navigate([ "." ], {
+        relativeTo: this.route,
+      });
+    }
+
+    const sessionId = queryParams.get("session_id") ?? localStorage.getItem("session.id");
 
     if (!sessionId)
     {
       return null;
     }
+
+    localStorage.setItem("session.id", sessionId);
 
     const response = await this.api.retrieveSession(sessionId);
 
