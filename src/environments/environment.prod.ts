@@ -3,5 +3,8 @@ export const environment = {
   api: {
     endpoint: "TODO",
   },
+  websocket: {
+    endpoint: "TODO",
+  },
   stripePublishableKey: "TODO",
 };

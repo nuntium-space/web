@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../services/api/api.service';
+import * as Nes from '@hapi/nes';
+import { environment } from 'src/environments/environment';
+import { ApiService, ISession } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
@@ -30,9 +32,27 @@ export class SigninComponent
       errors: response.errors?.filter(e => e.field === "email")
     });
 
-    if (!response.errors)
+    if (response.data)
     {
-      // Show success message to user
+      // TODO: Show success message to user
+
+      const client = new Nes.Client(environment.websocket.endpoint);
+
+      await client.connect();
+
+      client.subscribe(`/auth/email/requests/${response.data.id}`, (message, flags) =>
+      {
+        const session = message.session as ISession | undefined;
+
+        if (session)
+        {
+          localStorage.setItem("session.id", session.id);
+
+          this.auth.user = session.user;
+
+          this.router.navigateByUrl("/");
+        }
+      });
     }
   }
 }
