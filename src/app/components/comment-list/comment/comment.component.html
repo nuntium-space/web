@@ -1,9 +1,6 @@
 <div *ngIf="comment" class="comment">
     <header>
-        <span class="user">
-            {{ comment.user.first_name }}
-            {{ comment.user.last_name }}
-        </span>
+        <span class="user">{{ comment.user.username }}</span>
         &bull;
         <small title="{{ format.dateTime(comment.created_at, 'datetime') }}">
             {{ format.dateTime(comment.created_at, "shortdate") }}

@@ -16,8 +16,7 @@ interface IApiServiceResponse<T>
 export interface IUser
 {
   id: string,
-  first_name: string,
-  last_name: string,
+  username: string | null,
   email: string,
   has_default_payment_method: boolean,
 }
@@ -433,9 +432,9 @@ export class ApiService
     return this.send("GET", `sessions/${id}`);
   }
 
-  public async createSession(email: string, password: string): Promise<IApiServiceResponse<ISession>>
+  public async signInWithEmail(email: string): Promise<IApiServiceResponse<void>>
   {
-    return this.send("POST", "sessions", { email, password });
+    return this.send("POST", "auth/email", { email });
   }
 
   public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
@@ -483,16 +482,6 @@ export class ApiService
     return this.send("GET", `users/${userId}/subscriptions?expand[]=price&expand[]=price.bundle`);
   }
 
-  public async createUser(data: {
-    first_name: string,
-    last_name: string,
-    email: string,
-    password: string,
-  }): Promise<IApiServiceResponse<IUser>>
-  {
-    return this.send("POST", "users", data);
-  }
-
   public async addPaymentMethodToUser(userId: string, data: {
     id: string,
   }): Promise<IApiServiceResponse<void>>
@@ -506,11 +495,8 @@ export class ApiService
   }
 
   public async updateUser(id: string, data: {
-    first_name?: string,
-    last_name?: string,
+    username?: string,
     email?: string,
-    old_password?: string,
-    new_password?: string,
   }): Promise<IApiServiceResponse<IUser>>
   {
     return this.send("PATCH", `users/${id}`, data);

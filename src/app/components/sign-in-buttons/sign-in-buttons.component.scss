@@ -1,0 +1,58 @@
+:host
+{
+    display: block;
+    max-width: 500px;
+}
+
+.divider
+{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+
+    hr
+    {
+        width: 100%;
+    }
+
+    small
+    {
+        margin: 0 1rem;
+        text-transform: uppercase;
+    }
+}
+
+a
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img
+    {
+        width: 1em;
+    }
+}
+
+.google
+{
+    color: black;
+    background-color: white;
+}
+
+.facebook
+{
+    color: white;
+    background-color: #0076fb;
+}
+
+.twitter
+{
+    color: white;
+    background-color: #1da1f2;
+}
+
+a ~ a
+{
+    margin-top: 1rem;
+}

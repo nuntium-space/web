@@ -23,9 +23,6 @@
   <button class="dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
     {{ "generic.sign_in" | translate }}
   </button>
-  <button class="dark" routerLink="/signup" *ngIf="!auth.user && router.url.startsWith('/signin')">
-    {{ "generic.sign_up" | translate }}
-  </button>
 </header>
 
 <nav *ngIf="showNav">

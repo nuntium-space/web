@@ -3,8 +3,7 @@
         <img *ngIf="article.author.publisher.imageUrl" [src]="article.author.publisher.imageUrl" alt="">
         <div>
             <a routerLink="/~{{ article.author.user.id }}" class="dark">
-                {{ article.author.user.first_name }}
-                {{ article.author.user.last_name }}
+                {{ article.author.user.username }}
             </a>
             <span *ngIf="article.author.publisher.name">
                 {{ "components.article_list.article.for" | translate }}

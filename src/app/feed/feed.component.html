@@ -4,7 +4,7 @@
     <div *ngIf="articles.length === 0" class="empty-feed">
         <img src="/assets/empty-feed.svg" alt="">
         <h1
-            [innerHTML]="'feed.empty.title' | translate:{ USER_FIRST_NAME: auth.user.first_name }"
+            [innerHTML]="'feed.empty.title' | translate:{ USERNAME: auth.user.username }"
         >
         </h1>
         <p>{{ "feed.empty.subtitle" | translate }}</p>

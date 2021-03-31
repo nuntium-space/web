@@ -4,57 +4,10 @@
 
 <main>
     <section>
+        <!-- TODO: SHOW ACCOUNTS -->
         <div class="title">
-            <h1>{{ "settings.account.security.change_password.__title" | translate }}</h1>
+            <h1>{{ "settings.account.security.accounts.__title" | translate }}</h1>
         </div>
-        <div class="content">
-            <form [formGroup]="changePasswordForm" (submit)="onChangePasswordFormSubmit($event)">
-                <!-- THIS IS ONLY NEEDED FOR ACCESSIBILITY -->
-                <input
-                    formControlName="email"
-
-                    type="text"
-                    name="email"
-                    autocomplete="email"
-                    style="display: none;"
-                >
-                <!-- ------------------------------------- -->
-                <label>
-                    {{ "settings.account.security.change_password.old_password" | translate }}
-                    <input
-                        formControlName="old_password"
-
-                        type="password"
-                        name="old-password"
-                        autocomplete="current-password"
-                        required
-                    >
-                    <div *ngIf="changePasswordForm.get('old_password')?.errors" class="errors">
-                        <p *ngFor="let error of changePasswordForm.get('old_password')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <label>
-                    {{ "settings.account.security.change_password.new_password" | translate }}
-                    <input
-                        formControlName="new_password"
-
-                        type="password"
-                        name="new-password"
-                        autocomplete="new-password"
-                        required
-                    >
-                    <div *ngIf="changePasswordForm.get('new_password')?.errors" class="errors">
-                        <p *ngFor="let error of changePasswordForm.get('new_password')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <button type="submit">
-                    {{ "settings.account.security.change_password.__title" | translate }}
-                </button>
-            </form>
-        </div>
+        <div class="content"></div>
     </section>
 </main>

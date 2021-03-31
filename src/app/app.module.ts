@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed/feed.component';
 import { AuthService } from './services/auth/auth.service';
@@ -59,6 +58,7 @@ import { PreferencesComponent } from './settings/preferences/preferences.compone
 import { UserSettingsService } from './services/user-settings/user-settings.service';
 import { DangerButtonComponent } from './components/danger-button/danger-button.component';
 import { BadgeComponent } from './components/badge/badge.component';
+import { SignInButtonsComponent } from './components/sign-in-buttons/sign-in-buttons.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -71,7 +71,6 @@ export const createTranslationLoader = (http: HttpClient) =>
     SigninComponent,
     HomeComponent,
     HeaderComponent,
-    SignupComponent,
     FeedComponent,
     PageNotFoundComponent,
     AccountDetailsComponent,
@@ -118,6 +117,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     PreferencesComponent,
     DangerButtonComponent,
     BadgeComponent,
+    SignInButtonsComponent,
   ],
   imports: [
     BrowserModule,

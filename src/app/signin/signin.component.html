@@ -1,49 +1,32 @@
 <app-header></app-header>
 
 <main>
-  <form [formGroup]="form" (submit)="onSubmit($event)">
-    <div class="title">
-      <h1>{{ "generic.sign_in" | translate }}</h1>
-      <p>
-        {{ "sign_in.no_account" | translate }}
-        <a routerLink="/signup" class="dark">{{ "generic.sign_up" | translate }}</a>
-      </p>
-    </div>
-    <label>
-      {{ "generic.email" | translate }}
-      <input
-        formControlName="email"
-
-        type="email"
-        name="email"
-        autocomplete="email"
-        required
-      >
-      <div *ngIf="form.get('email')?.errors" class="errors">
-        <p *ngFor="let error of form.get('email')?.errors?.errors">
-          {{ "errors." + error.error | translate:error.params }}
-        </p>
+  <div>
+    <form [formGroup]="form" (submit)="onSubmit($event)">
+      <div class="title">
+        <h1>{{ "generic.sign_in" | translate }}</h1>
       </div>
-    </label>
-    <label>
-      {{ "generic.password" | translate }}
-      <input
-        formControlName="password"
-
-        type="password"
-        name="password"
-        autocomplete="current-password"
-        required
-      >
-      <div *ngIf="form.get('password')?.errors" class="errors">
-        <p *ngFor="let error of form.get('password')?.errors?.errors">
-          {{ "errors." + error.error | translate:error.params }}
-        </p>
-      </div>
-    </label>
-    <button type="submit">
-      {{ "generic.sign_in" | translate }}
-    </button>
-  </form>
+      <label>
+        {{ "generic.email" | translate }}
+        <input
+          formControlName="email"
+  
+          type="email"
+          name="email"
+          autocomplete="email"
+          required
+        >
+        <div *ngIf="form.get('email')?.errors" class="errors">
+          <p *ngFor="let error of form.get('email')?.errors?.errors">
+            {{ "errors." + error.error | translate:error.params }}
+          </p>
+        </div>
+      </label>
+      <button type="submit">
+        {{ "generic.sign_in" | translate }}
+      </button>
+    </form>
+    <sign-in-buttons></sign-in-buttons>
+  </div>
   <img src="assets/signin.svg" alt="">
 </main>
