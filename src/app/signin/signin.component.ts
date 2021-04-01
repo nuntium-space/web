@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as Nes from '@hapi/nes/lib/client';
 import { environment } from 'src/environments/environment';
 import { ApiService, ISession } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
@@ -38,13 +37,11 @@ export class SigninComponent
     {
       this.showEmailSignInSuccessMessage = true;
 
-      const client = new Nes.Client(environment.websocket.endpoint);
+      const ws = new WebSocket(`${environment.websocket.endpoint}/auth/email/requests/${response.data.id}`);
 
-      await client.connect();
-
-      client.subscribe(`/auth/email/requests/${response.data.id}`, (message, flags) =>
+      ws.addEventListener("message", e =>
       {
-        const session = message.session as ISession | undefined;
+        const session = e.data.session as ISession | undefined;
 
         if (session)
         {
