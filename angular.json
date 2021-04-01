@@ -71,7 +71,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nuntium:build"
+            "browserTarget": "nuntium:build",
+            "ssl": true,
+            "sslKey": "ssl/key.pem",
+            "sslCert": "ssl/cert.pem"
           },
           "configurations": {
             "production": {
