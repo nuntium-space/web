@@ -33,25 +33,36 @@ export class SigninComponent
       errors: response.errors?.filter(e => e.field === "email")
     });
 
-    if (response.data)
+    const { data } = response;
+
+    if (data)
     {
       this.showEmailSignInSuccessMessage = true;
 
-      const ws = new WebSocket(`${environment.websocket.endpoint}/auth/email/requests/${response.data.id}`);
-
-      ws.addEventListener("message", e =>
+      const interval = setInterval(async () =>
       {
-        const session = e.data.session as ISession | undefined;
+        const signInRequestResponse = await this.api.retrieveSignInRequest(data.id);
+
+        if (signInRequestResponse.status === 403)
+        {
+          clearInterval(interval);
+
+          return;
+        }
+
+        const session = signInRequestResponse.data?.session;
 
         if (session)
         {
+          clearInterval(interval);
+
           localStorage.setItem("session.id", session.id);
 
           this.auth.user = session.user;
 
           this.router.navigateByUrl("/");
         }
-      });
+      }, 1000);
     }
   }
 }

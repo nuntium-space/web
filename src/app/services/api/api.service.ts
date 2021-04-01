@@ -239,6 +239,16 @@ export class ApiService
     return this.send("DELETE", `articles/${articleId}`);
   }
 
+  public async retrieveSignInRequest(id: string): Promise<IApiServiceResponse<{ session?: ISession }>>
+  {
+    return this.send("GET", `auth/email/requests/${id}`);
+  }
+
+  public async signInWithEmail(email: string): Promise<IApiServiceResponse<{ id: string }>>
+  {
+    return this.send("POST", "auth/email", { email });
+  }
+
   public async createArticle(authorId: string, data: {
     title: string,
     content: string,
@@ -430,11 +440,6 @@ export class ApiService
   public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("GET", `sessions/${id}`);
-  }
-
-  public async signInWithEmail(email: string): Promise<IApiServiceResponse<{ id: string }>>
-  {
-    return this.send("POST", "auth/email", { email });
   }
 
   public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
