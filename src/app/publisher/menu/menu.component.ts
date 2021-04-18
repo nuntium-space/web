@@ -14,7 +14,7 @@ export class PublisherMenuComponent
 
   public publisher?: IPublisher;
 
-  constructor(private api: ApiService, route: ActivatedRoute)
+  constructor(api: ApiService, route: ActivatedRoute)
   {
     route.params.subscribe({
       next: params =>
@@ -25,20 +25,5 @@ export class PublisherMenuComponent
         });
       },
     });
-  }
-
-  public async verify()
-  {
-    if (!this.publisher)
-    {
-      return;
-    }
-
-    const response = await this.api.verifyPublisher(this.publisher.id);
-
-    if (!response.errors)
-    {
-      this.publisher.verified = true;
-    }
   }
 }
