@@ -46,6 +46,9 @@ export class PreferencesComponent implements OnInit
 
     if (!response.errors)
     {
+      this.userSettings.userSettings ??= { language };
+      this.userSettings.userSettings.language = language;
+
       this.translate.use(language);
     }
   }
