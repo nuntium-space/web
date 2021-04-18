@@ -3,9 +3,9 @@
         <h1>{{ publisher.name }}</h1>
         <img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" alt="">
     </header>
-    <button class="warning fill" (click)="verify()">
+    <a routerLink="verify" id="verify-button" class="button warning fill">
         {{ "publisher.verify" | translate }}
-    </button>
+    </a>
     <section>
         <div class="title"></div>
         <div class="content">
