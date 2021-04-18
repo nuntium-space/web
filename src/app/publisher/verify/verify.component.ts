@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './verify.component.html',
   styleUrls: ['./verify.component.scss']
 })
-export class PublisherVerifyComponent
+export class VerifyPublisherComponent
 {
   constructor()
   {}
