@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { ApiService, ISession } from '../services/api/api.service';
 import { AuthService } from '../services/auth/auth.service';
+import { UserSettingsService } from '../services/user-settings/user-settings.service';
 
 @Component({
   selector: 'app-signin',
@@ -18,7 +20,7 @@ export class SigninComponent
 
   public showEmailSignInSuccessMessage = false;
 
-  constructor(private api: ApiService, private auth: AuthService, private router: Router)
+  constructor(private api: ApiService, private auth: AuthService, private translate: TranslateService, private userSettings: UserSettingsService, private router: Router)
   {}
 
   public async onSubmit(e: Event)
@@ -59,6 +61,12 @@ export class SigninComponent
           localStorage.setItem("session.id", session.id);
 
           this.auth.user = session.user;
+
+          const userSettings = await this.userSettings.init();
+
+          const language = userSettings?.language ?? this.translate.getBrowserLang();
+
+          this.translate.use(language);
 
           this.router.navigateByUrl("/");
         }
