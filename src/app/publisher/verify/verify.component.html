@@ -7,8 +7,36 @@
         <div class="title">
             <h1>{{ "publisher.verify" | translate }}</h1>
         </div>
-        <div class="content">
-            
+        <div *ngIf="publisher" class="content">
+            <div>
+                <span>
+                    In order to verify that you are the owner of
+                    <a [href]="publisher.url" target="_blank" class="dark">
+                        <b>{{ publisher.url }}</b>
+                    </a>
+                    you must create a record in your DNS manager with the provided values
+                </span>
+                <div class="record">
+                    <p>
+                        <small>Type</small>
+                        <br>
+                        <b>TXT</b>
+                    </p>
+                    <p>
+                        <small>Host</small>
+                        <br>
+                        <b>Blank</b> or <b>@</b>
+                    </p>
+                    <p>
+                        <small>Value</small>
+                        <br>
+                        <b>{{ "nuntium-domain-verification=TODO_REPLACE_THIS_WITH_THE_ACTUAL_DNS_RECORD_VALUE" }}</b>
+                    </p>
+                </div>
+                <button (click)="verify()">
+                    Verifica
+                </button>
+            </div>
         </div>
     </section>
 </main>

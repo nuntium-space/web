@@ -26,4 +26,19 @@ export class VerifyPublisherComponent implements OnInit
       },
     });
   }
+
+  public async verify()
+  {
+    if (!this.publisher)
+    {
+      return;
+    }
+
+    const response = await this.api.verifyPublisher(this.publisher.id);
+
+    if (!response.errors)
+    {
+      this.publisher.verified = true;
+    }
+  }
 }
