@@ -16,7 +16,7 @@
                     </a>
                     you must create a record in your DNS manager with the provided values
                 </span>
-                <div class="record">
+                <div *ngIf="publisherVerificationData" class="record">
                     <p>
                         <small>Type</small>
                         <br>
@@ -30,7 +30,7 @@
                     <p>
                         <small>Value</small>
                         <br>
-                        <b>{{ "nuntium-domain-verification=TODO_REPLACE_THIS_WITH_THE_ACTUAL_DNS_RECORD_VALUE" }}</b>
+                        <b>{{ publisherVerificationData.dns.record }}</b>
                     </p>
                 </div>
                 <button (click)="verify()">

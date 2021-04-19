@@ -11,6 +11,8 @@ export class VerifyPublisherComponent implements OnInit
 {
   public publisher?: IPublisher;
 
+  public publisherVerificationData?: { dns: { record: string } };
+
   constructor(private api: ApiService, private route: ActivatedRoute)
   {}
 
@@ -19,10 +21,19 @@ export class VerifyPublisherComponent implements OnInit
     this.route.params.subscribe({
       next: params =>
       {
-        this.api.retrievePublisher(params.id).then(response =>
-        {
-          this.publisher = response.data;
-        });
+        this.api
+          .retrievePublisher(params.id)
+          .then(response =>
+          {
+            this.publisher = response.data;
+          });
+
+        this.api
+          .retrievePublisherVerificationData(params.id)
+          .then(response =>
+          {
+            this.publisherVerificationData = response.data;
+          });
       },
     });
   }

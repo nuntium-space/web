@@ -382,6 +382,11 @@ export class ApiService
     return this.send("GET", `publishers/${id}`);
   }
 
+  public async retrievePublisherVerificationData(publisherId: string): Promise<IApiServiceResponse<{ dns: { record: string } }>>
+  {
+    return this.send("GET", `publishers/${publisherId}/verification/data`);
+  }
+
   public async listAuthorsForPublisher(publisherId: string): Promise<IApiServiceResponse<IAuthor[]>>
   {
     return this.send("GET", `publishers/${publisherId}/authors?expand[]=user`);
