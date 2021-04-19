@@ -5,36 +5,40 @@
 <main>
     <section>
         <div class="title">
-            <h1>{{ "publisher.verify" | translate }}</h1>
+            <h1>{{ "publisher.verify.__title" | translate }}</h1>
         </div>
         <div *ngIf="publisher" class="content">
             <div>
                 <span>
-                    In order to verify that you are the owner of
+                    {{ "publisher.verify.message.before_link" | translate }}
                     <a [href]="publisher.url" target="_blank" class="dark">
                         <b>{{ publisher.url }}</b>
                     </a>
-                    you must create a record in your DNS manager with the provided values
+                    {{ "publisher.verify.message.after_link" | translate }}
                 </span>
                 <div *ngIf="publisherVerificationData" class="record">
                     <p>
-                        <small>Type</small>
+                        <small>{{ "publisher.verify.record.type" | translate }}</small>
                         <br>
                         <b>TXT</b>
                     </p>
                     <p>
-                        <small>Host</small>
+                        <small>{{ "publisher.verify.record.host.__title" | translate }}</small>
                         <br>
-                        <b>Blank</b> or <b>@</b>
+                        <b>
+                            {{ "publisher.verify.record.host.blank" | translate }}
+                        </b>
+                        {{ "publisher.verify.record.host.or" | translate }}
+                        <b>@</b>
                     </p>
                     <p>
-                        <small>Value</small>
+                        <small>{{ "publisher.verify.record.value" | translate }}</small>
                         <br>
                         <b>{{ publisherVerificationData.dns.record }}</b>
                     </p>
                 </div>
                 <button (click)="verify()">
-                    Verifica
+                    {{ "publisher.verify.__title" | translate }}
                 </button>
             </div>
         </div>

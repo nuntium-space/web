@@ -4,7 +4,7 @@
         <img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" alt="">
     </header>
     <a routerLink="/publisher/{{ publisher.id }}/verify" id="verify-button" class="button warning fill">
-        {{ "publisher.verify" | translate }}
+        {{ "publisher.verify.__title" | translate }}
     </a>
     <section>
         <div class="title"></div>
