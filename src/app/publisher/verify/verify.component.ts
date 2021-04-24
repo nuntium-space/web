@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class VerifyPublisherComponent implements OnInit
 
   public publisherVerificationData?: { dns: { record: string } };
 
-  constructor(private api: ApiService, private route: ActivatedRoute)
+  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
   public ngOnInit()
@@ -49,7 +49,9 @@ export class VerifyPublisherComponent implements OnInit
 
     if (!response.errors)
     {
-      this.publisher.verified = true;
+      this.router.navigate([ ".." ], {
+        relativeTo: this.route,
+      });
     }
   }
 }
