@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 interface IApiServiceResponse<T>
 {
   status: number,
+  success: boolean,
   data?: T,
   errors?: {
     field: string,
@@ -168,7 +169,10 @@ export class ApiService
         : body,
     });
 
-    const result: IApiServiceResponse<any> = { status: response.status };
+    const result: IApiServiceResponse<any> = {
+      status: response.status,
+      success: response.status >= 200 && response.status < 300,
+    };
 
     // No Content
     if (result.status === 204)

@@ -47,7 +47,7 @@ export class VerifyPublisherComponent implements OnInit
 
     const response = await this.api.verifyPublisher(this.publisher.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.router.navigate([ ".." ], {
         relativeTo: this.route,
