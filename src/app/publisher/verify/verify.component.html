@@ -7,8 +7,9 @@
         <div class="title">
             <h1>{{ "publisher.verify.__title" | translate }}</h1>
         </div>
-        <div *ngIf="publisher" class="content">
-            <div>
+        <div class="content">
+            <spinner *ngIf="!publisher"></spinner>
+            <div *ngIf="publisher">
                 <span>
                     {{ "publisher.verify.message.before_link" | translate }}
                     <a [href]="publisher.url" target="_blank" class="dark">
