@@ -1,6 +1,6 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
-<spinner *ngIf="!articles"></spinner>
+<shared-spinner *ngIf="!articles"></shared-spinner>
 
 <main *ngIf="articles">
     <div *ngIf="articles.length === 0" class="no-results">

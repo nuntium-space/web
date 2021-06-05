@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'danger-button',
+  selector: 'shared-danger-button',
   templateUrl: './danger-button.component.html',
   styleUrls: ['./danger-button.component.scss']
 })
@@ -20,9 +20,6 @@ export class DangerButtonComponent
   public confirm = new EventEmitter<void>();
 
   public showConfirmDialog = false;
-
-  constructor()
-  {}
 
   public onDialogContainerClick(e: Event)
   {

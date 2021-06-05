@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService, IArticle, IComment } from 'src/app/services/api/api.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { IArticle, IComment, ApiService } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'add-comment-form',
+  selector: 'article-add-comment-form',
   templateUrl: './add-comment-form.component.html',
   styleUrls: ['./add-comment-form.component.scss']
 })
@@ -52,4 +52,5 @@ export class AddCommentFormComponent
       this.commentCreated.emit(response.data);
     }
   }
+
 }

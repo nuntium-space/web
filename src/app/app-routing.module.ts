@@ -64,7 +64,10 @@ const routes: Routes = [
       { path: "", component: AccountDetailsComponent },
     ],
   },
-  { path: "article/:id", component: ArticleComponent, canActivate: [ SignedInGuard ] },
+  {
+    path: "article/:id",
+    loadChildren: () => import("./article/article.module").then(_ => _.ArticleModule),
+  },
   {
     path: "bundle/:id",
     canActivate: [ SignedInGuard ],

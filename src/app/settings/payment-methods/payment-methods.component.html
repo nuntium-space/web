@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <settings-menu section="payment-methods"></settings-menu>
 
@@ -12,7 +12,7 @@
         </div>
         <div class="content">
             <div *ngIf="!paymentMethods">
-                <spinner></spinner>
+                <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="paymentMethods" class="list">
                 <div *ngIf="paymentMethods.length === 0">
@@ -26,12 +26,12 @@
                     class="list-item-with-actions"
                 >
                     <div *ngSwitchCase="'card'">
-                        <badge
+                        <shared-badge
                             *ngIf="paymentMethod.__metadata?.is_default"
 
                             [text]="'settings.account.payment_methods.default' | translate"
                         >
-                        </badge>
+                        </shared-badge>
                         <p class="brand">{{ paymentMethod.data.brand }}</p>
                         <p>
                             {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
@@ -51,12 +51,12 @@
                         >
                             {{ "settings.account.payment_methods.make_default" | translate }}
                         </button>
-                        <danger-button
+                        <shared-danger-button
                             [text]="'generic.remove' | translate"
                             [alertText]="'generic.remove' | translate"
 
                             (confirm)="removePaymentMethod(paymentMethod)">
-                        </danger-button>
+                        </shared-danger-button>
                     </div>
                 </div>
             </div>

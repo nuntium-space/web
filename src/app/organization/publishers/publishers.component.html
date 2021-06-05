@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <organization-menu section="publishers"></organization-menu>
 
@@ -12,7 +12,7 @@
         </div>
         <div class="content">
             <div *ngIf="!publishers">
-                <spinner></spinner>
+                <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="publishers" class="list">
                 <div *ngIf="publishers.length === 0">
@@ -24,7 +24,7 @@
                     routerLink="/publisher/{{ publisher.id }}"
                     class="dark"
                 >
-                    <badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></badge>
+                    <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
                     <p>{{ publisher.name }}</p>
                 </a>
             </div>

@@ -1,21 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'shared-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent
-{
+export class HeaderComponent implements OnInit {
+
   public searchQuery: string = "";
 
   public showNav = false;
 
   constructor(public auth: AuthService, public router: Router, private route: ActivatedRoute)
+  {}
+
+  public ngOnInit()
   {
-    route.queryParams.subscribe({
+    this.route.queryParams.subscribe({
       next: queryParams =>
       {
         const query = (queryParams.query as string | undefined) ?? "";

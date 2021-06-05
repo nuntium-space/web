@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <publisher-menu></publisher-menu>
 
@@ -8,7 +8,7 @@
             <h1>{{ "publisher.verify.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <spinner *ngIf="!publisher"></spinner>
+            <shared-spinner *ngIf="!publisher"></shared-spinner>
             <div *ngIf="publisher">
                 <span>
                     {{ "publisher.verify.message.before_link" | translate }}

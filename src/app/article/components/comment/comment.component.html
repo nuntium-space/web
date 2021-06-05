@@ -22,9 +22,9 @@
         (toggle)="loadReplies($event)"
     >
         <summary>{{ "components.comment_list.comment.replies" | translate }}</summary>
-        <comment-list [article]="article" [comments]="replies"></comment-list>
+        <article-comment-list [article]="article" [comments]="replies"></article-comment-list>
     </details>
-    <add-comment-form
+    <article-add-comment-form
         *ngIf="showReplyForm"
 
         [article]="article"
@@ -32,7 +32,7 @@
 
         (commentCreated)="onCommentCreated($event)"
     >
-    </add-comment-form>
+    </article-add-comment-form>
     <footer>
         <button
             class="small"

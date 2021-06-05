@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <aside *ngIf="article">
     <div *ngIf="article.author.user.id === auth.user?.id">
@@ -14,7 +14,7 @@
                     <button *ngIf="isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
                         {{  "generic.cancel" | translate }}
                     </button>
-                    <danger-button
+                    <shared-danger-button
                         *ngIf="!isUpdatingArticle"
 
                         class="fill"
@@ -23,7 +23,7 @@
                         [alertText]="'generic.delete' | translate"
 
                         (confirm)="deleteArticle()"
-                    ></danger-button>
+                    ></shared-danger-button>
                 </div>
             </div>
         </section>
@@ -87,7 +87,7 @@
         <div class="content" [innerHTML]="article.content | keepHtml"></div>
     </div>
     <div *ngIf="isUpdatingArticle">
-        <spinner *ngIf="!rawArticle"></spinner>
+        <shared-spinner *ngIf="!rawArticle"></shared-spinner>
         <form *ngIf="rawArticle" class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
             <label>
                 {{ "article.title" | translate }}
@@ -115,13 +115,13 @@
             <h1>{{ "article.comments" | translate }}</h1>
         </div>
         <div class="content">
-            <add-comment-form
+            <article-add-comment-form
                 [article]="article"
 
                 (commentCreated)="onCommentCreated($event)"
             >
-            </add-comment-form>
-            <comment-list [article]="article" [comments]="comments"></comment-list>
+            </article-add-comment-form>
+            <article-comment-list [article]="article" [comments]="comments"></article-comment-list>
         </div>
     </section>
 </main>

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <settings-menu section="publishers"></settings-menu>
 
@@ -9,7 +9,7 @@
         </div>
         <div class="content">
             <div *ngIf="!authors">
-                <spinner></spinner>
+                <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="authors" class="list">
                 <div *ngIf="authors.length === 0">

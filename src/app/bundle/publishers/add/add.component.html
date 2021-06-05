@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <bundle-menu section="publishers"></bundle-menu>
 
@@ -9,7 +9,7 @@
         </div>
         <div class="content">
             <div *ngIf="!publishers">
-                <spinner></spinner>
+                <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="publishers" class="list">
                 <div *ngIf="publishers.length === 0">

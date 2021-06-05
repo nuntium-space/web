@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <settings-menu section="organizations"></settings-menu>
 
@@ -12,7 +12,7 @@
         </div>
         <div class="content">
             <div *ngIf="!organizations">
-                <spinner></spinner>
+                <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="organizations" class="list">
                 <div *ngIf="organizations.length === 0">

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <settings-menu section="advanced"></settings-menu>
 
@@ -26,12 +26,12 @@
                         </li>
                     </ul>
                 </div>
-                <danger-button
+                <shared-danger-button
                     [text]="'generic.delete' | translate"
                     [alertText]="'generic.delete' | translate"
 
                     (confirm)="deleteAccount()"
-                ></danger-button>
+                ></shared-danger-button>
             </div>
         </div>
     </section>

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <settings-menu section="subscriptions"></settings-menu>
 
@@ -10,7 +10,7 @@
         </div>
         <div class="content">
             <div *ngIf="!subscriptions">
-                <spinner></spinner>
+                <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="subscriptions">
                 <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
