@@ -10,6 +10,7 @@ import { BadgeComponent } from './components/badge/badge.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
+import { RouterModule } from '@angular/router';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -34,6 +35,7 @@ export const createTranslationLoader = (http: HttpClient) =>
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

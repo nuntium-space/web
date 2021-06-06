@@ -20,15 +20,15 @@
   <button class="dark" *ngIf="auth.user" (click)="showNav = !showNav">
     &#8942;
   </button>
-  <button class="dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
+  <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
     {{ "generic.sign_in" | translate }}
-  </button>
+  </a>
 </header>
 
 <nav *ngIf="showNav">
-  <button class="dark" routerLink="/settings">
+  <a class="button dark" routerLink="/settings">
     {{ "settings.__title" | translate }}
-  </button>
+  </a>
   <button class="dark" (click)="auth.signOut()">
     {{ "generic.sign_out" | translate }}
   </button>
