@@ -23,22 +23,14 @@ import { UserPublishersComponent } from './settings/publishers/publishers.compon
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
-import { CreateBundleComponent } from './organization/bundles/create/create.component';
-import { BundleMenuComponent } from './bundle/menu/menu.component';
-import { AddPublisherComponent } from './bundle/publishers/add/add.component';
-import { BundleDetailsComponent } from './bundle/details/details.component';
-import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 import { StripeConnectButtonComponent } from './components/stripe/connect-button/connect-button.component';
 import { ExploreComponent } from './explore/explore.component';
-import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
 import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { AdvancedComponent } from './settings/advanced/advanced.component';
-import { PricesComponent } from './bundle/prices/prices.component';
-import { AddPriceComponent } from './bundle/prices/add/add.component';
 import { TranslateService } from '@ngx-translate/core';
 import { PreferencesComponent } from './settings/preferences/preferences.component';
 import { SignInButtonsComponent } from './components/sign-in-buttons/sign-in-buttons.component';
@@ -48,6 +40,7 @@ import { AuthService } from './shared/services/auth/auth.service';
 import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
 import { SignedInComponent } from './home/signed-in/signed-in.component';
 import { SignedOutComponent } from './home/signed-out/signed-out.component';
+import { CreateBundleComponent } from './organization/bundles/create/create.component';
 
 @NgModule({
   declarations: [
@@ -73,21 +66,14 @@ import { SignedOutComponent } from './home/signed-out/signed-out.component';
     ArticleListComponent,
     OrganizationBundlesComponent,
     CreateBundleComponent,
-    BundleMenuComponent,
-    AddPublisherComponent,
-    BundleDetailsComponent,
-    BundlePublishersComponent,
     SubscriptionsComponent,
     StripeConnectButtonComponent,
     ExploreComponent,
-    SubscribeComponent,
     PaymentMethodsComponent,
     AddPaymentMethodComponent,
     SubscriptionListComponent,
     WriteNewArticleComponent,
     AdvancedComponent,
-    PricesComponent,
-    AddPriceComponent,
     PreferencesComponent,
     SignInButtonsComponent,
     VerifyPublisherComponent,

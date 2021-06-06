@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
-import { BundleDetailsComponent } from './bundle/details/details.component';
-import { AddPriceComponent } from './bundle/prices/add/add.component';
-import { PricesComponent } from './bundle/prices/prices.component';
-import { AddPublisherComponent } from './bundle/publishers/add/add.component';
-import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
-import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
 import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
@@ -70,25 +64,7 @@ const routes: Routes = [
   {
     path: "bundle/:id",
     canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: BundleDetailsComponent },
-      {
-        path: "prices",
-        children: [
-          { path: "add", component: AddPriceComponent },
-          { path: "", component: PricesComponent },
-        ],
-      },
-      { path: "subscribe", component: SubscribeComponent },
-      {
-        path: "publishers",
-        children: [
-          { path: "add", component: AddPublisherComponent },
-          { path: "", component: BundlePublishersComponent },
-        ],
-      },
-      { path: "", component: BundleDetailsComponent },
-    ],
+    loadChildren: () => import("./bundle/bundle.module").then(_ => _.BundleModule),
   },
   { path: "explore", component: ExploreComponent, canActivate: [ SignedInGuard ] },
   {
