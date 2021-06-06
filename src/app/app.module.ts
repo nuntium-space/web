@@ -5,13 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
-import { FeedComponent } from './feed/feed.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccountDetailsComponent } from './settings/details/details.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { OrganizationsComponent } from './settings/organizations/organizations.component';
 import { SettingsMenuComponent } from './settings/menu/menu.component';
-import { IndexComponent } from './index/index.component';
 import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
 import { OrganizationDetailsComponent } from './organization/details/details.component';
 import { PublishersComponent } from './organization/publishers/publishers.component';
@@ -48,19 +46,19 @@ import { VerifyPublisherComponent } from './publisher/verify/verify.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
 import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
+import { SignedInComponent } from './home/signed-in/signed-in.component';
+import { SignedOutComponent } from './home/signed-out/signed-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     HomeComponent,
-    FeedComponent,
     PageNotFoundComponent,
     AccountDetailsComponent,
     SecurityComponent,
     OrganizationsComponent,
     SettingsMenuComponent,
-    IndexComponent,
     CreateOrganizationComponent,
     OrganizationMenuComponent,
     OrganizationDetailsComponent,
@@ -93,6 +91,8 @@ import { UserSettingsService } from './shared/services/user-settings/user-settin
     PreferencesComponent,
     SignInButtonsComponent,
     VerifyPublisherComponent,
+    SignedInComponent,
+    SignedOutComponent,
   ],
   imports: [
     BrowserModule,
