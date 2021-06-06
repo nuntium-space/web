@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormatService } from 'src/app/services/format/format.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { FormatService } from 'src/app/shared/services/format/format.service';
 
 @Component({
   selector: 'app-subscribe',

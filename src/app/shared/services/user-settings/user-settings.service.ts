@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService, IUserSettings } from '../api/api.service';
+import { IUserSettings, ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

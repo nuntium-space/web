@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, IPrice } from 'src/app/services/api/api.service';
-import { FormatService } from 'src/app/services/format/format.service';
+import { FormatService } from 'src/app/shared/services/format/format.service';
 
 @Component({
   selector: 'app-prices',

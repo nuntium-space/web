@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService } from 'src/app/services/api/api.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

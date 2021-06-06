@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
-import { AuthService } from '../services/auth/auth.service';
-import { FormatService } from '../services/format/format.service';
+import { AuthService } from '../shared/services/auth/auth.service';
+import { FormatService } from '../shared/services/format/format.service';
 
 @Component({
   selector: 'app-article',

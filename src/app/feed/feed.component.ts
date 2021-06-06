@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService, IArticle } from '../services/api/api.service';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-feed',

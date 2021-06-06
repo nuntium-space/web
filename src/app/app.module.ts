@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { FeedComponent } from './feed/feed.component';
-import { AuthService } from './services/auth/auth.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccountDetailsComponent } from './settings/details/details.component';
 import { SecurityComponent } from './settings/security/security.component';
@@ -44,10 +43,11 @@ import { PricesComponent } from './bundle/prices/prices.component';
 import { AddPriceComponent } from './bundle/prices/add/add.component';
 import { TranslateService } from '@ngx-translate/core';
 import { PreferencesComponent } from './settings/preferences/preferences.component';
-import { UserSettingsService } from './services/user-settings/user-settings.service';
 import { SignInButtonsComponent } from './components/sign-in-buttons/sign-in-buttons.component';
 import { VerifyPublisherComponent } from './publisher/verify/verify.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthService } from './shared/services/auth/auth.service';
+import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
 
 @NgModule({
   declarations: [
