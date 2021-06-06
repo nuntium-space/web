@@ -7,8 +7,6 @@ import { AddPublisherComponent } from './bundle/publishers/add/add.component';
 import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
 import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { ExploreComponent } from './explore/explore.component';
-import { SignedInGuard } from './guards/signed-in/signed-in.guard';
-import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
 import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
 import { CreateBundleComponent } from './organization/bundles/create/create.component';
@@ -32,6 +30,8 @@ import { PreferencesComponent } from './settings/preferences/preferences.compone
 import { UserPublishersComponent } from './settings/publishers/publishers.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
+import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
+import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
 import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
