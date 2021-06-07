@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 
 @Component({
@@ -8,27 +7,21 @@ import { ApiService, IBundle } from 'src/app/services/api/api.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class BundleDetailsComponent
+export class BundleDetailsComponent implements OnInit
 {
+  @Input()
   public bundle?: IBundle;
 
   public detailsForm = new FormGroup({
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        api.retrieveBundle(params.id).then(response =>
-        {
-          this.bundle = response.data;
+  constructor(private api: ApiService)
+  {}
 
-          this.detailsForm.get("name")?.setValue(this.bundle?.name);
-        });
-      },
-    });
+  public ngOnInit()
+  {
+    this.detailsForm.get("name")?.setValue(this.bundle?.name);
   }
 
   public async onDetailsFormSubmit(e: Event)

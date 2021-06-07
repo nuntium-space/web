@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
@@ -12,6 +12,7 @@ import { FormatService } from 'src/app/shared/services/format/format.service';
 })
 export class SubscribeComponent implements OnInit
 {
+  @Input()
   public bundle?: IBundle;
 
   public prices?: IPrice[];
@@ -25,20 +26,17 @@ export class SubscribeComponent implements OnInit
 
   public async ngOnInit(): Promise<void>
   {
-    this.route.params.subscribe({
-      next: params =>
-      {
-        this.api.retrieveBundle(params.id).then(response =>
-        {
-          this.bundle = response.data;
-        });
+    if (!this.bundle)
+    {
+      return;
+    }
 
-        this.api.listPricesForBundle(params.id, { active: true }).then(response =>
-        {
-          this.prices = response.data;
-        });
-      },
-    });
+    this.api
+      .listPricesForBundle(this.bundle.id, { active: true })
+      .then(response =>
+      {
+        this.prices = response.data;
+      });
   }
 
   public async subscribe(e: Event)
