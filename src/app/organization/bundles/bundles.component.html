@@ -22,7 +22,6 @@
                     *ngFor="let bundle of bundles"
 
                     routerLink="/bundle/{{ bundle.id }}"
-                    class="dark"
                 >
                     <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
                     <p>{{ bundle.name }}</p>

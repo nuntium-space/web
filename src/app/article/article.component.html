@@ -35,10 +35,10 @@
                 <h1>{{ "article.publisher.__title" | translate }}</h1>
             </div>
             <div class="content">
-                <a routerLink="/~{{ article.author.publisher.id }}" class="dark">
+                <a routerLink="/~{{ article.author.publisher.id }}">
                     {{ article.author.publisher.name }}
                 </a>
-                <a href="{{ article.author.publisher.url }}" class="dark">
+                <a href="{{ article.author.publisher.url }}">
                     {{ article.author.publisher.url }}
                 </a>
             </div>
@@ -48,7 +48,7 @@
                 <h1>{{ "article.author.__title" | translate }}</h1>
             </div>
             <div class="content">
-                <a routerLink="/~{{ article.author.user.id }}" class="dark">
+                <a routerLink="/~{{ article.author.user.id }}">
                     {{ article.author.user.username }}
                 </a>
             </div>

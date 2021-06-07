@@ -16,10 +16,7 @@
                     <p>{{ "bundle.publishers.add.empty" | translate }}</p>
                 </div>
                 <div *ngFor="let publisher of publishers" class="list-item-with-actions">
-                    <a
-                        routerLink="/publisher/{{ publisher.id }}"
-                        class="dark"
-                    >
+                    <a routerLink="/publisher/{{ publisher.id }}">
                         <p>{{ publisher.name }}</p>
                     </a>
                     <div class="actions">

@@ -22,7 +22,6 @@
                     *ngFor="let publisher of publishers"
 
                     routerLink="/publisher/{{ publisher.id }}"
-                    class="dark"
                 >
                     <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
                     <p>{{ publisher.name }}</p>

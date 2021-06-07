@@ -12,7 +12,7 @@
             <div *ngIf="publisher">
                 <span>
                     {{ "publisher.verify.message.before_link" | translate }}
-                    <a [href]="publisher.url" target="_blank" class="dark">
+                    <a [href]="publisher.url" target="_blank">
                         <b>{{ publisher.url }}</b>
                     </a>
                     {{ "publisher.verify.message.after_link" | translate }}
