@@ -9,30 +9,12 @@ export class AuthService
 {
   public user?: IUser;
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
+  constructor(private api: ApiService, private router: Router)
   {}
 
   public async init(): Promise<IUser | null>
   {
-    const queryParams = new URLSearchParams(location.search);
-
-    if (queryParams.get("session_id"))
-    {
-      this.router.navigate([ "." ], {
-        relativeTo: this.route,
-      });
-    }
-
-    const sessionId = queryParams.get("session_id") ?? localStorage.getItem("session.id");
-
-    if (!sessionId)
-    {
-      return null;
-    }
-
-    localStorage.setItem("session.id", sessionId);
-
-    const response = await this.api.retrieveSession(sessionId);
+    const response = await this.api.retrieveCurrentSession();
 
     this.user = response.data?.user;
 
@@ -41,17 +23,10 @@ export class AuthService
 
   public async signOut(): Promise<void>
   {
-    const sessionId = localStorage.getItem("session.id");
+    await this.api.deleteCurrentSession();
 
-    if (sessionId)
-    {
-      await this.api.deleteSession(sessionId);
+    this.user = undefined;
 
-      this.user = undefined;
-
-      localStorage.clear();
-
-      this.router.navigateByUrl("/");
-    }
+    this.router.navigateByUrl("/");
   }
 }

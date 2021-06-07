@@ -152,9 +152,7 @@ export class ApiService
     contentType: "application/json" | "multipart/form-data" = "application/json",
   ): Promise<IApiServiceResponse<any>>
   {
-    const headers: HeadersInit = {
-      "Authorization": `Bearer ${localStorage.getItem("session.id")}`
-    };
+    const headers: HeadersInit = {};
 
     if (contentType !== "multipart/form-data")
     {
@@ -446,14 +444,14 @@ export class ApiService
     return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
-  public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
+  public async retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>>
   {
-    return this.send("GET", `sessions/${id}`);
+    return this.send("GET", `sessions/current`);
   }
 
-  public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
+  public async deleteCurrentSession(): Promise<IApiServiceResponse<void>>
   {
-    return this.send("DELETE", `sessions/${id}`);
+    return this.send("DELETE", `sessions/current`);
   }
 
   public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>

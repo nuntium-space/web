@@ -57,8 +57,6 @@ export class SigninComponent
         {
           clearInterval(interval);
 
-          localStorage.setItem("session.id", session.id);
-
           this.auth.user = session.user;
 
           const userSettings = await this.userSettings.init();
