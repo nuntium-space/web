@@ -37,7 +37,7 @@ aside
     header
     {
         padding: 1rem;
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
         background-color: rgba($primary-color, 0.1);
         border: 1px solid var(--primary-color);
         border-radius: 0.5rem;
@@ -64,6 +64,12 @@ footer
     grid-area: footer;
 }
 
+.mat-icon
+{
+    display: flex;
+    font-family: "Material Icons";
+}
+
 a,
 .link,
 button
@@ -80,11 +86,11 @@ a,
 
     &:focus
     {
-        box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
         &.dark
         {
-            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
         }
     }
 
@@ -124,16 +130,40 @@ button,
         background-color: var(--secondary-color);
     }
 
-    &.warning
-    {
-        color: black;
-        background-color: #ffeb3b;
-    }
-
     &.danger
     {
         color: white;
         background-color: var(--danger-color);
+    }
+
+    &.loading
+    {
+        color: transparent;
+        position: relative;
+
+        &::before
+        {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            border-top-color: black;
+            animation: spinner 0.6s linear infinite;
+        }
+
+        @keyframes spinner
+        {
+            to
+            {
+                transform: rotate(360deg);
+            }
+        }
     }
 
     &:focus
@@ -165,13 +195,33 @@ button,
 
 form
 {
+    width: 100%;
     max-width: 500px;
 
     .title
     {
         margin-bottom: 2rem;
 
-        h1
+        h1,
+        p
+        {
+            margin: 0;
+        }
+
+        p
+        {
+            margin-top: 0.2rem;
+        }
+    }
+
+    .row
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        label
         {
             margin: 0;
         }
@@ -195,28 +245,40 @@ label
         margin-top: 0.2rem;
     }
 
-    .errors
-    {
-        color: white;
-        background-color: var(--danger-color);
-        padding: 0.5em;
-        border-radius: 0.5rem;
-        margin-top: 0.5em;
-
-        p
-        {
-            margin: 0;
-        }
-
-        &:empty
-        {
-            display: none;
-        }
-    }
-
     & ~ label
     {
         margin-top: 1em;
+    }
+
+    &.checkbox
+    {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+
+        input[type=checkbox]
+        {
+            width: max-content;
+        }
+    }
+}
+
+.errors
+{
+    color: white;
+    background-color: var(--danger-color);
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    margin-top: 0.5em;
+
+    p
+    {
+        margin: 0;
+    }
+
+    &:empty
+    {
+        display: none;
     }
 }
 
@@ -280,7 +342,7 @@ section
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1em;
+        padding: 1rem;
         background-color: rgba($primary-color, 0.1);
         border-bottom: 1px solid var(--primary-color);
 
@@ -292,8 +354,8 @@ section
 
     .title:empty + .content > :first-child
     {
-        border-top-left-radius: 0.5em;
-        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
     }
 
     .content
@@ -301,7 +363,7 @@ section
         > *
         {
             margin: 0;
-            padding: 1em;
+            padding: 1rem;
 
             &:not(:first-child)
             {
@@ -338,33 +400,8 @@ section
 
     & ~ &
     {
-        margin-top: 1em;
+        margin-top: 1rem;
     }
-}
-
-textarea
-{
-    display: block;
-    padding: 0.5em;
-    border: 1px solid var(--primary-color);
-    border-radius: 0.5rem;
-    resize: vertical;
-
-    &:focus
-    {
-        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
-
-        &.dark
-        {
-            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
-        }
-    }
-}
-
-pre
-{
-    white-space: pre-wrap;
-    word-break: break-word;
 }
 
 div.list
@@ -431,13 +468,10 @@ div.list
     }
 }
 
-abbr
-{
-    font-weight: $semi-bold;
-    text-decoration: underline;
-}
-
 hr
 {
-    margin: 1em 0;
+    margin: 1rem 0;
+    border-style: solid;
+    border-radius: 1px;
+    background-color: currentColor;
 }
