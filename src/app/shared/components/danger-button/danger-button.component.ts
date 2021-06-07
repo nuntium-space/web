@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { IDialogButton } from '../dialog/dialog.component';
 
 @Component({
   selector: 'shared-danger-button',
   templateUrl: './danger-button.component.html',
   styleUrls: ['./danger-button.component.scss']
 })
-export class DangerButtonComponent
+export class DangerButtonComponent implements OnInit
 {
   @Input()
   public text: string = "";
@@ -21,14 +23,26 @@ export class DangerButtonComponent
 
   public showConfirmDialog = false;
 
-  public onDialogContainerClick(e: Event)
-  {
-    const target = e.target as HTMLElement;
-
-    if (target.className === "dialog-container")
+  public dialogButtons: IDialogButton[] = [
     {
-      this.showConfirmDialog = false;
-    }
+      text: this.text,
+      classes: [ "dark", "danger" ],
+      onClick: () => this.onConfirm(),
+    },
+    {
+      text: this.translate.instant("generic.cancel"),
+      classes: [ "dark" ],
+      onClick: () => this.showConfirmDialog = false,
+    },
+  ];
+
+  constructor(private translate: TranslateService)
+  {}
+
+  public ngOnInit()
+  {
+    // The actual input value is not set when constructing the component
+    this.dialogButtons[0].text = this.text;
   }
 
   public onConfirm()

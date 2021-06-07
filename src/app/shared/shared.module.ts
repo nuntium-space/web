@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { RouterModule } from '@angular/router';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -27,6 +28,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     BadgeComponent,
     FooterComponent,
     SpinnerComponent,
+    DialogComponent,
 
     /*
       PIPES
