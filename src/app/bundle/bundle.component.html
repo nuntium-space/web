@@ -1,0 +1,8 @@
+<shared-header></shared-header>
+
+<bundle-menu [section]="section"></bundle-menu>
+
+<main [ngSwitch]="section">
+    <bundle-details *ngSwitchCase="'details'"></bundle-details>
+    <bundle-publishers *ngSwitchCase="'publishers'"></bundle-publishers>
+</main>

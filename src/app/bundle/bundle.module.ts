@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BundleRoutingModule } from './bundle-routing.module';
+import { BundleComponent } from './bundle.component';
 import { BundleDetailsComponent } from './details/details.component';
 import { BundleMenuComponent } from './menu/menu.component';
 import { AddPublisherComponent } from './publishers/add/add.component';
@@ -16,6 +17,7 @@ import { AddPriceComponent } from './prices/add/add.component';
     /*
       COMPONENTS
     */
+    BundleComponent,
     BundleMenuComponent,
     AddPublisherComponent,
     BundleDetailsComponent,
