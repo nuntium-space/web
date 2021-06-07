@@ -27,7 +27,6 @@ export class BundleComponent implements OnInit
       )
       .subscribe(({ section }) =>
       {
-        console.log(section);
         this.section = section;
       });
   }
