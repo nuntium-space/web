@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 
 @Component({
-  selector: 'app-subscribe',
+  selector: 'bundle-subscribe',
   templateUrl: './subscribe.component.html',
   styleUrls: ['./subscribe.component.scss']
 })

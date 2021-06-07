@@ -1,47 +1,41 @@
-<shared-header></shared-header>
+<section *ngIf="auth.user">
+    <div class="title">
+        <h1>{{ "bundle.subscribe.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <div>
+            <div *ngIf="bundle && !auth.user.has_default_payment_method">
+                <p
+                    class="add-pm-msg"
 
-<bundle-menu section="subscribe"></bundle-menu>
-
-<main *ngIf="auth.user">
-    <section>
-        <div class="title">
-            <h1>{{ "bundle.subscribe.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <div>
-                <div *ngIf="bundle && !auth.user.has_default_payment_method">
-                    <p
-                        class="add-pm-msg"
-
-                        [innerHTML]="'bundle.subscribe.no_pm.msg' | translate:{ BUNDLE_NAME: bundle.name }"
-                    >
-                    </p>
-                    <a class="button" routerLink="/settings/payment-methods">
-                        {{ "bundle.subscribe.no_pm.go_to_settings" | translate }}
-                    </a>
-                </div>
-                <form
-                    *ngIf="auth.user.has_default_payment_method"
-
-                    [formGroup]="subscribeForm"
-
-                    (submit)="subscribe($event)"
+                    [innerHTML]="'bundle.subscribe.no_pm.msg' | translate:{ BUNDLE_NAME: bundle.name }"
                 >
-                    <label>
-                        {{ "bundle.subscribe.choose_option" | translate }}
-                        <select formControlName="price" required>
-                            <option *ngFor="let price of prices" value="{{ price.id }}">
-                                {{ format.currency(price.amount, price.currency) }}
-                                /
-                                {{ "bundle.subscribe.billing_period.month" | translate }}
-                            </option>
-                        </select>
-                    </label>
-                    <button type="submit">
-                        {{ "bundle.subscribe.submit" | translate }}
-                    </button>
-                </form>
+                </p>
+                <a class="button" routerLink="/settings/payment-methods">
+                    {{ "bundle.subscribe.no_pm.go_to_settings" | translate }}
+                </a>
             </div>
+            <form
+                *ngIf="auth.user.has_default_payment_method"
+
+                [formGroup]="subscribeForm"
+
+                (submit)="subscribe($event)"
+            >
+                <label>
+                    {{ "bundle.subscribe.choose_option" | translate }}
+                    <select formControlName="price" required>
+                        <option *ngFor="let price of prices" value="{{ price.id }}">
+                            {{ format.currency(price.amount, price.currency) }}
+                            /
+                            {{ "bundle.subscribe.billing_period.month" | translate }}
+                        </option>
+                    </select>
+                </label>
+                <button type="submit">
+                    {{ "bundle.subscribe.submit" | translate }}
+                </button>
+            </form>
         </div>
-    </section>
-</main>
+    </div>
+</section>
