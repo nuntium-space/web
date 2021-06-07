@@ -130,6 +130,12 @@ button,
         background-color: var(--secondary-color);
     }
 
+    &.warning
+    {
+        color: black;
+        background-color: #ffeb3b;
+    }
+
     &.danger
     {
         color: white;
@@ -280,6 +286,11 @@ label
     {
         display: none;
     }
+
+    & ~ label
+    {
+        margin-top: 1em;
+    }
 }
 
 input,
@@ -404,6 +415,31 @@ section
     }
 }
 
+textarea
+{
+    display: block;
+    padding: 0.5em;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    resize: vertical;
+
+    &:focus
+    {
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+
+        &.dark
+        {
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+        }
+    }
+}
+
+pre
+{
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
 div.list
 {
     > *
@@ -466,6 +502,12 @@ div.list
             margin-top: 1em;
         }
     }
+}
+
+abbr
+{
+    font-weight: $semi-bold;
+    text-decoration: underline;
 }
 
 hr
