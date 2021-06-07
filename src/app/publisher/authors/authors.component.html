@@ -6,9 +6,9 @@
     <section>
         <div class="title">
             <h1>{{ "publisher.authors.__title" | translate }}</h1>
-            <button routerLink="invite">
+            <a routerLink="invite" class="button">
                 &#43; {{ "publisher.authors.invite" | translate }}
-            </button>
+            </a>
         </div>
         <div class="content">
             <div *ngIf="!authors">

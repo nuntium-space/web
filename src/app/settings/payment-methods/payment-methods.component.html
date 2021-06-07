@@ -6,9 +6,9 @@
     <section>
         <div class="title">
             <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
-            <button routerLink="add">
+            <a routerLink="add" class="button">
                 &#43; {{ "generic.add" | translate }}
-            </button>
+            </a>
         </div>
         <div class="content">
             <div *ngIf="!paymentMethods">

@@ -6,9 +6,9 @@
     <section>
         <div class="title">
             <h1>{{ "organization.publishers.__title" | translate }}</h1>
-            <button routerLink="create">
+            <a routerLink="create" class="button">
                 &#43; {{ "generic.create" | translate }}
-            </button>
+            </a>
         </div>
         <div class="content">
             <div *ngIf="!publishers">
