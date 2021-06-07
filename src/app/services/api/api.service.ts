@@ -165,6 +165,7 @@ export class ApiService
       body: contentType === "application/json"
         ? JSON.stringify(body)
         : body,
+      credentials: "include",
     });
 
     const result: IApiServiceResponse<any> = {
