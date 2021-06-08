@@ -20,9 +20,13 @@
                     <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
                 </div>
                 <div class="actions">
-                    <button (click)="archivePrice(price)">
-                        {{ "bundle.prices.archive" | translate }}
-                    </button>
+                    <shared-danger-button
+                        [text]="'bundle.prices.archive' | translate"
+                        [alertText]="'bundle.prices.archive' | translate"
+
+                        (confirm)="archivePrice(price)"
+                    >
+                    </shared-danger-button>
                 </div>
             </div>
         </div>
