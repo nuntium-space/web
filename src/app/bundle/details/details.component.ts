@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 
@@ -11,6 +11,9 @@ export class BundleDetailsComponent implements OnChanges
 {
   @Input()
   public bundle?: IBundle;
+
+  @Output()
+  public onUpdate = new EventEmitter<IBundle>();
 
   public detailsForm = new FormGroup({
     name: new FormControl(),
@@ -40,5 +43,10 @@ export class BundleDetailsComponent implements OnChanges
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
     });
+
+    if (response.success)
+    {
+      this.onUpdate.emit(response.data);
+    }
   }
 }
