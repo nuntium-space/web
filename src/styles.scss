@@ -457,10 +457,8 @@ div.list
 
         &.list-item-with-actions
         {
-            display: grid;
-            border: 1px solid rgba($primary-color, 0.3);
+            display: flex;
             gap: 1em;
-            padding: 1rem;
 
             > :first-child
             {
@@ -468,18 +466,6 @@ div.list
                 color: var(--secondary-color);
                 background-color: var(--primary-color);
                 padding: 1rem;
-            }
-
-            .actions
-            {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1em;
-
-                button
-                {
-                    width: auto;
-                }
             }
         }
 
