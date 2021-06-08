@@ -31,16 +31,17 @@ import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.co
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { AdvancedComponent } from './settings/advanced/advanced.component';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { PreferencesComponent } from './settings/preferences/preferences.component';
 import { SignInButtonsComponent } from './components/sign-in-buttons/sign-in-buttons.component';
 import { VerifyPublisherComponent } from './publisher/verify/verify.component';
-import { SharedModule } from './shared/shared.module';
+import { createTranslationLoader, SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
 import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
 import { SignedInComponent } from './home/signed-in/signed-in.component';
 import { SignedOutComponent } from './home/signed-out/signed-out.component';
 import { CreateBundleComponent } from './organization/bundles/create/create.component';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,15 @@ import { CreateBundleComponent } from './organization/bundles/create/create.comp
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslationLoader),
+        deps: [ HttpClient ],
+      },
+      defaultLanguage: "en",
+      isolate: false,
+    }),
   ],
   providers: [
     AuthService,

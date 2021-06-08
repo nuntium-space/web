@@ -40,13 +40,14 @@ export const createTranslationLoader = (http: HttpClient) =>
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
+    TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslationLoader),
         deps: [ HttpClient ],
       },
       defaultLanguage: "en",
+      isolate: false,
     }),
   ],
   exports: [
