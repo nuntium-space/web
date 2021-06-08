@@ -45,4 +45,9 @@ export class BundleComponent implements OnInit
       },
     });
   }
+
+  public onUpdate(bundle: IBundle)
+  {
+    this.bundle = bundle;
+  }
 }

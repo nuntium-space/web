@@ -3,7 +3,7 @@
 <bundle-menu [bundle]="bundle" [section]="section"></bundle-menu>
 
 <main [ngSwitch]="section">
-    <bundle-details *ngSwitchCase="'details'" [bundle]="bundle"></bundle-details>
+    <bundle-details *ngSwitchCase="'details'" [bundle]="bundle" (onUpdate)="onUpdate($event)"></bundle-details>
     <bundle-prices *ngSwitchCase="'prices'" [bundle]="bundle"></bundle-prices>
     <bundle-prices-add *ngSwitchCase="'prices/add'"></bundle-prices-add>
     <bundle-publishers *ngSwitchCase="'publishers'" [bundle]="bundle"></bundle-publishers>
