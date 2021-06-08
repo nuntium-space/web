@@ -1,8 +1,8 @@
 <shared-header></shared-header>
 
-<bundle-menu [section]="section"></bundle-menu>
+<bundle-menu [bundle]="bundle" [section]="section"></bundle-menu>
 
-<main *ngIf="bundle" [ngSwitch]="section">
+<main [ngSwitch]="section">
     <bundle-details *ngSwitchCase="'details'" [bundle]="bundle"></bundle-details>
     <bundle-prices *ngSwitchCase="'prices'" [bundle]="bundle"></bundle-prices>
     <bundle-prices-add *ngSwitchCase="'prices/add'"></bundle-prices-add>
