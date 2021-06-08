@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 
@@ -7,7 +7,7 @@ import { ApiService, IBundle } from 'src/app/services/api/api.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class BundleDetailsComponent implements OnInit
+export class BundleDetailsComponent implements OnChanges
 {
   @Input()
   public bundle?: IBundle;
@@ -19,7 +19,7 @@ export class BundleDetailsComponent implements OnInit
   constructor(private api: ApiService)
   {}
 
-  public ngOnInit()
+  public ngOnChanges()
   {
     this.detailsForm.get("name")?.setValue(this.bundle?.name);
   }
