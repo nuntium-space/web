@@ -1,8 +1,10 @@
 <aside *ngIf="bundle">
+    <header>
+        <small>{{ "bundle.__title" | translate }}</small>
+        <h1>{{ bundle.name }}</h1>
+    </header>
     <section>
-        <div class="title">
-            <h1>{{ bundle.name }}</h1>
-        </div>
+        <div class="title"></div>
         <div class="content">
             <a
                 routerLink="/bundle/{{ bundle.id }}/details"
