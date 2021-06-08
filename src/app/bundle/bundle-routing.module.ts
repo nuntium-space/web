@@ -8,13 +8,8 @@ const routes: Routes = [
     component: BundleComponent,
     children: [
       { path: "details", data: { section: "details" } },
-      {
-        path: "prices", data: { section: "prices" },
-        children: [
-          { path: "add" },
-          { path: "" },
-        ],
-      },
+      { path: "prices", data: { section: "prices" } },
+      { path: "prices/add", data: { section: "prices/add" } },
       { path: "subscribe", data: { section: "subscribe" } },
       {
         path: "publishers", data: { section: "publishers" },
