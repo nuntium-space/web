@@ -18,9 +18,13 @@
                     <p>{{ publisher.name }}</p>
                 </a>
                 <div class="actions">
-                    <button (click)="removePublisher(publisher)">
-                        {{ "generic.remove" | translate }}
-                    </button>
+                    <shared-danger-button
+                        [text]="'generic.remove' | translate"
+                        [alertText]="'generic.remove' | translate"
+
+                        (confirm)="removePublisher(publisher)"
+                    >
+                    </shared-danger-button>
                 </div>
             </div>
         </div>
