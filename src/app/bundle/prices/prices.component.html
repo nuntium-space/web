@@ -19,7 +19,7 @@
                     <p class="price">{{ format.currency(price.amount, price.currency) }}</p>
                     <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
                 </div>
-                <div class="actions">
+                <shared-popup-menu>
                     <shared-danger-button
                         [text]="'bundle.prices.archive' | translate"
                         [alertText]="'bundle.prices.archive' | translate"
@@ -27,7 +27,7 @@
                         (confirm)="archivePrice(price)"
                     >
                     </shared-danger-button>
-                </div>
+                </shared-popup-menu>
             </div>
         </div>
     </div>

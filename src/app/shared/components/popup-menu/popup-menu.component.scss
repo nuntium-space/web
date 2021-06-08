@@ -1,0 +1,32 @@
+@import "~src/variables";
+
+.container
+{
+    position: relative;
+    display: inline-block;
+}
+
+.arrow
+{
+    z-index: 2;
+    width: 21px;
+    height: 21px;
+    margin-left: 18px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSI5Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiM4ODk4QUEiIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xIDkuMDkyaDE5bC02LjQwMi02Ljc0Yy0xLjcxNy0xLjgwNi00LjQ4NS0xLjgtNi4xOTYgMEwxIDkuMDkzek0yMC4zNDIgOGwtNi4wMi02LjMzNmMtMi4xMDgtMi4yMi01LjUzOC0yLjIxOC03LjY0NSAwTC42NTggOGgxOS42ODR6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTcuNDAyIDIuMzUzYzEuNzExLTEuODAxIDQuNDgtMS44MDcgNi4xOTYgMEwyMCA5LjA5M0gxbDYuNDAyLTYuNzR6Ii8+PC9nPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    margin-top: 1px;
+}
+
+.content
+{
+    position: absolute;
+    background-color: $primary-color;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0 0 2rem 0.5rem var(--secondary-color);
+}

@@ -11,8 +11,6 @@ export class HeaderComponent implements OnInit
 {
   public searchQuery: string = "";
 
-  public showNav = false;
-
   constructor(public auth: AuthService, public router: Router, private route: ActivatedRoute)
   {}
 
