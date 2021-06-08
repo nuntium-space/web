@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ApiService, IBundle, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ApiService, IBundle, IPublisher } from 'src/app/services/api/api.servic
   templateUrl: './publishers.component.html',
   styleUrls: ['./publishers.component.scss']
 })
-export class BundlePublishersComponent implements OnInit
+export class BundlePublishersComponent implements OnChanges
 {
   @Input()
   public bundle?: IBundle;
@@ -16,7 +16,7 @@ export class BundlePublishersComponent implements OnInit
   constructor(private api: ApiService)
   {}
 
-  public ngOnInit()
+  public ngOnChanges()
   {
     if (!this.bundle)
     {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 
@@ -7,7 +7,7 @@ import { FormatService } from 'src/app/shared/services/format/format.service';
   templateUrl: './prices.component.html',
   styleUrls: ['./prices.component.scss']
 })
-export class PricesComponent implements OnInit
+export class PricesComponent implements OnChanges
 {
   @Input()
   public bundle?: IBundle;
@@ -17,7 +17,7 @@ export class PricesComponent implements OnInit
   constructor(public format: FormatService, private api: ApiService)
   {}
 
-  public ngOnInit()
+  public ngOnChanges()
   {
     if (!this.bundle)
     {

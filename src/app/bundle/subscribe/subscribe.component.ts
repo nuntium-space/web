@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
@@ -10,7 +10,7 @@ import { FormatService } from 'src/app/shared/services/format/format.service';
   templateUrl: './subscribe.component.html',
   styleUrls: ['./subscribe.component.scss']
 })
-export class SubscribeComponent implements OnInit
+export class SubscribeComponent implements OnChanges
 {
   @Input()
   public bundle?: IBundle;
@@ -24,7 +24,7 @@ export class SubscribeComponent implements OnInit
   constructor(public auth: AuthService, public format: FormatService, private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
-  public async ngOnInit(): Promise<void>
+  public async ngOnChanges(): Promise<void>
   {
     if (!this.bundle)
     {
