@@ -4,6 +4,7 @@
 
 <main *ngIf="bundle" [ngSwitch]="section">
     <bundle-details *ngSwitchCase="'details'" [bundle]="bundle"></bundle-details>
+    <bundle-prices *ngSwitchCase="'prices'" [bundle]="bundle"></bundle-prices>
     <bundle-publishers *ngSwitchCase="'publishers'" [bundle]="bundle"></bundle-publishers>
     <bundle-subscribe *ngSwitchCase="'subscribe'" [bundle]="bundle"></bundle-subscribe>
 </main>

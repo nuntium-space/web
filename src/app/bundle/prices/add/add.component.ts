@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, ICurrency } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'add-price',
+  selector: 'bundle-prices-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
