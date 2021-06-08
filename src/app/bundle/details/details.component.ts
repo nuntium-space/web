@@ -15,7 +15,7 @@ export class BundleDetailsComponent implements OnChanges
   @Output()
   public onUpdate = new EventEmitter<IBundle>();
 
-  public detailsForm = new FormGroup({
+  public form = new FormGroup({
     name: new FormControl(),
   });
 
@@ -24,10 +24,10 @@ export class BundleDetailsComponent implements OnChanges
 
   public ngOnChanges()
   {
-    this.detailsForm.get("name")?.setValue(this.bundle?.name);
+    this.form.get("name")?.setValue(this.bundle?.name);
   }
 
-  public async onDetailsFormSubmit(e: Event)
+  public async onSubmit(e: Event)
   {
     e.preventDefault();
 
@@ -37,11 +37,14 @@ export class BundleDetailsComponent implements OnChanges
     }
 
     const response = await this.api.updateBundle(this.bundle.id, {
-      name: this.detailsForm.get("name")?.value,
+      name: this.form.get("name")?.value,
     });
 
-    this.detailsForm.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "name")
+    Object.entries(this.form.controls).forEach(([ name, control ]) =>
+    {
+      control.setErrors({
+        errors: response.errors?.filter(e => e.field === name)
+      });
     });
 
     if (response.success)
