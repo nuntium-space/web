@@ -6,9 +6,40 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    .spinner-container
+    {
+      display: grid;
+      place-content: center;
+      height: calc(100vh - 2rem);
+    }
+
+    .spinner
+    {
+      margin: auto;
+      border: 0.3em solid var(--primary-color);
+      width: 3em;
+      height: 3em;
+      border-radius: 50%;
+      border-left-color: transparent;
+      animation: rotate 1s linear infinite;
+    }
+
+    @keyframes rotate
+    {
+      to
+      {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
   <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="spinner-container">
+      <div class="spinner"></div>
+    </div>
+  </app-root>
 </body>
 </html>
