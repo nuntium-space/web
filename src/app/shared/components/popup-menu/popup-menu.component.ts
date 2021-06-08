@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Theme } from '../../types/Theme';
 
 @Component({
   selector: 'shared-popup-menu',
@@ -8,6 +9,9 @@ import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core'
 })
 export class PopupMenuComponent implements OnInit
 {
+  @Input()
+  public theme: Theme = "dark";
+
   public isMenuVisible = false;
 
   @ViewChild("toggle")
