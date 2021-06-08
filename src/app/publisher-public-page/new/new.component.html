@@ -8,7 +8,7 @@
         <label>
             {{ "publisher_public_page.new_article.title" | translate }}
             <input formControlName="title" type="text">
-            <div *ngIf="form.get('title')?.errors" class="errors">
+            <div class="errors">
                 <p *ngFor="let error of form.get('title')?.errors?.errors">
                     {{ "errors." + error.error | translate:error.params }}
                 </p>
@@ -17,7 +17,7 @@
         <label>
             {{ "publisher_public_page.new_article.content" | translate }}
             <textarea formControlName="content" rows="30"></textarea>
-            <div *ngIf="form.get('content')?.errors" class="errors">
+            <div class="errors">
                 <p *ngFor="let error of form.get('content')?.errors?.errors">
                     {{ "errors." + error.error | translate:error.params }}
                 </p>
