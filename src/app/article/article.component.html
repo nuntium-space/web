@@ -1,84 +1,79 @@
 <shared-header></shared-header>
 
 <aside *ngIf="article">
-    <div *ngIf="article.author.user.id === auth.user?.id">
-        <section class="actions">
-            <div class="title">
-                <h1>{{ "article.actions.__title" | translate }}</h1>
-            </div>
-            <div class="content">
-                <div>
-                    <button *ngIf="!isUpdatingArticle" class="fill" (click)="loadRawArticle()">
-                        {{  "generic.edit" | translate }}
-                    </button>
-                    <button *ngIf="isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
-                        {{  "generic.cancel" | translate }}
-                    </button>
-                    <shared-danger-button
-                        *ngIf="!isUpdatingArticle"
+    <section *ngIf="article.author.user.id === auth.user?.id" class="actions">
+        <div class="title">
+            <h1>{{ "article.actions.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <div>
+                <button *ngIf="!isUpdatingArticle" class="fill" (click)="loadRawArticle()">
+                    {{  "generic.edit" | translate }}
+                </button>
+                <button *ngIf="isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
+                    {{  "generic.cancel" | translate }}
+                </button>
+                <shared-danger-button
+                    *ngIf="!isUpdatingArticle"
 
-                        size="fill"
+                    size="fill"
 
-                        [text]="'generic.delete' | translate"
-                        [alertText]="'generic.delete' | translate"
+                    [text]="'generic.delete' | translate"
+                    [alertText]="'generic.delete' | translate"
 
-                        (confirm)="deleteArticle()"
-                    ></shared-danger-button>
-                </div>
+                    (confirm)="deleteArticle()"
+                ></shared-danger-button>
             </div>
-        </section>
-        <hr>
-    </div>
-    <div *ngIf="isSubscribed">
-        <section>
-            <div class="title">
-                <h1>{{ "article.publisher.__title" | translate }}</h1>
+        </div>
+    </section>
+    <section>
+        <div class="title">
+            <h1>{{ "article.publisher.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <a routerLink="/~{{ article.author.publisher.id }}">
+                {{ article.author.publisher.name }}
+            </a>
+            <a href="{{ article.author.publisher.url }}">
+                {{ article.author.publisher.url }}
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="title">
+            <h1>{{ "article.author.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <a routerLink="/~{{ article.author.user.id }}">
+                {{ article.author.user.username }}
+            </a>
+        </div>
+    </section>
+    <section class="info">
+        <div class="title">
+            <h1>{{ "article.info.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <div>
+                <b>{{ "article.info.reading_time.__title" | translate }}</b>
+                <p *ngIf="article.reading_time >= 1">
+                    {{ article.reading_time }}
+                    {{ "article.info.reading_time.minutes" | translate }}
+                </p>
+                <p *ngIf="article.reading_time < 1">
+                    {{ "article.info.reading_time.less_than_a_minute" | translate }}
+                </p>
             </div>
-            <div class="content">
-                <a routerLink="/~{{ article.author.publisher.id }}">
-                    {{ article.author.publisher.name }}
-                </a>
-                <a href="{{ article.author.publisher.url }}">
-                    {{ article.author.publisher.url }}
-                </a>
+            <div>
+                <b>{{ "article.info.published" | translate }}</b>
+                <p>{{ format.dateTime(article.created_at, "datetime") }}</p>
             </div>
-        </section>
-        <section>
-            <div class="title">
-                <h1>{{ "article.author.__title" | translate }}</h1>
+            <div>
+                <b>{{ "article.info.updated" | translate }}</b>
+                <p>{{ format.dateTime(article.updated_at, "datetime") }}</p>
             </div>
-            <div class="content">
-                <a routerLink="/~{{ article.author.user.id }}">
-                    {{ article.author.user.username }}
-                </a>
-            </div>
-        </section>
-        <section class="info">
-            <div class="title">
-                <h1>{{ "article.info.__title" | translate }}</h1>
-            </div>
-            <div class="content">
-                <div>
-                    <b>{{ "article.info.reading_time.__title" | translate }}</b>
-                    <p *ngIf="article.reading_time >= 1">
-                        {{ article.reading_time }}
-                        {{ "article.info.reading_time.minutes" | translate }}
-                    </p>
-                    <p *ngIf="article.reading_time < 1">
-                        {{ "article.info.reading_time.less_than_a_minute" | translate }}
-                    </p>
-                </div>
-                <div>
-                    <b>{{ "article.info.published" | translate }}</b>
-                    <p>{{ format.dateTime(article.created_at, "datetime") }}</p>
-                </div>
-                <div>
-                    <b>{{ "article.info.updated" | translate }}</b>
-                    <p>{{ format.dateTime(article.updated_at, "datetime") }}</p>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </aside>
 
 <main *ngIf="article && isSubscribed">
