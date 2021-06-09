@@ -47,7 +47,7 @@
             <h1>{{ "publisher.details.image.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <shared-form [submitButtonText]="'generic.update' | translate" class="image-form" [formGroup]="imageForm" (confirm)="onImageFormSubmit($event)">
+            <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="imageForm" (confirm)="onImageFormSubmit($event)">
                 <label>
                     {{ "publisher.details.image.image" | translate }}
                     <input

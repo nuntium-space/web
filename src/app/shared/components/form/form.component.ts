@@ -10,6 +10,9 @@ export class FormComponent
   @Input()
   public submitButtonText?: string;
 
+  @Input()
+  public submitButtonSize: "default" | "small" = "default";
+
   @Output()
   public confirm = new EventEmitter<() => void>();
 

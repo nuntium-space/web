@@ -3,7 +3,7 @@
     display: block;
 }
 
-form
+shared-form > ::ng-deep form
 {
     display: flex;
     flex-direction: column;
