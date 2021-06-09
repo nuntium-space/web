@@ -15,6 +15,9 @@ export class DangerButtonComponent implements OnInit
   public theme: Theme = "light";
 
   @Input()
+  public size: "auto" | "fill" = "auto";
+
+  @Input()
   public text: string = "";
 
   @Input()
