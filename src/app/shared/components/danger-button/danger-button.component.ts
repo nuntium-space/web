@@ -1,6 +1,7 @@
 import { Component, ComponentRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
+import { Theme } from '../../types/Theme';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
 
 @Component({
@@ -11,13 +12,13 @@ import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
 export class DangerButtonComponent implements OnInit
 {
   @Input()
+  public theme: Theme = "light";
+
+  @Input()
   public text: string = "";
 
   @Input()
   public alertText: string = "";
-
-  @Input()
-  public class: string = "";
 
   @Output()
   public confirm = new EventEmitter<void>();
