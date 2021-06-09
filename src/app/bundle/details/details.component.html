@@ -3,6 +3,7 @@
         <h1>{{ "bundle.details.__title" | translate }}</h1>
     </div>
     <div class="content">
+        <!--
         <form [formGroup]="form" (submit)="onSubmit($event)">
             <label>
                 {{ "bundle.details.name" | translate }}
@@ -23,5 +24,23 @@
                 {{ "generic.update" | translate }}
             </button>
         </form>
+        -->
+        <shared-form [formGroup]="form" [submitButtonText]="'generic.update' | translate" (confirm)="onSubmit($event)">
+            <label>
+                {{ "bundle.details.name" | translate }}
+                <input
+                    formControlName="name"
+
+                    type="text"
+                    name="name"
+                    required
+                >
+                <div class="errors">
+                    <p *ngFor="let error of form.get('name')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+        </shared-form>
     </div>
 </section>

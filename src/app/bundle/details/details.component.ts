@@ -19,8 +19,6 @@ export class BundleDetailsComponent implements OnChanges
     name: new FormControl(),
   });
 
-  public isLoading = false;
-
   constructor(private api: ApiService)
   {}
 
@@ -29,22 +27,18 @@ export class BundleDetailsComponent implements OnChanges
     this.form.get("name")?.setValue(this.bundle?.name);
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.bundle)
     {
       return;
     }
 
-    this.isLoading = true;
-
     const response = await this.api.updateBundle(this.bundle.id, {
       name: this.form.get("name")?.value,
     });
 
-    this.isLoading = false;
+    end();
 
     Object.entries(this.form.controls).forEach(([ name, control ]) =>
     {

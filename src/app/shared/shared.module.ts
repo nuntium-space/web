@@ -13,6 +13,7 @@ import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { RouterModule } from '@angular/router';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { PopupMenuComponent } from './components/popup-menu/popup-menu.component';
+import { FormComponent } from './components/form/form.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -31,6 +32,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     SpinnerComponent,
     DialogComponent,
     PopupMenuComponent,
+    FormComponent,
 
     /*
       PIPES
@@ -70,6 +72,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     FooterComponent,
     SpinnerComponent,
     PopupMenuComponent,
+    FormComponent,
 
     /*
       PIPES
