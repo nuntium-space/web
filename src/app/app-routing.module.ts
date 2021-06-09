@@ -30,7 +30,6 @@ import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
 const routes: Routes = [
   {
     path: "signin",
-    canActivate: [ SignedOutGuard ],
     loadChildren: () => import("./sign-in/sign-in.module").then(_ => _.SignInModule),
   },
   {
@@ -62,12 +61,10 @@ const routes: Routes = [
   },
   {
     path: "article/:id",
-    canActivate: [ SignedInGuard ],
     loadChildren: () => import("./article/article.module").then(_ => _.ArticleModule),
   },
   {
     path: "bundle/:id",
-    canActivate: [ SignedInGuard ],
     loadChildren: () => import("./bundle/bundle.module").then(_ => _.BundleModule),
   },
   { path: "explore", component: ExploreComponent, canActivate: [ SignedInGuard ] },

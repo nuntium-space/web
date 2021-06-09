@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignedInGuard } from '../shared/guards/signed-in/signed-in.guard';
 import { BundleComponent } from './bundle.component';
 
 const routes: Routes = [
   {
     path: "",
     component: BundleComponent,
+    canActivate: [ SignedInGuard ],
     children: [
       { path: "details", data: { section: "details" } },
       { path: "prices", data: { section: "prices" } },
