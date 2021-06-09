@@ -39,10 +39,8 @@ export class SubscribeComponent implements OnChanges
       });
   }
 
-  public async subscribe(e: Event)
+  public async subscribe(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.auth.user)
     {
       return;
@@ -52,6 +50,8 @@ export class SubscribeComponent implements OnChanges
       this.auth.user.id,
       this.subscribeForm.get("price")?.value ?? "",
     );
+
+    end();
 
     if (!response.errors)
     {

@@ -8,7 +8,7 @@
             <h1>{{ "settings.account.preferences.language.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <form [formGroup]="languageForm" (submit)="onLanguageChangeSubmit($event)">
+            <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="languageForm" (confirm)="onLanguageChangeSubmit($event)">
                 <label>
                     {{ "settings.account.preferences.language.choose_option" | translate }}
                     <select formControlName="language">
@@ -21,10 +21,7 @@
                         </option>
                     </select>
                 </label>
-                <button type="submit">
-                    {{ "generic.update" | translate }}
-                </button>
-            </form>
+            </shared-form>
         </div>
     </section>
 </main>

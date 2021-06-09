@@ -17,13 +17,13 @@ export class CreateOrganizationComponent
   constructor(private api: ApiService, private router: Router)
   {}
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     const response = await this.api.createOrganization({
       name: this.form.get("name")?.value ?? "",
     });
+
+    end();
 
     this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")

@@ -27,10 +27,8 @@ export class CreatePublisherComponent
     });
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.organizationId)
     {
       return;
@@ -40,6 +38,8 @@ export class CreatePublisherComponent
       name: this.form.get("name")?.value ?? "",
       url: this.form.get("url")?.value ?? "",
     });
+
+    end();
 
     this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")

@@ -34,10 +34,8 @@ export class AddPriceComponent
     });
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.bundleId)
     {
       return;
@@ -55,6 +53,8 @@ export class AddPriceComponent
       amount: Math.trunc(amount),
       currency,
     });
+
+    end();
 
     this.form.get("amount")?.setErrors({
       errors: response.errors?.filter(e => e.field === "amount")

@@ -42,10 +42,8 @@ export class PublisherDetailsComponent
     });
   }
 
-  public async onDetailsFormSubmit(e: Event)
+  public async onDetailsFormSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.publisher)
     {
       return;
@@ -55,6 +53,8 @@ export class PublisherDetailsComponent
       name: this.detailsForm.get("name")?.value,
       url: this.detailsForm.get("url")?.value,
     });
+
+    end();
 
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
@@ -77,10 +77,8 @@ export class PublisherDetailsComponent
     }
   }
 
-  public async onImageFormSubmit(e: Event)
+  public async onImageFormSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.publisher || !this.image)
     {
       return;
@@ -89,6 +87,8 @@ export class PublisherDetailsComponent
     const response = await this.api.updatePublisherImage(this.publisher.id, {
       image: this.image,
     });
+
+    end();
 
     this.imageForm.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.field === "image")

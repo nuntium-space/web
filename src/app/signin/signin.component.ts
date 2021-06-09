@@ -22,13 +22,13 @@ export class SigninComponent
   constructor(private api: ApiService, private auth: AuthService, private translate: TranslateService, private userSettings: UserSettingsService, private router: Router)
   {}
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     const response = await this.api.signInWithEmail(
       this.form.get("email")?.value ?? "",
     );
+
+    end();
 
     this.form.get("email")?.setErrors({
       errors: response.errors?.filter(e => e.field === "email")

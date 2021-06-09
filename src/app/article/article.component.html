@@ -83,7 +83,16 @@
     </div>
     <div *ngIf="isUpdatingArticle">
         <shared-spinner *ngIf="!rawArticle"></shared-spinner>
-        <form *ngIf="rawArticle" class="update-article" [formGroup]="updateArticleForm" (submit)="updateArticle($event)">
+        <shared-form
+            *ngIf="rawArticle"
+
+            class="update-article"
+
+            [formGroup]="updateArticleForm"
+            [submitButtonText]="'generic.update' | translate"
+
+            (confirm)="updateArticle($event)"
+        >
             <label>
                 {{ "article.title" | translate }}
                 <input formControlName="title" type="text">
@@ -102,8 +111,7 @@
                     </p>
                 </div>
             </label>
-            <button type="submit">{{ "generic.update" | translate }}</button>
-        </form>
+        </shared-form>
     </div>
     <section *ngIf="!isUpdatingArticle" id="comments">
         <div class="title">

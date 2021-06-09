@@ -8,7 +8,7 @@
             <h1>{{ "organization.publishers.create.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <form [formGroup]="form" (submit)="onSubmit($event)">
+            <shared-form [submitButtonText]="'generic.create' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
                 <label>
                     {{ "organization.publishers.create.name" | translate }}
                     <input
@@ -39,10 +39,7 @@
                         </p>
                     </div>
                 </label>
-                <button type="submit">
-                    {{ "generic.create" | translate }}
-                </button>
-            </form>
+            </shared-form>
         </div>
     </section>
 </main>

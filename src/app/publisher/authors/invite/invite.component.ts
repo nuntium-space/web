@@ -26,10 +26,8 @@ export class InviteAuthorComponent
     });
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.publisherId)
     {
       return;
@@ -38,6 +36,8 @@ export class InviteAuthorComponent
     const response = await this.api.inviteAuthor(this.publisherId, {
       email: this.form.get("email")?.value ?? "",
     });
+
+    end();
 
     if (response.data)
     {

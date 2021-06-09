@@ -29,10 +29,8 @@ export class PreferencesComponent implements OnInit
     });
   }
 
-  public async onLanguageChangeSubmit(e: Event)
+  public async onLanguageChangeSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.auth.user)
     {
       return;
@@ -43,6 +41,8 @@ export class PreferencesComponent implements OnInit
     const response = await this.api.updateUserSettings(this.auth.user.id, {
       language,
     });
+
+    end();
 
     if (!response.errors)
     {

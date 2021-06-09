@@ -8,7 +8,7 @@
             <h1>{{ "settings.account.payment_methods.add.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <form (submit)="onSubmit($event)">
+            <shared-form [submitButtonText]="'generic.add' | translate" (confirm)="onSubmit($event)">
                 <label>
                     {{ "settings.account.payment_methods.add.card" | translate }}
                     <div id="card-element"></div>
@@ -16,8 +16,7 @@
                         <p>{{ cardElementError }}</p>
                     </div>
                 </label>
-                <button type="submit">{{ "generic.add" | translate }}</button>
-            </form>
+            </shared-form>
         </div>
     </section>
 </main>

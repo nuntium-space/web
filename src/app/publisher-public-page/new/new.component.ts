@@ -34,10 +34,8 @@ export class WriteNewArticleComponent
     });
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.author)
     {
       return;
@@ -47,6 +45,8 @@ export class WriteNewArticleComponent
       title: this.form.get("title")?.value ?? "",
       content: this.form.get("content")?.value ?? "",
     });
+
+    end();
 
     this.form.get("title")?.setErrors({
       errors: response.errors?.filter(e => e.field === "title")

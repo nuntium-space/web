@@ -1,4 +1,11 @@
-<form [formGroup]="form" (submit)="onSubmit($event)">
+<shared-form
+    size="small"
+
+    [submitButtonText]="'components.add_comment.submit' | translate"
+    [formGroup]="form"
+
+    (confirm)="onSubmit($event)"
+>
     <label>
         {{ "components.add_comment.__title" | translate }}
         <textarea formControlName="content" rows="5"></textarea>
@@ -8,7 +15,4 @@
             </p>
         </div>
     </label>
-    <button type="submit" class="small">
-        {{ "components.add_comment.submit" | translate }}
-    </button>
-</form>
+</shared-form>

@@ -43,10 +43,8 @@ export class AddPaymentMethodComponent implements OnInit
     }
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.stripe || !this.cardElement || !this.auth.user)
     {
       return;
@@ -60,12 +58,16 @@ export class AddPaymentMethodComponent implements OnInit
 
     if (result.error)
     {
+      end();
+
       return;
     }
 
     const response = await this.api.addPaymentMethodToUser(this.auth.user.id, {
       id: result.paymentMethod.id,
     });
+
+    end();
 
     if (!response.errors)
     {

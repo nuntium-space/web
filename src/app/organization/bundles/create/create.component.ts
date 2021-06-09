@@ -26,10 +26,8 @@ export class CreateBundleComponent
     });
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.organizationId)
     {
       return;
@@ -38,6 +36,8 @@ export class CreateBundleComponent
     const response = await this.api.createBundle(this.organizationId, {
       name: this.form.get("name")?.value ?? "",
     });
+
+    end();
 
     this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")

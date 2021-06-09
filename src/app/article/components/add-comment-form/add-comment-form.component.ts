@@ -27,10 +27,8 @@ export class AddCommentFormComponent
     this.parent ??= null;
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.article)
     {
       return;
@@ -40,6 +38,8 @@ export class AddCommentFormComponent
       content: this.form.get("content")?.value ?? "",
       parent: this.parent?.id ?? null,
     });
+
+    end();
 
     this.form.get("content")?.setErrors({
       errors: response.errors?.filter(e => e.field === "content")

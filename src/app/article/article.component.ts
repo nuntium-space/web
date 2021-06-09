@@ -80,10 +80,8 @@ export class ArticleComponent implements OnInit
     }
   }
 
-  public async updateArticle(e: Event)
+  public async updateArticle(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.rawArticle)
     {
       return;
@@ -93,6 +91,8 @@ export class ArticleComponent implements OnInit
       title: this.updateArticleForm.get("title")?.value ?? "",
       content: this.updateArticleForm.get("content")?.value ?? "",
     });
+
+    end();
 
     this.updateArticleForm.get("title")?.setErrors({
       errors: response.errors?.filter(e => e.field === "title")

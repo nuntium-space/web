@@ -1,7 +1,7 @@
 <shared-header></shared-header>
 
 <main>
-    <form [formGroup]="form" (submit)="onSubmit($event)">
+    <shared-form [submitButtonText]="'generic.submit' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
         <div class="title">
             <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
         </div>
@@ -23,8 +23,5 @@
                 </p>
             </div>
         </label>
-        <button type="submit">
-            {{ "generic.submit" | translate }}
-        </button>
-    </form>
+    </shared-form>
 </main>

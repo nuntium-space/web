@@ -14,12 +14,13 @@
                 {{ "bundle.subscribe.no_pm.go_to_settings" | translate }}
             </a>
         </div>
-        <form
+        <shared-form
             *ngIf="auth.user.has_default_payment_method"
 
+            [submitButtonText]="'bundle.subscribe.submit' | translate"
             [formGroup]="subscribeForm"
 
-            (submit)="subscribe($event)"
+            (confirm)="subscribe($event)"
         >
             <label>
                 {{ "bundle.subscribe.choose_option" | translate }}
@@ -31,9 +32,6 @@
                     </option>
                 </select>
             </label>
-            <button type="submit">
-                {{ "bundle.subscribe.submit" | translate }}
-            </button>
-        </form>
+        </shared-form>
     </div>
 </section>

@@ -31,10 +31,8 @@ export class OrganizationDetailsComponent
     });
   }
 
-  public async onDetailsFormSubmit(e: Event)
+  public async onDetailsFormSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.organization)
     {
       return;
@@ -43,6 +41,8 @@ export class OrganizationDetailsComponent
     const response = await this.api.updateOrganization(this.organization.id, {
       name: this.detailsForm.get("name")?.value ?? "",
     });
+
+    end();
 
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")

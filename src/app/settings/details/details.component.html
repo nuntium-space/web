@@ -8,7 +8,7 @@
             <h1>{{ "settings.account.details.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <form [formGroup]="updateAccountDetailsForm" (submit)="onUpdateAccountDetailsFormSubmit($event)">
+            <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="updateAccountDetailsForm" (confirm)="onUpdateAccountDetailsFormSubmit($event)">
                 <label>
                     {{ "generic.username" | translate }}
                     <input
@@ -41,10 +41,7 @@
                         </p>
                     </div>
                 </label>
-                <button type="submit">
-                    {{ "generic.update" | translate }}
-                </button>
-            </form>
+            </shared-form>
         </div>
     </section>
 </main>

@@ -18,10 +18,8 @@ export class AccountDetailsComponent
   constructor(private api: ApiService, private auth: AuthService)
   {}
 
-  public async onUpdateAccountDetailsFormSubmit(e: Event)
+  public async onUpdateAccountDetailsFormSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.auth.user)
     {
       return;
@@ -31,6 +29,8 @@ export class AccountDetailsComponent
       username: this.updateAccountDetailsForm.get("username")?.value ?? "",
       email: this.updateAccountDetailsForm.get("email")?.value ?? "",
     });
+
+    end();
 
     this.updateAccountDetailsForm.get("username")?.setErrors({
       errors: response.errors?.filter(e => e.field === "username")
