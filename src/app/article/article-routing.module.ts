@@ -5,7 +5,7 @@ import { ArticleComponent } from './article.component';
 
 const routes: Routes = [
   {
-    path: "article/:id",
+    path: "",
     component: ArticleComponent,
     canActivate: [ SignedInGuard ],
   },
