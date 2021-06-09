@@ -1,17 +1,9 @@
 <button
     class="danger {{ class }}"
 
-    (click)="showConfirmDialog = true"
+    (click)="showDialog()"
+
+    [disabled]="dialogRef"
 >
     {{ text }}
 </button>
-
-<shared-dialog
-    *ngIf="showConfirmDialog"
-
-    [message]="alertText"
-    [buttons]="dialogButtons"
-
-    (hide)="showConfirmDialog = false"
->
-</shared-dialog>
