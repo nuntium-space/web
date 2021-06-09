@@ -7,11 +7,11 @@ import { AuthService } from '../shared/services/auth/auth.service';
 import { UserSettingsService } from '../shared/services/user-settings/user-settings.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
 })
-export class SigninComponent
+export class SignInComponent
 {
   public readonly form = new FormGroup({
     email: new FormControl(),

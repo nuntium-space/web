@@ -26,10 +26,13 @@ import { SecurityComponent } from './settings/security/security.component';
 import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
-import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
-  { path: "signin", component: SigninComponent, canActivate: [ SignedOutGuard ] },
+  {
+    path: "signin",
+    canActivate: [ SignedOutGuard ],
+    loadChildren: () => import("./sign-in/sign-in.module").then(_ => _.SignInModule),
+  },
   {
     path: "settings",
     canActivate: [ SignedInGuard ],
@@ -59,6 +62,7 @@ const routes: Routes = [
   },
   {
     path: "article/:id",
+    canActivate: [ SignedInGuard ],
     loadChildren: () => import("./article/article.module").then(_ => _.ArticleModule),
   },
   {

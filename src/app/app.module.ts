@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccountDetailsComponent } from './settings/details/details.component';
@@ -33,7 +32,6 @@ import { WriteNewArticleComponent } from './publisher-public-page/new/new.compon
 import { AdvancedComponent } from './settings/advanced/advanced.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { PreferencesComponent } from './settings/preferences/preferences.component';
-import { SignInButtonsComponent } from './components/sign-in-buttons/sign-in-buttons.component';
 import { VerifyPublisherComponent } from './publisher/verify/verify.component';
 import { createTranslationLoader, SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -46,7 +44,6 @@ import { HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
     HomeComponent,
     PageNotFoundComponent,
     AccountDetailsComponent,
@@ -76,7 +73,6 @@ import { HttpClient } from '@angular/common/http';
     WriteNewArticleComponent,
     AdvancedComponent,
     PreferencesComponent,
-    SignInButtonsComponent,
     VerifyPublisherComponent,
     SignedInComponent,
     SignedOutComponent,

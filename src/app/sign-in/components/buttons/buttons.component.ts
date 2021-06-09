@@ -3,13 +3,10 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'sign-in-buttons',
-  templateUrl: './sign-in-buttons.component.html',
-  styleUrls: ['./sign-in-buttons.component.scss']
+  templateUrl: './buttons.component.html',
+  styleUrls: ['./buttons.component.scss']
 })
-export class SignInButtonsComponent
+export class ButtonsComponent
 {
   public endpoint = environment.api.endpoint;
-
-  constructor()
-  {}
 }
