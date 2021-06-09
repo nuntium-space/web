@@ -35,6 +35,11 @@
     {
         width: 100%;
 
+        button
+        {
+            width: 100%;
+        }
+
         &:not(:first-child)
         {
             margin-top: 0.5rem;
