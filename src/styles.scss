@@ -338,28 +338,31 @@ section
     border: 1px solid var(--primary-color);
     border-radius: 0.5rem;
 
-    .title:not(:empty)
+    > .title
     {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        background-color: rgba($primary-color, 0.1);
-        border-bottom: 1px solid var(--primary-color);
-
-        h1
+        &:empty + .content > :first-child
         {
-            margin: 0;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        &:not(:empty)
+        {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: rgba($primary-color, 0.1);
+            border-bottom: 1px solid var(--primary-color);
+
+            h1
+            {
+                margin: 0;
+            }
         }
     }
 
-    .title:empty + .content > :first-child
-    {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-    }
-
-    .content
+    > .content
     {
         > *
         {
@@ -454,10 +457,8 @@ div.list
 
         &.list-item-with-actions
         {
-            display: grid;
-            border: 1px solid rgba($primary-color, 0.3);
+            display: flex;
             gap: 1em;
-            padding: 1rem;
 
             > :first-child
             {
@@ -465,18 +466,6 @@ div.list
                 color: var(--secondary-color);
                 background-color: var(--primary-color);
                 padding: 1rem;
-            }
-
-            .actions
-            {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1em;
-
-                button
-                {
-                    width: auto;
-                }
             }
         }
 

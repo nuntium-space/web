@@ -20,7 +20,9 @@
                 </div>
                 <div *ngFor="let author of authors" class="list-item-with-actions">
                     <div>
-                        <h3>{{ author.user.username }}</h3>
+                        <h3 *ngIf="author.user.username">
+                            {{ author.user.username }}
+                        </h3>
                         <a href="mailto:{{ author.user.email }}">
                             {{ author.user.email }}
                         </a>

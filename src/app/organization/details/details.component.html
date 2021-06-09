@@ -18,7 +18,7 @@
                         name="name"
                         required
                     >
-                    <div *ngIf="detailsForm.get('name')?.errors" class="errors">
+                    <div class="errors">
                         <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
                             {{ "errors." + error.error | translate:error.params }}
                         </p>

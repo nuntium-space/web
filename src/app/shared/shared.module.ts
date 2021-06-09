@@ -12,6 +12,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { RouterModule } from '@angular/router';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { PopupMenuComponent } from './components/popup-menu/popup-menu.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -29,6 +30,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     FooterComponent,
     SpinnerComponent,
     DialogComponent,
+    PopupMenuComponent,
 
     /*
       PIPES
@@ -40,13 +42,14 @@ export const createTranslationLoader = (http: HttpClient) =>
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
+    TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslationLoader),
         deps: [ HttpClient ],
       },
       defaultLanguage: "en",
+      isolate: false,
     }),
   ],
   exports: [
@@ -66,6 +69,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     BadgeComponent,
     FooterComponent,
     SpinnerComponent,
+    PopupMenuComponent,
 
     /*
       PIPES

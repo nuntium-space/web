@@ -19,7 +19,7 @@
                         autocomplete="username"
                         required
                     >
-                    <div *ngIf="updateAccountDetailsForm.get('username')?.errors" class="errors">
+                    <div class="errors">
                         <p *ngFor="let error of updateAccountDetailsForm.get('username')?.errors?.errors">
                             {{ "errors." + error.error | translate:error.params }}
                         </p>
@@ -35,7 +35,7 @@
                         autocomplete="email"
                         required
                     >
-                    <div *ngIf="updateAccountDetailsForm.get('email')?.errors" class="errors">
+                    <div class="errors">
                         <p *ngFor="let error of updateAccountDetailsForm.get('email')?.errors?.errors">
                             {{ "errors." + error.error | translate:error.params }}
                         </p>

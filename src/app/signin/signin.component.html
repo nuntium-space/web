@@ -19,7 +19,7 @@
           autocomplete="email"
           required
         >
-        <div *ngIf="form.get('email')?.errors" class="errors">
+        <div class="errors">
           <p *ngFor="let error of form.get('email')?.errors?.errors">
             {{ "errors." + error.error | translate:error.params }}
           </p>

@@ -17,19 +17,15 @@
       (input)="onSearchInput($event)"
     >
   </form>
-  <button class="dark" *ngIf="auth.user" (click)="showNav = !showNav">
-    &#8942;
-  </button>
+  <shared-popup-menu *ngIf="auth.user">
+    <a class="button dark" routerLink="/settings">
+      {{ "settings.__title" | translate }}
+    </a>
+    <button class="dark" (click)="auth.signOut()">
+      {{ "generic.sign_out" | translate }}
+    </button>
+  </shared-popup-menu>
   <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
     {{ "generic.sign_in" | translate }}
   </a>
 </header>
-
-<nav *ngIf="showNav">
-  <a class="button dark" routerLink="/settings">
-    {{ "settings.__title" | translate }}
-  </a>
-  <button class="dark" (click)="auth.signOut()">
-    {{ "generic.sign_out" | translate }}
-  </button>
-</nav>
