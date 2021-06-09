@@ -43,8 +43,10 @@
                             {{ paymentMethod.data.last4 }}
                         </p>
                     </div>
-                    <div class="actions">
+                    <shared-popup-menu theme="light">
                         <button
+                            class="dark"
+
                             [disabled]="paymentMethod.__metadata?.is_default"
 
                             (click)="setDefaultPaymentMethod(paymentMethod)"
@@ -52,12 +54,14 @@
                             {{ "settings.account.payment_methods.make_default" | translate }}
                         </button>
                         <shared-danger-button
+                            theme="dark"
+
                             [text]="'generic.remove' | translate"
                             [alertText]="'generic.remove' | translate"
 
                             (confirm)="removePaymentMethod(paymentMethod)">
                         </shared-danger-button>
-                    </div>
+                    </shared-popup-menu>
                 </div>
             </div>
         </div>
