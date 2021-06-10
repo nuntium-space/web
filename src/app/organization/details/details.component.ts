@@ -1,34 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService, IOrganization } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-details',
+  selector: 'organization-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class OrganizationDetailsComponent
+export class OrganizationDetailsComponent implements OnChanges
 {
+  @Input()
   public organization?: IOrganization;
+
+  @Output()
+  public update = new EventEmitter<IOrganization>();
 
   public detailsForm = new FormGroup({
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        api.retrieveOrganization(params.id).then(response =>
-        {
-          this.organization = response.data;
+  constructor(private api: ApiService)
+  {}
 
-          this.detailsForm.get("name")?.setValue(this.organization?.name);
-        });
-      },
-    });
+  public ngOnChanges()
+  {
+    if (!this.organization)
+    {
+      return;
+    }
+
+    this.api
+      .retrieveOrganization(this.organization.id)
+      .then(response =>
+      {
+        this.organization = response.data;
+
+        this.detailsForm.get("name")?.setValue(this.organization?.name);
+      });
   }
 
   public async onDetailsFormSubmit(end: () => void)
@@ -47,5 +55,10 @@ export class OrganizationDetailsComponent
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
     });
+
+    if (response.success)
+    {
+      this.update.emit(response.data);
+    }
   }
 }

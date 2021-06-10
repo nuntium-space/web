@@ -1,39 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api/api.service';
+import { Router } from '@angular/router';
+import { ApiService, IOrganization } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'create-bundle',
+  selector: 'organization-bundles-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
 export class CreateBundleComponent
 {
-  private organizationId?: string;
+  @Input()
+  public organization?: IOrganization;
 
   public form = new FormGroup({
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        this.organizationId = params.id;
-      },
-    });
-  }
+  constructor(private api: ApiService, private router: Router)
+  {}
 
   public async onSubmit(end: () => void)
   {
-    if (!this.organizationId)
+    if (!this.organization)
     {
       return;
     }
 
-    const response = await this.api.createBundle(this.organizationId, {
+    const response = await this.api.createBundle(this.organization.id, {
       name: this.form.get("name")?.value ?? "",
     });
 
@@ -45,7 +39,7 @@ export class CreateBundleComponent
 
     if (response.data)
     {
-      this.router.navigateByUrl(`/organization/${this.organizationId}/bundles`);
+      this.router.navigateByUrl(`/organization/${this.organization.id}/bundles`);
     }
   }
 }

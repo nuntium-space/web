@@ -13,7 +13,7 @@ export class BundleDetailsComponent implements OnChanges
   public bundle?: IBundle;
 
   @Output()
-  public onUpdate = new EventEmitter<IBundle>();
+  public update = new EventEmitter<IBundle>();
 
   public form = new FormGroup({
     name: new FormControl(),
@@ -49,7 +49,7 @@ export class BundleDetailsComponent implements OnChanges
 
     if (response.success)
     {
-      this.onUpdate.emit(response.data);
+      this.update.emit(response.data);
     }
   }
 }

@@ -2,11 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
-import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
-import { CreateBundleComponent } from './organization/bundles/create/create.component';
-import { OrganizationDetailsComponent } from './organization/details/details.component';
-import { CreatePublisherComponent } from './organization/publishers/create/create.component';
-import { PublishersComponent } from './organization/publishers/publishers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
@@ -36,25 +31,7 @@ const routes: Routes = [
   { path: "explore", component: ExploreComponent, canActivate: [ SignedInGuard ] },
   {
     path: "organization/:id",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: OrganizationDetailsComponent },
-      {
-        path: "publishers",
-        children: [
-          { path: "create", component: CreatePublisherComponent },
-          { path: "", component: PublishersComponent },
-        ],
-      },
-      {
-        path: "bundles",
-        children: [
-          { path: "create", component: CreateBundleComponent },
-          { path: "", component: OrganizationBundlesComponent },
-        ],
-      },
-      { path: "", component: OrganizationDetailsComponent },
-    ],
+    loadChildren: () => import("./organization/organization.module").then(_ => _.OrganizationModule),
   },
   {
     path: "publisher/:id",

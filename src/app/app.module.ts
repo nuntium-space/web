@@ -5,17 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { OrganizationDetailsComponent } from './organization/details/details.component';
-import { PublishersComponent } from './organization/publishers/publishers.component';
-import { OrganizationMenuComponent } from './organization/menu/menu.component';
-import { CreatePublisherComponent } from './organization/publishers/create/create.component';
 import { AuthorsComponent } from './publisher/authors/authors.component';
 import { PublisherMenuComponent } from './publisher/menu/menu.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
-import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
 import { StripeConnectButtonComponent } from './components/stripe/connect-button/connect-button.component';
 import { ExploreComponent } from './explore/explore.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
@@ -26,7 +21,6 @@ import { AuthService } from './shared/services/auth/auth.service';
 import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
 import { SignedInComponent } from './home/signed-in/signed-in.component';
 import { SignedOutComponent } from './home/signed-out/signed-out.component';
-import { CreateBundleComponent } from './organization/bundles/create/create.component';
 import { HttpClient } from '@angular/common/http';
 
 @NgModule({
@@ -34,18 +28,12 @@ import { HttpClient } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    OrganizationMenuComponent,
-    OrganizationDetailsComponent,
-    PublishersComponent,
-    CreatePublisherComponent,
     AuthorsComponent,
     PublisherMenuComponent,
     PublisherDetailsComponent,
     InviteAuthorComponent,
     PublisherPublicPageComponent,
     ArticleListComponent,
-    OrganizationBundlesComponent,
-    CreateBundleComponent,
     StripeConnectButtonComponent,
     ExploreComponent,
     WriteNewArticleComponent,

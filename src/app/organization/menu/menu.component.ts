@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService, IOrganization } from 'src/app/services/api/api.service';
+import { IOrganization } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'organization-menu',
@@ -9,21 +8,9 @@ import { ApiService, IOrganization } from 'src/app/services/api/api.service';
 })
 export class OrganizationMenuComponent
 {
-  @Input("section")
-  public section?: string;
-
+  @Input()
   public organization?: IOrganization;
 
-  constructor(api: ApiService, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        api.retrieveOrganization(params.id).then(response =>
-        {
-          this.organization = response.data;
-        });
-      },
-    });
-  }
+  @Input()
+  public section?: string;
 }
