@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService, IAuthor } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-authors',
+  selector: 'publisher-authors',
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.scss']
 })

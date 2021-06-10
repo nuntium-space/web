@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-details',
+  selector: 'publisher-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })

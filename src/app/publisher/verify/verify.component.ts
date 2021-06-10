@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-verify-publisher',
+  selector: 'publisher-verify',
   templateUrl: './verify.component.html',
   styleUrls: ['./verify.component.scss']
 })

@@ -5,10 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
-import { AuthorsComponent } from './publisher/authors/authors.component';
-import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
-import { PublisherDetailsComponent } from './publisher/details/details.component';
-import { VerifyPublisherComponent } from './publisher/verify/verify.component';
 import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
 
 const routes: Routes = [
@@ -35,19 +31,7 @@ const routes: Routes = [
   },
   {
     path: "publisher/:id",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: PublisherDetailsComponent },
-      {
-        path: "authors",
-        children: [
-          { path: "invite", component: InviteAuthorComponent },
-          { path: "", component: AuthorsComponent },
-        ],
-      },
-      { path: "verify", component: VerifyPublisherComponent },
-      { path: "", component: PublisherDetailsComponent },
-    ],
+    loadChildren: () => import("./publisher/publisher.module").then(_ => _.PublisherModule),
   },
   {
     matcher: (url) =>

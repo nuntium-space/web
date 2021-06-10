@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-invite',
+  selector: 'publisher-authors-invite',
   templateUrl: './invite.component.html',
   styleUrls: ['./invite.component.scss']
 })
