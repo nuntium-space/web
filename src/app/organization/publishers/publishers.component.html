@@ -1,32 +1,26 @@
-<shared-header></shared-header>
+<section>
+    <div class="title">
+        <h1>{{ "organization.publishers.__title" | translate }}</h1>
+        <a routerLink="create" class="button">
+            {{ "generic.create" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!publishers">
+            <shared-spinner></shared-spinner>
+        </div>
+        <div *ngIf="publishers" class="list">
+            <div *ngIf="publishers.length === 0">
+                <p>{{ "organization.publishers.empty" | translate }}</p>
+            </div>
+            <a
+                *ngFor="let publisher of publishers"
 
-<organization-menu section="publishers"></organization-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "organization.publishers.__title" | translate }}</h1>
-            <a routerLink="create" class="button">
-                {{ "generic.create" | translate }}
+                routerLink="/publisher/{{ publisher.id }}"
+            >
+                <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
+                <p>{{ publisher.name }}</p>
             </a>
         </div>
-        <div class="content">
-            <div *ngIf="!publishers">
-                <shared-spinner></shared-spinner>
-            </div>
-            <div *ngIf="publishers" class="list">
-                <div *ngIf="publishers.length === 0">
-                    <p>{{ "organization.publishers.empty" | translate }}</p>
-                </div>
-                <a
-                    *ngFor="let publisher of publishers"
-
-                    routerLink="/publisher/{{ publisher.id }}"
-                >
-                    <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
-                    <p>{{ publisher.name }}</p>
-                </a>
-            </div>
-        </div>
-    </section>
-</main>
+    </div>
+</section>

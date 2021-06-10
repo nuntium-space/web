@@ -1,30 +1,24 @@
-<shared-header></shared-header>
+<section>
+    <div class="title">
+        <h1>{{ "organization.details.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="detailsForm" (confirm)="onDetailsFormSubmit($event)">
+            <label>
+                {{ "organization.details.name" | translate }}
+                <input
+                    formControlName="name"
 
-<organization-menu section="details"></organization-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "organization.details.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="detailsForm" (confirm)="onDetailsFormSubmit($event)">
-                <label>
-                    {{ "organization.details.name" | translate }}
-                    <input
-                        formControlName="name"
-
-                        type="text"
-                        name="name"
-                        required
-                    >
-                    <div class="errors">
-                        <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-            </shared-form>
-        </div>
-    </section>
-</main>
+                    type="text"
+                    name="name"
+                    required
+                >
+                <div class="errors">
+                    <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+        </shared-form>
+    </div>
+</section>

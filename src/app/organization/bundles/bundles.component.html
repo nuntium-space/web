@@ -1,32 +1,26 @@
-<shared-header></shared-header>
+<section>
+    <div class="title">
+        <h1>{{ "organization.bundles.__title" | translate }}</h1>
+        <a routerLink="create" class="button">
+            {{ "generic.create" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!bundles">
+            <shared-spinner></shared-spinner>
+        </div>
+        <div *ngIf="bundles" class="list">
+            <div *ngIf="bundles.length === 0">
+                <p>{{ "organization.bundles.empty" | translate }}</p>
+            </div>
+            <a
+                *ngFor="let bundle of bundles"
 
-<organization-menu section="bundles"></organization-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "organization.bundles.__title" | translate }}</h1>
-            <a routerLink="create" class="button">
-                {{ "generic.create" | translate }}
+                routerLink="/bundle/{{ bundle.id }}"
+            >
+                <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
+                <p>{{ bundle.name }}</p>
             </a>
         </div>
-        <div class="content">
-            <div *ngIf="!bundles">
-                <shared-spinner></shared-spinner>
-            </div>
-            <div *ngIf="bundles" class="list">
-                <div *ngIf="bundles.length === 0">
-                    <p>{{ "organization.bundles.empty" | translate }}</p>
-                </div>
-                <a
-                    *ngFor="let bundle of bundles"
-
-                    routerLink="/bundle/{{ bundle.id }}"
-                >
-                    <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
-                    <p>{{ bundle.name }}</p>
-                </a>
-            </div>
-        </div>
-    </section>
-</main>
+    </div>
+</section>
