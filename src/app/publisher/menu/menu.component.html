@@ -1,8 +1,10 @@
 <aside>
     <header>
-        <small>{{ "publisher.__title" | translate }}</small>
-        <h1 *ngIf="publisher">{{ publisher.name }}</h1>
         <img *ngIf="publisher && publisher.imageUrl" [src]="publisher.imageUrl" alt="">
+        <div>
+            <small>{{ "publisher.__title" | translate }}</small>
+            <h1 *ngIf="publisher">{{ publisher.name }}</h1>
+        </div>
     </header>
     <a *ngIf="publisher && !publisher.verified" routerLink="verify" id="verify-button" class="button warning fill">
         {{ "publisher.verify.__title" | translate }}

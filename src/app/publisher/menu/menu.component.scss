@@ -2,10 +2,15 @@
 
 header
 {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+
     img
     {
         display: block;
-        border-radius: 1em;
+        border-radius: 0.5rem;
+        height: 100px;
     }
 }
 
