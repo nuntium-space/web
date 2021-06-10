@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
@@ -8,9 +7,13 @@ import { ApiService, IPublisher } from 'src/app/services/api/api.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class PublisherDetailsComponent
+export class PublisherDetailsComponent implements OnChanges
 {
+  @Input()
   public publisher?: IPublisher;
+
+  @Output()
+  public update = new EventEmitter<IPublisher>();
 
   private image?: File;
 
@@ -23,23 +26,28 @@ export class PublisherDetailsComponent
     image: new FormControl(),
   });
 
-  constructor(private api: ApiService, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        api.retrievePublisher(params.id).then(response =>
-        {
-          if (response.data)
-          {
-            this.publisher = response.data;
+  constructor(private api: ApiService)
+  {}
 
-            this.detailsForm.get("name")?.setValue(this.publisher.name);
-            this.detailsForm.get("url")?.setValue(this.publisher.url);
-          }
-        });
-      },
-    });
+  public ngOnChanges()
+  {
+    if (!this.publisher)
+    {
+      return;
+    }
+
+    this.api
+      .retrievePublisher(this.publisher.id)
+      .then(response =>
+      {
+        if (response.data)
+        {
+          this.publisher = response.data;
+
+          this.detailsForm.get("name")?.setValue(this.publisher.name);
+          this.detailsForm.get("url")?.setValue(this.publisher.url);
+        }
+      });
   }
 
   public async onDetailsFormSubmit(end: () => void)
@@ -63,6 +71,11 @@ export class PublisherDetailsComponent
     this.detailsForm.get("url")?.setErrors({
       errors: response.errors?.filter(e => e.field === "url")
     });
+
+    if (response.success)
+    {
+      this.update.emit(response.data);
+    }
   }
 
   public onImageChange(e: Event)
@@ -93,5 +106,10 @@ export class PublisherDetailsComponent
     this.imageForm.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.field === "image")
     });
+
+    if (response.success)
+    {
+      this.update.emit(response.data);
+    }
   }
 }

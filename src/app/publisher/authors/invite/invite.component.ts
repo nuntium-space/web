@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api/api.service';
+import { Router } from '@angular/router';
+import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'publisher-authors-invite',
@@ -10,30 +10,24 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class InviteAuthorComponent
 {
-  private publisherId?: string;
+  @Input()
+  public publisher?: IPublisher;
 
   public form = new FormGroup({
     email: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        this.publisherId = params.id;
-      },
-    });
-  }
+  constructor(private api: ApiService, private router: Router)
+  {}
 
   public async onSubmit(end: () => void)
   {
-    if (!this.publisherId)
+    if (!this.publisher)
     {
       return;
     }
 
-    const response = await this.api.inviteAuthor(this.publisherId, {
+    const response = await this.api.inviteAuthor(this.publisher.id, {
       email: this.form.get("email")?.value ?? "",
     });
 
@@ -41,7 +35,7 @@ export class InviteAuthorComponent
 
     if (response.data)
     {
-      this.router.navigateByUrl(`/publisher/${this.publisherId}/authors`);
+      this.router.navigateByUrl(`/publisher/${this.publisher.id}/authors`);
     }
     else if (response.errors)
     {
