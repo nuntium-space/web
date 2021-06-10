@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
+import { ConfirmEventCallbackOptions } from 'src/app/shared/components/form/form.component';
 
 @Component({
   selector: 'publisher-details',
@@ -50,10 +51,12 @@ export class PublisherDetailsComponent implements OnChanges
       });
   }
 
-  public async onDetailsFormSubmit(end: (success: boolean) => void)
+  public async onDetailsFormSubmit(end: (options?: ConfirmEventCallbackOptions) => void)
   {
     if (!this.publisher)
     {
+      end({ success: false });
+
       return;
     }
 
@@ -62,7 +65,12 @@ export class PublisherDetailsComponent implements OnChanges
       url: this.detailsForm.get("url")?.value,
     });
 
-    end(response.success);
+    end({
+      success: response.success,
+      message: {
+        type: "none",
+      },
+    });
 
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
@@ -90,11 +98,32 @@ export class PublisherDetailsComponent implements OnChanges
     }
   }
 
-  public async onImageFormSubmit(end: (success: boolean) => void)
+  public async onImageFormSubmit(end: (options?: ConfirmEventCallbackOptions) => void)
   {
-    if (!this.publisher || !this.image)
+    if (!this.publisher)
     {
-      end(false);
+      end({ success: false });
+
+      return;
+    }
+
+    if (!this.image)
+    {
+      this.imageForm.get("image")?.setErrors({
+        errors: [
+          {
+            field: "image",
+            error: "errors.publisher.details.image.required",
+          },
+        ],
+      });
+
+      end({
+        success: false,
+        message: {
+          type: "none",
+        },
+      });
 
       return;
     }
@@ -103,7 +132,12 @@ export class PublisherDetailsComponent implements OnChanges
       image: this.image,
     });
 
-    end(response.success);
+    end({
+      success: response.success,
+      message: {
+        type: "none",
+      },
+    });
 
     this.imageForm.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.field === "image")

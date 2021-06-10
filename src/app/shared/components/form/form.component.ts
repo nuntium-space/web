@@ -1,4 +1,33 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { DomService } from '../../services/dom/dom.service';
+import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
+
+export type ConfirmEventCallbackOptions =
+{
+  success: true;
+  message?: {
+    text?: string,
+    /**
+     * @default "none"
+     */
+    type?: "modal" | "message" | "none";
+  };
+}
+|
+{
+  success: false;
+  message?: {
+    /**
+     * @default "errors.unknown"
+     */
+    text?: string,
+    /**
+     * @default "modal"
+     */
+    type?: "modal" | "message" | "none";
+  };
+};
 
 @Component({
   selector: 'shared-form',
@@ -14,9 +43,22 @@ export class FormComponent
   public submitButtonSize: "default" | "small" = "default";
 
   @Output()
-  public confirm = new EventEmitter<(success?: boolean) => void>();
+  public confirm = new EventEmitter<(options?: ConfirmEventCallbackOptions) => void>();
 
   public isLoading = false;
+
+  public dialogRef?: ComponentRef<unknown>;
+
+  public dialogButtons: IDialogButton[] = [
+    {
+      text: "OK",
+      classes: [ "dark" ],
+      onClick: () => this.hideDialog(),
+    },
+  ];
+
+  constructor(private dom: DomService, private translate: TranslateService)
+  {}
 
   public async onSubmit(e: Event)
   {
@@ -24,14 +66,47 @@ export class FormComponent
 
     this.isLoading = true;
 
-    this.confirm.emit((success) =>
+    this.confirm.emit(options =>
     {
       this.isLoading = false;
 
-      if (success)
+      options ??= { success: true };
+      options.message ??= {};
+      options.message.text ??= options.success ? undefined : "errors.unknown";
+      options.message.type ??= options.success ? "none" : "modal";
+
+      switch (options.message.type)
       {
-        console.log("success");
+        case "message": break;
+        case "modal":
+        {
+          this.dialogRef = this.dom.appendComponentToBody(
+            DialogComponent,
+            {
+              message: this.translate.instant(options.message.text!),
+              buttons: this.dialogButtons,
+            },
+            {
+              hide: () => this.hideDialog(),
+            },
+          );
+          
+          break;
+        }
+        case "none": break;
       }
     });
+  }
+
+  public hideDialog()
+  {
+    if (!this.dialogRef)
+    {
+      return;
+    }
+
+    this.dom.removeComponentFromBody(this.dialogRef);
+
+    this.dialogRef = undefined;
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FEED_PAGE_SIZE } from 'src/config';
 import { environment } from 'src/environments/environment';
 
-interface IApiServiceResponse<T>
+export interface IApiServiceResponse<T>
 {
   status: number,
   success: boolean,
