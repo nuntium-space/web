@@ -94,6 +94,8 @@ export class PublisherDetailsComponent implements OnChanges
   {
     if (!this.publisher || !this.image)
     {
+      end();
+
       return;
     }
 
