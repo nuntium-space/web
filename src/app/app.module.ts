@@ -11,7 +11,6 @@ import { PublisherDetailsComponent } from './publisher/details/details.component
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
-import { StripeConnectButtonComponent } from './components/stripe/connect-button/connect-button.component';
 import { ExploreComponent } from './explore/explore.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -34,7 +33,6 @@ import { HttpClient } from '@angular/common/http';
     InviteAuthorComponent,
     PublisherPublicPageComponent,
     ArticleListComponent,
-    StripeConnectButtonComponent,
     ExploreComponent,
     WriteNewArticleComponent,
     VerifyPublisherComponent,
