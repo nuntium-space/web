@@ -1,31 +1,25 @@
-<shared-header></shared-header>
+<section>
+    <div class="title">
+        <h1>{{ "settings.account.organizations.__title" | translate }}</h1>
+        <a routerLink="create" class="button">
+            {{ "generic.create" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!organizations">
+            <shared-spinner></shared-spinner>
+        </div>
+        <div *ngIf="organizations" class="list">
+            <div *ngIf="organizations.length === 0">
+                <p>{{ "settings.account.organizations.empty" | translate }}</p>
+            </div>
+            <a
+                *ngFor="let organization of organizations"
 
-<settings-menu section="organizations"></settings-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.account.organizations.__title" | translate }}</h1>
-            <a routerLink="create" class="button">
-                {{ "generic.create" | translate }}
+                routerLink="/organization/{{ organization.id }}"
+            >
+                <p>{{ organization.name }}</p>
             </a>
         </div>
-        <div class="content">
-            <div *ngIf="!organizations">
-                <shared-spinner></shared-spinner>
-            </div>
-            <div *ngIf="organizations" class="list">
-                <div *ngIf="organizations.length === 0">
-                    <p>{{ "settings.account.organizations.empty" | translate }}</p>
-                </div>
-                <a
-                    *ngFor="let organization of organizations"
-
-                    routerLink="/organization/{{ organization.id }}"
-                >
-                    <p>{{ organization.name }}</p>
-                </a>
-            </div>
-        </div>
-    </section>
-</main>
+    </div>
+</section>

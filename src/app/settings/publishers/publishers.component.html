@@ -1,28 +1,22 @@
-<shared-header></shared-header>
-
-<settings-menu section="publishers"></settings-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.author.publishers.__title" | translate }}</h1>
+<section>
+    <div class="title">
+        <h1>{{ "settings.author.publishers.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <div *ngIf="!authors">
+            <shared-spinner></shared-spinner>
         </div>
-        <div class="content">
-            <div *ngIf="!authors">
-                <shared-spinner></shared-spinner>
+        <div *ngIf="authors" class="list">
+            <div *ngIf="authors.length === 0">
+                <p>{{ "settings.author.publishers.empty" | translate }}</p>
             </div>
-            <div *ngIf="authors" class="list">
-                <div *ngIf="authors.length === 0">
-                    <p>{{ "settings.author.publishers.empty" | translate }}</p>
-                </div>
-                <a
-                    *ngFor="let author of authors"
+            <a
+                *ngFor="let author of authors"
 
-                    routerLink="/~{{ author.publisher.id }}"
-                >
-                    <p>{{ author.publisher.name }}</p>
-                </a>
-            </div>
+                routerLink="/~{{ author.publisher.id }}"
+            >
+                <p>{{ author.publisher.name }}</p>
+            </a>
         </div>
-    </section>
-</main>
+    </div>
+</section>

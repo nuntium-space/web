@@ -1,22 +1,16 @@
-<shared-header></shared-header>
-
-<settings-menu section="payment-methods"></settings-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.account.payment_methods.add.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <shared-form [submitButtonText]="'generic.add' | translate" (confirm)="onSubmit($event)">
-                <label>
-                    {{ "settings.account.payment_methods.add.card" | translate }}
-                    <div id="card-element"></div>
-                    <div class="errors" *ngIf="cardElementError">
-                        <p>{{ cardElementError }}</p>
-                    </div>
-                </label>
-            </shared-form>
-        </div>
-    </section>
-</main>
+<section>
+    <div class="title">
+        <h1>{{ "settings.account.payment_methods.add.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form [submitButtonText]="'generic.add' | translate" (confirm)="onSubmit($event)">
+            <label>
+                {{ "settings.account.payment_methods.add.card" | translate }}
+                <div id="card-element"></div>
+                <div class="errors" *ngIf="cardElementError">
+                    <p>{{ cardElementError }}</p>
+                </div>
+            </label>
+        </shared-form>
+    </div>
+</section>
