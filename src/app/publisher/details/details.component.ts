@@ -50,7 +50,7 @@ export class PublisherDetailsComponent implements OnChanges
       });
   }
 
-  public async onDetailsFormSubmit(end: () => void)
+  public async onDetailsFormSubmit(end: (success: boolean) => void)
   {
     if (!this.publisher)
     {
@@ -62,7 +62,7 @@ export class PublisherDetailsComponent implements OnChanges
       url: this.detailsForm.get("url")?.value,
     });
 
-    end();
+    end(response.success);
 
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
@@ -90,11 +90,11 @@ export class PublisherDetailsComponent implements OnChanges
     }
   }
 
-  public async onImageFormSubmit(end: () => void)
+  public async onImageFormSubmit(end: (success: boolean) => void)
   {
     if (!this.publisher || !this.image)
     {
-      end();
+      end(false);
 
       return;
     }
@@ -103,7 +103,7 @@ export class PublisherDetailsComponent implements OnChanges
       image: this.image,
     });
 
-    end();
+    end(response.success);
 
     this.imageForm.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.field === "image")

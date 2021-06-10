@@ -14,7 +14,7 @@ export class FormComponent
   public submitButtonSize: "default" | "small" = "default";
 
   @Output()
-  public confirm = new EventEmitter<() => void>();
+  public confirm = new EventEmitter<(success?: boolean) => void>();
 
   public isLoading = false;
 
@@ -24,9 +24,14 @@ export class FormComponent
 
     this.isLoading = true;
 
-    this.confirm.emit(() =>
+    this.confirm.emit((success) =>
     {
       this.isLoading = false;
+
+      if (success)
+      {
+        console.log("success");
+      }
     });
   }
 }
