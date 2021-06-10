@@ -427,7 +427,7 @@ export class ApiService
 
   public async updatePublisherImage(id: string, data: {
     image: File,
-  }): Promise<IApiServiceResponse<IPublisher>>
+  }): Promise<IApiServiceResponse<{ url: string }>>
   {
     const fd = new FormData();
     fd.append("image", data.image);
