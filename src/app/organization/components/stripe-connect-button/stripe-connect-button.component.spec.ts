@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StripeConnectButtonComponent } from './connect-button.component';
+import { StripeConnectButtonComponent } from './stripe-connect-button.component';
 
 describe('StripeConnectButtonComponent', () => {
   let component: StripeConnectButtonComponent;

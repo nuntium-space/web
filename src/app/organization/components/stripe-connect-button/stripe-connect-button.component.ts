@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { ApiService, IOrganization } from 'src/app/services/api/api.service';
+import { IOrganization, ApiService } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'stripe-connect-button',
-  templateUrl: './connect-button.component.html',
-  styleUrls: ['./connect-button.component.scss']
+  selector: 'organization-stripe-connect-button',
+  templateUrl: './stripe-connect-button.component.html',
+  styleUrls: ['./stripe-connect-button.component.scss']
 })
 export class StripeConnectButtonComponent
 {
