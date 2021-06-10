@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'add-payment-method',
+  selector: 'settings-payment-methods-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })

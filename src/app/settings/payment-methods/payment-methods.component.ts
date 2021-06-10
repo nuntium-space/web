@@ -3,7 +3,7 @@ import { ApiService, IPaymentMethod } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-payment-methods',
+  selector: 'settings-payment-methods',
   templateUrl: './payment-methods.component.html',
   styleUrls: ['./payment-methods.component.scss']
 })

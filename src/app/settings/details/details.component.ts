@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-account-details',
+  selector: 'settings-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })

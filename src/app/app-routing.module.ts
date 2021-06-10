@@ -14,18 +14,7 @@ import { AuthorsComponent } from './publisher/authors/authors.component';
 import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
 import { PublisherDetailsComponent } from './publisher/details/details.component';
 import { VerifyPublisherComponent } from './publisher/verify/verify.component';
-import { AdvancedComponent } from './settings/advanced/advanced.component';
-import { AccountDetailsComponent } from './settings/details/details.component';
-import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
-import { OrganizationsComponent } from './settings/organizations/organizations.component';
-import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
-import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
-import { PreferencesComponent } from './settings/preferences/preferences.component';
-import { UserPublishersComponent } from './settings/publishers/publishers.component';
-import { SecurityComponent } from './settings/security/security.component';
-import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
 import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
-import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
 
 const routes: Routes = [
   {
@@ -34,30 +23,7 @@ const routes: Routes = [
   },
   {
     path: "settings",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: AccountDetailsComponent },
-      { path: "security", component: SecurityComponent },
-      { path: "preferences", component: PreferencesComponent },
-      { path: "advanced", component: AdvancedComponent },
-      {
-        path: "organizations",
-        children: [
-          { path: "create", component: CreateOrganizationComponent },
-          { path: "", component: OrganizationsComponent },
-        ],
-      },
-      { path: "subscriptions", component: SubscriptionsComponent },
-      {
-        path: "payment-methods",
-        children: [
-          { path: "add", component: AddPaymentMethodComponent },
-          { path: "", component: PaymentMethodsComponent },
-        ],
-      },
-      { path: "publishers", component: UserPublishersComponent },
-      { path: "", component: AccountDetailsComponent },
-    ],
+    loadChildren: () => import("./settings/settings.module").then(_ => _.SettingsModule),
   },
   {
     path: "article/:id",

@@ -13,14 +13,14 @@
                 <shared-spinner></shared-spinner>
             </div>
             <div *ngIf="subscriptions">
-                <subscription-list [subscriptions]="subscriptions.active"></subscription-list>
+                <settings-subscription-list [subscriptions]="subscriptions.active"></settings-subscription-list>
                 <div *ngIf="subscriptions.incomplete.length > 0">
                     <h2>{{ "settings.account.subscriptions.inactive" | translate }}</h2>
-                    <subscription-list [subscriptions]="subscriptions.incomplete"></subscription-list>
+                    <settings-subscription-list [subscriptions]="subscriptions.incomplete"></settings-subscription-list>
                 </div>
                 <div *ngIf="subscriptions.old.length > 0">
                     <h2>{{ "settings.account.subscriptions.old" | translate }}</h2>
-                    <subscription-list [subscriptions]="subscriptions.old"></subscription-list>
+                    <settings-subscription-list [subscriptions]="subscriptions.old"></settings-subscription-list>
                 </div>
             </div>
         </div>

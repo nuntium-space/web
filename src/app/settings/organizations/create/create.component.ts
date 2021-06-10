@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-create-organization',
+  selector: 'settings-organizations-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })

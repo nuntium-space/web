@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UserSettingsService } from 'src/app/shared/services/user-settings/user-settings.service';
 
 @Component({
-  selector: 'app-preferences',
+  selector: 'settings-preferences',
   templateUrl: './preferences.component.html',
   styleUrls: ['./preferences.component.scss']
 })

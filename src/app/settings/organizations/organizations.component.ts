@@ -3,7 +3,7 @@ import { ApiService, IOrganization } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-organizations',
+  selector: 'settings-organizations',
   templateUrl: './organizations.component.html',
   styleUrls: ['./organizations.component.scss']
 })

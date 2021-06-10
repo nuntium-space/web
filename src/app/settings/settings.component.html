@@ -1,0 +1,7 @@
+<shared-header></shared-header>
+
+<settings-menu [section]="section"></settings-menu>
+
+<main [ngSwitch]="section">
+    <settings-details *ngSwitchCase="'details'"></settings-details>
+</main>
