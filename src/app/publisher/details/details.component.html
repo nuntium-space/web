@@ -1,72 +1,66 @@
-<shared-header></shared-header>
+<section>
+    <div class="title">
+        <h1>{{ "publisher.details.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="detailsForm" (confirm)="onDetailsFormSubmit($event)">
+            <label>
+                {{ "publisher.details.name" | translate }}
+                <input
+                    formControlName="name"
 
-<publisher-menu section="details"></publisher-menu>
+                    type="text"
+                    name="name"
+                    required
+                >
+                <div class="errors">
+                    <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+            <label>
+                URL
+                <input
+                    formControlName="url"
 
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "publisher.details.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="detailsForm" (confirm)="onDetailsFormSubmit($event)">
-                <label>
-                    {{ "publisher.details.name" | translate }}
-                    <input
-                        formControlName="name"
+                    type="url"
+                    name="url"
+                    required
+                >
+                <div class="errors">
+                    <p *ngFor="let error of detailsForm.get('url')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+        </shared-form>
+    </div>
+</section>
+<section>
+    <div class="title">
+        <h1>{{ "publisher.details.image.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="imageForm" (confirm)="onImageFormSubmit($event)">
+            <label>
+                {{ "publisher.details.image.image" | translate }}
+                <input
+                    formControlName="image"
 
-                        type="text"
-                        name="name"
-                        required
-                    >
-                    <div class="errors">
-                        <p *ngFor="let error of detailsForm.get('name')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <label>
-                    URL
-                    <input
-                        formControlName="url"
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                    required
 
-                        type="url"
-                        name="url"
-                        required
-                    >
-                    <div class="errors">
-                        <p *ngFor="let error of detailsForm.get('url')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-            </shared-form>
-        </div>
-    </section>
-    <section>
-        <div class="title">
-            <h1>{{ "publisher.details.image.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="imageForm" (confirm)="onImageFormSubmit($event)">
-                <label>
-                    {{ "publisher.details.image.image" | translate }}
-                    <input
-                        formControlName="image"
-
-                        type="file"
-                        name="image"
-                        accept="image/*"
-                        required
-
-                        (change)="onImageChange($event)"
-                    >
-                    <div class="errors">
-                        <p *ngFor="let error of imageForm.get('image')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-            </shared-form>
-        </div>
-    </section>
-</main>
+                    (change)="onImageChange($event)"
+                >
+                <div class="errors">
+                    <p *ngFor="let error of imageForm.get('image')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+        </shared-form>
+    </div>
+</section>
