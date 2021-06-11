@@ -13,13 +13,22 @@
             <div *ngIf="organizations.length === 0">
                 <p>{{ "settings.account.organizations.empty" | translate }}</p>
             </div>
-            <a
-                *ngFor="let organization of organizations"
+            <div *ngFor="let organization of organizations" class="list-item-with-actions">
+                <a routerLink="/organization/{{ organization.id }}">
+                    <p>{{ organization.name }}</p>
+                </a>
+                <shared-popup-menu theme="light">
+                    <shared-danger-button
+                        theme="dark"
 
-                routerLink="/organization/{{ organization.id }}"
-            >
-                <p>{{ organization.name }}</p>
-            </a>
+                        [text]="'generic.remove' | translate"
+                        [alertText]="'generic.remove' | translate"
+
+                        (confirm)="removeOrganization(organization)"
+                    >
+                    </shared-danger-button>
+                </shared-popup-menu>
+            </div>
         </div>
     </div>
 </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService, IOrganization } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
@@ -7,20 +7,37 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   templateUrl: './organizations.component.html',
   styleUrls: ['./organizations.component.scss']
 })
-export class OrganizationsComponent
+export class OrganizationsComponent implements OnInit
 {
   public organizations?: IOrganization[];
 
-  constructor(api: ApiService, auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService)
+  {}
+
+  public ngOnInit()
   {
-    if (!auth.user)
+    if (!this.auth.user)
     {
       return;
     }
 
-    api.listOrganizationsForUser(auth.user.id).then(response =>
+    this.api
+      .listOrganizationsForUser(this.auth.user.id)
+      .then(response =>
+      {
+        this.organizations = response.data;
+      });
+  }
+
+  public async removeOrganization(organization: IOrganization)
+  {
+    if (!this.organizations)
     {
-      this.organizations = response.data;
-    });
+      return;
+    }
+
+    await this.api.deleteOrganization(organization.id);
+
+    this.organizations = this.organizations.filter(_ => _.id !== organization.id);
   }
 }
