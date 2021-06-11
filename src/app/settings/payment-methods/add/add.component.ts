@@ -71,8 +71,16 @@ export class AddPaymentMethodComponent implements OnInit
 
     if (!response.errors)
     {
-      this.router.navigate([ ".." ], {
-        relativeTo: this.route,
+      this.router.navigate([ "payment-methods" ], {
+        /*
+          this.route is the empty path route in settings-routing.module.ts
+          so, in order to navigate to the payment-methods section we need
+          to navigate relative to the settings route defined in app-routing.module.ts
+
+          This sucks but it's the best way (that wasn't absolute) to do this kind of navigation I've found
+          so far.
+        */
+        relativeTo: this.route.parent,
       });
     }
   }
