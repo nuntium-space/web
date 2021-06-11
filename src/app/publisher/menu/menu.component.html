@@ -9,6 +9,9 @@
     <a *ngIf="publisher && !publisher.verified" routerLink="verify" id="verify-button" class="button warning fill">
         {{ "publisher.verify.__title" | translate }}
     </a>
+    <a *ngIf="publisher" routerLink="/~{{ publisher.id }}" class="button fill">
+        {{ "publisher.public_page" | translate }}
+    </a>
     <section>
         <div class="title"></div>
         <div class="content">
