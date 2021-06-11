@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FEED_PAGE_SIZE } from 'src/config';
+import { Config } from 'src/config';
 import { environment } from 'src/environments/environment';
 
 export interface IApiServiceResponse<T>
@@ -447,7 +447,7 @@ export class ApiService
 
   public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+    return this.send("GET", `search?query=${query}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
   public async retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>>
@@ -467,7 +467,7 @@ export class ApiService
 
   public async retrieveUserFeed(userId: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `users/${userId}/feed?expand[]=author&expand[]=author.user&expand[]=author.publisher&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
+    return this.send("GET", `users/${userId}/feed?expand[]=author&expand[]=author.user&expand[]=author.publisher&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}`);
   }
 
   public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>
