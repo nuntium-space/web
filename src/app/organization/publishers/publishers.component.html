@@ -13,14 +13,23 @@
             <div *ngIf="publishers.length === 0">
                 <p>{{ "organization.publishers.empty" | translate }}</p>
             </div>
-            <a
-                *ngFor="let publisher of publishers"
+            <div *ngFor="let publisher of publishers" class="list-item-with-actions">
+                <a routerLink="/publisher/{{ publisher.id }}">
+                    <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
+                    <p>{{ publisher.name }}</p>
+                </a>
+                <shared-popup-menu theme="light">
+                    <shared-danger-button
+                        theme="dark"
 
-                routerLink="/publisher/{{ publisher.id }}"
-            >
-                <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
-                <p>{{ publisher.name }}</p>
-            </a>
+                        [text]="'generic.delete' | translate"
+                        [alertText]="'generic.delete' | translate"
+
+                        (confirm)="deletePublisher(publisher)"
+                    >
+                    </shared-danger-button>
+                </shared-popup-menu>
+            </div>
         </div>
     </div>
 </section>

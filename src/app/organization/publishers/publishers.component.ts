@@ -30,4 +30,16 @@ export class PublishersComponent implements OnChanges
         this.publishers = response.data;
       });
   }
+
+  public async deletePublisher(publisher: IPublisher)
+  {
+    if (!this.publishers)
+    {
+      return;
+    }
+
+    await this.api.deletePublisher(publisher.id);
+
+    this.publishers = this.publishers.filter(_ => _.id !== publisher.id);
+  }
 }
