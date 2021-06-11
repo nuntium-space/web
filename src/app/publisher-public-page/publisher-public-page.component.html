@@ -1,7 +1,9 @@
 <shared-header></shared-header>
 
 <aside *ngIf="publisher">
-    <h1>{{ publisher.name }}</h1>
+    <header>
+        <h1>{{ publisher.name }}</h1>
+    </header>
     <section *ngIf="publisher.__metadata?.is_author">
         <div class="title">
             <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
