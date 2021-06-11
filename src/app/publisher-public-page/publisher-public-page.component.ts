@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, IArticle, IBundle, IPublisher } from '../services/api/api.service';
 import { AuthService } from '../shared/services/auth/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from '../shared/services/auth/auth.service';
   templateUrl: './publisher-public-page.component.html',
   styleUrls: ['./publisher-public-page.component.scss']
 })
-export class PublisherPublicPageComponent
+export class PublisherPublicPageComponent implements OnInit
 {
   public isSubscribed = true;
 
@@ -18,33 +18,42 @@ export class PublisherPublicPageComponent
 
   public bundles?: IBundle[];
 
-  constructor(public auth: AuthService, api: ApiService, route: ActivatedRoute)
+  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute)
+  {}
+
+  public ngOnInit()
   {
-    route.params.subscribe({
+    this.route.params.subscribe({
       next: params =>
       {
-        api.retrievePublisher(params.id).then(response =>
-        {
-          this.publisher = response.data;
-        });
-
-        api.listArticlesForPublisher(params.id).then(response =>
-        {
-          // Payment Required
-          if (response.status === 402)
+        this.api
+          .retrievePublisher(params.id)
+          .then(response =>
           {
-            this.isSubscribed = false;
+            this.publisher = response.data;
+          });
 
-            return;
-          }
+        this.api
+          .listArticlesForPublisher(params.id)
+          .then(response =>
+          {
+            // Payment Required
+            if (response.status === 402)
+            {
+              this.isSubscribed = false;
 
-          this.articles = response.data;
-        });
+              return;
+            }
 
-        api.listBundlesForPublisher(params.id).then(response =>
-        {
-          this.bundles = response.data;
-        });
+            this.articles = response.data;
+          });
+
+        this.api
+          .listBundlesForPublisher(params.id)
+          .then(response =>
+          {
+            this.bundles = response.data;
+          });
       },
     });
   }
