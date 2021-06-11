@@ -1,3 +1,4 @@
+import { A11yModule } from "@angular/cdk/a11y";
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -44,6 +45,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    A11yModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

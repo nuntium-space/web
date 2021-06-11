@@ -1,5 +1,5 @@
 <div class="dialog-container" (click)="onDialogContainerClick($event)">
-    <div class="dialog">
+    <div class="dialog" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
         <span class="message">{{ message }}</span>
         <div class="actions">
             <button
