@@ -1,4 +1,5 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Inject, Injectable, Injector, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +11,8 @@ export class DomService
   (
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector
+    private injector: Injector,
+    @Inject(DOCUMENT) private document: Document
   )
   {}
 
@@ -38,7 +40,7 @@ export class DomService
 
     this.appRef.attachView(componentRef.hostView);
 
-    document.body.appendChild((componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]);
+    this.document.body.appendChild((componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]);
 
     return componentRef;
   }
