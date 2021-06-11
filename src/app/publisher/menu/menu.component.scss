@@ -6,11 +6,11 @@ header
     align-items: flex-end;
     gap: 1rem;
 
-    img
+    shared-img
     {
-        display: block;
         border-radius: 0.5rem;
         height: 100px;
+        width: 100px;
     }
 }
 

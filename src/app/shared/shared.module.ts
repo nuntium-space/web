@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { PopupMenuComponent } from './components/popup-menu/popup-menu.component';
 import { FormComponent } from './components/form/form.component';
+import { ImgComponent } from './components/img/img.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -34,6 +35,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     DialogComponent,
     PopupMenuComponent,
     FormComponent,
+    ImgComponent,
 
     /*
       PIPES
@@ -75,6 +77,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     SpinnerComponent,
     PopupMenuComponent,
     FormComponent,
+    ImgComponent,
 
     /*
       PIPES
