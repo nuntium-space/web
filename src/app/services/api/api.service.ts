@@ -302,6 +302,11 @@ export class ApiService
     return this.send("PATCH", `bundles/${id}`, data);
   }
 
+  public async archiveBundle(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `bundles/${id}`);
+  }
+
   public async removePublisherFromBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `bundles/${bundleId}/publishers/${publisherId}`);

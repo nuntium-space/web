@@ -29,7 +29,7 @@ export class OrganizationsComponent implements OnInit
       });
   }
 
-  public async removeOrganization(organization: IOrganization)
+  public async deleteOrganization(organization: IOrganization)
   {
     if (!this.organizations)
     {

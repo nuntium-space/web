@@ -30,4 +30,27 @@ export class OrganizationBundlesComponent implements OnChanges
         this.bundles = response.data;
       });
   }
+
+  public async archiveBundle(bundle: IBundle)
+  {
+    if (!this.bundles)
+    {
+      return;
+    }
+
+    const { success } = await this.api.archiveBundle(bundle.id);
+
+    if (success)
+    {
+      this.bundles = this.bundles.map(_ =>
+      {
+        if (_.id === bundle.id)
+        {
+          _.active = false;
+        }
+    
+        return _;
+      });
+    }
+  }
 }

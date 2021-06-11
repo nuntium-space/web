@@ -13,14 +13,23 @@
             <div *ngIf="bundles.length === 0">
                 <p>{{ "organization.bundles.empty" | translate }}</p>
             </div>
-            <a
-                *ngFor="let bundle of bundles"
+            <div *ngFor="let bundle of bundles" class="list-item-with-actions">
+                <a routerLink="/bundle/{{ bundle.id }}">
+                    <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
+                    <p>{{ bundle.name }}</p>
+                </a>
+                <shared-popup-menu theme="light">
+                    <shared-danger-button
+                        theme="dark"
 
-                routerLink="/bundle/{{ bundle.id }}"
-            >
-                <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
-                <p>{{ bundle.name }}</p>
-            </a>
+                        [text]="'generic.archive' | translate"
+                        [alertText]="'generic.archive' | translate"
+
+                        (confirm)="archiveBundle(bundle)"
+                    >
+                    </shared-danger-button>
+                </shared-popup-menu>
+            </div>
         </div>
     </div>
 </section>
