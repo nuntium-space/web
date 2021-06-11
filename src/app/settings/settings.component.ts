@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { Config } from 'src/config';
+import { Config } from 'src/config/Config';
 
 @Component({
   selector: 'app-settings',

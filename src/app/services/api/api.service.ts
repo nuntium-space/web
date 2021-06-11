@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Config } from 'src/config';
+import { Config } from 'src/config/Config';
 import { environment } from 'src/environments/environment';
 
 export interface IApiServiceResponse<T>
