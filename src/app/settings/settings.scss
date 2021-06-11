@@ -10,14 +10,28 @@
     height: 100%;
 }
 
+::ng-deep aside
+{
+    grid-area: aside;
+    height: min-content;
+    position: sticky;
+    top: 1rem;
+}
+
 @media (max-width: 800px)
 {
     :host
     {
-        grid-template-rows: max-content max-content auto;
+        grid-template-rows: auto;
+        grid-template-columns: 100%;
         grid-template-areas:
-            "header header"
-            "aside aside"
-            "main main";
+            "header"
+            "aside"
+            "main";
+    }
+
+    ::ng-deep aside
+    {
+        position: unset;
     }
 }
