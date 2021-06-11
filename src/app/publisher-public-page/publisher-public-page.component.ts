@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, IArticle, IBundle, IPublisher } from '../services/api/api.service';
 import { AuthService } from '../shared/services/auth/auth.service';
@@ -18,7 +19,7 @@ export class PublisherPublicPageComponent implements OnInit
 
   public bundles?: IBundle[];
 
-  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute)
+  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute, private title: Title)
   {}
 
   public ngOnInit()
@@ -31,6 +32,11 @@ export class PublisherPublicPageComponent implements OnInit
           .then(response =>
           {
             this.publisher = response.data;
+
+            if (this.publisher)
+            {
+              this.title.setTitle(`${this.publisher.name} - nuntium`);
+            }
           });
 
         this.api
