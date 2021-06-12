@@ -19,7 +19,6 @@ export interface IUser
   id: string,
   username: string | null,
   email: string,
-  has_default_payment_method: boolean,
 }
 
 export interface IOrganization

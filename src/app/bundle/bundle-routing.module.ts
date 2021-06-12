@@ -12,7 +12,6 @@ const routes: Routes = [
       { path: "details", data: { section: "details" } },
       { path: "prices", data: { section: "prices" } },
       { path: "prices/add", data: { section: "prices/add" } },
-      { path: "subscribe", data: { section: "subscribe" } },
       { path: "publishers", data: { section: "publishers" } },
       { path: "publishers/add", data: { section: "publishers/add" } },
       { path: "", redirectTo: "details" },
