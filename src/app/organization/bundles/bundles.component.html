@@ -20,14 +20,19 @@
                 </a>
                 <shared-popup-menu theme="light">
                     <shared-danger-button
+                        *ngIf="bundle.active"
+
                         theme="dark"
 
-                        [text]="'generic.archive' | translate"
-                        [alertText]="'generic.archive' | translate"
+                        [text]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
+                        [alertText]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
 
                         (confirm)="archiveBundle(bundle)"
                     >
                     </shared-danger-button>
+                    <button *ngIf="!bundle.active" class="dark" (click)="restoreBundle(bundle)">
+                        {{ 'generic.restore' | translate }}
+                    </button>
                 </shared-popup-menu>
             </div>
         </div>

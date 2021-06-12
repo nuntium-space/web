@@ -53,4 +53,30 @@ export class OrganizationBundlesComponent implements OnChanges
       });
     }
   }
+
+  public async restoreBundle(bundle: IBundle)
+  {
+    if (!this.bundles)
+    {
+      return;
+    }
+
+    const { success } = await new Promise(resolve =>
+    {
+      resolve({ success: true });
+    }) //this.api.restoreBundle(bundle.id);
+
+    if (success)
+    {
+      this.bundles = this.bundles.map(_ =>
+      {
+        if (_.id === bundle.id)
+        {
+          _.active = true;
+        }
+    
+        return _;
+      });
+    }
+  }
 }
