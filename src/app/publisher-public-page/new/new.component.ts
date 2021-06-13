@@ -57,6 +57,7 @@ export class WriteNewArticleComponent implements AfterViewInit
     {
       case "bold": this.editor?.chain().focus().toggleBold().run(); break;
       case "italic": this.editor?.chain().focus().toggleItalic().run(); break;
+      case "strike": this.editor?.chain().focus().toggleStrike().run(); break;
       case "underline": this.editor?.chain().focus().toggleUnderline().run(); break;
 
       case "style":
