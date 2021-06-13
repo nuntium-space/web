@@ -1,3 +1,3 @@
 # nuntium
 
-A fact-checked news-only social network
+nuntium's web app
