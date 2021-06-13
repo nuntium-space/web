@@ -17,6 +17,7 @@ export interface IApiServiceResponse<T>
 export interface IUser
 {
   id: string,
+  full_name: string | null,
   username: string | null,
   email: string,
 }

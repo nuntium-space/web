@@ -12,7 +12,7 @@ import { Utilities } from 'src/utilities/Utilities';
 export class AccountDetailsComponent
 {
   public updateAccountDetailsForm = new FormGroup({
-    fullName: new FormControl(this.auth.user?.username),
+    fullName: new FormControl(this.auth.user?.full_name),
     username: new FormControl(this.auth.user?.username),
     email: new FormControl(this.auth.user?.email),
   });
