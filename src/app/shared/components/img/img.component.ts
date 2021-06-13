@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Theme } from '../../types/Theme';
 
 @Component({
   selector: 'shared-img',
@@ -9,6 +10,9 @@ export class ImgComponent
 {
   @Input()
   public src?: string;
+
+  @Input()
+  public theme: Theme = "light";
 
   public hasLoaded = false;
 

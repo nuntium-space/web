@@ -7,7 +7,7 @@
             <span>{{ "bundle.subscribe.included_publishers" | translate }}</span>
             <div class="publishers">
                 <a *ngFor="let publisher of publishers" routerLink="/publisher/{{ publisher.id }}">
-                    <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+                    <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" theme="dark"></shared-img>
                     {{ publisher.name }}
                 </a>
             </div>

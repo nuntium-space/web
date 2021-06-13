@@ -10,6 +10,12 @@ div
     max-height: 100%;
     animation: rotate 1s linear infinite;
 
+    &.dark
+    {
+        border-color: var(--secondary-color);
+        border-left-color: transparent;
+    }
+
     @keyframes rotate
     {
         to
