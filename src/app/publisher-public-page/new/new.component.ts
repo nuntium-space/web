@@ -71,6 +71,9 @@ export class WriteNewArticleComponent implements AfterViewInit
 
         break;
       }
+
+      case "undo": this.editor?.chain().focus().undo().run(); break;
+      case "redo": this.editor?.chain().focus().redo().run(); break;
     }
   }
 

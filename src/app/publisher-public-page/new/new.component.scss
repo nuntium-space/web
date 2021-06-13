@@ -8,6 +8,13 @@ main
         flex-wrap: wrap;
         gap: 0.2rem;
         margin-bottom: 0.5rem;
+
+        & > div
+        {
+            display: flex;
+            gap: 0.2rem;
+            margin-right: 1rem;
+        }
     }
 }
 
