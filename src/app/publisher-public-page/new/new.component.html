@@ -1,10 +1,10 @@
 <shared-header></shared-header>
 
-<main>
+<aside>
+    <header>
+        <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
+    </header>
     <shared-form [submitButtonText]="'generic.submit' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
-        <div class="title">
-            <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
-        </div>
         <label>
             {{ "publisher_public_page.new_article.title" | translate }}
             <input formControlName="title" type="text">
@@ -14,14 +14,17 @@
                 </p>
             </div>
         </label>
-        <label>
-            {{ "publisher_public_page.new_article.content" | translate }}
-            <textarea formControlName="content" rows="30"></textarea>
-            <div class="errors">
-                <p *ngFor="let error of form.get('content')?.errors?.errors">
-                    {{ "errors." + error.error | translate:error.params }}
-                </p>
-            </div>
-        </label>
     </shared-form>
+</aside>
+
+<main>
+    <label>
+        {{ "publisher_public_page.new_article.content" | translate }}
+        <div id="editor"></div>
+        <div class="errors">
+            <p *ngFor="let error of form.get('content')?.errors?.errors">
+                {{ "errors." + error.error | translate:error.params }}
+            </p>
+        </div>
+    </label>
 </main>

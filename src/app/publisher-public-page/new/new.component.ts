@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Editor } from '@tiptap/core';
+import StarterKit from '@tiptap/starter-kit';
 import { ApiService, IAuthor } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
-export class WriteNewArticleComponent
+export class WriteNewArticleComponent implements AfterViewInit
 {
   private author?: IAuthor;
 
@@ -17,6 +19,8 @@ export class WriteNewArticleComponent
     title: new FormControl(),
     content: new FormControl(),
   });
+
+  public editor?: Editor;
 
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute, auth: AuthService)
   {
@@ -32,6 +36,17 @@ export class WriteNewArticleComponent
         this.author = response.data.find(author => author.publisher.id === route.snapshot.params.id);
       }
     });
+  }
+
+  public ngAfterViewInit()
+  {
+    this.editor = new Editor({
+      element: document.querySelector("#editor") ?? undefined,
+      extensions: [
+        StarterKit,
+      ],
+      content: "",
+    })
   }
 
   public async onSubmit(end: () => void)
