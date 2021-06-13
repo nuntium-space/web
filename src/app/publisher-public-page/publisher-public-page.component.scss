@@ -3,7 +3,7 @@
 :host
 {
     display: grid;
-    grid-template-columns: 20em max-content auto;
+    grid-template-columns: 30% max-content auto;
     grid-template-areas:
         "header header header"
         "aside main empty";
