@@ -10,6 +10,7 @@ import { BundlePublishersComponent } from './publishers/publishers.component';
 import { SharedModule } from '../shared/shared.module';
 import { PricesComponent } from './prices/prices.component';
 import { AddPriceComponent } from './prices/add/add.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddPriceComponent } from './prices/add/add.component';
     BundlePublishersComponent,
     PricesComponent,
     AddPriceComponent,
+    SubscribeComponent,
   ],
   imports: [
     CommonModule,

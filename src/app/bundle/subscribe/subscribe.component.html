@@ -1,0 +1,24 @@
+<section *ngIf="auth.user">
+    <div class="title">
+        <h1>{{ "bundle.subscribe.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form
+            [submitButtonText]="'bundle.subscribe.__title' | translate"
+            [formGroup]="subscribeForm"
+
+            (confirm)="subscribe($event)"
+        >
+            <label>
+                {{ "bundle.subscribe.choose_option" | translate }}
+                <select formControlName="price" required>
+                    <option *ngFor="let price of prices" value="{{ price.id }}">
+                        {{ format.currency(price.amount, price.currency) }}
+                        /
+                        {{ "bundle.subscribe.billing_period.month" | translate }}
+                    </option>
+                </select>
+            </label>
+        </shared-form>
+    </div>
+</section>
