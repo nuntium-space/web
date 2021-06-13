@@ -1,38 +1,32 @@
-<app-header></app-header>
+<section>
+    <div class="title">
+        <h1>{{ "settings.account.advanced.delete_account.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <div class="delete-account">
+            <div>
+                <h3>{{ "settings.account.advanced.delete_account.meaning.__title" | translate }}:</h3>
+                <ul>
+                    <li
+                        *ngFor="let item of 'settings.account.advanced.delete_account.meaning.items' | translate"
 
-<settings-menu section="advanced"></settings-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.account.advanced.delete_account.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <div class="delete-account">
-                <div>
-                    <h3>{{ "settings.account.advanced.delete_account.meaning.__title" | translate }}:</h3>
-                    <ul>
-                        <li
-                            *ngFor="let item of 'settings.account.advanced.delete_account.meaning.items' | translate"
-
-                            [innerHTML]="item"
-                        >
-                        </li>
-                    </ul>
-                    <h3>{{ "settings.account.advanced.delete_account.conditions.__title" | translate }}:</h3>
-                    <ul>
-                        <li *ngFor="let item of 'settings.account.advanced.delete_account.conditions.items' | translate">
-                            {{ item }}
-                        </li>
-                    </ul>
-                </div>
-                <danger-button
-                    [text]="'generic.delete' | translate"
-                    [alertText]="'generic.delete' | translate"
-
-                    (confirm)="deleteAccount()"
-                ></danger-button>
+                        [innerHTML]="item"
+                    >
+                    </li>
+                </ul>
+                <h3>{{ "settings.account.advanced.delete_account.conditions.__title" | translate }}:</h3>
+                <ul>
+                    <li *ngFor="let item of 'settings.account.advanced.delete_account.conditions.items' | translate">
+                        {{ item }}
+                    </li>
+                </ul>
             </div>
+            <shared-danger-button
+                [text]="'generic.delete' | translate"
+                [alertText]="'generic.delete' | translate"
+
+                (confirm)="deleteAccount()"
+            ></shared-danger-button>
         </div>
-    </section>
-</main>
+    </div>
+</section>

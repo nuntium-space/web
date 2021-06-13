@@ -1,6 +1,28 @@
-@import "../bundle";
+@import "~src/variables";
 
-.add-pm-msg
+.publishers
 {
-    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    > *
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: max-content;
+        padding: 1rem;
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+        font-weight: $bold;
+
+        shared-img
+        {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+        }
+    }
 }

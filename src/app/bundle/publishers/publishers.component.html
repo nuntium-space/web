@@ -1,37 +1,34 @@
-<app-header></app-header>
-
-<bundle-menu section="publishers"></bundle-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "bundle.publishers.__title" | translate }}</h1>
-            <button routerLink="add">
-                &#43; {{ "generic.add" | translate }}
-            </button>
+<section>
+    <div class="title">
+        <h1>{{ "bundle.publishers.__title" | translate }}</h1>
+        <a routerLink="publishers/add" class="button">
+            {{ "generic.add" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!publishers">
+            <shared-spinner></shared-spinner>
         </div>
-        <div class="content">
-            <div *ngIf="!publishers">
-                <spinner></spinner>
+        <div *ngIf="publishers" class="list">
+            <div *ngIf="publishers.length === 0">
+                <p>{{ "bundle.publishers.empty" | translate }}</p>
             </div>
-            <div *ngIf="publishers" class="list">
-                <div *ngIf="publishers.length === 0">
-                    <p>{{ "bundle.publishers.empty" | translate }}</p>
-                </div>
-                <div *ngFor="let publisher of publishers" class="list-item-with-actions">
-                    <a
-                        routerLink="/publisher/{{ publisher.id }}"
-                        class="dark"
+            <div *ngFor="let publisher of publishers" class="list-item-with-actions">
+                <a routerLink="/publisher/{{ publisher.id }}">
+                    <p>{{ publisher.name }}</p>
+                </a>
+                <shared-popup-menu theme="light">
+                    <shared-danger-button
+                        theme="dark"
+
+                        [text]="'generic.remove' | translate"
+                        [alertText]="'generic.remove' | translate"
+
+                        (confirm)="removePublisher(publisher)"
                     >
-                        <p>{{ publisher.name }}</p>
-                    </a>
-                    <div class="actions">
-                        <button (click)="removePublisher(publisher)">
-                            {{ "generic.remove" | translate }}
-                        </button>
-                    </div>
-                </div>
+                    </shared-danger-button>
+                </shared-popup-menu>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>

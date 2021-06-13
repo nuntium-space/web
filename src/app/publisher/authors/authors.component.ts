@@ -1,27 +1,34 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService, IAuthor } from 'src/app/services/api/api.service';
+import { Component, Input, OnChanges } from '@angular/core';
+import { ApiService, IAuthor, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-authors',
+  selector: 'publisher-authors',
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.scss']
 })
-export class AuthorsComponent
+export class AuthorsComponent implements OnChanges
 {
+  @Input()
+  public publisher?: IPublisher;
+
   public authors?: IAuthor[];
 
-  constructor(private api: ApiService, route: ActivatedRoute)
+  constructor(private api: ApiService)
+  {}
+
+  public ngOnChanges()
   {
-    route.params.subscribe({
-      next: params =>
+    if (!this.publisher)
+    {
+      return;
+    }
+
+    this.api
+      .listAuthorsForPublisher(this.publisher.id)
+      .then(response =>
       {
-        api.listAuthorsForPublisher(params.id).then(response =>
-        {
-          this.authors = response.data;
-        });
-      },
-    });
+        this.authors = response.data;
+      });
   }
 
   public async removeAuthor(author: IAuthor)

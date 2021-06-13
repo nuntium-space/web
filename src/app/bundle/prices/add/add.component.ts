@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, ICurrency } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'add-price',
+  selector: 'bundle-prices-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
@@ -34,10 +34,8 @@ export class AddPriceComponent
     });
   }
 
-  public async onSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.bundleId)
     {
       return;
@@ -55,6 +53,8 @@ export class AddPriceComponent
       amount: Math.trunc(amount),
       currency,
     });
+
+    end();
 
     this.form.get("amount")?.setErrors({
       errors: response.errors?.filter(e => e.field === "amount")

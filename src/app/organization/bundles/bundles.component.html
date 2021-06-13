@@ -1,33 +1,40 @@
-<app-header></app-header>
-
-<organization-menu section="bundles"></organization-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "organization.bundles.__title" | translate }}</h1>
-            <button routerLink="create">
-                &#43; {{ "generic.create" | translate }}
-            </button>
+<section>
+    <div class="title">
+        <h1>{{ "organization.bundles.__title" | translate }}</h1>
+        <a routerLink="bundles/create" class="button">
+            {{ "generic.create" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!bundles">
+            <shared-spinner></shared-spinner>
         </div>
-        <div class="content">
-            <div *ngIf="!bundles">
-                <spinner></spinner>
+        <div *ngIf="bundles" class="list">
+            <div *ngIf="bundles.length === 0">
+                <p>{{ "organization.bundles.empty" | translate }}</p>
             </div>
-            <div *ngIf="bundles" class="list">
-                <div *ngIf="bundles.length === 0">
-                    <p>{{ "organization.bundles.empty" | translate }}</p>
-                </div>
-                <a
-                    *ngFor="let bundle of bundles"
-
-                    routerLink="/bundle/{{ bundle.id }}"
-                    class="dark"
-                >
-                    <badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></badge>
+            <div *ngFor="let bundle of bundles" class="list-item-with-actions">
+                <a routerLink="/bundle/{{ bundle.id }}">
+                    <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
                     <p>{{ bundle.name }}</p>
                 </a>
+                <shared-popup-menu theme="light">
+                    <shared-danger-button
+                        *ngIf="bundle.active"
+
+                        theme="dark"
+
+                        [text]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
+                        [alertText]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
+
+                        (confirm)="archiveBundle(bundle)"
+                    >
+                    </shared-danger-button>
+                    <button *ngIf="!bundle.active" class="dark" (click)="restoreBundle(bundle)">
+                        {{ 'generic.restore' | translate }}
+                    </button>
+                </shared-popup-menu>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>

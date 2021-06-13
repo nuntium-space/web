@@ -1,29 +1,25 @@
-<aside *ngIf="bundle">
+<aside>
+    <header>
+        <small>{{ "bundle.__title" | translate }}</small>
+        <h1 *ngIf="bundle">{{ bundle.name }}</h1>
+    </header>
     <section>
-        <div class="title">
-            <h1>{{ bundle.name }}</h1>
-        </div>
+        <div class="title"></div>
         <div class="content">
             <a
-                routerLink="/bundle/{{ bundle.id }}/details"
+                routerLink="details"
                 [class.selected]="section === 'details'"
             >
                 {{ "bundle.details.__title" | translate }}
             </a>
             <a
-                routerLink="/bundle/{{ bundle.id }}/prices"
+                routerLink="prices"
                 [class.selected]="section === 'prices'"
             >
                 {{ "bundle.prices.__title" | translate }}
             </a>
             <a
-                routerLink="/bundle/{{ bundle.id }}/subscribe"
-                [class.selected]="section === 'subscribe'"
-            >
-                {{ "bundle.subscribe.__title" | translate }}
-            </a>
-            <a
-                routerLink="/bundle/{{ bundle.id }}/publishers"
+                routerLink="publishers"
                 [class.selected]="section === 'publishers'"
             >
                 {{ "bundle.publishers.__title" | translate }}

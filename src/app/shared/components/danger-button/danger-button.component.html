@@ -1,0 +1,9 @@
+<button
+    class="danger {{ theme }} {{ size === 'fill' ? 'fill' : '' }}"
+
+    (click)="showDialog()"
+
+    [disabled]="dialogRef"
+>
+    {{ text }}
+</button>

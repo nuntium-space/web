@@ -1,26 +1,45 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService, IPublisher } from 'src/app/services/api/api.service';
+import { Component, Input, OnChanges } from '@angular/core';
+import { ApiService, IOrganization, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-publishers',
+  selector: 'organization-publishers',
   templateUrl: './publishers.component.html',
   styleUrls: ['./publishers.component.scss']
 })
-export class PublishersComponent
+export class PublishersComponent implements OnChanges
 {
+  @Input()
+  public organization?: IOrganization;
+
   public publishers?: IPublisher[];
 
-  constructor(api: ApiService, route: ActivatedRoute)
+  constructor(private api: ApiService)
+  {}
+
+  public ngOnChanges()
   {
-    route.params.subscribe({
-      next: params =>
+    if (!this.organization)
+    {
+      return;
+    }
+
+    this.api
+      .listPublishersForOrganization(this.organization.id)
+      .then(response =>
       {
-        api.listPublishersForOrganization(params.id).then(response =>
-        {
-          this.publishers = response.data;
-        });
-      },
-    });
+        this.publishers = response.data;
+      });
+  }
+
+  public async deletePublisher(publisher: IPublisher)
+  {
+    if (!this.publishers)
+    {
+      return;
+    }
+
+    await this.api.deletePublisher(publisher.id);
+
+    this.publishers = this.publishers.filter(_ => _.id !== publisher.id);
   }
 }

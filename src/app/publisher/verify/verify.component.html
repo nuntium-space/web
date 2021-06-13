@@ -1,47 +1,41 @@
-<app-header></app-header>
-
-<publisher-menu></publisher-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "publisher.verify.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <spinner *ngIf="!publisher"></spinner>
-            <div *ngIf="publisher">
-                <span>
-                    {{ "publisher.verify.message.before_link" | translate }}
-                    <a [href]="publisher.url" target="_blank" class="dark">
-                        <b>{{ publisher.url }}</b>
-                    </a>
-                    {{ "publisher.verify.message.after_link" | translate }}
-                </span>
-                <div *ngIf="publisherVerificationData" class="record">
-                    <p>
-                        <small>{{ "publisher.verify.record.type" | translate }}</small>
-                        <br>
-                        <b>TXT</b>
-                    </p>
-                    <p>
-                        <small>{{ "publisher.verify.record.host.__title" | translate }}</small>
-                        <br>
-                        <b>
-                            {{ "publisher.verify.record.host.blank" | translate }}
-                        </b>
-                        {{ "publisher.verify.record.host.or" | translate }}
-                        <b>@</b>
-                    </p>
-                    <p>
-                        <small>{{ "publisher.verify.record.value" | translate }}</small>
-                        <br>
-                        <b>{{ publisherVerificationData.dns.record }}</b>
-                    </p>
-                </div>
-                <button (click)="verify()">
-                    {{ "publisher.verify.__title" | translate }}
-                </button>
+<section>
+    <div class="title">
+        <h1>{{ "publisher.verify.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-spinner *ngIf="!publisher"></shared-spinner>
+        <div *ngIf="publisher">
+            <span>
+                {{ "publisher.verify.message.before_link" | translate }}
+                <a [href]="publisher.url" target="_blank">
+                    <b>{{ publisher.url }}</b>
+                </a>
+                {{ "publisher.verify.message.after_link" | translate }}
+            </span>
+            <div *ngIf="publisherVerificationData" class="record">
+                <p>
+                    <small>{{ "publisher.verify.record.type" | translate }}</small>
+                    <br>
+                    <b>TXT</b>
+                </p>
+                <p>
+                    <small>{{ "publisher.verify.record.host.__title" | translate }}</small>
+                    <br>
+                    <b>
+                        {{ "publisher.verify.record.host.blank" | translate }}
+                    </b>
+                    {{ "publisher.verify.record.host.or" | translate }}
+                    <b>@</b>
+                </p>
+                <p>
+                    <small>{{ "publisher.verify.record.value" | translate }}</small>
+                    <br>
+                    <b>{{ publisherVerificationData.dns.record }}</b>
+                </p>
             </div>
+            <button (click)="verify()">
+                {{ "publisher.verify.__title" | translate }}
+            </button>
         </div>
-    </section>
-</main>
+    </div>
+</section>

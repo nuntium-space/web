@@ -1,14 +1,14 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <main>
-    <form [formGroup]="form" (submit)="onSubmit($event)">
+    <shared-form [submitButtonText]="'generic.submit' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
         <div class="title">
             <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
         </div>
         <label>
             {{ "publisher_public_page.new_article.title" | translate }}
             <input formControlName="title" type="text">
-            <div *ngIf="form.get('title')?.errors" class="errors">
+            <div class="errors">
                 <p *ngFor="let error of form.get('title')?.errors?.errors">
                     {{ "errors." + error.error | translate:error.params }}
                 </p>
@@ -17,14 +17,11 @@
         <label>
             {{ "publisher_public_page.new_article.content" | translate }}
             <textarea formControlName="content" rows="30"></textarea>
-            <div *ngIf="form.get('content')?.errors" class="errors">
+            <div class="errors">
                 <p *ngFor="let error of form.get('content')?.errors?.errors">
                     {{ "errors." + error.error | translate:error.params }}
                 </p>
             </div>
         </label>
-        <button type="submit">
-            {{ "generic.submit" | translate }}
-        </button>
-    </form>
+    </shared-form>
 </main>

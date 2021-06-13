@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FEED_PAGE_SIZE } from 'src/config';
+import { Config } from 'src/config/Config';
 import { environment } from 'src/environments/environment';
 
-interface IApiServiceResponse<T>
+export interface IApiServiceResponse<T>
 {
   status: number,
   success: boolean,
@@ -19,7 +19,6 @@ export interface IUser
   id: string,
   username: string | null,
   email: string,
-  has_default_payment_method: boolean,
 }
 
 export interface IOrganization
@@ -152,9 +151,7 @@ export class ApiService
     contentType: "application/json" | "multipart/form-data" = "application/json",
   ): Promise<IApiServiceResponse<any>>
   {
-    const headers: HeadersInit = {
-      "Authorization": `Bearer ${localStorage.getItem("session.id")}`
-    };
+    const headers: HeadersInit = {};
 
     if (contentType !== "multipart/form-data")
     {
@@ -167,6 +164,7 @@ export class ApiService
       body: contentType === "application/json"
         ? JSON.stringify(body)
         : body,
+      credentials: "include",
     });
 
     const result: IApiServiceResponse<any> = {
@@ -303,6 +301,11 @@ export class ApiService
     return this.send("PATCH", `bundles/${id}`, data);
   }
 
+  public async archiveBundle(id: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `bundles/${id}`);
+  }
+
   public async removePublisherFromBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `bundles/${bundleId}/publishers/${publisherId}`);
@@ -428,7 +431,7 @@ export class ApiService
 
   public async updatePublisherImage(id: string, data: {
     image: File,
-  }): Promise<IApiServiceResponse<IPublisher>>
+  }): Promise<IApiServiceResponse<{ url: string }>>
   {
     const fd = new FormData();
     fd.append("image", data.image);
@@ -443,17 +446,17 @@ export class ApiService
 
   public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `search?query=${query}&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+    return this.send("GET", `search?query=${query}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
-  public async retrieveSession(id: string): Promise<IApiServiceResponse<ISession>>
+  public async retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>>
   {
-    return this.send("GET", `sessions/${id}`);
+    return this.send("GET", `sessions/current`);
   }
 
-  public async deleteSession(id: string): Promise<IApiServiceResponse<void>>
+  public async deleteCurrentSession(): Promise<IApiServiceResponse<void>>
   {
-    return this.send("DELETE", `sessions/${id}`);
+    return this.send("DELETE", `sessions/current`);
   }
 
   public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>>
@@ -463,7 +466,7 @@ export class ApiService
 
   public async retrieveUserFeed(userId: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `users/${userId}/feed?expand[]=author&expand[]=author.user&expand[]=author.publisher&limit=${FEED_PAGE_SIZE}&offset=${page * FEED_PAGE_SIZE}`);
+    return this.send("GET", `users/${userId}/feed?expand[]=author&expand[]=author.user&expand[]=author.publisher&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}`);
   }
 
   public async listOrganizationsForUser(userId: string): Promise<IApiServiceResponse<IOrganization[]>>

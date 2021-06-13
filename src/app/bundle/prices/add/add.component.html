@@ -1,55 +1,46 @@
-<app-header></app-header>
+<section>
+    <div class="title">
+        <h1>{{ "bundle.prices.add.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form [submitButtonText]="'generic.create' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
+            <label>
+                {{ "bundle.prices.add.amount" | translate }}
+                <input
+                    formControlName="amount"
 
-<bundle-menu section="prices"></bundle-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "bundle.prices.add.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <form [formGroup]="form" (submit)="onSubmit($event)">
-                <label>
-                    {{ "bundle.prices.add.amount" | translate }}
-                    <input
-                        formControlName="amount"
-
-                        type="number"
-                        name="amount"
-                        min="0"
-                        required
-                    >
-                    <div *ngIf="form.get('amount')?.errors" class="errors">
-                        <p *ngFor="let error of form.get('amount')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <small
-                    [innerHTML]="'bundle.prices.add.fee_msg' | translate"
+                    type="number"
+                    name="amount"
+                    min="0"
+                    required
                 >
-                </small>
-                <label>
-                    {{ "bundle.prices.add.currency" | translate }}
-                    <select formControlName="currency">
-                        <option
-                            *ngFor="let currency of currencies"
+                <div class="errors">
+                    <p *ngFor="let error of form.get('amount')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+            <small
+                [innerHTML]="'bundle.prices.add.fee_msg' | translate"
+            >
+            </small>
+            <label>
+                {{ "bundle.prices.add.currency" | translate }}
+                <select formControlName="currency">
+                    <option
+                        *ngFor="let currency of currencies"
 
-                            value="{{ currency.name }}"
-                        >
-                            {{ currency.name.toUpperCase() }}
-                        </option>
-                    </select>
-                    <div *ngIf="form.get('currency')?.errors" class="errors">
-                        <p *ngFor="let error of form.get('currency')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <button type="submit">
-                    {{ "generic.create" | translate }}
-                </button>
-            </form>
-        </div>
-    </section>
-</main>
+                        value="{{ currency.name }}"
+                    >
+                        {{ currency.name.toUpperCase() }}
+                    </option>
+                </select>
+                <div class="errors">
+                    <p *ngFor="let error of form.get('currency')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+        </shared-form>
+    </div>
+</section>

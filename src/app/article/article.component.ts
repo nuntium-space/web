@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
-import { AuthService } from '../services/auth/auth.service';
-import { FormatService } from '../services/format/format.service';
+import { AuthService } from '../shared/services/auth/auth.service';
+import { FormatService } from '../shared/services/format/format.service';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
-export class ArticleComponent
+export class ArticleComponent implements OnInit
 {
   public updateArticleForm = new FormGroup({
     title: new FormControl(),
@@ -27,12 +27,15 @@ export class ArticleComponent
 
   public isUpdatingArticle = false;
 
-  constructor(public auth: AuthService, public format: FormatService, private api: ApiService, private router: Router, route: ActivatedRoute)
+  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router)
+  {}
+
+  public ngOnInit()
   {
-    route.params.subscribe({
+    this.route.params.subscribe({
       next: (params) =>
       {
-        api.retrieveArticle(params.id).then((response) =>
+        this.api.retrieveArticle(params.id).then((response) =>
         {
           // Payment Required
           if (response.status === 402)
@@ -45,7 +48,7 @@ export class ArticleComponent
           }
         });
 
-        api.listCommentsForArticle(params.id, null).then((response) =>
+        this.api.listCommentsForArticle(params.id, null).then((response) =>
         {
           if (response.data)
           {
@@ -77,10 +80,8 @@ export class ArticleComponent
     }
   }
 
-  public async updateArticle(e: Event)
+  public async updateArticle(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.rawArticle)
     {
       return;
@@ -90,6 +91,8 @@ export class ArticleComponent
       title: this.updateArticleForm.get("title")?.value ?? "",
       content: this.updateArticleForm.get("content")?.value ?? "",
     });
+
+    end();
 
     this.updateArticleForm.get("title")?.setErrors({
       errors: response.errors?.filter(e => e.field === "title")

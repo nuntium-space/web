@@ -1,65 +1,63 @@
-<app-header></app-header>
-
-<settings-menu section="payment-methods"></settings-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
-            <button routerLink="add">
-                &#43; {{ "generic.add" | translate }}
-            </button>
+<section>
+    <div class="title">
+        <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
+        <a routerLink="payment-methods/add" class="button">
+            {{ "generic.add" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!paymentMethods">
+            <shared-spinner></shared-spinner>
         </div>
-        <div class="content">
-            <div *ngIf="!paymentMethods">
-                <spinner></spinner>
+        <div *ngIf="paymentMethods" class="list">
+            <div *ngIf="paymentMethods.length === 0">
+                <p>{{ "settings.account.payment_methods.empty" | translate }}</p>
             </div>
-            <div *ngIf="paymentMethods" class="list">
-                <div *ngIf="paymentMethods.length === 0">
-                    <p>{{ "settings.account.payment_methods.empty" | translate }}</p>
+            <div
+                *ngFor="let paymentMethod of paymentMethods"
+
+                [ngSwitch]="paymentMethod.type"
+
+                class="list-item-with-actions"
+            >
+                <div *ngSwitchCase="'card'">
+                    <shared-badge
+                        *ngIf="paymentMethod.__metadata?.is_default"
+
+                        [text]="'settings.account.payment_methods.default' | translate"
+                    >
+                    </shared-badge>
+                    <p class="brand">{{ paymentMethod.data.brand }}</p>
+                    <p>
+                        {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
+                        /
+                        {{ paymentMethod.data.exp_year }}
+                    </p>
+                    <p>
+                        &bull;&bull;&bull;&bull;
+                        {{ paymentMethod.data.last4 }}
+                    </p>
                 </div>
-                <div
-                    *ngFor="let paymentMethod of paymentMethods"
+                <shared-popup-menu theme="light">
+                    <button
+                        class="dark"
 
-                    [ngSwitch]="paymentMethod.type"
+                        [disabled]="paymentMethod.__metadata?.is_default"
 
-                    class="list-item-with-actions"
-                >
-                    <div *ngSwitchCase="'card'">
-                        <badge
-                            *ngIf="paymentMethod.__metadata?.is_default"
+                        (click)="setDefaultPaymentMethod(paymentMethod)"
+                    >
+                        {{ "settings.account.payment_methods.make_default" | translate }}
+                    </button>
+                    <shared-danger-button
+                        theme="dark"
 
-                            [text]="'settings.account.payment_methods.default' | translate"
-                        >
-                        </badge>
-                        <p class="brand">{{ paymentMethod.data.brand }}</p>
-                        <p>
-                            {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
-                            /
-                            {{ paymentMethod.data.exp_year }}
-                        </p>
-                        <p>
-                            &bull;&bull;&bull;&bull;
-                            {{ paymentMethod.data.last4 }}
-                        </p>
-                    </div>
-                    <div class="actions">
-                        <button
-                            [disabled]="paymentMethod.__metadata?.is_default"
+                        [text]="'generic.remove' | translate"
+                        [alertText]="'generic.remove' | translate"
 
-                            (click)="setDefaultPaymentMethod(paymentMethod)"
-                        >
-                            {{ "settings.account.payment_methods.make_default" | translate }}
-                        </button>
-                        <danger-button
-                            [text]="'generic.remove' | translate"
-                            [alertText]="'generic.remove' | translate"
-
-                            (confirm)="removePaymentMethod(paymentMethod)">
-                        </danger-button>
-                    </div>
-                </div>
+                        (confirm)="removePaymentMethod(paymentMethod)">
+                    </shared-danger-button>
+                </shared-popup-menu>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>

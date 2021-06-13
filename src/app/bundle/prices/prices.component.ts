@@ -1,28 +1,35 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService, IPrice } from 'src/app/services/api/api.service';
-import { FormatService } from 'src/app/services/format/format.service';
+import { Component, Input, OnChanges } from '@angular/core';
+import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
+import { FormatService } from 'src/app/shared/services/format/format.service';
 
 @Component({
-  selector: 'app-prices',
+  selector: 'bundle-prices',
   templateUrl: './prices.component.html',
   styleUrls: ['./prices.component.scss']
 })
-export class PricesComponent
+export class PricesComponent implements OnChanges
 {
+  @Input()
+  public bundle?: IBundle;
+
   public prices?: IPrice[];
 
-  constructor(public format: FormatService, private api: ApiService, route: ActivatedRoute)
+  constructor(public format: FormatService, private api: ApiService)
+  {}
+
+  public ngOnChanges()
   {
-    route.params.subscribe({
-      next: params =>
+    if (!this.bundle)
+    {
+      return;
+    }
+
+    this.api
+      .listPricesForBundle(this.bundle.id)
+      .then(response =>
       {
-        api.listPricesForBundle(params.id).then(response =>
-        {
-          this.prices = response.data;
-        });
-      },
-    });
+        this.prices = response.data;
+      });
   }
 
   public async archivePrice(price: IPrice)

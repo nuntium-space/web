@@ -1,0 +1,10 @@
+<shared-header></shared-header>
+
+<main *ngIf="articles">
+    <div *ngIf="articles.length === 0" class="empty-feed">
+        <img src="/assets/empty-feed.svg" alt="">
+        <h1>{{ "feed.empty.title" | translate }}</h1>
+        <p>{{ "feed.empty.subtitle" | translate }}</p>
+    </div>
+    <article-list [articles]="articles"></article-list>
+</main>

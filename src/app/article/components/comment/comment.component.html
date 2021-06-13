@@ -1,0 +1,52 @@
+<div *ngIf="comment" class="comment">
+    <header>
+        <span class="user">{{ comment.user.username }}</span>
+        &bull;
+        <small title="{{ format.dateTime(comment.created_at, 'datetime') }}">
+            {{ format.dateTime(comment.created_at, "shortdate") }}
+        </small>
+        <span *ngIf="comment.created_at !== comment.updated_at">
+            &bull;
+            <small title="{{ format.dateTime(comment.updated_at, 'datetime') }}">
+                {{ "components.comment_list.comment.updated_on" | translate }}
+                {{ format.dateTime(comment.updated_at, "shortdate") }}
+            </small>
+        </span>
+    </header>
+    <pre>{{ comment.content }}</pre>
+    <details
+        *ngIf="comment.reply_count > 0"
+
+        class="replies"
+
+        (toggle)="loadReplies($event)"
+    >
+        <summary>{{ "components.comment_list.comment.replies" | translate }}</summary>
+        <article-comment-list [article]="article" [comments]="replies"></article-comment-list>
+    </details>
+    <article-add-comment-form
+        *ngIf="showReplyForm"
+
+        [article]="article"
+        [parent]="comment"
+
+        (commentCreated)="onCommentCreated($event)"
+    >
+    </article-add-comment-form>
+    <footer>
+        <button
+            class="small"
+
+            (click)="showReplyForm = !showReplyForm"
+        >
+            {{
+                (
+                    showReplyForm
+                        ? "components.comment_list.comment.actions.cancel"
+                        : "components.comment_list.comment.actions.reply"
+                )
+                | translate
+            }}
+        </button>
+    </footer>
+</div>

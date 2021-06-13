@@ -1,50 +1,63 @@
-<app-header></app-header>
+<section>
+    <div class="title">
+        <h1>{{ "settings.account.details.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="updateAccountDetailsForm" (confirm)="onUpdateAccountDetailsFormSubmit($event)">
+            <label>
+                {{ "generic.full_name" | translate }}
+                <input
+                    formControlName="fullName"
 
-<settings-menu section="details"></settings-menu>
+                    type="text"
+                    name="fullname"
+                    autocomplete="name"
+                    required
+                >
+                <div class="info">
+                    <p>This will appear publicly if you are an author</p>
+                </div>
+                <div class="errors">
+                    <p *ngFor="let error of updateAccountDetailsForm.get('fullname')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+            <label>
+                {{ "generic.username" | translate }}
+                <input
+                    formControlName="username"
 
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.account.details.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <form [formGroup]="updateAccountDetailsForm" (submit)="onUpdateAccountDetailsFormSubmit($event)">
-                <label>
-                    {{ "generic.username" | translate }}
-                    <input
-                        formControlName="username"
+                    type="text"
+                    name="username"
+                    autocomplete="username"
+                    required
+                >
+                <div class="info">
+                    <p>This will appear publicly if you comment on an article and don't have a full name set</p>
+                </div>
+                <div class="errors">
+                    <p *ngFor="let error of updateAccountDetailsForm.get('username')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+            <label>
+                {{ "generic.email" | translate }}
+                <input
+                    formControlName="email"
 
-                        type="text"
-                        name="username"
-                        autocomplete="username"
-                        required
-                    >
-                    <div *ngIf="updateAccountDetailsForm.get('username')?.errors" class="errors">
-                        <p *ngFor="let error of updateAccountDetailsForm.get('username')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <label>
-                    {{ "generic.email" | translate }}
-                    <input
-                        formControlName="email"
-
-                        type="email"
-                        name="email"
-                        autocomplete="email"
-                        required
-                    >
-                    <div *ngIf="updateAccountDetailsForm.get('email')?.errors" class="errors">
-                        <p *ngFor="let error of updateAccountDetailsForm.get('email')?.errors?.errors">
-                            {{ "errors." + error.error | translate:error.params }}
-                        </p>
-                    </div>
-                </label>
-                <button type="submit">
-                    {{ "generic.update" | translate }}
-                </button>
-            </form>
-        </div>
-    </section>
-</main>
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                >
+                <div class="errors">
+                    <p *ngFor="let error of updateAccountDetailsForm.get('email')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+        </shared-form>
+    </div>
+</section>

@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'app-verify-publisher',
+  selector: 'publisher-verify',
   templateUrl: './verify.component.html',
   styleUrls: ['./verify.component.scss']
 })
-export class VerifyPublisherComponent implements OnInit
+export class VerifyPublisherComponent implements OnChanges
 {
+  @Input()
   public publisher?: IPublisher;
 
   public publisherVerificationData?: { dns: { record: string } };
@@ -16,26 +17,19 @@ export class VerifyPublisherComponent implements OnInit
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
-  public ngOnInit()
+  public ngOnChanges()
   {
-    this.route.params.subscribe({
-      next: params =>
-      {
-        this.api
-          .retrievePublisher(params.id)
-          .then(response =>
-          {
-            this.publisher = response.data;
-          });
+    if (!this.publisher)
+    {
+      return;
+    }
 
-        this.api
-          .retrievePublisherVerificationData(params.id)
-          .then(response =>
-          {
-            this.publisherVerificationData = response.data;
-          });
-      },
-    });
+    this.api
+      .retrievePublisherVerificationData(this.publisher.id)
+      .then(response =>
+      {
+        this.publisherVerificationData = response.data;
+      });
   }
 
   public async verify()

@@ -3,7 +3,7 @@
 :host
 {
     display: grid;
-    grid-template-columns: 20em max-content auto;
+    grid-template-columns: 30% max-content auto;
     grid-template-areas:
         "header header header"
         "aside main empty";
@@ -16,6 +16,20 @@ aside
     height: min-content;
     position: sticky;
     top: 1em;
+
+    header
+    {
+        display: flex;
+        align-items: flex-end;
+        gap: 1rem;
+
+        shared-img
+        {
+            border-radius: 0.5rem;
+            height: 100px;
+            width: 100px;
+        }
+    }
 
     h1
     {

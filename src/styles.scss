@@ -37,24 +37,14 @@ aside
     header
     {
         padding: 1rem;
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
         background-color: rgba($primary-color, 0.1);
         border: 1px solid var(--primary-color);
         border-radius: 0.5rem;
 
         h1
         {
-            margin: 1rem 0;
-        }
-
-        > :first-child
-        {
-            margin-top: 0;
-        }
-
-        > :last-child
-        {
-            margin-bottom: 0;
+            margin: 0;
         }
     }
 }
@@ -66,7 +56,8 @@ footer
 
 a,
 .link,
-button
+button,
+.button
 {
     cursor: pointer;
 }
@@ -80,11 +71,11 @@ a,
 
     &:focus
     {
-        box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 
         &.dark
         {
-            box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
         }
     }
 
@@ -136,6 +127,36 @@ button,
         background-color: var(--danger-color);
     }
 
+    &.loading
+    {
+        color: transparent;
+        position: relative;
+
+        &::before
+        {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            border-top-color: black;
+            animation: spinner 0.6s linear infinite;
+        }
+
+        @keyframes spinner
+        {
+            to
+            {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
     &:focus
     {
         box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
@@ -165,13 +186,33 @@ button,
 
 form
 {
+    width: 100%;
     max-width: 500px;
 
     .title
     {
         margin-bottom: 2rem;
 
-        h1
+        h1,
+        p
+        {
+            margin: 0;
+        }
+
+        p
+        {
+            margin-top: 0.2rem;
+        }
+    }
+
+    .row
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        label
         {
             margin: 0;
         }
@@ -195,18 +236,29 @@ label
         margin-top: 0.2rem;
     }
 
+    .info,
     .errors
     {
-        color: white;
-        background-color: var(--danger-color);
-        padding: 0.5em;
+        padding: 0.5rem;
         border-radius: 0.5rem;
-        margin-top: 0.5em;
+        margin-top: 0.2rem;
 
         p
         {
             margin: 0;
         }
+    }
+
+    .info
+    {
+        color: white;
+        background-color: cadetblue;
+    }
+
+    .errors
+    {
+        color: white;
+        background-color: var(--danger-color);
 
         &:empty
         {
@@ -216,7 +268,19 @@ label
 
     & ~ label
     {
-        margin-top: 1em;
+        margin-top: 1rem;
+    }
+
+    &.checkbox
+    {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+
+        input[type=checkbox]
+        {
+            width: max-content;
+        }
     }
 }
 
@@ -275,33 +339,36 @@ section
     border: 1px solid var(--primary-color);
     border-radius: 0.5rem;
 
-    .title:not(:empty)
+    > .title
     {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1em;
-        background-color: rgba($primary-color, 0.1);
-        border-bottom: 1px solid var(--primary-color);
-
-        h1
+        &:empty + .content > :first-child
         {
-            margin: 0;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        &:not(:empty)
+        {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: rgba($primary-color, 0.1);
+            border-bottom: 1px solid var(--primary-color);
+
+            h1
+            {
+                margin: 0;
+            }
         }
     }
 
-    .title:empty + .content > :first-child
-    {
-        border-top-left-radius: 0.5em;
-        border-top-right-radius: 0.5em;
-    }
-
-    .content
+    > .content
     {
         > *
         {
             margin: 0;
-            padding: 1em;
+            padding: 1rem;
 
             &:not(:first-child)
             {
@@ -338,7 +405,7 @@ section
 
     & ~ &
     {
-        margin-top: 1em;
+        margin-top: 1rem;
     }
 }
 
@@ -391,10 +458,8 @@ div.list
 
         &.list-item-with-actions
         {
-            display: grid;
-            border: 1px solid rgba($primary-color, 0.3);
+            display: flex;
             gap: 1em;
-            padding: 1rem;
 
             > :first-child
             {
@@ -402,18 +467,6 @@ div.list
                 color: var(--secondary-color);
                 background-color: var(--primary-color);
                 padding: 1rem;
-            }
-
-            .actions
-            {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1em;
-
-                button
-                {
-                    width: auto;
-                }
             }
         }
 
@@ -439,5 +492,8 @@ abbr
 
 hr
 {
-    margin: 1em 0;
+    margin: 1rem 0;
+    border-style: solid;
+    border-radius: 1px;
+    background-color: currentColor;
 }

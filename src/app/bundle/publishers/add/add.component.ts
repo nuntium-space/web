@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService, IBundle, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
-  selector: 'add-publisher',
+  selector: 'bundle-publishers-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })

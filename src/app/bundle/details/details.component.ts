@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
 
 @Component({
@@ -8,44 +7,49 @@ import { ApiService, IBundle } from 'src/app/services/api/api.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class BundleDetailsComponent
+export class BundleDetailsComponent implements OnChanges
 {
+  @Input()
   public bundle?: IBundle;
 
-  public detailsForm = new FormGroup({
+  @Output()
+  public update = new EventEmitter<IBundle>();
+
+  public form = new FormGroup({
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        api.retrieveBundle(params.id).then(response =>
-        {
-          this.bundle = response.data;
+  constructor(private api: ApiService)
+  {}
 
-          this.detailsForm.get("name")?.setValue(this.bundle?.name);
-        });
-      },
-    });
+  public ngOnChanges()
+  {
+    this.form.get("name")?.setValue(this.bundle?.name);
   }
 
-  public async onDetailsFormSubmit(e: Event)
+  public async onSubmit(end: () => void)
   {
-    e.preventDefault();
-
     if (!this.bundle)
     {
       return;
     }
 
     const response = await this.api.updateBundle(this.bundle.id, {
-      name: this.detailsForm.get("name")?.value,
+      name: this.form.get("name")?.value,
     });
 
-    this.detailsForm.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "name")
+    end();
+
+    Object.entries(this.form.controls).forEach(([ name, control ]) =>
+    {
+      control.setErrors({
+        errors: response.errors?.filter(e => e.field === name)
+      });
     });
+
+    if (response.success)
+    {
+      this.update.emit(response.data);
+    }
   }
 }

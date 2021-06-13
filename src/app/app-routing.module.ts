@@ -1,131 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
-import { ArticleComponent } from './article/article.component';
-import { BundleDetailsComponent } from './bundle/details/details.component';
-import { AddPriceComponent } from './bundle/prices/add/add.component';
-import { PricesComponent } from './bundle/prices/prices.component';
-import { AddPublisherComponent } from './bundle/publishers/add/add.component';
-import { BundlePublishersComponent } from './bundle/publishers/publishers.component';
-import { SubscribeComponent } from './bundle/subscribe/subscribe.component';
 import { ExploreComponent } from './explore/explore.component';
-import { SignedInGuard } from './guards/signed-in/signed-in.guard';
-import { SignedOutGuard } from './guards/signed-out/signed-out.guard';
 import { HomeComponent } from './home/home.component';
-import { OrganizationBundlesComponent } from './organization/bundles/bundles.component';
-import { CreateBundleComponent } from './organization/bundles/create/create.component';
-import { OrganizationDetailsComponent } from './organization/details/details.component';
-import { CreatePublisherComponent } from './organization/publishers/create/create.component';
-import { PublishersComponent } from './organization/publishers/publishers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
-import { AuthorsComponent } from './publisher/authors/authors.component';
-import { InviteAuthorComponent } from './publisher/authors/invite/invite.component';
-import { PublisherDetailsComponent } from './publisher/details/details.component';
-import { VerifyPublisherComponent } from './publisher/verify/verify.component';
-import { AdvancedComponent } from './settings/advanced/advanced.component';
-import { AccountDetailsComponent } from './settings/details/details.component';
-import { CreateOrganizationComponent } from './settings/organizations/create/create.component';
-import { OrganizationsComponent } from './settings/organizations/organizations.component';
-import { AddPaymentMethodComponent } from './settings/payment-methods/add/add.component';
-import { PaymentMethodsComponent } from './settings/payment-methods/payment-methods.component';
-import { PreferencesComponent } from './settings/preferences/preferences.component';
-import { UserPublishersComponent } from './settings/publishers/publishers.component';
-import { SecurityComponent } from './settings/security/security.component';
-import { SubscriptionsComponent } from './settings/subscriptions/subscriptions.component';
-import { SigninComponent } from './signin/signin.component';
+import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
 
 const routes: Routes = [
-  { path: "signin", component: SigninComponent, canActivate: [ SignedOutGuard ] },
+  {
+    path: "signin",
+    loadChildren: () => import("./sign-in/sign-in.module").then(_ => _.SignInModule),
+  },
   {
     path: "settings",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: AccountDetailsComponent },
-      { path: "security", component: SecurityComponent },
-      { path: "preferences", component: PreferencesComponent },
-      { path: "advanced", component: AdvancedComponent },
-      {
-        path: "organizations",
-        children: [
-          { path: "create", component: CreateOrganizationComponent },
-          { path: "", component: OrganizationsComponent },
-        ],
-      },
-      { path: "subscriptions", component: SubscriptionsComponent },
-      {
-        path: "payment-methods",
-        children: [
-          { path: "add", component: AddPaymentMethodComponent },
-          { path: "", component: PaymentMethodsComponent },
-        ],
-      },
-      { path: "publishers", component: UserPublishersComponent },
-      { path: "", component: AccountDetailsComponent },
-    ],
+    loadChildren: () => import("./settings/settings.module").then(_ => _.SettingsModule),
   },
-  { path: "article/:id", component: ArticleComponent, canActivate: [ SignedInGuard ] },
+  {
+    path: "article/:id",
+    loadChildren: () => import("./article/article.module").then(_ => _.ArticleModule),
+  },
   {
     path: "bundle/:id",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: BundleDetailsComponent },
-      {
-        path: "prices",
-        children: [
-          { path: "add", component: AddPriceComponent },
-          { path: "", component: PricesComponent },
-        ],
-      },
-      { path: "subscribe", component: SubscribeComponent },
-      {
-        path: "publishers",
-        children: [
-          { path: "add", component: AddPublisherComponent },
-          { path: "", component: BundlePublishersComponent },
-        ],
-      },
-      { path: "", component: BundleDetailsComponent },
-    ],
+    loadChildren: () => import("./bundle/bundle.module").then(_ => _.BundleModule),
   },
   { path: "explore", component: ExploreComponent, canActivate: [ SignedInGuard ] },
   {
     path: "organization/:id",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: OrganizationDetailsComponent },
-      {
-        path: "publishers",
-        children: [
-          { path: "create", component: CreatePublisherComponent },
-          { path: "", component: PublishersComponent },
-        ],
-      },
-      {
-        path: "bundles",
-        children: [
-          { path: "create", component: CreateBundleComponent },
-          { path: "", component: OrganizationBundlesComponent },
-        ],
-      },
-      { path: "", component: OrganizationDetailsComponent },
-    ],
+    loadChildren: () => import("./organization/organization.module").then(_ => _.OrganizationModule),
   },
   {
     path: "publisher/:id",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "details", component: PublisherDetailsComponent },
-      {
-        path: "authors",
-        children: [
-          { path: "invite", component: InviteAuthorComponent },
-          { path: "", component: AuthorsComponent },
-        ],
-      },
-      { path: "verify", component: VerifyPublisherComponent },
-      { path: "", component: PublisherDetailsComponent },
-    ],
+    loadChildren: () => import("./publisher/publisher.module").then(_ => _.PublisherModule),
   },
   {
     matcher: (url) =>

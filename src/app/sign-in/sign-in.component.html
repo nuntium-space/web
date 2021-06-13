@@ -1,0 +1,32 @@
+<shared-header></shared-header>
+
+<main>
+  <div>
+    <div *ngIf="showEmailSignInSuccessMessage" class="email-sign-in-success-msg">
+      <span>{{ "sign_in.email.success" | translate }}</span>
+    </div>
+    <shared-form [submitButtonText]="'generic.sign_in' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
+      <div class="title">
+        <h1>{{ "generic.sign_in" | translate }}</h1>
+      </div>
+      <label>
+        {{ "generic.email" | translate }}
+        <input
+          formControlName="email"
+  
+          type="email"
+          name="email"
+          autocomplete="email"
+          required
+        >
+        <div class="errors">
+          <p *ngFor="let error of form.get('email')?.errors?.errors">
+            {{ "errors." + error.error | translate:error.params }}
+          </p>
+        </div>
+      </label>
+    </shared-form>
+    <sign-in-buttons></sign-in-buttons>
+  </div>
+  <img src="assets/signin.svg" alt="">
+</main>

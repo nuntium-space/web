@@ -2,14 +2,19 @@
 
 header
 {
-    img
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+
+    shared-img
     {
-        display: block;
-        border-radius: 1em;
+        border-radius: 0.5rem;
+        height: 100px;
+        width: 100px;
     }
 }
 
-#verify-button
+aside > a
 {
     margin-bottom: 1rem;
 }

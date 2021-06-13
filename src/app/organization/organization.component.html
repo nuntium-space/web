@@ -1,0 +1,11 @@
+<shared-header></shared-header>
+
+<organization-menu [organization]="organization" [section]="section"></organization-menu>
+
+<main [ngSwitch]="section">
+    <organization-bundles *ngSwitchCase="'bundles'" [organization]="organization"></organization-bundles>
+    <organization-bundles-create *ngSwitchCase="'bundles/create'" [organization]="organization"></organization-bundles-create>
+    <organization-details *ngSwitchCase="'details'" [organization]="organization" (update)="onUpdate($event)"></organization-details>
+    <organization-publishers *ngSwitchCase="'publishers'" [organization]="organization"></organization-publishers>
+    <organization-publishers-create *ngSwitchCase="'publishers/create'" [organization]="organization"></organization-publishers-create>
+</main>

@@ -1,36 +1,36 @@
-<app-header></app-header>
-
-<bundle-menu section="prices"></bundle-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "bundle.prices.__title" | translate }}</h1>
-            <button routerLink="add">
-                &#43; {{ "generic.add" | translate }}
-            </button>
+<section>
+    <div class="title">
+        <h1>{{ "bundle.prices.__title" | translate }}</h1>
+        <a routerLink="prices/add" class="button">
+            {{ "generic.add" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!prices">
+            <shared-spinner></shared-spinner>
         </div>
-        <div class="content">
-            <div *ngIf="!prices">
-                <spinner></spinner>
+        <div *ngIf="prices" class="list">
+            <div *ngIf="prices.length === 0">
+                <p>{{ "bundle.prices.empty" | translate }}</p>
             </div>
-            <div *ngIf="prices" class="list">
-                <div *ngIf="prices.length === 0">
-                    <p>{{ "bundle.prices.empty" | translate }}</p>
+            <div *ngFor="let price of prices" class="list-item-with-actions">
+                <div>
+                    <shared-badge *ngIf="!price.active" [text]="'bundle.prices.archived' | translate"></shared-badge>
+                    <p class="price">{{ format.currency(price.amount, price.currency) }}</p>
+                    <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
                 </div>
-                <div *ngFor="let price of prices" class="list-item-with-actions">
-                    <div>
-                        <badge *ngIf="!price.active" [text]="'bundle.prices.archived' | translate"></badge>
-                        <p class="price">{{ format.currency(price.amount, price.currency) }}</p>
-                        <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
-                    </div>
-                    <div class="actions">
-                        <button (click)="archivePrice(price)">
-                            {{ "bundle.prices.archive" | translate }}
-                        </button>
-                    </div>
-                </div>
+                <shared-popup-menu theme="light">
+                    <shared-danger-button
+                        theme="dark"
+
+                        [text]="'bundle.prices.archive' | translate"
+                        [alertText]="'bundle.prices.archive' | translate"
+
+                        (confirm)="archivePrice(price)"
+                    >
+                    </shared-danger-button>
+                </shared-popup-menu>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>

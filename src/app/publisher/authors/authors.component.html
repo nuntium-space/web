@@ -1,41 +1,37 @@
-<app-header></app-header>
-
-<publisher-menu section="authors"></publisher-menu>
-
-<main>
-    <section>
-        <div class="title">
-            <h1>{{ "publisher.authors.__title" | translate }}</h1>
-            <button routerLink="invite">
-                &#43; {{ "publisher.authors.invite" | translate }}
-            </button>
+<section>
+    <div class="title">
+        <h1>{{ "publisher.authors.__title" | translate }}</h1>
+        <a routerLink="authors/invite" class="button">
+            {{ "publisher.authors.invite" | translate }}
+        </a>
+    </div>
+    <div class="content">
+        <div *ngIf="!authors">
+            <shared-spinner></shared-spinner>
         </div>
-        <div class="content">
-            <div *ngIf="!authors">
-                <spinner></spinner>
+        <div *ngIf="authors" class="list">
+            <div *ngIf="authors.length === 0">
+                <p>{{ "publisher.authors.empty" | translate }}</p>
             </div>
-            <div *ngIf="authors" class="list">
-                <div *ngIf="authors.length === 0">
-                    <p>{{ "publisher.authors.empty" | translate }}</p>
+            <div *ngFor="let author of authors" class="list-item-with-actions">
+                <div>
+                    <h3 *ngIf="author.user.username">
+                        {{ author.user.username }}
+                    </h3>
+                    <a href="mailto:{{ author.user.email }}">
+                        {{ author.user.email }}
+                    </a>
                 </div>
-                <div *ngFor="let author of authors" class="list-item-with-actions">
-                    <div>
-                        <h3>{{ author.user.username }}</h3>
-                        <a href="mailto:{{ author.user.email }}">
-                            {{ author.user.email }}
-                        </a>
-                    </div>
-                    <div class="actions">
-                        <danger-button
-                            [text]="'generic.remove' | translate"
-                            [alertText]="'generic.remove' | translate"
+                <div class="actions">
+                    <shared-danger-button
+                        [text]="'generic.remove' | translate"
+                        [alertText]="'generic.remove' | translate"
 
-                            (confirm)="removeAuthor(author)"
-                        >
-                        </danger-button>
-                    </div>
+                        (confirm)="removeAuthor(author)"
+                    >
+                    </shared-danger-button>
                 </div>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>

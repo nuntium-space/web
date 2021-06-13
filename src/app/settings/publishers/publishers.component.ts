@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ApiService, IAuthor } from 'src/app/services/api/api.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'user-publishers',
+  selector: 'settings-publishers',
   templateUrl: './publishers.component.html',
   styleUrls: ['./publishers.component.scss']
 })

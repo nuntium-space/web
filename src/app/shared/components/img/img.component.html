@@ -1,0 +1,4 @@
+<div *ngIf="src && !hasLoaded" class="spinner-container">
+    <shared-spinner [theme]="theme"></shared-spinner>
+</div>
+<img *ngIf="src" [src]="src" alt="" (load)="onLoad($event)" (error)="onError($event)">

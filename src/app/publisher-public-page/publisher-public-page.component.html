@@ -1,7 +1,12 @@
-<app-header></app-header>
+<shared-header></shared-header>
 
 <aside *ngIf="publisher">
-    <h1>{{ publisher.name }}</h1>
+    <header>
+        <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+        <div>
+            <h1>{{ publisher.name }}</h1>
+        </div>
+    </header>
     <section *ngIf="publisher.__metadata?.is_author">
         <div class="title">
             <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
@@ -9,7 +14,7 @@
         <div class="content">
             <div>
                 <a class="button fill" routerLink="new">
-                    &#43; {{ "publisher_public_page.actions.new_article" | translate }}
+                    {{ "publisher_public_page.actions.new_article" | translate }}
                 </a>
             </div>
         </div>
@@ -27,7 +32,7 @@
 
                 routerLink="/bundle/{{ bundle.id }}/subscribe"
 
-                class="bundle dark"
+                class="bundle"
             >
                 <span class="name">{{ bundle.name }}</span>
             </a>

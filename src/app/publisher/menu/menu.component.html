@@ -1,22 +1,28 @@
-<aside *ngIf="publisher">
+<aside>
     <header>
-        <h1>{{ publisher.name }}</h1>
-        <img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" alt="">
+        <shared-img *ngIf="publisher && publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+        <div>
+            <small>{{ "publisher.__title" | translate }}</small>
+            <h1 *ngIf="publisher">{{ publisher.name }}</h1>
+        </div>
     </header>
-    <a *ngIf="!publisher.verified" routerLink="/publisher/{{ publisher.id }}/verify" id="verify-button" class="button warning fill">
+    <a *ngIf="publisher && !publisher.verified" routerLink="verify" id="verify-button" class="button warning fill">
         {{ "publisher.verify.__title" | translate }}
+    </a>
+    <a *ngIf="publisher" routerLink="/~{{ publisher.id }}" class="button fill">
+        {{ "publisher.public_page" | translate }}
     </a>
     <section>
         <div class="title"></div>
         <div class="content">
             <a
-                routerLink="/publisher/{{ publisher.id }}/details"
+                routerLink="details"
                 [class.selected]="section === 'details'"
             >
                 {{ "publisher.details.__title" | translate }}
             </a>
             <a
-                routerLink="/publisher/{{ publisher.id }}/authors"
+                routerLink="authors"
                 [class.selected]="section === 'authors'"
             >
                 {{ "publisher.authors.__title" | translate }}

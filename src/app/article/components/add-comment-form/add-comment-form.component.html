@@ -1,0 +1,18 @@
+<shared-form
+    submitButtonSize="small"
+
+    [submitButtonText]="'components.add_comment.submit' | translate"
+    [formGroup]="form"
+
+    (confirm)="onSubmit($event)"
+>
+    <label>
+        {{ "components.add_comment.__title" | translate }}
+        <textarea formControlName="content" rows="5"></textarea>
+        <div class="errors">
+            <p *ngFor="let error of form.get('content')?.errors?.errors">
+                {{ "errors." + error.error | translate:error.params }}
+            </p>
+        </div>
+    </label>
+</shared-form>

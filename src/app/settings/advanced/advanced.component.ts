@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-advanced',
+  selector: 'settings-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.scss']
 })

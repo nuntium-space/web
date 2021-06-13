@@ -1,0 +1,31 @@
+<header
+  [class.search-visible]="auth.user"
+>
+  <a class="dark logo" routerLink="/">nuntium</a>
+  <form
+    *ngIf="auth.user"
+
+    (submit)="onSearchSubmit($event)"
+  >
+    <input
+      type="search"
+      class="dark"
+      placeholder="{{ 'components.header.search.placeholder' | translate }}"
+
+      [value]="searchQuery"
+
+      (input)="onSearchInput($event)"
+    >
+  </form>
+  <shared-popup-menu *ngIf="auth.user">
+    <a class="button dark" routerLink="/settings">
+      {{ "settings.__title" | translate }}
+    </a>
+    <button class="dark" (click)="auth.signOut()">
+      {{ "generic.sign_out" | translate }}
+    </button>
+  </shared-popup-menu>
+  <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
+    {{ "generic.sign_in" | translate }}
+  </a>
+</header>
