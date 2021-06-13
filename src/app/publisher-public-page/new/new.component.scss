@@ -9,6 +9,14 @@ main
         gap: 0.2rem;
         margin-bottom: 0.5rem;
 
+        button
+        {
+            &.active
+            {
+                opacity: 0.8;
+            }
+        }
+
         & > div
         {
             display: flex;
