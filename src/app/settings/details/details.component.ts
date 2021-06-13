@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { Utilities } from 'src/utilities/Utilities';
 
 @Component({
   selector: 'settings-details',
@@ -27,9 +28,9 @@ export class AccountDetailsComponent
     }
 
     const response = await this.api.updateUser(this.auth.user.id, {
-      full_name: this.updateAccountDetailsForm.get("fullName")?.value,
-      username: this.updateAccountDetailsForm.get("username")?.value,
-      email: this.updateAccountDetailsForm.get("email")?.value,
+      full_name: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("fullName")),
+      username: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("username")),
+      email: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("email")),
     });
 
     end();
