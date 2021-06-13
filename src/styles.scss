@@ -30,7 +30,6 @@ body
 main
 {
     grid-area: main;
-    overflow: hidden;
 }
 
 aside
@@ -53,12 +52,6 @@ aside
 footer
 {
     grid-area: footer;
-}
-
-.mat-icon
-{
-    display: flex;
-    font-family: "Material Icons";
 }
 
 a,
