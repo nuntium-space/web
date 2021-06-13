@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Editor } from '@tiptap/core';
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
-export class WriteNewArticleComponent implements AfterViewInit
+export class WriteNewArticleComponent implements OnInit
 {
   private author?: IAuthor;
 
@@ -39,7 +39,7 @@ export class WriteNewArticleComponent implements AfterViewInit
     });
   }
 
-  public ngAfterViewInit()
+  public ngOnInit()
   {
     this.editor = new Editor({
       element: document.querySelector("#editor") ?? undefined,

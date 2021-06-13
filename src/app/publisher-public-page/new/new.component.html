@@ -27,21 +27,21 @@
                 &#8631;
             </button>
         </div>
-        <button (click)="do('bold')">
+        <button (click)="do('bold')" [class.active]="editor?.isActive('bold')">
             <b>B</b>
         </button>
-        <button (click)="do('italic')">
+        <button (click)="do('italic')" [class.active]="editor?.isActive('italic')">
             <i>I</i>
         </button>
-        <button (click)="do('strike')">
+        <button (click)="do('strike')" [class.active]="editor?.isActive('strike')">
             <s>S</s>
         </button>
-        <button (click)="do('underline')">
+        <button (click)="do('underline')" [class.active]="editor?.isActive('underline')">
             <u>U</u>
         </button>
         <select (change)="do('style', $event)">
-            <option value="p">Paragraph</option>
-            <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}">
+            <option value="p" [selected]="editor?.isActive('paragraph')">Paragraph</option>
+            <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}" [selected]="editor?.isActive('heading', { level: i })">
                 H{{ i }}
             </option>
         </select>
