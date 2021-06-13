@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class AccountDetailsComponent
 {
   public updateAccountDetailsForm = new FormGroup({
+    fullName: new FormControl(this.auth.user?.username),
     username: new FormControl(this.auth.user?.username),
     email: new FormControl(this.auth.user?.email),
   });
