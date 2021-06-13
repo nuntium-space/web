@@ -16,7 +16,7 @@
             </div>
         </div>
     </section>
-    <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed || true)">
+    <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed)">
         <div class="title">
             <h1>{{ "publisher_public_page.subscribe.__title" | translate }}</h1>
         </div>
