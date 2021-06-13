@@ -46,10 +46,5 @@
             </option>
         </select>
     </header>
-    <div class="errors">
-        <p *ngFor="let error of form.get('content')?.errors?.errors">
-            {{ "errors." + error.error | translate:error.params }}
-        </p>
-    </div>
     <div id="editor"></div>
 </main>
