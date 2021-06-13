@@ -1,9 +1,14 @@
 @import "~src/layouts/default";
 
-shared-form > ::ng-deep form
+main
 {
-    margin: 0 auto;
-    margin-top: 1em;
+    header
+    {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 ::ng-deep .ProseMirror

@@ -18,13 +18,27 @@
 </aside>
 
 <main>
-    <label>
-        {{ "publisher_public_page.new_article.content" | translate }}
-        <div id="editor"></div>
-        <div class="errors">
-            <p *ngFor="let error of form.get('content')?.errors?.errors">
-                {{ "errors." + error.error | translate:error.params }}
-            </p>
-        </div>
-    </label>
+    <header>
+        <button (click)="do('bold')">
+            <b>B</b>
+        </button>
+        <button (click)="do('italic')">
+            <i>I</i>
+        </button>
+        <button (click)="do('underline')">
+            <u>U</u>
+        </button>
+        <select (change)="do('style', $event)">
+            <option value="p">Paragraph</option>
+            <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}">
+                H{{ i }}
+            </option>
+        </select>
+    </header>
+    <div class="errors">
+        <p *ngFor="let error of form.get('content')?.errors?.errors">
+            {{ "errors." + error.error | translate:error.params }}
+        </p>
+    </div>
+    <div id="editor"></div>
 </main>
