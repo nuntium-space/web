@@ -2,7 +2,10 @@
 
 <aside *ngIf="publisher">
     <header>
-        <h1>{{ publisher.name }}</h1>
+        <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+        <div>
+            <h1>{{ publisher.name }}</h1>
+        </div>
     </header>
     <section *ngIf="publisher.__metadata?.is_author">
         <div class="title">
