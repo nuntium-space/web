@@ -510,6 +510,7 @@ export class ApiService
   }
 
   public async updateUser(id: string, data: {
+    full_name?: string,
     username?: string,
     email?: string,
   }): Promise<IApiServiceResponse<IUser>>

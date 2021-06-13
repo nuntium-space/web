@@ -27,18 +27,18 @@ export class AccountDetailsComponent
     }
 
     const response = await this.api.updateUser(this.auth.user.id, {
-      username: this.updateAccountDetailsForm.get("username")?.value ?? "",
-      email: this.updateAccountDetailsForm.get("email")?.value ?? "",
+      full_name: this.updateAccountDetailsForm.get("fullName")?.value,
+      username: this.updateAccountDetailsForm.get("username")?.value,
+      email: this.updateAccountDetailsForm.get("email")?.value,
     });
 
     end();
 
-    this.updateAccountDetailsForm.get("username")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "username")
-    });
-
-    this.updateAccountDetailsForm.get("email")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "email")
+    Object.entries(this.updateAccountDetailsForm.controls).forEach(([ name, control ]) =>
+    {
+      control.setErrors({
+        errors: response.errors?.filter(e => e.field === name)
+      });
     });
   }
 }
