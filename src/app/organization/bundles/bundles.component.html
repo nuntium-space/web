@@ -27,10 +27,10 @@
                         [text]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
                         [alertText]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
 
-                        (confirm)="archiveBundle(bundle)"
+                        (confirm)="archiveOrRestoreBundle(bundle)"
                     >
                     </shared-danger-button>
-                    <button *ngIf="!bundle.active" class="dark" (click)="restoreBundle(bundle)">
+                    <button *ngIf="!bundle.active" class="dark" (click)="archiveOrRestoreBundle(bundle)">
                         {{ 'generic.restore' | translate }}
                     </button>
                 </shared-popup-menu>

@@ -21,14 +21,19 @@
                 </div>
                 <shared-popup-menu theme="light">
                     <shared-danger-button
+                        *ngIf="price.active"
+
                         theme="dark"
 
-                        [text]="'bundle.prices.archive' | translate"
-                        [alertText]="'bundle.prices.archive' | translate"
+                        [text]="'generic.archive' | translate"
+                        [alertText]="'generic.archive' | translate"
 
-                        (confirm)="archivePrice(price)"
+                        (confirm)="archiveOrRestorePrice(price)"
                     >
                     </shared-danger-button>
+                    <button *ngIf="!price.active" class="dark" (click)="archiveOrRestorePrice(price)">
+                        {{ 'generic.restore' | translate }}
+                    </button>
                 </shared-popup-menu>
             </div>
         </div>

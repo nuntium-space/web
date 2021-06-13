@@ -296,14 +296,10 @@ export class ApiService
 
   public async updateBundle(id: string, data: {
     name?: string,
+    active?: boolean,
   }): Promise<IApiServiceResponse<IBundle>>
   {
     return this.send("PATCH", `bundles/${id}`, data);
-  }
-
-  public async archiveBundle(id: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("DELETE", `bundles/${id}`);
   }
 
   public async removePublisherFromBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
@@ -379,9 +375,11 @@ export class ApiService
     return this.send("DELETE", `payment-methods/${id}`);
   }
 
-  public async deletePrice(id: string): Promise<IApiServiceResponse<void>>
+  public async updatePrice(id: string, data: {
+    active?: boolean,
+  }): Promise<IApiServiceResponse<IPrice>>
   {
-    return this.send("DELETE", `prices/${id}`);
+    return this.send("PATCH", `prices/${id}`, data);
   }
 
   public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>

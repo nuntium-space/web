@@ -32,25 +32,25 @@ export class PricesComponent implements OnChanges
       });
   }
 
-  public async archivePrice(price: IPrice)
+  public async archiveOrRestorePrice(price: IPrice)
   {
     if (!this.prices)
     {
       return;
     }
 
-    const response = await this.api.deletePrice(price.id);
+    const { success } = await this.api.updatePrice(price.id, { active: !price.active });
 
-    if (!response.errors)
+    if (success)
     {
-      this.prices.map(p =>
+      this.prices = this.prices.map(_ =>
       {
-        if (p.id === price.id)
+        if (_.id === price.id)
         {
-          p.active = false;
+          _.active = !price.active;
         }
 
-        return p;
+        return _;
       });
     }
   }

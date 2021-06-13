@@ -31,14 +31,14 @@ export class OrganizationBundlesComponent implements OnChanges
       });
   }
 
-  public async archiveBundle(bundle: IBundle)
+  public async archiveOrRestoreBundle(bundle: IBundle)
   {
     if (!this.bundles)
     {
       return;
     }
 
-    const { success } = await this.api.archiveBundle(bundle.id);
+    const { success } = await this.api.updateBundle(bundle.id, { active: !bundle.active });
 
     if (success)
     {
@@ -46,33 +46,7 @@ export class OrganizationBundlesComponent implements OnChanges
       {
         if (_.id === bundle.id)
         {
-          _.active = false;
-        }
-    
-        return _;
-      });
-    }
-  }
-
-  public async restoreBundle(bundle: IBundle)
-  {
-    if (!this.bundles)
-    {
-      return;
-    }
-
-    const { success } = await new Promise(resolve =>
-    {
-      resolve({ success: true });
-    }) //this.api.restoreBundle(bundle.id);
-
-    if (success)
-    {
-      this.bundles = this.bundles.map(_ =>
-      {
-        if (_.id === bundle.id)
-        {
-          _.active = true;
+          _.active = !bundle.active;
         }
     
         return _;
