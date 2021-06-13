@@ -1,4 +1,55 @@
-.add-pm-msg
+@import "~src/variables";
+
+.publishers
 {
-    margin-top: 0;
+    display: flex;
+    gap: 1rem;
+    overflow: auto;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    margin-left: -0.2rem;
+    margin-right: -0.2rem;
+
+    > *
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: max-content;
+        padding: 1rem;
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+        font-weight: $bold;
+
+        shared-img
+        {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+        }
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--secondary-color);
+
+    &::-webkit-scrollbar
+    {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        border-radius: 0.5rem;
+        background-color: var(--primary-color);
+    }
+
+    &::-webkit-scrollbar-track
+    {
+        border-radius: 0.5rem;
+        background-color: rgba($primary-color, 0.5);
+    }
 }

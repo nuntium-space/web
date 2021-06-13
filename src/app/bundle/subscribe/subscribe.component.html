@@ -3,6 +3,15 @@
         <h1>{{ "bundle.subscribe.__title" | translate }}</h1>
     </div>
     <div class="content">
+        <div>
+            <span>{{ "bundle.subscribe.included_publishers" | translate }}</span>
+            <div class="publishers">
+                <a *ngFor="let publisher of publishers" routerLink="/publisher/{{ publisher.id }}">
+                    <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+                    {{ publisher.name }}
+                </a>
+            </div>
+        </div>
         <shared-form
             [submitButtonText]="'bundle.subscribe.__title' | translate"
             [formGroup]="subscribeForm"

@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
+import { ApiService, IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 
@@ -15,6 +15,7 @@ export class SubscribeComponent implements OnChanges
   @Input()
   public bundle?: IBundle;
 
+  public publishers?: IPublisher[];
   public prices?: IPrice[];
 
   public subscribeForm = new FormGroup({
@@ -30,6 +31,13 @@ export class SubscribeComponent implements OnChanges
     {
       return;
     }
+
+    this.api
+      .listPublishersForBundle(this.bundle.id)
+      .then(response =>
+      {
+        this.publishers = response.data;
+      });
 
     this.api
       .listPricesForBundle(this.bundle.id, { active: true })
