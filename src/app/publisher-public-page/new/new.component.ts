@@ -54,6 +54,9 @@ export class WriteNewArticleComponent implements OnInit
   {
     switch (action)
     {
+      case "undo": this.editor?.chain().focus().undo().run(); break;
+      case "redo": this.editor?.chain().focus().redo().run(); break;
+  
       case "bold": this.editor?.chain().focus().toggleBold().run(); break;
       case "italic": this.editor?.chain().focus().toggleItalic().run(); break;
       case "strike": this.editor?.chain().focus().toggleStrike().run(); break;
@@ -71,8 +74,9 @@ export class WriteNewArticleComponent implements OnInit
         break;
       }
 
-      case "undo": this.editor?.chain().focus().undo().run(); break;
-      case "redo": this.editor?.chain().focus().redo().run(); break;
+      case "bulletList": this.editor?.chain().focus().toggleBulletList().run(); break;
+      case "orderedList": this.editor?.chain().focus().toggleOrderedList().run(); break;
+      case "codeBlock": this.editor?.chain().focus().toggleCodeBlock().run(); break;
     }
   }
 

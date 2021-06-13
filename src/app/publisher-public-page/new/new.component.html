@@ -45,13 +45,13 @@
                 H{{ i }}
             </option>
         </select>
-        <button (click)="do('bullet')" [class.active]="editor?.isActive('codeBlock')">
+        <button (click)="do('bulletList')" [class.active]="editor?.isActive('bulletList')">
             <span class="mat-icon">format_list_bulleted</span>
         </button>
-        <button (click)="do('bullet')" [class.active]="editor?.isActive('codeBlock')">
+        <button (click)="do('orderedList')" [class.active]="editor?.isActive('orderedList')">
             <span class="mat-icon">format_list_numbered</span>
         </button>
-        <button (click)="do('code')" [class.active]="editor?.isActive('codeBlock')">
+        <button (click)="do('codeBlock')" [class.active]="editor?.isActive('codeBlock')">
             <span class="mat-icon">code</span>
         </button>
     </header>
