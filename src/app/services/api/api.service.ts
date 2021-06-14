@@ -254,7 +254,7 @@ export class ApiService
 
   public async createArticle(authorId: string, data: {
     title: string,
-    content: string,
+    content: any,
   }): Promise<IApiServiceResponse<IArticle>>
   {
     return this.send("POST", `authors/${authorId}/articles`, data);

@@ -16,6 +16,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { PopupMenuComponent } from './components/popup-menu/popup-menu.component';
 import { FormComponent } from './components/form/form.component';
 import { ImgComponent } from './components/img/img.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -36,6 +37,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     PopupMenuComponent,
     FormComponent,
     ImgComponent,
+    EditorComponent,
 
     /*
       PIPES
@@ -78,6 +80,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     PopupMenuComponent,
     FormComponent,
     ImgComponent,
+    EditorComponent,
 
     /*
       PIPES
