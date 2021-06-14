@@ -1,29 +1,31 @@
 <header *ngIf="!isReadOnly">
     <div class="undo-redo">
-        <button (click)="do('undo')">
+        <button (click)="do('undo')" [title]="'components.editor.undo' | translate">
             <span class="mat-icon">undo</span>
         </button>
-        <button (click)="do('redo')">
+        <button (click)="do('redo')" [title]="'components.editor.redo' | translate">
             <span class="mat-icon">redo</span>
         </button>
     </div>
     <div class="others">
-        <button (click)="do('bold')" [class.active]="editor?.isActive('bold')">
+        <button (click)="do('bold')" [class.active]="editor?.isActive('bold')" [title]="'components.editor.bold' | translate">
             <b>B</b>
         </button>
-        <button (click)="do('italic')" [class.active]="editor?.isActive('italic')">
+        <button (click)="do('italic')" [class.active]="editor?.isActive('italic')" [title]="'components.editor.italic' | translate">
             <i>I</i>
         </button>
-        <button (click)="do('strike')" [class.active]="editor?.isActive('strike')">
+        <button (click)="do('strike')" [class.active]="editor?.isActive('strike')" [title]="'components.editor.strike' | translate">
             <s>S</s>
         </button>
-        <button (click)="do('underline')" [class.active]="editor?.isActive('underline')">
+        <button (click)="do('underline')" [class.active]="editor?.isActive('underline')" [title]="'components.editor.underline' | translate">
             <u>U</u>
         </button>
         <select (change)="do('style', $event)">
-            <option value="p" [selected]="editor?.isActive('paragraph')">Paragraph</option>
+            <option value="p" [selected]="editor?.isActive('paragraph')">
+                {{ "components.editor.style.paragraph" | translate }}
+            </option>
             <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}" [selected]="editor?.isActive('heading', { level: i })">
-                H{{ i }}
+                {{ "components.editor.style.heading" | translate }} {{ i }}
             </option>
         </select>
         <button (click)="do('bulletList')" [class.active]="editor?.isActive('bulletList')">
