@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="!isReadOnly">
     <div class="undo-redo">
         <button (click)="do('undo')">
             <span class="mat-icon">undo</span>
