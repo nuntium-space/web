@@ -69,3 +69,21 @@ header
         box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
     }
 }
+
+#bubble-menu
+{
+    display: flex;
+    gap: 0.2rem;
+    background-color: var(--secondary-color);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 2rem 0.5rem var(--secondary-color);
+
+    button
+    {
+        &.active
+        {
+            opacity: 0.8;
+        }
+    }
+}
