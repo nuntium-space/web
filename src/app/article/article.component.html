@@ -1,6 +1,22 @@
 <shared-header></shared-header>
 
 <aside *ngIf="article">
+    <section *ngIf="isUpdatingArticle">
+        <div class="title"></div>
+        <div class="content">
+            <shared-form [submitButtonText]="'generic.submit' | translate" [formGroup]="updateArticleForm" (confirm)="updateArticle($event)">
+                <label>
+                    {{ "publisher_public_page.new_article.title" | translate }}
+                    <input formControlName="title" type="text">
+                    <div class="errors">
+                        <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
+                            {{ "errors." + error.error | translate:error.params }}
+                        </p>
+                    </div>
+                </label>
+            </shared-form>
+        </div>
+    </section>
     <section *ngIf="article.author.user.id === auth.user?.id" class="actions">
         <div class="title">
             <h1>{{ "article.actions.__title" | translate }}</h1>
@@ -26,7 +42,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section *ngIf="!isUpdatingArticle">
         <div class="title">
             <h1>{{ "article.publisher.__title" | translate }}</h1>
         </div>
@@ -39,7 +55,7 @@
             </a>
         </div>
     </section>
-    <section>
+    <section *ngIf="!isUpdatingArticle">
         <div class="title">
             <h1>{{ "article.author.__title" | translate }}</h1>
         </div>
@@ -49,7 +65,7 @@
             </a>
         </div>
     </section>
-    <section class="info">
+    <section *ngIf="!isUpdatingArticle" class="info">
         <div class="title">
             <h1>{{ "article.info.__title" | translate }}</h1>
         </div>

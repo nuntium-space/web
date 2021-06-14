@@ -14,7 +14,6 @@ export class ArticleComponent implements OnInit
 {
   public updateArticleForm = new FormGroup({
     title: new FormControl(),
-    content: new FormControl(),
   });
 
   public isSubscribed = true;
@@ -43,6 +42,8 @@ export class ArticleComponent implements OnInit
           else if (response.data)
           {
             this.article = response.data;
+
+            this.updateArticleForm.get("title")?.setValue(this.article.title);
           }
         });
 
