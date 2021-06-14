@@ -20,6 +20,12 @@
         <button (click)="do('underline')" [class.active]="editor?.isActive('underline')" [title]="'components.editor.underline' | translate">
             <u>U</u>
         </button>
+        <button (click)="do('subscript')" [class.active]="editor?.isActive('subscript')" [title]="'components.editor.subscript' | translate">
+            <span class="mat-icon">subscript</span>
+        </button>
+        <button (click)="do('superscript')" [class.active]="editor?.isActive('superscript')" [title]="'components.editor.superscript' | translate">
+            <span class="mat-icon">superscript</span>
+        </button>
         <select (change)="do('style', $event)">
             <option value="p" [selected]="editor?.isActive('paragraph')">
                 {{ "components.editor.style.paragraph" | translate }}
@@ -33,6 +39,9 @@
         </button>
         <button (click)="do('orderedList')" [class.active]="editor?.isActive('orderedList')">
             <span class="mat-icon">format_list_numbered</span>
+        </button>
+        <button (click)="do('link')" [class.active]="editor?.isActive('link')">
+            <span class="mat-icon">link</span>
         </button>
         <button (click)="do('codeBlock')" [class.active]="editor?.isActive('codeBlock')">
             <span class="mat-icon">code</span>
