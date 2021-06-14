@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Editor } from '@tiptap/core';
+import TextAlign from '@tiptap/extension-text-align';
+import Typography from '@tiptap/extension-typography';
 import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 import { ApiService, IAuthor } from 'src/app/services/api/api.service';
@@ -45,6 +47,8 @@ export class WriteNewArticleComponent implements OnInit
       extensions: [
         StarterKit,
         Underline,
+        Typography,
+        TextAlign,
       ],
       content: "",
     })
