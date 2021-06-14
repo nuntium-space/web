@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import BubbleMenu from '@tiptap/extension-bubble-menu';
-import Code from '@tiptap/extension-code';
 import Link from '@tiptap/extension-link';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
@@ -42,7 +41,6 @@ export class EditorComponent implements OnInit, OnChanges
         Superscript,
         Subscript,
         Link,
-        Code,
         BubbleMenu.configure({
           element: document.getElementById("bubble-menu"),
         }),
