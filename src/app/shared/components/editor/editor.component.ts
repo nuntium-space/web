@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Editor } from '@tiptap/core';
 import TextAlign from '@tiptap/extension-text-align';
 import Typography from '@tiptap/extension-typography';
@@ -10,7 +10,7 @@ import StarterKit from '@tiptap/starter-kit';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class EditorComponent implements OnInit
+export class EditorComponent implements OnInit, OnChanges
 {
   @Input()
   public content?: any;
@@ -28,6 +28,7 @@ export class EditorComponent implements OnInit
     this.editor = new Editor({
       element: document.querySelector("#editor") ?? undefined,
       editable: !this.isReadOnly,
+      content: this.content,
       extensions: [
         StarterKit,
         Underline,
@@ -39,6 +40,11 @@ export class EditorComponent implements OnInit
         this.contentChange.emit(this.editor?.getJSON());
       },
     });
+  }
+
+  public ngOnChanges()
+  {
+    this.editor?.setEditable(!this.isReadOnly);
   }
 
   public do(action: string, e?: Event)

@@ -7,7 +7,7 @@
         </div>
         <div class="content">
             <div>
-                <button *ngIf="!isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
+                <button *ngIf="!isUpdatingArticle" class="fill" (click)="isUpdatingArticle = true">
                     {{  "generic.edit" | translate }}
                 </button>
                 <button *ngIf="isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
