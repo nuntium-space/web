@@ -1,76 +1,81 @@
 <header *ngIf="!isReadOnly">
-    <div class="undo-redo">
-        <button (click)="do('undo')" [title]="'components.editor.undo' | translate">
-            <span class="mat-icon">undo</span>
-        </button>
-        <button (click)="do('redo')" [title]="'components.editor.redo' | translate">
-            <span class="mat-icon">redo</span>
-        </button>
-    </div>
-    <div class="others">
-        <button (click)="do('bold')" [class.active]="editor?.isActive('bold')" [title]="'components.editor.bold' | translate">
-            <b>B</b>
-        </button>
-        <button (click)="do('italic')" [class.active]="editor?.isActive('italic')" [title]="'components.editor.italic' | translate">
-            <i>I</i>
-        </button>
-        <button (click)="do('strike')" [class.active]="editor?.isActive('strike')" [title]="'components.editor.strike' | translate">
-            <s>S</s>
-        </button>
-        <button (click)="do('underline')" [class.active]="editor?.isActive('underline')" [title]="'components.editor.underline' | translate">
-            <u>U</u>
-        </button>
-        <button (click)="do('subscript')" [class.active]="editor?.isActive('subscript')" [title]="'components.editor.subscript' | translate">
-            <span class="mat-icon">subscript</span>
-        </button>
-        <button (click)="do('superscript')" [class.active]="editor?.isActive('superscript')" [title]="'components.editor.superscript' | translate">
-            <span class="mat-icon">superscript</span>
-        </button>
-        <select (change)="do('style', $event)">
-            <option value="p" [selected]="editor?.isActive('paragraph')">
-                {{ "components.editor.style.paragraph" | translate }}
-            </option>
-            <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}" [selected]="editor?.isActive('heading', { level: i })">
-                {{ "components.editor.style.heading" | translate }} {{ i }}
-            </option>
-        </select>
-        <button (click)="do('bulletList')" [class.active]="editor?.isActive('bulletList')">
-            <span class="mat-icon">format_list_bulleted</span>
-        </button>
-        <button (click)="do('orderedList')" [class.active]="editor?.isActive('orderedList')">
-            <span class="mat-icon">format_list_numbered</span>
-        </button>
-        <button (click)="do('link')" [class.active]="editor?.isActive('link')">
-            <span class="mat-icon">link</span>
-        </button>
-        <button (click)="do('codeBlock')" [class.active]="editor?.isActive('codeBlock')">
-            <span class="mat-icon">code</span>
-        </button>
-        <button (click)="do('blockquote')" [class.active]="editor?.isActive('blockquote')">
-            <span class="mat-icon">format_quote</span>
-        </button>
-        <button (click)="do('horizontalRule')">
-            <span class="mat-icon">horizontal_rule</span>
-        </button>
-        <button (click)="do('hardBreak')">
-            Hard break
-        </button>
-        <button (click)="do('clearMarks')">
-            <span class="mat-icon">format_clear</span>
-        </button>
-        <button (click)="do('alignLeft')" [class.active]="editor?.isActive({ textAlign: 'left' })">
-            <span class="mat-icon">format_align_left</span>
-        </button>
-        <button (click)="do('alignCenter')" [class.active]="editor?.isActive({ textAlign: 'center' })">
-            <span class="mat-icon">format_align_center</span>
-        </button>
-        <button (click)="do('alignRight')" [class.active]="editor?.isActive({ textAlign: 'right' })">
-            <span class="mat-icon">format_align_right</span>
-        </button>
-        <button (click)="do('alignJustify')" [class.active]="editor?.isActive({ textAlign: 'justify' })">
-            <span class="mat-icon">format_align_justify</span>
-        </button>
-    </div>
+    <button (click)="do('undo')" [title]="'components.editor.undo' | translate">
+        <span class="mat-icon">undo</span>
+    </button>
+    <button (click)="do('redo')" [title]="'components.editor.redo' | translate">
+        <span class="mat-icon">redo</span>
+    </button>
+
+    <button (click)="do('bold')" [class.active]="editor?.isActive('bold')" [title]="'components.editor.bold' | translate">
+        <b>B</b>
+    </button>
+    <button (click)="do('italic')" [class.active]="editor?.isActive('italic')" [title]="'components.editor.italic' | translate">
+        <i>I</i>
+    </button>
+    <button (click)="do('strike')" [class.active]="editor?.isActive('strike')" [title]="'components.editor.strike' | translate">
+        <s>S</s>
+    </button>
+    <button (click)="do('underline')" [class.active]="editor?.isActive('underline')" [title]="'components.editor.underline' | translate">
+        <u>U</u>
+    </button>
+
+    <button (click)="do('subscript')" [class.active]="editor?.isActive('subscript')" [title]="'components.editor.subscript' | translate">
+        <span class="mat-icon">subscript</span>
+    </button>
+    <button (click)="do('superscript')" [class.active]="editor?.isActive('superscript')" [title]="'components.editor.superscript' | translate">
+        <span class="mat-icon">superscript</span>
+    </button>
+
+    <select (change)="do('style', $event)">
+        <option value="p" [selected]="editor?.isActive('paragraph')">
+            {{ "components.editor.style.paragraph" | translate }}
+        </option>
+        <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}" [selected]="editor?.isActive('heading', { level: i })">
+            {{ "components.editor.style.heading" | translate }} {{ i }}
+        </option>
+    </select>
+
+    <button (click)="do('bulletList')" [class.active]="editor?.isActive('bulletList')">
+        <span class="mat-icon">format_list_bulleted</span>
+    </button>
+    <button (click)="do('orderedList')" [class.active]="editor?.isActive('orderedList')">
+        <span class="mat-icon">format_list_numbered</span>
+    </button>
+
+    <button (click)="do('link')" [class.active]="editor?.isActive('link')">
+        <span class="mat-icon">link</span>
+    </button>
+
+    <button (click)="do('codeBlock')" [class.active]="editor?.isActive('codeBlock')">
+        <span class="mat-icon">code</span>
+    </button>
+    <button (click)="do('blockquote')" [class.active]="editor?.isActive('blockquote')">
+        <span class="mat-icon">format_quote</span>
+    </button>
+
+    <button (click)="do('horizontalRule')">
+        <span class="mat-icon">horizontal_rule</span>
+    </button>
+    <button (click)="do('hardBreak')">
+        <span class="mat-icon">keyboard_return</span>
+    </button>
+
+    <button (click)="do('clearMarks')">
+        <span class="mat-icon">format_clear</span>
+    </button>
+
+    <button (click)="do('alignLeft')" [class.active]="editor?.isActive({ textAlign: 'left' })">
+        <span class="mat-icon">format_align_left</span>
+    </button>
+    <button (click)="do('alignCenter')" [class.active]="editor?.isActive({ textAlign: 'center' })">
+        <span class="mat-icon">format_align_center</span>
+    </button>
+    <button (click)="do('alignRight')" [class.active]="editor?.isActive({ textAlign: 'right' })">
+        <span class="mat-icon">format_align_right</span>
+    </button>
+    <button (click)="do('alignJustify')" [class.active]="editor?.isActive({ textAlign: 'justify' })">
+        <span class="mat-icon">format_align_justify</span>
+    </button>
 </header>
 
 <div id="editor"></div>

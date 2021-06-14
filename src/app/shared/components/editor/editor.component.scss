@@ -2,8 +2,9 @@
 
 header
 {
-    display: grid;
-    grid-template-columns: max-content auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
     position: sticky;
     top: 0;
     z-index: 2;
@@ -18,26 +19,6 @@ header
         {
             opacity: 0.8;
         }
-    }
-
-    .undo-redo
-    {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-        margin-right: 1rem;
-
-        button
-        {
-            height: 100%;
-        }
-    }
-
-    .others
-    {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.2rem;
     }
 }
 
