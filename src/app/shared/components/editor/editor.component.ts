@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Editor } from '@tiptap/core';
+import BubbleMenu from '@tiptap/extension-bubble-menu';
+import Code from '@tiptap/extension-code';
+import Link from '@tiptap/extension-link';
+import Subscript from '@tiptap/extension-subscript';
+import Superscript from '@tiptap/extension-superscript';
 import TextAlign from '@tiptap/extension-text-align';
 import Typography from '@tiptap/extension-typography';
 import Underline from '@tiptap/extension-underline';
@@ -34,6 +39,13 @@ export class EditorComponent implements OnInit, OnChanges
         Underline,
         Typography,
         TextAlign,
+        Superscript,
+        Subscript,
+        Link,
+        Code,
+        BubbleMenu.configure({
+          element: document.getElementById("bubble-menu"),
+        }),
       ],
       onUpdate: () =>
       {
