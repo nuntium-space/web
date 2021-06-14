@@ -85,6 +85,11 @@ export class WriteNewArticleComponent implements OnInit
       case "horizontalRule": this.editor?.chain().focus().setHorizontalRule().run(); break;
       case "hardBreak": this.editor?.chain().focus().setHardBreak().run(); break;
       case "clearMarks": this.editor?.chain().focus().unsetAllMarks().run(); break;
+
+      case "alignLeft": this.editor?.chain().focus().setTextAlign("left").run(); break;
+      case "alignCenter": this.editor?.chain().focus().setTextAlign("center").run(); break;
+      case "alignRight": this.editor?.chain().focus().setTextAlign("right").run(); break;
+      case "alignJustify": this.editor?.chain().focus().setTextAlign("justify").run(); break;
     }
   }
 

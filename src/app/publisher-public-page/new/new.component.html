@@ -67,6 +67,18 @@
             <button (click)="do('clearMarks')">
                 <span class="mat-icon">format_clear</span>
             </button>
+            <button (click)="do('alignLeft')" [class.active]="editor?.isActive({ textAlign: 'left' })">
+                <span class="mat-icon">format_align_left</span>
+            </button>
+            <button (click)="do('alignCenter')" [class.active]="editor?.isActive({ textAlign: 'center' })">
+                <span class="mat-icon">format_align_center</span>
+            </button>
+            <button (click)="do('alignRight')" [class.active]="editor?.isActive({ textAlign: 'right' })">
+                <span class="mat-icon">format_align_right</span>
+            </button>
+            <button (click)="do('alignJustify')" [class.active]="editor?.isActive({ textAlign: 'justify' })">
+                <span class="mat-icon">format_align_justify</span>
+            </button>
         </div>
     </header>
     <div id="editor"></div>
