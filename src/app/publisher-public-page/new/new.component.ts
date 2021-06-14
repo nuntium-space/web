@@ -51,7 +51,7 @@ export class WriteNewArticleComponent implements OnInit
         TextAlign,
       ],
       content: "",
-    })
+    });
   }
 
   public do(action: string, e?: Event)
