@@ -19,7 +19,7 @@
 
 <main>
     <header>
-        <div>
+        <div class="undo-redo">
             <button (click)="do('undo')">
                 <span class="mat-icon">undo</span>
             </button>
@@ -27,33 +27,47 @@
                 <span class="mat-icon">redo</span>
             </button>
         </div>
-        <button (click)="do('bold')" [class.active]="editor?.isActive('bold')">
-            <b>B</b>
-        </button>
-        <button (click)="do('italic')" [class.active]="editor?.isActive('italic')">
-            <i>I</i>
-        </button>
-        <button (click)="do('strike')" [class.active]="editor?.isActive('strike')">
-            <s>S</s>
-        </button>
-        <button (click)="do('underline')" [class.active]="editor?.isActive('underline')">
-            <u>U</u>
-        </button>
-        <select (change)="do('style', $event)">
-            <option value="p" [selected]="editor?.isActive('paragraph')">Paragraph</option>
-            <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}" [selected]="editor?.isActive('heading', { level: i })">
-                H{{ i }}
-            </option>
-        </select>
-        <button (click)="do('bulletList')" [class.active]="editor?.isActive('bulletList')">
-            <span class="mat-icon">format_list_bulleted</span>
-        </button>
-        <button (click)="do('orderedList')" [class.active]="editor?.isActive('orderedList')">
-            <span class="mat-icon">format_list_numbered</span>
-        </button>
-        <button (click)="do('codeBlock')" [class.active]="editor?.isActive('codeBlock')">
-            <span class="mat-icon">code</span>
-        </button>
+        <div class="others">
+            <button (click)="do('bold')" [class.active]="editor?.isActive('bold')">
+                <b>B</b>
+            </button>
+            <button (click)="do('italic')" [class.active]="editor?.isActive('italic')">
+                <i>I</i>
+            </button>
+            <button (click)="do('strike')" [class.active]="editor?.isActive('strike')">
+                <s>S</s>
+            </button>
+            <button (click)="do('underline')" [class.active]="editor?.isActive('underline')">
+                <u>U</u>
+            </button>
+            <select (change)="do('style', $event)">
+                <option value="p" [selected]="editor?.isActive('paragraph')">Paragraph</option>
+                <option *ngFor="let i of [ 1, 2, 3, 4, 5, 6 ]" value="h{{ i }}" [selected]="editor?.isActive('heading', { level: i })">
+                    H{{ i }}
+                </option>
+            </select>
+            <button (click)="do('bulletList')" [class.active]="editor?.isActive('bulletList')">
+                <span class="mat-icon">format_list_bulleted</span>
+            </button>
+            <button (click)="do('orderedList')" [class.active]="editor?.isActive('orderedList')">
+                <span class="mat-icon">format_list_numbered</span>
+            </button>
+            <button (click)="do('codeBlock')" [class.active]="editor?.isActive('codeBlock')">
+                <span class="mat-icon">code</span>
+            </button>
+            <button (click)="do('blockquote')" [class.active]="editor?.isActive('blockquote')">
+                <span class="mat-icon">format_quote</span>
+            </button>
+            <button (click)="do('horizontalRule')">
+                <span class="mat-icon">horizontal_rule</span>
+            </button>
+            <button (click)="do('hardBreak')">
+                Hard break
+            </button>
+            <button (click)="do('clearMarks')">
+                <span class="mat-icon">format_clear</span>
+            </button>
+        </div>
     </header>
     <div id="editor"></div>
 </main>

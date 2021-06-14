@@ -4,9 +4,8 @@ main
 {
     header
     {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.2rem;
+        display: grid;
+        grid-template-columns: max-content auto;
         margin-bottom: 0.5rem;
 
         button
@@ -17,11 +16,24 @@ main
             }
         }
 
-        & > div
+        .undo-redo
         {
             display: flex;
+            flex-direction: column;
             gap: 0.2rem;
             margin-right: 1rem;
+
+            button
+            {
+                height: 100%;
+            }
+        }
+
+        .others
+        {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
         }
     }
 }
@@ -33,6 +45,12 @@ main
     min-height: 30rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
+
+    blockquote
+    {
+        padding-left: 1rem;
+        border-left: 2px solid rgba(13, 13, 13, 0.1);
+    }
 
     pre
     {

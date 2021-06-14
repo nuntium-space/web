@@ -77,6 +77,10 @@ export class WriteNewArticleComponent implements OnInit
       case "bulletList": this.editor?.chain().focus().toggleBulletList().run(); break;
       case "orderedList": this.editor?.chain().focus().toggleOrderedList().run(); break;
       case "codeBlock": this.editor?.chain().focus().toggleCodeBlock().run(); break;
+      case "blockquote": this.editor?.chain().focus().toggleBlockquote().run(); break;
+      case "horizontalRule": this.editor?.chain().focus().setHorizontalRule().run(); break;
+      case "hardBreak": this.editor?.chain().focus().setHardBreak().run(); break;
+      case "clearMarks": this.editor?.chain().focus().unsetAllMarks().run(); break;
     }
   }
 
