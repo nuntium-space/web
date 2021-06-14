@@ -1,3 +1,5 @@
+@import "~src/variables";
+
 header
 {
     display: grid;
@@ -60,5 +62,10 @@ header
         font-family: monospace;
         padding: 0.75rem 1rem;
         border-radius: 0.5rem;
+    }
+
+    &:focus
+    {
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
     }
 }
