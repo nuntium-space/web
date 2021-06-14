@@ -7,7 +7,7 @@
         </div>
         <div class="content">
             <div>
-                <button *ngIf="!isUpdatingArticle" class="fill" (click)="loadRawArticle()">
+                <button *ngIf="!isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
                     {{  "generic.edit" | translate }}
                 </button>
                 <button *ngIf="isUpdatingArticle" class="fill" (click)="isUpdatingArticle = false">
@@ -77,41 +77,9 @@
 </aside>
 
 <main *ngIf="article && isSubscribed">
-    <div *ngIf="!isUpdatingArticle">
+    <div>
         <h1 class="title">{{ article.title }}</h1>
-        <div class="content" [innerHTML]="article.content | keepHtml"></div>
-    </div>
-    <div *ngIf="isUpdatingArticle">
-        <shared-spinner *ngIf="!rawArticle"></shared-spinner>
-        <shared-form
-            *ngIf="rawArticle"
-
-            class="update-article"
-
-            [formGroup]="updateArticleForm"
-            [submitButtonText]="'generic.update' | translate"
-
-            (confirm)="updateArticle($event)"
-        >
-            <label>
-                {{ "article.title" | translate }}
-                <input formControlName="title" type="text">
-                <div class="errors">
-                    <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
-                        {{ "errors." + error.error | translate:error.params }}
-                    </p>
-                </div>
-            </label>
-            <label>
-                {{ "article.content" | translate }}
-                <textarea formControlName="content" rows="30"></textarea>
-                <div class="errors">
-                    <p *ngFor="let error of updateArticleForm.get('content')?.errors?.errors">
-                        {{ "errors." + error.error | translate:error.params }}
-                    </p>
-                </div>
-            </label>
-        </shared-form>
+        <shared-editor [(content)]="article.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
     </div>
     <section *ngIf="!isUpdatingArticle" id="comments">
         <div class="title">

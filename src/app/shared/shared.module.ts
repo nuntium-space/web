@@ -10,7 +10,6 @@ import { DangerButtonComponent } from './components/danger-button/danger-button.
 import { BadgeComponent } from './components/badge/badge.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { KeepHtmlPipe } from './pipes/keep-html/keep-html.pipe';
 import { RouterModule } from '@angular/router';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { PopupMenuComponent } from './components/popup-menu/popup-menu.component';
@@ -38,11 +37,6 @@ export const createTranslationLoader = (http: HttpClient) =>
     FormComponent,
     ImgComponent,
     EditorComponent,
-
-    /*
-      PIPES
-    */
-    KeepHtmlPipe,
   ],
   imports: [
     CommonModule,
@@ -81,11 +75,6 @@ export const createTranslationLoader = (http: HttpClient) =>
     FormComponent,
     ImgComponent,
     EditorComponent,
-
-    /*
-      PIPES
-    */
-    KeepHtmlPipe,
   ],
 })
 export class SharedModule { }

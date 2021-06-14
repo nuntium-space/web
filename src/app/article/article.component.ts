@@ -21,8 +21,6 @@ export class ArticleComponent implements OnInit
 
   public article?: IArticle;
 
-  public rawArticle?: IArticle;
-
   public comments: IComment[] = [];
 
   public isUpdatingArticle = false;
@@ -59,37 +57,16 @@ export class ArticleComponent implements OnInit
     });
   }
 
-  public async loadRawArticle()
+  public async updateArticle(end: () => void)
   {
     if (!this.article)
     {
       return;
     }
 
-    this.rawArticle = undefined;
-    this.isUpdatingArticle = true;
-
-    const response = await this.api.retrieveArticle(this.article.id, "raw");
-
-    if (response.data)
-    {
-      this.rawArticle = response.data;
-
-      this.updateArticleForm.get("title")?.setValue(this.rawArticle.title);
-      this.updateArticleForm.get("content")?.setValue(this.rawArticle.content);
-    }
-  }
-
-  public async updateArticle(end: () => void)
-  {
-    if (!this.rawArticle)
-    {
-      return;
-    }
-
-    const response = await this.api.updateArticle(this.rawArticle.id, {
+    const response = await this.api.updateArticle(this.article.id, {
       title: this.updateArticleForm.get("title")?.value ?? "",
-      content: this.updateArticleForm.get("content")?.value ?? "",
+      content: this.article.content,
     });
 
     end();

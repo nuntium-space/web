@@ -55,7 +55,7 @@ export interface IArticle
 {
   id: string,
   title: string,
-  content: string,
+  content: any,
   reading_time: number,
   author: IAuthor,
   created_at: string,
@@ -211,9 +211,9 @@ export class ApiService
    * RESOURCES
    */
 
-  public async retrieveArticle(id: string, format?: "html" | "raw"): Promise<IApiServiceResponse<IArticle>>
+  public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
   {
-    return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher&format=${format ?? "html"}`);
+    return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
   public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
@@ -234,7 +234,7 @@ export class ApiService
     content: string,
   }): Promise<IApiServiceResponse<IArticle>>
   {
-    return this.send("PATCH", `articles/${articleId}?expand[]=author&expand[]=author.user&expand[]=author.publisher&format=html`, data);
+    return this.send("PATCH", `articles/${articleId}?expand[]=author&expand[]=author.user&expand[]=author.publisher`, data);
   }
 
   public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>
