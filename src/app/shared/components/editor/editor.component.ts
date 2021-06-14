@@ -69,6 +69,9 @@ export class EditorComponent implements OnInit, OnChanges
       case "strike": this.editor?.chain().focus().toggleStrike().run(); break;
       case "underline": this.editor?.chain().focus().toggleUnderline().run(); break;
 
+      case "subscript": this.editor?.chain().focus().toggleSubscript().run(); break;
+      case "superscript": this.editor?.chain().focus().toggleSuperscript().run(); break;
+
       case "style":
       {
         const selectElement = e?.target as HTMLSelectElement;
@@ -83,10 +86,22 @@ export class EditorComponent implements OnInit, OnChanges
 
       case "bulletList": this.editor?.chain().focus().toggleBulletList().run(); break;
       case "orderedList": this.editor?.chain().focus().toggleOrderedList().run(); break;
+
+      case "link":
+      {
+        const url = window.prompt("URL");
+
+        this.editor?.chain().focus().toggleLink({ href: url ?? "" }).run();
+
+        break;
+      }
+
       case "codeBlock": this.editor?.chain().focus().toggleCodeBlock().run(); break;
       case "blockquote": this.editor?.chain().focus().toggleBlockquote().run(); break;
+
       case "horizontalRule": this.editor?.chain().focus().setHorizontalRule().run(); break;
       case "hardBreak": this.editor?.chain().focus().setHardBreak().run(); break;
+
       case "clearMarks": this.editor?.chain().focus().unsetAllMarks().run(); break;
 
       case "alignLeft": this.editor?.chain().focus().setTextAlign("left").run(); break;
