@@ -74,18 +74,3 @@
 </header>
 
 <div id="editor"></div>
-
-<div id="bubble-menu">
-    <button (click)="do('bold')" [class.active]="editor?.isActive('bold')" [title]="'components.editor.bold' | translate">
-        <b>B</b>
-    </button>
-    <button (click)="do('italic')" [class.active]="editor?.isActive('italic')" [title]="'components.editor.italic' | translate">
-        <i>I</i>
-    </button>
-    <button (click)="do('strike')" [class.active]="editor?.isActive('strike')" [title]="'components.editor.strike' | translate">
-        <s>S</s>
-    </button>
-    <button (click)="do('underline')" [class.active]="editor?.isActive('underline')" [title]="'components.editor.underline' | translate">
-        <u>U</u>
-    </button>
-</div>
