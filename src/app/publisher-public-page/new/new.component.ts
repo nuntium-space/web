@@ -102,7 +102,7 @@ export class WriteNewArticleComponent implements OnInit
 
     const response = await this.api.createArticle(this.author.id, {
       title: this.form.get("title")?.value ?? "",
-      content: JSON.stringify(this.editor?.getJSON()),
+      content: JSON.parse(JSON.stringify(this.editor?.getJSON())),
     });
 
     end();
