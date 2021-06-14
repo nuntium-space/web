@@ -15,6 +15,9 @@ export class EditorComponent implements OnInit
   @Input()
   public content?: any;
 
+  @Input()
+  public isReadOnly = false;
+
   @Output()
   public contentChange = new EventEmitter<any>();
 
@@ -24,13 +27,13 @@ export class EditorComponent implements OnInit
   {
     this.editor = new Editor({
       element: document.querySelector("#editor") ?? undefined,
+      editable: !this.isReadOnly,
       extensions: [
         StarterKit,
         Underline,
         Typography,
         TextAlign,
       ],
-      content: "",
       onUpdate: () =>
       {
         this.contentChange.emit(this.editor?.getJSON());
