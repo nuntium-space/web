@@ -55,20 +55,3 @@ main
         font-weight: $normal;
     }
 }
-
-@media (max-width: 1000px)
-{
-    :host
-    {
-        grid-template-columns: 100%;
-        grid-template-areas:
-            "header"
-            "main"
-            "aside";
-    }
-
-    aside
-    {
-        position: unset;
-    }
-}
