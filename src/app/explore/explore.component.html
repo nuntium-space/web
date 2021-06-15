@@ -15,12 +15,13 @@
 </aside>
 
 <main *ngIf="articles">
-    <div *ngIf="articles.length === 0" class="no-results">
-        <img src="/assets/empty-search-result.svg" alt="">
-        <h1
-            [innerHTML]="'explore.search.empty' | translate:{ QUERY: searchQuery }"
-        >
-        </h1>
-    </div>
+    <h1
+        *ngIf="articles.length === 0"
+        
+        class="no-results"
+
+        [innerHTML]="'explore.search.empty' | translate:{ QUERY: searchQuery }"
+    >
+    </h1>
     <article-list [articles]="articles"></article-list>
 </main>
