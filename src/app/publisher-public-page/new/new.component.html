@@ -17,13 +17,13 @@
         <fieldset>
             <legend>{{ "publisher_public_page.new_article.sources" | translate }}</legend>
             <div class="list">
-                <div class="list-item-with-actions">
-                    <input type="url">
-                    <button type="button">
+                <div *ngFor="let source of sources; let i = index" class="list-item-with-actions">
+                    <input type="url" [value]="source">
+                    <button type="button" (click)="sources.splice(i, 1)">
                         <span class="mat-icon">delete</span>
                     </button>
                 </div>
-                <button type="button" class="fill" id="add-source">
+                <button type="button" class="fill" id="add-source" (click)="sources.push('')">
                     {{ "generic.add" | translate }}
                 </button>
             </div>

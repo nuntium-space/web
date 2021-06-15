@@ -17,6 +17,8 @@ export class WriteNewArticleComponent
     title: new FormControl(),
   });
 
+  public sources: string[] = [];
+
   public editorContent?: any;
 
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute, auth: AuthService)
