@@ -39,7 +39,11 @@ export class EditorComponent implements OnInit, OnChanges
         TextAlign,
         Superscript,
         Subscript,
-        Link,
+        Link.configure({
+          HTMLAttributes: {
+            class: "dark",
+          },
+        }),
       ],
       onUpdate: () =>
       {
