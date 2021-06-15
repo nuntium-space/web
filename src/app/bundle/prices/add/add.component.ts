@@ -56,8 +56,8 @@ export class AddPriceComponent
 
     if (response.data)
     {
-      this.router.navigate([ ".." ], {
-        relativeTo: this.route,
+      this.router.navigate([ "prices" ], {
+        relativeTo: this.route.parent,
       });
     }
   }
