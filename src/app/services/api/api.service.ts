@@ -192,7 +192,7 @@ export class ApiService
 
   public async retrieveRecentlyViewedArticles(userId: string): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `users/${userId}/articles/recent`);
+    return this.send("GET", `users/${userId}/articles/recent?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
   public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
