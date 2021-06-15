@@ -33,6 +33,8 @@ export class ExploreComponent implements OnInit
 
         if (this.searchQuery.trim().length === 0)
         {
+          this.articles = [];
+
           return;
         }
 
