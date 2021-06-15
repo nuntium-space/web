@@ -1,1 +1,9 @@
 @import "~src/layouts/default";
+
+::ng-deep .list-item-with-actions
+{
+    input
+    {
+        width: 100%;
+    }
+}
