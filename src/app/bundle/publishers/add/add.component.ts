@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ApiService, IBundle, IPublisher } from 'src/app/services/api/api.service';
 
 @Component({
@@ -7,37 +6,29 @@ import { ApiService, IBundle, IPublisher } from 'src/app/services/api/api.servic
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddPublisherComponent
+export class AddPublisherComponent implements OnChanges
 {
+  @Input()
   public bundle?: IBundle;
 
   public publishers?: IPublisher[];
 
-  constructor(private api: ApiService, route: ActivatedRoute)
+  constructor(private api: ApiService)
+  {}
+
+  public ngOnChanges()
   {
-    route.params.subscribe({
-      next: params =>
+    if (!this.bundle)
+    {
+      return;
+    }
+
+    this.api
+      .listPublishersForOrganization(this.bundle.organization.id, { not_in_bundle: this.bundle.id })
+      .then(response =>
       {
-        api
-          .retrieveBundle(params.id)
-          .then(response => response.data)
-          .then(bundle =>
-          {
-            if (!bundle)
-            {
-              return;
-            }
-
-            this.bundle = bundle;
-
-            return api.listPublishersForOrganization(bundle.organization.id, { not_in_bundle: bundle.id });
-          })
-          .then(response =>
-          {
-            this.publishers = response?.data;
-          });
-      },
-    });
+        this.publishers = response.data;
+      })
   }
 
   public async addPublisher(publisher: IPublisher)
