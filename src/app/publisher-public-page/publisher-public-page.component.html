@@ -5,6 +5,7 @@
         <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
         <div>
             <h1>{{ publisher.name }}</h1>
+            <a href="{{ publisher.url }}" target="_blank">{{ publisher.url }}</a>
         </div>
     </header>
     <section *ngIf="publisher.__metadata?.is_author">
