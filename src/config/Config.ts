@@ -15,5 +15,5 @@ export class Config
         },
     ];
 
-    public static readonly CURRENCIES = [ "USD", "EUR" ];
+    public static readonly CURRENCIES = [ "usd", "eur" ];
 }

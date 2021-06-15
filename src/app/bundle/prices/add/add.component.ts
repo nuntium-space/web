@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService, ICurrency } from 'src/app/services/api/api.service';
+import { ApiService, IBundle } from 'src/app/services/api/api.service';
+import { Config } from 'src/config/Config';
 
 @Component({
   selector: 'bundle-prices-add',
@@ -10,9 +11,10 @@ import { ApiService, ICurrency } from 'src/app/services/api/api.service';
 })
 export class AddPriceComponent
 {
-  private bundleId?: string;
+  @Input()
+  public bundle?: IBundle;
 
-  public currencies?: ICurrency[];
+  public currencies = Config.CURRENCIES;
 
   public form = new FormGroup({
     amount: new FormControl(),
@@ -20,23 +22,11 @@ export class AddPriceComponent
   });
 
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
-  {
-    route.params.subscribe({
-      next: params =>
-      {
-        this.bundleId = params.id;
-
-        api.listSupportedCurrencies().then(response =>
-        {
-          this.currencies = response.data;
-        });
-      },
-    });
-  }
+  {}
 
   public async onSubmit(end: () => void)
   {
-    if (!this.bundleId)
+    if (!this.bundle)
     {
       return;
     }
@@ -49,7 +39,7 @@ export class AddPriceComponent
       amount *= 100;
     }
 
-    const response = await this.api.createPrice(this.bundleId, {
+    const response = await this.api.createPrice(this.bundle.id, {
       amount: Math.trunc(amount),
       currency,
     });
