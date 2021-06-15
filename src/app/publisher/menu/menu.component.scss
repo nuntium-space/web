@@ -2,7 +2,8 @@
 
 header
 {
-    display: flex;
+    display: grid;
+    grid-template-columns: 100px auto;
     align-items: flex-end;
     gap: 1rem;
 
