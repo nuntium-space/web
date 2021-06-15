@@ -1,6 +1,6 @@
 <shared-header></shared-header>
 
-<shared-spinner *ngIf="!articles"></shared-spinner>
+<shared-spinner *ngIf="!articles && searchQuery.trim().length > 0"></shared-spinner>
 
 <aside>
     <section>
@@ -16,8 +16,8 @@
 
 <main *ngIf="articles">
     <h1
-        *ngIf="articles.length === 0"
-        
+        *ngIf="articles.length === 0 && searchQuery.trim().length > 0"
+
         class="no-results"
 
         [innerHTML]="'explore.search.empty' | translate:{ QUERY: searchQuery }"
