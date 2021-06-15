@@ -50,9 +50,6 @@
             <a routerLink="/~{{ article.author.publisher.id }}">
                 {{ article.author.publisher.name }}
             </a>
-            <a href="{{ article.author.publisher.url }}" target="_blank">
-                {{ article.author.publisher.url }}
-            </a>
         </div>
     </section>
     <section *ngIf="!isUpdatingArticle">
