@@ -17,7 +17,7 @@ export class WriteNewArticleComponent
     title: new FormControl(),
   });
 
-  public sources: string[] = [];
+  public sources: string[] = [ "" ];
 
   public editorContent?: any;
 
