@@ -2,6 +2,18 @@
 
 <shared-spinner *ngIf="!articles"></shared-spinner>
 
+<aside>
+    <section>
+        <div class="title">
+            Trending
+        </div>
+        <div class="content">
+            <!-- JUST FOR TESTING -->
+            <article-list [articles]="articles"></article-list>
+        </div>
+    </section>
+</aside>
+
 <main *ngIf="articles">
     <div *ngIf="articles.length === 0" class="no-results">
         <img src="/assets/empty-search-result.svg" alt="">
