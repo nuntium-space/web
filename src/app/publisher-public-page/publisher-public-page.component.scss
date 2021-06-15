@@ -19,9 +19,11 @@ aside
 
     header
     {
-        display: flex;
+        display: grid;
+        grid-template-columns: 100px auto;
         align-items: flex-end;
         gap: 1rem;
+        position: relative;
 
         shared-img
         {
@@ -29,11 +31,21 @@ aside
             height: 100px;
             width: 100px;
         }
-    }
 
-    h1
-    {
-        margin-top: 0;
+        h1
+        {
+            margin-top: 0;
+        }
+
+        a
+        {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 0.5rem;
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+        }
     }
 }
 
