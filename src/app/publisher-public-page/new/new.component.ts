@@ -37,6 +37,16 @@ export class WriteNewArticleComponent
     });
   }
 
+  public onSourceInput(e: Event, i: number)
+  {
+    this.sources[i] = (e.target as HTMLInputElement).value;
+  }
+
+  public trackByFn(index: number, item: string)
+  {
+    return index;
+  }
+
   public async onSubmit(end: () => void)
   {
     if (!this.author)
