@@ -194,20 +194,6 @@ export class ApiService
   }
 
   /**
-   * CONFIGS
-   */
-
-  public async listSupportedCurrencies(): Promise<IApiServiceResponse<ICurrency[]>>
-  {
-    return this.send("GET", `config/currencies`);
-  }
-
-  public async listSupportedLanguages(): Promise<IApiServiceResponse<ILanguage[]>>
-  {
-    return this.send("GET", `config/languages`);
-  }
-
-  /**
    * RESOURCES
    */
 

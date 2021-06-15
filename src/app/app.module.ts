@@ -16,6 +16,7 @@ import { UserSettingsService } from './shared/services/user-settings/user-settin
 import { SignedInComponent } from './home/signed-in/signed-in.component';
 import { SignedOutComponent } from './home/signed-out/signed-out.component';
 import { HttpClient } from '@angular/common/http';
+import { Config } from 'src/config/Config';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,12 @@ import { HttpClient } from '@angular/common/http';
 
           await userSettings.init();
 
-          const language = userSettings.userSettings?.language ?? translate.getBrowserLang();
+          let language = userSettings.userSettings?.language ?? translate.getBrowserLang();
+
+          if (!Config.LANGUAGES.find(_ => _.id === language))
+          {
+            language = "en";
+          }
 
           await translate.use(language).toPromise();
 
