@@ -1,0 +1,37 @@
+:host
+{
+    display: grid;
+    grid-template-rows: max-content auto;
+    grid-template-columns: 30% auto;
+    grid-template-areas:
+        "header header"
+        "aside main";
+    gap: 1em;
+    height: 100%;
+}
+
+::ng-deep aside
+{
+    grid-area: aside;
+    height: min-content;
+    position: sticky;
+    top: 1rem;
+}
+
+@media (max-width: 800px)
+{
+    :host
+    {
+        grid-template-rows: auto;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "header"
+            "main"
+            "aside";
+    }
+
+    ::ng-deep aside
+    {
+        position: unset;
+    }
+}
