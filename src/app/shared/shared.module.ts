@@ -50,7 +50,6 @@ export const createTranslationLoader = (http: HttpClient) =>
         useFactory: (createTranslationLoader),
         deps: [ HttpClient ],
       },
-      defaultLanguage: "en",
       isolate: false,
     }),
   ],

@@ -39,7 +39,6 @@ import { HttpClient } from '@angular/common/http';
         useFactory: (createTranslationLoader),
         deps: [ HttpClient ],
       },
-      defaultLanguage: "en",
       isolate: false,
     }),
   ],
