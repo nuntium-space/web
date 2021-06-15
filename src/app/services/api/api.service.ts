@@ -120,18 +120,6 @@ export interface IPaymentMethod
   },
 }
 
-export interface ICurrency
-{
-  name: string,
-  min: number,
-}
-
-export interface ILanguage
-{
-  id: string,
-  display_name: number,
-}
-
 export interface IUserSettings
 {
   language: string | null,
