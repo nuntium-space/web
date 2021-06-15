@@ -17,7 +17,13 @@
             Recently viewed
         </div>
         <div class="content">
-            <article-list [articles]="recentlyViewedArticles"></article-list>
+            <shared-spinner *ngIf="!recentlyViewedArticles"></shared-spinner>
+            <article-list
+                *ngIf="recentlyViewedArticles && recentlyViewedArticles.length > 0"
+
+                [articles]="recentlyViewedArticles"
+            >
+            </article-list>
         </div>
     </section>
 </aside>
