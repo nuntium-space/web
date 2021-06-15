@@ -7,16 +7,16 @@
     </button>
 
     <button (click)="do('bold')" [class.active]="editor?.isActive('bold')" [title]="'components.editor.bold' | translate">
-        <b>B</b>
+        <span class="mat-icon">format_bold</span>
     </button>
     <button (click)="do('italic')" [class.active]="editor?.isActive('italic')" [title]="'components.editor.italic' | translate">
-        <i>I</i>
+        <span class="mat-icon">format_italic</span>
     </button>
     <button (click)="do('strike')" [class.active]="editor?.isActive('strike')" [title]="'components.editor.strike' | translate">
-        <s>S</s>
+        <span class="mat-icon">strikethrough_s</span>
     </button>
     <button (click)="do('underline')" [class.active]="editor?.isActive('underline')" [title]="'components.editor.underline' | translate">
-        <u>U</u>
+        <span class="mat-icon">format_underline</span>
     </button>
 
     <button (click)="do('subscript')" [class.active]="editor?.isActive('subscript')" [title]="'components.editor.subscript' | translate">
