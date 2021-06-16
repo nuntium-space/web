@@ -2,7 +2,7 @@
 {
     display: grid;
     grid-template-rows: max-content auto;
-    grid-template-columns: 30% auto;
+    grid-template-columns: minmax(30ch, 30%) auto;
     grid-template-areas:
         "header header"
         "aside main";
