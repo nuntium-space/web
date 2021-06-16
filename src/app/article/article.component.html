@@ -96,6 +96,8 @@
     </section>
 </aside>
 
+<shared-spinner *ngIf="!article"></shared-spinner>
+
 <main *ngIf="article && isSubscribed">
     <div>
         <h1 class="title">{{ article.title }}</h1>
