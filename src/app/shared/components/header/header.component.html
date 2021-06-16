@@ -1,31 +1,40 @@
 <header
   [class.search-visible]="auth.user"
 >
-  <a class="dark logo" routerLink="/">nuntium</a>
-  <form
-    *ngIf="auth.user"
+  <div class="start">
+    <a routerLink="/" class="dark logo">nuntium</a>
+  </div>
+  <div class="center">
+    <form
+      *ngIf="auth.user"
 
-    [formGroup]="searchForm"
+      [formGroup]="searchForm"
 
-    (submit)="onSearchSubmit($event)"
-  >
-    <input
-      formControlName="query"
-
-      type="search"
-      class="dark"
-      placeholder="{{ 'components.header.search.placeholder' | translate }}"
+      (submit)="onSearchSubmit($event)"
     >
-  </form>
-  <shared-popup-menu *ngIf="auth.user">
-    <a class="button dark" routerLink="/settings">
-      {{ "settings.__title" | translate }}
+      <input
+        formControlName="query"
+
+        type="search"
+        class="dark"
+        placeholder="{{ 'components.header.search.placeholder' | translate }}"
+      >
+    </form>
+    <a routerLink="/explore" class="button dark">
+      <span class="mat-icon">explore</span>
     </a>
-    <button class="dark" (click)="auth.signOut()">
-      {{ "generic.sign_out" | translate }}
-    </button>
-  </shared-popup-menu>
-  <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
-    {{ "generic.sign_in" | translate }}
-  </a>
+  </div>
+  <div class="end">
+    <shared-popup-menu *ngIf="auth.user">
+      <a class="button dark" routerLink="/settings">
+        {{ "settings.__title" | translate }}
+      </a>
+      <button class="dark" (click)="auth.signOut()">
+        {{ "generic.sign_out" | translate }}
+      </button>
+    </shared-popup-menu>
+    <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
+      {{ "generic.sign_in" | translate }}
+    </a>
+  </div>
 </header>

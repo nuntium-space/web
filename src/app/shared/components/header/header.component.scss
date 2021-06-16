@@ -15,29 +15,36 @@ header
     align-items: center;
     gap: 1em;
 
+    @each $section in start, center, end
+    {
+        .#{$section}
+        {
+            grid-area: $section;
+        }
+    }
+
     .logo
     {
-        grid-area: start;
         text-decoration: none;
         color: var(--secondary-color);
         font-size: 2em;
         width: max-content;
     }
 
+    .center
+    {
+        display: flex;
+        gap: 1rem;
+    }
+
     form
     {
-        grid-area: center;
         max-width: unset;
 
         input
         {
             width: 100%;
         }
-    }
-
-    button
-    {
-        grid-area: end;
     }
 
     &.search-visible
