@@ -1,4 +1,27 @@
+@import "~src/variables";
+
 :host
 {
     display: block;
+}
+
+form
+{
+    display: flex;
+}
+
+.mat-icon
+{
+    padding: 0 1rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    color: var(--primary-color);
+    background-color: rgba($primary-color, 0.3);
+    font-size: 1.5rem;
+}
+
+input
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
