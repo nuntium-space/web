@@ -13,7 +13,7 @@ export class ExploreComponent implements OnInit
   public searchQuery: string = "";
 
   public articles?: IArticle[];
-
+  public trendingArticles?: IArticle[];
   public recentlyViewedArticles?: IArticle[];
 
   constructor(private api: ApiService, private auth: AuthService, private route: ActivatedRoute)
@@ -45,10 +45,17 @@ export class ExploreComponent implements OnInit
     });
 
     this.api
+      .retrieveTrendingArticles()
+      .then(response =>
+      {
+        this.trendingArticles = response.data;
+      });
+
+    this.api
       .retrieveRecentlyViewedArticles(this.auth.user.id)
       .then(response =>
       {
         this.recentlyViewedArticles = response.data;
-      })
+      });
   }
 }

@@ -8,8 +8,13 @@
             Trending
         </div>
         <div class="content">
-            <!-- JUST FOR TESTING -->
-            <article-list [articles]="articles"></article-list>
+            <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
+            <article-list
+                *ngIf="trendingArticles && trendingArticles.length > 0"
+
+                [articles]="trendingArticles"
+            >
+            </article-list>
         </div>
     </section>
     <section>

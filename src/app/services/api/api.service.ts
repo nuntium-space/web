@@ -190,6 +190,11 @@ export class ApiService
     return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
+  public async retrieveTrendingArticles(): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `articles/trending?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+  }
+
   public async retrieveRecentlyViewedArticles(userId: string): Promise<IApiServiceResponse<IArticle[]>>
   {
     return this.send("GET", `users/${userId}/articles/recent?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
