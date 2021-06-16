@@ -1,24 +1,9 @@
-<header
-  [class.search-visible]="auth.user"
->
-  <div class="start">
-    <a routerLink="/" class="dark logo">nuntium</a>
-  </div>
-  <div *ngIf="auth.user" class="center">
-    <form [formGroup]="searchForm" (submit)="onSearchSubmit($event)">
-      <input
-        formControlName="query"
-
-        type="search"
-        class="dark"
-        placeholder="{{ 'components.header.search.placeholder' | translate }}"
-      >
-    </form>
-    <a routerLink="/explore" class="button dark">
+<header>
+  <a routerLink="/" class="dark logo">nuntium</a>
+  <div class="end">
+    <a *ngIf="auth.user" routerLink="/explore" class="button dark explore">
       <span class="mat-icon">explore</span>
     </a>
-  </div>
-  <div class="end">
     <shared-popup-menu *ngIf="auth.user">
       <a class="button dark" routerLink="/settings">
         {{ "settings.__title" | translate }}

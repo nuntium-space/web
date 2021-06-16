@@ -11,17 +11,8 @@ header
 {
     display: grid;
     grid-template-columns: auto max-content;
-    grid-template-areas: "start end";
     align-items: center;
     gap: 1em;
-
-    @each $section in start, center, end
-    {
-        .#{$section}
-        {
-            grid-area: $section;
-        }
-    }
 
     .logo
     {
@@ -31,41 +22,14 @@ header
         width: max-content;
     }
 
-    .center
+    .end
     {
         display: flex;
         gap: 1rem;
 
-        a
+        .explore
         {
             display: flex;
         }
-    }
-
-    form
-    {
-        max-width: unset;
-
-        input
-        {
-            width: 100%;
-        }
-    }
-
-    &.search-visible
-    {
-        grid-template-columns: auto max-content max-content;
-        grid-template-areas: "start center end";
-    }
-}
-
-@media (max-width: 650px)
-{
-    header.search-visible
-    {
-        grid-template-columns: auto min-content;
-        grid-template-areas:
-            "start end"
-            "center center";
     }
 }

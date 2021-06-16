@@ -16,6 +16,7 @@ import { PopupMenuComponent } from './components/popup-menu/popup-menu.component
 import { FormComponent } from './components/form/form.component';
 import { ImgComponent } from './components/img/img.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -37,6 +38,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     FormComponent,
     ImgComponent,
     EditorComponent,
+    SearchInputComponent,
   ],
   imports: [
     CommonModule,

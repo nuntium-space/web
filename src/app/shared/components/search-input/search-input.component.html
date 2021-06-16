@@ -1,0 +1,9 @@
+<form [formGroup]="searchForm" (submit)="onSearchSubmit($event)">
+    <input
+        formControlName="query"
+
+        type="search"
+        class="dark"
+        placeholder="{{ 'components.header.search.placeholder' | translate }}"
+    >
+</form>
