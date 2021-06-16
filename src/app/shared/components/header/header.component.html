@@ -4,14 +4,8 @@
   <div class="start">
     <a routerLink="/" class="dark logo">nuntium</a>
   </div>
-  <div class="center">
-    <form
-      *ngIf="auth.user"
-
-      [formGroup]="searchForm"
-
-      (submit)="onSearchSubmit($event)"
-    >
+  <div *ngIf="auth.user" class="center">
+    <form [formGroup]="searchForm" (submit)="onSearchSubmit($event)">
       <input
         formControlName="query"
 
