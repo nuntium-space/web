@@ -76,6 +76,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     FormComponent,
     ImgComponent,
     EditorComponent,
+    SearchInputComponent,
   ],
 })
 export class SharedModule { }

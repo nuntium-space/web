@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Theme } from '../../types/Theme';
 
 @Component({
   selector: 'shared-search-input',
@@ -9,6 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SearchInputComponent implements OnInit
 {
+  @Input()
+  public theme: Theme = "light";
+
   public searchForm = new FormGroup({
     query: new FormControl(),
   });
