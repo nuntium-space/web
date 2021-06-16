@@ -1,6 +1,6 @@
 <shared-header></shared-header>
 
-<shared-spinner *ngIf="!articles && searchQuery.trim().length > 0"></shared-spinner>
+<shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
 
 <aside>
     <shared-search-input></shared-search-input>
@@ -36,7 +36,7 @@
 
 <main *ngIf="articles">
     <h1
-        *ngIf="articles.length === 0 && searchQuery.trim().length > 0"
+        *ngIf="!isLoadingSearchResults && articles && articles.length === 0"
 
         class="no-results"
 

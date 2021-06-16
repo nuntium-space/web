@@ -11,6 +11,7 @@ import { AuthService } from '../shared/services/auth/auth.service';
 export class ExploreComponent implements OnInit
 {
   public searchQuery: string = "";
+  public isLoadingSearchResults = false;
 
   public articles?: IArticle[];
   public trendingArticles?: IArticle[];
@@ -33,12 +34,16 @@ export class ExploreComponent implements OnInit
 
         if (this.searchQuery.trim().length === 0)
         {
-          this.articles = [];
+          this.articles = undefined;
 
           return;
         }
 
+        this.isLoadingSearchResults = true;
+
         const response = await this.api.search(this.searchQuery, 0);
+
+        this.isLoadingSearchResults = false;
 
         this.articles = response.data;
       },
