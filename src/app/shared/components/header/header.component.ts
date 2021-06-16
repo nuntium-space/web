@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -9,7 +10,9 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit
 {
-  public searchQuery: string = "";
+  public searchForm = new FormGroup({
+    query: new FormControl(),
+  });
 
   constructor(public auth: AuthService, public router: Router, private route: ActivatedRoute)
   {}
@@ -21,18 +24,8 @@ export class HeaderComponent implements OnInit
       {
         const query = (queryParams.query as string | undefined) ?? "";
 
-        this.searchQuery = query.trim() ?? "";
+        this.searchForm.get("query")?.setValue(query.trim());
       },
-    });
-  }
-
-  public onSearchInput(e: Event)
-  {
-    const { value: query } = e.target as HTMLInputElement;
-
-    this.router.navigate([ "." ], {
-      relativeTo: this.route,
-      queryParams: { query },
     });
   }
 
@@ -42,7 +35,7 @@ export class HeaderComponent implements OnInit
 
     this.router.navigate([ "explore" ], {
       queryParams: {
-        query: this.searchQuery,
+        query: this.searchForm.get("query")?.value ?? "",
       },
     });
   }
