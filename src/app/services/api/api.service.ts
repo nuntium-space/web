@@ -429,7 +429,7 @@ export class ApiService
 
   public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `search?query=${query}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+    return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
   public async retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>>
