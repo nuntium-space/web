@@ -1,14 +1,6 @@
-@import "~src/variables";
+@import "~src/layouts/default";
 
-:host
-{
-    display: grid;
-    grid-template-columns: 30% max-content auto;
-    grid-template-areas:
-        "header header header"
-        "aside main empty";
-    gap: 1em;
-}
+@import "~src/variables";
 
 aside
 {
@@ -63,17 +55,5 @@ aside
     h1
     {
         font-weight: $normal;
-    }
-}
-
-@media (max-width: 1000px)
-{
-    :host
-    {
-        grid-template-columns: 100%;
-        grid-template-areas:
-            "header"
-            "aside"
-            "main";
     }
 }
