@@ -105,6 +105,13 @@ button,
     border-radius: 0.5rem;
     transition: 100ms;
 
+    &.with-icon
+    {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
     &.small
     {
         font-size: 1em;
@@ -311,6 +318,11 @@ select
         {
             color: rgba($primary-color, 0.8);
         }
+    }
+
+    &.fill
+    {
+        width: 100%;
     }
 
     &::placeholder

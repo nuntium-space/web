@@ -1,5 +1,13 @@
 <shared-header></shared-header>
 
+<aside>
+    <shared-search-input [fill]="true"></shared-search-input>
+    <a routerLink="/explore" class="button with-icon fill">
+        <span class="mat-icon">explore</span>
+        {{ "feed.empty.explore" | translate }}
+    </a>
+</aside>
+
 <main *ngIf="articles">
     <div *ngIf="articles.length === 0" class="empty-feed">
         <img src="/assets/empty-feed.svg" alt="">

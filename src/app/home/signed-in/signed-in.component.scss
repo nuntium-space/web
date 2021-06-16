@@ -1,4 +1,14 @@
+@import "~src/layouts/default-mobile-inverted";
+
 @import "~src/variables";
+
+aside
+{
+    shared-search-input
+    {
+        margin-bottom: 1rem;
+    }
+}
 
 main
 {

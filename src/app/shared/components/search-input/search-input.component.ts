@@ -11,6 +11,9 @@ import { Theme } from '../../types/Theme';
 export class SearchInputComponent implements OnInit
 {
   @Input()
+  public fill = false;
+
+  @Input()
   public theme: Theme = "light";
 
   public searchForm = new FormGroup({
