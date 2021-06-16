@@ -11,3 +11,13 @@ main
         font-weight: $normal;
     }
 }
+
+shared-search-input
+{
+    margin-bottom: 1rem;
+
+    ::ng-deep input
+    {
+        width: 100%;
+    }
+}
