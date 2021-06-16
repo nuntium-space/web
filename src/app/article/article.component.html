@@ -68,13 +68,20 @@
         </div>
         <div class="content">
             <div>
-                <b>{{ "article.info.reading_time.__title" | translate }}</b>
+                <b>{{ "article.info.reading_time" | translate }}</b>
                 <p *ngIf="article.reading_time >= 1">
                     {{ article.reading_time }}
-                    {{ "article.info.reading_time.minutes" | translate }}
+                    {{
+                        (
+                            article.reading_time > 1
+                                ? "generic.minute.many"
+                                : "generic.minute.one"
+                        )
+                        | translate
+                    }}
                 </p>
                 <p *ngIf="article.reading_time < 1">
-                    {{ "article.info.reading_time.less_than_a_minute" | translate }}
+                    {{ "generic.less_than_a_minute" | translate }}
                 </p>
             </div>
             <div>

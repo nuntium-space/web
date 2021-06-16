@@ -28,10 +28,17 @@
             <span class="mat-icon">timer</span>
             <i *ngIf="article.reading_time >= 1">
                 {{ article.reading_time }}
-                {{ "components.article_list.article.reading_time.minutes" | translate }}
+                {{
+                    (
+                        article.reading_time > 1
+                            ? "generic.minute.many"
+                            : "generic.minute.one"
+                    )
+                    | translate
+                }}
             </i>
             <i *ngIf="article.reading_time < 1">
-                {{ "components.article_list.article.reading_time.less_than_a_minute" | translate }}
+                {{ "generic.less_than_a_minute" | translate }}
             </i>
         </div>
     </footer>
