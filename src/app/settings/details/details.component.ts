@@ -13,7 +13,6 @@ export class AccountDetailsComponent
 {
   public updateAccountDetailsForm = new FormGroup({
     fullName: new FormControl(this.auth.user?.full_name),
-    username: new FormControl(this.auth.user?.username),
     email: new FormControl(this.auth.user?.email),
   });
 
@@ -29,7 +28,6 @@ export class AccountDetailsComponent
 
     const response = await this.api.updateUser(this.auth.user.id, {
       full_name: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("fullName")),
-      username: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("username")),
       email: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("email")),
     });
 
