@@ -2,6 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService, IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 
@@ -47,23 +48,28 @@ export class SubscribeComponent implements OnChanges
       });
   }
 
-  public async subscribe(end: () => void)
+  public async subscribe([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.auth.user)
     {
       return;
     }
 
-    const response = await this.api.subscribeToPrice(
-      this.auth.user.id,
-      this.subscribeForm.get("price")?.value ?? "",
-    );
+    const response = await this.api
+      .subscribeToPrice(
+        this.auth.user.id,
+        this.subscribeForm.get("price")?.value ?? "",
+      );
 
-    end();
-
-    if (!response.errors)
+    if (!response.success)
     {
-      this.router.navigateByUrl("/");
+      failure();
+
+      return;
     }
+
+    success();
+
+    this.router.navigateByUrl("/");
   }
 }

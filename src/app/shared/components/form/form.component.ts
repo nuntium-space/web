@@ -3,31 +3,35 @@ import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
 
-export type ConfirmEventCallbackOptions =
+export type ConfirmEventCallbackSuccessOptions =
 {
-  success: true;
   message?: {
-    text?: string,
     /**
      * @default "none"
      */
     type?: "modal" | "message" | "none";
-  };
-}
-|
-{
-  success: false;
-  message?: {
-    /**
-     * @default "errors.unknown"
-     */
     text?: string,
+  };
+};
+
+export type ConfirmEventCallbackFailureOptions =
+{
+  message?: {
     /**
      * @default "modal"
      */
     type?: "modal" | "message" | "none";
+    /**
+     * @default "errors.unknown"
+     */
+    text?: string,
   };
 };
+
+export type ConfirmEventCallback = [
+  (options?: ConfirmEventCallbackSuccessOptions) => void,
+  (options?: ConfirmEventCallbackFailureOptions) => void,
+];
 
 @Component({
   selector: 'shared-form',
@@ -43,7 +47,7 @@ export class FormComponent
   public submitButtonSize: "default" | "small" = "default";
 
   @Output()
-  public confirm = new EventEmitter<(options?: ConfirmEventCallbackOptions) => void>();
+  public confirm = new EventEmitter<ConfirmEventCallback>();
 
   public isLoading = false;
 
@@ -66,36 +70,67 @@ export class FormComponent
 
     this.isLoading = true;
 
-    this.confirm.emit(options =>
-    {
-      this.isLoading = false;
-
-      options ??= { success: true };
-      options.message ??= {};
-      options.message.text ??= options.success ? undefined : "errors.unknown";
-      options.message.type ??= options.success ? "none" : "modal";
-
-      switch (options.message.type)
+    this.confirm.emit([
+      options =>
       {
-        case "message": break;
-        case "modal":
+        this.isLoading = false;
+
+        options ??= {};
+        options.message ??= {};
+        options.message.type ??= "none";
+
+        switch (options.message.type)
         {
-          this.dialogRef = this.dom.appendComponentToBody(
-            DialogComponent,
-            {
-              message: this.translate.instant(options.message.text!),
-              buttons: this.dialogButtons,
-            },
-            {
-              hide: () => this.hideDialog(),
-            },
-          );
-          
-          break;
+          case "message": break;
+          case "modal":
+          {
+            this.dialogRef = this.dom.appendComponentToBody(
+              DialogComponent,
+              {
+                message: this.translate.instant(options.message.text!),
+                buttons: this.dialogButtons,
+              },
+              {
+                hide: () => this.hideDialog(),
+              },
+            );
+            
+            break;
+          }
+          case "none": break;
         }
-        case "none": break;
-      }
-    });
+      },
+      options =>
+      {
+        this.isLoading = false;
+
+        options ??= {};
+        options.message ??= {};
+        options.message.type ??= "modal";
+        options.message.text ??= "errors.unknown";
+
+        switch (options.message.type)
+        {
+          case "message": break;
+          case "modal":
+          {
+            this.dialogRef = this.dom.appendComponentToBody(
+              DialogComponent,
+              {
+                message: this.translate.instant(options.message.text!),
+                buttons: this.dialogButtons,
+              },
+              {
+                hide: () => this.hideDialog(),
+              },
+            );
+            
+            break;
+          }
+          case "none": break;
+        }
+      },
+    ]);
   }
 
   public hideDialog()

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, IPublisher } from 'src/app/services/api/api.service';
-import { ConfirmEventCallbackOptions } from 'src/app/shared/components/form/form.component';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 
 @Component({
   selector: 'publisher-details',
@@ -51,11 +51,11 @@ export class PublisherDetailsComponent implements OnChanges
       });
   }
 
-  public async onDetailsFormSubmit(end: (options?: ConfirmEventCallbackOptions) => void)
+  public async onDetailsFormSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.publisher)
     {
-      end({ success: false });
+      failure();
 
       return;
     }
@@ -63,13 +63,6 @@ export class PublisherDetailsComponent implements OnChanges
     const response = await this.api.updatePublisher(this.publisher.id, {
       name: this.detailsForm.get("name")?.value,
       url: this.detailsForm.get("url")?.value,
-    });
-
-    end({
-      success: response.success,
-      message: {
-        type: "none",
-      },
     });
 
     this.detailsForm.get("name")?.setErrors({
@@ -80,10 +73,20 @@ export class PublisherDetailsComponent implements OnChanges
       errors: response.errors?.filter(e => e.field === "url")
     });
 
-    if (response.success)
+    if (!response.success)
     {
-      this.update.emit(response.data);
+      failure({
+        message: {
+          type: "none",
+        },
+      });
+
+      return;
     }
+
+    success();
+
+    this.update.emit(response.data);
   }
 
   public onImageChange(e: Event)
@@ -98,11 +101,11 @@ export class PublisherDetailsComponent implements OnChanges
     }
   }
 
-  public async onImageFormSubmit(end: (options?: ConfirmEventCallbackOptions) => void)
+  public async onImageFormSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.publisher)
     {
-      end({ success: false });
+      failure();
 
       return;
     }
@@ -118,8 +121,7 @@ export class PublisherDetailsComponent implements OnChanges
         ],
       });
 
-      end({
-        success: false,
+      failure({
         message: {
           type: "none",
         },
@@ -132,22 +134,25 @@ export class PublisherDetailsComponent implements OnChanges
       image: this.image,
     });
 
-    end({
-      success: response.success,
-      message: {
-        type: "none",
-      },
-    });
-
     this.imageForm.get("image")?.setErrors({
       errors: response.errors?.filter(e => e.field === "image")
     });
 
-    if (response.success)
+    if (!response.success)
     {
-      this.publisher.imageUrl = response.data?.url ?? null;
+      failure({
+        message: {
+          type: "none",
+        },
+      });
 
-      this.update.emit(this.publisher);
+      return;
     }
+
+    success();
+
+    this.publisher.imageUrl = response.data?.url ?? null;
+
+    this.update.emit(this.publisher);
   }
 }
