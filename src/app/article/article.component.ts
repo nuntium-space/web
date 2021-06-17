@@ -33,28 +33,32 @@ export class ArticleComponent implements OnInit
     this.route.params.subscribe({
       next: (params) =>
       {
-        this.api.retrieveArticle(params.id).then((response) =>
-        {
-          // Payment Required
-          if (response.status === 402)
-          {
-            this.isSubscribed = false;
-          }
-          else if (response.data)
+        this.api
+          .retrieveArticle(params.id)
+          .then(response =>
           {
             this.article = response.data;
 
-            this.updateArticleForm.get("title")?.setValue(this.article.title);
-          }
-        });
+            // Payment Required
+            if (response.status === 402)
+            {
+              this.isSubscribed = false;
 
-        this.api.listCommentsForArticle(params.id, null).then((response) =>
-        {
-          if (response.data)
+              return;
+            }
+
+            this.updateArticleForm.get("title")?.setValue(this.article?.title);
+          });
+
+        this.api
+          .listCommentsForArticle(params.id, null)
+          .then(response =>
           {
-            this.comments = response.data;
-          }
-        });
+            if (response.data)
+            {
+              this.comments = response.data;
+            }
+          });
       },
     });
   }
