@@ -4,7 +4,7 @@
     <shared-search-input [fill]="true"></shared-search-input>
     <section>
         <div class="title">
-            Trending
+            {{ "explore.trending" | translate }}
         </div>
         <div class="content">
             <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
@@ -18,7 +18,7 @@
     </section>
     <section>
         <div class="title">
-            Recently viewed
+            {{ "explore.recently_viewed" | translate }}
         </div>
         <div class="content">
             <shared-spinner *ngIf="!recentlyViewedArticles"></shared-spinner>
@@ -35,7 +35,7 @@
 <main>
     <section>
         <div class="title">
-            Publishers
+            {{ "explore.publishers" | translate }}
         </div>
         <div class="content">
             <h1
@@ -59,7 +59,7 @@
     </section>
     <section>
         <div class="title">
-            Articles
+            {{ "explore.articles" | translate }}
         </div>
         <div class="content">
             <h1
