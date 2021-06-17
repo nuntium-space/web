@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IArticle } from '../services/api/api.service';
+import { ApiService, IArticle, IPublisher } from '../services/api/api.service';
 import { AuthService } from '../shared/services/auth/auth.service';
 
 @Component({
@@ -16,6 +16,8 @@ export class ExploreComponent implements OnInit
   public articles?: IArticle[];
   public trendingArticles?: IArticle[];
   public recentlyViewedArticles?: IArticle[];
+
+  public publishers?: IPublisher[];
 
   constructor(private api: ApiService, private auth: AuthService, private route: ActivatedRoute)
   {}
@@ -46,6 +48,7 @@ export class ExploreComponent implements OnInit
         this.isLoadingSearchResults = false;
 
         this.articles = response.data?.articles;
+        this.publishers = response.data?.publishers;
       },
     });
 
