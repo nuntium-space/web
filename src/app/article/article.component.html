@@ -123,5 +123,8 @@
     <div class="payment-required">
         <h1>{{ "article.payment_required.title" | translate }}</h1>
         <p>{{ "article.payment_required.subtitle" | translate }}</p>
+        <a *ngIf="article" routerLink="/~{{ article.author.publisher.id }}" class="button dark">
+            View
+        </a>
     </div>
 </main>
