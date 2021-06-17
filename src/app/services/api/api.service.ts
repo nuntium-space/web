@@ -427,7 +427,10 @@ export class ApiService
     return this.send("DELETE", `publishers/${id}`);
   }
 
-  public async search(query: string, page: number): Promise<IApiServiceResponse<IArticle[]>>
+  public async search(query: string, page: number): Promise<IApiServiceResponse<{
+    articles: IArticle[],
+    publishers: IPublisher[],
+  }>>
   {
     return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }

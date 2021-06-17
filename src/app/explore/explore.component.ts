@@ -45,7 +45,7 @@ export class ExploreComponent implements OnInit
 
         this.isLoadingSearchResults = false;
 
-        this.articles = response.data;
+        this.articles = response.data?.articles;
       },
     });
 
