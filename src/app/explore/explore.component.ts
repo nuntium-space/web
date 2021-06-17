@@ -34,10 +34,11 @@ export class ExploreComponent implements OnInit
       {
         this.searchQuery = (queryParams.query as string | undefined) ?? "";
 
+        this.articles = undefined;
+        this.publishers = undefined;
+
         if (this.searchQuery.trim().length === 0)
         {
-          this.articles = undefined;
-
           return;
         }
 
