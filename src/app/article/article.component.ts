@@ -37,15 +37,17 @@ export class ArticleComponent implements OnInit
           .retrieveArticle(params.id)
           .then(response =>
           {
-            this.article = response.data;
-
             // Payment Required
             if (response.status === 402)
             {
+              this.article = response.raw;
+
               this.isSubscribed = false;
 
               return;
             }
+
+            this.article = response.data;
 
             this.updateArticleForm.get("title")?.setValue(this.article?.title);
           });

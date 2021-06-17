@@ -6,12 +6,19 @@ export interface IApiServiceResponse<T>
 {
   status: number,
   success: boolean,
+  /**
+   * Body of the request, if successful
+   */
   data?: T,
   errors?: {
     field: string,
     error: string,
     params?: any,
   }[],
+  /**
+   * Body of the request
+   */
+  raw?: any,
 }
 
 export interface IUser
@@ -167,6 +174,8 @@ export class ApiService
     }
 
     const json = await response.json();
+
+    result.raw = json;
 
     if (response.status !== 200)
     {
