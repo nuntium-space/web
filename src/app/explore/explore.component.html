@@ -1,7 +1,5 @@
 <shared-header></shared-header>
 
-<shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
-
 <aside>
     <shared-search-input [fill]="true"></shared-search-input>
     <section>
@@ -34,7 +32,7 @@
     </section>
 </aside>
 
-<main *ngIf="articles">
+<main>
     <h1
         *ngIf="!isLoadingSearchResults && articles && articles.length === 0"
 
@@ -43,5 +41,6 @@
         [innerHTML]="'explore.search.empty' | translate:{ QUERY: searchQuery }"
     >
     </h1>
-    <article-list [articles]="articles"></article-list>
+    <shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
+    <article-list *ngIf="articles" [articles]="articles"></article-list>
 </main>
