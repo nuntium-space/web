@@ -52,6 +52,8 @@ export class SubscribeComponent implements OnChanges
   {
     if (!this.auth.user)
     {
+      failure();
+
       return;
     }
 

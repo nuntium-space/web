@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IArticle, IComment } from '../services/api/api.service';
+import { ConfirmEventCallback } from '../shared/components/form/form.component';
 import { AuthService } from '../shared/services/auth/auth.service';
 import { FormatService } from '../shared/services/format/format.service';
 
@@ -58,19 +59,20 @@ export class ArticleComponent implements OnInit
     });
   }
 
-  public async updateArticle(end: () => void)
+  public async updateArticle([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.article)
     {
+      failure();
+
       return;
     }
 
-    const response = await this.api.updateArticle(this.article.id, {
-      title: this.updateArticleForm.get("title")?.value ?? "",
-      content: this.article.content,
-    });
-
-    end();
+    const response = await this.api
+      .updateArticle(this.article.id, {
+        title: this.updateArticleForm.get("title")?.value ?? "",
+        content: this.article.content,
+      });
 
     this.updateArticleForm.get("title")?.setErrors({
       errors: response.errors?.filter(e => e.field === "title")
@@ -80,12 +82,22 @@ export class ArticleComponent implements OnInit
       errors: response.errors?.filter(e => e.field === "content")
     });
 
-    if (response.data)
+    if (!response.success)
     {
-      this.isUpdatingArticle = false;
+      failure({
+        message: {
+          type: "none",
+        },
+      });
 
-      this.article = response.data;
+      return;
     }
+
+    success();
+
+    this.isUpdatingArticle = false;
+
+    this.article = response.data;
   }
 
   public async deleteArticle()

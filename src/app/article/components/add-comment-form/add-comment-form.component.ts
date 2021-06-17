@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { IArticle, IComment, ApiService } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 
 @Component({
   selector: 'article-add-comment-form',
@@ -27,30 +28,40 @@ export class AddCommentFormComponent
     this.parent ??= null;
   }
 
-  public async onSubmit(end: () => void)
+  public async onSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.article)
     {
+      failure();
+
       return;
     }
 
-    const response = await this.api.createComment(this.article.id, {
-      content: this.form.get("content")?.value ?? "",
-      parent: this.parent?.id ?? null,
-    });
-
-    end();
+    const response = await this.api
+      .createComment(this.article.id, {
+        content: this.form.get("content")?.value ?? "",
+        parent: this.parent?.id ?? null,
+      });
 
     this.form.get("content")?.setErrors({
       errors: response.errors?.filter(e => e.field === "content")
     });
 
-    if (response.data)
+    if (!response.success)
     {
-      this.form.reset();
+      failure({
+        message: {
+          type: "none",
+        },
+      });
 
-      this.commentCreated.emit(response.data);
+      return;
     }
-  }
 
+    success();
+
+    this.form.reset();
+
+    this.commentCreated.emit(response.data);
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Utilities } from 'src/utilities/Utilities';
 
@@ -19,19 +20,20 @@ export class AccountDetailsComponent
   constructor(private api: ApiService, private auth: AuthService)
   {}
 
-  public async onUpdateAccountDetailsFormSubmit(end: () => void)
+  public async onUpdateAccountDetailsFormSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.auth.user)
     {
+      failure();
+
       return;
     }
 
-    const response = await this.api.updateUser(this.auth.user.id, {
-      full_name: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("fullName")),
-      email: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("email")),
-    });
-
-    end();
+    const response = await this.api
+      .updateUser(this.auth.user.id, {
+        full_name: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("fullName")),
+        email: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("email")),
+      });
 
     Object.entries(this.updateAccountDetailsForm.controls).forEach(([ name, control ]) =>
     {
@@ -39,5 +41,18 @@ export class AccountDetailsComponent
         errors: response.errors?.filter(e => e.field === name)
       });
     });
+
+    if (!response.success)
+    {
+      failure({
+        message: {
+          type: "none",
+        },
+      });
+
+      return;
+    }
+
+    success();
   }
 }

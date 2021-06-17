@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 
 @Component({
   selector: 'bundle-details',
@@ -27,18 +28,19 @@ export class BundleDetailsComponent implements OnChanges
     this.form.get("name")?.setValue(this.bundle?.name);
   }
 
-  public async onSubmit(end: () => void)
+  public async onSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.bundle)
     {
+      failure();
+
       return;
     }
 
-    const response = await this.api.updateBundle(this.bundle.id, {
-      name: this.form.get("name")?.value,
-    });
-
-    end();
+    const response = await this.api
+      .updateBundle(this.bundle.id, {
+        name: this.form.get("name")?.value,
+      });
 
     Object.entries(this.form.controls).forEach(([ name, control ]) =>
     {
@@ -47,9 +49,19 @@ export class BundleDetailsComponent implements OnChanges
       });
     });
 
-    if (response.success)
+    if (!response.success)
     {
-      this.update.emit(response.data);
+      failure({
+        message: {
+          type: "none",
+        },
+      });
+
+      return;
     }
+
+    success();
+
+    this.update.emit(response.data);
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ApiService } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -43,10 +44,12 @@ export class AddPaymentMethodComponent implements OnInit
     }
   }
 
-  public async onSubmit(end: () => void)
+  public async onSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.stripe || !this.cardElement || !this.auth.user)
     {
+      failure();
+
       return;
     }
 
@@ -58,7 +61,7 @@ export class AddPaymentMethodComponent implements OnInit
 
     if (result.error)
     {
-      end();
+      failure();
 
       return;
     }
@@ -67,21 +70,29 @@ export class AddPaymentMethodComponent implements OnInit
       id: result.paymentMethod.id,
     });
 
-    end();
-
-    if (!response.errors)
+    if (!response.success)
     {
-      this.router.navigate([ "payment-methods" ], {
-        /*
-          this.route is the empty path route in settings-routing.module.ts
-          so, in order to navigate to the payment-methods section we need
-          to navigate relative to the settings route defined in app-routing.module.ts
-
-          This sucks but it's the best way (that wasn't absolute) to do this kind of navigation I've found
-          so far.
-        */
-        relativeTo: this.route.parent,
+      failure({
+        message: {
+          type: "none",
+        },
       });
+
+      return;
     }
+
+    success();
+
+    this.router.navigate([ "payment-methods" ], {
+      /*
+        this.route is the empty path route in settings-routing.module.ts
+        so, in order to navigate to the payment-methods section we need
+        to navigate relative to the settings route defined in app-routing.module.ts
+
+        This sucks but it's the best way (that wasn't absolute) to do this kind of navigation I've found
+        so far.
+      */
+      relativeTo: this.route.parent,
+    });
   }
 }

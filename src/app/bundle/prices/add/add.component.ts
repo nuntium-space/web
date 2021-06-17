@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IBundle } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { Config } from 'src/config/Config';
 
 @Component({
@@ -24,10 +25,12 @@ export class AddPriceComponent
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
   {}
 
-  public async onSubmit(end: () => void)
+  public async onSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.bundle)
     {
+      failure();
+
       return;
     }
 
@@ -39,12 +42,11 @@ export class AddPriceComponent
       amount = parseInt(amount.toFixed(2).replace(".", ""));
     }
 
-    const response = await this.api.createPrice(this.bundle.id, {
-      amount: Math.trunc(amount),
-      currency,
-    });
-
-    end();
+    const response = await this.api
+      .createPrice(this.bundle.id, {
+        amount: Math.trunc(amount),
+        currency,
+      });
 
     this.form.get("amount")?.setErrors({
       errors: response.errors?.filter(e => e.field === "amount")
@@ -54,11 +56,21 @@ export class AddPriceComponent
       errors: response.errors?.filter(e => e.field === "currency")
     });
 
-    if (response.data)
+    if (!response.success)
     {
-      this.router.navigate([ "prices" ], {
-        relativeTo: this.route.parent,
+      failure({
+        message: {
+          type: "none",
+        },
       });
+
+      return;
     }
+
+    success();
+
+    this.router.navigate([ "prices" ], {
+      relativeTo: this.route.parent,
+    });
   }
 }

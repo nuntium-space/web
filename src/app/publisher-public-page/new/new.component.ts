@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IAuthor } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
@@ -47,19 +48,20 @@ export class WriteNewArticleComponent
     return index;
   }
 
-  public async onSubmit(end: () => void)
+  public async onSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.author)
     {
+      failure();
+
       return;
     }
 
-    const response = await this.api.createArticle(this.author.id, {
-      title: this.form.get("title")?.value ?? "",
-      content: this.editorContent,
-    });
-
-    end();
+    const response = await this.api
+      .createArticle(this.author.id, {
+        title: this.form.get("title")?.value ?? "",
+        content: this.editorContent,
+      });
 
     this.form.get("title")?.setErrors({
       errors: response.errors?.filter(e => e.field === "title")
@@ -69,11 +71,21 @@ export class WriteNewArticleComponent
       errors: response.errors?.filter(e => e.field === "content")
     });
 
-    if (response.data)
+    if (!response.success)
     {
-      this.router.navigate([ ".." ], {
-        relativeTo: this.route,
+      failure({
+        message: {
+          type: "none",
+        },
       });
+
+      return;
     }
+
+    success();
+
+    this.router.navigate([ ".." ], {
+      relativeTo: this.route,
+    });
   }
 }

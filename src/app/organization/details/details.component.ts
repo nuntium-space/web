@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService, IOrganization } from 'src/app/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 
 @Component({
   selector: 'organization-details',
@@ -39,10 +40,12 @@ export class OrganizationDetailsComponent implements OnChanges
       });
   }
 
-  public async onDetailsFormSubmit(end: () => void)
+  public async onDetailsFormSubmit([ success, failure ]: ConfirmEventCallback)
   {
     if (!this.organization)
     {
+      failure();
+
       return;
     }
 
@@ -50,15 +53,23 @@ export class OrganizationDetailsComponent implements OnChanges
       name: this.detailsForm.get("name")?.value ?? "",
     });
 
-    end();
-
     this.detailsForm.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
     });
 
-    if (response.success)
+    if (!response.success)
     {
-      this.update.emit(response.data);
+      failure({
+        message: {
+          type: "none",
+        },
+      });
+
+      return;
     }
+
+    success();
+
+    this.update.emit(response.data);
   }
 }
