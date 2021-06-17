@@ -36,7 +36,7 @@ export class AddPriceComponent
 
     if ([ "usd", "eur" ].includes(currency))
     {
-      amount *= 100;
+      amount = parseInt(amount.toFixed(2).replace(".", ""));
     }
 
     const response = await this.api.createPrice(this.bundle.id, {
