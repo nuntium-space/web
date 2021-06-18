@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { of } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
-import { ApiService, IBundle } from '../services/api/api.service';
+import { IBundle } from '../services/api/api.service';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-bundle',

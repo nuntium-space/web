@@ -5,6 +5,11 @@ import { IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
 @Injectable()
 export class ApiService extends CoreApiService
 {
+  public async retrieveBundle(id: string): Promise<IApiServiceResponse<IBundle>>
+  {
+    return this.send("GET", `bundles/${id}`);
+  }
+
   public async updateBundle(id: string, data: {
     name?: string,
     active?: boolean,

@@ -233,11 +233,6 @@ export class ApiService
     return this.send("DELETE", `authors/${authorId}`);
   }
 
-  public async retrieveBundle(id: string): Promise<IApiServiceResponse<IBundle>>
-  {
-    return this.send("GET", `bundles/${id}`);
-  }
-
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("GET", `organizations/${id}`);
