@@ -238,44 +238,6 @@ export class ApiService
     return this.send("GET", `bundles/${id}`);
   }
 
-  public async listPublishersForBundle(id: string): Promise<IApiServiceResponse<IPublisher[]>>
-  {
-    return this.send("GET", `bundles/${id}/publishers`);
-  }
-
-  public async listPricesForBundle(id: string, options?: {
-    active: boolean,
-  }): Promise<IApiServiceResponse<IPrice[]>>
-  {
-    return this.send("GET", `bundles/${id}/prices${(options && "active" in options) ? `?active=${options.active}` : ""}`);
-  }
-
-  public async createPrice(bundleId: string, data: {
-    amount: number,
-    currency: string,
-  }): Promise<IApiServiceResponse<IPrice>>
-  {
-    return this.send("POST", `bundles/${bundleId}/prices`, data);
-  }
-
-  public async addPublisherToBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("POST", `bundles/${bundleId}/publishers/${publisherId}`);
-  }
-
-  public async updateBundle(id: string, data: {
-    name?: string,
-    active?: boolean,
-  }): Promise<IApiServiceResponse<IBundle>>
-  {
-    return this.send("PATCH", `bundles/${id}`, data);
-  }
-
-  public async removePublisherFromBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("DELETE", `bundles/${bundleId}/publishers/${publisherId}`);
-  }
-
   public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("GET", `organizations/${id}`);
@@ -284,15 +246,6 @@ export class ApiService
   public async listBundlesForOrganization(organizationId: string): Promise<IApiServiceResponse<IBundle[]>>
   {
     return this.send("GET", `organizations/${organizationId}/bundles`);
-  }
-
-  public async listPublishersForOrganization(organizationId: string, options?: { not_in_bundle?: string }): Promise<IApiServiceResponse<IPublisher[]>>
-  {
-    return this.send("GET", `organizations/${organizationId}/publishers${
-      options?.not_in_bundle
-        ? `?not_in_bundle=${options.not_in_bundle}`
-        : ""
-    }`);
   }
 
   public async connectAccount(organizationId: string): Promise<IApiServiceResponse<{ url: string }>>
@@ -342,13 +295,6 @@ export class ApiService
   public async deletePaymentMethod(id: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `payment-methods/${id}`);
-  }
-
-  public async updatePrice(id: string, data: {
-    active?: boolean,
-  }): Promise<IApiServiceResponse<IPrice>>
-  {
-    return this.send("PATCH", `prices/${id}`, data);
   }
 
   public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>
@@ -474,11 +420,6 @@ export class ApiService
   }): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `users/${userId}/payment-methods`, data);
-  }
-
-  public async subscribeToPrice(userId: string, priceId: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("POST", `users/${userId}/subscriptions`, { price: priceId });
   }
 
   public async updateUser(id: string, data: {

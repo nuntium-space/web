@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ApiService, IBundle, IPrice } from 'src/app/services/api/api.service';
+import { IBundle, IPrice } from 'src/app/services/api/api.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'bundle-prices',
