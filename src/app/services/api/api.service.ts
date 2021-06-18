@@ -49,18 +49,6 @@ export interface IArticle
   updated_at: string,
 }
 
-export interface IComment
-{
-  id: string,
-  content: string,
-  user: IUser,
-  article: IArticle,
-  parent: IComment | null,
-  reply_count: number,
-  created_at: string,
-  updated_at: string,
-}
-
 export interface ISession
 {
   id: string,
