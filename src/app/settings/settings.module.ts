@@ -16,6 +16,7 @@ import { SecurityComponent } from './security/security.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { SettingsComponent } from './settings.component';
+import { ApiService } from './services/api/api.service';
 
 
 @NgModule({
@@ -38,6 +39,9 @@ import { SettingsComponent } from './settings.component';
     CommonModule,
     SharedModule,
     SettingsRoutingModule
-  ]
+  ],
+  providers: [
+    ApiService,
+  ],
 })
 export class SettingsModule { }
