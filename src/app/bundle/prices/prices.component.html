@@ -25,11 +25,11 @@
 
                         theme="dark"
 
-                        [text]="'generic.archive' | translate"
-                        [alertText]="'generic.archive' | translate"
+                        [message]="'generic.archive' | translate"
 
                         (confirm)="archiveOrRestorePrice(price)"
                     >
+                        {{ "generic.archive" | translate }}
                     </shared-danger-button>
                     <button *ngIf="!price.active" class="dark" (click)="archiveOrRestorePrice(price)">
                         {{ 'generic.restore' | translate }}

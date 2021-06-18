@@ -21,11 +21,11 @@
                     <shared-danger-button
                         theme="dark"
 
-                        [text]="'generic.remove' | translate"
-                        [alertText]="'generic.remove' | translate"
+                        [message]="'generic.remove' | translate"
 
                         (confirm)="removePublisher(publisher)"
                     >
+                        {{ "generic.remove" | translate }}
                     </shared-danger-button>
                 </shared-popup-menu>
             </div>

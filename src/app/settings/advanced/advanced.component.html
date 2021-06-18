@@ -21,12 +21,9 @@
                     </li>
                 </ul>
             </div>
-            <shared-danger-button
-                [text]="'generic.delete' | translate"
-                [alertText]="'generic.delete' | translate"
-
-                (confirm)="deleteAccount()"
-            ></shared-danger-button>
+            <shared-danger-button [message]="'generic.delete' | translate" (confirm)="deleteAccount()">
+                {{ "generic.delete" | translate }}    
+            </shared-danger-button>
         </div>
     </div>
 </section>

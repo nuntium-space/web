@@ -24,11 +24,11 @@
                 </div>
                 <div class="actions">
                     <shared-danger-button
-                        [text]="'generic.remove' | translate"
-                        [alertText]="'generic.remove' | translate"
+                        [message]="'generic.remove' | translate"
 
                         (confirm)="removeAuthor(author)"
                     >
+                        {{ "generic.remove" | translate }}
                     </shared-danger-button>
                 </div>
             </div>

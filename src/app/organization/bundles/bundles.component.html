@@ -24,11 +24,11 @@
 
                         theme="dark"
 
-                        [text]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
-                        [alertText]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
+                        [message]="(bundle.active ? 'generic.archive' : 'generic.restore') | translate"
 
                         (confirm)="archiveOrRestoreBundle(bundle)"
                     >
+                        {{ (bundle.active ? "generic.archive" : "generic.restore") | translate }}
                     </shared-danger-button>
                     <button *ngIf="!bundle.active" class="dark" (click)="archiveOrRestoreBundle(bundle)">
                         {{ 'generic.restore' | translate }}

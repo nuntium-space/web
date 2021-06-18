@@ -1,4 +1,4 @@
-import { Component, ComponentRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
 import { Theme } from '../../types/Theme';
@@ -9,7 +9,7 @@ import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
   templateUrl: './danger-button.component.html',
   styleUrls: ['./danger-button.component.scss']
 })
-export class DangerButtonComponent implements OnInit
+export class DangerButtonComponent
 {
   @Input()
   public theme: Theme = "light";
@@ -18,17 +18,14 @@ export class DangerButtonComponent implements OnInit
   public size: "auto" | "fill" = "auto";
 
   @Input()
-  public text: string = "";
-
-  @Input()
-  public alertText: string = "";
+  public message: string = "";
 
   @Output()
   public confirm = new EventEmitter<void>();
 
   public dialogButtons: IDialogButton[] = [
     {
-      text: this.text,
+      text: this.translate.instant("generic.confirm"),
       classes: [ "dark", "danger" ],
       onClick: () => this.onConfirm(),
     },
@@ -44,12 +41,6 @@ export class DangerButtonComponent implements OnInit
   constructor(private dom: DomService, private translate: TranslateService)
   {}
 
-  public ngOnInit()
-  {
-    // The actual input value is not set when constructing the component
-    this.dialogButtons[0].text = this.text;
-  }
-
   public onConfirm()
   {
     this.hideDialog();
@@ -62,7 +53,7 @@ export class DangerButtonComponent implements OnInit
     this.dialogRef = this.dom.appendComponentToBody(
       DialogComponent,
       {
-        message: this.alertText,
+        message: this.message,
         buttons: this.dialogButtons,
       },
       {

@@ -31,11 +31,12 @@
 
         size="fill"
 
-        [text]="'generic.cancel' | translate"
-        [alertText]="'generic.cancel' | translate"
+        [message]="'generic.cancel' | translate"
 
         (confirm)="isUpdatingArticle = false"
-    ></shared-danger-button>
+    >
+        {{ "generic.cancel" | translate }}
+    </shared-danger-button>
     <section *ngIf="!isUpdatingArticle && article.author.user.id === auth.user?.id" class="actions">
         <div class="title">
             <h1>{{ "article.actions.__title" | translate }}</h1>
@@ -50,11 +51,12 @@
 
                     size="fill"
 
-                    [text]="'generic.delete' | translate"
-                    [alertText]="'generic.delete' | translate"
+                    [message]="'generic.delete' | translate"
 
                     (confirm)="deleteArticle()"
-                ></shared-danger-button>
+                >
+                    {{ "generic.delete" | translate }}
+                </shared-danger-button>
             </div>
         </div>
     </section>
