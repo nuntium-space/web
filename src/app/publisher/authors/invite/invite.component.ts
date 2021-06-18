@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService, IPublisher } from 'src/app/services/api/api.service';
+import { IPublisher } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'publisher-authors-invite',

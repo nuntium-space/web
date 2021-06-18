@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { ApiService, IPublisher } from '../services/api/api.service';
+import { IPublisher } from '../services/api/api.service';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-publisher',

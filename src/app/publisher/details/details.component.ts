@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService, IPublisher } from 'src/app/services/api/api.service';
+import { IPublisher } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'publisher-details',
@@ -37,18 +38,8 @@ export class PublisherDetailsComponent implements OnChanges
       return;
     }
 
-    this.api
-      .retrievePublisher(this.publisher.id)
-      .then(response =>
-      {
-        if (response.data)
-        {
-          this.publisher = response.data;
-
-          this.detailsForm.get("name")?.setValue(this.publisher.name);
-          this.detailsForm.get("url")?.setValue(this.publisher.url);
-        }
-      });
+    this.detailsForm.get("name")?.setValue(this.publisher.name);
+    this.detailsForm.get("url")?.setValue(this.publisher.url);
   }
 
   public async onDetailsFormSubmit([ success, failure ]: ConfirmEventCallback)
