@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ApiService } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UserSettingsService } from 'src/app/shared/services/user-settings/user-settings.service';
 import { Config } from 'src/config/Config';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'settings-preferences',
