@@ -104,6 +104,12 @@ export interface IPrice
   active: boolean,
 }
 
+export interface ISource
+{
+  id: string,
+  url: string,
+}
+
 export interface ISubscription
 {
   id: string,
@@ -247,6 +253,7 @@ export class ApiService
   public async createArticle(authorId: string, data: {
     title: string,
     content: any,
+    sources: { url: string }[],
   }): Promise<IApiServiceResponse<IArticle>>
   {
     return this.send("POST", `authors/${authorId}/articles`, data);

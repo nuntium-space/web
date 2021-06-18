@@ -61,6 +61,7 @@ export class WriteNewArticleComponent
       .createArticle(this.author.id, {
         title: this.form.get("title")?.value ?? "",
         content: this.editorContent,
+        sources: this.sources.map(_ => ({ url: _ })),
       });
 
     this.form.get("title")?.setErrors({
