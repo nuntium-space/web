@@ -5,6 +5,11 @@ import { IBundle, IOrganization, IPublisher } from 'src/app/services/api/api.ser
 @Injectable()
 export class ApiService extends CoreApiService
 {
+  public async retrieveOrganization(id: string): Promise<IApiServiceResponse<IOrganization>>
+  {
+    return this.send("GET", `organizations/${id}`);
+  }
+
   public async listBundlesForOrganization(organizationId: string): Promise<IApiServiceResponse<IBundle[]>>
   {
     return this.send("GET", `organizations/${organizationId}/bundles`);
