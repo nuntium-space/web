@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
 import { IArticle, IComment } from 'src/app/services/api/api.service';
-import { ArticleModule } from '../../article.module';
 
-@Injectable({
-  providedIn: ArticleModule,
-})
+@Injectable()
 export class ApiService extends CoreApiService
 {
   public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
