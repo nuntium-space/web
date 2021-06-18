@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService, IOrganization } from 'src/app/services/api/api.service';
+import { IOrganization } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'organization-details',
@@ -25,19 +26,7 @@ export class OrganizationDetailsComponent implements OnChanges
 
   public ngOnChanges()
   {
-    if (!this.organization)
-    {
-      return;
-    }
-
-    this.api
-      .retrieveOrganization(this.organization.id)
-      .then(response =>
-      {
-        this.organization = response.data;
-
-        this.detailsForm.get("name")?.setValue(this.organization?.name);
-      });
+    this.detailsForm.get("name")?.setValue(this.organization?.name);
   }
 
   public async onDetailsFormSubmit([ success, failure ]: ConfirmEventCallback)

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ApiService, IOrganization, IPublisher } from 'src/app/services/api/api.service';
+import { IOrganization, IPublisher } from 'src/app/services/api/api.service';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'organization-publishers',

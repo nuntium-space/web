@@ -243,48 +243,11 @@ export class ApiService
     return this.send("GET", `organizations/${id}`);
   }
 
-  public async listBundlesForOrganization(organizationId: string): Promise<IApiServiceResponse<IBundle[]>>
-  {
-    return this.send("GET", `organizations/${organizationId}/bundles`);
-  }
-
-  public async connectAccount(organizationId: string): Promise<IApiServiceResponse<{ url: string }>>
-  {
-    return this.send("GET", `organizations/${organizationId}/stripe/connect`);
-  }
-
-  public async createSignInLinkForStripeDashboard(organizationId: string): Promise<IApiServiceResponse<{ url: string }>>
-  {
-    return this.send("GET", `organizations/${organizationId}/stripe/dashboard`);
-  }
-
   public async createOrganization(data: {
     name: string,
   }): Promise<IApiServiceResponse<IOrganization>>
   {
     return this.send("POST", "organizations", data);
-  }
-
-  public async createBundle(organizationId: string, data: {
-    name: string,
-  }): Promise<IApiServiceResponse<IBundle>>
-  {
-    return this.send("POST", `organizations/${organizationId}/bundles`, data);
-  }
-
-  public async createPublisher(organizationId: string, data: {
-    name: string,
-    url: string,
-  }): Promise<IApiServiceResponse<IPublisher>>
-  {
-    return this.send("POST", `organizations/${organizationId}/publishers`, data);
-  }
-
-  public async updateOrganization(id: string, data: {
-    name?: string,
-  }): Promise<IApiServiceResponse<IOrganization>>
-  {
-    return this.send("PATCH", `organizations/${id}`, data);
   }
 
   public async deleteOrganization(id: string): Promise<IApiServiceResponse<void>>
@@ -350,11 +313,6 @@ export class ApiService
     fd.append("image", data.image);
 
     return this.send("PUT", `publishers/${id}/image`, fd, "multipart/form-data");
-  }
-
-  public async deletePublisher(id: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("DELETE", `publishers/${id}`);
   }
 
   public async search(query: string, page: number): Promise<IApiServiceResponse<{

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IOrganization, ApiService } from 'src/app/services/api/api.service';
+import { IOrganization } from 'src/app/services/api/api.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'organization-stripe-connect-button',
