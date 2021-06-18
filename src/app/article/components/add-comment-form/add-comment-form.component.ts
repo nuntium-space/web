@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { IArticle, IComment, ApiService } from 'src/app/services/api/api.service';
+import { IArticle, IComment } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'article-add-comment-form',

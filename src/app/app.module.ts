@@ -17,6 +17,7 @@ import { SignedInComponent } from './home/signed-in/signed-in.component';
 import { SignedOutComponent } from './home/signed-out/signed-out.component';
 import { HttpClient } from '@angular/common/http';
 import { Config } from 'src/config/Config';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { Config } from 'src/config/Config';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
     SharedModule,
     TranslateModule.forRoot({
       loader: {

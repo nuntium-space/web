@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IArticle, IComment, ApiService } from 'src/app/services/api/api.service';
+import { IArticle, IComment } from 'src/app/services/api/api.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'article-comment',

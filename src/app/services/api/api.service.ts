@@ -199,11 +199,6 @@ export class ApiService
    * RESOURCES
    */
 
-  public async retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>>
-  {
-    return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
-  }
-
   public async retrieveTrendingArticles(): Promise<IApiServiceResponse<IArticle[]>>
   {
     return this.send("GET", `articles/trending?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
@@ -212,32 +207,6 @@ export class ApiService
   public async retrieveRecentlyViewedArticles(userId: string): Promise<IApiServiceResponse<IArticle[]>>
   {
     return this.send("GET", `users/${userId}/articles/recent?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
-  }
-
-  public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
-  {
-    return this.send("GET", `articles/${id}/comments?${parent !== null ? `parent=${parent}&` : ""}expand[]=user`);
-  }
-
-  public async createComment(articleId: string, data: {
-    content: string,
-    parent: string | null,
-  }): Promise<IApiServiceResponse<IComment>>
-  {
-    return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
-  }
-
-  public async updateArticle(articleId: string, data: {
-    title: string,
-    content: string,
-  }): Promise<IApiServiceResponse<IArticle>>
-  {
-    return this.send("PATCH", `articles/${articleId}?expand[]=author&expand[]=author.user&expand[]=author.publisher`, data);
-  }
-
-  public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>
-  {
-    return this.send("DELETE", `articles/${articleId}`);
   }
 
   public async retrieveSignInRequest(id: string): Promise<IApiServiceResponse<{ session?: ISession }>>
