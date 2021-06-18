@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, IAuthor } from 'src/app/services/api/api.service';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
-export class WriteNewArticleComponent
+export class WriteNewArticleComponent implements OnInit
 {
   private author?: IAuthor;
 
@@ -22,19 +22,26 @@ export class WriteNewArticleComponent
 
   public editorContent?: any;
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute, auth: AuthService)
-  {
-    if (!auth.user)
-    {
-      return;
-    }
+  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute, private auth: AuthService)
+  {}
 
-    api.listAuthorsForUser(auth.user.id).then(response =>
-    {
-      if (response.data)
+  public ngOnInit()
+  {
+    this.route.params.subscribe({
+      next: params =>
       {
-        this.author = response.data.find(author => author.publisher.id === route.snapshot.params.id);
-      }
+        if (!this.auth.user)
+        {
+          return;
+        }
+
+        this.api
+          .retrieveAuthorForUserAndPublisher(this.auth.user.id, params.id)
+          .then(response =>
+          {
+            this.author = response.data;
+          });
+      },
     });
   }
 
