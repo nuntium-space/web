@@ -21,6 +21,8 @@ export class ArticleComponent implements OnInit
 
   public article?: IArticle;
 
+  public sources?: string[];
+
   public comments: IComment[] = [];
 
   public isUpdatingArticle = false;
@@ -63,6 +65,21 @@ export class ArticleComponent implements OnInit
           });
       },
     });
+  }
+
+  public onSourceInput(e: Event, i: number)
+  {
+    if (!this.sources)
+    {
+      return;
+    }
+
+    this.sources[i] = (e.target as HTMLInputElement).value;
+  }
+
+  public trackByFn(index: number, item: string)
+  {
+    return index;
   }
 
   public async updateArticle([ success, failure ]: ConfirmEventCallback)
