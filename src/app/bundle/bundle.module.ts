@@ -11,12 +11,10 @@ import { SharedModule } from '../shared/shared.module';
 import { PricesComponent } from './prices/prices.component';
 import { AddPriceComponent } from './prices/add/add.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
-    /*
-      COMPONENTS
-    */
     BundleComponent,
     BundleMenuComponent,
     AddPublisherComponent,
@@ -30,6 +28,9 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
     CommonModule,
     SharedModule,
     BundleRoutingModule
-  ]
+  ],
+  providers: [
+    ApiService,
+  ],
 })
 export class BundleModule { }

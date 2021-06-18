@@ -11,6 +11,7 @@ import { OrganizationMenuComponent } from './menu/menu.component';
 import { PublishersComponent } from './publishers/publishers.component';
 import { CreatePublisherComponent } from './publishers/create/create.component';
 import { StripeConnectButtonComponent } from './components/stripe-connect-button/stripe-connect-button.component';
+import { ApiService } from './services/api/api.service';
 
 
 @NgModule({
@@ -28,6 +29,9 @@ import { StripeConnectButtonComponent } from './components/stripe-connect-button
     CommonModule,
     SharedModule,
     OrganizationRoutingModule
-  ]
+  ],
+  providers: [
+    ApiService,
+  ],
 })
 export class OrganizationModule { }
