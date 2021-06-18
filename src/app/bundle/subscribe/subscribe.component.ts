@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService, IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
+import { IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'bundle-subscribe',

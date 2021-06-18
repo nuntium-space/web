@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ApiService, IAuthor, IPublisher } from 'src/app/services/api/api.service';
+import { IAuthor, IPublisher } from 'src/app/services/api/api.service';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'publisher-authors',

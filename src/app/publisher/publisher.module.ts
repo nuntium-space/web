@@ -9,6 +9,7 @@ import { InviteAuthorComponent } from './authors/invite/invite.component';
 import { PublisherDetailsComponent } from './details/details.component';
 import { PublisherMenuComponent } from './menu/menu.component';
 import { VerifyPublisherComponent } from './verify/verify.component';
+import { ApiService } from './services/api/api.service';
 
 
 @NgModule({
@@ -24,6 +25,9 @@ import { VerifyPublisherComponent } from './verify/verify.component';
     CommonModule,
     SharedModule,
     PublisherRoutingModule
-  ]
+  ],
+  providers: [
+    ApiService,
+  ],
 })
 export class PublisherModule { }

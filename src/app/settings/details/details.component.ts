@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Utilities } from 'src/utilities/Utilities';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'settings-details',

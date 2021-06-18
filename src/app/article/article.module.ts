@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AddCommentFormComponent } from './components/add-comment-form/add-comment-form.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { CommentComponent } from './components/comment/comment.component';
     CommonModule,
     SharedModule,
     ArticleRoutingModule
-  ]
+  ],
+  providers: [
+    ApiService,
+  ],
 })
 export class ArticleModule { }
