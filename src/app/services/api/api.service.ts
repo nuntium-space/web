@@ -263,6 +263,11 @@ export class ApiService
     return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
+  public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>
+  {
+    return this.send("GET", `publishers/${id}`);
+  }
+
   public async retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("GET", `sessions/current`);
