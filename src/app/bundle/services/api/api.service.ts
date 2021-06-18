@@ -45,6 +45,15 @@ export class ApiService extends CoreApiService
     return this.send("GET", `bundles/${id}/publishers`);
   }
 
+  public async listPublishersForOrganization(organizationId: string, options?: { not_in_bundle?: string }): Promise<IApiServiceResponse<IPublisher[]>>
+  {
+    return this.send("GET", `organizations/${organizationId}/publishers${
+      options?.not_in_bundle
+        ? `?not_in_bundle=${options.not_in_bundle}`
+        : ""
+    }`);
+  }
+
   public async removePublisherFromBundle(bundleId: string, publisherId: string): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `bundles/${bundleId}/publishers/${publisherId}`);
