@@ -117,10 +117,9 @@
 <shared-spinner *ngIf="!article"></shared-spinner>
 
 <main *ngIf="article && isSubscribed">
-    <div>
-        <h1 class="title">{{ article.title }}</h1>
-        <shared-editor [(content)]="article.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
-    </div>
+    <h1 class="title">{{ article.title }}</h1>
+    <shared-editor [(content)]="article.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
+    <article-bottom-actions></article-bottom-actions>
 </main>
 
 <main *ngIf="!isSubscribed">
