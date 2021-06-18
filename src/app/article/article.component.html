@@ -119,20 +119,6 @@
         <h1 class="title">{{ article.title }}</h1>
         <shared-editor [(content)]="article.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
     </div>
-    <section *ngIf="!isUpdatingArticle" id="comments">
-        <div class="title">
-            <h1>{{ "article.comments" | translate }}</h1>
-        </div>
-        <div class="content">
-            <article-add-comment-form
-                [article]="article"
-
-                (commentCreated)="onCommentCreated($event)"
-            >
-            </article-add-comment-form>
-            <article-comment-list [article]="article" [comments]="comments"></article-comment-list>
-        </div>
-    </section>
 </main>
 
 <main *ngIf="!isSubscribed">

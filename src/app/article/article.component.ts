@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IArticle, IComment } from '../services/api/api.service';
+import { IArticle } from '../services/api/api.service';
 import { ConfirmEventCallback } from '../shared/components/form/form.component';
 import { AuthService } from '../shared/services/auth/auth.service';
 import { FormatService } from '../shared/services/format/format.service';
@@ -23,8 +23,6 @@ export class ArticleComponent implements OnInit
   public article?: IArticle;
 
   public sources?: string[];
-
-  public comments: IComment[] = [];
 
   public isUpdatingArticle = false;
 
@@ -53,16 +51,6 @@ export class ArticleComponent implements OnInit
             this.article = response.data;
 
             this.updateArticleForm.get("title")?.setValue(this.article?.title);
-          });
-
-        this.api
-          .listCommentsForArticle(params.id, null)
-          .then(response =>
-          {
-            if (response.data)
-            {
-              this.comments = response.data;
-            }
           });
       },
     });
@@ -137,10 +125,5 @@ export class ArticleComponent implements OnInit
     {
       this.router.navigateByUrl(`/~${this.article.author.publisher.id}`);
     }
-  }
-
-  public onCommentCreated(comment: IComment)
-  {
-    this.comments.push(comment);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
-import { IArticle, IComment } from 'src/app/services/api/api.service';
+import { IArticle } from 'src/app/services/api/api.service';
 
 @Injectable()
 export class ApiService extends CoreApiService
@@ -21,18 +21,5 @@ export class ApiService extends CoreApiService
   public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>
   {
     return this.send("DELETE", `articles/${articleId}`);
-  }
-
-  public async createComment(articleId: string, data: {
-    content: string,
-    parent: string | null,
-  }): Promise<IApiServiceResponse<IComment>>
-  {
-    return this.send("POST", `articles/${articleId}/comments?expand[]=user`, data);
-  }
-
-  public async listCommentsForArticle(id: string, parent: string | null): Promise<IApiServiceResponse<IComment[]>>
-  {
-    return this.send("GET", `articles/${id}/comments?${parent !== null ? `parent=${parent}&` : ""}expand[]=user`);
   }
 }
