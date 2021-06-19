@@ -1,11 +1,11 @@
-<button class="with-icon" (click)="share()">
-    <span class="mat-icon">share</span> Share
+<button title="Share" class="with-icon--square" (click)="share()">
+    <span class="mat-icon">share</span>
 </button>
 
-<button class="with-icon" [class.active]="article?.__metadata?.is_liked" (click)="like()">
-    <span class="mat-icon">thumb_up</span> Like
+<button title="Like" class="with-icon--square" [class.active]="article?.__metadata?.is_liked" (click)="like()">
+    <span class="mat-icon">thumb_up</span>
 </button>
 
-<button class="with-icon" [class.active]="article?.__metadata?.is_bookmarked" (click)="bookmark()">
-    <span class="mat-icon">bookmark</span> Bookmark
+<button title="Bookmark" class="with-icon--square" [class.active]="article?.__metadata?.is_bookmarked" (click)="bookmark()">
+    <span class="mat-icon">bookmark</span>
 </button>
