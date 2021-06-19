@@ -46,6 +46,23 @@ export class BottomActionsComponent
     // TODO
   }
 
+  public async like()
+  {
+    if (!this.article || !this.article.__metadata || !this.auth.user)
+    {
+      return;
+    }
+
+    const { success } = this.article.__metadata.is_liked
+      ? await this.api.removeLike(this.auth.user, this.article)
+      : await this.api.addLike(this.auth.user, this.article);
+
+    if (success)
+    {
+      this.article.__metadata.is_liked = !this.article.__metadata?.is_liked;
+    }
+  }
+
   public async bookmark()
   {
     if (!this.article || !this.article.__metadata || !this.auth.user)

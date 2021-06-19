@@ -23,13 +23,23 @@ export class ApiService extends CoreApiService
     return this.send("DELETE", `articles/${articleId}`);
   }
 
-  public async createBookmark(user: IUser, article: IArticle): Promise<IApiServiceResponse<IArticle>>
+  public async createBookmark(user: IUser, article: IArticle): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `users/${user.id}/bookmarks`, { article: article.id });
   }
 
-  public async deleteBookmark(user: IUser, article: IArticle): Promise<IApiServiceResponse<IArticle>>
+  public async deleteBookmark(user: IUser, article: IArticle): Promise<IApiServiceResponse<void>>
   {
     return this.send("DELETE", `users/${user.id}/bookmarks`, { article: article.id });
+  }
+
+  public async addLike(user: IUser, article: IArticle): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("POST", `users/${user.id}/likes`, { article: article.id });
+  }
+
+  public async removeLike(user: IUser, article: IArticle): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `users/${user.id}/likes`, { article: article.id });
   }
 }

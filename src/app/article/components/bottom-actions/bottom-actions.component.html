@@ -2,7 +2,7 @@
     <span class="mat-icon">share</span> Share
 </button>
 
-<button class="with-icon">
+<button class="with-icon" [class.active]="article?.__metadata?.is_liked" (click)="like()">
     <span class="mat-icon">thumb_up</span> Like
 </button>
 

@@ -48,6 +48,7 @@ export interface IArticle
   created_at: string,
   updated_at: string,
   __metadata?: {
+    is_liked: boolean,
     is_bookmarked: boolean,
   },
 }
