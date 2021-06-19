@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExploreComponent } from './explore/explore.component';
+import { ExploreComponent } from './feeds/pages/explore/explore.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { BookmarksComponent } from './feeds/pages/bookmarks/bookmarks.component';
 import { LikesComponent } from './feeds/pages/likes/likes.component';

@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
-import { ExploreComponent } from './explore/explore.component';
+import { ExploreComponent } from './feeds/pages/explore/explore.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { createTranslationLoader, SharedModule } from './shared/shared.module';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IArticle, IPublisher } from '../services/api/api.service';
-import { AuthService } from '../shared/services/auth/auth.service';
+import { ApiService, IArticle, IPublisher } from '../../../services/api/api.service';
+import { AuthService } from '../../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-explore',
