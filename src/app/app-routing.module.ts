@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExploreComponent } from './feeds/pages/explore/explore.component';
-import { FeedsComponent } from './feeds/feeds.component';
-import { BookmarksComponent } from './feeds/pages/bookmarks/bookmarks.component';
-import { LikesComponent } from './feeds/pages/likes/likes.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
@@ -29,13 +25,7 @@ const routes: Routes = [
   },
   {
     path: "feed",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "bookmarks", component: BookmarksComponent },
-      { path: "explore", component: ExploreComponent },
-      { path: "likes", component: LikesComponent },
-      { path: "", component: FeedsComponent },
-    ],
+    loadChildren: () => import("./feeds/feeds.module").then(_ => _.FeedsModule),
   },
   {
     path: "organization/:id",

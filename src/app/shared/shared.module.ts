@@ -71,6 +71,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     BadgeComponent,
     FooterComponent,
     SpinnerComponent,
+    DialogComponent,
     PopupMenuComponent,
     FormComponent,
     ImgComponent,
