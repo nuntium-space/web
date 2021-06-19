@@ -1,3 +1,4 @@
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { IArticle } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
@@ -6,15 +7,44 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'article-bottom-actions',
   templateUrl: './bottom-actions.component.html',
-  styleUrls: ['./bottom-actions.component.scss']
+  styleUrls: ['./bottom-actions.component.scss'],
+  providers: [
+    [
+      Location,
+      {
+        provide: LocationStrategy,
+        useClass: PathLocationStrategy
+      },
+    ],
+  ],
 })
 export class BottomActionsComponent
 {
   @Input()
   public article?: IArticle;
 
-  constructor(private api: ApiService, private auth: AuthService)
+  constructor(private api: ApiService, private auth: AuthService, private location: Location)
   {}
+
+  public share()
+  {
+    if (!this.article)
+    {
+      return;
+    }
+
+    if ("share" in navigator)
+    {
+      navigator.share({
+        title: this.article.title,
+        url: this.location.path(),
+      });
+
+      return;
+    }
+
+    // TODO
+  }
 
   public async bookmark()
   {
