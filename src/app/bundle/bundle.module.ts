@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { BundleRoutingModule } from './bundle-routing.module';
 import { BundleComponent } from './bundle.component';
-import { BundleDetailsComponent } from './details/details.component';
-import { BundleMenuComponent } from './menu/menu.component';
-import { AddPublisherComponent } from './publishers/add/add.component';
-import { BundlePublishersComponent } from './publishers/publishers.component';
+import { BundleDetailsComponent } from './pages/details/details.component';
+import { BundleMenuComponent } from './components/menu/menu.component';
+import { AddPublisherComponent } from './pages/publishers/add/add.component';
+import { BundlePublishersComponent } from './pages/publishers/publishers.component';
 import { SharedModule } from '../shared/shared.module';
-import { PricesComponent } from './prices/prices.component';
-import { AddPriceComponent } from './prices/add/add.component';
-import { SubscribeComponent } from './subscribe/subscribe.component';
+import { PricesComponent } from './pages/prices/prices.component';
+import { AddPriceComponent } from './pages/prices/add/add.component';
+import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 import { ApiService } from './services/api/api.service';
 
 @NgModule({
@@ -27,10 +27,11 @@ import { ApiService } from './services/api/api.service';
   imports: [
     CommonModule,
     SharedModule,
-    BundleRoutingModule
+    BundleRoutingModule,
   ],
   providers: [
     ApiService,
   ],
 })
-export class BundleModule { }
+export class BundleModule
+{}

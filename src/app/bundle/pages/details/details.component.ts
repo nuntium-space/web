@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 import { FormControl, FormGroup } from '@angular/forms';
 import { IBundle } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
-import { ApiService } from '../services/api/api.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'bundle-details',
