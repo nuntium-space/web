@@ -47,6 +47,9 @@ export interface IArticle
   author: IAuthor,
   created_at: string,
   updated_at: string,
+  __metadata?: {
+    is_bookmarked: boolean,
+  },
 }
 
 export interface ISession

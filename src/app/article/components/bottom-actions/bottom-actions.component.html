@@ -6,6 +6,6 @@
     <span class="mat-icon">thumb_up</span> Like
 </button>
 
-<button class="with-icon" (click)="bookmark()">
+<button class="with-icon" [class.active]="article?.__metadata?.is_bookmarked" (click)="bookmark()">
     <span class="mat-icon">bookmark</span> Bookmark
 </button>
