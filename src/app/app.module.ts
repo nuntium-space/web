@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
-import { ArticleListComponent } from './components/article-list/article-list.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { createTranslationLoader, SharedModule } from './shared/shared.module';
@@ -24,7 +23,6 @@ import { CoreModule } from './core/core.module';
     HomeComponent,
     PageNotFoundComponent,
     PublisherPublicPageComponent,
-    ArticleListComponent,
     WriteNewArticleComponent,
     SignedInComponent,
     SignedOutComponent,
@@ -71,7 +69,7 @@ import { CoreModule } from './core/core.module';
       multi: true,
     },
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
 })
 export class AppModule
 {}

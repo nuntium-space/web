@@ -8,7 +8,6 @@ import { ExploreComponent } from './pages/explore/explore.component';
 import { LikesComponent } from './pages/likes/likes.component';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [
     FeedsComponent,

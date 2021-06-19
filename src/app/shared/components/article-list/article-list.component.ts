@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { IArticle } from 'src/app/services/api/api.service';
-import { FormatService } from 'src/app/shared/services/format/format.service';
+import { FormatService } from '../../services/format/format.service';
 
 @Component({
-  selector: 'article-list',
+  selector: 'shared-article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.scss']
 })

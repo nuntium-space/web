@@ -17,6 +17,7 @@ import { FormComponent } from './components/form/form.component';
 import { ImgComponent } from './components/img/img.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { ArticleListComponent } from './components/article-list/article-list.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -36,6 +37,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     ImgComponent,
     EditorComponent,
     SearchInputComponent,
+    ArticleListComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     ImgComponent,
     EditorComponent,
     SearchInputComponent,
+    ArticleListComponent,
   ],
 })
 export class SharedModule

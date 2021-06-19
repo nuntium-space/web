@@ -8,12 +8,12 @@
         </div>
         <div class="content">
             <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
-            <article-list
+            <shared-article-list
                 *ngIf="trendingArticles && trendingArticles.length > 0"
 
                 [articles]="trendingArticles"
             >
-            </article-list>
+            </shared-article-list>
         </div>
     </section>
     <section>
@@ -22,12 +22,12 @@
         </div>
         <div class="content">
             <shared-spinner *ngIf="!recentlyViewedArticles"></shared-spinner>
-            <article-list
+            <shared-article-list
                 *ngIf="recentlyViewedArticles && recentlyViewedArticles.length > 0"
 
                 [articles]="recentlyViewedArticles"
             >
-            </article-list>
+            </shared-article-list>
         </div>
     </section>
 </aside>
@@ -71,7 +71,7 @@
             >
             </h1>
             <shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
-            <article-list *ngIf="articles && articles.length > 0" [articles]="articles"></article-list>
+            <shared-article-list *ngIf="articles && articles.length > 0" [articles]="articles"></shared-article-list>
         </div>
     </section>
 </main>
