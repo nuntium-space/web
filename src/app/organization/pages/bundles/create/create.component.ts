@@ -3,21 +3,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IOrganization } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService } from '../../../services/api/api.service';
 
 @Component({
-  selector: 'organization-publishers-create',
+  selector: 'organization-bundles-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreatePublisherComponent
+export class CreateBundleComponent
 {
   @Input()
   public organization?: IOrganization;
 
   public form = new FormGroup({
     name: new FormControl(),
-    url: new FormControl(),
   });
 
   constructor(private api: ApiService, private router: Router)
@@ -33,17 +32,12 @@ export class CreatePublisherComponent
     }
 
     const response = await this.api
-      .createPublisher(this.organization.id, {
+      .createBundle(this.organization.id, {
         name: this.form.get("name")?.value ?? "",
-        url: this.form.get("url")?.value ?? "",
       });
 
     this.form.get("name")?.setErrors({
       errors: response.errors?.filter(e => e.field === "name")
-    });
-
-    this.form.get("url")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "url")
     });
 
     if (!response.success)
@@ -59,6 +53,6 @@ export class CreatePublisherComponent
 
     success();
 
-    this.router.navigateByUrl(`/organization/${this.organization.id}/publishers`);
+    this.router.navigateByUrl(`/organization/${this.organization.id}/bundles`);
   }
 }
