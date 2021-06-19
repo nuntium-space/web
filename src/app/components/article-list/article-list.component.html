@@ -2,12 +2,12 @@
     <header>
         <img *ngIf="article.author.publisher.imageUrl" [src]="article.author.publisher.imageUrl" alt="">
         <div>
-            <a routerLink="/~{{ article.author.user.id }}">
+            <a routerLink="/p/{{ article.author.user.id }}">
                 {{ article.author.user.full_name }}
             </a>
             <span *ngIf="article.author.publisher.name">
                 {{ "components.article_list.article.for" | translate }}
-                <a routerLink="/~{{ article.author.publisher.id }}">
+                <a routerLink="/p/{{ article.author.publisher.id }}">
                     {{ article.author.publisher.name }}
                 </a>
             </span>

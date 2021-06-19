@@ -49,7 +49,7 @@
             <shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
             <div *ngIf="publishers && publishers.length > 0">
                 <div class="publishers">
-                    <a *ngFor="let publisher of publishers" routerLink="/~{{ publisher.id }}">
+                    <a *ngFor="let publisher of publishers" routerLink="/p/{{ publisher.id }}">
                         <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" theme="dark"></shared-img>
                         {{ publisher.name }}
                     </a>

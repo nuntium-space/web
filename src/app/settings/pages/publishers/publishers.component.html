@@ -13,7 +13,7 @@
             <a
                 *ngFor="let author of authors"
 
-                routerLink="/~{{ author.publisher.id }}"
+                routerLink="/p/{{ author.publisher.id }}"
             >
                 <shared-img *ngIf="author.publisher.imageUrl" [src]="author.publisher.imageUrl"></shared-img>
                 <p>{{ author.publisher.name }}</p>

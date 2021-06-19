@@ -123,7 +123,7 @@ export class ArticleComponent implements OnInit
 
     if (!response.errors)
     {
-      this.router.navigateByUrl(`/~${this.article.author.publisher.id}`);
+      this.router.navigateByUrl(`/p/${this.article.author.publisher.id}`);
     }
   }
 }

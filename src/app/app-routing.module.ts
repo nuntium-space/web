@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, UrlSegment } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -34,22 +34,7 @@ const routes: Routes = [
     loadChildren: () => import("./publisher/publisher.module").then(_ => _.PublisherModule),
   },
   {
-    matcher: (url) =>
-    {
-      if (url.length >= 1 && url[0].path.startsWith("~pub_"))
-      {
-        return {
-          consumed: url.length === 1
-            ? url
-            : url.slice(0, 1),
-          posParams: {
-            id: new UrlSegment(url[0].path.substr(1), {}),
-          },
-        };
-      }
-
-      return null;
-    },
+    path: "p/:id",
     canActivate: [ SignedInGuard ],
     children: [
       { path: "new", component: WriteNewArticleComponent },

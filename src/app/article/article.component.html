@@ -65,7 +65,7 @@
             <h1>{{ "article.publisher.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <a routerLink="/~{{ article.author.publisher.id }}">
+            <a routerLink="/p/{{ article.author.publisher.id }}">
                 {{ article.author.publisher.name }}
             </a>
         </div>
@@ -75,7 +75,7 @@
             <h1>{{ "article.author.__title" | translate }}</h1>
         </div>
         <div class="content">
-            <a routerLink="/~{{ article.author.user.id }}">
+            <a routerLink="/p/{{ article.author.user.id }}">
                 {{ article.author.user.full_name }}
             </a>
         </div>
@@ -126,7 +126,7 @@
     <div class="payment-required">
         <h1>{{ "article.payment_required.title" | translate }}</h1>
         <p>{{ "article.payment_required.subtitle" | translate }}</p>
-        <a *ngIf="article" routerLink="/~{{ article.author.publisher.id }}" class="button dark">
+        <a *ngIf="article" routerLink="/p/{{ article.author.publisher.id }}" class="button dark">
             View
         </a>
     </div>
