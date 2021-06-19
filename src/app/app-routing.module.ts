@@ -27,12 +27,12 @@ const routes: Routes = [
     path: "bundle/:id",
     loadChildren: () => import("./bundle/bundle.module").then(_ => _.BundleModule),
   },
-  { path: "explore", component: ExploreComponent, canActivate: [ SignedInGuard ] },
   {
     path: "feed",
     canActivate: [ SignedInGuard ],
     children: [
       { path: "bookmarks", component: BookmarksComponent },
+      { path: "explore", component: ExploreComponent },
       { path: "likes", component: LikesComponent },
       { path: "", component: FeedsComponent },
     ],

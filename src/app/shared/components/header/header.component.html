@@ -1,7 +1,7 @@
 <header>
   <a routerLink="/" class="dark logo">nuntium</a>
   <div class="end">
-    <a *ngIf="auth.user" routerLink="/explore" class="button dark explore">
+    <a *ngIf="auth.user" routerLink="/feed/explore" class="button dark explore">
       <span class="mat-icon">explore</span>
     </a>
     <shared-popup-menu *ngIf="auth.user">
