@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IArticle } from 'src/app/services/api/api.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'article-bottom-actions',
@@ -6,4 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./bottom-actions.component.scss']
 })
 export class BottomActionsComponent
-{}
+{
+  @Input()
+  public article?: IArticle;
+
+  constructor(private api: ApiService, private auth: AuthService)
+  {}
+
+  public async bookmark()
+  {
+    if (!this.article || !this.auth.user)
+    {
+      return;
+    }
+
+    const { success } = await this.api.createBookmark(this.auth.user, this.article);
+
+    console.log(success);
+  }
+}
