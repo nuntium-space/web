@@ -6,16 +6,16 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { SharedModule } from '../shared/shared.module';
 import { SignInComponent } from './sign-in.component';
 
-
 @NgModule({
   declarations: [
     SignInComponent,
-    ButtonsComponent
+    ButtonsComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    SignInRoutingModule
-  ]
+    SignInRoutingModule,
+  ],
 })
-export class SignInModule { }
+export class SignInModule
+{}

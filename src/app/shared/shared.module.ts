@@ -25,9 +25,6 @@ export const createTranslationLoader = (http: HttpClient) =>
 
 @NgModule({
   declarations: [
-    /*
-      COMPONENTS
-    */
     HeaderComponent,
     DangerButtonComponent,
     BadgeComponent,
@@ -79,4 +76,5 @@ export const createTranslationLoader = (http: HttpClient) =>
     SearchInputComponent,
   ],
 })
-export class SharedModule { }
+export class SharedModule
+{}

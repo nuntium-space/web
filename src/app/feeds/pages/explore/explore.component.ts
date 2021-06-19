@@ -4,7 +4,7 @@ import { ApiService, IArticle, IPublisher } from '../../../services/api/api.serv
 import { AuthService } from '../../../shared/services/auth/auth.service';
 
 @Component({
-  selector: 'app-explore',
+  selector: 'feeds-explore',
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss']
 })
