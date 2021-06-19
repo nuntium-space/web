@@ -23,6 +23,9 @@ export class BottomActionsComponent
   @Input()
   public article?: IArticle;
 
+  public isLoadingLike = false;
+  public isLoadingBookmark = false;
+
   constructor(private api: ApiService, private auth: AuthService, private location: Location)
   {}
 
@@ -53,9 +56,13 @@ export class BottomActionsComponent
       return;
     }
 
+    this.isLoadingLike = true;
+
     const { success } = this.article.__metadata.is_liked
       ? await this.api.removeLike(this.auth.user, this.article)
       : await this.api.addLike(this.auth.user, this.article);
+
+    this.isLoadingLike = false;
 
     if (success)
     {
@@ -70,9 +77,13 @@ export class BottomActionsComponent
       return;
     }
 
+    this.isLoadingBookmark = true;
+
     const { success } = this.article.__metadata.is_bookmarked
       ? await this.api.deleteBookmark(this.auth.user, this.article)
       : await this.api.createBookmark(this.auth.user, this.article);
+
+    this.isLoadingBookmark = false;
 
     if (success)
     {
