@@ -5,7 +5,7 @@ import { ConfirmEventCallback } from 'src/app/shared/components/form/form.compon
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UserSettingsService } from 'src/app/shared/services/user-settings/user-settings.service';
 import { Config } from 'src/config/Config';
-import { ApiService } from '../services/api/api.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'settings-preferences',

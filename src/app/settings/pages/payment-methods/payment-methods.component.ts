@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IPaymentMethod } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { ApiService } from '../services/api/api.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'settings-payment-methods',

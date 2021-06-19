@@ -5,7 +5,7 @@ import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService } from '../../../services/api/api.service';
 
 @Component({
   selector: 'settings-payment-methods-add',

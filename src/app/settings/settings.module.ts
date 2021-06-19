@@ -3,21 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { AdvancedComponent } from './advanced/advanced.component';
-import { AccountDetailsComponent } from './details/details.component';
-import { SettingsMenuComponent } from './menu/menu.component';
-import { OrganizationsComponent } from './organizations/organizations.component';
-import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
-import { PreferencesComponent } from './preferences/preferences.component';
-import { UserPublishersComponent } from './publishers/publishers.component';
-import { CreateOrganizationComponent } from './organizations/create/create.component';
-import { AddPaymentMethodComponent } from './payment-methods/add/add.component';
-import { SecurityComponent } from './security/security.component';
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { AdvancedComponent } from './pages/advanced/advanced.component';
+import { AccountDetailsComponent } from './pages/details/details.component';
+import { SettingsMenuComponent } from './components/menu/menu.component';
+import { OrganizationsComponent } from './pages/organizations/organizations.component';
+import { PaymentMethodsComponent } from './pages/payment-methods/payment-methods.component';
+import { PreferencesComponent } from './pages/preferences/preferences.component';
+import { UserPublishersComponent } from './pages/publishers/publishers.component';
+import { CreateOrganizationComponent } from './pages/organizations/create/create.component';
+import { AddPaymentMethodComponent } from './pages/payment-methods/add/add.component';
+import { SecurityComponent } from './pages/security/security.component';
+import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { SettingsComponent } from './settings.component';
 import { ApiService } from './services/api/api.service';
-
 
 @NgModule({
   declarations: [
@@ -38,10 +37,11 @@ import { ApiService } from './services/api/api.service';
   imports: [
     CommonModule,
     SharedModule,
-    SettingsRoutingModule
+    SettingsRoutingModule,
   ],
   providers: [
     ApiService,
   ],
 })
-export class SettingsModule { }
+export class SettingsModule
+{}
