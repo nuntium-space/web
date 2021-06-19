@@ -4,9 +4,14 @@
 
 aside
 {
-    shared-search-input
+    a
     {
-        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+
+        &:first-of-type
+        {
+            margin-top: 1rem;
+        }
     }
 }
 
