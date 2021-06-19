@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPublisher } from 'src/app/services/api/api.service';
-import { ApiService } from '../services/api/api.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'publisher-verify',
