@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from '../services/api/api.service';
 import { ConfirmEventCallback } from '../shared/components/form/form.component';
@@ -20,7 +20,15 @@ export class SignInComponent
 
   public showEmailSignInSuccessMessage = false;
 
-  constructor(private api: ApiService, private auth: AuthService, private translate: TranslateService, private userSettings: UserSettingsService, private router: Router)
+  constructor
+  (
+    private api: ApiService,
+    private auth: AuthService,
+    private translate: TranslateService,
+    private userSettings: UserSettingsService,
+    private route: ActivatedRoute,
+    private router: Router,
+  )
   {}
 
   public async onSubmit([ success, failure ]: ConfirmEventCallback)
@@ -79,7 +87,7 @@ export class SignInComponent
 
           this.translate.use(language);
 
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl(this.route.snapshot.queryParams.redirectTo ?? "/");
         }
       }, 1000);
     }
