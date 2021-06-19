@@ -191,7 +191,7 @@ export class ApiService extends CoreApiService
     return this.send("GET", `users/${userId}/settings`);
   }
 
-  public async retrieveAuthorForUserAndPublisher(userId: string, publisherId: string): Promise<IApiServiceResponse<IAuthor>>
+  public async retrieveAuthorForUserAndPublisher(userId: string, publisherId: string): Promise<IApiServiceResponse<[ IAuthor ]>>
   {
     return this.send("GET", `users/${userId}/authors?publisher=${publisherId}`);
   }
