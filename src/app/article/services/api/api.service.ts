@@ -27,4 +27,9 @@ export class ApiService extends CoreApiService
   {
     return this.send("POST", `users/${user.id}/bookmarks`, { article: article.id });
   }
+
+  public async deleteBookmark(user: IUser, article: IArticle): Promise<IApiServiceResponse<IArticle>>
+  {
+    return this.send("DELETE", `users/${user.id}/bookmarks`, { article: article.id });
+  }
 }

@@ -18,13 +18,18 @@ export class BottomActionsComponent
 
   public async bookmark()
   {
-    if (!this.article || !this.auth.user)
+    if (!this.article || !this.article.__metadata || !this.auth.user)
     {
       return;
     }
 
-    const { success } = await this.api.createBookmark(this.auth.user, this.article);
+    const { success } = this.article.__metadata.is_bookmarked
+      ? await this.api.deleteBookmark(this.auth.user, this.article)
+      : await this.api.createBookmark(this.auth.user, this.article);
 
-    console.log(success);
+    if (success)
+    {
+      this.article.__metadata.is_bookmarked = !this.article.__metadata?.is_bookmarked;
+    }
   }
 }
