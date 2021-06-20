@@ -154,14 +154,6 @@ export class ApiService extends CoreApiService
     return this.send("GET", `publishers/${publisherId}/bundles`);
   }
 
-  public async search(query: string, page: number): Promise<IApiServiceResponse<{
-    articles: IArticle[],
-    publishers: IPublisher[],
-  }>>
-  {
-    return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
-  }
-
   public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>
   {
     return this.send("GET", `publishers/${id}`);

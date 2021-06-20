@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, IArticle, IPublisher } from 'src/app/services/api/api.service';
+import { IArticle, IPublisher } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'feeds-search',
