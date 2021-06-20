@@ -4,7 +4,7 @@
     2021 -
     <a href="https://alexsandri.com" target="_blank">Alex Sandri</a>
   </p>
-  <select class="small">
+  <select class="small" (change)="onLanguageChange($event)">
     <option
       *ngFor="let language of languages"
 
