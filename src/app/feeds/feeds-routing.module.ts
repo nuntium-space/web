@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignedInGuard } from '../shared/guards/signed-in/signed-in.guard';
 import { FeedsComponent } from './feeds.component';
-import { BookmarksComponent } from './pages/bookmarks/bookmarks.component';
-import { ExploreComponent } from './pages/explore/explore.component';
-import { LikesComponent } from './pages/likes/likes.component';
 
 const routes: Routes = [
   {
@@ -12,10 +9,9 @@ const routes: Routes = [
     component: FeedsComponent,
     canActivate: [ SignedInGuard ],
     children: [
-      { path: "bookmarks", component: BookmarksComponent },
-      { path: "explore", component: ExploreComponent },
-      { path: "likes", component: LikesComponent },
-      { path: "", component: FeedsComponent },
+      { path: "bookmarks", data: { section: "bookmarks" } },
+      { path: "explore", data: { section: "explore" } },
+      { path: "likes", data: { section: "likes" } },
     ],
   },
 ];

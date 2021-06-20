@@ -1,1 +1,9 @@
-<p>feeds works!</p>
+<shared-header></shared-header>
+
+<feeds-menu [section]="section"></feeds-menu>
+
+<main [ngSwitch]="section">
+    <feeds-bookmarks *ngSwitchCase="'bookmarks'"></feeds-bookmarks>
+    <feeds-explore *ngSwitchCase="'explore'"></feeds-explore>
+    <feeds-likes *ngSwitchCase="'likes'"></feeds-likes>
+</main>

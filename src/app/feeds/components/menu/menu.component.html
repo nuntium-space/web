@@ -1,0 +1,25 @@
+<aside>
+    <section>
+        <div class="title"></div>
+        <div class="content">
+            <a
+                routerLink="explore"
+                [class.selected]="section === 'explore'"
+            >
+                {{ "feeds.explore" | translate }}
+            </a>
+            <a
+                routerLink="bookmarks"
+                [class.selected]="section === 'bookmarks'"
+            >
+                {{ "feeds.bookmarks.__title" | translate }}
+            </a>
+            <a
+                routerLink="likes"
+                [class.selected]="section === 'likes'"
+            >
+                {{ "feeds.likes.__title" | translate }}
+            </a>
+        </div>
+    </section>
+</aside>

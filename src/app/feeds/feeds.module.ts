@@ -7,6 +7,7 @@ import { BookmarksComponent } from './pages/bookmarks/bookmarks.component';
 import { ExploreComponent } from './pages/explore/explore.component';
 import { LikesComponent } from './pages/likes/likes.component';
 import { SharedModule } from '../shared/shared.module';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     BookmarksComponent,
     ExploreComponent,
     LikesComponent,
+    MenuComponent,
   ],
   imports: [
     CommonModule,
