@@ -11,6 +11,10 @@
                 <span class="mat-icon">explore</span>
                 {{ "feed.explore" | translate }}
             </a>
+            <a routerLink="history" [class.selected]="section === 'history'">
+                <span class="mat-icon">history</span>
+                {{ "feed.history.__title" | translate }}
+            </a>
             <a routerLink="bookmarks" [class.selected]="section === 'bookmarks'">
                 <span class="mat-icon">bookmarks</span>
                 {{ "feed.bookmarks.__title" | translate }}
