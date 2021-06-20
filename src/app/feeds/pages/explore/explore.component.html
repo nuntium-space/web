@@ -12,17 +12,3 @@
         </shared-article-list>
     </div>
 </section>
-<section>
-    <div class="title">
-        {{ "explore.recently_viewed" | translate }}
-    </div>
-    <div class="content">
-        <shared-spinner *ngIf="!recentlyViewedArticles"></shared-spinner>
-        <shared-article-list
-            *ngIf="recentlyViewedArticles && recentlyViewedArticles.length > 0"
-
-            [articles]="recentlyViewedArticles"
-        >
-        </shared-article-list>
-    </div>
-</section>

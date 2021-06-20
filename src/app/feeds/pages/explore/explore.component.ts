@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService, IArticle } from '../../../services/api/api.service';
+import { IArticle } from '../../../services/api/api.service';
 import { AuthService } from '../../../shared/services/auth/auth.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'feeds-explore',
@@ -10,7 +11,6 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 export class ExploreComponent implements OnInit
 {
   public trendingArticles?: IArticle[];
-  public recentlyViewedArticles?: IArticle[];
 
   constructor(private api: ApiService, private auth: AuthService)
   {}
@@ -27,13 +27,6 @@ export class ExploreComponent implements OnInit
       .then(response =>
       {
         this.trendingArticles = response.data;
-      });
-
-    this.api
-      .retrieveRecentlyViewedArticles(this.auth.user.id)
-      .then(response =>
-      {
-        this.recentlyViewedArticles = response.data;
       });
   }
 }

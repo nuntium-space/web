@@ -50,4 +50,9 @@ export class ApiService extends CoreApiService
   {
     return this.send("GET", `users/${user.id}/likes?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
   }
+
+  public async retrieveTrendingArticles(): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `articles/trending?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+  }
 }
