@@ -24,4 +24,9 @@ export class ApiService extends CoreApiService
   {
     return this.send("GET", `users/${user.id}/bookmarks`);
   }
+
+  public async listLikes(user: IUser): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `users/${user.id}/likes`);
+  }
 }
