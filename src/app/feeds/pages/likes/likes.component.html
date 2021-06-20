@@ -1,1 +1,1 @@
-<shared-article-list [articles]="articles"></shared-article-list>
+<shared-article *ngFor="let like of likes" [article]="like.article"></shared-article>

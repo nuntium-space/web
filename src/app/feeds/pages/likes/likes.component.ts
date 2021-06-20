@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IArticle } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService, ILike } from '../../services/api/api.service';
 
 @Component({
   selector: 'feeds-likes',
@@ -10,7 +9,7 @@ import { ApiService } from '../../services/api/api.service';
 })
 export class LikesComponent
 {
-  public articles?: IArticle[];
+  public likes?: ILike[];
 
   constructor(private api: ApiService, private auth: AuthService)
   {}
@@ -26,7 +25,7 @@ export class LikesComponent
       .listLikes(this.auth.user)
       .then(response =>
       {
-        this.articles = response.data;
+        this.likes = response.data;
       });
   }
 }

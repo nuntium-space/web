@@ -9,6 +9,11 @@ export interface IBookmark
   created_at: string,
 }
 
+export interface ILike
+{
+  article: IArticle,
+}
+
 @Injectable()
 export class ApiService extends CoreApiService
 {
@@ -25,7 +30,7 @@ export class ApiService extends CoreApiService
     return this.send("GET", `users/${user.id}/bookmarks?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
   }
 
-  public async listLikes(user: IUser): Promise<IApiServiceResponse<IArticle[]>>
+  public async listLikes(user: IUser): Promise<IApiServiceResponse<ILike[]>>
   {
     return this.send("GET", `users/${user.id}/likes?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
   }
