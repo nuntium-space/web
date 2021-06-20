@@ -11,8 +11,6 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { createTranslationLoader, SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
 import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
-import { SignedInComponent } from './home/signed-in/signed-in.component';
-import { SignedOutComponent } from './home/signed-out/signed-out.component';
 import { HttpClient } from '@angular/common/http';
 import { Config } from 'src/config/Config';
 import { CoreModule } from './core/core.module';
@@ -24,8 +22,6 @@ import { CoreModule } from './core/core.module';
     PageNotFoundComponent,
     PublisherPublicPageComponent,
     WriteNewArticleComponent,
-    SignedInComponent,
-    SignedOutComponent,
   ],
   imports: [
     BrowserModule,
