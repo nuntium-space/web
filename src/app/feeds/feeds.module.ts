@@ -9,6 +9,7 @@ import { LikesComponent } from './pages/likes/likes.component';
 import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
     LikesComponent,
     MenuComponent,
     HomeComponent,
+    HistoryComponent,
   ],
   imports: [
     CommonModule,
