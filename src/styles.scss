@@ -329,6 +329,11 @@ select
         }
     }
 
+    &.small
+    {
+        font-size: 1em;
+    }
+
     &.fill
     {
         width: 100%;

@@ -1,7 +1,18 @@
 <footer>
-  <p>
+  <p class="copy">
     &copy;
     2021 -
     <a href="https://alexsandri.com" target="_blank">Alex Sandri</a>
   </p>
+  <select class="small">
+    <option
+      *ngFor="let language of languages"
+
+      value="{{ language.id }}"
+
+      [selected]="language.id === currentLanguage"
+    >
+      {{ language.display_name }}
+    </option>
+  </select>
 </footer>
