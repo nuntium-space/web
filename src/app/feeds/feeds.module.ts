@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { SearchComponent } from './pages/search/search.component';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,9 @@ import { SearchComponent } from './pages/search/search.component';
     CommonModule,
     SharedModule,
     FeedsRoutingModule,
+  ],
+  providers: [
+    ApiService,
   ],
 })
 export class FeedsModule
