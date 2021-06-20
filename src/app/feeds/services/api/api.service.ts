@@ -12,7 +12,7 @@ export interface IBookmark
 export interface IHistoryEntry
 {
   article: IArticle,
-  timestamp: string,
+  last_viewed_at: string,
 }
 
 export interface ILike
