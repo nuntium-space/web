@@ -22,11 +22,11 @@ export class ApiService extends CoreApiService
 
   public async listBookmarks(user: IUser): Promise<IApiServiceResponse<IBookmark[]>>
   {
-    return this.send("GET", `users/${user.id}/bookmarks`);
+    return this.send("GET", `users/${user.id}/bookmarks?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
   }
 
   public async listLikes(user: IUser): Promise<IApiServiceResponse<IArticle[]>>
   {
-    return this.send("GET", `users/${user.id}/likes`);
+    return this.send("GET", `users/${user.id}/likes?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
   }
 }
