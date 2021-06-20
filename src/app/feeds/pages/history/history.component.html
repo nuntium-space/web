@@ -1,1 +1,7 @@
-<p>history works!</p>
+<shared-spinner *ngIf="!articles"></shared-spinner>
+
+<div *ngIf="articles?.length === 0" class="empty">
+    {{ "feed.history.empty" | translate }}
+</div>
+
+<shared-article-list [articles]="articles"></shared-article-list>

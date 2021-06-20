@@ -25,6 +25,11 @@ export class ApiService extends CoreApiService
     return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
+  public async retrieveHistory(user: IUser): Promise<IApiServiceResponse<IArticle[]>>
+  {
+    return this.send("GET", `users/${user.id}/history?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+  }
+
   public async listBookmarks(user: IUser): Promise<IApiServiceResponse<IBookmark[]>>
   {
     return this.send("GET", `users/${user.id}/bookmarks?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
