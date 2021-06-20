@@ -4,4 +4,15 @@
     {{ "feed.history.empty" | translate }}
 </div>
 
+<shared-danger-button
+    *ngIf="entries"
+
+    icon="delete_forever"
+
+    [message]="'generic.delete' | translate"
+
+    (confirm)="clearHistory()"
+>
+    Delete
+</shared-danger-button>
 <shared-article *ngFor="let entry of entries" [article]="entry.article"></shared-article>

@@ -18,6 +18,9 @@ export class DangerButtonComponent
   public size: "auto" | "fill" = "auto";
 
   @Input()
+  public icon?: string;
+
+  @Input()
   public message: string = "";
 
   @Output()

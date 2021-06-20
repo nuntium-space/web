@@ -28,4 +28,7 @@ export class HistoryComponent
         this.entries = response.data;
       });
   }
+
+  public async clearHistory()
+  {}
 }
