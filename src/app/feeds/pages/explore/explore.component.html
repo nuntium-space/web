@@ -1,77 +1,28 @@
-<shared-header></shared-header>
+<section>
+    <div class="title">
+        {{ "explore.trending" | translate }}
+    </div>
+    <div class="content">
+        <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
+        <shared-article-list
+            *ngIf="trendingArticles && trendingArticles.length > 0"
 
-<aside>
-    <shared-search-input [fill]="true"></shared-search-input>
-    <section>
-        <div class="title">
-            {{ "explore.trending" | translate }}
-        </div>
-        <div class="content">
-            <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
-            <shared-article-list
-                *ngIf="trendingArticles && trendingArticles.length > 0"
+            [articles]="trendingArticles"
+        >
+        </shared-article-list>
+    </div>
+</section>
+<section>
+    <div class="title">
+        {{ "explore.recently_viewed" | translate }}
+    </div>
+    <div class="content">
+        <shared-spinner *ngIf="!recentlyViewedArticles"></shared-spinner>
+        <shared-article-list
+            *ngIf="recentlyViewedArticles && recentlyViewedArticles.length > 0"
 
-                [articles]="trendingArticles"
-            >
-            </shared-article-list>
-        </div>
-    </section>
-    <section>
-        <div class="title">
-            {{ "explore.recently_viewed" | translate }}
-        </div>
-        <div class="content">
-            <shared-spinner *ngIf="!recentlyViewedArticles"></shared-spinner>
-            <shared-article-list
-                *ngIf="recentlyViewedArticles && recentlyViewedArticles.length > 0"
-
-                [articles]="recentlyViewedArticles"
-            >
-            </shared-article-list>
-        </div>
-    </section>
-</aside>
-
-<main>
-    <section>
-        <div class="title">
-            {{ "explore.publishers" | translate }}
-        </div>
-        <div class="content">
-            <h1
-                *ngIf="!isLoadingSearchResults && publishers && publishers.length === 0"
-
-                class="no-results"
-
-                [innerHTML]="'explore.search.empty.publishers' | translate:{ QUERY: searchQuery }"
-            >
-            </h1>
-            <shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
-            <div *ngIf="publishers && publishers.length > 0">
-                <div class="publishers">
-                    <a *ngFor="let publisher of publishers" routerLink="/p/{{ publisher.id }}">
-                        <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl" theme="dark"></shared-img>
-                        {{ publisher.name }}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="title">
-            {{ "explore.articles" | translate }}
-        </div>
-        <div class="content">
-            <h1
-                *ngIf="!isLoadingSearchResults && articles && articles.length === 0"
-
-                class="no-results"
-
-                [innerHTML]="'explore.search.empty.articles' | translate:{ QUERY: searchQuery }"
-            >
-            </h1>
-            <shared-spinner *ngIf="isLoadingSearchResults"></shared-spinner>
-            <shared-article-list *ngIf="articles && articles.length > 0" [articles]="articles"></shared-article-list>
-        </div>
-    </section>
-</main>
+            [articles]="recentlyViewedArticles"
+        >
+        </shared-article-list>
+    </div>
+</section>
