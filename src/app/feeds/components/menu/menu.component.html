@@ -6,19 +6,22 @@
                 routerLink="explore"
                 [class.selected]="section === 'explore'"
             >
-                {{ "feeds.explore" | translate }}
+                <span class="mat-icon">explore</span>
+                {{ "feed.explore" | translate }}
             </a>
             <a
                 routerLink="bookmarks"
                 [class.selected]="section === 'bookmarks'"
             >
-                {{ "feeds.bookmarks.__title" | translate }}
+                <span class="mat-icon">bookmarks</span>
+                {{ "feed.bookmarks.__title" | translate }}
             </a>
             <a
                 routerLink="likes"
                 [class.selected]="section === 'likes'"
             >
-                {{ "feeds.likes.__title" | translate }}
+                <span class="mat-icon">thumb_up</span>
+                {{ "feed.likes.__title" | translate }}
             </a>
         </div>
     </section>

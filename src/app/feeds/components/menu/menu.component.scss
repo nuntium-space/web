@@ -1,1 +1,7 @@
 @import "../../../settings/components/menu/menu.component";
+
+section > .content > a
+{
+    display: flex;
+    gap: 0.5rem;
+}
