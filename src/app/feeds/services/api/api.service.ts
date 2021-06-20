@@ -9,6 +9,12 @@ export interface IBookmark
   created_at: string,
 }
 
+export interface IHistoryEntry
+{
+  article: IArticle,
+  timestamp: string,
+}
+
 export interface ILike
 {
   article: IArticle,
@@ -25,9 +31,9 @@ export class ApiService extends CoreApiService
     return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
-  public async retrieveHistory(user: IUser): Promise<IApiServiceResponse<IArticle[]>>
+  public async retrieveHistory(user: IUser): Promise<IApiServiceResponse<IHistoryEntry[]>>
   {
-    return this.send("GET", `users/${user.id}/history?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+    return this.send("GET", `users/${user.id}/history?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`);
   }
 
   public async listBookmarks(user: IUser): Promise<IApiServiceResponse<IBookmark[]>>

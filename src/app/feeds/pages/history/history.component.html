@@ -1,7 +1,7 @@
-<shared-spinner *ngIf="!articles"></shared-spinner>
+<shared-spinner *ngIf="!entries"></shared-spinner>
 
-<div *ngIf="articles?.length === 0" class="empty">
+<div *ngIf="entries?.length === 0" class="empty">
     {{ "feed.history.empty" | translate }}
 </div>
 
-<shared-article-list [articles]="articles"></shared-article-list>
+<shared-article *ngFor="let entry of entries" [article]="entry.article"></shared-article>
