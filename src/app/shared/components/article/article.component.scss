@@ -1,0 +1,62 @@
+@import "~src/variables";
+
+:host
+{
+    display: block;
+    width: 100%;
+    max-width: 60ch;
+    margin: 0 auto;
+}
+
+article
+{
+    border: 0.1em solid var(--primary-color);
+    border-radius: 0.5em;
+
+    header,
+    footer
+    {
+        font-size: small;
+        padding: 1em;
+        background-color: rgba($primary-color, 0.05);
+    }
+
+    header
+    {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        img
+        {
+            height: 3em;
+        }
+    }
+
+    footer
+    {
+        > div
+        {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+
+    .main
+    {
+        display: block;
+        padding: 1em;
+        color: unset;
+
+        .title
+        {
+            margin: 0;
+            word-break: break-word;
+        }
+    }
+
+    & ~ &
+    {
+        margin-top: 1em;
+    }
+}

@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
-import { IArticle, IPublisher } from 'src/app/services/api/api.service';
+import { IArticle, IPublisher, IUser } from 'src/app/services/api/api.service';
 import { Config } from 'src/config/Config';
+
+export interface IBookmark
+{
+  article: IArticle,
+  created_at: string,
+}
 
 @Injectable()
 export class ApiService extends CoreApiService
@@ -12,5 +18,10 @@ export class ApiService extends CoreApiService
   }>>
   {
     return this.send("GET", `search?query=${encodeURIComponent(query)}&limit=${Config.FEED_PAGE_SIZE}&offset=${page * Config.FEED_PAGE_SIZE}&expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+  }
+
+  public async listBookmarks(user: IUser): Promise<IApiServiceResponse<IBookmark[]>>
+  {
+    return this.send("GET", `users/${user.id}/bookmarks`);
   }
 }

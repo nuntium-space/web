@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { IArticle } from 'src/app/services/api/api.service';
-import { FormatService } from '../../services/format/format.service';
 
 @Component({
   selector: 'shared-article-list',
@@ -11,7 +10,4 @@ export class ArticleListComponent
 {
   @Input("articles")
   public articles?: IArticle[];
-
-  constructor(public format: FormatService)
-  {}
 }
