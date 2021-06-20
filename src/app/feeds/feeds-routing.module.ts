@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: "home", data: { section: "home" } },
       { path: "likes", data: { section: "likes" } },
       { path: "search", data: { section: "search" }, },
+      { path: "", redirectTo: "home" },
     ],
   },
 ];
