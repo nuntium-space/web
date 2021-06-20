@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: "bookmarks", data: { section: "bookmarks" } },
       { path: "explore", data: { section: "explore" } },
+      { path: "home", data: { section: "home" } },
       { path: "likes", data: { section: "likes" } },
     ],
   },

@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
+import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
 
 const routes: Routes = [
   {
@@ -43,12 +44,13 @@ const routes: Routes = [
       { path: "", component: PublisherPublicPageComponent },
     ],
   },
-  { path: "", component: HomeComponent },
+  { path: "", component: HomeComponent, canActivate: [ SignedOutGuard ] },
   { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule
+{}

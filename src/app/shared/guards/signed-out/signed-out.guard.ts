@@ -18,7 +18,7 @@ export class SignedOutGuard implements CanActivate
   {
     if (this.auth.user)
     {
-      return this.router.parseUrl("/");
+      return this.router.parseUrl("/feed/home");
     }
 
     return true;
