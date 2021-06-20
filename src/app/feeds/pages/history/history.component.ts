@@ -29,6 +29,19 @@ export class HistoryComponent
       });
   }
 
-  public async clearHistory()
-  {}
+  public async deleteHistory()
+  {
+    if (!this.auth.user)
+    {
+      return;
+    }
+
+    const { success } = await this.api
+      .deleteHistory(this.auth.user);
+
+    if (success)
+    {
+      this.entries = [];
+    }
+  }
 }
