@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: "history", data: { section: "history" } },
       { path: "home", data: { section: "home" } },
       { path: "likes", data: { section: "likes" } },
+      { path: "search", data: { section: "search" }, },
     ],
   },
 ];

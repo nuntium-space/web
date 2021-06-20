@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HistoryComponent } from './pages/history/history.component';
     MenuComponent,
     HomeComponent,
     HistoryComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,

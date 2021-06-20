@@ -39,7 +39,7 @@ export class SearchInputComponent implements OnInit
   {
     e.preventDefault();
 
-    this.router.navigate([ "explore" ], {
+    this.router.navigate([ "feed", "search" ], {
       queryParams: {
         query: this.searchForm.get("query")?.value ?? "",
       },
