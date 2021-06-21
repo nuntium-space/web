@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
-import { IAuthor, IPublisher } from 'src/app/services/api/api.service';
+import { IAuthor, IPublisher, IUser } from 'src/app/services/api/api.service';
+
+export interface IAuthorInvite
+{
+  id: string,
+  user: IUser,
+  publisher: IPublisher,
+  created_at: string,
+  expires_at: string,
+}
 
 @Injectable()
 export class ApiService extends CoreApiService
@@ -10,11 +19,21 @@ export class ApiService extends CoreApiService
     return this.send("GET", `publishers/${publisherId}/authors?expand[]=user`);
   }
 
+  public async retrieveInvites(publisherId: string): Promise<IApiServiceResponse<IAuthorInvite[]>>
+  {
+    return this.send("GET", `publishers/${publisherId}/authors/invites?expand[]=user`);
+  }
+
   public async inviteAuthor(publisherId: string, data: {
     email: string,
-  }): Promise<IApiServiceResponse<IAuthor[]>>
+  }): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `publishers/${publisherId}/authors/invites`, data);
+  }
+
+  public async deleteInvite(inviteId: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `authors/invites/${inviteId}`);
   }
 
   public async deleteAuthor(authorId: string): Promise<IApiServiceResponse<void>>

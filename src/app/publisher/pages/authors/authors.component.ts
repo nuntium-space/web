@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { IAuthor, IPublisher } from 'src/app/services/api/api.service';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService, IAuthorInvite } from '../../services/api/api.service';
 
 @Component({
   selector: 'publisher-authors',
@@ -13,6 +13,8 @@ export class AuthorsComponent implements OnChanges
   public publisher?: IPublisher;
 
   public authors?: IAuthor[];
+
+  public invites?: IAuthorInvite[];
 
   constructor(private api: ApiService)
   {}
@@ -30,6 +32,13 @@ export class AuthorsComponent implements OnChanges
       {
         this.authors = response.data;
       });
+
+    this.api
+      .retrieveInvites(this.publisher.id)
+      .then(response =>
+      {
+        this.invites = response.data;
+      });
   }
 
   public async removeAuthor(author: IAuthor)
@@ -42,5 +51,17 @@ export class AuthorsComponent implements OnChanges
     await this.api.deleteAuthor(author.id);
 
     this.authors = this.authors.filter(a => a.id !== author.id);
+  }
+
+  public async deleteInvite(invite: IAuthorInvite)
+  {
+    if (!this.invites)
+    {
+      return;
+    }
+
+    await this.api.deleteInvite(invite.id);
+
+    this.invites = this.invites.filter(_ => _.id !== invite.id);
   }
 }
