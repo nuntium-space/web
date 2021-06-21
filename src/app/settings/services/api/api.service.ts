@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
+import { IAuthorInvite } from 'src/app/publisher/services/api/api.service';
 import { IAuthor, IOrganization, IPaymentMethod, ISubscription, IUser, IUserSettings } from 'src/app/services/api/api.service';
 
 @Injectable()
@@ -79,5 +80,15 @@ export class ApiService extends CoreApiService
   public async listSubscriptionsForUser(userId: string): Promise<IApiServiceResponse<ISubscription[]>>
   {
     return this.send("GET", `users/${userId}/subscriptions?expand[]=price&expand[]=price.bundle`);
+  }
+
+  public async retrieveInvites(user: IUser): Promise<IApiServiceResponse<IAuthorInvite[]>>
+  {
+    return this.send("GET", `users/${user.id}/authors/invites?expand[]=publisher`);
+  }
+
+  public async acceptInvite(invite: IAuthorInvite): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("POST", `authors/invites/${invite.id}/accept`);
   }
 }

@@ -23,7 +23,7 @@ export class InvitesComponent implements OnInit
     }
 
     this.api
-      .retrieveInvites(this.auth.user.id)
+      .retrieveInvites(this.auth.user)
       .then(response =>
       {
         this.invites = response.data;
@@ -37,7 +37,7 @@ export class InvitesComponent implements OnInit
       return;
     }
 
-    await this.api.acceptInvite(invite.id);
+    await this.api.acceptInvite(invite);
 
     this.invites = this.invites.filter(_ => _.id !== invite.id);
   }
