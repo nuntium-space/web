@@ -64,6 +64,12 @@
             >
                 {{ "settings.author.publishers.__title" | translate }}
             </a>
+            <a
+                routerLink="/settings/invites"
+                [class.selected]="section === 'invites'"
+            >
+                {{ "settings.author.invites.__title" | translate }}
+            </a>
         </div>
     </section>
 </aside>

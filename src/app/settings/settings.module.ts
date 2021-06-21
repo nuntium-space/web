@@ -17,6 +17,7 @@ import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.comp
 import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 import { SettingsComponent } from './settings.component';
 import { ApiService } from './services/api/api.service';
+import { InvitesComponent } from './pages/invites/invites.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ApiService } from './services/api/api.service';
     SecurityComponent,
     SubscriptionsComponent,
     SubscriptionListComponent,
+    InvitesComponent,
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: "advanced", data: { section: "advanced" } },
       { path: "details", data: { section: "details" } },
+      { path: "invites", data: { section: "invites" } },
       { path: "organizations", data: { section: "organizations" } },
       { path: "organizations/create", data: { section: "organizations/create" } },
       { path: "payment-methods", data: { section: "payment-methods" } },
@@ -25,7 +26,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forChild(routes) ],
+  exports: [ RouterModule ],
 })
-export class SettingsRoutingModule { }
+export class SettingsRoutingModule
+{}
