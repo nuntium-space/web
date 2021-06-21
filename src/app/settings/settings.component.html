@@ -5,6 +5,7 @@
 <main [ngSwitch]="section">
     <settings-advanced *ngSwitchCase="'advanced'"></settings-advanced>
     <settings-details *ngSwitchCase="'details'"></settings-details>
+    <settings-invites *ngSwitchCase="'invites'"></settings-invites>
     <settings-organizations *ngSwitchCase="'organizations'"></settings-organizations>
     <settings-organizations-create *ngSwitchCase="'organizations/create'"></settings-organizations-create>
     <settings-payment-methods *ngSwitchCase="'payment-methods'"></settings-payment-methods>
