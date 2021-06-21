@@ -1,1 +1,25 @@
-<p>invites works!</p>
+<section>
+    <div class="title">
+        <h1>{{ "settings.author.invites.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <div *ngIf="!invites">
+            <shared-spinner></shared-spinner>
+        </div>
+        <div *ngIf="invites" class="list">
+            <div *ngIf="invites.length === 0">
+                <p>{{ "settings.author.invites.empty" | translate }}</p>
+            </div>
+            <div *ngFor="let invite of invites" class="list-item-with-actions">
+                <div>
+                    <p>{{ invite.publisher.name }}</p>
+                </div>
+                <shared-popup-menu theme="light">
+                    <button theme="dark" (confirm)="accept(invite)">
+                        {{ "settings.author.invites.accept" | translate }}
+                    </button>
+                </shared-popup-menu>
+            </div>
+        </div>
+    </div>
+</section>
