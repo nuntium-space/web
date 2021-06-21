@@ -14,7 +14,7 @@ export class ApiService extends CoreApiService
     email: string,
   }): Promise<IApiServiceResponse<IAuthor[]>>
   {
-    return this.send("POST", `publishers/${publisherId}/authors`, data);
+    return this.send("POST", `publishers/${publisherId}/authors/invites`, data);
   }
 
   public async deleteAuthor(authorId: string): Promise<IApiServiceResponse<void>>
