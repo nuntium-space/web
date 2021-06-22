@@ -14,11 +14,9 @@
                 <div class="round">
                     <p>{{ invite.publisher.name }}</p>
                 </div>
-                <shared-popup-menu theme="light">
-                    <button class="dark" (click)="accept(invite)">
-                        {{ "settings.author.invites.accept" | translate }}
-                    </button>
-                </shared-popup-menu>
+                <button (click)="accept(invite)">
+                    {{ "settings.author.invites.accept" | translate }}
+                </button>
             </div>
         </div>
     </div>
