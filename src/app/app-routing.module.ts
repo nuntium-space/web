@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
-import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
-import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
 import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
 
 const routes: Routes = [
@@ -37,11 +34,7 @@ const routes: Routes = [
   },
   {
     path: "p/:id",
-    canActivate: [ SignedInGuard ],
-    children: [
-      { path: "new", component: WriteNewArticleComponent },
-      { path: "", component: PublisherPublicPageComponent },
-    ],
+    loadChildren: () => import("./publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
   },
   { path: "", component: HomeComponent, canActivate: [ SignedOutGuard ] },
   {
