@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { SignedOutGuard } from './shared/guards/signed-out/signed-out.guard';
 
 const routes: Routes = [
   {
@@ -36,7 +34,10 @@ const routes: Routes = [
     path: "p/:id",
     loadChildren: () => import("./publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
   },
-  { path: "", component: HomeComponent, canActivate: [ SignedOutGuard ] },
+  {
+    path: "",
+    loadChildren: () => import("./home/home.module").then(_ => _.HomeModule),
+  },
   {
     path: "**",
     loadChildren: () => import("./page-not-found/page-not-found.module").then(_ => _.PageNotFoundModule),
