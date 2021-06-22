@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAuthorInvite } from 'src/app/publisher/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { FormatService } from 'src/app/shared/services/format/format.service';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class InvitesComponent implements OnInit
 {
   public invites?: IAuthorInvite[];
 
-  constructor(private api: ApiService, private auth: AuthService)
+  constructor(public format: FormatService, private api: ApiService, private auth: AuthService)
   {}
 
   public ngOnInit()
