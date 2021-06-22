@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WriteNewArticleComponent } from './publisher-public-page/new/new.component';
 import { PublisherPublicPageComponent } from './publisher-public-page/publisher-public-page.component';
 import { SignedInGuard } from './shared/guards/signed-in/signed-in.guard';
@@ -45,7 +44,10 @@ const routes: Routes = [
     ],
   },
   { path: "", component: HomeComponent, canActivate: [ SignedOutGuard ] },
-  { path: "**", component: PageNotFoundComponent },
+  {
+    path: "**",
+    loadChildren: () => import("./page-not-found/page-not-found.module").then(_ => _.PageNotFoundModule),
+  },
 ];
 
 @NgModule({
