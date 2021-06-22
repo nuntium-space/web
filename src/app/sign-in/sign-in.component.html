@@ -2,7 +2,7 @@
 
 <main>
   <div>
-    <div *ngIf="showEmailSignInSuccessMessage" class="email-sign-in-success-msg">
+    <div *ngIf="showEmailSignInSuccessMessage" class="email-sign-in-success-msg round">
       <span>{{ "sign_in.email.success" | translate }}</span>
     </div>
     <shared-form [submitButtonText]="'generic.sign_in' | translate" [formGroup]="form" (confirm)="onSubmit($event)">

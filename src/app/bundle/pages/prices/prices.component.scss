@@ -1,15 +1,7 @@
 @import "~src/variables";
 
-.list-item-with-actions
+.price
 {
-    > div:first-child
-    {
-        border-radius: 0.5rem;
-
-        .price
-        {
-            font-size: xx-large;
-            font-weight: $bold;
-        }
-    }
+    font-size: xx-large;
+    font-weight: $bold;
 }

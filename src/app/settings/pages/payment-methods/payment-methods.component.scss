@@ -1,13 +1,5 @@
 @import "~src/variables";
 
-.list-item-with-actions
-{
-    > :first-child
-    {
-        border-radius: 0.5rem;
-    }
-}
-
 .brand
 {
     font-weight: $semi-bold;

@@ -49,7 +49,7 @@
                 <p>{{ "publisher.invites.empty" | translate }}</p>
             </div>
             <div *ngFor="let invite of invites" class="list-item-with-actions">
-                <div>
+                <div class="round">
                     <h3 *ngIf="invite.user.full_name">
                         {{ invite.user.full_name }}
                     </h3>
