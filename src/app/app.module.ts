@@ -45,11 +45,16 @@ import { CoreModule } from './core/core.module';
       {
         return async (): Promise<any> =>
         {
+          let language = sessionStorage.getItem("lang") ?? translate.getBrowserLang();
+
           await auth.init();
 
-          await userSettings.init();
+          if (auth.user)
+          {
+            await userSettings.init();
 
-          let language = userSettings.userSettings?.language ?? translate.getBrowserLang();
+            language = userSettings.userSettings?.language ?? language;
+          }
 
           if (!Config.LANGUAGES.find(_ => _.id === language))
           {

@@ -24,5 +24,7 @@ export class FooterComponent
     const lang = target.selectedOptions.item(0)?.value ?? this.currentLanguage;
 
     this.translate.use(lang);
+
+    sessionStorage.setItem("lang", lang);
   }
 }
