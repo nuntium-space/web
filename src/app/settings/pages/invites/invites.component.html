@@ -11,7 +11,7 @@
                 <p>{{ "settings.author.invites.empty" | translate }}</p>
             </div>
             <div *ngFor="let invite of invites" class="list-item-with-actions">
-                <div>
+                <div class="round">
                     <p>{{ invite.publisher.name }}</p>
                 </div>
                 <shared-popup-menu theme="light">
