@@ -37,29 +37,27 @@
     >
         {{ "generic.cancel" | translate }}
     </shared-danger-button>
-    <section *ngIf="draft.status !== 'pending-verification' && !isUpdating" class="actions">
+    <section *ngIf="!isUpdating" class="actions">
         <div class="title">
             <h1>{{ "article.actions.__title" | translate }}</h1>
         </div>
         <div class="content">
             <div>
-                <button *ngIf="!isUpdating" class="fill" (click)="isUpdating = true">
-                    {{  "generic.edit" | translate }}
-                </button>
+                <ng-container *ngIf="draft.status !== 'pending-verification'">
+                    <button class="fill" (click)="isUpdating = true">
+                        {{  "generic.edit" | translate }}
+                    </button>
+                    <shared-danger-button
+                        size="fill"
+
+                        [message]="'draft.submit_for_verification.message' | translate"
+
+                        (confirm)="submitForVerification()"
+                    >
+                        {{ "draft.submit_for_verification.button_text" | translate }}
+                    </shared-danger-button>
+                </ng-container>
                 <shared-danger-button
-                    *ngIf="!isUpdating"
-
-                    size="fill"
-
-                    [message]="'draft.submit_for_verification.message' | translate"
-
-                    (confirm)="submitForVerification()"
-                >
-                    {{ "draft.submit_for_verification.button_text" | translate }}
-                </shared-danger-button>
-                <shared-danger-button
-                    *ngIf="!isUpdating"
-
                     size="fill"
 
                     [message]="'generic.delete' | translate"
