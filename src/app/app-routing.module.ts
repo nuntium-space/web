@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import("./bundle/bundle.module").then(_ => _.BundleModule),
   },
   {
+    path: "draft/:id",
+    loadChildren: () => import("./draft/draft.module").then(_ => _.DraftModule),
+  },
+  {
     path: "feed",
     loadChildren: () => import("./feeds/feeds.module").then(_ => _.FeedsModule),
   },
