@@ -15,7 +15,7 @@ export class ApiService extends CoreApiService
     content: string,
   }): Promise<IApiServiceResponse<IArticleDraft>>
   {
-    return this.send("PATCH", `articles/${draft.id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`, data);
+    return this.send("PATCH", `articles/drafts/${draft.id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`, data);
   }
 
   public async deleteDraft(draft: IArticleDraft): Promise<IApiServiceResponse<void>>
