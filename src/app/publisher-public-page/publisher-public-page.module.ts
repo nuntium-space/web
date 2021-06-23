@@ -5,6 +5,7 @@ import { PublisherPublicPageRoutingModule } from './publisher-public-page-routin
 import { PublisherPublicPageComponent } from './publisher-public-page.component';
 import { WriteNewArticleComponent } from './pages/new/new.component';
 import { SharedModule } from '../shared/shared.module';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     PublisherPublicPageRoutingModule
+  ],
+  providers: [
+    ApiService,
   ],
 })
 export class PublisherPublicPageModule
