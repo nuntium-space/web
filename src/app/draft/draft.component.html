@@ -111,6 +111,6 @@
 <shared-spinner *ngIf="!draft"></shared-spinner>
 
 <main *ngIf="draft">
-    <h1 class="title">{{ draft.title }}</h1>
+    <h1 *ngIf="!isUpdating" class="title">{{ draft.title }}</h1>
     <shared-editor [(content)]="draft.content" [isReadOnly]="!isUpdating"></shared-editor>
 </main>
