@@ -100,6 +100,21 @@ export class DraftComponent implements OnInit
     this.draft = response.data;
   }
 
+  public async submitForVerification()
+  {
+    if (!this.draft)
+    {
+      return;
+    }
+
+    const response = await this.api.submitForVerification(this.draft);
+
+    if (!response.errors)
+    {
+      this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
+    }
+  }
+
   public async delete()
   {
     if (!this.draft)

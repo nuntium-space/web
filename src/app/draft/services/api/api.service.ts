@@ -10,6 +10,11 @@ export class ApiService extends CoreApiService
     return this.send("GET", `articles/drafts/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
+  public async submitForVerification(draft: IArticleDraft): Promise<IApiServiceResponse<IArticleDraft>>
+  {
+    return this.send("POST", `articles/drafts/${draft.id}/verify`);
+  }
+
   public async updateDraft(draft: IArticleDraft, data: {
     title: string,
     content: string,
