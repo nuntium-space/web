@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../../../types/Theme';
 
 @Component({
   selector: 'shared-popup-menu',

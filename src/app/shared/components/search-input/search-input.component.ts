@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../../../types/Theme';
 
 @Component({
   selector: 'shared-search-input',

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Theme } from 'src/types/Theme';
 
 @Component({
   selector: 'shared-badge',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./badge.component.scss']
 })
 export class BadgeComponent
-{}
+{
+  @Input()
+  public theme: Theme = "dark";
+}

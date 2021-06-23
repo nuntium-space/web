@@ -6,9 +6,31 @@
 small
 {
     display: block;
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
     padding: 0.2em;
     border-radius: 0.2em;
     margin-bottom: 0.5em;
+
+    &[data-theme=dark]
+    {
+        color: var(--primary-color);
+        background-color: var(--secondary-color);
+    }
+
+    &[data-theme=light]
+    {
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+    }
+
+    &[data-theme=warning]
+    {
+        color: black;
+        background-color: var(--link-color);
+    }
+
+    &[data-theme=danger]
+    {
+        color: var(--primary-color);
+        background-color: var(--danger-color);
+    }
 }

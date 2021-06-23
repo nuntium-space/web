@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../../../types/Theme';
 
 @Component({
   selector: 'shared-spinner',

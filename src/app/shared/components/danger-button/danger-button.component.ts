@@ -1,7 +1,7 @@
 import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../../../types/Theme';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
 
 @Component({
