@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
-  api: {
-    endpoint: "https://api.nuntium.space",
+  endpoints: {
+    api: "https://api.nuntium.space",
+    static: "https://static.nuntium.space",
   },
   stripePublishableKey: "TODO",
 };

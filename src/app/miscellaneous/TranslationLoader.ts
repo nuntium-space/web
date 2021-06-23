@@ -10,6 +10,6 @@ export class TranslationLoader implements TranslateLoader
 
     getTranslation(lang: string): Observable<any>
     {
-        return this.http.get(`${environment.api.endpoint}/translations/${lang}`);
+        return this.http.get(`${environment.endpoints.static}/translations/${lang}.json`);
     }
 }

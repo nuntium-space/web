@@ -39,7 +39,7 @@ export class CoreApiService
       headers["Content-Type"] = contentType;
     }
 
-    const response = await fetch(`${environment.api.endpoint}/${url}`, {
+    const response = await fetch(`${environment.endpoints.api}/${url}`, {
       method,
       headers,
       body: contentType === "application/json"

@@ -8,5 +8,5 @@ import { environment } from 'src/environments/environment';
 })
 export class ButtonsComponent
 {
-  public endpoint = environment.api.endpoint;
+  public endpoint = environment.endpoints.api;
 }
