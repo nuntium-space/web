@@ -51,11 +51,11 @@
 
                     size="fill"
 
-                    [message]="'draft.actions.submit_for_verification.message' | translate"
+                    [message]="'draft.submit_for_verification.message' | translate"
 
                     (confirm)="submitForVerification()"
                 >
-                    {{ "draft.actions.submit_for_verification.message.button_text" | translate }}
+                    {{ "draft.submit_for_verification.button_text" | translate }}
                 </shared-danger-button>
                 <shared-danger-button
                     *ngIf="!isUpdating"
