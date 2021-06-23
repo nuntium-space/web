@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IArticle } from '../services/api/api.service';
 import { AuthService } from '../shared/services/auth/auth.service';
 import { FormatService } from '../shared/services/format/format.service';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-article',
@@ -10,9 +12,12 @@ import { FormatService } from '../shared/services/format/format.service';
 })
 export class ArticleComponent implements OnInit
 {
-  public isDraft = false;
+  public article?: IArticle;
+  public sources?: string[];
 
-  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute)
+  public isSubscribed = true;
+
+  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router)
   {}
 
   public ngOnInit()
@@ -20,8 +25,48 @@ export class ArticleComponent implements OnInit
     this.route.params.subscribe({
       next: (params) =>
       {
-        this.isDraft = params.id.startsWith("dft_");
+        this.api
+          .retrieveArticle(params.id)
+          .then(response =>
+          {
+            // Payment Required
+            if (response.status === 402)
+            {
+              this.article = response.raw;
+
+              this.isSubscribed = false;
+
+              return;
+            }
+
+            this.article = response.data;
+          });
       },
     });
+  }
+
+  public async createUpdateDraft()
+  {
+    if (!this.article)
+    {
+      return;
+    }
+
+    // Create a draft from the current article (an article cannot be updated directly)
+  }
+
+  public async deleteArticle()
+  {
+    if (!this.article)
+    {
+      return;
+    }
+
+    const response = await this.api.deleteArticle(this.article.id);
+
+    if (!response.errors)
+    {
+      this.router.navigateByUrl(`/p/${this.article.author.publisher.id}`);
+    }
   }
 }
