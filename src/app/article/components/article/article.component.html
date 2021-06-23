@@ -1,0 +1,152 @@
+<shared-header></shared-header>
+
+<aside *ngIf="article">
+    <shared-form *ngIf="isUpdatingArticle" class="update-form" [submitButtonText]="'generic.submit' | translate" [formGroup]="updateArticleForm" (confirm)="updateArticle($event)">
+        <label>
+            {{ "publisher_public_page.new_article.title" | translate }}
+            <input formControlName="title" type="text">
+            <div class="errors">
+                <p *ngFor="let error of updateArticleForm.get('title')?.errors?.errors">
+                    {{ "errors." + error.error | translate:error.params }}
+                </p>
+            </div>
+        </label>
+        <fieldset *ngIf="sources">
+            <legend>{{ "publisher_public_page.new_article.sources" | translate }}</legend>
+            <div class="list">
+                <div *ngFor="let source of sources; let i = index; trackBy: trackByFn" class="list-item-with-actions">
+                    <input type="url" [value]="source" (input)="onSourceInput($event, i)">
+                    <button type="button" (click)="sources.splice(i, 1)">
+                        <span class="mat-icon">delete</span>
+                    </button>
+                </div>
+                <button type="button" class="fill" id="add-source" (click)="sources.push('')">
+                    {{ "generic.add" | translate }}
+                </button>
+            </div>
+        </fieldset>
+    </shared-form>
+    <shared-danger-button
+        *ngIf="isUpdatingArticle"
+
+        size="fill"
+
+        [message]="'generic.cancel' | translate"
+
+        (confirm)="isUpdatingArticle = false"
+    >
+        {{ "generic.cancel" | translate }}
+    </shared-danger-button>
+    <section *ngIf="!isUpdatingArticle && article.author.user.id === auth.user?.id" class="actions">
+        <div class="title">
+            <h1>{{ "article.actions.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <div>
+                <button *ngIf="!isUpdatingArticle" class="fill" (click)="isUpdatingArticle = true">
+                    {{  "generic.edit" | translate }}
+                </button>
+                <shared-danger-button
+                    *ngIf="!isUpdatingArticle"
+
+                    size="fill"
+
+                    [message]="'generic.delete' | translate"
+
+                    (confirm)="deleteArticle()"
+                >
+                    {{ "generic.delete" | translate }}
+                </shared-danger-button>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="!isUpdatingArticle">
+        <div class="title">
+            <h1>{{ "article.publisher.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <a routerLink="/p/{{ article.author.publisher.id }}">
+                {{ article.author.publisher.name }}
+            </a>
+        </div>
+    </section>
+    <section *ngIf="!isUpdatingArticle">
+        <div class="title">
+            <h1>{{ "article.author.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <a routerLink="/a/{{ article.author.user.id }}">
+                {{ article.author.user.full_name }}
+            </a>
+        </div>
+    </section>
+    <section *ngIf="!isUpdatingArticle" class="info">
+        <div class="title">
+            <h1>{{ "article.info.__title" | translate }}</h1>
+        </div>
+        <div class="content">
+            <div>
+                <b>{{ "article.info.reading_time" | translate }}</b>
+                <p *ngIf="article.reading_time >= 1">
+                    {{ article.reading_time }}
+                    {{
+                        (
+                            article.reading_time > 1
+                                ? "generic.minute.many"
+                                : "generic.minute.one"
+                        )
+                        | translate
+                    }}
+                </p>
+                <p *ngIf="article.reading_time < 1">
+                    {{ "generic.less_than_a_minute" | translate }}
+                </p>
+            </div>
+            <div>
+                <b>{{ "article.info.published" | translate }}</b>
+                <p>{{ format.dateTime(article.created_at, "datetime") }}</p>
+            </div>
+            <div>
+                <b>{{ "article.info.updated" | translate }}</b>
+                <p>{{ format.dateTime(article.updated_at, "datetime") }}</p>
+            </div>
+        </div>
+    </section>
+</aside>
+
+<shared-spinner *ngIf="!article"></shared-spinner>
+
+<main *ngIf="article && isSubscribed">
+    <h1 class="title">{{ article.title }}</h1>
+    <shared-editor [(content)]="article.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
+    <ng-container *ngIf="!isUpdatingArticle">
+        <article-bottom-actions [article]="article"></article-bottom-actions>
+        <section>
+            <div class="title">By the same author</div>
+            <div class="content">
+                <shared-article-list [articles]="[article]"></shared-article-list>
+            </div>
+        </section>
+        <section>
+            <div class="title">By the same publisher</div>
+            <div class="content">
+                <shared-article-list [articles]="[article]"></shared-article-list>
+            </div>
+        </section>
+    </ng-container>
+</main>
+
+<main *ngIf="draft">
+    <h1 class="title">{{ draft.title }}</h1>
+    <shared-editor [(content)]="draft.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
+</main>
+
+<main *ngIf="!isSubscribed">
+    <div class="round payment-required">
+        <h1>{{ "article.payment_required.title" | translate }}</h1>
+        <p>{{ "article.payment_required.subtitle" | translate }}</p>
+        <a *ngIf="article" routerLink="/p/{{ article.author.publisher.id }}" class="button dark">
+            View
+        </a>
+    </div>
+</main>

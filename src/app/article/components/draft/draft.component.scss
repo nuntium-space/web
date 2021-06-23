@@ -1,0 +1,46 @@
+@import "~src/layouts/default";
+
+@import "~src/variables";
+
+aside
+{
+    .update-form
+    {
+        margin-bottom: 1rem;
+    }
+
+    .actions
+    {
+        .content
+        {
+            div > :not(:first-child)
+            {
+                display: block;
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    .info
+    {
+        p
+        {
+            margin: 0;
+            margin-top: 0.5em;
+        }
+    }
+}
+
+main
+{
+    .title
+    {
+        margin-top: 0;
+        word-break: break-word;
+    }
+
+    article-bottom-actions
+    {
+        margin: 1rem 0;
+    }
+}
