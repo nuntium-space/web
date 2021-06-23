@@ -125,30 +125,6 @@ export class ApiService extends CoreApiService
     return this.send("POST", "auth/email", { email });
   }
 
-  public async createArticle(authorId: string, data: {
-    title: string,
-    content: any,
-    sources: { url: string }[],
-  }): Promise<IApiServiceResponse<IArticle>>
-  {
-    return this.send("POST", `authors/${authorId}/articles`, data);
-  }
-
-  public async listArticlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IArticle[]>>
-  {
-    return this.send("GET", `publishers/${publisherId}/articles?expand[]=author&expand[]=author.user`);
-  }
-
-  public async listBundlesForPublisher(publisherId: string): Promise<IApiServiceResponse<IBundle[]>>
-  {
-    return this.send("GET", `publishers/${publisherId}/bundles`);
-  }
-
-  public async retrievePublisher(id: string): Promise<IApiServiceResponse<IPublisher>>
-  {
-    return this.send("GET", `publishers/${id}`);
-  }
-
   public async retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>>
   {
     return this.send("GET", `sessions/current`);
@@ -172,10 +148,5 @@ export class ApiService extends CoreApiService
   public async retrieveUserSettings(userId: string): Promise<IApiServiceResponse<IUserSettings>>
   {
     return this.send("GET", `users/${userId}/settings`);
-  }
-
-  public async retrieveAuthorForUserAndPublisher(userId: string, publisherId: string): Promise<IApiServiceResponse<[ IAuthor ]>>
-  {
-    return this.send("GET", `users/${userId}/authors?publisher=${publisherId}`);
   }
 }
