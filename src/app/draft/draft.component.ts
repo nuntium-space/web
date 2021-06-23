@@ -69,7 +69,7 @@ export class DraftComponent implements OnInit
     }
 
     const response = await this.api
-      .updateArticle(this.draft.id, {
+      .updateDraft(this.draft, {
         title: this.updateForm.get("title")?.value ?? "",
         content: this.draft.content,
       });
@@ -97,17 +97,17 @@ export class DraftComponent implements OnInit
 
     this.isUpdating = false;
 
-    // TODO: this.draft = response.data;
+    this.draft = response.data;
   }
 
-  public async deleteArticle()
+  public async delete()
   {
     if (!this.draft)
     {
       return;
     }
 
-    const response = await this.api.deleteArticle(this.draft.id);
+    const response = await this.api.deleteDraft(this.draft);
 
     if (!response.errors)
     {

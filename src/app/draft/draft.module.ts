@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DraftRoutingModule } from './draft-routing.module';
 import { DraftComponent } from './draft.component';
 import { SharedModule } from '../shared/shared.module';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     DraftRoutingModule,
+  ],
+  providers: [
+    ApiService,
   ],
 })
 export class DraftModule
