@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'shared-badge',
@@ -6,7 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./badge.component.scss']
 })
 export class BadgeComponent
-{
-  @Input()
-  public text = "";
-}
+{}

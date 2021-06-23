@@ -8,6 +8,6 @@ import { IArticle } from 'src/app/services/api/api.service';
 })
 export class ArticleListComponent
 {
-  @Input("articles")
+  @Input()
   public articles?: IArticle[];
 }

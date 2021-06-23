@@ -15,7 +15,9 @@
             </div>
             <div *ngFor="let bundle of bundles" class="list-item-with-actions">
                 <a routerLink="/bundle/{{ bundle.id }}">
-                    <shared-badge *ngIf="!bundle.active" [text]="'organization.bundles.archived' | translate"></shared-badge>
+                    <shared-badge *ngIf="!bundle.active">
+                        {{ "organization.bundles.archived" | translate }}
+                    </shared-badge>
                     <p>{{ bundle.name }}</p>
                 </a>
                 <shared-popup-menu theme="light">

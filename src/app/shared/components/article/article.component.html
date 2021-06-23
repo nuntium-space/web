@@ -43,3 +43,33 @@
         </div>
     </footer>
 </article>
+
+<article *ngIf="draft" class="round">
+    <header>
+        <shared-badge>
+            Draft
+        </shared-badge>
+        <img *ngIf="draft.author.publisher.imageUrl" [src]="draft.author.publisher.imageUrl" alt="">
+        <div>
+            <a routerLink="/p/{{ draft.author.user.id }}">
+                {{ draft.author.user.full_name }}
+            </a>
+            <span *ngIf="draft.author.publisher.name">
+                {{ "components.article_list.article.for" | translate }}
+                <a routerLink="/p/{{ draft.author.publisher.id }}">
+                    {{ draft.author.publisher.name }}
+                </a>
+            </span>
+            <br>
+            <span>
+                {{ format.dateTime(draft.created_at, "datetime") }}
+            </span>
+        </div>
+    </header>
+    <a
+        routerLink="/article/{{ draft.id }}"
+        class="main"
+    >
+        <h2 class="title">{{ draft.title }}</h2>
+    </a>
+</article>

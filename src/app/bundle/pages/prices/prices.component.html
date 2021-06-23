@@ -15,7 +15,9 @@
             </div>
             <div *ngFor="let price of prices" class="list-item-with-actions">
                 <div class="round">
-                    <shared-badge *ngIf="!price.active" [text]="'bundle.prices.archived' | translate"></shared-badge>
+                    <shared-badge *ngIf="!price.active">
+                        {{ "bundle.prices.archived" | translate }}
+                    </shared-badge>
                     <p class="price">{{ format.currency(price.amount, price.currency) }}</p>
                     <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
                 </div>

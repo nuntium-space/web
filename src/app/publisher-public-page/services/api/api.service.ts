@@ -43,7 +43,7 @@ export class ApiService extends CoreApiService
 
   public async retrieveDraftsForAuthor(author: IAuthor | string): Promise<IApiServiceResponse<IArticleDraft[]>>
   {
-    return this.send("GET", `authors/${typeof author === "string" ? author : author.id}/articles/drafts`);
+    return this.send("GET", `authors/${typeof author === "string" ? author : author.id}/articles/drafts?expand[]=author&expand[]=author.user`);
   }
 
   public async retrieveAuthorForUserAndPublisher(userId: string, publisherId: string): Promise<IApiServiceResponse<[ IAuthor ]>>

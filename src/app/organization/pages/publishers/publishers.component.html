@@ -15,7 +15,9 @@
             </div>
             <div *ngFor="let publisher of publishers" class="list-item-with-actions">
                 <a routerLink="/publisher/{{ publisher.id }}">
-                    <shared-badge *ngIf="!publisher.verified" [text]="'organization.publishers.unverified' | translate"></shared-badge>
+                    <shared-badge *ngIf="!publisher.verified">
+                        {{ "organization.publishers.unverified" | translate }}
+                    </shared-badge>
                     <p>{{ publisher.name }}</p>
                 </a>
                 <shared-popup-menu theme="light">

@@ -21,11 +21,8 @@
                 class="list-item-with-actions"
             >
                 <div *ngSwitchCase="'card'" class="round">
-                    <shared-badge
-                        *ngIf="paymentMethod.__metadata?.is_default"
-
-                        [text]="'settings.account.payment_methods.default' | translate"
-                    >
+                    <shared-badge *ngIf="paymentMethod.__metadata?.is_default">
+                        {{ "settings.account.payment_methods.default" | translate }}
                     </shared-badge>
                     <p class="brand">{{ paymentMethod.data.brand }}</p>
                     <p>

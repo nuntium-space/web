@@ -1,5 +1,5 @@
 <shared-header></shared-header>
 
 <main>
-    <shared-article-list [drafts]="drafts"></shared-article-list>
+    <shared-article *ngFor="let draft of drafts" [draft]="draft"></shared-article>
 </main>
