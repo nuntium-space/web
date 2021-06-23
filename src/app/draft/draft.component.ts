@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IArticleDraft } from '../publisher-public-page/services/api/api.service';
 import { ConfirmEventCallback } from '../shared/components/form/form.component';
 import { AuthService } from '../shared/services/auth/auth.service';
 import { FormatService } from '../shared/services/format/format.service';
-import { ApiService } from './services/api/api.service';
+import { ApiService, IArticleDraft } from './services/api/api.service';
 
 @Component({
   selector: 'app-draft',

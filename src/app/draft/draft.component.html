@@ -37,7 +37,7 @@
     >
         {{ "generic.cancel" | translate }}
     </shared-danger-button>
-    <section *ngIf="!isUpdating" class="actions">
+    <section *ngIf="draft.status !== 'pending-verification' && !isUpdating" class="actions">
         <div class="title">
             <h1>{{ "article.actions.__title" | translate }}</h1>
         </div>

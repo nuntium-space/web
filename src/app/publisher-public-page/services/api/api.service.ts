@@ -1,18 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
+import { IArticleDraft } from 'src/app/draft/services/api/api.service';
 import { IArticle, IAuthor, IBundle, IPublisher } from 'src/app/services/api/api.service';
-
-export interface IArticleDraft
-{
-  id: string,
-  title: string,
-  content: any,
-  author: IAuthor,
-  article: IArticle | null,
-  status: string,
-  created_at: string,
-  updated_at: string,
-}
 
 @Injectable()
 export class ApiService extends CoreApiService
