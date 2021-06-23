@@ -13,18 +13,23 @@
     <div *ngIf="!isSubscribed && publisher" class="payment-required">
         <span [innerHTML]="'publisher_public_page.not_subscribed' | translate:{ PUBLISHER_NAME: publisher.name }"></span>
     </div>
-    <section *ngIf="publisher.__metadata?.is_author">
-        <div class="title">
-            <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <div>
-                <a class="button fill" routerLink="new">
-                    {{ "publisher_public_page.actions.new_article" | translate }}
-                </a>
+    <ng-container *ngIf="publisher.__metadata?.is_author">
+        <a class="button fill drafts" routerLink="drafts">
+            {{ "publisher_public_page.drafts.__title" | translate }}
+        </a>
+        <section>
+            <div class="title">
+                <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
             </div>
-        </div>
-    </section>
+            <div class="content">
+                <div>
+                    <a class="button fill" routerLink="new">
+                        {{ "publisher_public_page.actions.new_article" | translate }}
+                    </a>
+                </div>
+            </div>
+        </section>
+    </ng-container>
     <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed)">
         <div class="title">
             <h1>{{ "publisher_public_page.subscribe.__title" | translate }}</h1>
