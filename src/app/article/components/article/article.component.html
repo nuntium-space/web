@@ -136,11 +136,6 @@
     </ng-container>
 </main>
 
-<main *ngIf="draft">
-    <h1 class="title">{{ draft.title }}</h1>
-    <shared-editor [(content)]="draft.content" [isReadOnly]="!isUpdatingArticle"></shared-editor>
-</main>
-
 <main *ngIf="!isSubscribed">
     <div class="round payment-required">
         <h1>{{ "article.payment_required.title" | translate }}</h1>
