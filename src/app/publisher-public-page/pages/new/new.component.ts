@@ -66,7 +66,7 @@ export class WriteNewArticleComponent implements OnInit
     }
 
     const response = await this.api
-      .createArticle(this.author.id, {
+      .createArticleDraft(this.author.id, {
         title: this.form.get("title")?.value ?? "",
         content: this.editorContent,
         sources: this.sources.map(_ => ({ url: _ })),

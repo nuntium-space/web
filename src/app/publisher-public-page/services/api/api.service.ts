@@ -20,13 +20,13 @@ export class ApiService extends CoreApiService
     return this.send("GET", `publishers/${id}`);
   }
 
-  public async createArticle(authorId: string, data: {
+  public async createArticleDraft(authorId: string, data: {
     title: string,
     content: any,
     sources: { url: string }[],
   }): Promise<IApiServiceResponse<IArticle>>
   {
-    return this.send("POST", `authors/${authorId}/articles`, data);
+    return this.send("POST", `authors/${authorId}/articles/drafts`, data);
   }
 
   public async retrieveAuthorForUserAndPublisher(userId: string, publisherId: string): Promise<IApiServiceResponse<[ IAuthor ]>>
