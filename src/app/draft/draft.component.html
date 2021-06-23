@@ -51,6 +51,17 @@
 
                     size="fill"
 
+                    [message]="'draft.actions.submit_for_verification.message' | translate"
+
+                    (confirm)="delete()"
+                >
+                    {{ "draft.actions.submit_for_verification.message.button_text" | translate }}
+                </shared-danger-button>
+                <shared-danger-button
+                    *ngIf="!isUpdating"
+
+                    size="fill"
+
                     [message]="'generic.delete' | translate"
 
                     (confirm)="delete()"
