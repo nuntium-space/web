@@ -1,6 +1,7 @@
 <shared-header></shared-header>
 
 <aside *ngIf="draft">
+    <h1 *ngIf="!isUpdating">{{ draft.title }}</h1>
     <ng-container *ngIf="isUpdating">
         <shared-form class="update-form" [submitButtonText]="'generic.submit' | translate" [formGroup]="updateForm" (confirm)="update($event)">
             <label>
@@ -103,6 +104,5 @@
 <shared-spinner *ngIf="!draft"></shared-spinner>
 
 <main *ngIf="draft">
-    <h1 *ngIf="!isUpdating" class="title">{{ draft.title }}</h1>
     <shared-editor [(content)]="draft.content" [isReadOnly]="!isUpdating"></shared-editor>
 </main>
