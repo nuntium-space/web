@@ -7,6 +7,6 @@ export class ApiService extends CoreApiService
 {
   public async retrieveDraftsSubmittedForVerification(): Promise<IApiServiceResponse<IArticleDraft[]>>
   {
-    return this.send("GET", `__internals/admin/drafts`);
+    return this.send("GET", `__internals/articles/drafts`);
   }
 }
