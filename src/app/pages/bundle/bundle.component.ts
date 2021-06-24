@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { of } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
-import { IBundle } from '../services/api/api.service';
+import { IBundle } from '../../services/api/api.service';
 import { ApiService } from './services/api/api.service';
 
 @Component({

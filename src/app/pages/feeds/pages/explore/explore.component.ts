@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IArticle } from '../../../services/api/api.service';
-import { AuthService } from '../../../shared/services/auth/auth.service';
+import { IArticle } from '../../../../services/api/api.service';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({

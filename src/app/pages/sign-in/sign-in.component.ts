@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ApiService } from '../services/api/api.service';
-import { ConfirmEventCallback } from '../shared/components/form/form.component';
-import { AuthService } from '../shared/services/auth/auth.service';
-import { UserSettingsService } from '../shared/services/user-settings/user-settings.service';
+import { ApiService } from '../../services/api/api.service';
+import { ConfirmEventCallback } from '../../shared/components/form/form.component';
+import { AuthService } from '../../shared/services/auth/auth.service';
+import { UserSettingsService } from '../../shared/services/user-settings/user-settings.service';
 
 @Component({
   selector: 'app-sign-in',

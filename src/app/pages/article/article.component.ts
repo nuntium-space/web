@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IArticle } from '../services/api/api.service';
-import { AuthService } from '../shared/services/auth/auth.service';
-import { FormatService } from '../shared/services/format/format.service';
+import { IArticle } from '../../services/api/api.service';
+import { AuthService } from '../../shared/services/auth/auth.service';
+import { FormatService } from '../../shared/services/format/format.service';
 import { ApiService } from './services/api/api.service';
 
 @Component({

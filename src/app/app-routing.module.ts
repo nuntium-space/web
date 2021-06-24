@@ -4,47 +4,47 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: "signin",
-    loadChildren: () => import("./sign-in/sign-in.module").then(_ => _.SignInModule),
+    loadChildren: () => import("./pages/sign-in/sign-in.module").then(_ => _.SignInModule),
   },
   {
     path: "settings",
-    loadChildren: () => import("./settings/settings.module").then(_ => _.SettingsModule),
+    loadChildren: () => import("./pages/settings/settings.module").then(_ => _.SettingsModule),
   },
   {
     path: "article/:id",
-    loadChildren: () => import("./article/article.module").then(_ => _.ArticleModule),
+    loadChildren: () => import("./pages/article/article.module").then(_ => _.ArticleModule),
   },
   {
     path: "bundle/:id",
-    loadChildren: () => import("./bundle/bundle.module").then(_ => _.BundleModule),
+    loadChildren: () => import("./pages/bundle/bundle.module").then(_ => _.BundleModule),
   },
   {
     path: "draft/:id",
-    loadChildren: () => import("./draft/draft.module").then(_ => _.DraftModule),
+    loadChildren: () => import("./pages/draft/draft.module").then(_ => _.DraftModule),
   },
   {
     path: "feed",
-    loadChildren: () => import("./feeds/feeds.module").then(_ => _.FeedsModule),
+    loadChildren: () => import("./pages/feeds/feeds.module").then(_ => _.FeedsModule),
   },
   {
     path: "organization/:id",
-    loadChildren: () => import("./organization/organization.module").then(_ => _.OrganizationModule),
+    loadChildren: () => import("./pages/organization/organization.module").then(_ => _.OrganizationModule),
   },
   {
     path: "publisher/:id",
-    loadChildren: () => import("./publisher/publisher.module").then(_ => _.PublisherModule),
+    loadChildren: () => import("./pages/publisher/publisher.module").then(_ => _.PublisherModule),
   },
   {
     path: "p/:id",
-    loadChildren: () => import("./publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
+    loadChildren: () => import("./pages/publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
   },
   {
     path: "",
-    loadChildren: () => import("./home/home.module").then(_ => _.HomeModule),
+    loadChildren: () => import("./pages/home/home.module").then(_ => _.HomeModule),
   },
   {
     path: "**",
-    loadChildren: () => import("./page-not-found/page-not-found.module").then(_ => _.PageNotFoundModule),
+    loadChildren: () => import("./pages/page-not-found/page-not-found.module").then(_ => _.PageNotFoundModule),
   },
 ];
 
