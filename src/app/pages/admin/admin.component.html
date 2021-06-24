@@ -2,6 +2,6 @@
 
 <admin-menu [section]="section"></admin-menu>
 
-<main>
-    
+<main [ngSwitch]="section">
+    <admin-drafts *ngSwitchCase="'drafts'"></admin-drafts>
 </main>
