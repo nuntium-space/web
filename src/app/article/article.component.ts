@@ -52,7 +52,12 @@ export class ArticleComponent implements OnInit
       return;
     }
 
-    // Create a draft from the current article (an article cannot be updated directly)
+    const response = await this.api.createDraftFromArticle(this.article);
+
+    if (response.success)
+    {
+      this.router.navigateByUrl(`/draft/${response.data?.id}`);
+    }
   }
 
   public async deleteArticle()

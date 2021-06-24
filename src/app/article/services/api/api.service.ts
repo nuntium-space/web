@@ -10,6 +10,11 @@ export class ApiService extends CoreApiService
     return this.send("GET", `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
   }
 
+  public async createDraftFromArticle(article: IArticle): Promise<IApiServiceResponse<{ id: string }>>
+  {
+    return this.send("GET", `authors/${article.author.id}/articles/drafts?from=${article.id}`);
+  }
+
   public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>
   {
     return this.send("DELETE", `articles/${articleId}`);
