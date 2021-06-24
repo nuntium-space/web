@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAuthorInvite } from 'src/app/pages/publisher/services/api/api.service';
+import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 import { ApiService } from '../../services/api/api.service';
@@ -31,14 +32,29 @@ export class InvitesComponent implements OnInit
       });
   }
 
-  public async accept(invite: IAuthorInvite)
+  public async accept(invite: IAuthorInvite, [ success, failure ]: ConfirmEventCallback)
   {
     if (!this.invites)
     {
+      failure();
+
       return;
     }
 
-    await this.api.acceptInvite(invite);
+    const response = await this.api.acceptInvite(invite);
+
+    if (!response.success)
+    {
+      failure({
+        message: {
+          text: response.errors?.[0].error,
+        },
+      });
+
+      return;
+    }
+
+    success();
 
     this.invites = this.invites.filter(_ => _.id !== invite.id);
   }

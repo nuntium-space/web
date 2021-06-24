@@ -1,7 +1,7 @@
-import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
-import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
+import { IDialogButton, DialogComponent } from '../dialog/dialog.component';
 
 export type ConfirmEventCallbackSuccessOptions =
 {
@@ -34,15 +34,12 @@ export type ConfirmEventCallback = [
 ];
 
 @Component({
-  selector: 'shared-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'shared-async-button',
+  templateUrl: './async-button.component.html',
+  styleUrls: ['./async-button.component.scss']
 })
-export class FormComponent
+export class AsyncButtonComponent
 {
-  @Input()
-  public submitButtonText?: string;
-
   @Output()
   public confirm = new EventEmitter<ConfirmEventCallback>();
 
@@ -61,10 +58,8 @@ export class FormComponent
   constructor(private dom: DomService, private translate: TranslateService)
   {}
 
-  public async onSubmit(e: Event)
+  public async onClick()
   {
-    e.preventDefault();
-
     this.isLoading = true;
 
     this.confirm.emit([

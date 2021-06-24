@@ -18,9 +18,9 @@
                         <b>{{ format.dateTime(invite.expires_at, "datetime") }}</b>
                     </small>
                 </div>
-                <button (click)="accept(invite)">
+                <shared-async-button (confirm)="accept(invite, $event)">
                     {{ "settings.author.invites.accept" | translate }}
-                </button>
+                </shared-async-button>
             </div>
         </div>
     </div>

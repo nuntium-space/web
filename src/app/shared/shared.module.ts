@@ -19,6 +19,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { ArticleComponent } from './components/article/article.component';
+import { AsyncButtonComponent } from './components/async-button/async-button.component';
 
 export const createTranslationLoader = (http: HttpClient) =>
 {
@@ -40,6 +41,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     SearchInputComponent,
     ArticleListComponent,
     ArticleComponent,
+    AsyncButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -81,6 +83,7 @@ export const createTranslationLoader = (http: HttpClient) =>
     SearchInputComponent,
     ArticleListComponent,
     ArticleComponent,
+    AsyncButtonComponent,
   ],
 })
 export class SharedModule
