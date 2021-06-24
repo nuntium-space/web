@@ -69,7 +69,7 @@ export class ArticleComponent implements OnInit
 
     const response = await this.api.deleteArticle(this.article.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.router.navigateByUrl(`/p/${this.article.author.publisher.id}`);
     }

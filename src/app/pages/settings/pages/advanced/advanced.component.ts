@@ -21,7 +21,7 @@ export class AdvancedComponent
 
     const response = await this.api.deleteUser(this.auth.user.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       await this.auth.signOut();
     }

@@ -108,7 +108,7 @@ export class DraftComponent implements OnInit
 
     const response = await this.api.submitForVerification(this.draft);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
     }
@@ -138,7 +138,7 @@ export class DraftComponent implements OnInit
 
     const response = await this.api.deleteDraft(this.draft);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
     }

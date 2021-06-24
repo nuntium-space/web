@@ -36,7 +36,7 @@ export class PaymentMethodsComponent
       id: paymentMethod.id,
     });
 
-    if (!response.errors)
+    if (response.success)
     {
       this.paymentMethods.map(p =>
       {
@@ -61,7 +61,7 @@ export class PaymentMethodsComponent
 
     const response = await this.api.deletePaymentMethod(paymentMethod.id);
 
-    if (!response.errors)
+    if (response.success)
     {
       this.paymentMethods = this.paymentMethods.filter(p => p.id !== paymentMethod.id);
     }
