@@ -54,7 +54,7 @@
             </shared-danger-button>
         </ng-container>
         <shared-danger-button
-            *ngIf="draft.status === 'pending-verification'"
+            *ngIf="auth.user?.type === 'admin' && draft.status === 'pending-verification'"
 
             size="fill"
 
