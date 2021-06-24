@@ -1,1 +1,8 @@
-<p>drafts works!</p>
+<section>
+    <div class="title">
+        <h1>{{ "admin.drafts.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+        <shared-article *ngFor="let draft of drafts" [draft]="draft"></shared-article>
+    </div>
+</section>

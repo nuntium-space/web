@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { DraftsComponent } from './pages/drafts/drafts.component';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
     CommonModule,
     SharedModule,
     AdminRoutingModule,
+  ],
+  providers: [
+    ApiService,
   ],
 })
 export class AdminModule
