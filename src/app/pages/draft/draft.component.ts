@@ -114,6 +114,21 @@ export class DraftComponent implements OnInit
     }
   }
 
+  public async publish()
+  {
+    if (!this.draft)
+    {
+      return;
+    }
+
+    const response = await this.api.submitForVerification(this.draft);
+
+    if (response.success)
+    {
+      this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
+    }
+  }
+
   public async delete()
   {
     if (!this.draft)

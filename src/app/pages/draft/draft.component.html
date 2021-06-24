@@ -29,7 +29,6 @@
             </fieldset>
         </shared-form>
         <shared-danger-button
-
             size="fill"
 
             [message]="'generic.cancel' | translate"
@@ -54,6 +53,17 @@
                 {{ "draft.submit_for_verification.button_text" | translate }}
             </shared-danger-button>
         </ng-container>
+        <shared-danger-button
+            *ngIf="draft.status === 'pending-verification'"
+
+            size="fill"
+
+            [message]="'draft.publish.message' | translate"
+
+            (confirm)="publish()"
+        >
+            {{ "draft.publish.button_text" | translate }}
+        </shared-danger-button>
         <shared-danger-button
             size="fill"
 
