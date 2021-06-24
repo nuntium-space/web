@@ -5,6 +5,9 @@
       <span class="mat-icon">explore</span>
     </a>
     <shared-popup-menu *ngIf="auth.user">
+      <a *ngIf="auth.user.type === 'admin'" class="button dark" routerLink="/admin">
+        {{ "admin.__title" | translate }}
+      </a>
       <a class="button dark" routerLink="/settings">
         {{ "settings.__title" | translate }}
       </a>
