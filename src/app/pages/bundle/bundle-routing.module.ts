@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignedInGuard } from '../shared/guards/signed-in/signed-in.guard';
+import { SignedInGuard } from '../../shared/guards/signed-in/signed-in.guard';
 import { BundleComponent } from './bundle.component';
 
 const routes: Routes = [

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Config } from 'src/config/Config';
-import { IArticle, IBundle, IPublisher } from '../services/api/api.service';
-import { AuthService } from '../shared/services/auth/auth.service';
+import { IArticle, IBundle, IPublisher } from '../../services/api/api.service';
+import { AuthService } from '../../shared/services/auth/auth.service';
 import { ApiService } from './services/api/api.service';
 
 @Component({

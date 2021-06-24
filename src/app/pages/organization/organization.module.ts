@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { OrganizationComponent } from './organization.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { OrganizationBundlesComponent } from './pages/bundles/bundles.component';
 import { CreateBundleComponent } from './pages/bundles/create/create.component';
 import { OrganizationDetailsComponent } from './pages/details/details.component';

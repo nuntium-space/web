@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SettingsRoutingModule } from './settings-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { AdvancedComponent } from './pages/advanced/advanced.component';
 import { AccountDetailsComponent } from './pages/details/details.component';
 import { SettingsMenuComponent } from './components/menu/menu.component';
