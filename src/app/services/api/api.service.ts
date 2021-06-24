@@ -5,6 +5,7 @@ import { Config } from 'src/config/Config';
 export interface IUser
 {
   id: string,
+  type: "admin" | "user",
   full_name: string | null,
   email: string,
 }
