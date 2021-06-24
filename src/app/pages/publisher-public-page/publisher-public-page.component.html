@@ -10,7 +10,7 @@
             </a>
         </div>
     </header>
-    <div *ngIf="!isSubscribed && publisher" class="payment-required">
+    <div *ngIf="!isSubscribed && publisher" class="payment-required round">
         <span [innerHTML]="'publisher_public_page.not_subscribed' | translate:{ PUBLISHER_NAME: publisher.name }"></span>
     </div>
     <ng-container *ngIf="publisher.__metadata?.is_author">
