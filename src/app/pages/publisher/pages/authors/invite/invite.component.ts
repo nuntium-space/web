@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IPublisher } from 'src/app/services/api/api.service';
-import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { ApiService } from '../../../services/api/api.service';
 
 @Component({

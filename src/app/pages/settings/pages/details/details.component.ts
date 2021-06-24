@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Utilities } from 'src/utilities/Utilities';
 import { ApiService } from '../../services/api/api.service';

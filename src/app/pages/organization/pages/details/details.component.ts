@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IOrganization } from 'src/app/services/api/api.service';
-import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({

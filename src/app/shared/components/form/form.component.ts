@@ -1,37 +1,8 @@
 import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
+import { ConfirmEventCallback } from '../async-button/async-button.component';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
-
-export type ConfirmEventCallbackSuccessOptions =
-{
-  message?: {
-    /**
-     * @default "none"
-     */
-    type?: "modal" | "message" | "none";
-    text?: string,
-  };
-};
-
-export type ConfirmEventCallbackFailureOptions =
-{
-  message?: {
-    /**
-     * @default "modal"
-     */
-    type?: "modal" | "message" | "none";
-    /**
-     * @default "errors.unknown"
-     */
-    text?: string,
-  };
-};
-
-export type ConfirmEventCallback = [
-  (options?: ConfirmEventCallbackSuccessOptions) => void,
-  (options?: ConfirmEventCallbackFailureOptions) => void,
-];
 
 @Component({
   selector: 'shared-form',

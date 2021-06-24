@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmEventCallback } from 'src/app/shared/components/form/form.component';
+import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UserSettingsService } from 'src/app/shared/services/user-settings/user-settings.service';
 import { Config } from 'src/config/Config';

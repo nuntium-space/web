@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmEventCallback } from '../../shared/components/form/form.component';
+import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
 import { ApiService, IArticleDraft } from './services/api/api.service';
