@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IArticleDraft } from 'src/app/draft/services/api/api.service';
+import { IArticleDraft } from 'src/app/pages/draft/services/api/api.service';
 import { IAuthor } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';

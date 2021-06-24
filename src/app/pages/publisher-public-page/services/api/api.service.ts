@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
-import { IArticleDraft } from 'src/app/draft/services/api/api.service';
+import { IArticleDraft } from 'src/app/pages/draft/services/api/api.service';
 import { IArticle, IAuthor, IBundle, IPublisher } from 'src/app/services/api/api.service';
 
 @Injectable()

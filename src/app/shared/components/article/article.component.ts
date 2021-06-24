@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IArticleDraft } from 'src/app/draft/services/api/api.service';
+import { IArticleDraft } from 'src/app/pages/draft/services/api/api.service';
 import { IArticle } from 'src/app/services/api/api.service';
 import { FormatService } from '../../services/format/format.service';
 

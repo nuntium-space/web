@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
-import { IAuthorInvite } from 'src/app/publisher/services/api/api.service';
+import { IAuthorInvite } from 'src/app/pages/publisher/services/api/api.service';
 import { IAuthor, IOrganization, IPaymentMethod, ISubscription, IUser, IUserSettings } from 'src/app/services/api/api.service';
 
 @Injectable()

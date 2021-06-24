@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IAuthorInvite } from 'src/app/publisher/services/api/api.service';
+import { IAuthorInvite } from 'src/app/pages/publisher/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 import { ApiService } from '../../services/api/api.service';
