@@ -11,12 +11,13 @@ aside
 
     .actions
     {
-        .content
+        > *
         {
-            div > :not(:first-child)
+            margin-bottom: 0.5rem;
+
+            &:last-child
             {
-                display: block;
-                margin-top: 1rem;
+                margin-bottom: 1rem;
             }
         }
     }

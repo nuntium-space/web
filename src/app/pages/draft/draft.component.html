@@ -1,74 +1,68 @@
 <shared-header></shared-header>
 
 <aside *ngIf="draft">
-    <shared-form *ngIf="isUpdating" class="update-form" [submitButtonText]="'generic.submit' | translate" [formGroup]="updateForm" (confirm)="update($event)">
-        <label>
-            {{ "publisher_public_page.new_article.title" | translate }}
-            <input formControlName="title" type="text">
-            <div class="errors">
-                <p *ngFor="let error of updateForm.get('title')?.errors?.errors">
-                    {{ "errors." + error.error | translate:error.params }}
-                </p>
-            </div>
-        </label>
-        <fieldset *ngIf="sources">
-            <legend>{{ "publisher_public_page.new_article.sources" | translate }}</legend>
-            <div class="list">
-                <div *ngFor="let source of sources; let i = index; trackBy: trackByFn" class="list-item-with-actions">
-                    <input type="url" [value]="source" (input)="onSourceInput($event, i)">
-                    <button type="button" (click)="sources.splice(i, 1)">
-                        <span class="mat-icon">delete</span>
+    <ng-container *ngIf="isUpdating">
+        <shared-form class="update-form" [submitButtonText]="'generic.submit' | translate" [formGroup]="updateForm" (confirm)="update($event)">
+            <label>
+                {{ "publisher_public_page.new_article.title" | translate }}
+                <input formControlName="title" type="text">
+                <div class="errors">
+                    <p *ngFor="let error of updateForm.get('title')?.errors?.errors">
+                        {{ "errors." + error.error | translate:error.params }}
+                    </p>
+                </div>
+            </label>
+            <fieldset *ngIf="sources">
+                <legend>{{ "publisher_public_page.new_article.sources" | translate }}</legend>
+                <div class="list">
+                    <div *ngFor="let source of sources; let i = index; trackBy: trackByFn" class="list-item-with-actions">
+                        <input type="url" [value]="source" (input)="onSourceInput($event, i)">
+                        <button type="button" (click)="sources.splice(i, 1)">
+                            <span class="mat-icon">delete</span>
+                        </button>
+                    </div>
+                    <button type="button" class="fill" id="add-source" (click)="sources.push('')">
+                        {{ "generic.add" | translate }}
                     </button>
                 </div>
-                <button type="button" class="fill" id="add-source" (click)="sources.push('')">
-                    {{ "generic.add" | translate }}
-                </button>
-            </div>
-        </fieldset>
-    </shared-form>
-    <shared-danger-button
-        *ngIf="isUpdating"
+            </fieldset>
+        </shared-form>
+        <shared-danger-button
 
-        size="fill"
+            size="fill"
 
-        [message]="'generic.cancel' | translate"
+            [message]="'generic.cancel' | translate"
 
-        (confirm)="isUpdating = false"
-    >
-        {{ "generic.cancel" | translate }}
-    </shared-danger-button>
-    <section *ngIf="!isUpdating" class="actions">
-        <div class="title">
-            <h1>{{ "article.actions.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <div>
-                <ng-container *ngIf="draft.status !== 'pending-verification'">
-                    <button class="fill" (click)="isUpdating = true">
-                        {{  "generic.edit" | translate }}
-                    </button>
-                    <shared-danger-button
-                        size="fill"
+            (confirm)="isUpdating = false"
+        >
+            {{ "generic.cancel" | translate }}
+        </shared-danger-button>
+    </ng-container>
+    <div *ngIf="!isUpdating" class="actions">
+        <ng-container *ngIf="draft.status !== 'pending-verification'">
+            <button class="fill" (click)="isUpdating = true">
+                {{  "generic.edit" | translate }}
+            </button>
+            <shared-danger-button
+                size="fill"
 
-                        [message]="'draft.submit_for_verification.message' | translate"
+                [message]="'draft.submit_for_verification.message' | translate"
 
-                        (confirm)="submitForVerification()"
-                    >
-                        {{ "draft.submit_for_verification.button_text" | translate }}
-                    </shared-danger-button>
-                </ng-container>
-                <shared-danger-button
-                    size="fill"
+                (confirm)="submitForVerification()"
+            >
+                {{ "draft.submit_for_verification.button_text" | translate }}
+            </shared-danger-button>
+        </ng-container>
+        <shared-danger-button
+            size="fill"
 
-                    [message]="'generic.delete' | translate"
+            [message]="'generic.delete' | translate"
 
-                    (confirm)="delete()"
-                >
-                    {{ "generic.delete" | translate }}
-                </shared-danger-button>
-            </div>
-        </div>
-    </section>
+            (confirm)="delete()"
+        >
+            {{ "generic.delete" | translate }}
+        </shared-danger-button>
+    </div>
     <section *ngIf="!isUpdating">
         <div class="title">
             <h1>{{ "article.publisher.__title" | translate }}</h1>
