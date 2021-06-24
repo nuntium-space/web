@@ -8,6 +8,10 @@ const routes: Routes = [
     path: "",
     component: AdminComponent,
     canActivate: [ SignedInGuard ],
+    children: [
+      { path: "drafts", data: { section: "drafts" } },
+      { path: "", redirectTo: "drafts" },
+    ],
   },
 ];
 
