@@ -3,12 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "signin",
-    loadChildren: () => import("./pages/sign-in/sign-in.module").then(_ => _.SignInModule),
-  },
-  {
-    path: "settings",
-    loadChildren: () => import("./pages/settings/settings.module").then(_ => _.SettingsModule),
+    path: "admin/:id",
+    loadChildren: () => import("./pages/admin/admin.module").then(_ => _.AdminModule),
   },
   {
     path: "article/:id",
@@ -31,12 +27,20 @@ const routes: Routes = [
     loadChildren: () => import("./pages/organization/organization.module").then(_ => _.OrganizationModule),
   },
   {
+    path: "p/:id",
+    loadChildren: () => import("./pages/publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
+  },
+  {
     path: "publisher/:id",
     loadChildren: () => import("./pages/publisher/publisher.module").then(_ => _.PublisherModule),
   },
   {
-    path: "p/:id",
-    loadChildren: () => import("./pages/publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
+    path: "settings",
+    loadChildren: () => import("./pages/settings/settings.module").then(_ => _.SettingsModule),
+  },
+  {
+    path: "signin",
+    loadChildren: () => import("./pages/sign-in/sign-in.module").then(_ => _.SignInModule),
   },
   {
     path: "",
