@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "fonts";
 @import "variables";
 
@@ -158,8 +160,8 @@ button,
             left: 50%;
             width: $size;
             height: $size;
-            margin-top: -#{ $size / 2 + $thickness };
-            margin-left: -#{ $size / 2 + $thickness };
+            margin-top: -#{ math.div($size, 2) + $thickness };
+            margin-left: -#{ math.div($size, 2) + $thickness };
             border-radius: 50%;
             border: $thickness solid #ccc;
             border-top-color: black;
