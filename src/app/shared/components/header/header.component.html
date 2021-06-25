@@ -1,22 +1,17 @@
 <header>
   <a routerLink="/" class="dark logo">nuntium</a>
-  <div class="end">
-    <a *ngIf="auth.user" routerLink="/feed/explore" class="button dark explore">
-      <span class="mat-icon">explore</span>
+  <shared-popup-menu *ngIf="auth.user">
+    <a *ngIf="auth.user.type === 'admin'" class="button dark" routerLink="/admin">
+      {{ "admin.__title" | translate }}
     </a>
-    <shared-popup-menu *ngIf="auth.user">
-      <a *ngIf="auth.user.type === 'admin'" class="button dark" routerLink="/admin">
-        {{ "admin.__title" | translate }}
-      </a>
-      <a class="button dark" routerLink="/settings">
-        {{ "settings.__title" | translate }}
-      </a>
-      <button class="dark" (click)="auth.signOut()">
-        {{ "generic.sign_out" | translate }}
-      </button>
-    </shared-popup-menu>
-    <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
-      {{ "generic.sign_in" | translate }}
+    <a class="button dark" routerLink="/settings">
+      {{ "settings.__title" | translate }}
     </a>
-  </div>
+    <button class="dark" (click)="auth.signOut()">
+      {{ "generic.sign_out" | translate }}
+    </button>
+  </shared-popup-menu>
+  <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
+    {{ "generic.sign_in" | translate }}
+  </a>
 </header>
