@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Config } from 'src/config/Config';
 import { IArticle } from '../../services/api/api.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
@@ -17,7 +19,7 @@ export class ArticleComponent implements OnInit
 
   public isSubscribed = true;
 
-  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router)
+  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router, private title: Title)
   {}
 
   public ngOnInit()
@@ -39,7 +41,12 @@ export class ArticleComponent implements OnInit
               return;
             }
 
-            this.article = response.data;
+            if (response.data)
+            {
+              this.article = response.data;
+
+              this.title.setTitle(`${this.article.title} - ${this.article.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`);
+            }
           });
       },
     });

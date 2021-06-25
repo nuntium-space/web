@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
+import { Config } from 'src/config/Config';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
 import { ApiService, IArticleDraft } from './services/api/api.service';
@@ -23,7 +25,7 @@ export class DraftComponent implements OnInit
 
   public isUpdating = false;
 
-  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router)
+  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router, private title: Title)
   {}
 
   public ngOnInit()
@@ -35,9 +37,14 @@ export class DraftComponent implements OnInit
           .retrieveDraft(params.id)
           .then(response =>
           {
-            this.draft = response.data;
+            if (response.data)
+            {
+              this.draft = response.data;
 
-            this.updateForm.get("title")?.setValue(this.draft?.title);
+              this.updateForm.get("title")?.setValue(this.draft.title);
+
+              this.title.setTitle(`${this.draft.title} - ${this.draft.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`);
+            }
           });
       },
     });
