@@ -27,6 +27,11 @@ export class ApiService extends CoreApiService
     return this.send("POST", `articles/drafts/${draft.id}/verify`);
   }
 
+  public async publish(draft: IArticleDraft): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("POST", `__internals/articles/drafts/${draft.id}/publish`);
+  }
+
   public async updateDraft(draft: IArticleDraft, data: {
     title: string,
     content: string,

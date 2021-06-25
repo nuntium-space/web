@@ -121,7 +121,7 @@ export class DraftComponent implements OnInit
       return;
     }
 
-    const response = await this.api.submitForVerification(this.draft);
+    const response = await this.api.publish(this.draft);
 
     if (response.success)
     {
