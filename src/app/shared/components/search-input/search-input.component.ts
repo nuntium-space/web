@@ -39,10 +39,15 @@ export class SearchInputComponent implements OnInit
   {
     e.preventDefault();
 
+    const query = (this.searchForm.get("query")?.value as string ?? "").trim();
+
+    if (query.length === 0)
+    {
+      return;
+    }
+
     this.router.navigate([ "feed", "search" ], {
-      queryParams: {
-        query: this.searchForm.get("query")?.value ?? "",
-      },
+      queryParams: { query },
     });
   }
 }
