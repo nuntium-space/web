@@ -2,7 +2,8 @@ export class Config
 {
     public static readonly FEED_PAGE_SIZE = 30;
 
-    public static readonly PAGE_TITLE_SUFFIX = " | nuntium";
+    public static readonly DEFAULT_PAGE_TITLE = "nuntium";
+    public static readonly PAGE_TITLE_SUFFIX = ` | ${Config.DEFAULT_PAGE_TITLE}`;
 
     public static readonly LANGUAGES = [
         {
