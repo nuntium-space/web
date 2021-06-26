@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import("./pages/publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
   },
   {
+    path: "pages",
+    loadChildren: () => import("./pages/pages/pages.module").then(_ => _.PagesModule),
+  },
+  {
     path: "publisher/:id",
     loadChildren: () => import("./pages/publisher/publisher.module").then(_ => _.PublisherModule),
   },
