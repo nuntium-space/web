@@ -1,7 +1,7 @@
 <header>
   <a routerLink="/" class="dark logo">nuntium</a>
   <div class="end">
-    <a routerLink="/pages/for-publishers" class="dark for-publishers">
+    <a *ngIf="router.url === '/'" routerLink="/pages/for-publishers" class="dark for-publishers">
       For publishers
     </a>
     <shared-popup-menu *ngIf="auth.user">
