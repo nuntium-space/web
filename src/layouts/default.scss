@@ -1,11 +1,12 @@
 :host
 {
     display: grid;
-    grid-template-rows: max-content auto;
+    grid-template-rows: max-content auto max-content;
     grid-template-columns: minmax(30ch, 30%) auto;
     grid-template-areas:
         "header header"
-        "aside main";
+        "aside main"
+        "footer footer";
     gap: 1em;
     height: 100%;
 }
