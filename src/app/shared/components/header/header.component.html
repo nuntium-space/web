@@ -1,5 +1,7 @@
 <header>
-  <a routerLink="/" class="dark logo">nuntium</a>
+  <a routerLink="/" class="dark logo">
+    <img src="{{ env.endpoints.static }}/images/logo/svg/full-pure.svg" alt="nuntium">
+  </a>
   <div class="end">
     <a *ngIf="router.url === '/'" routerLink="/pages/for-publishers" class="dark for-publishers">
       For publishers
