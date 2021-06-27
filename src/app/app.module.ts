@@ -10,6 +10,7 @@ import { UserSettingsService } from './shared/services/user-settings/user-settin
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Config } from 'src/config/Config';
 import { CoreModule } from './core/core.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([], {
+      anchorScrolling: "enabled",
+    }),
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
