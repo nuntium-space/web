@@ -81,21 +81,7 @@
 <main *ngIf="article && isSubscribed">
     <h1 class="title">{{ article.title }}</h1>
     <shared-editor [(content)]="article.content" [isReadOnly]="true"></shared-editor>
-    <ng-container>
-        <article-bottom-actions [article]="article"></article-bottom-actions>
-        <section>
-            <div class="title">By the same author</div>
-            <div class="content">
-                <shared-article-list [articles]="[article]"></shared-article-list>
-            </div>
-        </section>
-        <section>
-            <div class="title">By the same publisher</div>
-            <div class="content">
-                <shared-article-list [articles]="[article]"></shared-article-list>
-            </div>
-        </section>
-    </ng-container>
+    <article-bottom-actions [article]="article"></article-bottom-actions>
 </main>
 
 <main *ngIf="!isSubscribed">
