@@ -4,15 +4,15 @@
     <hr>
 </div>
 
-<a href="{{ endpoint }}/auth/google" class="button fill google">
+<a href="{{ endpoint }}/auth/google?redirectTo={{ redirectTo ?? '/' }}" class="button fill google">
     <img src="/assets/sign-in-buttons/google.svg" alt="">
     {{ "sign_in.with" | translate }} Google
 </a>
-<a href="{{ endpoint }}/auth/facebook" class="button fill facebook">
+<a href="{{ endpoint }}/auth/facebook?redirectTo={{ redirectTo ?? '/' }}" class="button fill facebook">
     <img src="/assets/sign-in-buttons/facebook.svg" alt="">
     {{ "sign_in.with" | translate }} Facebook
 </a>
-<a href="{{ endpoint }}/auth/twitter" class="button fill twitter">
+<a href="{{ endpoint }}/auth/twitter?redirectTo={{ redirectTo ?? '/' }}" class="button fill twitter">
     <img src="/assets/sign-in-buttons/twitter.svg" alt="">
     {{ "sign_in.with" | translate }} Twitter
 </a>

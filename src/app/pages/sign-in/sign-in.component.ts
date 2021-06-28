@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,13 +12,15 @@ import { UserSettingsService } from '../../shared/services/user-settings/user-se
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent
+export class SignInComponent implements OnInit
 {
   public readonly form = new FormGroup({
     email: new FormControl(),
   });
 
   public showEmailSignInSuccessMessage = false;
+
+  public redirectTo = "/";
 
   constructor
   (
@@ -30,6 +32,16 @@ export class SignInComponent
     private router: Router,
   )
   {}
+
+  public ngOnInit()
+  {
+    this.route.queryParams.subscribe({
+      next: ({ redirectTo }) =>
+      {
+        this.redirectTo = redirectTo ?? "/";
+      },
+    });
+  }
 
   public async onSubmit([ success, failure ]: ConfirmEventCallback)
   {
@@ -87,7 +99,7 @@ export class SignInComponent
 
           this.translate.use(language);
 
-          this.router.navigateByUrl(this.route.snapshot.queryParams.redirectTo ?? "/");
+          this.router.navigateByUrl(this.redirectTo);
         }
       }, 1000);
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,5 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ButtonsComponent
 {
-  public endpoint = environment.endpoints.api;
+  @Input()
+  public redirectTo?: string;
+
+  public readonly endpoint = environment.endpoints.api;
 }
