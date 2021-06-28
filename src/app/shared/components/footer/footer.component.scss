@@ -1,9 +1,11 @@
+@import "~src/variables";
+
 :host
 {
     grid-area: footer;
 }
 
-footer
+.bottom
 {
     display: flex;
     align-items: center;
