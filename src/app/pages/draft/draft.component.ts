@@ -146,6 +146,23 @@ export class DraftComponent implements OnInit
     }
   }
 
+  public async reject()
+  {
+    if (!this.draft)
+    {
+      return;
+    }
+
+    const response = await this.api.reject(this.draft, {
+      reason: "TODO",
+    });
+
+    if (response.success)
+    {
+      this.router.navigateByUrl("/admin/drafts");
+    }
+  }
+
   public async delete()
   {
     if (!this.draft)
