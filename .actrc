@@ -1,0 +1,7 @@
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+
+-s AWS_ACCESS_KEY_ID=test
+-s AWS_SECRET_ACCESS_KEY=test
+-s S3_BUCKET=localhost
+-s S3_ENDPOINT=http://localhost:4566
+-s S3_BUCKET_REGION=us-east-1
