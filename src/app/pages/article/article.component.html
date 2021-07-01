@@ -81,6 +81,14 @@
 <main *ngIf="article && isSubscribed">
     <h1 class="title">{{ article.title }}</h1>
     <shared-editor [(content)]="article.content" [isReadOnly]="true"></shared-editor>
+    <p *ngIf="sources?.length === 0">
+        <i>The author didn't specify any source</i>
+    </p>
+    <ol>
+        <li *ngFor="let source of sources">
+            <a [href]="source.url">{{ source.url }}</a>
+        </li>
+    </ol>
     <article-bottom-actions [article]="article"></article-bottom-actions>
 </main>
 
