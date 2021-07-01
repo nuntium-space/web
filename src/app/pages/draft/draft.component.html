@@ -115,9 +115,9 @@
 
 <main *ngIf="draft">
     <shared-editor [(content)]="draft.content" [isReadOnly]="!isUpdating"></shared-editor>
-    <div>
-        <p *ngFor="let source of sources; let i = index">
-            {{ i }}) <a [href]="source.url">{{ source.url }}</a>
-        </p>
-    </div>
+    <ol>
+        <li *ngFor="let source of sources">
+            <a [href]="source.url">{{ source.url }}</a>
+        </li>
+    </ol>
 </main>
