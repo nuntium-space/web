@@ -4,6 +4,13 @@
 
 aside
 {
+    > h1:first-child
+    {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: xx-large;
+    }
+
     .update-form
     {
         margin-bottom: 1rem;
@@ -33,11 +40,6 @@ aside
 
 main
 {
-    .title
-    {
-        margin-top: 0;
-    }
-
     article-bottom-actions
     {
         margin: 1rem 0;
