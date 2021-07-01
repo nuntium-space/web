@@ -22,7 +22,7 @@
                             <span class="mat-icon">delete</span>
                         </button>
                     </div>
-                    <button type="button" class="fill" id="add-source" (click)="sources.push('')">
+                    <button type="button" class="fill" id="add-source" (click)="sources.push({ url: ''})">
                         {{ "generic.add" | translate }}
                     </button>
                 </div>
@@ -115,4 +115,9 @@
 
 <main *ngIf="draft">
     <shared-editor [(content)]="draft.content" [isReadOnly]="!isUpdating"></shared-editor>
+    <div>
+        <p *ngFor="let source of sources; let i = index">
+            {{ i }}) <a [href]="source.url">{{ source.url }}</a>
+        </p>
+    </div>
 </main>

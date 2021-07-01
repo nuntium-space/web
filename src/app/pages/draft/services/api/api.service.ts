@@ -14,12 +14,22 @@ export interface IArticleDraft
   updated_at: string,
 }
 
+export interface IArticleDraftSource
+{
+  url: string,
+}
+
 @Injectable()
 export class ApiService extends CoreApiService
 {
   public async retrieveDraft(id: string): Promise<IApiServiceResponse<IArticleDraft>>
   {
     return this.send("GET", `articles/drafts/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`);
+  }
+
+  public async retrieveDraftSources(id: string): Promise<IApiServiceResponse<IArticleDraftSource[]>>
+  {
+    return this.send("GET", `articles/drafts/${id}/sources`);
   }
 
   public async submitForVerification(draft: IArticleDraft): Promise<IApiServiceResponse<IArticleDraft>>

@@ -6,7 +6,7 @@ import { ConfirmEventCallback } from 'src/app/shared/components/async-button/asy
 import { Config } from 'src/config/Config';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
-import { ApiService, IArticleDraft } from './services/api/api.service';
+import { ApiService, IArticleDraft, IArticleDraftSource } from './services/api/api.service';
 
 @Component({
   selector: 'app-draft',
@@ -21,7 +21,7 @@ export class DraftComponent implements OnInit
 
   public draft?: IArticleDraft;
 
-  public sources?: string[];
+  public sources?: IArticleDraftSource[];
 
   public isUpdating = false;
 
@@ -46,6 +46,16 @@ export class DraftComponent implements OnInit
               this.title.setTitle(`${this.draft.title} - ${this.draft.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`);
             }
           });
+
+        this.api
+          .retrieveDraftSources(params.id)
+          .then(response =>
+          {
+            if (response.data)
+            {
+              this.sources = response.data;
+            }
+          });
       },
     });
   }
@@ -57,10 +67,10 @@ export class DraftComponent implements OnInit
       return;
     }
 
-    this.sources[i] = (e.target as HTMLInputElement).value;
+    this.sources[i] = { url: (e.target as HTMLInputElement).value };
   }
 
-  public trackByFn(index: number, item: string)
+  public trackByFn(index: number)
   {
     return index;
   }
