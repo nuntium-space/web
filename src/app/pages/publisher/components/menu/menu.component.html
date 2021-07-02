@@ -1,6 +1,6 @@
 <aside>
     <header>
-        <shared-img *ngIf="publisher && publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+        <shared-img [src]="publisher?.imageUrl ?? undefined"></shared-img>
         <div>
             <small>{{ "publisher.__title" | translate }}</small>
             <h1 *ngIf="publisher">{{ publisher.name }}</h1>
