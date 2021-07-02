@@ -22,7 +22,7 @@ export class ApiService extends CoreApiService
 
   public async createDraftFromArticle(article: IArticle): Promise<IApiServiceResponse<{ id: string }>>
   {
-    return this.send("POST", `authors/${article.author.id}/articles/drafts?from=${article.id}`);
+    return this.send("POST", `articles/${article.id}/drafts`);
   }
 
   public async deleteArticle(articleId: string): Promise<IApiServiceResponse<IArticle>>
