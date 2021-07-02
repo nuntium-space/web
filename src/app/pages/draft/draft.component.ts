@@ -86,8 +86,9 @@ export class DraftComponent implements OnInit
 
     const response = await this.api
       .updateDraft(this.draft, {
-        title: this.updateForm.get("title")?.value ?? "",
+        title: this.updateForm.get("title")?.value,
         content: this.draft.content,
+        sources: this.sources,
       });
 
     this.updateForm.get("title")?.setErrors({

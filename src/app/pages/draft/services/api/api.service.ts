@@ -50,8 +50,9 @@ export class ApiService extends CoreApiService
   }
 
   public async updateDraft(draft: IArticleDraft, data: {
-    title: string,
-    content: string,
+    title?: string,
+    content?: string,
+    sources?: IArticleDraftSource[],
   }): Promise<IApiServiceResponse<IArticleDraft>>
   {
     return this.send("PATCH", `articles/drafts/${draft.id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`, data);
