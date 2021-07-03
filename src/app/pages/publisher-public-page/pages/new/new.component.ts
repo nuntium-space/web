@@ -40,7 +40,10 @@ export class WriteNewArticleComponent implements OnInit
           .retrieveAuthorForUserAndPublisher(this.auth.user.id, params.id)
           .then(response =>
           {
-            this.author = response.data?.[0];
+            if (response.success)
+            {
+              this.author = response.data[0];
+            }
           });
       },
     });

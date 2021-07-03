@@ -116,7 +116,7 @@ export interface IUserSettings
 })
 export class ApiService extends CoreApiService
 {
-  public async retrieveSignInRequest(id: string): Promise<IApiServiceResponse<{ session?: ISession }>>
+  public async retrieveSignInRequest(id: string): Promise<IApiServiceResponse<{ session: ISession }>>
   {
     return this.send("GET", `auth/email/requests/${id}`);
   }

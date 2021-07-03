@@ -85,10 +85,10 @@ export class SignInComponent implements OnInit
           return;
         }
 
-        const session = signInRequestResponse.data?.session;
-
-        if (session)
+        if (signInRequestResponse.success)
         {
+          const { session } = signInRequestResponse.data;
+
           clearInterval(interval);
 
           this.auth.user = session.user;

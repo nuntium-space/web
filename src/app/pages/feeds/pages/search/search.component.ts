@@ -47,8 +47,11 @@ export class SearchComponent implements OnInit
 
         this.isLoadingSearchResults = false;
 
-        this.articles = response.data?.articles;
-        this.publishers = response.data?.publishers;
+        if (response.success)
+        {
+          this.articles = response.data.articles;
+          this.publishers = response.data.publishers;
+        }
       },
     });
   }

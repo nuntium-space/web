@@ -73,7 +73,7 @@ export class ArticleComponent implements OnInit
 
     if (response.success)
     {
-      this.router.navigateByUrl(`/draft/${response.data?.id}`);
+      this.router.navigateByUrl(`/draft/${response.data.id}`);
     }
   }
 

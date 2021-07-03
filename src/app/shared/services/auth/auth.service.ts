@@ -16,7 +16,10 @@ export class AuthService
   {
     const response = await this.api.retrieveCurrentSession();
 
-    this.user = response.data?.user;
+    if (response.success)
+    {
+      this.user = response.data.user;
+    }
 
     return this.user ?? null;
   }

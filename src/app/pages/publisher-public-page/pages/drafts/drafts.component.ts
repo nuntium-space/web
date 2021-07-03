@@ -33,7 +33,10 @@ export class DraftsComponent implements OnInit
           .retrieveAuthorForUserAndPublisher(this.auth.user.id, params.id)
           .then(response =>
           {
-            this.author = response.data?.[0];
+            if (response.success)
+            {
+              this.author = response.data[0];
+            }
 
             return this.author;
           })
@@ -48,7 +51,10 @@ export class DraftsComponent implements OnInit
           })
           .then(response =>
           {
-            this.drafts = response?.data;
+            if (response?.success)
+            {
+              this.drafts = response.data;
+            }
           });
       },
     });
