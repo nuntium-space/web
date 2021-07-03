@@ -142,7 +142,7 @@ export class PublisherDetailsComponent implements OnChanges
 
     success();
 
-    this.publisher.imageUrl = response.data?.url ?? null;
+    this.publisher.imageUrl = response.data.url;
 
     this.update.emit(this.publisher);
   }

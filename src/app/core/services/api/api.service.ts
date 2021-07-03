@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-export interface IApiServiceResponse<T>
+export type IApiServiceResponse<T> =
 {
   status: number,
-  success: boolean,
+  success: true,
+  data: T,
+  errors: undefined,
   /**
-   * Body of the request, if successful
+   * Body of the request
    */
+  raw?: any,
+}
+|
+{
+  status: number,
+  success: false,
   data?: T,
   errors?: {
     field: string,
@@ -48,30 +56,31 @@ export class CoreApiService
       credentials: "include",
     });
 
-    const result: IApiServiceResponse<any> = {
-      status: response.status,
-      success: response.status >= 200 && response.status < 300,
-    };
-
-    // No Content
-    if (result.status === 204)
+    // HTTP 204 - No Content
+    if (response.status === 204)
     {
-      return result;
+      return { status: 204, success: true } as IApiServiceResponse<void>;
     }
+
+    const success = response.status >= 200 && response.status < 300;
 
     const json = await response.json();
 
-    result.raw = json;
-
-    if (response.status !== 200)
+    if (success)
     {
-      result.errors = json.details;
-    }
-    else
-    {
-      result.data = json;
+      return {
+        status: response.status,
+        success,
+        data: json,
+        raw: json,
+      } as IApiServiceResponse<any>;
     }
 
-    return result;
+    return {
+      status: response.status,
+      success,
+      errors: json,
+      raw: json,
+    } as IApiServiceResponse<any>;
   }
 }

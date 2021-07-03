@@ -1,6 +1,6 @@
 <article *ngIf="article" class="round">
     <header>
-        <img *ngIf="article.author.publisher.imageUrl" [src]="article.author.publisher.imageUrl" alt="">
+        <shared-img [src]="article.author.publisher.imageUrl"></shared-img>
         <div>
             <a routerLink="/a/{{ article.author.user.id }}">
                 {{ article.author.user.full_name }}
@@ -49,7 +49,7 @@
         <shared-badge theme="warning">
             Draft
         </shared-badge>
-        <img *ngIf="draft.author.publisher.imageUrl" [src]="draft.author.publisher.imageUrl" alt="">
+        <shared-img [src]="draft.author.publisher.imageUrl"></shared-img>
         <div>
             <a routerLink="/a/{{ draft.author.user.id }}">
                 {{ draft.author.user.full_name }}

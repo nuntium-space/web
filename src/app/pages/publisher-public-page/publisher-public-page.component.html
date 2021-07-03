@@ -2,7 +2,7 @@
 
 <aside *ngIf="publisher">
     <header>
-        <shared-img *ngIf="publisher.imageUrl" [src]="publisher.imageUrl"></shared-img>
+        <shared-img [src]="publisher.imageUrl"></shared-img>
         <div>
             <h1>{{ publisher.name }}</h1>
             <a href="{{ publisher.url }}" target="_blank">

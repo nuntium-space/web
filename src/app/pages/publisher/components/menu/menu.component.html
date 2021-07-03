@@ -1,9 +1,9 @@
 <aside>
-    <header>
-        <shared-img [src]="publisher?.imageUrl ?? undefined"></shared-img>
+    <header *ngIf="publisher">
+        <shared-img [src]="publisher.imageUrl"></shared-img>
         <div>
             <small>{{ "publisher.__title" | translate }}</small>
-            <h1 *ngIf="publisher">{{ publisher.name }}</h1>
+            <h1>{{ publisher.name }}</h1>
         </div>
     </header>
     <a *ngIf="publisher && !publisher.verified" routerLink="verify" id="verify-button" class="button warning fill">
