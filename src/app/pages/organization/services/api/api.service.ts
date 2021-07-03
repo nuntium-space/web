@@ -25,7 +25,7 @@ export class ApiService extends CoreApiService
 
   public async createBundle(organizationId: string, data: {
     name: string,
-  }): Promise<IApiServiceResponse<IBundle>>
+  }): Promise<IApiServiceResponse<{ id: string }>>
   {
     return this.send("POST", `organizations/${organizationId}/bundles`, data);
   }
@@ -59,7 +59,7 @@ export class ApiService extends CoreApiService
   public async createPublisher(organizationId: string, data: {
     name: string,
     url: string,
-  }): Promise<IApiServiceResponse<IPublisher>>
+  }): Promise<IApiServiceResponse<{ id: string }>>
   {
     return this.send("POST", `organizations/${organizationId}/publishers`, data);
   }

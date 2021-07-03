@@ -32,7 +32,7 @@ export class ApiService extends CoreApiService
     return this.send("GET", `articles/drafts/${id}/sources`);
   }
 
-  public async submitForVerification(draft: IArticleDraft): Promise<IApiServiceResponse<IArticleDraft>>
+  public async submitForVerification(draft: IArticleDraft): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `articles/drafts/${draft.id}/verify`);
   }

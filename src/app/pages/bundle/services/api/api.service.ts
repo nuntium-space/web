@@ -21,7 +21,7 @@ export class ApiService extends CoreApiService
   public async createPrice(bundleId: string, data: {
     amount: number,
     currency: string,
-  }): Promise<IApiServiceResponse<IPrice>>
+  }): Promise<IApiServiceResponse<{ id: string }>>
   {
     return this.send("POST", `bundles/${bundleId}/prices`, data);
   }

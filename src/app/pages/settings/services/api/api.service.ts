@@ -31,7 +31,7 @@ export class ApiService extends CoreApiService
 
   public async createOrganization(data: {
     name: string,
-  }): Promise<IApiServiceResponse<IOrganization>>
+  }): Promise<IApiServiceResponse<{ id: string }>>
   {
     return this.send("POST", "organizations", data);
   }
