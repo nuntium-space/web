@@ -3,6 +3,13 @@ import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/a
 import { IAuthorInvite } from 'src/app/pages/publisher/services/api/api.service';
 import { IAuthor, IOrganization, IPaymentMethod, ISubscription, IUser, IUserSettings } from 'src/app/services/api/api.service';
 
+export interface IAccount
+{
+  user: IUser,
+  type: string,
+  external_id: string,
+}
+
 @Injectable()
 export class ApiService extends CoreApiService
 {
@@ -90,5 +97,10 @@ export class ApiService extends CoreApiService
   public async acceptInvite(invite: IAuthorInvite): Promise<IApiServiceResponse<void>>
   {
     return this.send("POST", `authors/invites/${invite.id}/accept`);
+  }
+
+  public async retrieveLinkedAccounts(user: IUser): Promise<IApiServiceResponse<IAccount[]>>
+  {
+    return this.send("GET", `users/${user.id}/accounts`);
   }
 }
