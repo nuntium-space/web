@@ -11,9 +11,9 @@
                 <p>{{ "settings.account.security.accounts.empty" | translate }}</p>
             </div>
             <div *ngFor="let account of accounts" class="list-item-with-actions account">
-                <div class="round info">
-                    <img src="/assets/sign-in-buttons/{{ account.type }}.svg" alt="">
-                    <p>{{ account.type }}</p>
+                <div class="round info {{ account.id }}">
+                    <img src="/assets/sign-in-buttons/{{ account.id }}.svg" alt="">
+                    <p>{{ account.display_name }}</p>
                 </div>
                 <shared-popup-menu theme="light">
                     <shared-danger-button

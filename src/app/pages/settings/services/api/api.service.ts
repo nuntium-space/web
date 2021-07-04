@@ -5,9 +5,9 @@ import { IAuthor, IOrganization, IPaymentMethod, ISubscription, IUser, IUserSett
 
 export interface IAccount
 {
-  user: IUser,
-  type: string,
-  external_id: string,
+  id: string,
+  display_name: string,
+  is_linked: boolean,
 }
 
 @Injectable()
