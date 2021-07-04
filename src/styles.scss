@@ -356,6 +356,13 @@ select
     {
         opacity: 0.9;
     }
+
+    &[type=color]
+    {
+        padding: 0;
+        width: 3rem;
+        height: 2rem;
+    }
 }
 
 img

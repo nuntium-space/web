@@ -1,5 +1,4 @@
 import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
 import { ConfirmEventCallback } from '../async-button/async-button.component';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
@@ -29,7 +28,7 @@ export class FormComponent
     },
   ];
 
-  constructor(private dom: DomService, private translate: TranslateService)
+  constructor(private dom: DomService)
   {}
 
   public async onSubmit(e: Event)
@@ -55,7 +54,7 @@ export class FormComponent
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
-                message: this.translate.instant(options.message.text!),
+                message: options.message.text,
                 buttons: this.dialogButtons,
               },
               {
@@ -85,7 +84,7 @@ export class FormComponent
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
-                message: this.translate.instant(options.message.text!),
+                message: options.message.text,
                 buttons: this.dialogButtons,
               },
               {
