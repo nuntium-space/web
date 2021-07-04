@@ -1,5 +1,7 @@
 # web
 
+[![Deployment](https://github.com/nuntium-space/web/actions/workflows/cd.yml/badge.svg)](https://github.com/nuntium-space/web/actions/workflows/cd.yml)
+
 ## Test
 
 ### Serve locally
