@@ -37,6 +37,24 @@ export class SecurityComponent implements OnInit
 
   public async unlinkAccount(account: IAccount)
   {
-    // TODO
+    if (!this.auth.user || !this.accounts)
+    {
+      return;
+    }
+
+    const { success } = await this.api.unlinkAccount(this.auth.user, account);
+
+    if (success)
+    {
+      this.accounts.map(_ =>
+      {
+        if (_.id === account.id)
+        {
+          _.is_linked = false;
+        }
+
+        return _;
+      });
+    }
   }
 }

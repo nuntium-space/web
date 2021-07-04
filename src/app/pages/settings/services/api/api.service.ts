@@ -103,4 +103,9 @@ export class ApiService extends CoreApiService
   {
     return this.send("GET", `users/${user.id}/accounts`);
   }
+
+  public async unlinkAccount(user: IUser, account: IAccount): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("DELETE", `users/${user.id}/accounts/${account.id}`);
+  }
 }
