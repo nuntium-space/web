@@ -19,6 +19,7 @@ export class SignInComponent implements OnInit
   });
 
   public showEmailSignInSuccessMessage = false;
+  public signInError = "";
 
   public redirectTo = "/";
 
@@ -36,9 +37,14 @@ export class SignInComponent implements OnInit
   public ngOnInit()
   {
     this.route.queryParams.subscribe({
-      next: ({ redirectTo }) =>
+      next: ({ redirectTo, error }) =>
       {
         this.redirectTo = redirectTo ?? "/";
+
+        if (error === "account-not-linked")
+        {
+          this.signInError = "custom.errors.sign_in.account_not_linked";
+        }
       },
     });
   }

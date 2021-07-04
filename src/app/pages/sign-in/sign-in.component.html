@@ -5,6 +5,9 @@
     <div *ngIf="showEmailSignInSuccessMessage" class="email-sign-in-success-msg round">
       <span>{{ "sign_in.email.success" | translate }}</span>
     </div>
+    <div *ngIf="signInError.length > 0" class="sign-in-error-msg round">
+      <span>{{ signInError | translate }}</span>
+    </div>
     <h1>{{ "generic.sign_in" | translate }}</h1>
     <sign-in-buttons [redirectTo]="redirectTo"></sign-in-buttons>
 
