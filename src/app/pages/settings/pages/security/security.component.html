@@ -16,14 +16,19 @@
                     <p>{{ account.display_name }}</p>
                 </div>
                 <shared-popup-menu theme="light">
+                    <a *ngIf="!account.is_linked && auth.user" href="{{ env.endpoints.api }}/users/{{ auth.user.id }}/accounts/link/{{ account.id }}" class="button dark">
+                        {{ "settings.account.security.accounts.link" | translate }}
+                    </a>
                     <shared-danger-button
+                        *ngIf="account.is_linked"
+
                         theme="dark"
 
-                        [message]="'generic.unlink' | translate"
+                        [message]="'settings.account.security.accounts.unlink' | translate"
 
                         (confirm)="unlinkAccount(account)"
                     >
-                        {{ "generic.unlink" | translate }}
+                        {{ "settings.account.security.accounts.unlink" | translate }}
                     </shared-danger-button>
                 </shared-popup-menu>
             </div>

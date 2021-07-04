@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { environment } from 'src/environments/environment';
 import { ApiService, IAccount } from '../../services/api/api.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { ApiService, IAccount } from '../../services/api/api.service';
 })
 export class SecurityComponent implements OnInit
 {
+  public readonly env = environment;
+
   public accounts?: IAccount[];
 
-  constructor(private api: ApiService, private auth: AuthService)
+  constructor(public auth: AuthService, private api: ApiService)
   {}
 
   public ngOnInit()
