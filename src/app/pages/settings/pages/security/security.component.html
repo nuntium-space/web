@@ -10,8 +10,8 @@
             <div *ngIf="accounts.length === 0">
                 <p>{{ "settings.account.security.accounts.empty" | translate }}</p>
             </div>
-            <div *ngFor="let account of accounts" class="list-item-with-actions">
-                <div class="round">
+            <div *ngFor="let account of accounts" class="list-item-with-actions account">
+                <div class="round info">
                     <img src="/assets/sign-in-buttons/{{ account.type }}.svg" alt="">
                     <p>{{ account.type }}</p>
                 </div>
