@@ -4,14 +4,13 @@ import { ForPublishersComponent } from './for-publishers/for-publishers.componen
 
 const routes: Routes = [
   {
-    path: "for-publishers",
-    component: ForPublishersComponent
+    path: 'for-publishers',
+    component: ForPublishersComponent,
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PagesRoutingModule
-{}
+export class PagesRoutingModule {}

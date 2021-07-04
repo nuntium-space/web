@@ -1,19 +1,16 @@
 @import "~src/variables";
 
-.empty-feed
-{
-    width: 100%;
-    max-width: 60ch;
-    margin: auto;
+.empty-feed {
+  width: 100%;
+  max-width: 60ch;
+  margin: auto;
 
-    h1
-    {
-        font-weight: $normal;
-        margin-bottom: 0;
-    }
+  h1 {
+    font-weight: $normal;
+    margin-bottom: 0;
+  }
 
-    p
-    {
-        margin-top: 0.5rem;
-    }
+  p {
+    margin-top: 0.5rem;
+  }
 }

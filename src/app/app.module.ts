@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 import { createTranslationLoader } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
 import { UserSettingsService } from './shared/services/user-settings/user-settings.service';
@@ -13,13 +17,11 @@ import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([], {
-      anchorScrolling: "enabled",
+      anchorScrolling: 'enabled',
     }),
     AppRoutingModule,
     CoreModule,
@@ -27,8 +29,8 @@ import { RouterModule } from '@angular/router';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslationLoader),
-        deps: [ HttpClient ],
+        useFactory: createTranslationLoader,
+        deps: [HttpClient],
       },
       isolate: false,
     }),
@@ -37,24 +39,25 @@ import { RouterModule } from '@angular/router';
     AuthService,
     {
       provide: APP_INITIALIZER,
-      useFactory: (auth: AuthService, translate: TranslateService, userSettings: UserSettingsService) =>
-      {
-        return async (): Promise<any> =>
-        {
-          let language = sessionStorage.getItem("lang") ?? translate.getBrowserLang();
+      useFactory: (
+        auth: AuthService,
+        translate: TranslateService,
+        userSettings: UserSettingsService
+      ) => {
+        return async (): Promise<any> => {
+          let language =
+            sessionStorage.getItem('lang') ?? translate.getBrowserLang();
 
           await auth.init();
 
-          if (auth.user)
-          {
+          if (auth.user) {
             await userSettings.init();
 
             language = userSettings.userSettings?.language ?? language;
           }
 
-          if (!Config.LANGUAGES.find(_ => _.id === language))
-          {
-            language = "en";
+          if (!Config.LANGUAGES.find((_) => _.id === language)) {
+            language = 'en';
           }
 
           await translate.use(language).toPromise();
@@ -62,11 +65,10 @@ import { RouterModule } from '@angular/router';
           return;
         };
       },
-      deps: [ AuthService, TranslateService, UserSettingsService ],
+      deps: [AuthService, TranslateService, UserSettingsService],
       multi: true,
     },
   ],
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
 })
-export class AppModule
-{}
+export class AppModule {}

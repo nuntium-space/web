@@ -4,10 +4,9 @@ import { IPublisher } from 'src/app/services/api/api.service';
 @Component({
   selector: 'publisher-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
-export class PublisherMenuComponent
-{
+export class PublisherMenuComponent {
   @Input()
   public publisher?: IPublisher;
 

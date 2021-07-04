@@ -5,23 +5,22 @@ import { OrganizationComponent } from './organization.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: OrganizationComponent,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
     children: [
-      { path: "bundles", data: { section: "bundles" } },
-      { path: "bundles/create", data: { section: "bundles/create" } },
-      { path: "details", data: { section: "details" } },
-      { path: "publishers", data: { section: "publishers" } },
-      { path: "publishers/create", data: { section: "publishers/create" } },
-      { path: "", redirectTo: "details" },
+      { path: 'bundles', data: { section: 'bundles' } },
+      { path: 'bundles/create', data: { section: 'bundles/create' } },
+      { path: 'details', data: { section: 'details' } },
+      { path: 'publishers', data: { section: 'publishers' } },
+      { path: 'publishers/create', data: { section: 'publishers/create' } },
+      { path: '', redirectTo: 'details' },
     ],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class OrganizationRoutingModule
-{}
+export class OrganizationRoutingModule {}

@@ -3,8 +3,21 @@
 <publisher-menu [publisher]="publisher" [section]="section"></publisher-menu>
 
 <main [ngSwitch]="section">
-    <publisher-authors *ngSwitchCase="'authors'" [publisher]="publisher"></publisher-authors>
-    <publisher-authors-invite *ngSwitchCase="'authors/invite'" [publisher]="publisher"></publisher-authors-invite>
-    <publisher-details *ngSwitchCase="'details'" [publisher]="publisher" (update)="onUpdate($event)"></publisher-details>
-    <publisher-verify *ngSwitchCase="'verify'" [publisher]="publisher"></publisher-verify>
+  <publisher-authors
+    *ngSwitchCase="'authors'"
+    [publisher]="publisher"
+  ></publisher-authors>
+  <publisher-authors-invite
+    *ngSwitchCase="'authors/invite'"
+    [publisher]="publisher"
+  ></publisher-authors-invite>
+  <publisher-details
+    *ngSwitchCase="'details'"
+    [publisher]="publisher"
+    (update)="onUpdate($event)"
+  ></publisher-details>
+  <publisher-verify
+    *ngSwitchCase="'verify'"
+    [publisher]="publisher"
+  ></publisher-verify>
 </main>

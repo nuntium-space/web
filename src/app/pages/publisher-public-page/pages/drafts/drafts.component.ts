@@ -8,51 +8,44 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'app-drafts',
   templateUrl: './drafts.component.html',
-  styleUrls: ['./drafts.component.scss']
+  styleUrls: ['./drafts.component.scss'],
 })
-export class DraftsComponent implements OnInit
-{
+export class DraftsComponent implements OnInit {
   public author?: IAuthor;
 
   public drafts?: IArticleDraft[];
 
-  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute)
-  {}
+  constructor(
+    public auth: AuthService,
+    private api: ApiService,
+    private route: ActivatedRoute
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: params =>
-      {
-        if (!this.auth.user)
-        {
+      next: (params) => {
+        if (!this.auth.user) {
           return;
         }
 
         this.api
           .retrieveAuthorForUserAndPublisher(this.auth.user.id, params.id)
-          .then(response =>
-          {
-            if (response.success)
-            {
+          .then((response) => {
+            if (response.success) {
               this.author = response.data[0];
             }
 
             return this.author;
           })
-          .then(author =>
-          {
-            if (!author)
-            {
+          .then((author) => {
+            if (!author) {
               return;
             }
 
-            return this.api.retrieveDraftsForAuthor(author.id)
+            return this.api.retrieveDraftsForAuthor(author.id);
           })
-          .then(response =>
-          {
-            if (response?.success)
-            {
+          .then((response) => {
+            if (response?.success) {
               this.drafts = response.data;
             }
           });

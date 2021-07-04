@@ -1,39 +1,32 @@
-:host
-{
-    display: block;
+:host {
+  display: block;
 }
 
-a
-{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
-    img
-    {
-        width: 1em;
-    }
+  img {
+    width: 1em;
+  }
 }
 
-.google
-{
-    color: black;
-    background-color: white;
+.google {
+  color: black;
+  background-color: white;
 }
 
-.facebook
-{
-    color: white;
-    background-color: #0076fb;
+.facebook {
+  color: white;
+  background-color: #0076fb;
 }
 
-.twitter
-{
-    color: white;
-    background-color: #1da1f2;
+.twitter {
+  color: white;
+  background-color: #1da1f2;
 }
 
-a ~ a
-{
-    margin-top: 1rem;
+a ~ a {
+  margin-top: 1rem;
 }

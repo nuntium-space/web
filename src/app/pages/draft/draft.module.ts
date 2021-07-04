@@ -7,17 +7,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { ApiService } from './services/api/api.service';
 
 @NgModule({
-  declarations: [
-    DraftComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    DraftRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  declarations: [DraftComponent],
+  imports: [CommonModule, SharedModule, DraftRoutingModule],
+  providers: [ApiService],
 })
-export class DraftModule
-{}
+export class DraftModule {}

@@ -5,15 +5,14 @@ import { ArticleComponent } from './article.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: ArticleComponent,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class ArticleRoutingModule
-{}
+export class ArticleRoutingModule {}

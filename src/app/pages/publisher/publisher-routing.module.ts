@@ -5,22 +5,21 @@ import { PublisherComponent } from './publisher.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: PublisherComponent,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
     children: [
-      { path: "authors", data: { section: "authors" } },
-      { path: "authors/invite", data: { section: "authors/invite" } },
-      { path: "details", data: { section: "details" } },
-      { path: "verify", data: { section: "verify" } },
-      { path: "", redirectTo: "details" },
+      { path: 'authors', data: { section: 'authors' } },
+      { path: 'authors/invite', data: { section: 'authors/invite' } },
+      { path: 'details', data: { section: 'details' } },
+      { path: 'verify', data: { section: 'verify' } },
+      { path: '', redirectTo: 'details' },
     ],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PublisherRoutingModule
-{}
+export class PublisherRoutingModule {}

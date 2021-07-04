@@ -2,43 +2,40 @@ import { Component, ComponentRef, EventEmitter, Output } from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 import { IDialogButton, DialogComponent } from '../dialog/dialog.component';
 
-export type ConfirmEventCallbackSuccessOptions =
-{
+export type ConfirmEventCallbackSuccessOptions = {
   message?: {
     /**
      * @default "none"
      */
-    type?: "modal" | "message" | "none";
-    text?: string,
+    type?: 'modal' | 'message' | 'none';
+    text?: string;
   };
 };
 
-export type ConfirmEventCallbackFailureOptions =
-{
+export type ConfirmEventCallbackFailureOptions = {
   message?: {
     /**
      * @default "modal"
      */
-    type?: "modal" | "message" | "none";
+    type?: 'modal' | 'message' | 'none';
     /**
      * @default "errors.unknown"
      */
-    text?: string,
+    text?: string;
   };
 };
 
 export type ConfirmEventCallback = [
   (options?: ConfirmEventCallbackSuccessOptions) => void,
-  (options?: ConfirmEventCallbackFailureOptions) => void,
+  (options?: ConfirmEventCallbackFailureOptions) => void
 ];
 
 @Component({
   selector: 'shared-async-button',
   templateUrl: './async-button.component.html',
-  styleUrls: ['./async-button.component.scss']
+  styleUrls: ['./async-button.component.scss'],
 })
-export class AsyncButtonComponent
-{
+export class AsyncButtonComponent {
   @Output()
   public confirm = new EventEmitter<ConfirmEventCallback>();
 
@@ -48,33 +45,29 @@ export class AsyncButtonComponent
 
   public dialogButtons: IDialogButton[] = [
     {
-      text: "OK",
-      classes: [ "dark" ],
+      text: 'OK',
+      classes: ['dark'],
       onClick: () => this.hideDialog(),
     },
   ];
 
-  constructor(private dom: DomService)
-  {}
+  constructor(private dom: DomService) {}
 
-  public async onClick()
-  {
+  public async onClick() {
     this.isLoading = true;
 
     this.confirm.emit([
-      options =>
-      {
+      (options) => {
         this.isLoading = false;
 
         options ??= {};
         options.message ??= {};
-        options.message.type ??= "none";
+        options.message.type ??= 'none';
 
-        switch (options.message.type)
-        {
-          case "message": break;
-          case "modal":
-          {
+        switch (options.message.type) {
+          case 'message':
+            break;
+          case 'modal': {
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
@@ -83,28 +76,27 @@ export class AsyncButtonComponent
               },
               {
                 hide: () => this.hideDialog(),
-              },
+              }
             );
-            
+
             break;
           }
-          case "none": break;
+          case 'none':
+            break;
         }
       },
-      options =>
-      {
+      (options) => {
         this.isLoading = false;
 
         options ??= {};
         options.message ??= {};
-        options.message.type ??= "modal";
-        options.message.text ??= "errors.unknown";
+        options.message.type ??= 'modal';
+        options.message.text ??= 'errors.unknown';
 
-        switch (options.message.type)
-        {
-          case "message": break;
-          case "modal":
-          {
+        switch (options.message.type) {
+          case 'message':
+            break;
+          case 'modal': {
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
@@ -113,21 +105,20 @@ export class AsyncButtonComponent
               },
               {
                 hide: () => this.hideDialog(),
-              },
+              }
             );
-            
+
             break;
           }
-          case "none": break;
+          case 'none':
+            break;
         }
       },
     ]);
   }
 
-  public hideDialog()
-  {
-    if (!this.dialogRef)
-    {
+  public hideDialog() {
+    if (!this.dialogRef) {
       return;
     }
 

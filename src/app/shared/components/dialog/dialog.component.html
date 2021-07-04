@@ -1,17 +1,15 @@
 <div class="dialog-container" (click)="onDialogContainerClick($event)">
-    <div class="dialog round" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-        <span class="message">{{ message | translate }}</span>
-        <ng-content></ng-content>
-        <div class="actions">
-            <button
-                *ngFor="let button of buttons"
-
-                [class]="button.classes.join(' ')"
-
-                (click)="button.onClick()"
-            >
-                {{ button.text | translate }}
-            </button>
-        </div>
+  <div class="dialog round" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <span class="message">{{ message | translate }}</span>
+    <ng-content></ng-content>
+    <div class="actions">
+      <button
+        *ngFor="let button of buttons"
+        [class]="button.classes.join(' ')"
+        (click)="button.onClick()"
+      >
+        {{ button.text | translate }}
+      </button>
     </div>
+  </div>
 </div>

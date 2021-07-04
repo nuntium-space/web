@@ -1,21 +1,15 @@
 <footer>
-  <hr>
+  <hr />
   <div class="links">
     <a routerLink="/pages/for-publishers">For publishers</a>
   </div>
-  <hr>
+  <hr />
   <div class="bottom">
-    <p class="copy">
-      &copy;
-      2021 -
-      nuntium
-    </p>
+    <p class="copy">&copy; 2021 - nuntium</p>
     <select class="small" (change)="onLanguageChange($event)">
       <option
         *ngFor="let language of languages"
-  
         value="{{ language.id }}"
-  
         [selected]="language.id === currentLanguage"
       >
         {{ language.display_name }}

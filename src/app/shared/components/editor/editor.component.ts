@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Editor } from '@tiptap/core';
 import Highlight from '@tiptap/extension-highlight';
 import Link from '@tiptap/extension-link';
@@ -13,10 +22,9 @@ import { IDialogButton } from '../dialog/dialog.component';
 @Component({
   selector: 'shared-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  styleUrls: ['./editor.component.scss'],
 })
-export class EditorComponent implements OnInit, OnChanges
-{
+export class EditorComponent implements OnInit, OnChanges {
   @Input()
   public content?: any;
 
@@ -28,35 +36,35 @@ export class EditorComponent implements OnInit, OnChanges
 
   public editor?: Editor;
 
-  public defaultHighlightColor = "#faf594";
+  public defaultHighlightColor = '#faf594';
   public showHighlightColorDialog = false;
   public highlightColorDialogButtons: IDialogButton[] = [
     {
-      text: "generic.confirm",
-      classes: [ "dark" ],
-      onClick: () =>
-      {
+      text: 'generic.confirm',
+      classes: ['dark'],
+      onClick: () => {
         this.showHighlightColorDialog = false;
 
-        const color = this.highlightColorInput?.nativeElement.value ?? this.defaultHighlightColor;
+        const color =
+          this.highlightColorInput?.nativeElement.value ??
+          this.defaultHighlightColor;
 
         this.editor?.chain().focus().setHighlight({ color }).run();
       },
     },
     {
-      text: "generic.cancel",
-      classes: [ "dark" ],
-      onClick: () => this.showHighlightColorDialog = false,
+      text: 'generic.cancel',
+      classes: ['dark'],
+      onClick: () => (this.showHighlightColorDialog = false),
     },
   ];
 
-  @ViewChild("highlightColorInput")
+  @ViewChild('highlightColorInput')
   public highlightColorInput?: ElementRef<HTMLInputElement>;
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.editor = new Editor({
-      element: document.querySelector("#editor") ?? undefined,
+      element: document.querySelector('#editor') ?? undefined,
       editable: !this.isReadOnly,
       content: this.content,
       extensions: [
@@ -69,73 +77,115 @@ export class EditorComponent implements OnInit, OnChanges
         Highlight.configure({ multicolor: true }),
         Link.configure({
           HTMLAttributes: {
-            class: "dark",
+            class: 'dark',
           },
         }),
       ],
-      onUpdate: () =>
-      {
+      onUpdate: () => {
         this.contentChange.emit(this.editor?.getJSON());
       },
     });
   }
 
-  public ngOnChanges()
-  {
+  public ngOnChanges() {
     this.editor?.setEditable(!this.isReadOnly);
   }
 
-  public do(action: string, e?: Event)
-  {
-    switch (action)
-    {
-      case "undo": this.editor?.chain().focus().undo().run(); break;
-      case "redo": this.editor?.chain().focus().redo().run(); break;
-  
-      case "bold": this.editor?.chain().focus().toggleBold().run(); break;
-      case "italic": this.editor?.chain().focus().toggleItalic().run(); break;
-      case "strike": this.editor?.chain().focus().toggleStrike().run(); break;
-      case "underline": this.editor?.chain().focus().toggleUnderline().run(); break;
+  public do(action: string, e?: Event) {
+    switch (action) {
+      case 'undo':
+        this.editor?.chain().focus().undo().run();
+        break;
+      case 'redo':
+        this.editor?.chain().focus().redo().run();
+        break;
 
-      case "subscript": this.editor?.chain().focus().toggleSubscript().run(); break;
-      case "superscript": this.editor?.chain().focus().toggleSuperscript().run(); break;
+      case 'bold':
+        this.editor?.chain().focus().toggleBold().run();
+        break;
+      case 'italic':
+        this.editor?.chain().focus().toggleItalic().run();
+        break;
+      case 'strike':
+        this.editor?.chain().focus().toggleStrike().run();
+        break;
+      case 'underline':
+        this.editor?.chain().focus().toggleUnderline().run();
+        break;
 
-      case "style":
-      {
+      case 'subscript':
+        this.editor?.chain().focus().toggleSubscript().run();
+        break;
+      case 'superscript':
+        this.editor?.chain().focus().toggleSuperscript().run();
+        break;
+
+      case 'style': {
         const selectElement = e?.target as HTMLSelectElement;
         const selectedOption = selectElement.selectedOptions[0];
 
-        selectedOption.value === "p"
+        selectedOption.value === 'p'
           ? this.editor?.chain().focus().setParagraph().run()
-          : this.editor?.chain().focus().toggleHeading({ level: parseInt(selectedOption.value.replace("h", "")) as any }).run();
+          : this.editor
+              ?.chain()
+              .focus()
+              .toggleHeading({
+                level: parseInt(selectedOption.value.replace('h', '')) as any,
+              })
+              .run();
 
         break;
       }
 
-      case "bulletList": this.editor?.chain().focus().toggleBulletList().run(); break;
-      case "orderedList": this.editor?.chain().focus().toggleOrderedList().run(); break;
+      case 'bulletList':
+        this.editor?.chain().focus().toggleBulletList().run();
+        break;
+      case 'orderedList':
+        this.editor?.chain().focus().toggleOrderedList().run();
+        break;
 
-      case "link":
-      {
-        const url = window.prompt("URL");
+      case 'link': {
+        const url = window.prompt('URL');
 
-        this.editor?.chain().focus().toggleLink({ href: url ?? "" }).run();
+        this.editor
+          ?.chain()
+          .focus()
+          .toggleLink({ href: url ?? '' })
+          .run();
 
         break;
       }
 
-      case "codeBlock": this.editor?.chain().focus().toggleCodeBlock().run(); break;
-      case "blockquote": this.editor?.chain().focus().toggleBlockquote().run(); break;
+      case 'codeBlock':
+        this.editor?.chain().focus().toggleCodeBlock().run();
+        break;
+      case 'blockquote':
+        this.editor?.chain().focus().toggleBlockquote().run();
+        break;
 
-      case "horizontalRule": this.editor?.chain().focus().setHorizontalRule().run(); break;
-      case "hardBreak": this.editor?.chain().focus().setHardBreak().run(); break;
+      case 'horizontalRule':
+        this.editor?.chain().focus().setHorizontalRule().run();
+        break;
+      case 'hardBreak':
+        this.editor?.chain().focus().setHardBreak().run();
+        break;
 
-      case "clearMarks": this.editor?.chain().focus().unsetAllMarks().run(); break;
+      case 'clearMarks':
+        this.editor?.chain().focus().unsetAllMarks().run();
+        break;
 
-      case "alignLeft": this.editor?.chain().focus().setTextAlign("left").run(); break;
-      case "alignCenter": this.editor?.chain().focus().setTextAlign("center").run(); break;
-      case "alignRight": this.editor?.chain().focus().setTextAlign("right").run(); break;
-      case "alignJustify": this.editor?.chain().focus().setTextAlign("justify").run(); break;
+      case 'alignLeft':
+        this.editor?.chain().focus().setTextAlign('left').run();
+        break;
+      case 'alignCenter':
+        this.editor?.chain().focus().setTextAlign('center').run();
+        break;
+      case 'alignRight':
+        this.editor?.chain().focus().setTextAlign('right').run();
+        break;
+      case 'alignJustify':
+        this.editor?.chain().focus().setTextAlign('justify').run();
+        break;
     }
   }
 }

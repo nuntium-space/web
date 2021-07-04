@@ -1,61 +1,55 @@
 <section>
-    <div class="title">
-        <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
-        <a routerLink="payment-methods/add" class="button">
-            {{ "generic.add" | translate }}
-        </a>
+  <div class="title">
+    <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
+    <a routerLink="payment-methods/add" class="button">
+      {{ "generic.add" | translate }}
+    </a>
+  </div>
+  <div class="content">
+    <div *ngIf="!paymentMethods">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!paymentMethods">
-            <shared-spinner></shared-spinner>
+    <div *ngIf="paymentMethods" class="list">
+      <div *ngIf="paymentMethods.length === 0">
+        <p>{{ "settings.account.payment_methods.empty" | translate }}</p>
+      </div>
+      <div
+        *ngFor="let paymentMethod of paymentMethods"
+        [ngSwitch]="paymentMethod.type"
+        class="list-item-with-actions"
+      >
+        <div *ngSwitchCase="'card'" class="round">
+          <shared-badge *ngIf="paymentMethod.__metadata?.is_default">
+            {{ "settings.account.payment_methods.default" | translate }}
+          </shared-badge>
+          <p class="brand">{{ paymentMethod.data.brand }}</p>
+          <p>
+            {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
+            /
+            {{ paymentMethod.data.exp_year }}
+          </p>
+          <p>
+            &bull;&bull;&bull;&bull;
+            {{ paymentMethod.data.last4 }}
+          </p>
         </div>
-        <div *ngIf="paymentMethods" class="list">
-            <div *ngIf="paymentMethods.length === 0">
-                <p>{{ "settings.account.payment_methods.empty" | translate }}</p>
-            </div>
-            <div
-                *ngFor="let paymentMethod of paymentMethods"
-
-                [ngSwitch]="paymentMethod.type"
-
-                class="list-item-with-actions"
-            >
-                <div *ngSwitchCase="'card'" class="round">
-                    <shared-badge *ngIf="paymentMethod.__metadata?.is_default">
-                        {{ "settings.account.payment_methods.default" | translate }}
-                    </shared-badge>
-                    <p class="brand">{{ paymentMethod.data.brand }}</p>
-                    <p>
-                        {{ paymentMethod.data.exp_month.toString().padStart(2, "0") }}
-                        /
-                        {{ paymentMethod.data.exp_year }}
-                    </p>
-                    <p>
-                        &bull;&bull;&bull;&bull;
-                        {{ paymentMethod.data.last4 }}
-                    </p>
-                </div>
-                <shared-popup-menu theme="light">
-                    <button
-                        class="dark"
-
-                        [disabled]="paymentMethod.__metadata?.is_default"
-
-                        (click)="setDefaultPaymentMethod(paymentMethod)"
-                    >
-                        {{ "settings.account.payment_methods.make_default" | translate }}
-                    </button>
-                    <shared-danger-button
-                        theme="dark"
-
-                        [message]="'generic.remove' | translate"
-
-                        (confirm)="removePaymentMethod(paymentMethod)"
-                    >
-                        {{ "generic.remove" | translate }}
-                    </shared-danger-button>
-                </shared-popup-menu>
-            </div>
-        </div>
+        <shared-popup-menu theme="light">
+          <button
+            class="dark"
+            [disabled]="paymentMethod.__metadata?.is_default"
+            (click)="setDefaultPaymentMethod(paymentMethod)"
+          >
+            {{ "settings.account.payment_methods.make_default" | translate }}
+          </button>
+          <shared-danger-button
+            theme="dark"
+            [message]="'generic.remove' | translate"
+            (confirm)="removePaymentMethod(paymentMethod)"
+          >
+            {{ "generic.remove" | translate }}
+          </shared-danger-button>
+        </shared-popup-menu>
+      </div>
     </div>
+  </div>
 </section>

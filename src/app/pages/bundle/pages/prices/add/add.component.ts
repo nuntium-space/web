@@ -9,10 +9,9 @@ import { ApiService } from '../../../services/api/api.service';
 @Component({
   selector: 'bundle-prices-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+  styleUrls: ['./add.component.scss'],
 })
-export class AddPriceComponent
-{
+export class AddPriceComponent {
   @Input()
   public bundle?: IBundle;
 
@@ -23,45 +22,43 @@ export class AddPriceComponent
     currency: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
-  {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  public async onSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.bundle)
-    {
+  public async onSubmit([success, failure]: ConfirmEventCallback) {
+    if (!this.bundle) {
       failure();
 
       return;
     }
 
-    let amount: number = this.form.get("amount")?.value ?? -1;
-    const currency = this.form.get("currency")?.value ?? "";
+    let amount: number = this.form.get('amount')?.value ?? -1;
+    const currency = this.form.get('currency')?.value ?? '';
 
-    if ([ "usd", "eur" ].includes(currency))
-    {
-      amount = parseInt(amount.toFixed(2).replace(".", ""));
+    if (['usd', 'eur'].includes(currency)) {
+      amount = parseInt(amount.toFixed(2).replace('.', ''));
     }
 
-    const response = await this.api
-      .createPrice(this.bundle.id, {
-        amount: Math.trunc(amount),
-        currency,
-      });
-
-    this.form.get("amount")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "amount")
+    const response = await this.api.createPrice(this.bundle.id, {
+      amount: Math.trunc(amount),
+      currency,
     });
 
-    this.form.get("currency")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "currency")
+    this.form.get('amount')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'amount'),
     });
 
-    if (!response.success)
-    {
+    this.form.get('currency')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'currency'),
+    });
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 
@@ -70,7 +67,7 @@ export class AddPriceComponent
 
     success();
 
-    this.router.navigate([ "prices" ], {
+    this.router.navigate(['prices'], {
       relativeTo: this.route.parent,
     });
   }

@@ -1,25 +1,25 @@
 <section>
-    <div class="title">
-        <h1>{{ "bundle.publishers.add.__title" | translate }}</h1>
+  <div class="title">
+    <h1>{{ "bundle.publishers.add.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <div *ngIf="!publishers">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!publishers">
-            <shared-spinner></shared-spinner>
+    <div *ngIf="publishers" class="list">
+      <div *ngIf="publishers.length === 0">
+        <p>{{ "bundle.publishers.add.empty" | translate }}</p>
+      </div>
+      <div *ngFor="let publisher of publishers" class="list-item-with-actions">
+        <a routerLink="/publisher/{{ publisher.id }}">
+          <p>{{ publisher.name }}</p>
+        </a>
+        <div class="actions">
+          <button (click)="addPublisher(publisher)">
+            {{ "generic.add" | translate }}
+          </button>
         </div>
-        <div *ngIf="publishers" class="list">
-            <div *ngIf="publishers.length === 0">
-                <p>{{ "bundle.publishers.add.empty" | translate }}</p>
-            </div>
-            <div *ngFor="let publisher of publishers" class="list-item-with-actions">
-                <a routerLink="/publisher/{{ publisher.id }}">
-                    <p>{{ publisher.name }}</p>
-                </a>
-                <div class="actions">
-                    <button (click)="addPublisher(publisher)">
-                        {{ "generic.add" | translate }}
-                    </button>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </section>

@@ -3,19 +3,15 @@ import { IUserSettings, ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class UserSettingsService
-{
+export class UserSettingsService {
   public userSettings?: IUserSettings;
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {}
+  constructor(private api: ApiService, private auth: AuthService) {}
 
-  public async init(): Promise<IUserSettings | null>
-  {
-    if (!this.auth.user)
-    {
+  public async init(): Promise<IUserSettings | null> {
+    if (!this.auth.user) {
       return null;
     }
 

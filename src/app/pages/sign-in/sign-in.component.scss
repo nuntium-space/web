@@ -1,76 +1,64 @@
-:host
-{
-    display: grid;
-    grid-template-rows: max-content auto;
-    grid-template-areas:
-        "header"
-        "main";
-    gap: 1em;
-    height: calc(100vh - 2em);
-    align-items: center;
+:host {
+  display: grid;
+  grid-template-rows: max-content auto;
+  grid-template-areas:
+    "header"
+    "main";
+  gap: 1em;
+  height: calc(100vh - 2em);
+  align-items: center;
 }
 
-main
-{
-    display: grid;
-    grid-template-columns: 500px auto 50%;
-    align-items: center;
-    gap: 3em;
+main {
+  display: grid;
+  grid-template-columns: 500px auto 50%;
+  align-items: center;
+  gap: 3em;
 
-    h1
-    {
-        margin-top: 0;
-        margin-bottom: 2rem;
-    }
+  h1 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 }
 
 .email-sign-in-success-msg,
-.sign-in-error-msg
-{
-    padding: 1rem;
-    margin-bottom: 2rem;
-    max-width: 500px;
+.sign-in-error-msg {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
 }
 
-.email-sign-in-success-msg
-{
-    color: white;
-    background-color: green;
+.email-sign-in-success-msg {
+  color: white;
+  background-color: green;
 }
 
-.sign-in-error-msg
-{
-    color: white;
-    background-color: var(--danger-color);
+.sign-in-error-msg {
+  color: white;
+  background-color: var(--danger-color);
 }
 
-.divider
-{
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
 
-    hr
-    {
-        width: 100%;
+  hr {
+    width: 100%;
+  }
+
+  small {
+    margin: 0 1rem;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: 100%;
+
+    img {
+      display: none;
     }
-
-    small
-    {
-        margin: 0 1rem;
-        text-transform: uppercase;
-    }
-}
-
-@media (max-width: 1000px)
-{
-    main
-    {
-        grid-template-columns: 100%;
-
-        img
-        {
-            display: none;
-        }
-    }
+  }
 }

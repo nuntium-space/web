@@ -8,10 +8,9 @@ import { ApiService } from '../../../services/api/api.service';
 @Component({
   selector: 'organization-bundles-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
 })
-export class CreateBundleComponent
-{
+export class CreateBundleComponent {
   @Input()
   public organization?: IOrganization;
 
@@ -19,32 +18,27 @@ export class CreateBundleComponent
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router)
-  {}
+  constructor(private api: ApiService, private router: Router) {}
 
-  public async onSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.organization)
-    {
+  public async onSubmit([success, failure]: ConfirmEventCallback) {
+    if (!this.organization) {
       failure();
 
       return;
     }
 
-    const response = await this.api
-      .createBundle(this.organization.id, {
-        name: this.form.get("name")?.value ?? "",
-      });
-
-    this.form.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "name")
+    const response = await this.api.createBundle(this.organization.id, {
+      name: this.form.get('name')?.value ?? '',
     });
 
-    if (!response.success)
-    {
+    this.form.get('name')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'name'),
+    });
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 

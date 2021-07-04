@@ -7,33 +7,28 @@ import { ApiService } from '../../../services/api/api.service';
 @Component({
   selector: 'settings-organizations-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
 })
-export class CreateOrganizationComponent
-{
+export class CreateOrganizationComponent {
   public form = new FormGroup({
     name: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router)
-  {}
+  constructor(private api: ApiService, private router: Router) {}
 
-  public async onSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    const response = await this.api
-      .createOrganization({
-        name: this.form.get("name")?.value ?? "",
-      });
-
-    this.form.get("name")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "name")
+  public async onSubmit([success, failure]: ConfirmEventCallback) {
+    const response = await this.api.createOrganization({
+      name: this.form.get('name')?.value ?? '',
     });
 
-    if (!response.success)
-    {
+    this.form.get('name')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'name'),
+    });
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 
@@ -42,6 +37,6 @@ export class CreateOrganizationComponent
 
     success();
 
-    this.router.navigateByUrl("/settings/organizations");
+    this.router.navigateByUrl('/settings/organizations');
   }
 }

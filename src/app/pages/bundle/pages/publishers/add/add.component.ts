@@ -5,42 +5,37 @@ import { ApiService } from '../../../services/api/api.service';
 @Component({
   selector: 'bundle-publishers-add',
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+  styleUrls: ['./add.component.scss'],
 })
-export class AddPublisherComponent implements OnChanges
-{
+export class AddPublisherComponent implements OnChanges {
   @Input()
   public bundle?: IBundle;
 
   public publishers?: IPublisher[];
 
-  constructor(private api: ApiService)
-  {}
+  constructor(private api: ApiService) {}
 
-  public ngOnChanges()
-  {
-    if (!this.bundle)
-    {
+  public ngOnChanges() {
+    if (!this.bundle) {
       return;
     }
 
     this.api
-      .listPublishersForOrganization(this.bundle.organization.id, { not_in_bundle: this.bundle.id })
-      .then(response =>
-      {
-        this.publishers = response.data;
+      .listPublishersForOrganization(this.bundle.organization.id, {
+        not_in_bundle: this.bundle.id,
       })
+      .then((response) => {
+        this.publishers = response.data;
+      });
   }
 
-  public async addPublisher(publisher: IPublisher)
-  {
-    if (!this.bundle || !this.publishers)
-    {
+  public async addPublisher(publisher: IPublisher) {
+    if (!this.bundle || !this.publishers) {
       return;
     }
 
     await this.api.addPublisherToBundle(this.bundle.id, publisher.id);
 
-    this.publishers = this.publishers.filter(p => p.id !== publisher.id);
+    this.publishers = this.publishers.filter((p) => p.id !== publisher.id);
   }
 }

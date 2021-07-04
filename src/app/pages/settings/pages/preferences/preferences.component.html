@@ -1,21 +1,21 @@
 <section>
-    <div class="title">
-        <h1>{{ "settings.account.preferences.language.__title" | translate }}</h1>
-    </div>
-    <div class="content">
-        <shared-form [submitButtonText]="'generic.update' | translate" [formGroup]="languageForm" (confirm)="onLanguageChangeSubmit($event)">
-            <label>
-                {{ "settings.account.preferences.language.choose_option" | translate }}
-                <select formControlName="language">
-                    <option
-                        *ngFor="let language of languages"
-
-                        value="{{ language.id }}"
-                    >
-                        {{ language.display_name }}
-                    </option>
-                </select>
-            </label>
-        </shared-form>
-    </div>
+  <div class="title">
+    <h1>{{ "settings.account.preferences.language.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <shared-form
+      [submitButtonText]="'generic.update' | translate"
+      [formGroup]="languageForm"
+      (confirm)="onLanguageChangeSubmit($event)"
+    >
+      <label>
+        {{ "settings.account.preferences.language.choose_option" | translate }}
+        <select formControlName="language">
+          <option *ngFor="let language of languages" value="{{ language.id }}">
+            {{ language.display_name }}
+          </option>
+        </select>
+      </label>
+    </shared-form>
+  </div>
 </section>

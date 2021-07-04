@@ -1,36 +1,54 @@
 <shared-header></shared-header>
 
 <aside>
-    <header>
-        <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
-    </header>
-    <shared-form [submitButtonText]="'generic.submit' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
-        <label>
-            {{ "publisher_public_page.new_article.title" | translate }}
-            <input formControlName="title" type="text">
-            <div class="errors">
-                <p *ngFor="let error of form.get('title')?.errors?.errors">
-                    {{ "errors." + error.error | translate:error.params }}
-                </p>
-            </div>
-        </label>
-        <fieldset>
-            <legend>{{ "publisher_public_page.new_article.sources" | translate }}</legend>
-            <div class="list">
-                <div *ngFor="let source of sources; let i = index; trackBy: trackByFn" class="list-item-with-actions">
-                    <input type="url" [value]="source" (input)="onSourceInput($event, i)">
-                    <button type="button" (click)="sources.splice(i, 1)">
-                        <span class="mat-icon">delete</span>
-                    </button>
-                </div>
-                <button type="button" class="fill" id="add-source" (click)="sources.push('')">
-                    {{ "generic.add" | translate }}
-                </button>
-            </div>
-        </fieldset>
-    </shared-form>
+  <header>
+    <h1>{{ "publisher_public_page.actions.new_article" | translate }}</h1>
+  </header>
+  <shared-form
+    [submitButtonText]="'generic.submit' | translate"
+    [formGroup]="form"
+    (confirm)="onSubmit($event)"
+  >
+    <label>
+      {{ "publisher_public_page.new_article.title" | translate }}
+      <input formControlName="title" type="text" />
+      <div class="errors">
+        <p *ngFor="let error of form.get('title')?.errors?.errors">
+          {{ "errors." + error.error | translate: error.params }}
+        </p>
+      </div>
+    </label>
+    <fieldset>
+      <legend>
+        {{ "publisher_public_page.new_article.sources" | translate }}
+      </legend>
+      <div class="list">
+        <div
+          *ngFor="let source of sources; let i = index; trackBy: trackByFn"
+          class="list-item-with-actions"
+        >
+          <input
+            type="url"
+            [value]="source"
+            (input)="onSourceInput($event, i)"
+          />
+          <button type="button" (click)="sources.splice(i, 1)">
+            <span class="mat-icon">delete</span>
+          </button>
+        </div>
+        <button
+          type="button"
+          class="fill"
+          id="add-source"
+          (click)="sources.push('')"
+        >
+          {{ "generic.add" | translate }}
+        </button>
+      </div>
+    </fieldset>
+  </shared-form>
 </aside>
 
 <main>
-    <shared-editor [(content)]="editorContent"></shared-editor>
+  <shared-editor [(content)]="editorContent"></shared-editor>
 </main>

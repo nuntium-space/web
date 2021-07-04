@@ -5,15 +5,14 @@ import { DraftComponent } from './draft.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: DraftComponent,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class DraftRoutingModule
-{}
+export class DraftRoutingModule {}

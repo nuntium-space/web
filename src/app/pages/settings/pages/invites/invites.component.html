@@ -1,27 +1,27 @@
 <section>
-    <div class="title">
-        <h1>{{ "settings.author.invites.__title" | translate }}</h1>
+  <div class="title">
+    <h1>{{ "settings.author.invites.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <div *ngIf="!invites">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!invites">
-            <shared-spinner></shared-spinner>
+    <div *ngIf="invites" class="list">
+      <div *ngIf="invites.length === 0">
+        <p>{{ "settings.author.invites.empty" | translate }}</p>
+      </div>
+      <div *ngFor="let invite of invites" class="list-item-with-actions">
+        <div class="round">
+          <p>{{ invite.publisher.name }}</p>
+          <small>
+            {{ "settings.author.invites.expires_at" | translate }}
+            <b>{{ format.dateTime(invite.expires_at, "datetime") }}</b>
+          </small>
         </div>
-        <div *ngIf="invites" class="list">
-            <div *ngIf="invites.length === 0">
-                <p>{{ "settings.author.invites.empty" | translate }}</p>
-            </div>
-            <div *ngFor="let invite of invites" class="list-item-with-actions">
-                <div class="round">
-                    <p>{{ invite.publisher.name }}</p>
-                    <small>
-                        {{ "settings.author.invites.expires_at" | translate }}
-                        <b>{{ format.dateTime(invite.expires_at, "datetime") }}</b>
-                    </small>
-                </div>
-                <shared-async-button (confirm)="accept(invite, $event)">
-                    {{ "settings.author.invites.accept" | translate }}
-                </shared-async-button>
-            </div>
-        </div>
+        <shared-async-button (confirm)="accept(invite, $event)">
+          {{ "settings.author.invites.accept" | translate }}
+        </shared-async-button>
+      </div>
     </div>
+  </div>
 </section>

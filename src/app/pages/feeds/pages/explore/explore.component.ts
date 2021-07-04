@@ -6,27 +6,20 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'feeds-explore',
   templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.scss']
+  styleUrls: ['./explore.component.scss'],
 })
-export class ExploreComponent implements OnInit
-{
+export class ExploreComponent implements OnInit {
   public trendingArticles?: IArticle[];
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {}
+  constructor(private api: ApiService, private auth: AuthService) {}
 
-  public ngOnInit()
-  {
-    if (!this.auth.user)
-    {
+  public ngOnInit() {
+    if (!this.auth.user) {
       return;
     }
 
-    this.api
-      .retrieveTrendingArticles()
-      .then(response =>
-      {
-        this.trendingArticles = response.data;
-      });
+    this.api.retrieveTrendingArticles().then((response) => {
+      this.trendingArticles = response.data;
+    });
   }
 }

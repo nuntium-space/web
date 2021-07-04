@@ -1,14 +1,13 @@
 <section>
-    <div class="title">
-        {{ "explore.trending" | translate }}
-    </div>
-    <div class="content">
-        <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
-        <shared-article-list
-            *ngIf="trendingArticles && trendingArticles.length > 0"
-
-            [articles]="trendingArticles"
-        >
-        </shared-article-list>
-    </div>
+  <div class="title">
+    {{ "explore.trending" | translate }}
+  </div>
+  <div class="content">
+    <shared-spinner *ngIf="!trendingArticles"></shared-spinner>
+    <shared-article-list
+      *ngIf="trendingArticles && trendingArticles.length > 0"
+      [articles]="trendingArticles"
+    >
+    </shared-article-list>
+  </div>
 </section>

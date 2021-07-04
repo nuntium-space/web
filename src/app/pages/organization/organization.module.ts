@@ -24,14 +24,7 @@ import { ApiService } from './services/api/api.service';
     CreatePublisherComponent,
     StripeConnectButtonComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    OrganizationRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  imports: [CommonModule, SharedModule, OrganizationRoutingModule],
+  providers: [ApiService],
 })
-export class OrganizationModule
-{}
+export class OrganizationModule {}

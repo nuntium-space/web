@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-export class TranslationLoader implements TranslateLoader
-{
-    constructor(private http: HttpClient)
-    {}
+export class TranslationLoader implements TranslateLoader {
+  constructor(private http: HttpClient) {}
 
-    getTranslation(lang: string): Observable<any>
-    {
-        return this.http.get(`${environment.endpoints.static}/translations/${lang}.json`);
-    }
+  getTranslation(lang: string): Observable<any> {
+    return this.http.get(
+      `${environment.endpoints.static}/translations/${lang}.json`
+    );
+  }
 }

@@ -1,12 +1,11 @@
 <form [formGroup]="searchForm" (submit)="onSearchSubmit($event)">
-    <input
-        formControlName="query"
-
-        type="search"
-        class="{{ theme }} {{ fill ? 'fill' : '' }}"
-        placeholder="{{ 'components.search.placeholder' | translate }}"
-    >
-    <button type="submit" class="with-icon--square">
-        <span class="mat-icon">search</span>
-    </button>
+  <input
+    formControlName="query"
+    type="search"
+    class="{{ theme }} {{ fill ? 'fill' : '' }}"
+    placeholder="{{ 'components.search.placeholder' | translate }}"
+  />
+  <button type="submit" class="with-icon--square">
+    <span class="mat-icon">search</span>
+  </button>
 </form>

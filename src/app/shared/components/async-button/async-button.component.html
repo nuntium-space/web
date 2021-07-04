@@ -1,3 +1,8 @@
-<button type="submit" [class.loading]="isLoading" [disabled]="isLoading" (click)="onClick()">
-    <ng-content></ng-content>
+<button
+  type="submit"
+  [class.loading]="isLoading"
+  [disabled]="isLoading"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
 </button>

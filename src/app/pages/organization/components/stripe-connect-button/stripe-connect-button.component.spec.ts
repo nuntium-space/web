@@ -8,9 +8,8 @@ describe('StripeConnectButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StripeConnectButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [StripeConnectButtonComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

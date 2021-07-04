@@ -10,84 +10,74 @@ import { ApiService, IArticleSource } from './services/api/api.service';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  styleUrls: ['./article.component.scss'],
 })
-export class ArticleComponent implements OnInit
-{
+export class ArticleComponent implements OnInit {
   public article?: IArticle;
   public sources?: IArticleSource[];
 
   public isSubscribed = true;
 
-  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router, private title: Title)
-  {}
+  constructor(
+    public auth: AuthService,
+    public format: FormatService,
+    public route: ActivatedRoute,
+    private api: ApiService,
+    private router: Router,
+    private title: Title
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: (params) =>
-      {
-        this.api
-          .retrieveArticle(params.id)
-          .then(response =>
-          {
-            // Payment Required
-            if (response.status === 402)
-            {
-              this.article = response.raw;
+      next: (params) => {
+        this.api.retrieveArticle(params.id).then((response) => {
+          // Payment Required
+          if (response.status === 402) {
+            this.article = response.raw;
 
-              this.isSubscribed = false;
+            this.isSubscribed = false;
 
-              return;
-            }
+            return;
+          }
 
-            if (response.data)
-            {
-              this.article = response.data;
+          if (response.data) {
+            this.article = response.data;
 
-              this.title.setTitle(`${this.article.title} - ${this.article.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`);
-            }
-          });
+            this.title.setTitle(
+              `${this.article.title} - ${this.article.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
+            );
+          }
+        });
 
-        this.api
-          .retrieveSources(params.id)
-          .then(response =>
-          {
-            if (response.data)
-            {
-              this.sources = response.data;
-            }
-          });
+        this.api.retrieveSources(params.id).then((response) => {
+          if (response.data) {
+            this.sources = response.data;
+          }
+        });
       },
     });
   }
 
-  public async createUpdateDraft()
-  {
-    if (!this.article)
-    {
+  public async createUpdateDraft() {
+    if (!this.article) {
       return;
     }
 
     const response = await this.api.createDraftFromArticle(this.article);
 
-    if (response.success)
-    {
+    if (response.success) {
       this.router.navigateByUrl(`/draft/${response.data.id}`);
     }
   }
 
-  public async deleteArticle()
-  {
-    if (!this.article)
-    {
+  public async deleteArticle() {
+    if (!this.article) {
       return;
     }
 
     const response = await this.api.deleteArticle(this.article.id);
 
-    if (response.success)
-    {
+    if (response.success) {
       this.router.navigateByUrl(`/p/${this.article.author.publisher.id}`);
     }
   }

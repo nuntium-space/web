@@ -1,15 +1,12 @@
-.list
-{
-    > *
-    {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+.list {
+  > * {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    shared-img
-    {
-        width: 3rem;
-        height: 3rem;
-    }
+  shared-img {
+    width: 3rem;
+    height: 3rem;
+  }
 }

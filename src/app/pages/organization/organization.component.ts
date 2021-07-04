@@ -8,47 +8,41 @@ import { ApiService } from './services/api/api.service';
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.scss']
+  styleUrls: ['./organization.component.scss'],
 })
-export class OrganizationComponent implements OnInit
-{
+export class OrganizationComponent implements OnInit {
   public organization?: IOrganization;
 
   public section?: string;
 
-  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router)
-  {
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.router.events
       .pipe(
-        filter(_ => _ instanceof NavigationEnd),
-        switchMap(() =>
-        {
+        filter((_) => _ instanceof NavigationEnd),
+        switchMap(() => {
           return this.route.firstChild?.data ?? of({});
-        }),
+        })
       )
-      .subscribe(({ section }) =>
-      {
+      .subscribe(({ section }) => {
         this.section = section;
       });
   }
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: ({ id }) =>
-      {
-        this.api
-          .retrieveOrganization(id)
-          .then(organization =>
-          {
-            this.organization = organization.data;
-          });
+      next: ({ id }) => {
+        this.api.retrieveOrganization(id).then((organization) => {
+          this.organization = organization.data;
+        });
       },
     });
   }
 
-  public onUpdate(organization: IOrganization)
-  {
+  public onUpdate(organization: IOrganization) {
     this.organization = organization;
   }
 }

@@ -1,10 +1,10 @@
 <button
-    class="danger {{ theme }} {{ size === 'fill' ? 'fill' : '' }} {{ icon ? 'with-icon' : '' }}"
-
-    (click)="showDialog()"
-
-    [disabled]="dialogRef"
+  class="danger {{ theme }} {{ size === 'fill' ? 'fill' : '' }} {{
+    icon ? 'with-icon' : ''
+  }}"
+  (click)="showDialog()"
+  [disabled]="dialogRef"
 >
-    <span *ngIf="icon" class="mat-icon">{{ icon }}</span>
-    <ng-content></ng-content>
+  <span *ngIf="icon" class="mat-icon">{{ icon }}</span>
+  <ng-content></ng-content>
 </button>

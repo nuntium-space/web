@@ -1,4 +1,10 @@
-import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ComponentRef,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 import { Theme } from '../../../../types/Theme';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
@@ -6,52 +12,48 @@ import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
 @Component({
   selector: 'shared-danger-button',
   templateUrl: './danger-button.component.html',
-  styleUrls: ['./danger-button.component.scss']
+  styleUrls: ['./danger-button.component.scss'],
 })
-export class DangerButtonComponent
-{
+export class DangerButtonComponent {
   @Input()
-  public theme: Theme = "light";
+  public theme: Theme = 'light';
 
   @Input()
-  public size: "auto" | "fill" = "auto";
+  public size: 'auto' | 'fill' = 'auto';
 
   @Input()
   public icon?: string;
 
   @Input()
-  public message: string = "";
+  public message: string = '';
 
   @Output()
   public confirm = new EventEmitter<void>();
 
   public dialogButtons: IDialogButton[] = [
     {
-      text: "generic.confirm",
-      classes: [ "dark", "danger" ],
+      text: 'generic.confirm',
+      classes: ['dark', 'danger'],
       onClick: () => this.onConfirm(),
     },
     {
-      text: "generic.cancel",
-      classes: [ "dark" ],
+      text: 'generic.cancel',
+      classes: ['dark'],
       onClick: () => this.hideDialog(),
     },
   ];
 
   public dialogRef?: ComponentRef<unknown>;
 
-  constructor(private dom: DomService)
-  {}
+  constructor(private dom: DomService) {}
 
-  public onConfirm()
-  {
+  public onConfirm() {
     this.hideDialog();
 
     this.confirm.emit();
   }
 
-  public showDialog()
-  {
+  public showDialog() {
     this.dialogRef = this.dom.appendComponentToBody(
       DialogComponent,
       {
@@ -60,14 +62,12 @@ export class DangerButtonComponent
       },
       {
         hide: () => this.hideDialog(),
-      },
+      }
     );
   }
 
-  public hideDialog()
-  {
-    if (!this.dialogRef)
-    {
+  public hideDialog() {
+    if (!this.dialogRef) {
       return;
     }
 

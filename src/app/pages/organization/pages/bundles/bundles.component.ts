@@ -5,51 +5,43 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'organization-bundles',
   templateUrl: './bundles.component.html',
-  styleUrls: ['./bundles.component.scss']
+  styleUrls: ['./bundles.component.scss'],
 })
-export class OrganizationBundlesComponent implements OnChanges
-{
+export class OrganizationBundlesComponent implements OnChanges {
   @Input()
   public organization?: IOrganization;
 
   public bundles?: IBundle[];
 
-  constructor(private api: ApiService)
-  {}
+  constructor(private api: ApiService) {}
 
-  public ngOnChanges()
-  {
-    if (!this.organization)
-    {
+  public ngOnChanges() {
+    if (!this.organization) {
       return;
     }
 
     this.api
       .listBundlesForOrganization(this.organization.id)
-      .then(response =>
-      {
+      .then((response) => {
         this.bundles = response.data;
       });
   }
 
-  public async archiveOrRestoreBundle(bundle: IBundle)
-  {
-    if (!this.bundles)
-    {
+  public async archiveOrRestoreBundle(bundle: IBundle) {
+    if (!this.bundles) {
       return;
     }
 
-    const { success } = await this.api.updateBundle(bundle.id, { active: !bundle.active });
+    const { success } = await this.api.updateBundle(bundle.id, {
+      active: !bundle.active,
+    });
 
-    if (success)
-    {
-      this.bundles = this.bundles.map(_ =>
-      {
-        if (_.id === bundle.id)
-        {
+    if (success) {
+      this.bundles = this.bundles.map((_) => {
+        if (_.id === bundle.id) {
           _.active = !bundle.active;
         }
-    
+
         return _;
       });
     }

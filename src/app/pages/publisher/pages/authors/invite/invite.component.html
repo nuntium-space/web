@@ -1,24 +1,22 @@
 <section>
-    <div class="title">
-        <h1>{{ "publisher.authors.invite_author.__title" | translate }}</h1>
-    </div>
-    <div class="content">
-        <shared-form [submitButtonText]="'publisher.authors.invite' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
-            <label>
-                {{ "generic.email" | translate }}
-                <input
-                    formControlName="email"
-
-                    type="email"
-                    name="email"
-                    required
-                >
-                <div class="errors">
-                    <p *ngFor="let error of form.get('email')?.errors?.errors">
-                        {{ "errors." + error.error | translate:error.params }}
-                    </p>
-                </div>
-            </label>
-        </shared-form>
-    </div>
+  <div class="title">
+    <h1>{{ "publisher.authors.invite_author.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <shared-form
+      [submitButtonText]="'publisher.authors.invite' | translate"
+      [formGroup]="form"
+      (confirm)="onSubmit($event)"
+    >
+      <label>
+        {{ "generic.email" | translate }}
+        <input formControlName="email" type="email" name="email" required />
+        <div class="errors">
+          <p *ngFor="let error of form.get('email')?.errors?.errors">
+            {{ "errors." + error.error | translate: error.params }}
+          </p>
+        </div>
+      </label>
+    </shared-form>
+  </div>
 </section>

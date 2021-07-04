@@ -8,9 +8,8 @@ describe('AddPublisherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddPublisherComponent ]
-    })
-    .compileComponents();
+      declarations: [AddPublisherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

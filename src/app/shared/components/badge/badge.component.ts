@@ -4,10 +4,9 @@ import { Theme } from 'src/types/Theme';
 @Component({
   selector: 'shared-badge',
   templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.scss']
+  styleUrls: ['./badge.component.scss'],
 })
-export class BadgeComponent
-{
+export class BadgeComponent {
   @Input()
-  public theme: Theme = "dark";
+  public theme: Theme = 'dark';
 }

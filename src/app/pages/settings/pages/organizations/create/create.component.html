@@ -1,24 +1,22 @@
 <section>
-    <div class="title">
-        <h1>{{ "settings.account.organizations.create.__title" | translate }}</h1>
-    </div>
-    <div class="content">
-        <shared-form [submitButtonText]="'generic.create' | translate" [formGroup]="form" (confirm)="onSubmit($event)">
-            <label>
-                {{ "settings.account.organizations.create.name" | translate }}
-                <input
-                    formControlName="name"
-
-                    type="text"
-                    name="name"
-                    required
-                >
-                <div class="errors">
-                    <p *ngFor="let error of form.get('name')?.errors?.errors">
-                        {{ "errors." + error.error | translate:error.params }}
-                    </p>
-                </div>
-            </label>
-        </shared-form>
-    </div>
+  <div class="title">
+    <h1>{{ "settings.account.organizations.create.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <shared-form
+      [submitButtonText]="'generic.create' | translate"
+      [formGroup]="form"
+      (confirm)="onSubmit($event)"
+    >
+      <label>
+        {{ "settings.account.organizations.create.name" | translate }}
+        <input formControlName="name" type="text" name="name" required />
+        <div class="errors">
+          <p *ngFor="let error of form.get('name')?.errors?.errors">
+            {{ "errors." + error.error | translate: error.params }}
+          </p>
+        </div>
+      </label>
+    </shared-form>
+  </div>
 </section>

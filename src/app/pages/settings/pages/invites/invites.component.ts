@@ -8,34 +8,32 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-invites',
   templateUrl: './invites.component.html',
-  styleUrls: ['./invites.component.scss']
+  styleUrls: ['./invites.component.scss'],
 })
-export class InvitesComponent implements OnInit
-{
+export class InvitesComponent implements OnInit {
   public invites?: IAuthorInvite[];
 
-  constructor(public format: FormatService, private api: ApiService, private auth: AuthService)
-  {}
+  constructor(
+    public format: FormatService,
+    private api: ApiService,
+    private auth: AuthService
+  ) {}
 
-  public ngOnInit()
-  {
-    if (!this.auth.user)
-    {
+  public ngOnInit() {
+    if (!this.auth.user) {
       return;
     }
 
-    this.api
-      .retrieveInvites(this.auth.user)
-      .then(response =>
-      {
-        this.invites = response.data;
-      });
+    this.api.retrieveInvites(this.auth.user).then((response) => {
+      this.invites = response.data;
+    });
   }
 
-  public async accept(invite: IAuthorInvite, [ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.invites)
-    {
+  public async accept(
+    invite: IAuthorInvite,
+    [success, failure]: ConfirmEventCallback
+  ) {
+    if (!this.invites) {
       failure();
 
       return;
@@ -43,8 +41,7 @@ export class InvitesComponent implements OnInit
 
     const response = await this.api.acceptInvite(invite);
 
-    if (!response.success)
-    {
+    if (!response.success) {
       failure({
         message: {
           text: response.errors?.[0].error,
@@ -56,6 +53,6 @@ export class InvitesComponent implements OnInit
 
     success();
 
-    this.invites = this.invites.filter(_ => _.id !== invite.id);
+    this.invites = this.invites.filter((_) => _.id !== invite.id);
   }
 }

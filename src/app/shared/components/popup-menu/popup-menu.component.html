@@ -3,13 +3,7 @@
     &#8942;
   </button>
   <div *ngIf="isMenuVisible" class="arrow"></div>
-  <div
-    *ngIf="isMenuVisible"
-
-    #content
-
-    class="content round"
-  >
+  <div *ngIf="isMenuVisible" #content class="content round">
     <ng-content></ng-content>
   </div>
 </div>

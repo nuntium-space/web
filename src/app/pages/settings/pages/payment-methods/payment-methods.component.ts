@@ -6,29 +6,23 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-payment-methods',
   templateUrl: './payment-methods.component.html',
-  styleUrls: ['./payment-methods.component.scss']
+  styleUrls: ['./payment-methods.component.scss'],
 })
-export class PaymentMethodsComponent
-{
+export class PaymentMethodsComponent {
   public paymentMethods?: IPaymentMethod[];
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {
-    if (!auth.user)
-    {
+  constructor(private api: ApiService, private auth: AuthService) {
+    if (!auth.user) {
       return;
     }
 
-    api.listPaymentMethodsForUser(auth.user.id).then(response =>
-    {
+    api.listPaymentMethodsForUser(auth.user.id).then((response) => {
       this.paymentMethods = response.data;
     });
   }
 
-  public async setDefaultPaymentMethod(paymentMethod: IPaymentMethod)
-  {
-    if (!this.auth.user || !this.paymentMethods)
-    {
+  public async setDefaultPaymentMethod(paymentMethod: IPaymentMethod) {
+    if (!this.auth.user || !this.paymentMethods) {
       return;
     }
 
@@ -36,14 +30,11 @@ export class PaymentMethodsComponent
       id: paymentMethod.id,
     });
 
-    if (response.success)
-    {
-      this.paymentMethods.map(p =>
-      {
+    if (response.success) {
+      this.paymentMethods.map((p) => {
         p.__metadata = { is_default: false };
 
-        if (p.id === paymentMethod.id)
-        {
+        if (p.id === paymentMethod.id) {
           p.__metadata.is_default = true;
         }
 
@@ -52,18 +43,17 @@ export class PaymentMethodsComponent
     }
   }
 
-  public async removePaymentMethod(paymentMethod: IPaymentMethod)
-  {
-    if (!this.paymentMethods)
-    {
+  public async removePaymentMethod(paymentMethod: IPaymentMethod) {
+    if (!this.paymentMethods) {
       return;
     }
 
     const response = await this.api.deletePaymentMethod(paymentMethod.id);
 
-    if (response.success)
-    {
-      this.paymentMethods = this.paymentMethods.filter(p => p.id !== paymentMethod.id);
+    if (response.success) {
+      this.paymentMethods = this.paymentMethods.filter(
+        (p) => p.id !== paymentMethod.id
+      );
     }
   }
 }

@@ -36,14 +36,7 @@ import { InvitesComponent } from './pages/invites/invites.component';
     SubscriptionListComponent,
     InvitesComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SettingsRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  imports: [CommonModule, SharedModule, SettingsRoutingModule],
+  providers: [ApiService],
 })
-export class SettingsModule
-{}
+export class SettingsModule {}

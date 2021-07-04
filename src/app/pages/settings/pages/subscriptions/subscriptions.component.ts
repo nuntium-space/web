@@ -6,52 +6,48 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-subscriptions',
   templateUrl: './subscriptions.component.html',
-  styleUrls: ['./subscriptions.component.scss']
+  styleUrls: ['./subscriptions.component.scss'],
 })
-export class SubscriptionsComponent
-{
+export class SubscriptionsComponent {
   public subscriptions?: {
-    active: ISubscription[],
-    incomplete: ISubscription[],
-    old: ISubscription[],
+    active: ISubscription[];
+    incomplete: ISubscription[];
+    old: ISubscription[];
   };
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {
-    if (!auth.user)
-    {
+  constructor(private api: ApiService, private auth: AuthService) {
+    if (!auth.user) {
       return;
     }
 
-    api.listSubscriptionsForUser(auth.user.id).then(response =>
-    {
-      if (response.data)
-      {
+    api.listSubscriptionsForUser(auth.user.id).then((response) => {
+      if (response.data) {
         this.subscriptions = {
-          active: response.data.filter(s => s.status === "active"),
+          active: response.data.filter((s) => s.status === 'active'),
           /**
            * Incomplete subscriptions are the result of failed payments
            * or payments that require additional steps, such as 3D Secure
            */
-          incomplete: response.data.filter(s => s.status !== "active" && !s.deleted),
-          old: response.data.filter(s => s.deleted),
+          incomplete: response.data.filter(
+            (s) => s.status !== 'active' && !s.deleted
+          ),
+          old: response.data.filter((s) => s.deleted),
         };
       }
     });
   }
 
-  public async manageSubscriptions()
-  {
-    if (!this.auth.user)
-    {
+  public async manageSubscriptions() {
+    if (!this.auth.user) {
       return;
     }
 
-    const response = await this.api.createBillingPortalSession(this.auth.user.id);
+    const response = await this.api.createBillingPortalSession(
+      this.auth.user.id
+    );
 
-    if (response.data)
-    {
-      open(response.data.url, "_blank");
+    if (response.data) {
+      open(response.data.url, '_blank');
     }
   }
 }

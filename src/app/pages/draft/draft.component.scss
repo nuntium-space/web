@@ -2,74 +2,59 @@
 
 @import "~src/variables";
 
-aside
-{
-    > h1:first-child
-    {
-        margin-top: 0;
+aside {
+  > h1:first-child {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: xx-large;
+  }
+
+  .update-form {
+    margin-bottom: 1rem;
+  }
+
+  .actions {
+    > * {
+      margin-bottom: 0.5rem;
+
+      &:last-child {
         margin-bottom: 1rem;
-        font-size: xx-large;
+      }
     }
+  }
 
-    .update-form
-    {
-        margin-bottom: 1rem;
+  .info {
+    p {
+      margin: 0;
+      margin-top: 0.5em;
     }
-
-    .actions
-    {
-        > *
-        {
-            margin-bottom: 0.5rem;
-
-            &:last-child
-            {
-                margin-bottom: 1rem;
-            }
-        }
-    }
-
-    .info
-    {
-        p
-        {
-            margin: 0;
-            margin-top: 0.5em;
-        }
-    }
+  }
 }
 
-::ng-deep .list-item-with-actions
-{
-    input
-    {
-        width: 100%;
-    }
+::ng-deep .list-item-with-actions {
+  input {
+    width: 100%;
+  }
 }
 
-main
-{
-    .sources
-    {
-        padding: 1rem;
-        margin-top: 1rem;
-        border: 1px solid var(--primary-color);
+main {
+  .sources {
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid var(--primary-color);
 
-        p
-        {
-            font-weight: $medium;
-            margin: 0;
-            margin-bottom: 0.5rem;
-        }
-
-        ol
-        {
-            margin: 0;
-        }
+    p {
+      font-weight: $medium;
+      margin: 0;
+      margin-bottom: 0.5rem;
     }
+
+    ol {
+      margin: 0;
+    }
+  }
 }
 
-#add-source
-{
-    padding: 0.5em 1em;
+#add-source {
+  padding: 0.5em 1em;
 }

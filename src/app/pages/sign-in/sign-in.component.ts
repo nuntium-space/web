@@ -10,61 +10,52 @@ import { UserSettingsService } from '../../shared/services/user-settings/user-se
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit
-{
+export class SignInComponent implements OnInit {
   public readonly form = new FormGroup({
     email: new FormControl(),
   });
 
   public showEmailSignInSuccessMessage = false;
-  public signInError = "";
+  public signInError = '';
 
-  public redirectTo = "/";
+  public redirectTo = '/';
 
-  constructor
-  (
+  constructor(
     private api: ApiService,
     private auth: AuthService,
     private translate: TranslateService,
     private userSettings: UserSettingsService,
     private route: ActivatedRoute,
-    private router: Router,
-  )
-  {}
+    private router: Router
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.queryParams.subscribe({
-      next: ({ redirectTo, error }) =>
-      {
-        this.redirectTo = redirectTo ?? "/";
+      next: ({ redirectTo, error }) => {
+        this.redirectTo = redirectTo ?? '/';
 
-        if (error === "account-not-linked")
-        {
-          this.signInError = "custom.errors.sign_in.account_not_linked";
+        if (error === 'account-not-linked') {
+          this.signInError = 'custom.errors.sign_in.account_not_linked';
         }
       },
     });
   }
 
-  public async onSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    const response = await this.api
-      .signInWithEmail(
-        this.form.get("email")?.value ?? "",
-      );
+  public async onSubmit([success, failure]: ConfirmEventCallback) {
+    const response = await this.api.signInWithEmail(
+      this.form.get('email')?.value ?? ''
+    );
 
-    this.form.get("email")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "email")
+    this.form.get('email')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'email'),
     });
 
-    if (!response.success)
-    {
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 
@@ -75,24 +66,22 @@ export class SignInComponent implements OnInit
 
     const { data } = response;
 
-    if (data)
-    {
+    if (data) {
       this.showEmailSignInSuccessMessage = true;
 
-      const interval = setInterval(async () =>
-      {
-        const signInRequestResponse = await this.api.retrieveSignInRequest(data.id);
+      const interval = setInterval(async () => {
+        const signInRequestResponse = await this.api.retrieveSignInRequest(
+          data.id
+        );
 
         // Expired sign in request
-        if (signInRequestResponse.status === 403)
-        {
+        if (signInRequestResponse.status === 403) {
           clearInterval(interval);
 
           return;
         }
 
-        if (signInRequestResponse.success)
-        {
+        if (signInRequestResponse.success) {
           const { session } = signInRequestResponse.data;
 
           clearInterval(interval);
@@ -101,7 +90,8 @@ export class SignInComponent implements OnInit
 
           const userSettings = await this.userSettings.init();
 
-          const language = userSettings?.language ?? this.translate.getBrowserLang();
+          const language =
+            userSettings?.language ?? this.translate.getBrowserLang();
 
           this.translate.use(language);
 

@@ -8,45 +8,47 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  styleUrls: ['./details.component.scss'],
 })
-export class AccountDetailsComponent
-{
+export class AccountDetailsComponent {
   public updateAccountDetailsForm = new FormGroup({
     fullName: new FormControl(this.auth.user?.full_name),
     email: new FormControl(this.auth.user?.email),
   });
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {}
+  constructor(private api: ApiService, private auth: AuthService) {}
 
-  public async onUpdateAccountDetailsFormSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.auth.user)
-    {
+  public async onUpdateAccountDetailsFormSubmit([
+    success,
+    failure,
+  ]: ConfirmEventCallback) {
+    if (!this.auth.user) {
       failure();
 
       return;
     }
 
-    const response = await this.api
-      .updateUser(this.auth.user.id, {
-        full_name: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("fullName")),
-        email: Utilities.getFormControlValue(this.updateAccountDetailsForm.get("email")),
-      });
-
-    Object.entries(this.updateAccountDetailsForm.controls).forEach(([ name, control ]) =>
-    {
-      control.setErrors({
-        errors: response.errors?.filter(e => e.field === name)
-      });
+    const response = await this.api.updateUser(this.auth.user.id, {
+      full_name: Utilities.getFormControlValue(
+        this.updateAccountDetailsForm.get('fullName')
+      ),
+      email: Utilities.getFormControlValue(
+        this.updateAccountDetailsForm.get('email')
+      ),
     });
 
-    if (!response.success)
-    {
+    Object.entries(this.updateAccountDetailsForm.controls).forEach(
+      ([name, control]) => {
+        control.setErrors({
+          errors: response.errors?.filter((e) => e.field === name),
+        });
+      }
+    );
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 

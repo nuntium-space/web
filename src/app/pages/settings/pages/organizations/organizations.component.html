@@ -1,34 +1,35 @@
 <section>
-    <div class="title">
-        <h1>{{ "settings.account.organizations.__title" | translate }}</h1>
-        <a routerLink="organizations/create" class="button">
-            {{ "generic.create" | translate }}
+  <div class="title">
+    <h1>{{ "settings.account.organizations.__title" | translate }}</h1>
+    <a routerLink="organizations/create" class="button">
+      {{ "generic.create" | translate }}
+    </a>
+  </div>
+  <div class="content">
+    <div *ngIf="!organizations">
+      <shared-spinner></shared-spinner>
+    </div>
+    <div *ngIf="organizations" class="list">
+      <div *ngIf="organizations.length === 0">
+        <p>{{ "settings.account.organizations.empty" | translate }}</p>
+      </div>
+      <div
+        *ngFor="let organization of organizations"
+        class="list-item-with-actions"
+      >
+        <a routerLink="/organization/{{ organization.id }}">
+          <p>{{ organization.name }}</p>
         </a>
+        <shared-popup-menu theme="light">
+          <shared-danger-button
+            theme="dark"
+            [message]="'generic.delete' | translate"
+            (confirm)="deleteOrganization(organization)"
+          >
+            {{ "generic.delete" | translate }}
+          </shared-danger-button>
+        </shared-popup-menu>
+      </div>
     </div>
-    <div class="content">
-        <div *ngIf="!organizations">
-            <shared-spinner></shared-spinner>
-        </div>
-        <div *ngIf="organizations" class="list">
-            <div *ngIf="organizations.length === 0">
-                <p>{{ "settings.account.organizations.empty" | translate }}</p>
-            </div>
-            <div *ngFor="let organization of organizations" class="list-item-with-actions">
-                <a routerLink="/organization/{{ organization.id }}">
-                    <p>{{ organization.name }}</p>
-                </a>
-                <shared-popup-menu theme="light">
-                    <shared-danger-button
-                        theme="dark"
-
-                        [message]="'generic.delete' | translate"
-
-                        (confirm)="deleteOrganization(organization)"
-                    >
-                        {{ "generic.delete" | translate }}
-                    </shared-danger-button>
-                </shared-popup-menu>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>

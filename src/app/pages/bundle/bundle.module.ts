@@ -24,14 +24,7 @@ import { ApiService } from './services/api/api.service';
     AddPriceComponent,
     SubscribeComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    BundleRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  imports: [CommonModule, SharedModule, BundleRoutingModule],
+  providers: [ApiService],
 })
-export class BundleModule
-{}
+export class BundleModule {}

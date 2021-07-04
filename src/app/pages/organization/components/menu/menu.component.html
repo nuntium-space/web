@@ -1,30 +1,23 @@
 <aside>
-    <header>
-        <small>{{ "organization.__title" | translate }}</small>
-        <h1 *ngIf="organization">{{ organization.name }}</h1>
-    </header>
-    <organization-stripe-connect-button [organization]="organization"></organization-stripe-connect-button>
-    <section>
-        <div class="title"></div>
-        <div class="content">
-            <a
-                routerLink="details"
-                [class.selected]="section === 'details'"
-            >
-                {{ "organization.details.__title" | translate }}
-            </a>
-            <a
-                routerLink="publishers"
-                [class.selected]="section === 'publishers'"
-            >
-                {{ "organization.publishers.__title" | translate }}
-            </a>
-            <a
-                routerLink="bundles"
-                [class.selected]="section === 'bundles'"
-            >
-                {{ "organization.bundles.__title" | translate }}
-            </a>
-        </div>
-    </section>
+  <header>
+    <small>{{ "organization.__title" | translate }}</small>
+    <h1 *ngIf="organization">{{ organization.name }}</h1>
+  </header>
+  <organization-stripe-connect-button
+    [organization]="organization"
+  ></organization-stripe-connect-button>
+  <section>
+    <div class="title"></div>
+    <div class="content">
+      <a routerLink="details" [class.selected]="section === 'details'">
+        {{ "organization.details.__title" | translate }}
+      </a>
+      <a routerLink="publishers" [class.selected]="section === 'publishers'">
+        {{ "organization.publishers.__title" | translate }}
+      </a>
+      <a routerLink="bundles" [class.selected]="section === 'bundles'">
+        {{ "organization.bundles.__title" | translate }}
+      </a>
+    </div>
+  </section>
 </aside>

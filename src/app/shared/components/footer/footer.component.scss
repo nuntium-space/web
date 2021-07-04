@@ -1,18 +1,15 @@
 @import "~src/variables";
 
-:host
-{
-    grid-area: footer;
+:host {
+  grid-area: footer;
 }
 
-.bottom
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.copy
-{
-    margin: 0;
+.copy {
+  margin: 0;
 }

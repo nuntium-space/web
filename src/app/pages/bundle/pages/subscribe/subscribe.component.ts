@@ -10,10 +10,9 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'bundle-subscribe',
   templateUrl: './subscribe.component.html',
-  styleUrls: ['./subscribe.component.scss']
+  styleUrls: ['./subscribe.component.scss'],
 })
-export class SubscribeComponent implements OnChanges
-{
+export class SubscribeComponent implements OnChanges {
   @Input()
   public bundle?: IBundle;
 
@@ -24,48 +23,42 @@ export class SubscribeComponent implements OnChanges
     price: new FormControl(),
   });
 
-  constructor(public auth: AuthService, public format: FormatService, private api: ApiService, private router: Router)
-  {}
+  constructor(
+    public auth: AuthService,
+    public format: FormatService,
+    private api: ApiService,
+    private router: Router
+  ) {}
 
-  public async ngOnChanges(): Promise<void>
-  {
-    if (!this.bundle)
-    {
+  public async ngOnChanges(): Promise<void> {
+    if (!this.bundle) {
       return;
     }
 
-    this.api
-      .listPublishersForBundle(this.bundle.id)
-      .then(response =>
-      {
-        this.publishers = response.data;
-      });
+    this.api.listPublishersForBundle(this.bundle.id).then((response) => {
+      this.publishers = response.data;
+    });
 
     this.api
       .listPricesForBundle(this.bundle.id, { active: true })
-      .then(response =>
-      {
+      .then((response) => {
         this.prices = response.data;
       });
   }
 
-  public async subscribe([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.auth.user)
-    {
+  public async subscribe([success, failure]: ConfirmEventCallback) {
+    if (!this.auth.user) {
       failure();
 
       return;
     }
 
-    const response = await this.api
-      .subscribeToPrice(
-        this.auth.user.id,
-        this.subscribeForm.get("price")?.value ?? "",
-      );
+    const response = await this.api.subscribeToPrice(
+      this.auth.user.id,
+      this.subscribeForm.get('price')?.value ?? ''
+    );
 
-    if (!response.success)
-    {
+    if (!response.success) {
       failure();
 
       return;
@@ -73,6 +66,6 @@ export class SubscribeComponent implements OnChanges
 
     success();
 
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl('/');
   }
 }

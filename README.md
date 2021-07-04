@@ -22,4 +22,3 @@ to also open it in the default browser.
 
 [nuntium]: https://github.com/nuntium-space/nuntium
 [open-graph]: https://ogp.me
-

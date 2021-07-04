@@ -5,22 +5,16 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'admin-drafts',
   templateUrl: './drafts.component.html',
-  styleUrls: ['./drafts.component.scss']
+  styleUrls: ['./drafts.component.scss'],
 })
-export class DraftsComponent implements OnInit
-{
+export class DraftsComponent implements OnInit {
   public drafts?: IArticleDraft[];
 
-  constructor(private api: ApiService)
-  {}
+  constructor(private api: ApiService) {}
 
-  public ngOnInit()
-  {
-    this.api
-      .retrieveDraftsSubmittedForVerification()
-      .then(response =>
-      {
-        this.drafts = response.data;
-      });
+  public ngOnInit() {
+    this.api.retrieveDraftsSubmittedForVerification().then((response) => {
+      this.drafts = response.data;
+    });
   }
 }
