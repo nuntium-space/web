@@ -1,5 +1,7 @@
 @import "~src/layouts/default";
 
+@import "~src/variables";
+
 aside
 {
     > h1:first-child
@@ -42,6 +44,28 @@ aside
     input
     {
         width: 100%;
+    }
+}
+
+main
+{
+    .sources
+    {
+        padding: 1rem;
+        margin-top: 1rem;
+        border: 1px solid var(--primary-color);
+
+        p
+        {
+            font-weight: $medium;
+            margin: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        ol
+        {
+            margin: 0;
+        }
     }
 }
 

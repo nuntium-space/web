@@ -40,6 +40,25 @@ aside
 
 main
 {
+    .sources
+    {
+        padding: 1rem;
+        margin-top: 1rem;
+        border: 1px solid var(--primary-color);
+
+        p
+        {
+            font-weight: $medium;
+            margin: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        ol
+        {
+            margin: 0;
+        }
+    }
+
     article-bottom-actions
     {
         margin: 1rem 0;
