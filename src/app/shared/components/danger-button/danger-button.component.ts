@@ -1,5 +1,4 @@
 import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
 import { Theme } from '../../../../types/Theme';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
@@ -28,12 +27,12 @@ export class DangerButtonComponent
 
   public dialogButtons: IDialogButton[] = [
     {
-      text: this.translate.instant("generic.confirm"),
+      text: "generic.confirm",
       classes: [ "dark", "danger" ],
       onClick: () => this.onConfirm(),
     },
     {
-      text: this.translate.instant("generic.cancel"),
+      text: "generic.cancel",
       classes: [ "dark" ],
       onClick: () => this.hideDialog(),
     },
@@ -41,7 +40,7 @@ export class DangerButtonComponent
 
   public dialogRef?: ComponentRef<unknown>;
 
-  constructor(private dom: DomService, private translate: TranslateService)
+  constructor(private dom: DomService)
   {}
 
   public onConfirm()

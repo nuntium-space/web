@@ -1,5 +1,4 @@
 import { Component, ComponentRef, EventEmitter, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { DomService } from '../../services/dom/dom.service';
 import { IDialogButton, DialogComponent } from '../dialog/dialog.component';
 
@@ -55,7 +54,7 @@ export class AsyncButtonComponent
     },
   ];
 
-  constructor(private dom: DomService, private translate: TranslateService)
+  constructor(private dom: DomService)
   {}
 
   public async onClick()
@@ -79,7 +78,7 @@ export class AsyncButtonComponent
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
-                message: this.translate.instant(options.message.text!),
+                message: options.message.text,
                 buttons: this.dialogButtons,
               },
               {
@@ -109,7 +108,7 @@ export class AsyncButtonComponent
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
-                message: this.translate.instant(options.message.text!),
+                message: options.message.text,
                 buttons: this.dialogButtons,
               },
               {
