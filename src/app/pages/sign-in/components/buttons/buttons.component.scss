@@ -1,25 +1,6 @@
 :host
 {
     display: block;
-    max-width: 500px;
-}
-
-.divider
-{
-    display: flex;
-    align-items: center;
-    margin: 2rem 0;
-
-    hr
-    {
-        width: 100%;
-    }
-
-    small
-    {
-        margin: 0 1rem;
-        text-transform: uppercase;
-    }
 }
 
 a

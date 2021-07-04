@@ -13,9 +13,15 @@
 main
 {
     display: grid;
-    grid-template-columns: 50% auto;
+    grid-template-columns: 500px auto 50%;
     align-items: center;
     gap: 3em;
+
+    h1
+    {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
 }
 
 .email-sign-in-success-msg
@@ -25,6 +31,24 @@ main
     padding: 1rem;
     margin-bottom: 2rem;
     max-width: 500px;
+}
+
+.divider
+{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+
+    hr
+    {
+        width: 100%;
+    }
+
+    small
+    {
+        margin: 0 1rem;
+        text-transform: uppercase;
+    }
 }
 
 @media (max-width: 1000px)
