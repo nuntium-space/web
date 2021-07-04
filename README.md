@@ -1,6 +1,7 @@
 # web
 
 [![Deployment](https://github.com/nuntium-space/web/actions/workflows/cd.yml/badge.svg)](https://github.com/nuntium-space/web/actions/workflows/cd.yml)
+[![Prettier](https://github.com/nuntium-space/web/actions/workflows/prettier.yml/badge.svg)](https://github.com/nuntium-space/web/actions/workflows/prettier.yml)
 
 ## Test
 
