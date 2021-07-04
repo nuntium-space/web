@@ -1,6 +1,7 @@
 <div class="dialog-container" (click)="onDialogContainerClick($event)">
     <div class="dialog round" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
         <span class="message">{{ message | translate }}</span>
+        <ng-content></ng-content>
         <div class="actions">
             <button
                 *ngFor="let button of buttons"
@@ -9,7 +10,7 @@
 
                 (click)="button.onClick()"
             >
-                {{ button.text }}
+                {{ button.text | translate }}
             </button>
         </div>
     </div>

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { Editor } from '@tiptap/core';
+import Highlight from '@tiptap/extension-highlight';
 import Link from '@tiptap/extension-link';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
@@ -7,6 +8,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import Typography from '@tiptap/extension-typography';
 import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
+import { IDialogButton } from '../dialog/dialog.component';
 
 @Component({
   selector: 'shared-editor',
@@ -26,6 +28,31 @@ export class EditorComponent implements OnInit, OnChanges
 
   public editor?: Editor;
 
+  public defaultHighlightColor = "#faf594";
+  public showHighlightColorDialog = false;
+  public highlightColorDialogButtons: IDialogButton[] = [
+    {
+      text: "generic.confirm",
+      classes: [ "dark" ],
+      onClick: () =>
+      {
+        this.showHighlightColorDialog = false;
+
+        const color = this.highlightColorInput?.nativeElement.value ?? this.defaultHighlightColor;
+
+        this.editor?.chain().focus().setHighlight({ color }).run();
+      },
+    },
+    {
+      text: "generic.cancel",
+      classes: [ "dark" ],
+      onClick: () => this.showHighlightColorDialog = false,
+    },
+  ];
+
+  @ViewChild("highlightColorInput")
+  public highlightColorInput?: ElementRef<HTMLInputElement>;
+
   public ngOnInit()
   {
     this.editor = new Editor({
@@ -39,6 +66,7 @@ export class EditorComponent implements OnInit, OnChanges
         TextAlign,
         Superscript,
         Subscript,
+        Highlight.configure({ multicolor: true }),
         Link.configure({
           HTMLAttributes: {
             class: "dark",
