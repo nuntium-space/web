@@ -2,65 +2,61 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class FormatService
-{
-  constructor(private translate: TranslateService)
-  {}
+export class FormatService {
+  constructor(private translate: TranslateService) {}
 
-  public dateTime(value: string, format: "date" | "datetime" | "shortdate"): string
-  {
+  public dateTime(
+    value: string,
+    format: 'date' | 'datetime' | 'shortdate'
+  ): string {
     let options: Intl.DateTimeFormatOptions;
 
-    switch (format)
-    {
-      case "date":
-      {
+    switch (format) {
+      case 'date': {
         options = {
-          year: "numeric",
-          month: "long",
-          day: "2-digit",
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit',
         };
 
         break;
       }
-      case "datetime":
-      {
+      case 'datetime': {
         options = {
-          year: "numeric",
-          month: "long",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
         };
 
         break;
       }
-      case "shortdate":
-      {
+      case 'shortdate': {
         options = {
-          month: "short",
-          day: "2-digit",
+          month: 'short',
+          day: '2-digit',
         };
 
         break;
       }
     }
 
-    return new Intl.DateTimeFormat(this.translate.currentLang, options).format(new Date(value));
+    return new Intl.DateTimeFormat(this.translate.currentLang, options).format(
+      new Date(value)
+    );
   }
 
-  public currency(amount: number, currency: string): string
-  {
-    if ([ "usd", "eur" ].includes(currency.toLowerCase()))
-    {
+  public currency(amount: number, currency: string): string {
+    if (['usd', 'eur'].includes(currency.toLowerCase())) {
       amount /= 100;
     }
 
     return new Intl.NumberFormat(this.translate.currentLang, {
-      style: "currency",
+      style: 'currency',
       currency: currency.toUpperCase(),
     }).format(amount);
   }

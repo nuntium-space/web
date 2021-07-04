@@ -24,14 +24,7 @@ import { ApiService } from './services/api/api.service';
     HistoryComponent,
     SearchComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FeedsRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  imports: [CommonModule, SharedModule, FeedsRoutingModule],
+  providers: [ApiService],
 })
-export class FeedsModule
-{}
+export class FeedsModule {}

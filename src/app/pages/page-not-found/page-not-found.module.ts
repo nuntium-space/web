@@ -6,14 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 @NgModule({
-  declarations: [
-    PageNotFoundComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PageNotFoundRoutingModule,
-  ],
+  declarations: [PageNotFoundComponent],
+  imports: [CommonModule, SharedModule, PageNotFoundRoutingModule],
 })
-export class PageNotFoundModule
-{}
+export class PageNotFoundModule {}

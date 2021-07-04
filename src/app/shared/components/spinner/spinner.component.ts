@@ -4,10 +4,9 @@ import { Theme } from '../../../../types/Theme';
 @Component({
   selector: 'shared-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss']
+  styleUrls: ['./spinner.component.scss'],
 })
-export class SpinnerComponent
-{
+export class SpinnerComponent {
   @Input()
-  public theme: Theme = "light";
+  public theme: Theme = 'light';
 }

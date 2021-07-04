@@ -3,62 +3,82 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "admin",
-    loadChildren: () => import("./pages/admin/admin.module").then(_ => _.AdminModule),
+    path: 'admin',
+    loadChildren: () =>
+      import('./pages/admin/admin.module').then((_) => _.AdminModule),
   },
   {
-    path: "article/:id",
-    loadChildren: () => import("./pages/article/article.module").then(_ => _.ArticleModule),
+    path: 'article/:id',
+    loadChildren: () =>
+      import('./pages/article/article.module').then((_) => _.ArticleModule),
   },
   {
-    path: "bundle/:id",
-    loadChildren: () => import("./pages/bundle/bundle.module").then(_ => _.BundleModule),
+    path: 'bundle/:id',
+    loadChildren: () =>
+      import('./pages/bundle/bundle.module').then((_) => _.BundleModule),
   },
   {
-    path: "draft/:id",
-    loadChildren: () => import("./pages/draft/draft.module").then(_ => _.DraftModule),
+    path: 'draft/:id',
+    loadChildren: () =>
+      import('./pages/draft/draft.module').then((_) => _.DraftModule),
   },
   {
-    path: "feed",
-    loadChildren: () => import("./pages/feeds/feeds.module").then(_ => _.FeedsModule),
+    path: 'feed',
+    loadChildren: () =>
+      import('./pages/feeds/feeds.module').then((_) => _.FeedsModule),
   },
   {
-    path: "organization/:id",
-    loadChildren: () => import("./pages/organization/organization.module").then(_ => _.OrganizationModule),
+    path: 'organization/:id',
+    loadChildren: () =>
+      import('./pages/organization/organization.module').then(
+        (_) => _.OrganizationModule
+      ),
   },
   {
-    path: "p/:id",
-    loadChildren: () => import("./pages/publisher-public-page/publisher-public-page.module").then(_ => _.PublisherPublicPageModule),
+    path: 'p/:id',
+    loadChildren: () =>
+      import('./pages/publisher-public-page/publisher-public-page.module').then(
+        (_) => _.PublisherPublicPageModule
+      ),
   },
   {
-    path: "pages",
-    loadChildren: () => import("./pages/pages/pages.module").then(_ => _.PagesModule),
+    path: 'pages',
+    loadChildren: () =>
+      import('./pages/pages/pages.module').then((_) => _.PagesModule),
   },
   {
-    path: "publisher/:id",
-    loadChildren: () => import("./pages/publisher/publisher.module").then(_ => _.PublisherModule),
+    path: 'publisher/:id',
+    loadChildren: () =>
+      import('./pages/publisher/publisher.module').then(
+        (_) => _.PublisherModule
+      ),
   },
   {
-    path: "settings",
-    loadChildren: () => import("./pages/settings/settings.module").then(_ => _.SettingsModule),
+    path: 'settings',
+    loadChildren: () =>
+      import('./pages/settings/settings.module').then((_) => _.SettingsModule),
   },
   {
-    path: "signin",
-    loadChildren: () => import("./pages/sign-in/sign-in.module").then(_ => _.SignInModule),
+    path: 'signin',
+    loadChildren: () =>
+      import('./pages/sign-in/sign-in.module').then((_) => _.SignInModule),
   },
   {
-    path: "",
-    loadChildren: () => import("./pages/home/home.module").then(_ => _.HomeModule),
+    path: '',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((_) => _.HomeModule),
   },
   {
-    path: "**",
-    loadChildren: () => import("./pages/page-not-found/page-not-found.module").then(_ => _.PageNotFoundModule),
+    path: '**',
+    loadChildren: () =>
+      import('./pages/page-not-found/page-not-found.module').then(
+        (_) => _.PageNotFoundModule
+      ),
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule
-{}
+export class AppRoutingModule {}

@@ -1,59 +1,74 @@
 <shared-header></shared-header>
 
 <aside *ngIf="publisher">
-    <header>
-        <shared-img [src]="publisher.imageUrl"></shared-img>
-        <div>
-            <h1>{{ publisher.name }}</h1>
-            <a href="{{ publisher.url }}" target="_blank">
-                <span class="mat-icon">open_in_new</span>
-            </a>
-        </div>
-    </header>
-    <div *ngIf="!isSubscribed && publisher" class="payment-required round">
-        <span [innerHTML]="'publisher_public_page.not_subscribed' | translate:{ PUBLISHER_NAME: publisher.name }"></span>
+  <header>
+    <shared-img [src]="publisher.imageUrl"></shared-img>
+    <div>
+      <h1>{{ publisher.name }}</h1>
+      <a href="{{ publisher.url }}" target="_blank">
+        <span class="mat-icon">open_in_new</span>
+      </a>
     </div>
-    <ng-container *ngIf="publisher.__metadata?.is_author">
-        <a class="button fill drafts" routerLink="drafts">
-            {{ "publisher_public_page.drafts.__title" | translate }}
-        </a>
-        <section>
-            <div class="title">
-                <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
-            </div>
-            <div class="content">
-                <div>
-                    <a class="button fill" routerLink="new">
-                        {{ "publisher_public_page.actions.new_article" | translate }}
-                    </a>
-                </div>
-            </div>
-        </section>
-    </ng-container>
-    <section *ngIf="bundles && (publisher.__metadata && !publisher.__metadata.is_subscribed)">
-        <div class="title">
-            <h1>{{ "publisher_public_page.subscribe.__title" | translate }}</h1>
+  </header>
+  <div *ngIf="!isSubscribed && publisher" class="payment-required round">
+    <span
+      [innerHTML]="
+        'publisher_public_page.not_subscribed'
+          | translate: { PUBLISHER_NAME: publisher.name }
+      "
+    ></span>
+  </div>
+  <ng-container *ngIf="publisher.__metadata?.is_author">
+    <a class="button fill drafts" routerLink="drafts">
+      {{ "publisher_public_page.drafts.__title" | translate }}
+    </a>
+    <section>
+      <div class="title">
+        <h1>{{ "publisher_public_page.actions.__title" | translate }}</h1>
+      </div>
+      <div class="content">
+        <div>
+          <a class="button fill" routerLink="new">
+            {{ "publisher_public_page.actions.new_article" | translate }}
+          </a>
         </div>
-        <div class="content">
-            <p *ngIf="bundles.length === 0">
-                {{ "publisher_public_page.subscribe.empty" | translate }}
-            </p>
-            <a
-                *ngFor="let bundle of bundles"
-
-                routerLink="/bundle/{{ bundle.id }}/subscribe"
-
-                class="bundle"
-            >
-                <span class="name">{{ bundle.name }}</span>
-            </a>
-        </div>
+      </div>
     </section>
+  </ng-container>
+  <section
+    *ngIf="
+      bundles && publisher.__metadata && !publisher.__metadata.is_subscribed
+    "
+  >
+    <div class="title">
+      <h1>{{ "publisher_public_page.subscribe.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <p *ngIf="bundles.length === 0">
+        {{ "publisher_public_page.subscribe.empty" | translate }}
+      </p>
+      <a
+        *ngFor="let bundle of bundles"
+        routerLink="/bundle/{{ bundle.id }}/subscribe"
+        class="bundle"
+      >
+        <span class="name">{{ bundle.name }}</span>
+      </a>
+    </div>
+  </section>
 </aside>
 
 <main>
-    <shared-article-list *ngIf="isSubscribed" [articles]="articles"></shared-article-list>
-    <div *ngIf="!isSubscribed && publisher" class="payment-required round">
-        <span [innerHTML]="'publisher_public_page.how_to_subscribe' | translate:{ PUBLISHER_NAME: publisher.name }"></span>
-    </div>
+  <shared-article-list
+    *ngIf="isSubscribed"
+    [articles]="articles"
+  ></shared-article-list>
+  <div *ngIf="!isSubscribed && publisher" class="payment-required round">
+    <span
+      [innerHTML]="
+        'publisher_public_page.how_to_subscribe'
+          | translate: { PUBLISHER_NAME: publisher.name }
+      "
+    ></span>
+  </div>
 </main>

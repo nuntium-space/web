@@ -8,17 +8,8 @@ import { ApiService } from './services/api/api.service';
 import { BottomActionsComponent } from './components/bottom-actions/bottom-actions.component';
 
 @NgModule({
-  declarations: [
-    ArticleComponent,
-    BottomActionsComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ArticleRoutingModule
-  ],
-  providers: [
-    ApiService,
-  ],
+  declarations: [ArticleComponent, BottomActionsComponent],
+  imports: [CommonModule, SharedModule, ArticleRoutingModule],
+  providers: [ApiService],
 })
-export class ArticleModule { }
+export class ArticleModule {}

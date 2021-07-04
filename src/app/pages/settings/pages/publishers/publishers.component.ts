@@ -6,21 +6,17 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-publishers',
   templateUrl: './publishers.component.html',
-  styleUrls: ['./publishers.component.scss']
+  styleUrls: ['./publishers.component.scss'],
 })
-export class UserPublishersComponent
-{
+export class UserPublishersComponent {
   public authors?: IAuthor[];
 
-  constructor(api: ApiService, auth: AuthService)
-  {
-    if (!auth.user)
-    {
+  constructor(api: ApiService, auth: AuthService) {
+    if (!auth.user) {
       return;
     }
 
-    api.listAuthorsForUser(auth.user.id).then(response =>
-    {
+    api.listAuthorsForUser(auth.user.id).then((response) => {
       this.authors = response.data;
     });
   }

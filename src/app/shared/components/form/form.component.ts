@@ -1,4 +1,10 @@
-import { Component, ComponentRef, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ComponentRef,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { DomService } from '../../services/dom/dom.service';
 import { ConfirmEventCallback } from '../async-button/async-button.component';
 import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
@@ -6,10 +12,9 @@ import { DialogComponent, IDialogButton } from '../dialog/dialog.component';
 @Component({
   selector: 'shared-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
 })
-export class FormComponent
-{
+export class FormComponent {
   @Input()
   public submitButtonText?: string;
 
@@ -22,35 +27,31 @@ export class FormComponent
 
   public dialogButtons: IDialogButton[] = [
     {
-      text: "OK",
-      classes: [ "dark" ],
+      text: 'OK',
+      classes: ['dark'],
       onClick: () => this.hideDialog(),
     },
   ];
 
-  constructor(private dom: DomService)
-  {}
+  constructor(private dom: DomService) {}
 
-  public async onSubmit(e: Event)
-  {
+  public async onSubmit(e: Event) {
     e.preventDefault();
 
     this.isLoading = true;
 
     this.confirm.emit([
-      options =>
-      {
+      (options) => {
         this.isLoading = false;
 
         options ??= {};
         options.message ??= {};
-        options.message.type ??= "none";
+        options.message.type ??= 'none';
 
-        switch (options.message.type)
-        {
-          case "message": break;
-          case "modal":
-          {
+        switch (options.message.type) {
+          case 'message':
+            break;
+          case 'modal': {
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
@@ -59,28 +60,27 @@ export class FormComponent
               },
               {
                 hide: () => this.hideDialog(),
-              },
+              }
             );
-            
+
             break;
           }
-          case "none": break;
+          case 'none':
+            break;
         }
       },
-      options =>
-      {
+      (options) => {
         this.isLoading = false;
 
         options ??= {};
         options.message ??= {};
-        options.message.type ??= "modal";
-        options.message.text ??= "errors.unknown";
+        options.message.type ??= 'modal';
+        options.message.text ??= 'errors.unknown';
 
-        switch (options.message.type)
-        {
-          case "message": break;
-          case "modal":
-          {
+        switch (options.message.type) {
+          case 'message':
+            break;
+          case 'modal': {
             this.dialogRef = this.dom.appendComponentToBody(
               DialogComponent,
               {
@@ -89,21 +89,20 @@ export class FormComponent
               },
               {
                 hide: () => this.hideDialog(),
-              },
+              }
             );
-            
+
             break;
           }
-          case "none": break;
+          case 'none':
+            break;
         }
       },
     ]);
   }
 
-  public hideDialog()
-  {
-    if (!this.dialogRef)
-    {
+  public hideDialog() {
+    if (!this.dialogRef) {
       return;
     }
 

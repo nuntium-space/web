@@ -1,13 +1,24 @@
 <header>
   <a routerLink="/" class="dark logo">
-    <img src="{{ env.endpoints.static }}/images/logo/svg/full.svg" alt="nuntium">
+    <img
+      src="{{ env.endpoints.static }}/images/logo/svg/full.svg"
+      alt="nuntium"
+    />
   </a>
   <div class="end">
-    <a *ngIf="router.url === '/'" routerLink="/pages/for-publishers" class="dark for-publishers">
+    <a
+      *ngIf="router.url === '/'"
+      routerLink="/pages/for-publishers"
+      class="dark for-publishers"
+    >
       For publishers
     </a>
     <shared-popup-menu *ngIf="auth.user">
-      <a *ngIf="auth.user.type === 'admin'" class="button dark" routerLink="/admin">
+      <a
+        *ngIf="auth.user.type === 'admin'"
+        class="button dark"
+        routerLink="/admin"
+      >
         {{ "admin.__title" | translate }}
       </a>
       <a class="button dark" routerLink="/settings">
@@ -17,7 +28,11 @@
         {{ "generic.sign_out" | translate }}
       </button>
     </shared-popup-menu>
-    <a class="button dark" routerLink="/signin" *ngIf="!auth.user && !router.url.startsWith('/signin')">
+    <a
+      class="button dark"
+      routerLink="/signin"
+      *ngIf="!auth.user && !router.url.startsWith('/signin')"
+    >
       {{ "generic.sign_in" | translate }}
     </a>
   </div>

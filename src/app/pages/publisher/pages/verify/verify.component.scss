@@ -1,18 +1,15 @@
 @import "~src/variables";
 
-.record
-{
-    padding: 1rem;
-    margin: 1rem 0;
-    border: 1px solid rgba($primary-color, 0.3);
+.record {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid rgba($primary-color, 0.3);
 
-    p
-    {
-        margin: 0;
+  p {
+    margin: 0;
 
-        & ~ p
-        {
-            margin-top: 1rem;
-        }
+    & ~ p {
+      margin-top: 1rem;
     }
+  }
 }

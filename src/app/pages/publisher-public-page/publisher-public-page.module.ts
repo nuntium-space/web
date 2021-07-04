@@ -14,14 +14,7 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
     WriteNewArticleComponent,
     DraftsComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PublisherPublicPageRoutingModule
-  ],
-  providers: [
-    ApiService,
-  ],
+  imports: [CommonModule, SharedModule, PublisherPublicPageRoutingModule],
+  providers: [ApiService],
 })
-export class PublisherPublicPageModule
-{}
+export class PublisherPublicPageModule {}

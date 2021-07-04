@@ -12,11 +12,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: dependencies
+      - name: setup
         uses: actions/setup-node@master
         with:
           node-version: "14"
-      - run: npm ci
+
+      - name: dependencies
+        run: npm ci
 
       - name: build
         run: npx ng build --configuration production
@@ -24,9 +26,10 @@ jobs:
       - name: deploy
         uses: jakejarvis/s3-sync-action@master
         with:
-          args: --acl public-read --delete  # --delete means that files that do not
-                                            # exist in the source folder but exist in
-                                            # the destination folder will be deleted
+          args:
+            --acl public-read --delete # --delete means that files that do not
+            # exist in the source folder but exist in
+            # the destination folder will be deleted
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -7,15 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { SignInComponent } from './sign-in.component';
 
 @NgModule({
-  declarations: [
-    SignInComponent,
-    ButtonsComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SignInRoutingModule,
-  ],
+  declarations: [SignInComponent, ButtonsComponent],
+  imports: [CommonModule, SharedModule, SignInRoutingModule],
 })
-export class SignInModule
-{}
+export class SignInModule {}

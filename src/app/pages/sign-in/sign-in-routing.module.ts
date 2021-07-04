@@ -5,15 +5,14 @@ import { SignInComponent } from './sign-in.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: SignInComponent,
-    canActivate: [ SignedOutGuard ],
+    canActivate: [SignedOutGuard],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class SignInRoutingModule
-{}
+export class SignInRoutingModule {}

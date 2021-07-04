@@ -3,15 +3,25 @@
 <settings-menu [section]="section"></settings-menu>
 
 <main [ngSwitch]="section">
-    <settings-advanced *ngSwitchCase="'advanced'"></settings-advanced>
-    <settings-details *ngSwitchCase="'details'"></settings-details>
-    <settings-invites *ngSwitchCase="'invites'"></settings-invites>
-    <settings-organizations *ngSwitchCase="'organizations'"></settings-organizations>
-    <settings-organizations-create *ngSwitchCase="'organizations/create'"></settings-organizations-create>
-    <settings-payment-methods *ngSwitchCase="'payment-methods'"></settings-payment-methods>
-    <settings-payment-methods-add *ngSwitchCase="'payment-methods/add'"></settings-payment-methods-add>
-    <settings-preferences *ngSwitchCase="'preferences'"></settings-preferences>
-    <settings-publishers *ngSwitchCase="'publishers'"></settings-publishers>
-    <settings-security *ngSwitchCase="'security'"></settings-security>
-    <settings-subscriptions *ngSwitchCase="'subscriptions'"></settings-subscriptions>
+  <settings-advanced *ngSwitchCase="'advanced'"></settings-advanced>
+  <settings-details *ngSwitchCase="'details'"></settings-details>
+  <settings-invites *ngSwitchCase="'invites'"></settings-invites>
+  <settings-organizations
+    *ngSwitchCase="'organizations'"
+  ></settings-organizations>
+  <settings-organizations-create
+    *ngSwitchCase="'organizations/create'"
+  ></settings-organizations-create>
+  <settings-payment-methods
+    *ngSwitchCase="'payment-methods'"
+  ></settings-payment-methods>
+  <settings-payment-methods-add
+    *ngSwitchCase="'payment-methods/add'"
+  ></settings-payment-methods-add>
+  <settings-preferences *ngSwitchCase="'preferences'"></settings-preferences>
+  <settings-publishers *ngSwitchCase="'publishers'"></settings-publishers>
+  <settings-security *ngSwitchCase="'security'"></settings-security>
+  <settings-subscriptions
+    *ngSwitchCase="'subscriptions'"
+  ></settings-subscriptions>
 </main>

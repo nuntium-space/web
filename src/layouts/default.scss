@@ -1,39 +1,34 @@
-:host
-{
-    display: grid;
-    grid-template-rows: max-content auto max-content;
-    grid-template-columns: minmax(30ch, 30%) auto;
+:host {
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+  grid-template-columns: minmax(30ch, 30%) auto;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+  gap: 1em;
+  height: 100%;
+}
+
+::ng-deep aside {
+  grid-area: aside;
+  height: min-content;
+  position: sticky;
+  top: 1rem;
+}
+
+@media (max-width: 800px) {
+  :host {
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
     grid-template-areas:
-        "header header"
-        "aside main"
-        "footer footer";
-    gap: 1em;
-    height: 100%;
-}
+      "header"
+      "aside"
+      "main"
+      "footer";
+  }
 
-::ng-deep aside
-{
-    grid-area: aside;
-    height: min-content;
-    position: sticky;
-    top: 1rem;
-}
-
-@media (max-width: 800px)
-{
-    :host
-    {
-        grid-template-rows: auto;
-        grid-template-columns: 100%;
-        grid-template-areas:
-            "header"
-            "aside"
-            "main"
-            "footer";
-    }
-
-    ::ng-deep aside
-    {
-        position: unset;
-    }
+  ::ng-deep aside {
+    position: unset;
+  }
 }

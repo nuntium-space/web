@@ -5,42 +5,35 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'organization-publishers',
   templateUrl: './publishers.component.html',
-  styleUrls: ['./publishers.component.scss']
+  styleUrls: ['./publishers.component.scss'],
 })
-export class PublishersComponent implements OnChanges
-{
+export class PublishersComponent implements OnChanges {
   @Input()
   public organization?: IOrganization;
 
   public publishers?: IPublisher[];
 
-  constructor(private api: ApiService)
-  {}
+  constructor(private api: ApiService) {}
 
-  public ngOnChanges()
-  {
-    if (!this.organization)
-    {
+  public ngOnChanges() {
+    if (!this.organization) {
       return;
     }
 
     this.api
       .listPublishersForOrganization(this.organization.id)
-      .then(response =>
-      {
+      .then((response) => {
         this.publishers = response.data;
       });
   }
 
-  public async deletePublisher(publisher: IPublisher)
-  {
-    if (!this.publishers)
-    {
+  public async deletePublisher(publisher: IPublisher) {
+    if (!this.publishers) {
       return;
     }
 
     await this.api.deletePublisher(publisher.id);
 
-    this.publishers = this.publishers.filter(_ => _.id !== publisher.id);
+    this.publishers = this.publishers.filter((_) => _.id !== publisher.id);
   }
 }

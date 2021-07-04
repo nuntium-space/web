@@ -6,12 +6,10 @@ import { AuthService } from '../../services/auth/auth.service';
 @Component({
   selector: 'shared-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent
-{
+export class HeaderComponent {
   public env = environment;
 
-  constructor(public auth: AuthService, public router: Router)
-  {}
+  constructor(public auth: AuthService, public router: Router) {}
 }

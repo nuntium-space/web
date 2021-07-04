@@ -5,19 +5,18 @@ import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: AdminComponent,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
     children: [
-      { path: "drafts", data: { section: "drafts" } },
-      { path: "", redirectTo: "drafts" },
+      { path: 'drafts', data: { section: 'drafts' } },
+      { path: '', redirectTo: 'drafts' },
     ],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class AdminRoutingModule
-{}
+export class AdminRoutingModule {}

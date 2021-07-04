@@ -5,11 +5,12 @@
 export const environment = {
   production: false,
   endpoints: {
-    api: "http://localhost:4000",
-    share: "http://localhost:4001",
-    static: "http://localhost:8080",
+    api: 'http://localhost:4000',
+    share: 'http://localhost:4001',
+    static: 'http://localhost:8080',
   },
-  stripePublishableKey: "pk_test_51ITpGmCpJ0Nt9VeMc30PABAZSkk7LvQd3txkZbw6zBCCSvrsUiygXpKEOONlXbmNfE0kFTMETsEaCVHo2cPUFacx00Z2kbsCR7",
+  stripePublishableKey:
+    'pk_test_51ITpGmCpJ0Nt9VeMc30PABAZSkk7LvQd3txkZbw6zBCCSvrsUiygXpKEOONlXbmNfE0kFTMETsEaCVHo2cPUFacx00Z2kbsCR7',
 };
 
 /*

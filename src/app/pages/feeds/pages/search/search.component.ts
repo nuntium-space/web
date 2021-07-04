@@ -7,37 +7,35 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'feeds-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit
-{
-  public searchQuery: string = "";
+export class SearchComponent implements OnInit {
+  public searchQuery: string = '';
   public isLoadingSearchResults = false;
 
   public articles?: IArticle[];
 
   public publishers?: IPublisher[];
 
-  constructor(private api: ApiService, private auth: AuthService, private route: ActivatedRoute)
-  {}
+  constructor(
+    private api: ApiService,
+    private auth: AuthService,
+    private route: ActivatedRoute
+  ) {}
 
-  public ngOnInit()
-  {
-    if (!this.auth.user)
-    {
+  public ngOnInit() {
+    if (!this.auth.user) {
       return;
     }
 
     this.route.queryParams.subscribe({
-      next: async queryParams =>
-      {
-        this.searchQuery = (queryParams.query as string | undefined) ?? "";
+      next: async (queryParams) => {
+        this.searchQuery = (queryParams.query as string | undefined) ?? '';
 
         this.articles = undefined;
         this.publishers = undefined;
 
-        if (this.searchQuery.trim().length === 0)
-        {
+        if (this.searchQuery.trim().length === 0) {
           return;
         }
 
@@ -47,8 +45,7 @@ export class SearchComponent implements OnInit
 
         this.isLoadingSearchResults = false;
 
-        if (response.success)
-        {
+        if (response.success) {
           this.articles = response.data.articles;
           this.publishers = response.data.publishers;
         }

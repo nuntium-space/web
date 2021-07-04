@@ -20,14 +20,7 @@ import { ApiService } from './services/api/api.service';
     PublisherMenuComponent,
     VerifyPublisherComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PublisherRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  imports: [CommonModule, SharedModule, PublisherRoutingModule],
+  providers: [ApiService],
 })
-export class PublisherModule
-{}
+export class PublisherModule {}

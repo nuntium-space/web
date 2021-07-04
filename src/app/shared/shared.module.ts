@@ -1,4 +1,4 @@
-import { A11yModule } from "@angular/cdk/a11y";
+import { A11yModule } from '@angular/cdk/a11y';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -21,10 +21,9 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { ArticleComponent } from './components/article/article.component';
 import { AsyncButtonComponent } from './components/async-button/async-button.component';
 
-export const createTranslationLoader = (http: HttpClient) =>
-{
+export const createTranslationLoader = (http: HttpClient) => {
   return new TranslationLoader(http);
-}
+};
 
 @NgModule({
   declarations: [
@@ -52,8 +51,8 @@ export const createTranslationLoader = (http: HttpClient) =>
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslationLoader),
-        deps: [ HttpClient ],
+        useFactory: createTranslationLoader,
+        deps: [HttpClient],
       },
       isolate: false,
     }),
@@ -86,5 +85,4 @@ export const createTranslationLoader = (http: HttpClient) =>
     AsyncButtonComponent,
   ],
 })
-export class SharedModule
-{}
+export class SharedModule {}

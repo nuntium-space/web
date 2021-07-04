@@ -6,14 +6,7 @@ import { ForPublishersComponent } from './for-publishers/for-publishers.componen
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    ForPublishersComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PagesRoutingModule,
-  ],
+  declarations: [ForPublishersComponent],
+  imports: [CommonModule, SharedModule, PagesRoutingModule],
 })
-export class PagesModule
-{}
+export class PagesModule {}

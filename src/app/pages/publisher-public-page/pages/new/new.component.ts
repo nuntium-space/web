@@ -9,39 +9,37 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'write-new-article',
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.scss']
+  styleUrls: ['./new.component.scss'],
 })
-export class WriteNewArticleComponent implements OnInit
-{
+export class WriteNewArticleComponent implements OnInit {
   private author?: IAuthor;
 
   public form = new FormGroup({
     title: new FormControl(),
   });
 
-  public sources: string[] = [ "" ];
+  public sources: string[] = [''];
 
   public editorContent?: any;
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute, private auth: AuthService)
-  {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private auth: AuthService
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: params =>
-      {
-        if (!this.auth.user)
-        {
+      next: (params) => {
+        if (!this.auth.user) {
           return;
         }
 
         this.api
           .retrieveAuthorForUserAndPublisher(this.auth.user.id, params.id)
-          .then(response =>
-          {
-            if (response.success)
-            {
+          .then((response) => {
+            if (response.success) {
               this.author = response.data[0];
             }
           });
@@ -49,45 +47,39 @@ export class WriteNewArticleComponent implements OnInit
     });
   }
 
-  public onSourceInput(e: Event, i: number)
-  {
+  public onSourceInput(e: Event, i: number) {
     this.sources[i] = (e.target as HTMLInputElement).value;
   }
 
-  public trackByFn(index: number, item: string)
-  {
+  public trackByFn(index: number, item: string) {
     return index;
   }
 
-  public async onSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.author)
-    {
+  public async onSubmit([success, failure]: ConfirmEventCallback) {
+    if (!this.author) {
       failure();
 
       return;
     }
 
-    const response = await this.api
-      .createArticleDraft(this.author.id, {
-        title: this.form.get("title")?.value ?? "",
-        content: this.editorContent,
-        sources: this.sources.map(_ => ({ url: _ })),
-      });
-
-    this.form.get("title")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "title")
+    const response = await this.api.createArticleDraft(this.author.id, {
+      title: this.form.get('title')?.value ?? '',
+      content: this.editorContent,
+      sources: this.sources.map((_) => ({ url: _ })),
     });
 
-    this.form.get("content")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "content")
+    this.form.get('title')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'title'),
     });
 
-    if (!response.success)
-    {
+    this.form.get('content')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'content'),
+    });
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 
@@ -96,7 +88,7 @@ export class WriteNewArticleComponent implements OnInit
 
     success();
 
-    this.router.navigate([ ".." ], {
+    this.router.navigate(['..'], {
       relativeTo: this.route,
     });
   }

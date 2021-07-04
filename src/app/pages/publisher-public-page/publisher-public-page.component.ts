@@ -9,10 +9,9 @@ import { ApiService } from './services/api/api.service';
 @Component({
   selector: 'app-publisher-public-page',
   templateUrl: './publisher-public-page.component.html',
-  styleUrls: ['./publisher-public-page.component.scss']
+  styleUrls: ['./publisher-public-page.component.scss'],
 })
-export class PublisherPublicPageComponent implements OnInit
-{
+export class PublisherPublicPageComponent implements OnInit {
   public isSubscribed = true;
 
   public publisher?: IPublisher;
@@ -21,47 +20,40 @@ export class PublisherPublicPageComponent implements OnInit
 
   public bundles?: IBundle[];
 
-  constructor(public auth: AuthService, private api: ApiService, private route: ActivatedRoute, private title: Title)
-  {}
+  constructor(
+    public auth: AuthService,
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private title: Title
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: params =>
-      {
-        this.api
-          .retrievePublisher(params.id)
-          .then(response =>
-          {
-            this.publisher = response.data;
+      next: (params) => {
+        this.api.retrievePublisher(params.id).then((response) => {
+          this.publisher = response.data;
 
-            if (this.publisher)
-            {
-              this.title.setTitle(`${this.publisher.name}${Config.PAGE_TITLE_SUFFIX}`);
-            }
-          });
+          if (this.publisher) {
+            this.title.setTitle(
+              `${this.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
+            );
+          }
+        });
 
-        this.api
-          .listArticlesForPublisher(params.id)
-          .then(response =>
-          {
-            // Payment Required
-            if (response.status === 402)
-            {
-              this.isSubscribed = false;
+        this.api.listArticlesForPublisher(params.id).then((response) => {
+          // Payment Required
+          if (response.status === 402) {
+            this.isSubscribed = false;
 
-              return;
-            }
+            return;
+          }
 
-            this.articles = response.data;
-          });
+          this.articles = response.data;
+        });
 
-        this.api
-          .listBundlesForPublisher(params.id)
-          .then(response =>
-          {
-            this.bundles = response.data;
-          });
+        this.api.listBundlesForPublisher(params.id).then((response) => {
+          this.bundles = response.data;
+        });
       },
     });
   }

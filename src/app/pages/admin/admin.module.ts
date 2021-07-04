@@ -9,19 +9,8 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
 import { ApiService } from './services/api/api.service';
 
 @NgModule({
-  declarations: [
-    AdminComponent,
-    MenuComponent,
-    DraftsComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    AdminRoutingModule,
-  ],
-  providers: [
-    ApiService,
-  ],
+  declarations: [AdminComponent, MenuComponent, DraftsComponent],
+  imports: [CommonModule, SharedModule, AdminRoutingModule],
+  providers: [ApiService],
 })
-export class AdminModule
-{}
+export class AdminModule {}

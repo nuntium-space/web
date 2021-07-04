@@ -10,36 +10,40 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-preferences',
   templateUrl: './preferences.component.html',
-  styleUrls: ['./preferences.component.scss']
+  styleUrls: ['./preferences.component.scss'],
 })
-export class PreferencesComponent
-{
+export class PreferencesComponent {
   public languageForm = new FormGroup({
     language: new FormControl(this.userSettings.userSettings?.language),
   });
 
   public languages = Config.LANGUAGES;
 
-  constructor(public userSettings: UserSettingsService, private api: ApiService, private auth: AuthService, private translate: TranslateService)
-  {}
+  constructor(
+    public userSettings: UserSettingsService,
+    private api: ApiService,
+    private auth: AuthService,
+    private translate: TranslateService
+  ) {}
 
-  public async onLanguageChangeSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.auth.user)
-    {
+  public async onLanguageChangeSubmit([
+    success,
+    failure,
+  ]: ConfirmEventCallback) {
+    if (!this.auth.user) {
       return;
     }
 
-    const language = this.languageForm.get("language")?.value ?? "";
+    const language = this.languageForm.get('language')?.value ?? '';
 
-    const response = await this.api
-      .updateUserSettings(this.auth.user.id, { language });
+    const response = await this.api.updateUserSettings(this.auth.user.id, {
+      language,
+    });
 
-    if (!response.success)
-    {
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 

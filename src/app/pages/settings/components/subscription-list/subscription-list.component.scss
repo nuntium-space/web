@@ -1,14 +1,12 @@
 @import "~src/variables";
 
-.price
-{
-    margin-top: 0.5rem;
-    font-size: xx-large;
-    font-weight: $bold;
+.price {
+  margin-top: 0.5rem;
+  font-size: xx-large;
+  font-weight: $bold;
 
-    .billing-period
-    {
-        font-size: large;
-        font-weight: $light;
-    }
+  .billing-period {
+    font-size: large;
+    font-weight: $light;
+  }
 }

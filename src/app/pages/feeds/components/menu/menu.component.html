@@ -1,28 +1,28 @@
 <aside>
-    <shared-search-input [fill]="true"></shared-search-input>
-    <section>
-        <div class="title"></div>
-        <div class="content">
-            <a routerLink="home" [class.selected]="section === 'home'">
-                <span class="mat-icon">home</span>
-                {{ "feed.home.__title" | translate }}
-            </a>
-            <a routerLink="explore" [class.selected]="section === 'explore'">
-                <span class="mat-icon">explore</span>
-                {{ "feed.explore" | translate }}
-            </a>
-            <a routerLink="history" [class.selected]="section === 'history'">
-                <span class="mat-icon">history</span>
-                {{ "feed.history.__title" | translate }}
-            </a>
-            <a routerLink="bookmarks" [class.selected]="section === 'bookmarks'">
-                <span class="mat-icon">bookmarks</span>
-                {{ "feed.bookmarks.__title" | translate }}
-            </a>
-            <a routerLink="likes" [class.selected]="section === 'likes'">
-                <span class="mat-icon">thumb_up</span>
-                {{ "feed.likes.__title" | translate }}
-            </a>
-        </div>
-    </section>
+  <shared-search-input [fill]="true"></shared-search-input>
+  <section>
+    <div class="title"></div>
+    <div class="content">
+      <a routerLink="home" [class.selected]="section === 'home'">
+        <span class="mat-icon">home</span>
+        {{ "feed.home.__title" | translate }}
+      </a>
+      <a routerLink="explore" [class.selected]="section === 'explore'">
+        <span class="mat-icon">explore</span>
+        {{ "feed.explore" | translate }}
+      </a>
+      <a routerLink="history" [class.selected]="section === 'history'">
+        <span class="mat-icon">history</span>
+        {{ "feed.history.__title" | translate }}
+      </a>
+      <a routerLink="bookmarks" [class.selected]="section === 'bookmarks'">
+        <span class="mat-icon">bookmarks</span>
+        {{ "feed.bookmarks.__title" | translate }}
+      </a>
+      <a routerLink="likes" [class.selected]="section === 'likes'">
+        <span class="mat-icon">thumb_up</span>
+        {{ "feed.likes.__title" | translate }}
+      </a>
+    </div>
+  </section>
 </aside>

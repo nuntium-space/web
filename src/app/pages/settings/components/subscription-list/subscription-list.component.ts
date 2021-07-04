@@ -5,13 +5,11 @@ import { FormatService } from 'src/app/shared/services/format/format.service';
 @Component({
   selector: 'settings-subscription-list',
   templateUrl: './subscription-list.component.html',
-  styleUrls: ['./subscription-list.component.scss']
+  styleUrls: ['./subscription-list.component.scss'],
 })
-export class SubscriptionListComponent
-{
+export class SubscriptionListComponent {
   @Input()
   public subscriptions?: ISubscription[];
 
-  constructor(public format: FormatService)
-  {}
+  constructor(public format: FormatService) {}
 }

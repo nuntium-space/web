@@ -7,19 +7,18 @@ import { PublisherPublicPageComponent } from './publisher-public-page.component'
 
 const routes: Routes = [
   {
-    path: "",
-    canActivate: [ SignedInGuard ],
+    path: '',
+    canActivate: [SignedInGuard],
     children: [
-      { path: "drafts", component: DraftsComponent },
-      { path: "new", component: WriteNewArticleComponent },
-      { path: "", component: PublisherPublicPageComponent },
+      { path: 'drafts', component: DraftsComponent },
+      { path: 'new', component: WriteNewArticleComponent },
+      { path: '', component: PublisherPublicPageComponent },
     ],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PublisherPublicPageRoutingModule
-{}
+export class PublisherPublicPageRoutingModule {}

@@ -3,12 +3,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'shared-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+  styleUrls: ['./dialog.component.scss'],
 })
-export class DialogComponent
-{
+export class DialogComponent {
   @Input()
-  public message: string = "";
+  public message: string = '';
 
   @Input()
   public buttons: IDialogButton[] = [];
@@ -16,20 +15,17 @@ export class DialogComponent
   @Output()
   public hide = new EventEmitter<void>();
 
-  public onDialogContainerClick(e: Event)
-  {
+  public onDialogContainerClick(e: Event) {
     const target = e.target as HTMLElement;
 
-    if (target.className === "dialog-container")
-    {
+    if (target.className === 'dialog-container') {
       this.hide.emit();
     }
   }
 }
 
-export interface IDialogButton
-{
-  text: string,
-  classes: string[],
-  onClick: () => void,
+export interface IDialogButton {
+  text: string;
+  classes: string[];
+  onClick: () => void;
 }

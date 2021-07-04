@@ -1,29 +1,20 @@
 <aside>
-    <header>
-        <small>{{ "bundle.__title" | translate }}</small>
-        <h1 *ngIf="bundle">{{ bundle.name }}</h1>
-    </header>
-    <section *ngIf="section !== 'subscribe'">
-        <div class="title"></div>
-        <div class="content">
-            <a
-                routerLink="details"
-                [class.selected]="section === 'details'"
-            >
-                {{ "bundle.details.__title" | translate }}
-            </a>
-            <a
-                routerLink="prices"
-                [class.selected]="section === 'prices'"
-            >
-                {{ "bundle.prices.__title" | translate }}
-            </a>
-            <a
-                routerLink="publishers"
-                [class.selected]="section === 'publishers'"
-            >
-                {{ "bundle.publishers.__title" | translate }}
-            </a>
-        </div>
-    </section>
+  <header>
+    <small>{{ "bundle.__title" | translate }}</small>
+    <h1 *ngIf="bundle">{{ bundle.name }}</h1>
+  </header>
+  <section *ngIf="section !== 'subscribe'">
+    <div class="title"></div>
+    <div class="content">
+      <a routerLink="details" [class.selected]="section === 'details'">
+        {{ "bundle.details.__title" | translate }}
+      </a>
+      <a routerLink="prices" [class.selected]="section === 'prices'">
+        {{ "bundle.prices.__title" | translate }}
+      </a>
+      <a routerLink="publishers" [class.selected]="section === 'publishers'">
+        {{ "bundle.publishers.__title" | translate }}
+      </a>
+    </div>
+  </section>
 </aside>

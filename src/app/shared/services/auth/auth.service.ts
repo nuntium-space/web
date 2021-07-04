@@ -3,33 +3,28 @@ import { Router } from '@angular/router';
 import { IUser, ApiService } from 'src/app/services/api/api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService
-{
+export class AuthService {
   public user?: IUser;
 
-  constructor(private api: ApiService, private router: Router)
-  {}
+  constructor(private api: ApiService, private router: Router) {}
 
-  public async init(): Promise<IUser | null>
-  {
+  public async init(): Promise<IUser | null> {
     const response = await this.api.retrieveCurrentSession();
 
-    if (response.success)
-    {
+    if (response.success) {
       this.user = response.data.user;
     }
 
     return this.user ?? null;
   }
 
-  public async signOut(): Promise<void>
-  {
+  public async signOut(): Promise<void> {
     await this.api.deleteCurrentSession();
 
     this.user = undefined;
 
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl('/');
   }
 }

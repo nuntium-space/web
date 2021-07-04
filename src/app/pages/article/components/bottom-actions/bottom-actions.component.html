@@ -1,29 +1,25 @@
 <button title="Share" class="with-icon--square" (click)="share()">
-    <span class="mat-icon">share</span>
+  <span class="mat-icon">share</span>
 </button>
 
 <button
-    title="Like"
-    class="with-icon--square"
-
-    [class.active]="article?.__metadata?.is_liked"
-    [class.loading]="isLoadingLike"
-    [disabled]="isLoadingLike"
-
-    (click)="like()"
+  title="Like"
+  class="with-icon--square"
+  [class.active]="article?.__metadata?.is_liked"
+  [class.loading]="isLoadingLike"
+  [disabled]="isLoadingLike"
+  (click)="like()"
 >
-    <span class="mat-icon">thumb_up</span>
+  <span class="mat-icon">thumb_up</span>
 </button>
 
 <button
-    title="Bookmark"
-    class="with-icon--square"
-
-    [class.active]="article?.__metadata?.is_bookmarked"
-    [class.loading]="isLoadingBookmark"
-    [disabled]="isLoadingBookmark"
-
-    (click)="bookmark()"
+  title="Bookmark"
+  class="with-icon--square"
+  [class.active]="article?.__metadata?.is_bookmarked"
+  [class.loading]="isLoadingBookmark"
+  [disabled]="isLoadingBookmark"
+  (click)="bookmark()"
 >
-    <span class="mat-icon">bookmark</span>
+  <span class="mat-icon">bookmark</span>
 </button>

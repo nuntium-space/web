@@ -1,38 +1,31 @@
-.account
-{
-    .info
-    {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        height: 5rem;
+.account {
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 5rem;
 
-        img
-        {
-            width: 2rem;
-        }
-
-        p
-        {
-            font-size: 1.5rem;
-        }
+    img {
+      width: 2rem;
     }
 
-    .google
-    {
-        color: black;
-        background-color: white;
+    p {
+      font-size: 1.5rem;
     }
+  }
 
-    .facebook
-    {
-        color: white;
-        background-color: #0076fb;
-    }
+  .google {
+    color: black;
+    background-color: white;
+  }
 
-    .twitter
-    {
-        color: white;
-        background-color: #1da1f2;
-    }
+  .facebook {
+    color: white;
+    background-color: #0076fb;
+  }
+
+  .twitter {
+    color: white;
+    background-color: #1da1f2;
+  }
 }

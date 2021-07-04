@@ -1,18 +1,18 @@
 <shared-spinner *ngIf="!entries"></shared-spinner>
 
 <div *ngIf="entries?.length === 0" class="empty round">
-    {{ "feed.history.empty" | translate }}
+  {{ "feed.history.empty" | translate }}
 </div>
 
 <shared-danger-button
-    *ngIf="entries && entries.length > 0"
-
-    icon="delete_forever"
-
-    [message]="'generic.delete' | translate"
-
-    (confirm)="deleteHistory()"
+  *ngIf="entries && entries.length > 0"
+  icon="delete_forever"
+  [message]="'generic.delete' | translate"
+  (confirm)="deleteHistory()"
 >
-    Delete
+  Delete
 </shared-danger-button>
-<shared-article *ngFor="let entry of entries" [article]="entry.article"></shared-article>
+<shared-article
+  *ngFor="let entry of entries"
+  [article]="entry.article"
+></shared-article>

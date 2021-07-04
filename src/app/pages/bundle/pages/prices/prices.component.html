@@ -1,43 +1,46 @@
 <section>
-    <div class="title">
-        <h1>{{ "bundle.prices.__title" | translate }}</h1>
-        <a routerLink="prices/add" class="button">
-            {{ "generic.add" | translate }}
-        </a>
+  <div class="title">
+    <h1>{{ "bundle.prices.__title" | translate }}</h1>
+    <a routerLink="prices/add" class="button">
+      {{ "generic.add" | translate }}
+    </a>
+  </div>
+  <div class="content">
+    <div *ngIf="!prices">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!prices">
-            <shared-spinner></shared-spinner>
+    <div *ngIf="prices" class="list">
+      <div *ngIf="prices.length === 0">
+        <p>{{ "bundle.prices.empty" | translate }}</p>
+      </div>
+      <div *ngFor="let price of prices" class="list-item-with-actions">
+        <div class="round">
+          <shared-badge *ngIf="!price.active">
+            {{ "bundle.prices.archived" | translate }}
+          </shared-badge>
+          <p class="price">
+            {{ format.currency(price.amount, price.currency) }}
+          </p>
+          <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
         </div>
-        <div *ngIf="prices" class="list">
-            <div *ngIf="prices.length === 0">
-                <p>{{ "bundle.prices.empty" | translate }}</p>
-            </div>
-            <div *ngFor="let price of prices" class="list-item-with-actions">
-                <div class="round">
-                    <shared-badge *ngIf="!price.active">
-                        {{ "bundle.prices.archived" | translate }}
-                    </shared-badge>
-                    <p class="price">{{ format.currency(price.amount, price.currency) }}</p>
-                    <span>/ {{ "bundle.prices.billing_period.month" | translate }}</span>
-                </div>
-                <shared-popup-menu theme="light">
-                    <shared-danger-button
-                        *ngIf="price.active"
-
-                        theme="dark"
-
-                        [message]="'generic.archive' | translate"
-
-                        (confirm)="archiveOrRestorePrice(price)"
-                    >
-                        {{ "generic.archive" | translate }}
-                    </shared-danger-button>
-                    <button *ngIf="!price.active" class="dark" (click)="archiveOrRestorePrice(price)">
-                        {{ 'generic.restore' | translate }}
-                    </button>
-                </shared-popup-menu>
-            </div>
-        </div>
+        <shared-popup-menu theme="light">
+          <shared-danger-button
+            *ngIf="price.active"
+            theme="dark"
+            [message]="'generic.archive' | translate"
+            (confirm)="archiveOrRestorePrice(price)"
+          >
+            {{ "generic.archive" | translate }}
+          </shared-danger-button>
+          <button
+            *ngIf="!price.active"
+            class="dark"
+            (click)="archiveOrRestorePrice(price)"
+          >
+            {{ "generic.restore" | translate }}
+          </button>
+        </shared-popup-menu>
+      </div>
     </div>
+  </div>
 </section>

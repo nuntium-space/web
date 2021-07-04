@@ -1,14 +1,11 @@
 @import "~src/layouts/default";
 
-::ng-deep .list-item-with-actions
-{
-    input
-    {
-        width: 100%;
-    }
+::ng-deep .list-item-with-actions {
+  input {
+    width: 100%;
+  }
 }
 
-#add-source
-{
-    padding: 0.5em 1em;
+#add-source {
+  padding: 0.5em 1em;
 }

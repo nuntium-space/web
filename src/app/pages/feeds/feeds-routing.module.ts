@@ -5,24 +5,23 @@ import { FeedsComponent } from './feeds.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: FeedsComponent,
-    canActivate: [ SignedInGuard ],
+    canActivate: [SignedInGuard],
     children: [
-      { path: "bookmarks", data: { section: "bookmarks" } },
-      { path: "explore", data: { section: "explore" } },
-      { path: "history", data: { section: "history" } },
-      { path: "home", data: { section: "home" } },
-      { path: "likes", data: { section: "likes" } },
-      { path: "search", data: { section: "search" }, },
-      { path: "", redirectTo: "home" },
+      { path: 'bookmarks', data: { section: 'bookmarks' } },
+      { path: 'explore', data: { section: 'explore' } },
+      { path: 'history', data: { section: 'history' } },
+      { path: 'home', data: { section: 'home' } },
+      { path: 'likes', data: { section: 'likes' } },
+      { path: 'search', data: { section: 'search' } },
+      { path: '', redirectTo: 'home' },
     ],
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class FeedsRoutingModule
-{}
+export class FeedsRoutingModule {}

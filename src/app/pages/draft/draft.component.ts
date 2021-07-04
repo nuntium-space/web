@@ -6,15 +6,18 @@ import { ConfirmEventCallback } from 'src/app/shared/components/async-button/asy
 import { Config } from 'src/config/Config';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
-import { ApiService, IArticleDraft, IArticleDraftSource } from './services/api/api.service';
+import {
+  ApiService,
+  IArticleDraft,
+  IArticleDraftSource,
+} from './services/api/api.service';
 
 @Component({
   selector: 'app-draft',
   templateUrl: './draft.component.html',
-  styleUrls: ['./draft.component.scss']
+  styleUrls: ['./draft.component.scss'],
 })
-export class DraftComponent implements OnInit
-{
+export class DraftComponent implements OnInit {
   public updateForm = new FormGroup({
     title: new FormControl(),
   });
@@ -25,85 +28,76 @@ export class DraftComponent implements OnInit
 
   public isUpdating = false;
 
-  constructor(public auth: AuthService, public format: FormatService, public route: ActivatedRoute, private api: ApiService, private router: Router, private title: Title)
-  {}
+  constructor(
+    public auth: AuthService,
+    public format: FormatService,
+    public route: ActivatedRoute,
+    private api: ApiService,
+    private router: Router,
+    private title: Title
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: (params) =>
-      {
-        this.api
-          .retrieveDraft(params.id)
-          .then(response =>
-          {
-            if (response.data)
-            {
-              this.draft = response.data;
+      next: (params) => {
+        this.api.retrieveDraft(params.id).then((response) => {
+          if (response.data) {
+            this.draft = response.data;
 
-              this.updateForm.get("title")?.setValue(this.draft.title);
+            this.updateForm.get('title')?.setValue(this.draft.title);
 
-              this.title.setTitle(`${this.draft.title} - ${this.draft.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`);
-            }
-          });
+            this.title.setTitle(
+              `${this.draft.title} - ${this.draft.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
+            );
+          }
+        });
 
-        this.api
-          .retrieveDraftSources(params.id)
-          .then(response =>
-          {
-            if (response.data)
-            {
-              this.sources = response.data;
-            }
-          });
+        this.api.retrieveDraftSources(params.id).then((response) => {
+          if (response.data) {
+            this.sources = response.data;
+          }
+        });
       },
     });
   }
 
-  public onSourceInput(e: Event, i: number)
-  {
-    if (!this.sources)
-    {
+  public onSourceInput(e: Event, i: number) {
+    if (!this.sources) {
       return;
     }
 
     this.sources[i] = { url: (e.target as HTMLInputElement).value };
   }
 
-  public trackByFn(index: number)
-  {
+  public trackByFn(index: number) {
     return index;
   }
 
-  public async update([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.draft)
-    {
+  public async update([success, failure]: ConfirmEventCallback) {
+    if (!this.draft) {
       failure();
 
       return;
     }
 
-    const response = await this.api
-      .updateDraft(this.draft, {
-        title: this.updateForm.get("title")?.value,
-        content: this.draft.content,
-        sources: this.sources,
-      });
-
-    this.updateForm.get("title")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "title")
+    const response = await this.api.updateDraft(this.draft, {
+      title: this.updateForm.get('title')?.value,
+      content: this.draft.content,
+      sources: this.sources,
     });
 
-    this.updateForm.get("content")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "content")
+    this.updateForm.get('title')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'title'),
     });
 
-    if (!response.success)
-    {
+    this.updateForm.get('content')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'content'),
+    });
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 
@@ -117,64 +111,52 @@ export class DraftComponent implements OnInit
     this.draft = response.data;
   }
 
-  public async submitForVerification()
-  {
-    if (!this.draft)
-    {
+  public async submitForVerification() {
+    if (!this.draft) {
       return;
     }
 
     const response = await this.api.submitForVerification(this.draft);
 
-    if (response.success)
-    {
+    if (response.success) {
       this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
     }
   }
 
-  public async publish()
-  {
-    if (!this.draft)
-    {
+  public async publish() {
+    if (!this.draft) {
       return;
     }
 
     const response = await this.api.publish(this.draft);
 
-    if (response.success)
-    {
+    if (response.success) {
       this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
     }
   }
 
-  public async reject()
-  {
-    if (!this.draft)
-    {
+  public async reject() {
+    if (!this.draft) {
       return;
     }
 
     const response = await this.api.reject(this.draft, {
-      reason: "TODO",
+      reason: 'TODO',
     });
 
-    if (response.success)
-    {
-      this.router.navigateByUrl("/admin/drafts");
+    if (response.success) {
+      this.router.navigateByUrl('/admin/drafts');
     }
   }
 
-  public async delete()
-  {
-    if (!this.draft)
-    {
+  public async delete() {
+    if (!this.draft) {
       return;
     }
 
     const response = await this.api.deleteDraft(this.draft);
 
-    if (response.success)
-    {
+    if (response.success) {
       this.router.navigateByUrl(`/p/${this.draft.author.publisher.id}`);
     }
   }

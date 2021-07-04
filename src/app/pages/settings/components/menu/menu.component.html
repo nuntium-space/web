@@ -1,75 +1,75 @@
 <aside>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.account.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <a
-                routerLink="/settings/details"
-                [class.selected]="section === 'details'"
-            >
-                {{ "settings.account.details.__title" | translate }}
-            </a>
-            <a
-                routerLink="/settings/security"
-                [class.selected]="section === 'security'"
-            >
-                {{ "settings.account.security.__title" | translate }}
-            </a>
-            <a
-                routerLink="/settings/preferences"
-                [class.selected]="section === 'preferences'"
-            >
-                {{ "settings.account.preferences.__title" | translate }}
-            </a>
-            <a
-                routerLink="/settings/advanced"
-                [class.selected]="section === 'advanced'"
-            >
-                {{ "settings.account.advanced.__title" | translate }}
-            </a>
-            <a
-                routerLink="/settings/organizations"
-                [class.selected]="section === 'organizations'"
-            >
-                {{ "settings.account.organizations.__title" | translate }}
-            </a>
-        </div>
-    </section>
-    <section>
-        <div class="title"></div>
-        <div class="content">
-            <a
-                routerLink="/settings/subscriptions"
-                [class.selected]="section === 'subscriptions'"
-            >
-                {{ "settings.account.subscriptions.__title" | translate }}
-            </a>
-            <a
-                routerLink="/settings/payment-methods"
-                [class.selected]="section === 'payment-methods'"
-            >
-                {{ "settings.account.payment_methods.__title" | translate }}
-            </a>
-        </div>
-    </section>
-    <section>
-        <div class="title">
-            <h1>{{ "settings.author.__title" | translate }}</h1>
-        </div>
-        <div class="content">
-            <a
-                routerLink="/settings/publishers"
-                [class.selected]="section === 'publishers'"
-            >
-                {{ "settings.author.publishers.__title" | translate }}
-            </a>
-            <a
-                routerLink="/settings/invites"
-                [class.selected]="section === 'invites'"
-            >
-                {{ "settings.author.invites.__title" | translate }}
-            </a>
-        </div>
-    </section>
+  <section>
+    <div class="title">
+      <h1>{{ "settings.account.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <a
+        routerLink="/settings/details"
+        [class.selected]="section === 'details'"
+      >
+        {{ "settings.account.details.__title" | translate }}
+      </a>
+      <a
+        routerLink="/settings/security"
+        [class.selected]="section === 'security'"
+      >
+        {{ "settings.account.security.__title" | translate }}
+      </a>
+      <a
+        routerLink="/settings/preferences"
+        [class.selected]="section === 'preferences'"
+      >
+        {{ "settings.account.preferences.__title" | translate }}
+      </a>
+      <a
+        routerLink="/settings/advanced"
+        [class.selected]="section === 'advanced'"
+      >
+        {{ "settings.account.advanced.__title" | translate }}
+      </a>
+      <a
+        routerLink="/settings/organizations"
+        [class.selected]="section === 'organizations'"
+      >
+        {{ "settings.account.organizations.__title" | translate }}
+      </a>
+    </div>
+  </section>
+  <section>
+    <div class="title"></div>
+    <div class="content">
+      <a
+        routerLink="/settings/subscriptions"
+        [class.selected]="section === 'subscriptions'"
+      >
+        {{ "settings.account.subscriptions.__title" | translate }}
+      </a>
+      <a
+        routerLink="/settings/payment-methods"
+        [class.selected]="section === 'payment-methods'"
+      >
+        {{ "settings.account.payment_methods.__title" | translate }}
+      </a>
+    </div>
+  </section>
+  <section>
+    <div class="title">
+      <h1>{{ "settings.author.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <a
+        routerLink="/settings/publishers"
+        [class.selected]="section === 'publishers'"
+      >
+        {{ "settings.author.publishers.__title" | translate }}
+      </a>
+      <a
+        routerLink="/settings/invites"
+        [class.selected]="section === 'invites'"
+      >
+        {{ "settings.author.invites.__title" | translate }}
+      </a>
+    </div>
+  </section>
 </aside>

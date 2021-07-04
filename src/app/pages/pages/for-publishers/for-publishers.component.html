@@ -1,70 +1,111 @@
 <shared-header></shared-header>
 
 <aside>
-    <header>
-        <h1>Table of Contents</h1>
-    </header>
-    <ul>
+  <header>
+    <h1>Table of Contents</h1>
+  </header>
+  <ul>
+    <li>
+      <a routerLink="." fragment="getting-started">Getting started</a>
+      <ol>
         <li>
-            <a routerLink="." fragment="getting-started">Getting started</a>
-            <ol>
-                <li><a routerLink="." fragment="create-an-account">Create an account</a></li>
-                <li><a routerLink="." fragment="create-an-organization">Create an organization</a></li>
-                <li><a routerLink="." fragment="create-a-publisher">Create a publisher</a></li>
-                <li><a routerLink="." fragment="verify-publisher">Verify the publisher's domain</a></li>
-            </ol>
+          <a routerLink="." fragment="create-an-account">Create an account</a>
         </li>
         <li>
-            <a routerLink="." fragment="add-author">Add an author</a>
-            <ol>
-                <li><a routerLink="." fragment="create-invite">Create an invite</a></li>
-                <li><a routerLink="." fragment="wait-for-user">Wait for the user to accept the invite</a></li>
-            </ol>
+          <a routerLink="." fragment="create-an-organization"
+            >Create an organization</a
+          >
         </li>
         <li>
-            <a routerLink="." fragment="publish-article">Publish an article</a>
-            <ol>
-                <li><a routerLink="." fragment="create-first-draft">Create the first draft</a></li>
-            </ol>
+          <a routerLink="." fragment="create-a-publisher">Create a publisher</a>
         </li>
-    </ul>
+        <li>
+          <a routerLink="." fragment="verify-publisher"
+            >Verify the publisher's domain</a
+          >
+        </li>
+      </ol>
+    </li>
+    <li>
+      <a routerLink="." fragment="add-author">Add an author</a>
+      <ol>
+        <li><a routerLink="." fragment="create-invite">Create an invite</a></li>
+        <li>
+          <a routerLink="." fragment="wait-for-user"
+            >Wait for the user to accept the invite</a
+          >
+        </li>
+      </ol>
+    </li>
+    <li>
+      <a routerLink="." fragment="publish-article">Publish an article</a>
+      <ol>
+        <li>
+          <a routerLink="." fragment="create-first-draft"
+            >Create the first draft</a
+          >
+        </li>
+      </ol>
+    </li>
+  </ul>
 </aside>
 
 <main>
-    <h1>For publishers</h1>
+  <h1>For publishers</h1>
 
-    <h2 id="getting-started">Getting started</h2>
+  <h2 id="getting-started">Getting started</h2>
 
-    <h3 id="create-an-account">Create an account</h3>
-    <p>To get started in nuntium you first need to create an account which will manage the organizations, publishers, bundles and everything else.</p>
+  <h3 id="create-an-account">Create an account</h3>
+  <p>
+    To get started in nuntium you first need to create an account which will
+    manage the organizations, publishers, bundles and everything else.
+  </p>
 
-    <h3 id="create-an-organization">Create an organization</h3>
-    <p>An organization acts as a container for the publishers belonging to it.</p>
-    <p>You can create a new one in <b>Settings / Organizations</b>.</p>
+  <h3 id="create-an-organization">Create an organization</h3>
+  <p>An organization acts as a container for the publishers belonging to it.</p>
+  <p>You can create a new one in <b>Settings / Organizations</b>.</p>
 
-    <h3 id="create-a-publisher">Create a publisher</h3>
-    <p>One organization can have multiple publishers.</p>
-    <p>To create a new publisher go to <b>Settings / Organizations / <i>organization</i> / Publishers</b>.</p>
+  <h3 id="create-a-publisher">Create a publisher</h3>
+  <p>One organization can have multiple publishers.</p>
+  <p>
+    To create a new publisher go to
+    <b>Settings / Organizations / <i>organization</i> / Publishers</b>.
+  </p>
 
-    <h3 id="verify-publisher">Verify the publisher's domain</h3>
-    <p>Once a new publisher is created the first thing you should do is verifying you own the domain you specified when creating it.</p>
-    <p>This step is required in order to create articles.</p>
+  <h3 id="verify-publisher">Verify the publisher's domain</h3>
+  <p>
+    Once a new publisher is created the first thing you should do is verifying
+    you own the domain you specified when creating it.
+  </p>
+  <p>This step is required in order to create articles.</p>
 
-    <h2 id="add-author">Add an author</h2>
+  <h2 id="add-author">Add an author</h2>
 
-    <h3 id="create-invite">Create an invite</h3>
-    <p>To add authors to a publisher you must first invite them.</p>
-    <p>To invite a user to join as an author go to <b>Settings / Organizations / <i>organization</i> / Publishers / <i>publisher</i> / Authors / Invite</b>.</p>
+  <h3 id="create-invite">Create an invite</h3>
+  <p>To add authors to a publisher you must first invite them.</p>
+  <p>
+    To invite a user to join as an author go to
+    <b
+      >Settings / Organizations / <i>organization</i> / Publishers /
+      <i>publisher</i> / Authors / Invite</b
+    >.
+  </p>
 
-    <h3 id="wait-for-user">Wait for the user to accept the invite</h3>
-    <p>Once invited a user will receive an email asking him to accept the invite. He will become an author only if and when he accepts it.</p>
-    <p>Note that an invite expires after 7 days.</p>
+  <h3 id="wait-for-user">Wait for the user to accept the invite</h3>
+  <p>
+    Once invited a user will receive an email asking him to accept the invite.
+    He will become an author only if and when he accepts it.
+  </p>
+  <p>Note that an invite expires after 7 days.</p>
 
-    <h2 id="publish-article">Publish an article</h2>
+  <h2 id="publish-article">Publish an article</h2>
 
-    <h3 id="create-first-draft">Create the first draft</h3>
-    <p>To create an article an author must first create the first draft.</p>
-    <p>A draft can be edited as many times as needed before submitting it for verification.</p>
+  <h3 id="create-first-draft">Create the first draft</h3>
+  <p>To create an article an author must first create the first draft.</p>
+  <p>
+    A draft can be edited as many times as needed before submitting it for
+    verification.
+  </p>
 </main>
 
 <shared-footer></shared-footer>

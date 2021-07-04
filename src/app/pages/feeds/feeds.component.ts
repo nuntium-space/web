@@ -8,26 +8,22 @@ import { Config } from 'src/config/Config';
 @Component({
   selector: 'app-feeds',
   templateUrl: './feeds.component.html',
-  styleUrls: ['./feeds.component.scss']
+  styleUrls: ['./feeds.component.scss'],
 })
-export class FeedsComponent
-{
+export class FeedsComponent {
   public section?: string;
 
-  constructor(route: ActivatedRoute, router: Router, title: Title)
-  {
+  constructor(route: ActivatedRoute, router: Router, title: Title) {
     title.setTitle(Config.DEFAULT_PAGE_TITLE);
 
     router.events
       .pipe(
-        filter(_ => _ instanceof NavigationEnd),
-        switchMap(() =>
-        {
+        filter((_) => _ instanceof NavigationEnd),
+        switchMap(() => {
           return route.firstChild?.data ?? of({});
-        }),
+        })
       )
-      .subscribe(({ section }) =>
-      {
+      .subscribe(({ section }) => {
         this.section = section;
       });
   }

@@ -8,9 +8,8 @@ describe('DangerButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DangerButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [DangerButtonComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

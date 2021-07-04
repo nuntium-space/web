@@ -1,72 +1,70 @@
 <section>
-    <div class="title">
-        <h1>{{ "publisher.authors.__title" | translate }}</h1>
-        <a routerLink="authors/invite" class="button">
-            {{ "publisher.authors.invite" | translate }}
-        </a>
+  <div class="title">
+    <h1>{{ "publisher.authors.__title" | translate }}</h1>
+    <a routerLink="authors/invite" class="button">
+      {{ "publisher.authors.invite" | translate }}
+    </a>
+  </div>
+  <div class="content">
+    <div *ngIf="!authors">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!authors">
-            <shared-spinner></shared-spinner>
+    <div *ngIf="authors" class="list">
+      <div *ngIf="authors.length === 0">
+        <p>{{ "publisher.authors.empty" | translate }}</p>
+      </div>
+      <div *ngFor="let author of authors" class="list-item-with-actions">
+        <div class="round">
+          <h3>
+            {{ author.user.full_name }}
+          </h3>
+          <a href="mailto:{{ author.user.email }}">
+            {{ author.user.email }}
+          </a>
         </div>
-        <div *ngIf="authors" class="list">
-            <div *ngIf="authors.length === 0">
-                <p>{{ "publisher.authors.empty" | translate }}</p>
-            </div>
-            <div *ngFor="let author of authors" class="list-item-with-actions">
-                <div class="round">
-                    <h3>
-                        {{ author.user.full_name }}
-                    </h3>
-                    <a href="mailto:{{ author.user.email }}">
-                        {{ author.user.email }}
-                    </a>
-                </div>
-                <div class="actions">
-                    <shared-danger-button
-                        [message]="'generic.remove' | translate"
-
-                        (confirm)="removeAuthor(author)"
-                    >
-                        {{ "generic.remove" | translate }}
-                    </shared-danger-button>
-                </div>
-            </div>
+        <div class="actions">
+          <shared-danger-button
+            [message]="'generic.remove' | translate"
+            (confirm)="removeAuthor(author)"
+          >
+            {{ "generic.remove" | translate }}
+          </shared-danger-button>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section>
-    <div class="title">
-        <h1>{{ "publisher.invites.__title" | translate }}</h1>
+  <div class="title">
+    <h1>{{ "publisher.invites.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <div *ngIf="!invites">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!invites">
-            <shared-spinner></shared-spinner>
+    <div *ngIf="invites" class="list">
+      <div *ngIf="invites.length === 0">
+        <p>{{ "publisher.invites.empty" | translate }}</p>
+      </div>
+      <div *ngFor="let invite of invites" class="list-item-with-actions">
+        <div class="round">
+          <h3 *ngIf="invite.user.full_name">
+            {{ invite.user.full_name }}
+          </h3>
+          <a href="mailto:{{ invite.user.email }}">
+            {{ invite.user.email }}
+          </a>
         </div>
-        <div *ngIf="invites" class="list">
-            <div *ngIf="invites.length === 0">
-                <p>{{ "publisher.invites.empty" | translate }}</p>
-            </div>
-            <div *ngFor="let invite of invites" class="list-item-with-actions">
-                <div class="round">
-                    <h3 *ngIf="invite.user.full_name">
-                        {{ invite.user.full_name }}
-                    </h3>
-                    <a href="mailto:{{ invite.user.email }}">
-                        {{ invite.user.email }}
-                    </a>
-                </div>
-                <div class="actions">
-                    <shared-danger-button
-                        [message]="'generic.delete' | translate"
-
-                        (confirm)="deleteInvite(invite)"
-                    >
-                        {{ "generic.delete" | translate }}
-                    </shared-danger-button>
-                </div>
-            </div>
+        <div class="actions">
+          <shared-danger-button
+            [message]="'generic.delete' | translate"
+            (confirm)="deleteInvite(invite)"
+          >
+            {{ "generic.delete" | translate }}
+          </shared-danger-button>
         </div>
+      </div>
     </div>
+  </div>
 </section>

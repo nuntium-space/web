@@ -6,20 +6,17 @@ import { FormatService } from '../../services/format/format.service';
 @Component({
   selector: 'shared-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  styleUrls: ['./article.component.scss'],
 })
-export class ArticleComponent
-{
+export class ArticleComponent {
   @Input()
   public article?: IArticle;
 
   @Input()
   public draft?: IArticleDraft;
 
-  constructor(public format: FormatService)
-  {
-    if (this.article && this.draft)
-    {
+  constructor(public format: FormatService) {
+    if (this.article && this.draft) {
       throw new Error("Cannot set both 'article' and 'draft'");
     }
   }

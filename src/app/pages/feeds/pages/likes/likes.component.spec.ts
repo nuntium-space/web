@@ -8,9 +8,8 @@ describe('LikesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LikesComponent ]
-    })
-    .compileComponents();
+      declarations: [LikesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

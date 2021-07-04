@@ -6,39 +6,32 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'settings-organizations',
   templateUrl: './organizations.component.html',
-  styleUrls: ['./organizations.component.scss']
+  styleUrls: ['./organizations.component.scss'],
 })
-export class OrganizationsComponent implements OnInit
-{
+export class OrganizationsComponent implements OnInit {
   public organizations?: IOrganization[];
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {}
+  constructor(private api: ApiService, private auth: AuthService) {}
 
-  public ngOnInit()
-  {
-    if (!this.auth.user)
-    {
+  public ngOnInit() {
+    if (!this.auth.user) {
       return;
     }
 
-    this.api
-      .listOrganizationsForUser(this.auth.user.id)
-      .then(response =>
-      {
-        this.organizations = response.data;
-      });
+    this.api.listOrganizationsForUser(this.auth.user.id).then((response) => {
+      this.organizations = response.data;
+    });
   }
 
-  public async deleteOrganization(organization: IOrganization)
-  {
-    if (!this.organizations)
-    {
+  public async deleteOrganization(organization: IOrganization) {
+    if (!this.organizations) {
       return;
     }
 
     await this.api.deleteOrganization(organization.id);
 
-    this.organizations = this.organizations.filter(_ => _.id !== organization.id);
+    this.organizations = this.organizations.filter(
+      (_) => _.id !== organization.id
+    );
   }
 }

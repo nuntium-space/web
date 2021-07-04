@@ -1,32 +1,31 @@
 <aside>
-    <header *ngIf="publisher">
-        <shared-img [src]="publisher.imageUrl"></shared-img>
-        <div>
-            <small>{{ "publisher.__title" | translate }}</small>
-            <h1>{{ publisher.name }}</h1>
-        </div>
-    </header>
-    <a *ngIf="publisher && !publisher.verified" routerLink="verify" id="verify-button" class="button warning fill">
-        {{ "publisher.verify.__title" | translate }}
-    </a>
-    <a *ngIf="publisher" routerLink="/p/{{ publisher.id }}" class="button fill">
-        {{ "publisher.public_page" | translate }}
-    </a>
-    <section>
-        <div class="title"></div>
-        <div class="content">
-            <a
-                routerLink="details"
-                [class.selected]="section === 'details'"
-            >
-                {{ "publisher.details.__title" | translate }}
-            </a>
-            <a
-                routerLink="authors"
-                [class.selected]="section === 'authors'"
-            >
-                {{ "publisher.authors.__title" | translate }}
-            </a>
-        </div>
-    </section>
+  <header *ngIf="publisher">
+    <shared-img [src]="publisher.imageUrl"></shared-img>
+    <div>
+      <small>{{ "publisher.__title" | translate }}</small>
+      <h1>{{ publisher.name }}</h1>
+    </div>
+  </header>
+  <a
+    *ngIf="publisher && !publisher.verified"
+    routerLink="verify"
+    id="verify-button"
+    class="button warning fill"
+  >
+    {{ "publisher.verify.__title" | translate }}
+  </a>
+  <a *ngIf="publisher" routerLink="/p/{{ publisher.id }}" class="button fill">
+    {{ "publisher.public_page" | translate }}
+  </a>
+  <section>
+    <div class="title"></div>
+    <div class="content">
+      <a routerLink="details" [class.selected]="section === 'details'">
+        {{ "publisher.details.__title" | translate }}
+      </a>
+      <a routerLink="authors" [class.selected]="section === 'authors'">
+        {{ "publisher.authors.__title" | translate }}
+      </a>
+    </div>
+  </section>
 </aside>

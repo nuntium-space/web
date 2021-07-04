@@ -8,10 +8,9 @@ import { ApiService } from '../../../services/api/api.service';
 @Component({
   selector: 'publisher-authors-invite',
   templateUrl: './invite.component.html',
-  styleUrls: ['./invite.component.scss']
+  styleUrls: ['./invite.component.scss'],
 })
-export class InviteAuthorComponent
-{
+export class InviteAuthorComponent {
   @Input()
   public publisher?: IPublisher;
 
@@ -19,32 +18,27 @@ export class InviteAuthorComponent
     email: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router)
-  {}
+  constructor(private api: ApiService, private router: Router) {}
 
-  public async onSubmit([ success, failure ]: ConfirmEventCallback)
-  {
-    if (!this.publisher)
-    {
+  public async onSubmit([success, failure]: ConfirmEventCallback) {
+    if (!this.publisher) {
       failure();
 
       return;
     }
 
-    const response = await this.api
-      .inviteAuthor(this.publisher.id, {
-        email: this.form.get("email")?.value ?? "",
-      });
-
-    this.form.get("email")?.setErrors({
-      errors: response.errors?.filter(e => e.field === "email")
+    const response = await this.api.inviteAuthor(this.publisher.id, {
+      email: this.form.get('email')?.value ?? '',
     });
 
-    if (!response.success)
-    {
+    this.form.get('email')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'email'),
+    });
+
+    if (!response.success) {
       failure({
         message: {
-          type: "none",
+          type: 'none',
         },
       });
 

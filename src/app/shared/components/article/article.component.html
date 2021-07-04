@@ -1,75 +1,65 @@
 <article *ngIf="article" class="round">
-    <header>
-        <shared-img [src]="article.author.publisher.imageUrl"></shared-img>
-        <div>
-            <a routerLink="/a/{{ article.author.user.id }}">
-                {{ article.author.user.full_name }}
-            </a>
-            <span *ngIf="article.author.publisher.name">
-                {{ "components.article_list.article.for" | translate }}
-                <a routerLink="/p/{{ article.author.publisher.id }}">
-                    {{ article.author.publisher.name }}
-                </a>
-            </span>
-            <br>
-            <span>
-                {{ format.dateTime(article.created_at, "datetime") }}
-            </span>
-        </div>
-    </header>
-    <a
-        routerLink="/article/{{ article.id }}"
-        class="main"
-    >
-        <h2 class="title">{{ article.title }}</h2>
-    </a>
-    <footer>
-        <div>
-            <span class="mat-icon">timer</span>
-            <i *ngIf="article.reading_time >= 1">
-                {{ article.reading_time }}
-                {{
-                    (
-                        article.reading_time > 1
-                            ? "generic.minute.many"
-                            : "generic.minute.one"
-                    )
-                    | translate
-                }}
-            </i>
-            <i *ngIf="article.reading_time < 1">
-                {{ "generic.less_than_a_minute" | translate }}
-            </i>
-        </div>
-    </footer>
+  <header>
+    <shared-img [src]="article.author.publisher.imageUrl"></shared-img>
+    <div>
+      <a routerLink="/a/{{ article.author.user.id }}">
+        {{ article.author.user.full_name }}
+      </a>
+      <span *ngIf="article.author.publisher.name">
+        {{ "components.article_list.article.for" | translate }}
+        <a routerLink="/p/{{ article.author.publisher.id }}">
+          {{ article.author.publisher.name }}
+        </a>
+      </span>
+      <br />
+      <span>
+        {{ format.dateTime(article.created_at, "datetime") }}
+      </span>
+    </div>
+  </header>
+  <a routerLink="/article/{{ article.id }}" class="main">
+    <h2 class="title">{{ article.title }}</h2>
+  </a>
+  <footer>
+    <div>
+      <span class="mat-icon">timer</span>
+      <i *ngIf="article.reading_time >= 1">
+        {{ article.reading_time }}
+        {{
+          (article.reading_time > 1
+            ? "generic.minute.many"
+            : "generic.minute.one"
+          ) | translate
+        }}
+      </i>
+      <i *ngIf="article.reading_time < 1">
+        {{ "generic.less_than_a_minute" | translate }}
+      </i>
+    </div>
+  </footer>
 </article>
 
 <article *ngIf="draft" class="round">
-    <header>
-        <shared-badge theme="warning">
-            Draft
-        </shared-badge>
-        <shared-img [src]="draft.author.publisher.imageUrl"></shared-img>
-        <div>
-            <a routerLink="/a/{{ draft.author.user.id }}">
-                {{ draft.author.user.full_name }}
-            </a>
-            <span *ngIf="draft.author.publisher.name">
-                {{ "components.article_list.article.for" | translate }}
-                <a routerLink="/p/{{ draft.author.publisher.id }}">
-                    {{ draft.author.publisher.name }}
-                </a>
-            </span>
-            <br>
-            <span>
-                {{ format.dateTime(draft.created_at, "datetime") }}
-            </span>
-        </div>
-    </header>
-    <a
-        routerLink="/draft/{{ draft.id }}"
-        class="main"
-    >
-        <h2 class="title">{{ draft.title }}</h2>
-    </a>
+  <header>
+    <shared-badge theme="warning"> Draft </shared-badge>
+    <shared-img [src]="draft.author.publisher.imageUrl"></shared-img>
+    <div>
+      <a routerLink="/a/{{ draft.author.user.id }}">
+        {{ draft.author.user.full_name }}
+      </a>
+      <span *ngIf="draft.author.publisher.name">
+        {{ "components.article_list.article.for" | translate }}
+        <a routerLink="/p/{{ draft.author.publisher.id }}">
+          {{ draft.author.publisher.name }}
+        </a>
+      </span>
+      <br />
+      <span>
+        {{ format.dateTime(draft.created_at, "datetime") }}
+      </span>
+    </div>
+  </header>
+  <a routerLink="/draft/{{ draft.id }}" class="main">
+    <h2 class="title">{{ draft.title }}</h2>
+  </a>
 </article>

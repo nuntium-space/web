@@ -5,42 +5,31 @@ import { ApiService, IHistoryEntry } from '../../services/api/api.service';
 @Component({
   selector: 'feeds-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss']
+  styleUrls: ['./history.component.scss'],
 })
-export class HistoryComponent
-{
+export class HistoryComponent {
   public entries?: IHistoryEntry[];
 
-  constructor(private api: ApiService, private auth: AuthService)
-  {}
+  constructor(private api: ApiService, private auth: AuthService) {}
 
-  public ngOnInit()
-  {
-    if (!this.auth.user)
-    {
+  public ngOnInit() {
+    if (!this.auth.user) {
       return;
     }
 
-    this.api
-      .retrieveHistory(this.auth.user)
-      .then(response =>
-      {
-        this.entries = response.data;
-      });
+    this.api.retrieveHistory(this.auth.user).then((response) => {
+      this.entries = response.data;
+    });
   }
 
-  public async deleteHistory()
-  {
-    if (!this.auth.user)
-    {
+  public async deleteHistory() {
+    if (!this.auth.user) {
       return;
     }
 
-    const { success } = await this.api
-      .deleteHistory(this.auth.user);
+    const { success } = await this.api.deleteHistory(this.auth.user);
 
-    if (success)
-    {
+    if (success) {
       this.entries = [];
     }
   }

@@ -1,22 +1,30 @@
 <section>
-    <div class="title">
-        <h1>{{ "settings.account.subscriptions.__title" | translate }}</h1>
-        <button (click)="manageSubscriptions()">{{ "settings.account.subscriptions.manage" | translate }}</button>
+  <div class="title">
+    <h1>{{ "settings.account.subscriptions.__title" | translate }}</h1>
+    <button (click)="manageSubscriptions()">
+      {{ "settings.account.subscriptions.manage" | translate }}
+    </button>
+  </div>
+  <div class="content">
+    <div *ngIf="!subscriptions">
+      <shared-spinner></shared-spinner>
     </div>
-    <div class="content">
-        <div *ngIf="!subscriptions">
-            <shared-spinner></shared-spinner>
-        </div>
-        <div *ngIf="subscriptions">
-            <settings-subscription-list [subscriptions]="subscriptions.active"></settings-subscription-list>
-            <div *ngIf="subscriptions.incomplete.length > 0">
-                <h2>{{ "settings.account.subscriptions.inactive" | translate }}</h2>
-                <settings-subscription-list [subscriptions]="subscriptions.incomplete"></settings-subscription-list>
-            </div>
-            <div *ngIf="subscriptions.old.length > 0">
-                <h2>{{ "settings.account.subscriptions.old" | translate }}</h2>
-                <settings-subscription-list [subscriptions]="subscriptions.old"></settings-subscription-list>
-            </div>
-        </div>
+    <div *ngIf="subscriptions">
+      <settings-subscription-list
+        [subscriptions]="subscriptions.active"
+      ></settings-subscription-list>
+      <div *ngIf="subscriptions.incomplete.length > 0">
+        <h2>{{ "settings.account.subscriptions.inactive" | translate }}</h2>
+        <settings-subscription-list
+          [subscriptions]="subscriptions.incomplete"
+        ></settings-subscription-list>
+      </div>
+      <div *ngIf="subscriptions.old.length > 0">
+        <h2>{{ "settings.account.subscriptions.old" | translate }}</h2>
+        <settings-subscription-list
+          [subscriptions]="subscriptions.old"
+        ></settings-subscription-list>
+      </div>
     </div>
+  </div>
 </section>

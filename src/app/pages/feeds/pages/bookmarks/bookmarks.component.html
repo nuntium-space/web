@@ -1,7 +1,10 @@
 <shared-spinner *ngIf="!bookmarks"></shared-spinner>
 
 <div *ngIf="bookmarks?.length === 0" class="empty round">
-    {{ "feed.bookmarks.empty" | translate }}
+  {{ "feed.bookmarks.empty" | translate }}
 </div>
 
-<shared-article *ngFor="let bookmark of bookmarks" [article]="bookmark.article"></shared-article>
+<shared-article
+  *ngFor="let bookmark of bookmarks"
+  [article]="bookmark.article"
+></shared-article>

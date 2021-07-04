@@ -2,61 +2,53 @@
 
 @import "~src/variables";
 
-aside
-{
-    grid-area: aside;
-    height: min-content;
-    position: sticky;
-    top: 1em;
+aside {
+  grid-area: aside;
+  height: min-content;
+  position: sticky;
+  top: 1em;
 
-    header
-    {
-        display: grid;
-        grid-template-columns: 100px auto;
-        align-items: flex-end;
-        gap: 1rem;
-        position: relative;
+  header {
+    display: grid;
+    grid-template-columns: 100px auto;
+    align-items: flex-end;
+    gap: 1rem;
+    position: relative;
 
-        shared-img
-        {
-            height: 100px;
-            width: 100px;
-        }
-
-        h1
-        {
-            margin-top: 0;
-        }
-
-        a
-        {
-            position: absolute;
-            right: -1px; // Align with the border
-            bottom: -1px;
-            padding: 0.5rem;
-            color: var(--secondary-color);
-            background-color: var(--primary-color);
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
+    shared-img {
+      height: 100px;
+      width: 100px;
     }
 
-    .drafts
-    {
-        margin-bottom: 1rem;
+    h1 {
+      margin-top: 0;
     }
-}
 
-.bundle
-{
-    border-radius: 0;
-    color: unset;
-}
+    a {
+      position: absolute;
+      right: -1px; // Align with the border
+      bottom: -1px;
+      padding: 0.5rem;
+      color: var(--secondary-color);
+      background-color: var(--primary-color);
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
 
-.payment-required
-{
-    color: black;
-    background-color: var(--link-color);
-    padding: 1rem;
+  .drafts {
     margin-bottom: 1rem;
+  }
+}
+
+.bundle {
+  border-radius: 0;
+  color: unset;
+}
+
+.payment-required {
+  color: black;
+  background-color: var(--link-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
