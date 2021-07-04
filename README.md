@@ -3,6 +3,8 @@
 [![Deployment](https://github.com/nuntium-space/web/actions/workflows/cd.yml/badge.svg)](https://github.com/nuntium-space/web/actions/workflows/cd.yml)
 [![Prettier](https://github.com/nuntium-space/web/actions/workflows/prettier.yml/badge.svg)](https://github.com/nuntium-space/web/actions/workflows/prettier.yml)
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 ## Test
 
 ### Serve locally
