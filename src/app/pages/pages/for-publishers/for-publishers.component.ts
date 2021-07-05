@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './for-publishers.component.html',
   styleUrls: ['./for-publishers.component.scss'],
 })
-export class ForPublishersComponent {
-}
+export class ForPublishersComponent {}
