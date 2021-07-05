@@ -19,5 +19,7 @@ export class ImgComponent {
     this.hasLoaded = true;
   }
 
-  public onError(e: Event) {}
+  public onError(e: Event) {
+    // TODO
+  }
 }

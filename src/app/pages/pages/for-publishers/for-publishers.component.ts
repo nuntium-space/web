@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-for-publishers',
+  selector: 'pages-for-publishers',
   templateUrl: './for-publishers.component.html',
   styleUrls: ['./for-publishers.component.scss'],
 })
-export class ForPublishersComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class ForPublishersComponent {
 }

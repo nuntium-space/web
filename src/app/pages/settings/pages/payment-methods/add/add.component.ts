@@ -17,7 +17,7 @@ export class AddPaymentMethodComponent implements OnInit {
 
   private cardElement?: StripeCardElement;
 
-  public cardElementError: string = '';
+  public cardElementError = '';
 
   constructor(
     private api: ApiService,
