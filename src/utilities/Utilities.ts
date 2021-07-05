@@ -9,7 +9,9 @@ export class Utilities {
    * But that's not the behavior we want. If the control does not exist
    * the value should be `undefined`, and so it is not sent to the API.
    */
-  public static getFormControlValue(control: AbstractControl | null): string | undefined {
+  public static getFormControlValue(
+    control: AbstractControl | null
+  ): string | undefined {
     return control?.value ?? undefined;
   }
 }
