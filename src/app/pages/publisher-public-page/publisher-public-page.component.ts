@@ -30,8 +30,7 @@ export class PublisherPublicPageComponent implements OnInit {
   public ngOnInit() {
     this.route.params.subscribe({
       next: ({ id }) => {
-        if (typeof id === "string" && id.startsWith("pub_"))
-        {
+        if (typeof id === 'string' && id.startsWith('pub_')) {
           this.api.retrievePublisher(id).then((response) => {
             if (response.success) {
               this.publisher = response.data;
@@ -43,16 +42,13 @@ export class PublisherPublicPageComponent implements OnInit {
           });
 
           this.loadData(id);
-        }
-        else
-        {
+        } else {
           this.api.retrievePublisherWithName(id).then((response) => {
-            if (response.success)
-            {
+            if (response.success) {
               this.publisher = response.data;
 
               this.loadData(this.publisher.id);
-    
+
               this.title.setTitle(
                 `${this.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
               );
@@ -63,8 +59,7 @@ export class PublisherPublicPageComponent implements OnInit {
     });
   }
 
-  private loadData(id: string): void
-  {
+  private loadData(id: string): void {
     this.api.listArticlesForPublisher(id).then((response) => {
       // Payment Required
       if (response.status === 402) {
