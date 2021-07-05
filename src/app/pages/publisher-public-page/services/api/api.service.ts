@@ -34,6 +34,12 @@ export class ApiService extends CoreApiService {
     return this.send('GET', `publishers/${id}`);
   }
 
+  public async retrievePublisherWithName(
+    name: string
+  ): Promise<IApiServiceResponse<IPublisher>> {
+    return this.send('GET', `publishers?name=${name}`);
+  }
+
   public async createArticleDraft(
     authorId: string,
     data: {

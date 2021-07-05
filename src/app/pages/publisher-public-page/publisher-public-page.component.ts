@@ -29,32 +29,55 @@ export class PublisherPublicPageComponent implements OnInit {
 
   public ngOnInit() {
     this.route.params.subscribe({
-      next: (params) => {
-        this.api.retrievePublisher(params.id).then((response) => {
-          this.publisher = response.data;
+      next: ({ id }) => {
+        if (typeof id === "string" && id.startsWith("pub_"))
+        {
+          this.api.retrievePublisher(id).then((response) => {
+            if (response.success) {
+              this.publisher = response.data;
 
-          if (this.publisher) {
-            this.title.setTitle(
-              `${this.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
-            );
-          }
-        });
+              this.title.setTitle(
+                `${this.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
+              );
+            }
+          });
 
-        this.api.listArticlesForPublisher(params.id).then((response) => {
-          // Payment Required
-          if (response.status === 402) {
-            this.isSubscribed = false;
+          this.loadData(id);
+        }
+        else
+        {
+          this.api.retrievePublisherWithName(id).then((response) => {
+            if (response.success)
+            {
+              this.publisher = response.data;
 
-            return;
-          }
-
-          this.articles = response.data;
-        });
-
-        this.api.listBundlesForPublisher(params.id).then((response) => {
-          this.bundles = response.data;
-        });
+              this.loadData(this.publisher.id);
+    
+              this.title.setTitle(
+                `${this.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
+              );
+            }
+          });
+        }
       },
+    });
+  }
+
+  private loadData(id: string): void
+  {
+    this.api.listArticlesForPublisher(id).then((response) => {
+      // Payment Required
+      if (response.status === 402) {
+        this.isSubscribed = false;
+
+        return;
+      }
+
+      this.articles = response.data;
+    });
+
+    this.api.listBundlesForPublisher(id).then((response) => {
+      this.bundles = response.data;
     });
   }
 }
