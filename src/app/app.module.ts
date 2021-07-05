@@ -44,7 +44,7 @@ import { RouterModule } from '@angular/router';
         translate: TranslateService,
         userSettings: UserSettingsService
       ) => {
-        return async (): Promise<any> => {
+        return async (): Promise<void> => {
           let language =
             sessionStorage.getItem('lang') ?? translate.getBrowserLang();
 
