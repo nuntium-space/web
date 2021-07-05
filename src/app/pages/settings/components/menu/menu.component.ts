@@ -8,6 +8,4 @@ import { Component, Input } from '@angular/core';
 export class SettingsMenuComponent {
   @Input('section')
   public section?: string;
-
-  constructor() {}
 }

@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class DialogComponent {
   @Input()
-  public message: string = '';
+  public message = '';
 
   @Input()
   public buttons: IDialogButton[] = [];

@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api/api.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  public searchQuery: string = '';
+  public searchQuery = '';
   public isLoadingSearchResults = false;
 
   public articles?: IArticle[];

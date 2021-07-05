@@ -25,7 +25,7 @@ export class DangerButtonComponent {
   public icon?: string;
 
   @Input()
-  public message: string = '';
+  public message = '';
 
   @Output()
   public confirm = new EventEmitter<void>();
