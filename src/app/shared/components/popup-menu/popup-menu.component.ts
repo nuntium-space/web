@@ -37,17 +37,15 @@ export class PopupMenuComponent implements OnInit {
       const target = e.target as HTMLElement;
 
       // Ignore clicks inside the toggle button
-      if (this.toggleMenuButton?.nativeElement.contains(target))
-      {
+      if (this.toggleMenuButton?.nativeElement.contains(target)) {
         return;
       }
 
       // Hide if the click was outside the menu or if it was on a button or link
       if (
         !this.container?.nativeElement.contains(target) ||
-        [ "A", "BUTTON" ].includes(target.tagName)
-      )
-      {
+        ['A', 'BUTTON'].includes(target.tagName)
+      ) {
         this.isMenuVisible = false;
       }
     });

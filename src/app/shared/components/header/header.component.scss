@@ -26,26 +26,21 @@ header {
   gap: 1rem;
 }
 
-shared-popup-menu
-{
+shared-popup-menu {
   color: var(--secondary-color);
 }
 
-.user-info
-{
+.user-info {
   margin-top: 0;
 
-  span
-  {
+  span {
     font-size: 1.3em;
     font-weight: $medium;
   }
 }
 
-.legal
-{
-  .links
-  {
+.legal {
+  .links {
     display: flex;
     justify-content: space-evenly;
   }
