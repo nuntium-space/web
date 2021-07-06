@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
+import { IDialogButton } from 'src/app/shared/components/dialog/dialog.component';
 import { Config } from 'src/config/Config';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
@@ -27,6 +28,28 @@ export class DraftComponent implements OnInit {
   public sources?: IArticleDraftSource[];
 
   public isUpdating = false;
+
+  public showRejectDialog = false;
+  public rejectDialogButtons: IDialogButton[] = [
+    {
+      text: "generic.confirm",
+      classes: [ "dark", "danger" ],
+      onClick: () =>
+      {
+        this.showRejectDialog = false;
+
+        this.reject();
+      },
+    },
+    {
+      text: "generic.cancel",
+      classes: [ "dark" ],
+      onClick: () => this.showRejectDialog = false,
+    }
+  ];
+
+  @ViewChild("rejectionReasonTextArea")
+  public rejectionReasonTextArea?: ElementRef<HTMLTextAreaElement>;
 
   constructor(
     public auth: AuthService,
@@ -136,13 +159,13 @@ export class DraftComponent implements OnInit {
   }
 
   public async reject() {
-    if (!this.draft) {
+    const reason = this.rejectionReasonTextArea?.nativeElement.value;
+
+    if (!this.draft || !reason) {
       return;
     }
 
-    const response = await this.api.reject(this.draft, {
-      reason: 'TODO',
-    });
+    const response = await this.api.reject(this.draft, { reason });
 
     if (response.success) {
       this.router.navigateByUrl('/admin/drafts');
