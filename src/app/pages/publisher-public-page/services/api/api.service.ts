@@ -18,7 +18,7 @@ export class ApiService extends CoreApiService {
   ): Promise<IApiServiceResponse<IArticle[]>> {
     return this.send(
       'GET',
-      `publishers/${publisherId}/articles?expand[]=author&expand[]=author.user`
+      `publishers/${publisherId}/articles?expand[]=author&expand[]=author.user&expand[]=author.publisher`
     );
   }
 
