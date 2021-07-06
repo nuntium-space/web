@@ -41,7 +41,7 @@
 
 <article *ngIf="draft" class="round">
   <header>
-    <shared-badge theme="warning"> Draft </shared-badge>
+    <shared-badge theme="warning">Draft</shared-badge>
     <shared-img [src]="draft.author.publisher.imageUrl"></shared-img>
     <div>
       <a routerLink="/a/{{ draft.author.user.id }}">
