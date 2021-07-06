@@ -2,10 +2,12 @@
   <hr />
   <div class="links">
     <a routerLink="/pages/for-publishers">For publishers</a>
+    <a routerLink="/pages/privacy">Privacy</a>
+    <a routerLink="/pages/terms">Terms</a>
   </div>
   <hr />
   <div class="bottom">
-    <p class="copy">&copy; 2021 - nuntium</p>
+    <span>&copy; 2021 - nuntium</span>
     <select class="small" (change)="onLanguageChange($event)">
       <option
         *ngFor="let language of languages"
