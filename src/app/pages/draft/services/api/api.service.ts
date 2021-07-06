@@ -55,7 +55,7 @@ export class ApiService extends CoreApiService {
       reason: string;
     }
   ): Promise<IApiServiceResponse<void>> {
-    return this.send('POST', `__internals/articles/drafts/${draft.id}/reject`);
+    return this.send('POST', `__internals/articles/drafts/${draft.id}/reject`, data);
   }
 
   public async updateDraft(
