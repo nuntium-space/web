@@ -133,6 +133,13 @@
 <shared-spinner *ngIf="!draft"></shared-spinner>
 
 <main *ngIf="draft">
+  <div *ngIf="draft.status === 'rejected'" class="rejection">
+    <h1>Draft rejected</h1>
+    <details>
+      <summary>Reason</summary>
+      <pre>{{ draft.reason }}</pre>
+    </details>
+  </div>
   <shared-editor
     [(content)]="draft.content"
     [isReadOnly]="!isUpdating"

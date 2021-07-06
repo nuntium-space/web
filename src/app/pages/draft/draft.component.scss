@@ -38,6 +38,35 @@ aside {
 }
 
 main {
+  .rejection
+  {
+    color: black;
+    background-color: var(--link-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+
+    h1,
+    pre
+    {
+      margin: 0;
+    }
+
+    h1
+    {
+      margin-bottom: 1rem;
+    }
+
+    pre
+    {
+      color: var(--primary-color);
+      background-color: var(--secondary-color);
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+
   .sources {
     padding: 1rem;
     margin-top: 1rem;

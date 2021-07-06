@@ -11,7 +11,8 @@ export interface IArticleDraft {
   content: any;
   author: IAuthor;
   article: IArticle | null;
-  status: 'draft' | 'pending-verification';
+  status: 'draft' | 'rejected' | 'pending-verification';
+  reason: string | null,
   created_at: string;
   updated_at: string;
 }
