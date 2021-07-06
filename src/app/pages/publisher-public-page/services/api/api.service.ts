@@ -58,7 +58,7 @@ export class ApiService extends CoreApiService {
       'GET',
       `authors/${
         typeof author === 'string' ? author : author.id
-      }/articles/drafts?expand[]=author&expand[]=author.user`
+      }/articles/drafts?expand[]=author&expand[]=author.user&expand[]=author.publisher`
     );
   }
 
