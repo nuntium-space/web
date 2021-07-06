@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ISubscription } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { environment } from 'src/environments/environment';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -9,13 +10,15 @@ import { ApiService } from '../../services/api/api.service';
   styleUrls: ['./subscriptions.component.scss'],
 })
 export class SubscriptionsComponent {
+  public env = environment;
+
   public subscriptions?: {
     active: ISubscription[];
     incomplete: ISubscription[];
     old: ISubscription[];
   };
 
-  constructor(private api: ApiService, private auth: AuthService) {
+  constructor(api: ApiService, public auth: AuthService) {
     if (!auth.user) {
       return;
     }
@@ -35,19 +38,5 @@ export class SubscriptionsComponent {
         };
       }
     });
-  }
-
-  public async manageSubscriptions() {
-    if (!this.auth.user) {
-      return;
-    }
-
-    const response = await this.api.createBillingPortalSession(
-      this.auth.user.id
-    );
-
-    if (response.data) {
-      open(response.data.url, '_blank');
-    }
   }
 }

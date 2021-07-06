@@ -89,12 +89,6 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `users/${userId}/settings`, data);
   }
 
-  public async createBillingPortalSession(
-    userId: string
-  ): Promise<IApiServiceResponse<{ url: string }>> {
-    return this.send('GET', `users/${userId}/stripe/portal`);
-  }
-
   public async listSubscriptionsForUser(
     userId: string
   ): Promise<IApiServiceResponse<ISubscription[]>> {
