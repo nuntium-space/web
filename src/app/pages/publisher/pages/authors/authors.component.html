@@ -18,7 +18,7 @@
           <h3>
             {{ author.user.full_name }}
           </h3>
-          <a href="mailto:{{ author.user.email }}">
+          <a href="mailto:{{ author.user.email }}" class="dark">
             {{ author.user.email }}
           </a>
         </div>
@@ -52,7 +52,7 @@
           <h3 *ngIf="invite.user.full_name">
             {{ invite.user.full_name }}
           </h3>
-          <a href="mailto:{{ invite.user.email }}">
+          <a href="mailto:{{ invite.user.email }}" class="dark">
             {{ invite.user.email }}
           </a>
         </div>
