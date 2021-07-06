@@ -18,7 +18,6 @@ const routes: Routes = [
         data: { section: 'organizations/create' },
       },
       { path: 'payment-methods', data: { section: 'payment-methods' } },
-      { path: 'payment-methods/add', data: { section: 'payment-methods/add' } },
       { path: 'preferences', data: { section: 'preferences' } },
       { path: 'publishers', data: { section: 'publishers' } },
       { path: 'security', data: { section: 'security' } },
