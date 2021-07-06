@@ -42,18 +42,6 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `organizations/${organizationId}/bundles`, data);
   }
 
-  public async connectAccount(
-    organizationId: string
-  ): Promise<IApiServiceResponse<{ url: string }>> {
-    return this.send('GET', `organizations/${organizationId}/stripe/connect`);
-  }
-
-  public async createSignInLinkForStripeDashboard(
-    organizationId: string
-  ): Promise<IApiServiceResponse<{ url: string }>> {
-    return this.send('GET', `organizations/${organizationId}/stripe/dashboard`);
-  }
-
   public async updateOrganization(
     id: string,
     data: {
