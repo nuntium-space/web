@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   onLangChange?: Subscription;
 
-  constructor(public el: ElementRef, public translate: TranslateService) { }
+  constructor(public el: ElementRef, public translate: TranslateService) {}
 
   ngOnInit() {
     this.updateLanguage();
@@ -28,6 +28,8 @@ export class AppComponent {
   updateLanguage(): void {
     const lang = document.createAttribute('lang');
     lang.value = this.translate.currentLang;
-    this.el.nativeElement.parentElement.parentElement.attributes.setNamedItem(lang);
+    this.el.nativeElement.parentElement.parentElement.attributes.setNamedItem(
+      lang
+    );
   }
 }
