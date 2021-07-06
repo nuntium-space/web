@@ -24,17 +24,17 @@ header {
   gap: 1rem;
 }
 
+shared-popup-menu
+{
+  color: var(--secondary-color);
+}
+
 .legal
 {
-  hr
-  {
-    color: var(--secondary-color);
-  }
   .links
   {
     display: flex;
     justify-content: space-evenly;
-    color: var(--secondary-color);
   }
 }
 

@@ -1,9 +1,9 @@
-<div class="container">
+<div #container class="container">
   <button #toggle class="{{ theme }}" (click)="isMenuVisible = !isMenuVisible">
     &#8942;
   </button>
   <div *ngIf="isMenuVisible" class="arrow"></div>
-  <div *ngIf="isMenuVisible" #content class="content round">
+  <div *ngIf="isMenuVisible" class="content round">
     <ng-content></ng-content>
   </div>
 </div>

@@ -20,11 +20,11 @@ export class PopupMenuComponent implements OnInit {
 
   public isMenuVisible = false;
 
+  @ViewChild('container')
+  private container?: ElementRef<HTMLDivElement>;
+
   @ViewChild('toggle')
   private toggleMenuButton?: ElementRef<HTMLButtonElement>;
-
-  @ViewChild('content')
-  private content?: ElementRef<HTMLDivElement>;
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
@@ -36,15 +36,18 @@ export class PopupMenuComponent implements OnInit {
 
       const target = e.target as HTMLElement;
 
+      // Ignore clicks inside the toggle button
+      if (this.toggleMenuButton?.nativeElement.contains(target))
+      {
+        return;
+      }
+
+      // Hide if the click was outside the menu or if it was on a button or link
       if (
-        /**
-         * Do not hide the menu if:
-         * - The user clicked on the toggle button
-         * - The user clicked the content's container
-         */
-        !this.toggleMenuButton?.nativeElement.contains(target) &&
-        !this.content?.nativeElement.isSameNode(target)
-      ) {
+        !this.container?.nativeElement.contains(target) ||
+        [ "A", "BUTTON" ].includes(target.tagName)
+      )
+      {
         this.isMenuVisible = false;
       }
     });
