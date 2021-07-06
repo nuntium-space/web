@@ -67,6 +67,10 @@ a,
   text-decoration: none;
   border-radius: 0.5rem;
 
+  &.dark {
+    color: var(--secondary-color);
+  }
+
   &:focus {
     box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
 

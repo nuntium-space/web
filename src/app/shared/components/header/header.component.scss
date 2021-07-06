@@ -24,10 +24,6 @@ header {
   gap: 1rem;
 }
 
-.for-publishers {
-  color: var(--secondary-color);
-}
-
 @media (max-width: 500px) {
   .for-publishers {
     display: none;
