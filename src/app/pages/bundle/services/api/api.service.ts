@@ -91,7 +91,7 @@ export class ApiService extends CoreApiService {
   public async subscribeToPrice(
     userId: string,
     priceId: string
-  ): Promise<IApiServiceResponse<void>> {
+  ): Promise<IApiServiceResponse<{ url: string }>> {
     return this.send('POST', `users/${userId}/subscriptions`, {
       price: priceId,
     });
