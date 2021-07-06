@@ -36,10 +36,15 @@ main {
     margin-top: 1rem;
     border: 1px solid var(--primary-color);
 
-    p {
+    p:first-child {
       font-weight: $medium;
       margin: 0;
       margin-bottom: 0.5rem;
+    }
+
+    .empty
+    {
+      margin: 0;
     }
 
     ol {
