@@ -27,15 +27,17 @@
       <button class="dark" (click)="auth.signOut()">
         {{ "generic.sign_out" | translate }}
       </button>
-      <hr>
       <div class="legal">
-        <a class="dark" routerLink="/pages/privacy">
-          {{ "privacy.__title" | translate }}
-        </a>
-        &bull;
-        <a class="dark" routerLink="/pages/terms">
-          {{ "terms.__title" | translate }}
-        </a>
+        <hr>
+        <div class="links">
+          <a class="dark" routerLink="/pages/privacy">
+            {{ "privacy.__title" | translate }}
+          </a>
+          &bull;
+          <a class="dark" routerLink="/pages/terms">
+            {{ "terms.__title" | translate }}
+          </a>
+        </div>
       </div>
     </shared-popup-menu>
     <a

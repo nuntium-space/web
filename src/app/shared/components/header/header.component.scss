@@ -26,9 +26,16 @@ header {
 
 .legal
 {
-  display: flex;
-  justify-content: space-evenly;
-  color: var(--secondary-color);
+  hr
+  {
+    color: var(--secondary-color);
+  }
+  .links
+  {
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--secondary-color);
+  }
 }
 
 @media (max-width: 500px) {
