@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IPaymentMethod } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { environment } from 'src/environments/environment';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { ApiService } from '../../services/api/api.service';
   styleUrls: ['./payment-methods.component.scss'],
 })
 export class PaymentMethodsComponent {
+  public env = environment;
+
   public paymentMethods?: IPaymentMethod[];
 
   constructor(private api: ApiService, private auth: AuthService) {

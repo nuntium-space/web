@@ -5,5 +5,4 @@ export const environment = {
     share: 'https://share.nuntium.space',
     static: 'https://static.nuntium.space',
   },
-  stripePublishableKey: 'TODO',
 };

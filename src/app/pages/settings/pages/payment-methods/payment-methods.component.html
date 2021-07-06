@@ -1,7 +1,7 @@
 <section>
   <div class="title">
     <h1>{{ "settings.account.payment_methods.__title" | translate }}</h1>
-    <a routerLink="payment-methods/add" class="button">
+    <a href="{{ env.endpoints.api }}/payment-methods/new" class="button">
       {{ "generic.add" | translate }}
     </a>
   </div>

@@ -65,15 +65,6 @@ export class ApiService extends CoreApiService {
     return this.send('GET', `users/${userId}/payment-methods`);
   }
 
-  public async addPaymentMethodToUser(
-    userId: string,
-    data: {
-      id: string;
-    }
-  ): Promise<IApiServiceResponse<void>> {
-    return this.send('POST', `users/${userId}/payment-methods`, data);
-  }
-
   public async setDefaultPaymentMethod(
     userId: string,
     data: {
@@ -96,12 +87,6 @@ export class ApiService extends CoreApiService {
     }
   ): Promise<IApiServiceResponse<IUserSettings>> {
     return this.send('PATCH', `users/${userId}/settings`, data);
-  }
-
-  public async createBillingPortalSession(
-    userId: string
-  ): Promise<IApiServiceResponse<{ url: string }>> {
-    return this.send('GET', `users/${userId}/stripe/portal`);
   }
 
   public async listSubscriptionsForUser(

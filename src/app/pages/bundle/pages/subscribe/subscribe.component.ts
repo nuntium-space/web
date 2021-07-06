@@ -1,10 +1,12 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
+import { environment } from 'src/environments/environment';
+import { Utilities } from 'src/utilities/Utilities';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -27,7 +29,7 @@ export class SubscribeComponent implements OnChanges {
     public auth: AuthService,
     public format: FormatService,
     private api: ApiService,
-    private router: Router
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   public async ngOnChanges(): Promise<void> {
@@ -47,25 +49,17 @@ export class SubscribeComponent implements OnChanges {
   }
 
   public async subscribe([success, failure]: ConfirmEventCallback) {
-    if (!this.auth.user) {
-      failure();
-
-      return;
-    }
-
-    const response = await this.api.subscribeToPrice(
-      this.auth.user.id,
-      this.subscribeForm.get('price')?.value ?? ''
+    const price = Utilities.getFormControlValue(
+      this.subscribeForm.get('price')
     );
 
-    if (!response.success) {
+    if (!price) {
+      // TODO: Show error (must select one price)
       failure();
 
       return;
     }
 
-    success();
-
-    this.router.navigateByUrl('/');
+    this.document.location.href = `${environment.endpoints.api}/prices/${price}/checkout`;
   }
 }

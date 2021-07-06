@@ -87,13 +87,4 @@ export class ApiService extends CoreApiService {
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `bundles/${bundleId}/publishers/${publisherId}`);
   }
-
-  public async subscribeToPrice(
-    userId: string,
-    priceId: string
-  ): Promise<IApiServiceResponse<void>> {
-    return this.send('POST', `users/${userId}/subscriptions`, {
-      price: priceId,
-    });
-  }
 }

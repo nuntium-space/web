@@ -1,8 +1,10 @@
 <div *ngIf="organization">
-  <button
+  <a
     *ngIf="organization.stripe_account_enabled"
-    class="fill"
-    (click)="goToDashboard()"
+    href="{{ env.endpoints.api }}/organizations/{{
+      organization.id
+    }}/stripe/dashboard"
+    class="button fill"
   >
     {{
       "components.stripe.connect_button.go_to_dashboard.before_img" | translate
@@ -11,13 +13,15 @@
     {{
       "components.stripe.connect_button.go_to_dashboard.after_img" | translate
     }}
-  </button>
-  <button
+  </a>
+  <a
     *ngIf="!organization.stripe_account_enabled"
-    class="fill"
-    (click)="connect()"
+    href="{{ env.endpoints.api }}/organizations/{{
+      organization.id
+    }}/stripe/connect"
+    class="button fill"
   >
     {{ "components.stripe.connect_button.connect" | translate }}
     <img src="/assets/stripe-logo-blurple.svg" alt="Stripe" />
-  </button>
+  </a>
 </div>
