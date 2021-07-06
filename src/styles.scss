@@ -379,22 +379,6 @@ section {
   }
 }
 
-textarea {
-  display: block;
-  padding: 0.5em;
-  border: 1px solid var(--primary-color);
-  border-radius: 0.5rem;
-  resize: vertical;
-
-  &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
-
-    &.dark {
-      box-shadow: 0 0 0 0.2rem rgba($secondary-color, 0.5);
-    }
-  }
-}
-
 div.list {
   > * {
     display: block;
