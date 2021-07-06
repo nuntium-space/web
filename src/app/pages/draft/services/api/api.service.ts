@@ -12,7 +12,7 @@ export interface IArticleDraft {
   author: IAuthor;
   article: IArticle | null;
   status: 'draft' | 'rejected' | 'pending-verification';
-  reason: string | null,
+  reason: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -56,7 +56,11 @@ export class ApiService extends CoreApiService {
       reason: string;
     }
   ): Promise<IApiServiceResponse<void>> {
-    return this.send('POST', `__internals/articles/drafts/${draft.id}/reject`, data);
+    return this.send(
+      'POST',
+      `__internals/articles/drafts/${draft.id}/reject`,
+      data
+    );
   }
 
   public async updateDraft(

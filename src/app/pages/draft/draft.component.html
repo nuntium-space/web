@@ -80,7 +80,10 @@
       >
         {{ "draft.publish.button_text" | translate }}
       </shared-danger-button>
-      <button class="warning fill" (click)="showRejectDialog = !showRejectDialog">
+      <button
+        class="warning fill"
+        (click)="showRejectDialog = !showRejectDialog"
+      >
         {{ "draft.reject.button_text" | translate }}
       </button>
     </ng-container>
@@ -157,7 +160,11 @@
   </div>
 </main>
 
-<shared-dialog *ngIf="showRejectDialog" [buttons]="rejectDialogButtons" (hide)="showRejectDialog = false">
+<shared-dialog
+  *ngIf="showRejectDialog"
+  [buttons]="rejectDialogButtons"
+  (hide)="showRejectDialog = false"
+>
   <label>
     {{ "draft.reject.message" | translate }}
     <textarea #rejectionReasonTextArea class="dark" rows="10"></textarea>

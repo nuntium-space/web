@@ -32,23 +32,22 @@ export class DraftComponent implements OnInit {
   public showRejectDialog = false;
   public rejectDialogButtons: IDialogButton[] = [
     {
-      text: "generic.confirm",
-      classes: [ "dark", "danger" ],
-      onClick: () =>
-      {
+      text: 'generic.confirm',
+      classes: ['dark', 'danger'],
+      onClick: () => {
         this.showRejectDialog = false;
 
         this.reject();
       },
     },
     {
-      text: "generic.cancel",
-      classes: [ "dark" ],
-      onClick: () => this.showRejectDialog = false,
-    }
+      text: 'generic.cancel',
+      classes: ['dark'],
+      onClick: () => (this.showRejectDialog = false),
+    },
   ];
 
-  @ViewChild("rejectionReasonTextArea")
+  @ViewChild('rejectionReasonTextArea')
   public rejectionReasonTextArea?: ElementRef<HTMLTextAreaElement>;
 
   constructor(
