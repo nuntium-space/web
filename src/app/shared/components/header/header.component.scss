@@ -1,3 +1,5 @@
+@import "~src/variables";
+
 :host {
   display: block;
   padding: 1em;
@@ -27,6 +29,17 @@ header {
 shared-popup-menu
 {
   color: var(--secondary-color);
+}
+
+.user-info
+{
+  margin-top: 0;
+
+  span
+  {
+    font-size: 1.3em;
+    font-weight: $medium;
+  }
 }
 
 .legal
