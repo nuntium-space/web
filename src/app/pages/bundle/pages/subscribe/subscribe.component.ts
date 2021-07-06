@@ -29,7 +29,7 @@ export class SubscribeComponent implements OnChanges {
     public auth: AuthService,
     public format: FormatService,
     private api: ApiService,
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   public async ngOnChanges(): Promise<void> {
@@ -49,7 +49,9 @@ export class SubscribeComponent implements OnChanges {
   }
 
   public async subscribe([success, failure]: ConfirmEventCallback) {
-    const price = Utilities.getFormControlValue(this.subscribeForm.get('price'));
+    const price = Utilities.getFormControlValue(
+      this.subscribeForm.get('price')
+    );
 
     if (!price) {
       // TODO: Show error (must select one price)

@@ -1,7 +1,9 @@
 <div *ngIf="organization">
   <a
     *ngIf="organization.stripe_account_enabled"
-    href="{{ env.endpoints.api }}/organizations/{{ organization.id }}/stripe/dashboard"
+    href="{{ env.endpoints.api }}/organizations/{{
+      organization.id
+    }}/stripe/dashboard"
     class="button fill"
   >
     {{
@@ -14,7 +16,9 @@
   </a>
   <a
     *ngIf="!organization.stripe_account_enabled"
-    href="{{ env.endpoints.api }}/organizations/{{ organization.id }}/stripe/connect"
+    href="{{ env.endpoints.api }}/organizations/{{
+      organization.id
+    }}/stripe/connect"
     class="button fill"
   >
     {{ "components.stripe.connect_button.connect" | translate }}

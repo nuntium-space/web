@@ -1,7 +1,11 @@
 <section>
   <div class="title">
     <h1>{{ "settings.account.subscriptions.__title" | translate }}</h1>
-    <a *ngIf="auth.user" href="{{ env.endpoints.api }}/users/{{ auth.user.id }}/stripe/portal" class="button">
+    <a
+      *ngIf="auth.user"
+      href="{{ env.endpoints.api }}/users/{{ auth.user.id }}/stripe/portal"
+      class="button"
+    >
       {{ "settings.account.subscriptions.manage" | translate }}
     </a>
   </div>
