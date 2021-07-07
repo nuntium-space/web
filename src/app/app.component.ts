@@ -8,24 +8,24 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  onLangChange?: Subscription;
+  private onLangChange?: Subscription;
 
   constructor(public el: ElementRef, public translate: TranslateService) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.updateLanguage();
     this.onLangChange = this.translate.onLangChange.subscribe(() => {
       this.updateLanguage();
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     if (this.onLangChange !== undefined) {
       this.onLangChange.unsubscribe();
     }
   }
 
-  updateLanguage(): void {
+  private updateLanguage(): void {
     const lang = document.createAttribute('lang');
     lang.value = this.translate.currentLang;
     this.el.nativeElement.parentElement.parentElement.attributes.setNamedItem(
