@@ -41,7 +41,10 @@ export class ReportComponent implements OnInit {
       return;
     }
 
-    const response = await this.api.sendReport(this.articleId, Utilities.getFormControlValue(this.form.get('reason')) ?? "");
+    const response = await this.api.sendReport(
+      this.articleId,
+      Utilities.getFormControlValue(this.form.get('reason')) ?? ''
+    );
 
     if (!response.success) {
       failure();
