@@ -11,19 +11,19 @@ import {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async retrieveOrganization(
+  public retrieveOrganization(
     id: string
   ): Promise<IApiServiceResponse<IOrganization>> {
     return this.send('GET', `organizations/${id}`);
   }
 
-  public async listBundlesForOrganization(
+  public listBundlesForOrganization(
     organizationId: string
   ): Promise<IApiServiceResponse<IBundle[]>> {
     return this.send('GET', `organizations/${organizationId}/bundles`);
   }
 
-  public async updateBundle(
+  public updateBundle(
     id: string,
     data: {
       name?: string;
@@ -33,7 +33,7 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `bundles/${id}`, data);
   }
 
-  public async createBundle(
+  public createBundle(
     organizationId: string,
     data: {
       name: string;
@@ -42,7 +42,7 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `organizations/${organizationId}/bundles`, data);
   }
 
-  public async updateOrganization(
+  public updateOrganization(
     id: string,
     data: {
       name?: string;
@@ -51,7 +51,7 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `organizations/${id}`, data);
   }
 
-  public async listPublishersForOrganization(
+  public listPublishersForOrganization(
     organizationId: string,
     options?: { not_in_bundle?: string }
   ): Promise<IApiServiceResponse<IPublisher[]>> {
@@ -63,7 +63,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async createPublisher(
+  public createPublisher(
     organizationId: string,
     data: {
       name: string;
@@ -77,7 +77,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async deletePublisher(id: string): Promise<IApiServiceResponse<void>> {
+  public deletePublisher(id: string): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `publishers/${id}`);
   }
 }

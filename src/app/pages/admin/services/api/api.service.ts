@@ -7,7 +7,7 @@ import { IArticleDraft } from 'src/app/pages/draft/services/api/api.service';
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async retrieveDraftsSubmittedForVerification(): Promise<
+  public retrieveDraftsSubmittedForVerification(): Promise<
     IApiServiceResponse<IArticleDraft[]>
   > {
     return this.send(

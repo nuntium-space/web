@@ -15,13 +15,13 @@ export interface IAuthorInvite {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async listAuthorsForPublisher(
+  public listAuthorsForPublisher(
     publisherId: string
   ): Promise<IApiServiceResponse<IAuthor[]>> {
     return this.send('GET', `publishers/${publisherId}/authors?expand[]=user`);
   }
 
-  public async retrieveInvites(
+  public retrieveInvites(
     publisherId: string
   ): Promise<IApiServiceResponse<IAuthorInvite[]>> {
     return this.send(
@@ -30,7 +30,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async inviteAuthor(
+  public inviteAuthor(
     publisherId: string,
     data: {
       email: string;
@@ -39,25 +39,25 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `publishers/${publisherId}/authors/invites`, data);
   }
 
-  public async deleteInvite(
+  public deleteInvite(
     inviteId: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `authors/invites/${inviteId}`);
   }
 
-  public async deleteAuthor(
+  public deleteAuthor(
     authorId: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `authors/${authorId}`);
   }
 
-  public async retrievePublisher(
+  public retrievePublisher(
     id: string
   ): Promise<IApiServiceResponse<IPublisher>> {
     return this.send('GET', `publishers/${id}`);
   }
 
-  public async updatePublisher(
+  public updatePublisher(
     id: string,
     data: {
       name?: string;
@@ -67,7 +67,7 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `publishers/${id}`, data);
   }
 
-  public async updatePublisherImage(
+  public updatePublisherImage(
     id: string,
     data: {
       image: File;
@@ -84,13 +84,13 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrievePublisherVerificationData(
+  public retrievePublisherVerificationData(
     publisherId: string
   ): Promise<IApiServiceResponse<{ dns: { record: string } }>> {
     return this.send('GET', `publishers/${publisherId}/verification/data`);
   }
 
-  public async verifyPublisher(
+  public verifyPublisher(
     publisherId: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `publishers/${publisherId}/verify`);

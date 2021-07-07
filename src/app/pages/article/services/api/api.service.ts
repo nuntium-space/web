@@ -11,7 +11,7 @@ export interface IArticleSource {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async retrieveArticle(
+  public retrieveArticle(
     id: string
   ): Promise<IApiServiceResponse<IArticle>> {
     return this.send(
@@ -20,25 +20,25 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrieveSources(
+  public retrieveSources(
     id: string
   ): Promise<IApiServiceResponse<IArticleSource[]>> {
     return this.send('GET', `articles/${id}/sources`);
   }
 
-  public async createDraftFromArticle(
+  public createDraftFromArticle(
     article: IArticle
   ): Promise<IApiServiceResponse<{ id: string }>> {
     return this.send('POST', `articles/${article.id}/drafts`);
   }
 
-  public async deleteArticle(
+  public deleteArticle(
     articleId: string
   ): Promise<IApiServiceResponse<IArticle>> {
     return this.send('DELETE', `articles/${articleId}`);
   }
 
-  public async createBookmark(
+  public createBookmark(
     user: IUser,
     article: IArticle
   ): Promise<IApiServiceResponse<void>> {
@@ -47,7 +47,7 @@ export class ApiService extends CoreApiService {
     });
   }
 
-  public async deleteBookmark(
+  public deleteBookmark(
     user: IUser,
     article: IArticle
   ): Promise<IApiServiceResponse<void>> {
@@ -56,14 +56,14 @@ export class ApiService extends CoreApiService {
     });
   }
 
-  public async addLike(
+  public addLike(
     user: IUser,
     article: IArticle
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `users/${user.id}/likes`, { article: article.id });
   }
 
-  public async removeLike(
+  public removeLike(
     user: IUser,
     article: IArticle
   ): Promise<IApiServiceResponse<void>> {

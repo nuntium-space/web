@@ -13,7 +13,7 @@ import {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async listArticlesForPublisher(
+  public listArticlesForPublisher(
     publisherId: string
   ): Promise<IApiServiceResponse<IArticle[]>> {
     return this.send(
@@ -22,25 +22,25 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async listBundlesForPublisher(
+  public listBundlesForPublisher(
     publisherId: string
   ): Promise<IApiServiceResponse<IBundle[]>> {
     return this.send('GET', `publishers/${publisherId}/bundles`);
   }
 
-  public async retrievePublisher(
+  public retrievePublisher(
     id: string
   ): Promise<IApiServiceResponse<IPublisher>> {
     return this.send('GET', `publishers/${id}`);
   }
 
-  public async retrievePublisherWithName(
+  public retrievePublisherWithName(
     name: string
   ): Promise<IApiServiceResponse<IPublisher>> {
     return this.send('GET', `publishers?name=${name}`);
   }
 
-  public async createArticleDraft(
+  public createArticleDraft(
     authorId: string,
     data: {
       title: string;
@@ -51,7 +51,7 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `authors/${authorId}/articles/drafts`, data);
   }
 
-  public async retrieveDraftsForAuthor(
+  public retrieveDraftsForAuthor(
     author: IAuthor | string
   ): Promise<IApiServiceResponse<IArticleDraft[]>> {
     return this.send(
@@ -62,7 +62,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrieveAuthorForUserAndPublisher(
+  public retrieveAuthorForUserAndPublisher(
     userId: string,
     publisherId: string
   ): Promise<IApiServiceResponse<[IAuthor]>> {

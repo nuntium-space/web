@@ -106,33 +106,33 @@ export interface IUserSettings {
   providedIn: 'root',
 })
 export class ApiService extends CoreApiService {
-  public async retrieveSignInRequest(
+  public retrieveSignInRequest(
     id: string
   ): Promise<IApiServiceResponse<{ session: ISession }>> {
     return this.send('GET', `auth/email/requests/${id}`);
   }
 
-  public async signInWithEmail(
+  public signInWithEmail(
     email: string
   ): Promise<IApiServiceResponse<{ id: string }>> {
     return this.send('POST', 'auth/email', { email });
   }
 
-  public async retrieveCurrentSession(): Promise<
+  public retrieveCurrentSession(): Promise<
     IApiServiceResponse<ISession>
   > {
     return this.send('GET', `sessions/current`);
   }
 
-  public async deleteCurrentSession(): Promise<IApiServiceResponse<void>> {
+  public deleteCurrentSession(): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `sessions/current`);
   }
 
-  public async retrieveUser(id: string): Promise<IApiServiceResponse<IUser>> {
+  public retrieveUser(id: string): Promise<IApiServiceResponse<IUser>> {
     return this.send('GET', `users/${id}`);
   }
 
-  public async retrieveUserFeed(
+  public retrieveUserFeed(
     userId: string,
     page: number
   ): Promise<IApiServiceResponse<IArticle[]>> {
@@ -144,7 +144,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrieveUserSettings(
+  public retrieveUserSettings(
     userId: string
   ): Promise<IApiServiceResponse<IUserSettings>> {
     return this.send('GET', `users/${userId}/settings`);

@@ -21,13 +21,13 @@ export interface IAccount {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async listAuthorsForUser(
+  public listAuthorsForUser(
     userId: string
   ): Promise<IApiServiceResponse<IAuthor[]>> {
     return this.send('GET', `users/${userId}/authors?expand[]=publisher`);
   }
 
-  public async updateUser(
+  public updateUser(
     id: string,
     data: {
       full_name?: string;
@@ -37,35 +37,35 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `users/${id}`, data);
   }
 
-  public async deleteUser(id: string): Promise<IApiServiceResponse<void>> {
+  public deleteUser(id: string): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `users/${id}`);
   }
 
-  public async listOrganizationsForUser(
+  public listOrganizationsForUser(
     userId: string
   ): Promise<IApiServiceResponse<IOrganization[]>> {
     return this.send('GET', `users/${userId}/organizations`);
   }
 
-  public async createOrganization(data: {
+  public createOrganization(data: {
     name: string;
   }): Promise<IApiServiceResponse<{ id: string }>> {
     return this.send('POST', 'organizations', data);
   }
 
-  public async deleteOrganization(
+  public deleteOrganization(
     id: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `organizations/${id}`);
   }
 
-  public async listPaymentMethodsForUser(
+  public listPaymentMethodsForUser(
     userId: string
   ): Promise<IApiServiceResponse<IPaymentMethod[]>> {
     return this.send('GET', `users/${userId}/payment-methods`);
   }
 
-  public async setDefaultPaymentMethod(
+  public setDefaultPaymentMethod(
     userId: string,
     data: {
       id: string;
@@ -74,13 +74,13 @@ export class ApiService extends CoreApiService {
     return this.send('PUT', `users/${userId}/payment-methods/default`, data);
   }
 
-  public async deletePaymentMethod(
+  public deletePaymentMethod(
     id: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `payment-methods/${id}`);
   }
 
-  public async updateUserSettings(
+  public updateUserSettings(
     userId: string,
     data: {
       language?: string;
@@ -89,7 +89,7 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `users/${userId}/settings`, data);
   }
 
-  public async listSubscriptionsForUser(
+  public listSubscriptionsForUser(
     userId: string
   ): Promise<IApiServiceResponse<ISubscription[]>> {
     return this.send(
@@ -98,7 +98,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrieveInvites(
+  public retrieveInvites(
     user: IUser
   ): Promise<IApiServiceResponse<IAuthorInvite[]>> {
     return this.send(
@@ -107,19 +107,19 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async acceptInvite(
+  public acceptInvite(
     invite: IAuthorInvite
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `authors/invites/${invite.id}/accept`);
   }
 
-  public async retrieveLinkedAccounts(
+  public retrieveLinkedAccounts(
     user: IUser
   ): Promise<IApiServiceResponse<IAccount[]>> {
     return this.send('GET', `users/${user.id}/accounts`);
   }
 
-  public async unlinkAccount(
+  public unlinkAccount(
     user: IUser,
     account: IAccount
   ): Promise<IApiServiceResponse<void>> {

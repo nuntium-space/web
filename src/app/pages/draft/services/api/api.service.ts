@@ -23,7 +23,7 @@ export interface IArticleDraftSource {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async retrieveDraft(
+  public retrieveDraft(
     id: string
   ): Promise<IApiServiceResponse<IArticleDraft>> {
     return this.send(
@@ -32,25 +32,25 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrieveDraftSources(
+  public retrieveDraftSources(
     id: string
   ): Promise<IApiServiceResponse<IArticleDraftSource[]>> {
     return this.send('GET', `articles/drafts/${id}/sources`);
   }
 
-  public async submitForVerification(
+  public submitForVerification(
     draft: IArticleDraft
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `articles/drafts/${draft.id}/verify`);
   }
 
-  public async publish(
+  public publish(
     draft: IArticleDraft
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `__internals/articles/drafts/${draft.id}/publish`);
   }
 
-  public async reject(
+  public reject(
     draft: IArticleDraft,
     data: {
       reason: string;
@@ -63,7 +63,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async updateDraft(
+  public updateDraft(
     draft: IArticleDraft,
     data: {
       title?: string;
@@ -78,7 +78,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async deleteDraft(
+  public deleteDraft(
     draft: IArticleDraft
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `articles/drafts/${draft.id}`);

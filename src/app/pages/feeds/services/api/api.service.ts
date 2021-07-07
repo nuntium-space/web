@@ -22,7 +22,7 @@ export interface ILike {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async search(
+  public search(
     query: string,
     page: number
   ): Promise<
@@ -41,7 +41,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async retrieveHistory(
+  public retrieveHistory(
     user: IUser
   ): Promise<IApiServiceResponse<IHistoryEntry[]>> {
     return this.send(
@@ -50,11 +50,11 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async deleteHistory(user: IUser): Promise<IApiServiceResponse<void>> {
+  public deleteHistory(user: IUser): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `users/${user.id}/history`);
   }
 
-  public async listBookmarks(
+  public listBookmarks(
     user: IUser
   ): Promise<IApiServiceResponse<IBookmark[]>> {
     return this.send(
@@ -63,14 +63,14 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async listLikes(user: IUser): Promise<IApiServiceResponse<ILike[]>> {
+  public listLikes(user: IUser): Promise<IApiServiceResponse<ILike[]>> {
     return this.send(
       'GET',
       `users/${user.id}/likes?expand[]=article&expand[]=article.author&expand[]=article.author.user&expand[]=article.author.publisher`
     );
   }
 
-  public async retrieveTrendingArticles(): Promise<
+  public retrieveTrendingArticles(): Promise<
     IApiServiceResponse<IArticle[]>
   > {
     return this.send(

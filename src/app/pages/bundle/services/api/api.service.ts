@@ -7,13 +7,13 @@ import { IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public async retrieveBundle(
+  public retrieveBundle(
     id: string
   ): Promise<IApiServiceResponse<IBundle>> {
     return this.send('GET', `bundles/${id}`);
   }
 
-  public async updateBundle(
+  public updateBundle(
     id: string,
     data: {
       name?: string;
@@ -23,7 +23,7 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `bundles/${id}`, data);
   }
 
-  public async createPrice(
+  public createPrice(
     bundleId: string,
     data: {
       amount: number;
@@ -33,7 +33,7 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `bundles/${bundleId}/prices`, data);
   }
 
-  public async listPricesForBundle(
+  public listPricesForBundle(
     id: string,
     options?: {
       active: boolean;
@@ -47,7 +47,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async updatePrice(
+  public updatePrice(
     id: string,
     data: {
       active?: boolean;
@@ -56,20 +56,20 @@ export class ApiService extends CoreApiService {
     return this.send('PATCH', `prices/${id}`, data);
   }
 
-  public async addPublisherToBundle(
+  public addPublisherToBundle(
     bundleId: string,
     publisherId: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `bundles/${bundleId}/publishers/${publisherId}`);
   }
 
-  public async listPublishersForBundle(
+  public listPublishersForBundle(
     id: string
   ): Promise<IApiServiceResponse<IPublisher[]>> {
     return this.send('GET', `bundles/${id}/publishers`);
   }
 
-  public async listPublishersForOrganization(
+  public listPublishersForOrganization(
     organizationId: string,
     options?: { not_in_bundle?: string }
   ): Promise<IApiServiceResponse<IPublisher[]>> {
@@ -81,7 +81,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public async removePublisherFromBundle(
+  public removePublisherFromBundle(
     bundleId: string,
     publisherId: string
   ): Promise<IApiServiceResponse<void>> {
