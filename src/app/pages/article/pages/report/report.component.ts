@@ -35,15 +35,13 @@ export class ReportComponent implements OnInit {
     success,
     failure,
   ]: ConfirmEventCallback): Promise<void> {
-    const reason = Utilities.getFormControlValue(this.form.get('reason'));
-
-    if (!this.articleId || !reason) {
+    if (!this.articleId) {
       failure();
 
       return;
     }
 
-    const response = await this.api.sendReport(this.articleId, reason);
+    const response = await this.api.sendReport(this.articleId, Utilities.getFormControlValue(this.form.get('reason')) ?? "");
 
     if (!response.success) {
       failure();
