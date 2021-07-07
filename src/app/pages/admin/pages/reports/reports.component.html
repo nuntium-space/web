@@ -1,0 +1,10 @@
+<section>
+  <div class="title">
+    <h1>{{ "admin.reports.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <div *ngFor="let report of reports">
+      {{ report.reason }}
+    </div>
+  </div>
+</section>

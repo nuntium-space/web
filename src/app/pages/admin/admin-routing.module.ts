@@ -10,6 +10,7 @@ const routes: Routes = [
     canActivate: [SignedInGuard],
     children: [
       { path: 'drafts', data: { section: 'drafts' } },
+      { path: 'reports', data: { section: 'reports' } },
       { path: '', redirectTo: 'drafts' },
     ],
   },
