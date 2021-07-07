@@ -10,7 +10,12 @@ import { ApiService } from './services/api/api.service';
 import { ReportsComponent } from './pages/reports/reports.component';
 
 @NgModule({
-  declarations: [AdminComponent, MenuComponent, DraftsComponent, ReportsComponent],
+  declarations: [
+    AdminComponent,
+    MenuComponent,
+    DraftsComponent,
+    ReportsComponent,
+  ],
   imports: [CommonModule, SharedModule, AdminRoutingModule],
   providers: [ApiService],
 })

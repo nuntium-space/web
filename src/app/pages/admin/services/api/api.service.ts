@@ -6,8 +6,7 @@ import {
 import { IArticleDraft } from 'src/app/pages/draft/services/api/api.service';
 import { IArticle, IUser } from 'src/app/services/api/api.service';
 
-export interface IArticleReport
-{
+export interface IArticleReport {
   id: string;
   user: IUser;
   article: IArticle;
@@ -26,12 +25,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public retrieveReports(): Promise<
-    IApiServiceResponse<IArticleReport[]>
-  > {
-    return this.send(
-      'GET',
-      `__internals/articles/reports`
-    );
+  public retrieveReports(): Promise<IApiServiceResponse<IArticleReport[]>> {
+    return this.send('GET', `__internals/articles/reports`);
   }
 }

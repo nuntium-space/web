@@ -4,10 +4,9 @@ import { ApiService, IArticleReport } from '../../services/api/api.service';
 @Component({
   selector: 'admin-reports',
   templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.scss']
+  styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements OnInit {
-
   public reports?: IArticleReport[];
 
   constructor(private api: ApiService) {}
@@ -17,5 +16,4 @@ export class ReportsComponent implements OnInit {
       this.reports = response.data;
     });
   }
-
 }
