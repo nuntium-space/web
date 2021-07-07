@@ -11,9 +11,7 @@ export interface IArticleSource {
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public retrieveArticle(
-    id: string
-  ): Promise<IApiServiceResponse<IArticle>> {
+  public retrieveArticle(id: string): Promise<IApiServiceResponse<IArticle>> {
     return this.send(
       'GET',
       `articles/${id}?expand[]=author&expand[]=author.user&expand[]=author.publisher`
@@ -72,8 +70,10 @@ export class ApiService extends CoreApiService {
     });
   }
 
-  public sendReport(articleId: string, reason: string): Promise<IApiServiceResponse<void>>
-  {
-    return this.send("POST", `articles/${articleId}/reports`, { reason });
+  public sendReport(
+    articleId: string,
+    reason: string
+  ): Promise<IApiServiceResponse<void>> {
+    return this.send('POST', `articles/${articleId}/reports`, { reason });
   }
 }

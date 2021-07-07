@@ -53,9 +53,7 @@ export class ApiService extends CoreApiService {
     return this.send('POST', 'organizations', data);
   }
 
-  public deleteOrganization(
-    id: string
-  ): Promise<IApiServiceResponse<void>> {
+  public deleteOrganization(id: string): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `organizations/${id}`);
   }
 
@@ -74,9 +72,7 @@ export class ApiService extends CoreApiService {
     return this.send('PUT', `users/${userId}/payment-methods/default`, data);
   }
 
-  public deletePaymentMethod(
-    id: string
-  ): Promise<IApiServiceResponse<void>> {
+  public deletePaymentMethod(id: string): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `payment-methods/${id}`);
   }
 

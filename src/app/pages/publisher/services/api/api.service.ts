@@ -39,15 +39,11 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `publishers/${publisherId}/authors/invites`, data);
   }
 
-  public deleteInvite(
-    inviteId: string
-  ): Promise<IApiServiceResponse<void>> {
+  public deleteInvite(inviteId: string): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `authors/invites/${inviteId}`);
   }
 
-  public deleteAuthor(
-    authorId: string
-  ): Promise<IApiServiceResponse<void>> {
+  public deleteAuthor(authorId: string): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `authors/${authorId}`);
   }
 

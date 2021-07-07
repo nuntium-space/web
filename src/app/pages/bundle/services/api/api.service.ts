@@ -7,9 +7,7 @@ import { IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
 
 @Injectable()
 export class ApiService extends CoreApiService {
-  public retrieveBundle(
-    id: string
-  ): Promise<IApiServiceResponse<IBundle>> {
+  public retrieveBundle(id: string): Promise<IApiServiceResponse<IBundle>> {
     return this.send('GET', `bundles/${id}`);
   }
 

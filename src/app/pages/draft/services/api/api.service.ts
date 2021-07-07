@@ -44,9 +44,7 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `articles/drafts/${draft.id}/verify`);
   }
 
-  public publish(
-    draft: IArticleDraft
-  ): Promise<IApiServiceResponse<void>> {
+  public publish(draft: IArticleDraft): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `__internals/articles/drafts/${draft.id}/publish`);
   }
 
@@ -78,9 +76,7 @@ export class ApiService extends CoreApiService {
     );
   }
 
-  public deleteDraft(
-    draft: IArticleDraft
-  ): Promise<IApiServiceResponse<void>> {
+  public deleteDraft(draft: IArticleDraft): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `articles/drafts/${draft.id}`);
   }
 }

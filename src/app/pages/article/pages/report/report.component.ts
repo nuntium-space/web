@@ -8,35 +8,36 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'article-report',
   templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss']
+  styleUrls: ['./report.component.scss'],
 })
-export class ReportComponent implements OnInit
-{
+export class ReportComponent implements OnInit {
   private articleId?: string;
 
   public form = new FormGroup({
     reason: new FormControl(),
   });
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute)
-  {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     this.route.params.subscribe({
-      next: ({ id }) =>
-      {
+      next: ({ id }) => {
         this.articleId = id;
       },
     });
   }
 
-  public async onConfirm([success, failure]: ConfirmEventCallback): Promise<void>
-  { 
-    const reason = Utilities.getFormControlValue(this.form.get("reason"));
+  public async onConfirm([
+    success,
+    failure,
+  ]: ConfirmEventCallback): Promise<void> {
+    const reason = Utilities.getFormControlValue(this.form.get('reason'));
 
-    if (!this.articleId || !reason)
-    {
+    if (!this.articleId || !reason) {
       failure();
 
       return;
@@ -44,8 +45,7 @@ export class ReportComponent implements OnInit
 
     const response = await this.api.sendReport(this.articleId, reason);
 
-    if (!response.success)
-    {
+    if (!response.success) {
       failure();
 
       return;
@@ -53,7 +53,7 @@ export class ReportComponent implements OnInit
 
     success();
 
-    this.router.navigate([ ".." ], {
+    this.router.navigate(['..'], {
       relativeTo: this.route,
     });
   }

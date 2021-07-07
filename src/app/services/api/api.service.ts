@@ -118,9 +118,7 @@ export class ApiService extends CoreApiService {
     return this.send('POST', 'auth/email', { email });
   }
 
-  public retrieveCurrentSession(): Promise<
-    IApiServiceResponse<ISession>
-  > {
+  public retrieveCurrentSession(): Promise<IApiServiceResponse<ISession>> {
     return this.send('GET', `sessions/current`);
   }
 
