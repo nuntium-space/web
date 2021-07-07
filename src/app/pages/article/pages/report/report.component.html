@@ -1,0 +1,19 @@
+<shared-header></shared-header>
+
+<aside>
+    <header>
+        <h1>{{ "article.report.__title" | translate }}</h1>
+    </header>
+    <a routerLink=".." class="button fill">
+        {{ "generic.cancel" | translate }}
+    </a>
+</aside>
+
+<main>
+    <shared-form [submitButtonText]="'generic.submit' | translate" (confirm)="onConfirm($event)">
+        <label>
+            {{ "article.report.reason" | translate }}
+            <textarea rows="15"></textarea>
+        </label>
+    </shared-form>
+</main>
