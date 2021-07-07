@@ -71,4 +71,9 @@ export class ApiService extends CoreApiService {
       article: article.id,
     });
   }
+
+  public sendReport(articleId: string, reason: string): Promise<IApiServiceResponse<void>>
+  {
+    return this.send("POST", `articles/${articleId}/reports`, { reason });
+  }
 }
