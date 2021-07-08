@@ -41,6 +41,20 @@
           </p>
         </div>
       </label>
+      <label>
+        <!-- TODO -->
+        {{ "bundle.prices.add.billing_period" | translate }}
+        <select formControlName="billing_period">
+          <option value="month">{{ "generic.billing_periods.month" | translate }}</option>
+          <option value="week">{{ "generic.billing_periods.week" | translate }}</option>
+          <option value="year">{{ "generic.billing_periods.year" | translate }}</option>
+        </select>
+        <div class="errors">
+          <p *ngFor="let error of form.get('currency')?.errors?.errors">
+            {{ "errors." + error.error | translate: error.params }}
+          </p>
+        </div>
+      </label>
     </shared-form>
   </div>
 </section>
