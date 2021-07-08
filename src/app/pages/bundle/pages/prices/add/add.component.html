@@ -18,9 +18,13 @@
           required
         />
         <div class="info">
-          <small [innerHTML]="'bundle.prices.add.messages.fee' | translate"></small>
+          <small
+            [innerHTML]="'bundle.prices.add.messages.fee' | translate"
+          ></small>
           <small>{{ "bundle.prices.add.messages.taxes" | translate }}</small>
-          <small>{{ "bundle.prices.add.messages.cannot_update" | translate }}</small>
+          <small>{{
+            "bundle.prices.add.messages.cannot_update" | translate
+          }}</small>
         </div>
         <div class="errors">
           <p *ngFor="let error of form.get('amount')?.errors?.errors">
@@ -45,9 +49,15 @@
         <!-- TODO -->
         {{ "bundle.prices.add.billing_period" | translate }}
         <select formControlName="billing_period">
-          <option value="month">{{ "generic.billing_periods.month" | translate }}</option>
-          <option value="week">{{ "generic.billing_periods.week" | translate }}</option>
-          <option value="year">{{ "generic.billing_periods.year" | translate }}</option>
+          <option value="month">
+            {{ "generic.billing_periods.month" | translate }}
+          </option>
+          <option value="week">
+            {{ "generic.billing_periods.week" | translate }}
+          </option>
+          <option value="year">
+            {{ "generic.billing_periods.year" | translate }}
+          </option>
         </select>
         <div class="errors">
           <p *ngFor="let error of form.get('currency')?.errors?.errors">

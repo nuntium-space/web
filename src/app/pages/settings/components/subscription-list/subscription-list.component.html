@@ -10,10 +10,8 @@
       }}
       <span class="billing-period">
         /
-        {{
-          "generic.billing_periods.month"
-            | translate | lowercase
-        }} <!-- TODO: Dynamic in the future -->
+        {{ "generic.billing_periods.month" | translate | lowercase }}
+        <!-- TODO: Dynamic in the future -->
       </span>
     </p>
     <small *ngIf="subscription.status === 'active'">

@@ -20,7 +20,7 @@ export class AddPriceComponent {
   public form = new FormGroup({
     amount: new FormControl(),
     currency: new FormControl(),
-    billing_period: new FormControl("month"),
+    billing_period: new FormControl('month'),
   });
 
   constructor(
