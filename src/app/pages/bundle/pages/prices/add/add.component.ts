@@ -47,7 +47,8 @@ export class AddPriceComponent {
     const response = await this.api.createPrice(this.bundle.id, {
       amount: Math.trunc(amount),
       currency,
-      billing_period: Utilities.getFormControlValue(this.form.get("billing_period")) ?? "",
+      billing_period:
+        Utilities.getFormControlValue(this.form.get('billing_period')) ?? '',
     });
 
     this.form.get('amount')?.setErrors({
