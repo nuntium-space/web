@@ -26,6 +26,7 @@ export class ApiService extends CoreApiService {
     data: {
       amount: number;
       currency: string;
+      billing_period: string;
     }
   ): Promise<IApiServiceResponse<{ id: string }>> {
     return this.send('POST', `bundles/${bundleId}/prices`, data);

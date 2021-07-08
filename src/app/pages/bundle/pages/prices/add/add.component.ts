@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IBundle } from 'src/app/services/api/api.service';
 import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { Config } from 'src/config/Config';
+import { Utilities } from 'src/utilities/Utilities';
 import { ApiService } from '../../../services/api/api.service';
 
 @Component({
@@ -46,6 +47,7 @@ export class AddPriceComponent {
     const response = await this.api.createPrice(this.bundle.id, {
       amount: Math.trunc(amount),
       currency,
+      billing_period: Utilities.getFormControlValue(this.form.get("billing_period")) ?? "",
     });
 
     this.form.get('amount')?.setErrors({
