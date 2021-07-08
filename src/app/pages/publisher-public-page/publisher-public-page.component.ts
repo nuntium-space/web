@@ -63,6 +63,8 @@ export class PublisherPublicPageComponent implements OnInit {
     this.api.listArticlesForPublisher(id).then((response) => {
       // Payment Required
       if (response.status === 402) {
+        this.articles = response.raw;
+
         this.isSubscribed = false;
 
         return;

@@ -59,16 +59,5 @@
 </aside>
 
 <main>
-  <shared-article-list
-    *ngIf="isSubscribed"
-    [articles]="articles"
-  ></shared-article-list>
-  <div *ngIf="!isSubscribed && publisher" class="payment-required round">
-    <span
-      [innerHTML]="
-        'publisher_public_page.how_to_subscribe'
-          | translate: { PUBLISHER_NAME: publisher.name }
-      "
-    ></span>
-  </div>
+  <shared-article-list [articles]="articles"></shared-article-list>
 </main>
