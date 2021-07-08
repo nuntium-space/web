@@ -28,6 +28,11 @@ header {
 
 shared-popup-menu {
   color: var(--secondary-color);
+
+  .signout
+  {
+    margin-top: 1rem;
+  }
 }
 
 .user-info {
