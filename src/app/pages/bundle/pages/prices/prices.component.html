@@ -27,7 +27,7 @@
           <shared-danger-button
             *ngIf="price.active"
             theme="dark"
-            [message]="'generic.archive' | translate"
+            [message]="'bundle.prices.archive.message' | translate"
             (confirm)="archiveOrRestorePrice(price)"
           >
             {{ "generic.archive" | translate }}

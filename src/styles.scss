@@ -227,8 +227,14 @@ label {
     border-radius: 0.5rem;
     margin-top: 0.2rem;
 
-    p {
+    p,small {
+      display: block;
       margin: 0;
+
+      &:not(:first-child)
+      {
+        margin-top: 0.4rem;
+      }
     }
   }
 

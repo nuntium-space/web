@@ -17,13 +17,17 @@
           min="0"
           required
         />
+        <div class="info">
+          <small [innerHTML]="'bundle.prices.add.messages.fee' | translate"></small>
+          <small>{{ "bundle.prices.add.messages.taxes" | translate }}</small>
+          <small>{{ "bundle.prices.add.messages.cannot_update" | translate }}</small>
+        </div>
         <div class="errors">
           <p *ngFor="let error of form.get('amount')?.errors?.errors">
             {{ "errors." + error.error | translate: error.params }}
           </p>
         </div>
       </label>
-      <small [innerHTML]="'bundle.prices.add.fee_msg' | translate"> </small>
       <label>
         {{ "bundle.prices.add.currency" | translate }}
         <select formControlName="currency">
