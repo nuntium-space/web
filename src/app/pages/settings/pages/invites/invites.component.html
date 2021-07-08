@@ -12,8 +12,10 @@
       </div>
       <div *ngFor="let invite of invites" class="list-item-with-actions">
         <div class="round">
-          <a routerLink="/p/{{ invite.publisher.id }}" class="dark">{{ invite.publisher.name }}</a>
-          <br>
+          <a routerLink="/p/{{ invite.publisher.id }}" class="dark">{{
+            invite.publisher.name
+          }}</a>
+          <br />
           <small>
             {{ "settings.author.invites.expires_at" | translate }}
             <b>{{ format.dateTime(invite.expires_at, "datetime") }}</b>
