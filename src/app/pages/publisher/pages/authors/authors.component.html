@@ -49,11 +49,8 @@
       </div>
       <div *ngFor="let invite of invites" class="list-item-with-actions">
         <div class="round">
-          <h3 *ngIf="invite.user.full_name">
-            {{ invite.user.full_name }}
-          </h3>
-          <a href="mailto:{{ invite.user.email }}" class="dark">
-            {{ invite.user.email }}
+          <a href="mailto:{{ invite.user_email }}" class="dark">
+            {{ invite.user_email }}
           </a>
         </div>
         <div class="actions">

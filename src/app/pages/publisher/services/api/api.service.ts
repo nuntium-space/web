@@ -3,11 +3,11 @@ import {
   CoreApiService,
   IApiServiceResponse,
 } from 'src/app/core/services/api/api.service';
-import { IAuthor, IPublisher, IUser } from 'src/app/services/api/api.service';
+import { IAuthor, IPublisher } from 'src/app/services/api/api.service';
 
 export interface IAuthorInvite {
   id: string;
-  user: IUser;
+  user_email: string;
   publisher: IPublisher;
   created_at: string;
   expires_at: string;
