@@ -2,7 +2,7 @@
 
 <bundle-menu [bundle]="bundle" [section]="section"></bundle-menu>
 
-<main [ngSwitch]="section">
+<main id="main-content" [ngSwitch]="section">
   <bundle-details
     *ngSwitchCase="'details'"
     [bundle]="bundle"

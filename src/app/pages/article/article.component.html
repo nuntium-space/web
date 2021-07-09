@@ -75,7 +75,7 @@
 
 <shared-spinner *ngIf="!article"></shared-spinner>
 
-<main *ngIf="article && isSubscribed">
+<main id="main-content" *ngIf="article && isSubscribed">
   <shared-editor
     [(content)]="article.content"
     [isReadOnly]="true"
@@ -94,7 +94,7 @@
   <article-bottom-actions [article]="article"></article-bottom-actions>
 </main>
 
-<main *ngIf="!isSubscribed">
+<main id="main-content" *ngIf="!isSubscribed">
   <div class="round payment-required">
     <h1>{{ "article.payment_required.title" | translate }}</h1>
     <p>{{ "article.payment_required.subtitle" | translate }}</p>

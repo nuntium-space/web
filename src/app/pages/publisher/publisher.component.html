@@ -2,7 +2,7 @@
 
 <publisher-menu [publisher]="publisher" [section]="section"></publisher-menu>
 
-<main [ngSwitch]="section">
+<main id="main-content" [ngSwitch]="section">
   <publisher-authors
     *ngSwitchCase="'authors'"
     [publisher]="publisher"

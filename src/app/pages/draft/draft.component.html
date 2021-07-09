@@ -135,7 +135,7 @@
 
 <shared-spinner *ngIf="!draft"></shared-spinner>
 
-<main *ngIf="draft">
+<main id="main-content" *ngIf="draft">
   <div *ngIf="draft.status === 'rejected'" class="rejection">
     <h1>Draft rejected</h1>
     <details>

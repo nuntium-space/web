@@ -2,7 +2,7 @@
 
 <admin-menu [section]="section"></admin-menu>
 
-<main [ngSwitch]="section">
+<main id="main-content" [ngSwitch]="section">
   <admin-drafts *ngSwitchCase="'drafts'"></admin-drafts>
   <admin-reports *ngSwitchCase="'reports'"></admin-reports>
 </main>

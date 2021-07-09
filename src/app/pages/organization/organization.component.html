@@ -5,7 +5,7 @@
   [section]="section"
 ></organization-menu>
 
-<main [ngSwitch]="section">
+<main id="main-content" [ngSwitch]="section">
   <organization-bundles
     *ngSwitchCase="'bundles'"
     [organization]="organization"
