@@ -1,5 +1,11 @@
 <shared-header></shared-header>
 
-<aside></aside>
+<aside *ngIf="author">
+  <header>
+    <h1>{{ author.user.full_name }}</h1>
+  </header>
+</aside>
 
-<main></main>
+<main>
+  <shared-article-list [articles]="articles"></shared-article-list>
+</main>
