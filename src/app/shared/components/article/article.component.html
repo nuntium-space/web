@@ -12,8 +12,12 @@
         </a>
       </span>
       <br />
-      <span>
-        {{ format.dateTime(article.created_at, "datetime") }}
+      <span title="{{ format.dateTime(article.created_at, 'datetime') }}">
+        {{ format.dateTime(article.created_at, "date") }}
+      </span>
+      <span *ngIf="article.created_at !== article.updated_at" title="{{ format.dateTime(article.updated_at, 'datetime') }}">
+        &bull;
+        <i>{{ "article.info.updated" | translate }}: {{ format.dateTime(article.updated_at, "date") }}</i>
       </span>
     </div>
   </header>
@@ -54,8 +58,12 @@
         </a>
       </span>
       <br />
-      <span>
-        {{ format.dateTime(draft.created_at, "datetime") }}
+      <span title="{{ format.dateTime(draft.created_at, 'datetime') }}">
+        {{ format.dateTime(draft.created_at, "date") }}
+      </span>
+      <span *ngIf="draft.created_at !== draft.updated_at" title="{{ format.dateTime(draft.updated_at, 'datetime') }}">
+        &bull;
+        <i>{{ "article.info.updated" | translate }}: {{ format.dateTime(draft.updated_at, "date") }}</i>
       </span>
     </div>
   </header>
