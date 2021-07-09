@@ -7,14 +7,8 @@ import { AuthorPublicPageComponent } from './author-public-page.component';
 import { ApiService } from './services/api/api.service';
 
 @NgModule({
-  declarations: [
-    AuthorPublicPageComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    AuthorPublicPageRoutingModule
-  ],
-  providers: [ApiService]
+  declarations: [AuthorPublicPageComponent],
+  imports: [CommonModule, SharedModule, AuthorPublicPageRoutingModule],
+  providers: [ApiService],
 })
-export class AuthorPublicPageModule { }
+export class AuthorPublicPageModule {}

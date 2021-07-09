@@ -9,10 +9,9 @@ import { ApiService } from './services/api/api.service';
 @Component({
   selector: 'app-author-public-page',
   templateUrl: './author-public-page.component.html',
-  styleUrls: ['./author-public-page.component.scss']
+  styleUrls: ['./author-public-page.component.scss'],
 })
 export class AuthorPublicPageComponent implements OnInit {
-
   public isSubscribed = true;
 
   public author?: IAuthor;

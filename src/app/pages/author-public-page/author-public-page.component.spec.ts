@@ -8,9 +8,8 @@ describe('AuthorPublicPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthorPublicPageComponent ]
-    })
-    .compileComponents();
+      declarations: [AuthorPublicPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
