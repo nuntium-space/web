@@ -2,7 +2,7 @@
   <header>
     <shared-img [src]="article.author.publisher.imageUrl"></shared-img>
     <div>
-      <a routerLink="/a/{{ article.author.user.id }}">
+      <a routerLink="/a/{{ article.author.id }}">
         {{ article.author.user.full_name }}
       </a>
       <span *ngIf="article.author.publisher.name">
@@ -44,7 +44,7 @@
     <shared-badge theme="warning">Draft</shared-badge>
     <shared-img [src]="draft.author.publisher.imageUrl"></shared-img>
     <div>
-      <a routerLink="/a/{{ draft.author.user.id }}">
+      <a routerLink="/a/{{ draft.author.id }}">
         {{ draft.author.user.full_name }}
       </a>
       <span *ngIf="draft.author.publisher.name">
