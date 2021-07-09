@@ -2,7 +2,7 @@
 
 <feeds-menu [section]="section"></feeds-menu>
 
-<main [ngSwitch]="section">
+<main id="main-content" [ngSwitch]="section">
   <feeds-bookmarks *ngSwitchCase="'bookmarks'"></feeds-bookmarks>
   <feeds-explore *ngSwitchCase="'explore'"></feeds-explore>
   <feeds-history *ngSwitchCase="'history'"></feeds-history>
