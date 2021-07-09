@@ -1,5 +1,4 @@
-.skip-link
-{
+.skip-link {
   color: white;
   background-color: black;
   font-weight: 700;
@@ -10,16 +9,13 @@
   transform: translateY(-200%);
   transition: transform 100ms;
 
-  &:focus
-  {
+  &:focus {
     transform: translateY(1rem);
   }
 }
 
-@media (prefers-reduced-motion: reduce)
-{
-  .skip-link
-  {
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
     transition: none;
   }
 }

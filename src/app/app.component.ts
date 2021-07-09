@@ -14,20 +14,22 @@ export class AppComponent {
 
   private onLangChange?: Subscription;
 
-  constructor(public el: ElementRef, public translate: TranslateService, private router: Router) {
+  constructor(
+    public el: ElementRef,
+    public translate: TranslateService,
+    private router: Router
+  ) {
     this.url = this.getMainContentUrl();
 
     router.events
-      .pipe(
-        filter((_) => _ instanceof NavigationEnd),
-      )
+      .pipe(filter((_) => _ instanceof NavigationEnd))
       .subscribe(() => {
         this.url = this.getMainContentUrl();
       });
   }
 
   private getMainContentUrl(): string {
-    return `${this.router.url.split("#")[0]}#main-content`;
+    return `${this.router.url.split('#')[0]}#main-content`;
   }
 
   public ngOnInit(): void {
