@@ -3,6 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'a/:id',
+    loadChildren: () =>
+      import('./pages/author-public-page/author-public-page.module').then(
+        (_) => _.AuthorPublicPageModule
+      ),
+  },
+  {
     path: 'admin',
     loadChildren: () =>
       import('./pages/admin/admin.module').then((_) => _.AdminModule),
