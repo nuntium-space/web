@@ -9,7 +9,11 @@
         format.currency(subscription.price.amount, subscription.price.currency)
       }}
       <span class="billing-period">
-        {{ ("generic.billing_periods_per." + subscription.price.billing_period) | translate | lowercase }}
+        {{
+          "generic.billing_periods_per." + subscription.price.billing_period
+            | translate
+            | lowercase
+        }}
       </span>
     </p>
     <small *ngIf="subscription.status === 'active'">

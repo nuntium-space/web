@@ -39,8 +39,7 @@ export class SubscribeComponent implements OnChanges {
     this.api
       .listPricesForBundle(this.bundle.id, { active: true })
       .then((response) => {
-        if (response.success)
-        {
+        if (response.success) {
           this.prices = response.data;
           this.selectedPriceId = this.prices[0].id;
         }

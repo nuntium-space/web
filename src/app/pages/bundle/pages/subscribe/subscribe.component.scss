@@ -23,15 +23,12 @@
   }
 }
 
-.checkout
-{
-  > *
-  {
+.checkout {
+  > * {
     max-width: 500px;
   }
 
-  a
-  {
+  a {
     margin-top: 2rem;
   }
 }

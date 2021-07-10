@@ -69,7 +69,7 @@ export interface IPrice {
   id: string;
   amount: number;
   currency: string;
-  billing_period: "month" | "week" | "year";
+  billing_period: 'month' | 'week' | 'year';
   bundle: IBundle;
   active: boolean;
 }

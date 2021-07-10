@@ -22,7 +22,11 @@
             {{ format.currency(price.amount, price.currency) }}
           </p>
           <span>
-            {{ ("generic.billing_periods_per." + price.billing_period) | translate | lowercase }}
+            {{
+              "generic.billing_periods_per." + price.billing_period
+                | translate
+                | lowercase
+            }}
           </span>
         </div>
         <shared-popup-menu theme="light">
