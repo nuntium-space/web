@@ -1,12 +1,8 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input, OnChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnChanges } from '@angular/core';
 import { IBundle, IPrice, IPublisher } from 'src/app/services/api/api.service';
-import { ConfirmEventCallback } from 'src/app/shared/components/async-button/async-button.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormatService } from 'src/app/shared/services/format/format.service';
 import { environment } from 'src/environments/environment';
-import { Utilities } from 'src/utilities/Utilities';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -18,18 +14,17 @@ export class SubscribeComponent implements OnChanges {
   @Input()
   public bundle?: IBundle;
 
+  public env = environment;
+
   public publishers?: IPublisher[];
   public prices?: IPrice[];
 
-  public subscribeForm = new FormGroup({
-    price: new FormControl(),
-  });
+  public selectedPriceId?: string;
 
   constructor(
     public auth: AuthService,
     public format: FormatService,
-    private api: ApiService,
-    @Inject(DOCUMENT) private document: Document
+    private api: ApiService
   ) {}
 
   public async ngOnChanges(): Promise<void> {
@@ -44,22 +39,17 @@ export class SubscribeComponent implements OnChanges {
     this.api
       .listPricesForBundle(this.bundle.id, { active: true })
       .then((response) => {
-        this.prices = response.data;
+        if (response.success)
+        {
+          this.prices = response.data;
+          this.selectedPriceId = this.prices[0].id;
+        }
       });
   }
 
-  public async subscribe([success, failure]: ConfirmEventCallback) {
-    const price = Utilities.getFormControlValue(
-      this.subscribeForm.get('price')
-    );
+  public onSelectedPriceChange(e: Event): void {
+    const target = e.target as HTMLSelectElement;
 
-    if (!price) {
-      // TODO: Show error (must select one price)
-      failure();
-
-      return;
-    }
-
-    this.document.location.href = `${environment.endpoints.api}/prices/${price}/checkout`;
+    this.selectedPriceId = target.selectedOptions[0].value;
   }
 }

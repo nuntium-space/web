@@ -15,20 +15,19 @@
         </a>
       </div>
     </div>
-    <shared-form
-      [submitButtonText]="'bundle.subscribe.submit' | translate"
-      [formGroup]="subscribeForm"
-      (confirm)="subscribe($event)"
-    >
+    <div class="checkout">
       <label>
         {{ "bundle.subscribe.choose_option" | translate }}
-        <select formControlName="price" required>
+        <select (change)="onSelectedPriceChange($event)">
           <option *ngFor="let price of prices" value="{{ price.id }}">
             {{ format.currency(price.amount, price.currency) }}
             {{ ("generic.billing_periods_per." + price.billing_period) | translate | lowercase }}
           </option>
         </select>
       </label>
-    </shared-form>
+      <a href="{{ env.endpoints.api }}/prices/{{ selectedPriceId }}/checkout" class="button fill">
+        {{ "bundle.subscribe.submit" | translate }}
+      </a>
+    </div>
   </div>
 </section>

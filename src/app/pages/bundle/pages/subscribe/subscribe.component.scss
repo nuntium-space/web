@@ -22,3 +22,16 @@
     }
   }
 }
+
+.checkout
+{
+  > *
+  {
+    max-width: 500px;
+  }
+
+  a
+  {
+    margin-top: 2rem;
+  }
+}
