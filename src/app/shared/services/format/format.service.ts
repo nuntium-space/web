@@ -58,6 +58,7 @@ export class FormatService {
     return new Intl.NumberFormat(this.translate.currentLang, {
       style: 'currency',
       currency: currency.toUpperCase(),
+      currencyDisplay: "narrowSymbol",
     }).format(amount);
   }
 }
