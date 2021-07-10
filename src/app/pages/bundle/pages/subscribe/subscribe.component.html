@@ -25,9 +25,7 @@
         <select formControlName="price" required>
           <option *ngFor="let price of prices" value="{{ price.id }}">
             {{ format.currency(price.amount, price.currency) }}
-            /
-            {{ "generic.billing_periods.month" | translate | lowercase }}
-            <!-- TODO: Dynamic in the future -->
+            {{ ("generic.billing_periods_per." + price.billing_period) | translate | lowercase }}
           </option>
         </select>
       </label>

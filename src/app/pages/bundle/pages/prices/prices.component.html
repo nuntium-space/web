@@ -21,11 +21,9 @@
           <p class="price">
             {{ format.currency(price.amount, price.currency) }}
           </p>
-          <span
-            >/
-            {{ "generic.billing_periods.month" | translate | lowercase }}</span
-          >
-          <!-- TODO: Dynamic in the future -->
+          <span>
+            {{ ("generic.billing_periods_per." + price.billing_period) | translate | lowercase }}
+          </span>
         </div>
         <shared-popup-menu theme="light">
           <shared-danger-button
