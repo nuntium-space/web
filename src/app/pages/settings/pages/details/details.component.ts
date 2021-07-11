@@ -16,6 +16,12 @@ export class AccountDetailsComponent {
     email: new FormControl(this.auth.user?.email),
   });
 
+  private image?: File;
+
+  public imageForm = new FormGroup({
+    image: new FormControl(),
+  });
+
   constructor(private api: ApiService, private auth: AuthService) {}
 
   public async onUpdateAccountDetailsFormSubmit([
@@ -56,5 +62,66 @@ export class AccountDetailsComponent {
     }
 
     success();
+
+    this.auth.user = response.data;
+  }
+
+  public onImageChange(e: Event) {
+    this.image = undefined;
+
+    if (e.target instanceof HTMLInputElement) {
+      const file = e.target.files?.item(0);
+
+      this.image = file ?? undefined;
+    }
+  }
+
+  public async onImageFormSubmit([success, failure]: ConfirmEventCallback) {
+    if (!this.auth.user) {
+      failure();
+
+      return;
+    }
+
+    if (!this.image) {
+      this.imageForm.get('image')?.setErrors({
+        errors: [
+          {
+            field: 'image',
+            error: 'errors.publisher.details.image.required',
+          },
+        ],
+      });
+
+      failure({
+        message: {
+          type: 'none',
+        },
+      });
+
+      return;
+    }
+
+    const response = await this.api.updateUserImage(this.auth.user.id, {
+      image: this.image,
+    });
+
+    this.imageForm.get('image')?.setErrors({
+      errors: response.errors?.filter((e) => e.field === 'image'),
+    });
+
+    if (!response.success) {
+      failure({
+        message: {
+          type: 'none',
+        },
+      });
+
+      return;
+    }
+
+    success();
+
+    this.auth.user.imageUrl = response.data.url;
   }
 }

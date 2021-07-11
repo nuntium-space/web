@@ -53,3 +53,33 @@
     </shared-form>
   </div>
 </section>
+
+<section>
+  <div class="title">
+    <h1>{{ "publisher.details.image.__title" | translate }}</h1>
+  </div>
+  <div class="content">
+    <shared-form
+      [submitButtonText]="'generic.update' | translate"
+      [formGroup]="imageForm"
+      (confirm)="onImageFormSubmit($event)"
+    >
+      <label>
+        {{ "publisher.details.image.image" | translate }}
+        <input
+          formControlName="image"
+          type="file"
+          name="image"
+          accept="image/*"
+          required
+          (change)="onImageChange($event)"
+        />
+        <div class="errors">
+          <p *ngFor="let error of imageForm.get('image')?.errors?.errors">
+            {{ "errors." + error.error | translate: error.params }}
+          </p>
+        </div>
+      </label>
+    </shared-form>
+  </div>
+</section>

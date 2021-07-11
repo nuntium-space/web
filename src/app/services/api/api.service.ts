@@ -10,6 +10,7 @@ export interface IUser {
   type: 'admin' | 'user';
   full_name: string | null;
   email: string;
+  imageUrl: string;
 }
 
 export interface IOrganization {

@@ -1,4 +1,11 @@
 <aside>
+  <header *ngIf="auth.user">
+    <shared-img [src]="auth.user.imageUrl"></shared-img>
+    <div>
+      <h1>{{ auth.user.full_name }}</h1>
+      <p>{{ auth.user.email }}</p>
+    </div>
+  </header>
   <section>
     <div class="title">
       <h1>{{ "settings.account.__title" | translate }}</h1>

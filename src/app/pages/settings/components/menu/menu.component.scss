@@ -1,1 +1,18 @@
 @import "~src/layouts/menu";
+
+header {
+  display: grid;
+  grid-template-columns: 100px auto;
+  align-items: flex-end;
+  gap: 1rem;
+
+  shared-img {
+    height: 100px;
+    width: 100px;
+  }
+
+  p
+  {
+    margin: 0;
+  }
+}

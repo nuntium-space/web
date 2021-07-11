@@ -121,4 +121,21 @@ export class ApiService extends CoreApiService {
   ): Promise<IApiServiceResponse<void>> {
     return this.send('DELETE', `users/${user.id}/accounts/${account.id}`);
   }
+
+  public updateUserImage(
+    id: string,
+    data: {
+      image: File;
+    }
+  ): Promise<IApiServiceResponse<{ url: string }>> {
+    const fd = new FormData();
+    fd.append('image', data.image);
+
+    return this.send(
+      'PUT',
+      `users/${id}/image`,
+      fd,
+      'multipart/form-data'
+    );
+  }
 }
