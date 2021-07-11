@@ -36,10 +36,8 @@
   }
 }
 
-.sections
-{
-  > *
-  {
+.sections {
+  > * {
     display: flex;
     align-items: flex-end;
     gap: 1rem;
@@ -50,25 +48,21 @@
     width: max-content;
     max-width: calc(100vw - 2em);
 
-    img
-    {
+    img {
       height: 10rem;
     }
 
     h2,
-    p
-    {
+    p {
       margin: 0;
       max-width: 60ch;
     }
 
-    h2
-    {
+    h2 {
       margin-bottom: 0.5rem;
     }
 
-    &:nth-child(2n)
-    {
+    &:nth-child(2n) {
       flex-direction: row-reverse;
       color: var(--primary-color);
       background-color: rgba($primary-color, 0.2);
@@ -104,11 +98,9 @@
     grid-template-columns: 100%;
   }
 
-  .sections
-  {
+  .sections {
     > *,
-    > *:nth-child(2n)
-    {
+    > *:nth-child(2n) {
       align-items: flex-start;
       flex-direction: column;
     }
