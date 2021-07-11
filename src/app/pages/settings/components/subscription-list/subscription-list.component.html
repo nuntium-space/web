@@ -3,7 +3,7 @@
     <p>{{ "settings.account.subscriptions.empty" | translate }}</p>
   </div>
   <div *ngFor="let subscription of subscriptions" class="bundle">
-    <p>{{ subscription.price.bundle.name }}</p>
+    <a routerLink="/bundle/{{ subscription.price.bundle.id }}" class="dark">{{ subscription.price.bundle.name }}</a>
     <p class="price">
       {{
         format.currency(subscription.price.amount, subscription.price.currency)
