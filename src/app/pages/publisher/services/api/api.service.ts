@@ -3,7 +3,7 @@ import {
   CoreApiService,
   IApiServiceResponse,
 } from 'src/app/core/services/api/api.service';
-import { IArticle, IAuthor, IPublisher } from 'src/app/services/api/api.service';
+import { IAuthor, IPublisher } from 'src/app/services/api/api.service';
 
 export interface IAuthorInvite {
   id: string;
@@ -14,8 +14,8 @@ export interface IAuthorInvite {
 }
 
 export interface IViewTimeSeriesEntry {
-  article: IArticle,
-  timestamp: string,
+  segment: string,
+  count: number,
 }
 
 @Injectable()

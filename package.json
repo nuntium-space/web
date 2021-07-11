@@ -21,7 +21,6 @@
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
     "@ngx-translate/core": "^13.0.0",
-    "@swimlane/ngx-charts": "^18.0.1",
     "@tiptap/core": "^2.0.0-beta.85",
     "@tiptap/extension-highlight": "^2.0.0-beta.14",
     "@tiptap/extension-link": "^2.0.0-beta.18",
@@ -31,6 +30,9 @@
     "@tiptap/extension-typography": "^2.0.0-beta.12",
     "@tiptap/extension-underline": "^2.0.0-beta.15",
     "@tiptap/starter-kit": "^2.0.0-beta.81",
+    "chart.js": "^3.4.1",
+    "chartjs-adapter-luxon": "^1.0.0",
+    "luxon": "^1.28.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
