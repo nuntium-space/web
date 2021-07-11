@@ -16,6 +16,10 @@
     [publisher]="publisher"
     (update)="onUpdate($event)"
   ></publisher-details>
+  <publisher-stats
+    *ngSwitchCase="'stats'"
+    [publisher]="publisher"
+  ></publisher-stats>
   <publisher-verify
     *ngSwitchCase="'verify'"
     [publisher]="publisher"

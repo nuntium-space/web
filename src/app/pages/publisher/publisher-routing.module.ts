@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: 'authors', data: { section: 'authors' } },
       { path: 'authors/invite', data: { section: 'authors/invite' } },
       { path: 'details', data: { section: 'details' } },
+      { path: 'stats', data: { section: 'stats' } },
       { path: 'verify', data: { section: 'verify' } },
       { path: '', redirectTo: 'details' },
     ],

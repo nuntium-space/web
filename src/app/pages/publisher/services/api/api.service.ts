@@ -3,7 +3,7 @@ import {
   CoreApiService,
   IApiServiceResponse,
 } from 'src/app/core/services/api/api.service';
-import { IAuthor, IPublisher } from 'src/app/services/api/api.service';
+import { IArticle, IAuthor, IPublisher } from 'src/app/services/api/api.service';
 
 export interface IAuthorInvite {
   id: string;
@@ -11,6 +11,11 @@ export interface IAuthorInvite {
   publisher: IPublisher;
   created_at: string;
   expires_at: string;
+}
+
+export interface IViewTimeSeriesEntry {
+  article: IArticle,
+  timestamp: string,
 }
 
 @Injectable()
@@ -90,5 +95,10 @@ export class ApiService extends CoreApiService {
     publisherId: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `publishers/${publisherId}/verify`);
+  }
+
+  public retrieveViewsTimeSeriesData(publisher: IPublisher, data: { from: Date, to: Date }): Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>
+  {
+    return this.send("GET", `publishers/${publisher.id}/timeseries/views?from=${data.from.toISOString()}&to=${data.to.toISOString()}`);
   }
 }
