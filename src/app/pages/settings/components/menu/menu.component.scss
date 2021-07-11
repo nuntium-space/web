@@ -1,13 +1,15 @@
 @import "~src/layouts/menu";
 
 header {
+  $profile-image-size: 50px;
+
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: $profile-image-size auto;
   align-items: flex-end;
   gap: 1rem;
 
   shared-img {
-    height: 100px;
-    width: 100px;
+    height: $profile-image-size;
+    width: $profile-image-size;
   }
 }
