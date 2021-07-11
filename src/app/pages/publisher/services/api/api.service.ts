@@ -13,6 +13,11 @@ export interface IAuthorInvite {
   expires_at: string;
 }
 
+export interface IViewTimeSeriesEntry {
+  segment: string;
+  count: number;
+}
+
 @Injectable()
 export class ApiService extends CoreApiService {
   public listAuthorsForPublisher(
@@ -90,5 +95,19 @@ export class ApiService extends CoreApiService {
     publisherId: string
   ): Promise<IApiServiceResponse<void>> {
     return this.send('POST', `publishers/${publisherId}/verify`);
+  }
+
+  public retrieveViewsTimeSeriesData(
+    publisher: IPublisher,
+    data: { from: Date; to: Date; precision: 'day' | 'hour' }
+  ): Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>> {
+    return this.send(
+      'GET',
+      `publishers/${
+        publisher.id
+      }/timeseries/views?from=${data.from.toISOString()}&to=${data.to.toISOString()}&precision=${
+        data.precision
+      }`
+    );
   }
 }

@@ -10,6 +10,7 @@ import { PublisherDetailsComponent } from './pages/details/details.component';
 import { PublisherMenuComponent } from './components/menu/menu.component';
 import { VerifyPublisherComponent } from './pages/verify/verify.component';
 import { ApiService } from './services/api/api.service';
+import { StatsComponent } from './pages/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ApiService } from './services/api/api.service';
     PublisherDetailsComponent,
     PublisherMenuComponent,
     VerifyPublisherComponent,
+    StatsComponent,
   ],
   imports: [CommonModule, SharedModule, PublisherRoutingModule],
   providers: [ApiService],

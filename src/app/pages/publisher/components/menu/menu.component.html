@@ -28,4 +28,12 @@
       </a>
     </div>
   </section>
+  <section>
+    <div class="title"></div>
+    <div class="content">
+      <a routerLink="stats" [class.selected]="section === 'stats'">
+        {{ "publisher.stats.__title" | translate }}
+      </a>
+    </div>
+  </section>
 </aside>
