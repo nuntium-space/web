@@ -10,6 +10,5 @@ export class SettingsMenuComponent {
   @Input('section')
   public section?: string;
 
-  constructor (public auth: AuthService)
-  {}
+  constructor(public auth: AuthService) {}
 }

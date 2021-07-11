@@ -131,11 +131,6 @@ export class ApiService extends CoreApiService {
     const fd = new FormData();
     fd.append('image', data.image);
 
-    return this.send(
-      'PUT',
-      `users/${id}/image`,
-      fd,
-      'multipart/form-data'
-    );
+    return this.send('PUT', `users/${id}/image`, fd, 'multipart/form-data');
   }
 }
