@@ -10,10 +10,12 @@
 article {
   border: 0.1em solid var(--primary-color);
 
+  $header-footer-padding: 1em;
+
   header,
   footer {
     font-size: small;
-    padding: 1em;
+    padding: $header-footer-padding;
     background-color: rgba($primary-color, 0.05);
   }
 
@@ -21,9 +23,11 @@ article {
     display: flex;
     align-items: center;
     gap: 1em;
+    position: relative;
 
     $publisher-image-size: 2.5rem;
     $user-image-size: 1.5rem;
+    $user-image-offset: 5px;
 
     .publisher-image {
       height: $publisher-image-size;
@@ -34,8 +38,8 @@ article {
       height: $user-image-size;
       width: $user-image-size;
       position: absolute;
-      margin-left: calc(#{$publisher-image-size - $user-image-size} + 5px);
-      margin-top: calc(#{$publisher-image-size - $user-image-size} + 5px);
+      top: calc(#{$header-footer-padding} + #{$publisher-image-size - $user-image-size} + #{$user-image-offset});
+      left: calc(#{$header-footer-padding} + #{$publisher-image-size - $user-image-size} + #{$user-image-offset});
       border-radius: 50%;
     }
   }
