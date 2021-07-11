@@ -22,9 +22,22 @@ article {
     align-items: center;
     gap: 1em;
 
-    shared-img {
-      height: 2.5rem;
-      width: 2.5rem;
+    $publisher-image-size: 2.5rem;
+    $user-image-size: 1.5rem;
+
+    .publisher-image {
+      height: $publisher-image-size;
+      width: $publisher-image-size;
+    }
+
+    .user-image
+    {
+      height: $user-image-size;
+      width: $user-image-size;
+      position: absolute;
+      margin-left: calc(#{$publisher-image-size - $user-image-size} + 5px);
+      margin-top: calc(#{$publisher-image-size - $user-image-size} + 5px);
+      border-radius: 50%;
     }
   }
 

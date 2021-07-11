@@ -1,6 +1,7 @@
 <article *ngIf="article" class="round">
   <header>
-    <shared-img [src]="article.author.publisher.imageUrl"></shared-img>
+    <shared-img [src]="article.author.publisher.imageUrl" class="publisher-image"></shared-img>
+    <shared-img [src]="article.author.user.imageUrl" class="user-image"></shared-img>
     <div>
       <a routerLink="/a/{{ article.author.id }}">
         {{ article.author.user.full_name }}
