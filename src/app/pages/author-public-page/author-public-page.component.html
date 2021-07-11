@@ -2,6 +2,7 @@
 
 <aside *ngIf="author">
   <header>
+    <shared-img [src]="author.user.imageUrl"></shared-img>
     <h1>{{ author.user.full_name }}</h1>
   </header>
 </aside>
