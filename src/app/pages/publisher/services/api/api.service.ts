@@ -97,8 +97,8 @@ export class ApiService extends CoreApiService {
     return this.send('POST', `publishers/${publisherId}/verify`);
   }
 
-  public retrieveViewsTimeSeriesData(publisher: IPublisher, data: { from: Date, to: Date }): Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>
+  public retrieveViewsTimeSeriesData(publisher: IPublisher, data: { from: Date, to: Date, precision: "day" | "hour" }): Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>
   {
-    return this.send("GET", `publishers/${publisher.id}/timeseries/views?from=${data.from.toISOString()}&to=${data.to.toISOString()}`);
+    return this.send("GET", `publishers/${publisher.id}/timeseries/views?from=${data.from.toISOString()}&to=${data.to.toISOString()}&precision=${data.precision}`);
   }
 }

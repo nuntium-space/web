@@ -24,6 +24,7 @@ export class StatsComponent implements OnChanges {
       .retrieveViewsTimeSeriesData(this.publisher, {
         from: new Date(),
         to: new Date(),
+        precision: "day",
       })
       .then(response =>
       {
