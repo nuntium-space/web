@@ -4,6 +4,12 @@
   grid-area: footer;
 }
 
+hr:first-child
+{
+  height: 10px;
+  border-radius: 5px;
+}
+
 .links {
   display: flex;
   gap: 1rem;
