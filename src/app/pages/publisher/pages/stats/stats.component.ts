@@ -36,15 +36,15 @@ export class StatsComponent implements AfterViewInit, OnChanges {
       type: 'line',
       options: {
         locale: this.userSettings.userSettings?.language ?? undefined,
-        color: "#ffffff",
-        backgroundColor: "#ffffff",
-        borderColor: "#ffffff",
+        color: "#fff",
+        backgroundColor: "#fff",
+        borderColor: "#fff",
         scales: {
           x: {
             type: 'time',
             time: {
               // Luxon format string
-              tooltipFormat: 'DD T',
+              tooltipFormat: 'DD',
               unit: "day",
             },
             ticks: {
