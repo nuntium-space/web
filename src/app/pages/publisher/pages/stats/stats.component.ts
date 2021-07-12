@@ -66,7 +66,7 @@ export class StatsComponent implements AfterViewInit, OnChanges {
               tooltipFormat: 'DD',
               displayFormats: {
                 day: 'DD',
-                hour: "DD T",
+                hour: 'DD T',
               },
             },
             ticks: {
@@ -92,18 +92,25 @@ export class StatsComponent implements AfterViewInit, OnChanges {
       return;
     }
 
-    const timeSpan = this.timeSpan?.nativeElement.selectedOptions[0].value as "month" | "week" | undefined ?? "month";
+    const timeSpan =
+      (this.timeSpan?.nativeElement.selectedOptions[0].value as
+        | 'month'
+        | 'week'
+        | undefined) ?? 'month';
 
-    const dateOffset = timeSpan === "month"
-      ? 60 * 60 * 24 * 30
-      : 60 * 60 * 24 * 7;
+    const dateOffset =
+      timeSpan === 'month' ? 60 * 60 * 24 * 30 : 60 * 60 * 24 * 7;
 
     const from = new Date();
     from.setSeconds(from.getSeconds() - dateOffset);
 
     const to = new Date();
 
-    const precision = this.precision?.nativeElement.selectedOptions[0].value as "hour" | "day" | undefined ?? "day";
+    const precision =
+      (this.precision?.nativeElement.selectedOptions[0].value as
+        | 'hour'
+        | 'day'
+        | undefined) ?? 'day';
 
     this.api
       .retrieveViewsTimeSeriesData(this.publisher, { from, to, precision })
@@ -112,15 +119,14 @@ export class StatsComponent implements AfterViewInit, OnChanges {
           this.viewsTimeSeries = response.data;
 
           (this.chart.options.scales?.x as any).time.unit = precision;
-          (this.chart.options.scales?.x as any).time.tooltipFormat = precision === "day"
-            ? "DD"
-            : "DD T";
+          (this.chart.options.scales?.x as any).time.tooltipFormat =
+            precision === 'day' ? 'DD' : 'DD T';
 
           this.chart.data = {
             labels: this.viewsTimeSeries.map((_) => _.segment.split('T')[0]),
             datasets: [
               {
-                label: this.translate.instant("publisher.stats.views.__title"),
+                label: this.translate.instant('publisher.stats.views.__title'),
                 data: this.viewsTimeSeries.map((_) => ({
                   x: _.segment.split('T')[0],
                   y: _.count,
