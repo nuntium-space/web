@@ -1,0 +1,11 @@
+.controls
+{
+    display: flex;
+    gap: 1rem;
+
+    > *
+    {
+        width: auto;
+        margin-top: 0;
+    }
+}

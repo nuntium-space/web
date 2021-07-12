@@ -28,6 +28,12 @@ export class StatsComponent implements AfterViewInit, OnChanges {
   @ViewChild('canvas')
   public canvas?: ElementRef<HTMLCanvasElement>;
 
+  @ViewChild('precision')
+  public precision?: ElementRef<HTMLSelectElement>;
+
+  @ViewChild('timeSpan')
+  public timeSpan?: ElementRef<HTMLSelectElement>;
+
   private chart?: Chart<'line', { x: string; y: number }[], string>;
 
   private viewsTimeSeries?: IViewTimeSeriesEntry[];
@@ -83,17 +89,21 @@ export class StatsComponent implements AfterViewInit, OnChanges {
       return;
     }
 
+    const timeSpan = this.timeSpan?.nativeElement.selectedOptions[0].value as "month" | "week" | undefined ?? "month";
+
+    const dateOffset = timeSpan === "month"
+      ? 60 * 60 * 24 * 30
+      : 60 * 60 * 24 * 7;
+
     const from = new Date();
-    from.setSeconds(from.getSeconds() - (60 * 60 * 24 * 30));
+    from.setSeconds(from.getSeconds() - dateOffset);
 
     const to = new Date();
 
+    const precision = this.precision?.nativeElement.selectedOptions[0].value as "hour" | "day" | undefined ?? "day";
+
     this.api
-      .retrieveViewsTimeSeriesData(this.publisher, {
-        from,
-        to,
-        precision: 'day',
-      })
+      .retrieveViewsTimeSeriesData(this.publisher, { from, to, precision })
       .then((response) => {
         if (response.success && this.chart) {
           this.viewsTimeSeries = response.data;
