@@ -62,9 +62,12 @@ export class StatsComponent implements AfterViewInit, OnChanges {
           x: {
             type: 'time',
             time: {
-              // Luxon format string
-              tooltipFormat: 'DD',
               unit: 'day',
+              tooltipFormat: 'DD',
+              displayFormats: {
+                day: 'DD',
+                hour: "DD T",
+              },
             },
             ticks: {
               color: '#fff',
@@ -108,6 +111,11 @@ export class StatsComponent implements AfterViewInit, OnChanges {
         if (response.success && this.chart) {
           this.viewsTimeSeries = response.data;
 
+          (this.chart.options.scales?.x as any).time.unit = precision;
+          (this.chart.options.scales?.x as any).time.tooltipFormat = precision === "day"
+            ? "DD"
+            : "DD T";
+
           this.chart.data = {
             labels: this.viewsTimeSeries.map((_) => _.segment.split('T')[0]),
             datasets: [
@@ -118,7 +126,7 @@ export class StatsComponent implements AfterViewInit, OnChanges {
                   y: _.count,
                 })),
                 borderWidth: 1,
-                borderColor: '#ffffff',
+                borderColor: '#fff',
               },
             ],
           };
