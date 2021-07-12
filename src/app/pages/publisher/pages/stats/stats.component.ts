@@ -6,6 +6,7 @@ import {
   OnChanges,
   ViewChild,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-luxon';
 import { IPublisher } from 'src/app/services/api/api.service';
@@ -33,6 +34,7 @@ export class StatsComponent implements AfterViewInit, OnChanges {
 
   constructor(
     private api: ApiService,
+    private translate: TranslateService,
     private userSettings: UserSettingsService
   ) {}
 
@@ -95,7 +97,7 @@ export class StatsComponent implements AfterViewInit, OnChanges {
             labels: this.viewsTimeSeries.map((_) => _.segment.split('T')[0]),
             datasets: [
               {
-                label: 'Views',
+                label: this.translate.instant("publisher.stats.views.__title"),
                 data: this.viewsTimeSeries.map((_) => ({
                   x: _.segment.split('T')[0],
                   y: _.count,
