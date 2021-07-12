@@ -83,10 +83,15 @@ export class StatsComponent implements AfterViewInit, OnChanges {
       return;
     }
 
+    const from = new Date();
+    from.setSeconds(from.getSeconds() - (60 * 60 * 24 * 30));
+
+    const to = new Date();
+
     this.api
       .retrieveViewsTimeSeriesData(this.publisher, {
-        from: new Date('2021-07-01T00:00:00.000Z'),
-        to: new Date('2021-07-11T00:00:00.000Z'),
+        from,
+        to,
         precision: 'day',
       })
       .then((response) => {
