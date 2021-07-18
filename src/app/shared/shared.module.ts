@@ -20,6 +20,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import { ArticleComponent } from './components/article/article.component';
 import { AsyncButtonComponent } from './components/async-button/async-button.component';
+import { StatsChartComponent } from './components/stats-chart/stats-chart.component';
 
 export const createTranslationLoader = (http: HttpClient) => {
   return new TranslationLoader(http);
@@ -41,6 +42,7 @@ export const createTranslationLoader = (http: HttpClient) => {
     ArticleListComponent,
     ArticleComponent,
     AsyncButtonComponent,
+    StatsChartComponent,
   ],
   imports: [
     CommonModule,
@@ -83,6 +85,7 @@ export const createTranslationLoader = (http: HttpClient) => {
     ArticleListComponent,
     ArticleComponent,
     AsyncButtonComponent,
+    StatsChartComponent,
   ],
 })
 export class SharedModule {}
