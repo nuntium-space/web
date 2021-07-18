@@ -1,7 +1,4 @@
-import {
-  Component,
-  Input,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IPublisher } from 'src/app/services/api/api.service';
 
 @Component({

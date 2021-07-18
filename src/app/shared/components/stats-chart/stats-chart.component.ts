@@ -2,14 +2,17 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-luxon';
-import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
+import {
+  CoreApiService,
+  IApiServiceResponse,
+} from 'src/app/core/services/api/api.service';
 import { IViewTimeSeriesEntry } from 'src/app/pages/publisher/services/api/api.service';
 import { UserSettingsService } from '../../services/user-settings/user-settings.service';
 
 @Component({
   selector: 'shared-stats-chart',
   templateUrl: './stats-chart.component.html',
-  styleUrls: ['./stats-chart.component.scss']
+  styleUrls: ['./stats-chart.component.scss'],
 })
 export class StatsChartComponent {
   @Input()
@@ -128,9 +131,8 @@ export class StatsChartComponent {
             ],
           };
 
-          this.chart.update();
-        }
-      });
+        this.chart.update();
+      }
+    });
   }
-
 }

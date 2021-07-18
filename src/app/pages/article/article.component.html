@@ -2,7 +2,12 @@
 
 <aside *ngIf="article">
   <h1 class="title">{{ article.title }}</h1>
-  <section *ngIf="article.author.user.id === auth.user?.id || article.author.publisher.organization.owner.id === auth.user?.id">
+  <section
+    *ngIf="
+      article.author.user.id === auth.user?.id ||
+      article.author.publisher.organization.owner.id === auth.user?.id
+    "
+  >
     <div class="title"></div>
     <div class="content">
       <a routerLink="stats">{{ "publisher.stats.__title" | translate }}</a>
