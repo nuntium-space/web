@@ -106,30 +106,35 @@ export class StatsChartComponent {
         | 'day'
         | undefined) ?? 'day';
 
-    (this.api
-      .send("GET", `${this.endpoint}?from=${from.toISOString()}&to=${to.toISOString()}&precision=${precision}`) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>)
-      .then((response) => {
-        if (response.success && this.chart) {
-          this.viewsTimeSeries = response.data;
+    (
+      this.api.send(
+        'GET',
+        `${
+          this.endpoint
+        }?from=${from.toISOString()}&to=${to.toISOString()}&precision=${precision}`
+      ) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>
+    ).then((response) => {
+      if (response.success && this.chart) {
+        this.viewsTimeSeries = response.data;
 
-          (this.chart.options.scales?.x as any).time.unit = precision;
-          (this.chart.options.scales?.x as any).time.tooltipFormat =
-            precision === 'day' ? 'DD' : 'DD T';
+        (this.chart.options.scales?.x as any).time.unit = precision;
+        (this.chart.options.scales?.x as any).time.tooltipFormat =
+          precision === 'day' ? 'DD' : 'DD T';
 
-          this.chart.data = {
-            labels: this.viewsTimeSeries.map((_) => _.segment),
-            datasets: [
-              {
-                label: this.translate.instant('publisher.stats.views.__title'),
-                data: this.viewsTimeSeries.map((_) => ({
-                  x: _.segment,
-                  y: _.count,
-                })),
-                borderWidth: 1,
-                borderColor: '#fff',
-              },
-            ],
-          };
+        this.chart.data = {
+          labels: this.viewsTimeSeries.map((_) => _.segment),
+          datasets: [
+            {
+              label: this.translate.instant('publisher.stats.views.__title'),
+              data: this.viewsTimeSeries.map((_) => ({
+                x: _.segment,
+                y: _.count,
+              })),
+              borderWidth: 1,
+              borderColor: '#fff',
+            },
+          ],
+        };
 
         this.chart.update();
       }
