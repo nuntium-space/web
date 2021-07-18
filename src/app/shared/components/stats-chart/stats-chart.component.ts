@@ -2,14 +2,17 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-luxon';
-import { CoreApiService, IApiServiceResponse } from 'src/app/core/services/api/api.service';
+import {
+  CoreApiService,
+  IApiServiceResponse,
+} from 'src/app/core/services/api/api.service';
 import { IViewTimeSeriesEntry } from 'src/app/pages/publisher/services/api/api.service';
 import { UserSettingsService } from '../../services/user-settings/user-settings.service';
 
 @Component({
   selector: 'shared-stats-chart',
   templateUrl: './stats-chart.component.html',
-  styleUrls: ['./stats-chart.component.scss']
+  styleUrls: ['./stats-chart.component.scss'],
 })
 export class StatsChartComponent {
   @Input()
@@ -103,34 +106,38 @@ export class StatsChartComponent {
         | 'day'
         | undefined) ?? 'day';
 
-    (this.api
-      .send("GET", `${this.endpoint}?from=${from.toISOString()}&to=${to.toISOString()}&precision=${precision}`) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>)
-      .then((response) => {
-        if (response.success && this.chart) {
-          this.viewsTimeSeries = response.data;
+    (
+      this.api.send(
+        'GET',
+        `${
+          this.endpoint
+        }?from=${from.toISOString()}&to=${to.toISOString()}&precision=${precision}`
+      ) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>
+    ).then((response) => {
+      if (response.success && this.chart) {
+        this.viewsTimeSeries = response.data;
 
-          (this.chart.options.scales?.x as any).time.unit = precision;
-          (this.chart.options.scales?.x as any).time.tooltipFormat =
-            precision === 'day' ? 'DD' : 'DD T';
+        (this.chart.options.scales?.x as any).time.unit = precision;
+        (this.chart.options.scales?.x as any).time.tooltipFormat =
+          precision === 'day' ? 'DD' : 'DD T';
 
-          this.chart.data = {
-            labels: this.viewsTimeSeries.map((_) => _.segment.split('T')[0]),
-            datasets: [
-              {
-                label: this.translate.instant('publisher.stats.views.__title'),
-                data: this.viewsTimeSeries.map((_) => ({
-                  x: _.segment.split('T')[0],
-                  y: _.count,
-                })),
-                borderWidth: 1,
-                borderColor: '#fff',
-              },
-            ],
-          };
+        this.chart.data = {
+          labels: this.viewsTimeSeries.map((_) => _.segment.split('T')[0]),
+          datasets: [
+            {
+              label: this.translate.instant('publisher.stats.views.__title'),
+              data: this.viewsTimeSeries.map((_) => ({
+                x: _.segment.split('T')[0],
+                y: _.count,
+              })),
+              borderWidth: 1,
+              borderColor: '#fff',
+            },
+          ],
+        };
 
-          this.chart.update();
-        }
-      });
+        this.chart.update();
+      }
+    });
   }
-
 }

@@ -10,7 +10,12 @@ import { ReportComponent } from './pages/report/report.component';
 import { StatsComponent } from './pages/stats/stats.component';
 
 @NgModule({
-  declarations: [ArticleComponent, BottomActionsComponent, ReportComponent, StatsComponent],
+  declarations: [
+    ArticleComponent,
+    BottomActionsComponent,
+    ReportComponent,
+    StatsComponent,
+  ],
   imports: [CommonModule, SharedModule, ArticleRoutingModule],
   providers: [ApiService],
 })
