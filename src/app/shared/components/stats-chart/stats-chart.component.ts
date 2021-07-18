@@ -114,12 +114,12 @@ export class StatsChartComponent {
             precision === 'day' ? 'DD' : 'DD T';
 
           this.chart.data = {
-            labels: this.viewsTimeSeries.map((_) => _.segment.split('T')[0]),
+            labels: this.viewsTimeSeries.map((_) => _.segment),
             datasets: [
               {
                 label: this.translate.instant('publisher.stats.views.__title'),
                 data: this.viewsTimeSeries.map((_) => ({
-                  x: _.segment.split('T')[0],
+                  x: _.segment,
                   y: _.count,
                 })),
                 borderWidth: 1,
