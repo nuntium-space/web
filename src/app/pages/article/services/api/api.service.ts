@@ -19,10 +19,7 @@ export class ApiService extends CoreApiService {
   }
 
   public retrieveArticleContent(id: string): Promise<IApiServiceResponse<any>> {
-    return this.send(
-      'GET',
-      `articles/${id}/content`
-    );
+    return this.send('GET', `articles/${id}/content`);
   }
 
   public retrieveSources(
