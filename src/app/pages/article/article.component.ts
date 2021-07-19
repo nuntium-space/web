@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { filter, switchMap } from 'rxjs/operators';
 import { Config } from 'src/config/Config';
 import { IArticle } from '../../services/api/api.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
-import { ApiService, IArticleSource } from './services/api/api.service';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-article',
@@ -13,8 +15,9 @@ import { ApiService, IArticleSource } from './services/api/api.service';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
+  public section?: string;
+
   public article?: IArticle;
-  public sources?: IArticleSource[];
 
   public isSubscribed = true;
 
@@ -23,9 +26,20 @@ export class ArticleComponent implements OnInit {
     public format: FormatService,
     public route: ActivatedRoute,
     private api: ApiService,
-    private router: Router,
-    private title: Title
-  ) {}
+    private title: Title,
+    router: Router
+  ) {
+    router.events
+      .pipe(
+        filter((_) => _ instanceof NavigationEnd),
+        switchMap(() => {
+          return route.firstChild?.data ?? of({});
+        })
+      )
+      .subscribe(({ section }) => {
+        this.section = section;
+      });
+  }
 
   public ngOnInit() {
     this.route.params.subscribe({
@@ -48,37 +62,7 @@ export class ArticleComponent implements OnInit {
             );
           }
         });
-
-        this.api.retrieveSources(params.id).then((response) => {
-          if (response.data) {
-            this.sources = response.data;
-          }
-        });
       },
     });
-  }
-
-  public async createUpdateDraft() {
-    if (!this.article) {
-      return;
-    }
-
-    const response = await this.api.createDraftFromArticle(this.article);
-
-    if (response.success) {
-      this.router.navigateByUrl(`/draft/${response.data.id}`);
-    }
-  }
-
-  public async deleteArticle() {
-    if (!this.article) {
-      return;
-    }
-
-    const response = await this.api.deleteArticle(this.article.id);
-
-    if (response.success) {
-      this.router.navigateByUrl(`/p/${this.article.author.publisher.id}`);
-    }
   }
 }

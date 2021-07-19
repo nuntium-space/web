@@ -1,0 +1,32 @@
+<main id="main-content" *ngIf="article && isSubscribed">
+  <shared-editor
+    [(content)]="article.content"
+    [isReadOnly]="true"
+  ></shared-editor>
+  <div class="sources round">
+    <p>Sources</p>
+    <p *ngIf="sources?.length === 0" class="empty">
+      <i>The author didn't specify any source</i>
+    </p>
+    <ol>
+      <li *ngFor="let source of sources">
+        <a [href]="source.url">{{ source.url }}</a>
+      </li>
+    </ol>
+  </div>
+  <article-bottom-actions [article]="article"></article-bottom-actions>
+</main>
+
+<main id="main-content" *ngIf="!isSubscribed">
+  <div class="round payment-required">
+    <h1>{{ "article.payment_required.title" | translate }}</h1>
+    <p>{{ "article.payment_required.subtitle" | translate }}</p>
+    <a
+      *ngIf="article"
+      routerLink="/p/{{ article.author.publisher.id }}"
+      class="button dark"
+    >
+      View
+    </a>
+  </div>
+</main>

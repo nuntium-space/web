@@ -1,0 +1,88 @@
+<aside *ngIf="article">
+  <h1 class="title">{{ article.title }}</h1>
+  <section
+    *ngIf="
+      article.author.user.id === auth.user?.id ||
+      article.author.publisher.organization.owner.id === auth.user?.id
+    "
+  >
+    <div class="title"></div>
+    <div class="content">
+      <a routerLink="content" [class.selected]="section === 'content'">{{
+        "article.content.__title" | translate
+      }}</a>
+      <a routerLink="stats" [class.selected]="section === 'stats'">{{
+        "publisher.stats.__title" | translate
+      }}</a>
+    </div>
+  </section>
+  <section *ngIf="article.author.user.id === auth.user?.id" class="actions">
+    <div class="title">
+      <h1>{{ "article.actions.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <div>
+        <button class="fill" (click)="createUpdateDraft()">
+          {{ "generic.edit" | translate }}
+        </button>
+        <shared-danger-button
+          size="fill"
+          [message]="'generic.delete' | translate"
+          (confirm)="deleteArticle()"
+        >
+          {{ "generic.delete" | translate }}
+        </shared-danger-button>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="title">
+      <h1>{{ "article.publisher.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <a routerLink="/p/{{ article.author.publisher.id }}">
+        {{ article.author.publisher.name }}
+      </a>
+    </div>
+  </section>
+  <section>
+    <div class="title">
+      <h1>{{ "article.author.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <a routerLink="/a/{{ article.author.id }}">
+        {{ article.author.user.full_name }}
+      </a>
+    </div>
+  </section>
+  <section class="info">
+    <div class="title">
+      <h1>{{ "article.info.__title" | translate }}</h1>
+    </div>
+    <div class="content">
+      <div>
+        <b>{{ "article.info.reading_time" | translate }}</b>
+        <p *ngIf="article.reading_time >= 1">
+          {{ article.reading_time }}
+          {{
+            (article.reading_time > 1
+              ? "generic.minute.many"
+              : "generic.minute.one"
+            ) | translate
+          }}
+        </p>
+        <p *ngIf="article.reading_time < 1">
+          {{ "generic.less_than_a_minute" | translate }}
+        </p>
+      </div>
+      <div>
+        <b>{{ "article.info.published" | translate }}</b>
+        <p>{{ format.dateTime(article.created_at, "datetime") }}</p>
+      </div>
+      <div>
+        <b>{{ "article.info.updated" | translate }}</b>
+        <p>{{ format.dateTime(article.updated_at, "datetime") }}</p>
+      </div>
+    </div>
+  </section>
+</aside>
