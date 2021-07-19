@@ -42,7 +42,6 @@ export interface IAuthor {
 export interface IArticle {
   id: string;
   title: string;
-  content: any;
   reading_time: number;
   author: IAuthor;
   created_at: string;

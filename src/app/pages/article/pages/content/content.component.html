@@ -1,6 +1,10 @@
 <main id="main-content" *ngIf="article && isSubscribed">
+  <shared-spinner *ngIf="!content"></shared-spinner>
+
   <shared-editor
-    [(content)]="article.content"
+    *ngIf="content"
+
+    [(content)]="content"
     [isReadOnly]="true"
   ></shared-editor>
   <div class="sources round">

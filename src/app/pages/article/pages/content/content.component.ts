@@ -14,6 +14,8 @@ export class ContentComponent implements OnChanges {
   @Input()
   public isSubscribed?: boolean;
 
+  public content?: any;
+
   public sources?: IArticleSource[];
 
   constructor(private api: ApiService) {}
@@ -22,6 +24,12 @@ export class ContentComponent implements OnChanges {
     if (!this.article) {
       return;
     }
+
+    this.api.retrieveArticleContent(this.article.id).then((response) => {
+      if (response.data) {
+        this.content = response.data;
+      }
+    });
 
     this.api.retrieveSources(this.article.id).then((response) => {
       if (response.data) {
