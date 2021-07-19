@@ -5,7 +5,7 @@ import { ApiService, IArticleSource } from '../../services/api/api.service';
 @Component({
   selector: 'article-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent implements OnChanges {
   @Input()
@@ -16,7 +16,7 @@ export class ContentComponent implements OnChanges {
 
   public sources?: IArticleSource[];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
   ngOnChanges(): void {
     if (!this.article) {

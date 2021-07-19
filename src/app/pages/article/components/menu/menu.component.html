@@ -8,8 +8,12 @@
   >
     <div class="title"></div>
     <div class="content">
-      <a routerLink="content" [class.selected]="section === 'content'">{{ "article.content.__title" | translate }}</a>
-      <a routerLink="stats" [class.selected]="section === 'stats'">{{ "publisher.stats.__title" | translate }}</a>
+      <a routerLink="content" [class.selected]="section === 'content'">{{
+        "article.content.__title" | translate
+      }}</a>
+      <a routerLink="stats" [class.selected]="section === 'stats'">{{
+        "publisher.stats.__title" | translate
+      }}</a>
     </div>
   </section>
   <section *ngIf="article.author.user.id === auth.user?.id" class="actions">

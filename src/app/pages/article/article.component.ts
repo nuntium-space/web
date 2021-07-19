@@ -27,7 +27,7 @@ export class ArticleComponent implements OnInit {
     public route: ActivatedRoute,
     private api: ApiService,
     private title: Title,
-    router: Router,
+    router: Router
   ) {
     router.events
       .pipe(

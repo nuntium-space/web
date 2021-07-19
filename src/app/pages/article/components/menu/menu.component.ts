@@ -8,7 +8,7 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
   selector: 'article-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
   @Input()
@@ -17,8 +17,12 @@ export class MenuComponent {
   @Input()
   public section?: string;
 
-  constructor(public auth: AuthService, public format: FormatService, private api: ApiService, private router: Router)
-  {}
+  constructor(
+    public auth: AuthService,
+    public format: FormatService,
+    private api: ApiService,
+    private router: Router
+  ) {}
 
   public async createUpdateDraft() {
     if (!this.article) {
