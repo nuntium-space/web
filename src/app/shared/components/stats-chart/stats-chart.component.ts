@@ -106,38 +106,59 @@ export class StatsChartComponent {
         | 'day'
         | undefined) ?? 'day';
 
-    (
-      this.api.send(
-        'GET',
-        `${
-          this.endpoint
-        }?from=${from.toISOString()}&to=${to.toISOString()}&precision=${precision}`
-      ) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>
-    ).then((response) => {
-      if (response.success && this.chart) {
-        this.viewsTimeSeries = response.data;
+    const url = `${this.endpoint}?from=${from.toISOString()}&to=${to.toISOString()}&precision=${precision}`;
 
-        (this.chart.options.scales?.x as any).time.unit = precision;
-        (this.chart.options.scales?.x as any).time.tooltipFormat =
-          precision === 'day' ? 'DD' : 'DD T';
+    (this.api.send('GET', url) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>)
+      .then((response) => {
+        if (response.success && this.chart) {
+          this.viewsTimeSeries = response.data;
 
-        this.chart.data = {
-          labels: this.viewsTimeSeries.map((_) => _.segment),
-          datasets: [
-            {
-              label: this.translate.instant('publisher.stats.views.__title'),
-              data: this.viewsTimeSeries.map((_) => ({
-                x: _.segment,
-                y: _.count,
-              })),
-              borderWidth: 1,
-              borderColor: '#fff',
-            },
-          ],
-        };
+          (this.chart.options.scales?.x as any).time.unit = precision;
+          (this.chart.options.scales?.x as any).time.tooltipFormat =
+            precision === 'day' ? 'DD' : 'DD T';
 
-        this.chart.update();
-      }
-    });
+          this.chart.data = {
+            labels: this.viewsTimeSeries.map((_) => _.segment),
+            datasets: [
+              {
+                label: this.translate.instant('publisher.stats.views.__title'),
+                data: this.viewsTimeSeries.map((_) => ({
+                  x: _.segment,
+                  y: _.count,
+                })),
+                borderWidth: 1,
+                borderColor: '#fff',
+              },
+            ],
+          };
+
+          this.chart.update();
+        }
+      },
+    );
+
+    (this.api.send('GET', `${url}&unique=true`) as Promise<IApiServiceResponse<IViewTimeSeriesEntry[]>>)
+      .then((response) => {
+        if (response.success && this.chart) {
+          this.viewsTimeSeries = response.data;
+
+          (this.chart.options.scales?.x as any).time.unit = precision;
+          (this.chart.options.scales?.x as any).time.tooltipFormat =
+            precision === 'day' ? 'DD' : 'DD T';
+
+          this.chart.data.datasets.push({
+            label: this.translate.instant('publisher.stats.views.unique'),
+            data: this.viewsTimeSeries.map((_) => ({
+              x: _.segment,
+              y: _.count,
+            })),
+            borderWidth: 1,
+            borderColor: '#c77',
+          });
+
+          this.chart.update();
+        }
+      },
+    );
   }
 }
