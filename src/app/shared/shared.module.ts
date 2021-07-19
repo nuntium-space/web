@@ -21,6 +21,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
 import { ArticleComponent } from './components/article/article.component';
 import { AsyncButtonComponent } from './components/async-button/async-button.component';
 import { StatsChartComponent } from './components/stats-chart/stats-chart.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export const createTranslationLoader = (http: HttpClient) => {
   return new TranslationLoader(http);
@@ -87,5 +88,6 @@ export const createTranslationLoader = (http: HttpClient) => {
     AsyncButtonComponent,
     StatsChartComponent,
   ],
+  providers: [CookieService],
 })
 export class SharedModule {}
