@@ -5,7 +5,7 @@
 <shared-spinner *ngIf="!article"></shared-spinner>
 
 <main id="main-content" [ngSwitch]="section">
-  <article-content *ngSwitchCase="'content'"></article-content>
+  <article-content *ngSwitchCase="'content'" [article]="article" [isSubscribed]="isSubscribed"></article-content>
   <article-report *ngSwitchCase="'report'"></article-report>
   <article-stats *ngSwitchCase="'stats'"></article-stats>
 </main>

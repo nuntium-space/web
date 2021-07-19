@@ -7,7 +7,7 @@ import { Config } from 'src/config/Config';
 import { IArticle } from '../../services/api/api.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { FormatService } from '../../shared/services/format/format.service';
-import { ApiService, IArticleSource } from './services/api/api.service';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-article',
@@ -18,7 +18,6 @@ export class ArticleComponent implements OnInit {
   public section?: string;
 
   public article?: IArticle;
-  public sources?: IArticleSource[];
 
   public isSubscribed = true;
 
@@ -61,12 +60,6 @@ export class ArticleComponent implements OnInit {
             this.title.setTitle(
               `${this.article.title} - ${this.article.author.publisher.name}${Config.PAGE_TITLE_SUFFIX}`
             );
-          }
-        });
-
-        this.api.retrieveSources(params.id).then((response) => {
-          if (response.data) {
-            this.sources = response.data;
           }
         });
       },
