@@ -8,6 +8,8 @@ import { ApiService } from './services/api/api.service';
 import { BottomActionsComponent } from './components/bottom-actions/bottom-actions.component';
 import { ReportComponent } from './pages/report/report.component';
 import { StatsComponent } from './pages/stats/stats.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ContentComponent } from './pages/content/content.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { StatsComponent } from './pages/stats/stats.component';
     BottomActionsComponent,
     ReportComponent,
     StatsComponent,
+    MenuComponent,
+    ContentComponent,
   ],
   imports: [CommonModule, SharedModule, ArticleRoutingModule],
   providers: [ApiService],
